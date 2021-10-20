@@ -1,0 +1,16 @@
+<div ...attributes>
+    {{#if @label}}
+    <label id="listbox-label" class="block text-sm font-medium text-gray-700">
+        {{@label}}
+    </label>
+    {{/if}}
+    <div class="mt-1 relative">
+        <Ui::Select::-Button @registerButtonElement={{ this.registerButtonElement}}
+            @toggleOptions={{this.toggleOptions}} @selectedOption={{this.selectedOption}}
+            @setSelectedOption={{this.setSelectionOption}} />
+        {{#if this.isOpen}}
+        <Ui::Select::-Options @options={{@options}} @clickOutside={{this.handleClickOutside}}
+            @setSelectedOption={{this.setSelectedOption}} @selectedOption={{this.selectedOption}} />
+        {{/if}}
+    </div>
+</div>
