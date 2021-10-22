@@ -7,7 +7,7 @@ module.exports = function (defaults) {
     postcssOptions: {
       compile: {
         enabled: true,
-        includePaths: ['app','addon','tests'],
+        includePaths: ['app', 'addon', 'tests'],
         plugins: [
           {
             module: require('postcss-import'),

@@ -1,6 +1,6 @@
 {
   "name": "tpk-ember-select",
-  "version": "0.0.0.alpha",
+  "version": "0.0.1",
   "main":"index.js",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
