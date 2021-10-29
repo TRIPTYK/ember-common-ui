@@ -2,7 +2,11 @@
     text-red-500" }}" id={{this.guid}} tabindex="0" role="option" {{on 'click' this.handleClick }}>
     <div class="flex items-center">
         <span class="font-normal ml-3 block truncate">
-            {{@option.text}}
+            {{#if @option.text}}
+                {{@option.text}}
+            {{else}}
+                {{@option}}
+            {{/if}}
         </span>
     </div>
 </li>
