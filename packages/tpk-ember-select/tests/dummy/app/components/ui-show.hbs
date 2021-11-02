@@ -1,14 +1,28 @@
-<h2 class="text-3xl">Uis demo page</h2>
+<h2 class="text-3xl">Demo of select</h2>
 <div>
   <Ui::Select
-    @label={{"Assigned to"}}
+    @label={{"Choose your captain"}}
     @options={{this.options}}
     @updateValue={{this.setValue}}
     @selectedValue={{this.value}}
     @placeholder="Select a value"
+    @key="text"
     class="w-1/3"
   />
 </div>
-<div>
+<div class="mx-8 mb-8 mt-2 text-xl font-bold">
   {{this.value}}
+</div>
+<h2 class="text-3xl">CSS Class</h2>
+<div class="mx-8 mt-8">
+  <ul>
+    <li>Class for select : <strong>.select</strong></li>
+    <li>Class for label : <strong>.label-select</strong></li>
+    <li>Class for selected : <strong>.selected</strong></li>
+    <li>Class for button : <strong>.btn-select</strong></li>
+    <li>Class for select options : <strong>.options-select</strong></li>
+    <li>Class for select option : <strong>.option-select</strong></li>
+    <li>Class when option is selected : <strong>.option-selected</strong></li>
+  </ul>
+
 </div>

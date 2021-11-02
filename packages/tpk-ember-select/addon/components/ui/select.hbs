@@ -1,6 +1,6 @@
-<div ...attributes>
+<div class="select" ...attributes>
     {{#if @label}}
-        <label id="listbox-label" class="block text-sm font-medium text-gray-700">
+        <label id="listbox-label" class="block text-sm font-medium text-gray-700 label-select">
             {{@label}}
         </label>
     {{/if}}
@@ -10,10 +10,12 @@
             @toggleOptions={{this.toggleOptions}}
             @selectedOption={{this.selectedOption}}
             @setSelectedOption={{this.setSelectionOption}}
+            @key={{@key}}
         />
         {{#if this.isOpen}}
             <Ui::Select::-Options
                 @options={{@options}}
+                @key={{@key}}
                 @clickOutside={{this.handleClickOutside}}
                 @setSelectedOption={{this.setSelectedOption}}
                 @selectedOption={{this.selectedOption}}

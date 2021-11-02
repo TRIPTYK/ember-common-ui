@@ -8,6 +8,7 @@ interface UiSelectArgs {
   updateValue: any;
   selectedValue: any;
   placeholder: string;
+  key: string;
 }
 interface AdvancedMouseEvent extends MouseEvent {
   path: [];
@@ -19,8 +20,6 @@ export default class UiSelect extends Component<UiSelectArgs> {
 
   constructor(owner: unknown, args: UiSelectArgs) {
     super(owner, args);
-    console.log(this.args.selectedValue);
-    console.log(this.args.placeholder);
     if (this.args.selectedValue) {
       this.selectedOption = this.args.selectedValue;
     } else {
@@ -41,7 +40,7 @@ export default class UiSelect extends Component<UiSelectArgs> {
   setSelectedOption(item: SelectOption) {
     this.selectedOption = item;
     this.closeOptions();
-    this.args.updateValue(item.value);
+    this.args.updateValue(item);
   }
 
   @action

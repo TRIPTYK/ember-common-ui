@@ -1,9 +1,9 @@
 <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9  hover:bg-blue-300 {{if this.selected "
-    text-red-500" }}" id={{this.guid}} tabindex="0" role="option" {{on 'click' this.handleClick }}>
+    option-selected" }} option-select" id={{this.guid}} tabindex="0" role="option" {{on 'click' this.handleClick }}>
     <div class="flex items-center">
         <span class="font-normal ml-3 block truncate">
-            {{#if @option.text}}
-                {{@option.text}}
+            {{#if @key}}
+                {{get @option @key}}
             {{else}}
                 {{@option}}
             {{/if}}

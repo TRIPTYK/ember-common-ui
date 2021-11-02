@@ -1,9 +1,17 @@
-<ul class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
-    tabindex="0" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3"
+<ul 
+    class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm options-select"
+    tabindex="0"
+    role="listbox"
+    aria-labelledby="listbox-label"
+    aria-activedescendant="listbox-option-3"
     {{tpk-focus-trap focusTrapOtions=(hash allowOutsideClick=@clickOutside fallbackFocus=(concat '#' @guid))}}
     ...attributes>
     {{#each @options as |option| }}
-    <Ui::Select::-Option @setSelectedOptionIn={{@setSelectedOption}} @option={{option}} @selectedOption={{
-        @selectedOption}} />
+        <Ui::Select::-Option
+            @key={{@key}}
+            @setSelectedOptionIn={{@setSelectedOption}}
+            @option={{option}}
+            @selectedOption={{@selectedOption}}
+        />
     {{/each}}
 </ul>

@@ -1,11 +1,15 @@
 <button type="button" {{did-insert @registerButtonElement}} {{on "click" @toggleOptions}} tabindex="0"
     id="simple-select-btn"
-    class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+    class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm btn-select"
     aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
     <div class="flex items-center">
-        <span class="font-normal ml-3 block truncate">
-            {{#if @selectedOption.text}}
-                {{@selectedOption.text}}
+        <span class="font-normal ml-3 block truncate selected">
+            {{#if @key}}
+                {{#if (get @selectedOption @key)}}
+                    {{get @selectedOption @key}}
+                {{else}}
+                    {{@selectedOption}}
+                {{/if}}
             {{else}}
                 {{@selectedOption}}
             {{/if}}
