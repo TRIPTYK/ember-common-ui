@@ -1,16 +1,17 @@
 {
-  "name": "tpk-ember-select",
-  "version": "0.0.1",
-  "main":"index.js",
-  "description": "The default blueprint for ember-cli addons.",
+  "name": "@triptyk/tpk-ember-select",
+  "version": "0.0.2",
+  "description": "This addon will give you a simple select alternative in TailwindCSS with Ember",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "select",
+    "ember",
+    "focus-trap",
+    "TailwindCSS"
   ],
-  "repository": "",
   "license": "MIT",
-  "author": "",
+  "author": "Triptyk",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -112,5 +113,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "main": "index.js"
 }
