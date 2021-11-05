@@ -9,9 +9,10 @@
     aria-haspopup="listbox"
     aria-expanded="true"
     aria-labelledby="listbox-label"
+    disabled={{@disabled}}
 >
     <div class="flex items-center">
-        <span data-test-select-btn-content class="font-normal ml-3 block truncate selected">
+        <span data-test-select-btn-content class="font-normal ml-3 block truncate selected {{#if @disabled "disable"}}">
             {{#if @key}}
                 {{#if (get @selectedOption @key)}}
                     {{get @selectedOption @key}}

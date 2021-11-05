@@ -73,6 +73,7 @@ setValue(value: any) {
 - Class for select options : **.options-select**
 - Class for select option : **.option-select**
 - Class when option is selected : **.option-selected**
+- Class when select is disabled(only on label) : **.disable**
 
 Contributing
 ------------------------------------------------------------------------------

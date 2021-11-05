@@ -24,7 +24,7 @@
 
 .btn-select, .option-select{
   @apply cursor-pointer;
-}
+} 
 
 .options-select:first-of-type{
   @apply rounded-t-md;

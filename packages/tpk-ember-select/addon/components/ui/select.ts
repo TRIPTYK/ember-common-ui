@@ -8,6 +8,7 @@ interface UiSelectArgs {
   updateValue: any;
   selectedValue: any;
   placeholder: string;
+  disabled: boolean | undefined;
   key: string;
 }
 interface AdvancedMouseEvent extends MouseEvent {
@@ -29,7 +30,9 @@ export default class UiSelect extends Component<UiSelectArgs> {
 
   @action
   toggleOptions() {
-    this.isOpen = !this.isOpen;
+    if (!this.args.disabled) {
+      this.isOpen = !this.isOpen;
+    }
   }
   @action
   closeOptions() {
