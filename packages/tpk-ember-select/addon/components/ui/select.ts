@@ -48,8 +48,8 @@ export default class UiSelect extends Component<UiSelectArgs> {
 
   @action
   handleClickOutside(e: AdvancedMouseEvent) {
-    for (let i = 0; i < e.path?.length; i++) {
-      if (e.path[i] === this.buttonElement) {
+    for (let i = 0; i < e.composedPath()?.length; i++) {
+      if (e.composedPath()[i] === this.buttonElement) {
         return true;
       }
     }
