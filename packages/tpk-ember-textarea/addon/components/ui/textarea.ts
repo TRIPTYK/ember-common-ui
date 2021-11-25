@@ -6,7 +6,7 @@ import { guidFor } from '@ember/object/internals';
 interface UiTextareaArgs {
   containerStyle?: string;
   labelStyle?: string;
-  inputStyle?: string;
+  textareaStyle?: string;
   limitStyle?: string;
   tooltipStyle?: string;
   value: number | string;
@@ -49,9 +49,9 @@ export default class UiTextarea extends Component<UiTextareaArgs> {
     return this.args.labelStyle ?? 'text-gray-800 font-semibold mb-1 block';
   }
 
-  get inputStyle() {
+  get textareaStyle() {
     return (
-      this.args.inputStyle ??
+      this.args.textareaStyle ??
       'bg-gray-200 outline-none transition-all duration-200 rounded-full border-2 border-gray-200 pt-1.5 pb-1.5 px-3 font-semibold text-gray-700 focus:outline-none focus:border-gray-600 focus:ring-0 w-full'
     );
   }
@@ -66,13 +66,14 @@ export default class UiTextarea extends Component<UiTextareaArgs> {
 
   @action
   hasChange(event: Event) {
+    console.log('kok');
     if (this.args.limit) {
       this.actualSize = (
-        (event.target as HTMLInputElement).value as string
+        (event.target as HTMLTextAreaElement).value as string
       ).length;
     }
     if (this.args.updateValue) {
-      this.args.updateValue?.((event.target as HTMLInputElement).value);
+      this.args.updateValue?.((event.target as HTMLTextAreaElement).value);
     }
   }
 }

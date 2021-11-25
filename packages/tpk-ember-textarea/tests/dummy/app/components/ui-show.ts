@@ -15,7 +15,7 @@ export default class UiShow extends Component<UiShowArgs> {
   setValueSimple(value: string) {
     this.valueSimple = value;
   }
-  
+
   @action
   setValuePassword(value: string) {
     this.valuePassword = value;

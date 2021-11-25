@@ -17,11 +17,11 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install @triptyk/tpk-ember-input
+ember install @triptyk/tpk-ember-textarea
 ```
 OR
 ```zsh
-pnpm add -D @triptyk/tpk-ember-input
+pnpm add -D @triptyk/tpk-ember-textarea
 ```
 
 
@@ -30,13 +30,10 @@ Usage
 #### Features
 
 - Limit of characters
-- Password show or hide. You should add
 ```html
-type="password"
-```
 - Add class error trigger when @hasError is true and you can add a **yield** with the error
 - A info tooltip under the input with @infoTooltip
-- When @mandatory is {{true}}, it's adding this :
+
 ```html
 <span class='mandatory'>*</span>
 ```
@@ -45,16 +42,16 @@ After the label
 
 Template .hbs
 ```hbs
-<Ui::Input
+<Ui::Textarea
   @label="Add your favorite JS framework"
   @value={{this.value}}
   @containerStyle=""
   @labelStyle=""
   @inputStyle=""
-  @passwordStyle=""
+  @col=""
+  @row=""
   @limitStyle=""
   @tooltipStyle=""
-  @password={{true}}
   @mandatory={{true}}
   @infoTooltip="A good info"
   @hasError={{true}}
