@@ -9,37 +9,36 @@ module('Integration | Component | ui/input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    const labelClass = 'labelou';
-    const inputClass = 'check-i';
+    const labelStyle = 'labelou';
+    const inputStyle = 'check-i';
     const label = 'Label';
-    const containerClass = 'check-c';
+    const containerStyle = 'check-c';
     const value = 'hey';
     const name = 'wlh';
     const mandatory = true;
-    const setValue = (event: InputEvent) => {
-      const value: string = (event.target as HTMLInputElement).value;
+    const setValue = (value: string) => {
       this.set('value', value);
     };
 
     this.set('value', value);
     this.set('label', label);
     this.set('mandatory', mandatory);
-    this.set('labelClass', labelClass);
-    this.set('inputClass', inputClass);
-    this.set('containerClass', containerClass);
+    this.set('labelStyle', labelStyle);
+    this.set('inputStyle', inputStyle);
+    this.set('containerStyle', containerStyle);
     this.set('name', name);
     this.set('setValue', setValue);
 
     await render(hbs`
       <Ui::Input
-        @inputClasses={{this.inputClass}}
-        @labelClasses={{this.labelClass}}
-        @containerClasses={{this.containerClass}}
+        @inputStyle={{this.inputStyle}}
+        @labelStyle={{this.labelStyle}}
+        @containerStyle={{this.containerStyle}}
         @label={{this.label}}
         @value={{this.value}}
         @name={{this.name}}
         @mandatory={{this.mandatory}}
-        {{on "change" this.setValue}}
+        @updateValue={{this.setValue}}
       />
     `);
 
@@ -54,22 +53,17 @@ module('Integration | Component | ui/input', function (hooks) {
         ?.name,
       name
     );
-    assert.equal(
-      (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
-        ?.id,
-      name
-    );
-
+    // await this.pauseTest();
     // Class
     assert
       .dom(document.querySelector('[data-test-input-content]'))
-      .hasClass(inputClass);
+      .hasClass(inputStyle);
     assert
-      .dom(document.querySelector('[data-test-input]'))
-      .hasClass(containerClass);
+      .dom(document.querySelector(`[data-test-input]`))
+      .hasClass(containerStyle);
     assert
       .dom(document.querySelector('[data-test-input-label]'))
-      .hasClass(labelClass);
+      .hasClass(labelStyle);
 
     assert.dom('[data-test-input-label]').hasText(`${label}*`);
 
@@ -83,10 +77,10 @@ module('Integration | Component | ui/input', function (hooks) {
   });
 
   test('it renders with limit', async function (assert) {
-    const labelClass = 'labelou';
-    const inputClass = 'check-i';
+    const labelStyle = 'labelou';
+    const inputStyle = 'check-i';
     const label = 'Label';
-    const containerClass = 'check-c';
+    const containerStyle = 'check-c';
     const value = 'hey';
     const name = 'wlh';
     const limit = 100;
@@ -100,17 +94,17 @@ module('Integration | Component | ui/input', function (hooks) {
     this.set('limit', limit);
     this.set('label', label);
     this.set('mandatory', mandatory);
-    this.set('labelClass', labelClass);
-    this.set('inputClass', inputClass);
-    this.set('containerClass', containerClass);
+    this.set('labelStyle', labelStyle);
+    this.set('inputStyle', inputStyle);
+    this.set('containerStyle', containerStyle);
     this.set('name', name);
     this.set('setValue', setValue);
 
     await render(hbs`
       <Ui::Input
-        @inputClasses={{this.inputClass}}
-        @labelClasses={{this.labelClass}}
-        @containerClasses={{this.containerClass}}
+        @inputStyle={{this.inputStyle}}
+        @labelStyle={{this.labelStyle}}
+        @containerStyle={{this.containerStyle}}
         @label={{this.label}}
         @limit={{this.limit}}
         @value={{this.value}}
@@ -140,10 +134,10 @@ module('Integration | Component | ui/input', function (hooks) {
   });
 
   test('it renders with password', async function (assert) {
-    const labelClass = 'labelou';
-    const inputClass = 'check-i';
+    const labelStyle = 'labelou';
+    const inputStyle = 'check-i';
     const label = 'Label';
-    const containerClass = 'check-c';
+    const containerStyle = 'check-c';
     const value = 'hey';
     const name = 'wlh';
     const limit = 100;
@@ -159,17 +153,17 @@ module('Integration | Component | ui/input', function (hooks) {
     this.set('password', password);
     this.set('label', label);
     this.set('mandatory', mandatory);
-    this.set('labelClass', labelClass);
-    this.set('inputClass', inputClass);
-    this.set('containerClass', containerClass);
+    this.set('labelStyle', labelStyle);
+    this.set('inputStyle', inputStyle);
+    this.set('containerStyle', containerStyle);
     this.set('name', name);
     this.set('setValue', setValue);
 
     await render(hbs`
       <Ui::Input
-        @inputClasses={{this.inputClass}}
-        @labelClasses={{this.labelClass}}
-        @containerClasses={{this.containerClass}}
+        @inputStyle={{this.inputStyle}}
+        @labelStyle={{this.labelStyle}}
+        @containerStyle={{this.containerStyle}}
         @label={{this.label}}
         @password={{this.password}}
         @limit={{this.limit}}
