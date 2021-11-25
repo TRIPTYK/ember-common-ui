@@ -41,7 +41,6 @@ module('Integration | Component | ui/input', function (hooks) {
         @updateValue={{this.setValue}}
       />
     `);
-
     //Attr
     assert.equal(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
@@ -194,5 +193,93 @@ module('Integration | Component | ui/input', function (hooks) {
         ?.type,
       'password'
     );
+  });
+  test('it renders with error', async function (assert) {
+    const labelStyle = 'labelou';
+    const inputStyle = 'check-i';
+    const label = 'Label';
+    const containerStyle = 'check-c';
+    const value = 'hey';
+    const name = 'error';
+    const password = false;
+    const mandatory = false;
+    const setValue = (event: InputEvent) => {
+      const value: string = (event.target as HTMLInputElement).value;
+      this.set('value', value);
+    };
+
+    this.set('value', value);
+    this.set('password', password);
+    this.set('label', label);
+    this.set('mandatory', mandatory);
+    this.set('labelStyle', labelStyle);
+    this.set('inputStyle', inputStyle);
+    this.set('containerStyle', containerStyle);
+    this.set('name', name);
+    this.set('setValue', setValue);
+
+    await render(hbs`
+      <Ui::Input
+        @inputStyle={{this.inputStyle}}
+        @labelStyle={{this.labelStyle}}
+        @containerStyle={{this.containerStyle}}
+        @label={{this.label}}
+        @password={{this.password}}
+        @value={{this.value}}
+        @name={{this.name}}
+        @mandatory={{this.mandatory}}
+        @hasError={{true}}
+        {{on "change" this.setValue}}
+      >
+        Because we have an error, we add a yield that contains an error
+      </Ui::Input>
+    `);
+    assert
+      .dom(document.querySelector('[data-test-container]'))
+      .hasClass('error');
+  });
+  test('it renders with tooltip', async function (assert) {
+    const labelStyle = 'labelou';
+    const inputStyle = 'check-i';
+    const label = 'Label';
+    const containerStyle = 'check-c';
+    const value = 'hey';
+    const name = 'error';
+    const password = false;
+    const mandatory = false;
+    const infoTooltip = 'my custom message';
+    const setValue = (event: InputEvent) => {
+      const value: string = (event.target as HTMLInputElement).value;
+      this.set('value', value);
+    };
+
+    this.set('value', value);
+    this.set('password', password);
+    this.set('label', label);
+    this.set('mandatory', mandatory);
+    this.set('labelStyle', labelStyle);
+    this.set('inputStyle', inputStyle);
+    this.set('containerStyle', containerStyle);
+    this.set('name', name);
+    this.set('infoTooltip', infoTooltip);
+    this.set('setValue', setValue);
+
+    await render(hbs`
+      <Ui::Input
+        @inputStyle={{this.inputStyle}}
+        @labelStyle={{this.labelStyle}}
+        @containerStyle={{this.containerStyle}}
+        @label={{this.label}}
+        @password={{this.password}}
+        @value={{this.value}}
+        @name={{this.name}}
+        @mandatory={{this.mandatory}}
+        @infoTooltip={{this.infoTooltip}}
+        {{on "change" this.setValue}}
+      />
+    `);
+    assert
+      .dom(document.querySelector('[data-test-container]'))
+      .hasClass('tooltipInfo');
   });
 });
