@@ -32,7 +32,7 @@ Usage
 - Limit of characters
 ```html
 - Add class error trigger when @hasError is true and you can add a **yield** with the error
-- A info tooltip under the input with @infoTooltip
+- A info tooltip under the textarea with @infoTooltip
 
 ```html
 <span class='mandatory'>*</span>
@@ -47,7 +47,7 @@ Template .hbs
   @value={{this.value}}
   @containerStyle=""
   @labelStyle=""
-  @inputStyle=""
+  @textareaStyle=""
   @col=""
   @row=""
   @limitStyle=""
@@ -60,7 +60,7 @@ Template .hbs
   @placeholder="Select a value"
   @key="text"
   type="nothing | text | date | string | password"
-  {{on "focus" this.focusOtherInput}}
+  {{on "focus" this.focusOtherTextarea}}
 />
 ```
 
