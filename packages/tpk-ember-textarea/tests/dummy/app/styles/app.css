@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.labelClass {
+  @apply text-gray-800 font-semibold mb-2 block;
+}
+
+.inputClass {
+  @apply bg-gray-200 outline-none transition-all duration-200 rounded-full border-2 border-gray-200 pt-1.5 pb-1.5 px-3 font-semibold text-gray-700 focus:outline-none focus:border-indigo-600 focus:ring-0 w-full;
+}
+
+.error .inputClass{
+  @apply border-red-600;
+}
+
+.tooltipInfo .inputClass {
+  @apply border-green-500;
+}

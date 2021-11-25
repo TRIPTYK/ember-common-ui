@@ -139,16 +139,13 @@ module('Integration | Component | ui/input', function (hooks) {
     const containerStyle = 'check-c';
     const value = 'hey';
     const name = 'wlh';
-    const limit = 100;
     const password = true;
     const mandatory = true;
-    const setValue = (event: InputEvent) => {
-      const value: string = (event.target as HTMLInputElement).value;
+    const setValue = (value: string) => {
       this.set('value', value);
     };
 
     this.set('value', value);
-    this.set('limit', limit);
     this.set('password', password);
     this.set('label', label);
     this.set('mandatory', mandatory);
@@ -165,12 +162,11 @@ module('Integration | Component | ui/input', function (hooks) {
         @containerStyle={{this.containerStyle}}
         @label={{this.label}}
         @password={{this.password}}
-        @limit={{this.limit}}
         @value={{this.value}}
         @name={{this.name}}
         @mandatory={{this.mandatory}}
+        @updateValue={{this.setValue}}
         type="password"
-        {{on "change" this.setValue}}
       />
     `);
     assert

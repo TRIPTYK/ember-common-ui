@@ -17,7 +17,11 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install tpk-ember-select
+ember install @triptyk/tpk-ember-select
+```
+OR
+```zsh
+pnpm add -D @triptyk/tpk-ember-select
 ```
 
 
