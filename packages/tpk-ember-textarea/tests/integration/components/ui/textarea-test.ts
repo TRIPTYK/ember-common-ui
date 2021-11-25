@@ -108,7 +108,7 @@ module('Integration | Component | ui/textarea', function (hooks) {
     `);
 
     assert
-      .dom(document.querySelector('[data-test-container]'))
+      .dom(document.querySelector('[data-test-textarea]'))
       .hasClass('error');
   });
   test('it renders with tooltip', async function (assert) {
@@ -156,7 +156,7 @@ module('Integration | Component | ui/textarea', function (hooks) {
     `);
 
     assert
-      .dom(document.querySelector('[data-test-container]'))
+      .dom(document.querySelector('[data-test-textarea]'))
       .hasClass('tooltipInfo');
   });
 });
