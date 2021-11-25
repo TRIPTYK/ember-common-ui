@@ -1,0 +1,39 @@
+<div
+  data-test-textarea={{@name}}
+  class='{{this.containerStyle}}
+    {{if @hasError 'error'}}
+    {{if (and @infoTooltip (not @hasError)) 'tooltipInfo'}}'
+>
+  <label data-test-textarea-label for={{this.guid}} class={{this.labelStyle}}>
+    {{@label}}{{#if @mandatory}}<span class='mandatory'>*</span>{{/if}}
+  </label>
+  <textarea
+    data-test-textarea-content
+    class='{{this.textareaStyle}}'
+    name={{@name}}
+    id={{this.guid}}
+    value={{@value}}
+    disabled={{@disabled}}
+    placeholder={{@placeholder}}
+    maxlength={{@limit}}
+    cols={{@cols}}
+    rows={{@rows}}
+    ...attributes
+    {{on 'input' this.hasChange}}
+  ></textarea>
+  {{#if @limit}}
+    <div
+      data-test-textarea-limit
+      class={{this.limitStyle}}
+    >
+      Caractères :
+      {{this.actualSize}}/{{@limit}}
+    </div>
+  {{/if}}
+  <span data-test-textarea-tooltip class={{this.tooltipStyle}}>
+    {{yield}}
+    {{#if (and @infoTooltip (not @hasError))}}
+      {{@infoTooltip}}
+    {{/if}}
+  </span>
+</div>

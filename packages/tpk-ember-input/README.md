@@ -17,39 +17,53 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install @triptyk/tpk-ember-select
+ember install @triptyk/tpk-ember-input
 ```
 OR
 ```zsh
-pnpm add -D @triptyk/tpk-ember-select
+pnpm add -D @triptyk/tpk-ember-input
 ```
 
 
 Usage
 ------------------------------------------------------------------------------
+#### Features
 
-Once the plugin is added you can simply add a select as shown.
-
-The @options should be an array with this structure and the @updatedValue catch the selected item values
-```js
-options = [
-    { id: 1, text: 'Monkey D. Luffy', value: 1 },
-    { id: 1, text: 'Joe Boy', value: 2 },
-    { id: 2, text: 'Gol D. Roger', value: 5678 },
-  ];
+- Limit of characters
+- Password show or hide. You should add
+```html
+type="password"
 ```
+- Add class error trigger when @hasError is true and you can add a **yield** with the error
+- A info tooltip under the input with @infoTooltip
+- When @mandatory is {{true}}, it's adding this :
+```html
+<span class='mandatory'>*</span>
+```
+After the label
 #### Integration example 
 
 Template .hbs
 ```hbs
-<Ui::Select
-  @label={{"Choose your captain"}}
-  @options={{this.options}}
+<Ui::Input
+  @label="Add your favorite JS framework"
+  @value={{this.value}}
+  @containerStyle=""
+  @labelStyle=""
+  @inputStyle=""
+  @passwordStyle=""
+  @limitStyle=""
+  @tooltipStyle=""
+  @password={{true}}
+  @mandatory={{true}}
+  @infoTooltip="A good info"
+  @hasError={{true}}
   @updateValue={{this.setValue}}
   @selectedValue={{this.value}}
   @placeholder="Select a value"
   @key="text"
-  class="w-1/3"
+  type="nothing | text | date | string | password"
+  {{on "focus" this.focusOtherInput}}
 />
 ```
 
@@ -57,27 +71,11 @@ Controller .ts/.js
 ```js
 @tracked value = '';
 
-options = [
-  { id: 1, text: 'Monkey D. Luffy', value: 1 },
-  { id: 1, text: 'Joe Boy', value: 2 },
-  { id: 2, text: 'Gol D. Roger', value: 5678 },
-];
 @action
-setValue(value: any) {
-  this.value = value.value;
+setValue(value: string | number) {
+  this.value = value;
 }
 ```
-
-#### CSS Classes
-
-- Class for select : **.select**
-- Class for label : **.label-select**
-- Class for selected : **.selected**
-- Class for button : **.btn-select**
-- Class for select options : **.options-select**
-- Class for select option : **.option-select**
-- Class when option is selected : **.option-selected**
-- Class when select is disabled(only on label) : **.disable**
 
 Contributing
 ------------------------------------------------------------------------------

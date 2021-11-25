@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 importers:
 
-  packages/tpk-ember-checkbox:
+  packages/tpk-ember-input:
     specifiers:
       '@ember/optional-features': ^2.0.0
       '@ember/render-modifiers': ^1.0.2
@@ -58,6 +58,7 @@ importers:
       ember-source: ~3.28.1
       ember-source-channel-url: ^3.0.0
       ember-template-lint: ^3.10.0
+      ember-truth-helpers: ^3.0.0
       ember-try: ^1.4.0
       eslint: ^7.32.0
       eslint-config-prettier: ^8.3.0
@@ -65,7 +66,6 @@ importers:
       eslint-plugin-node: ^11.1.0
       eslint-plugin-prettier: ^3.4.1
       eslint-plugin-qunit: ^6.2.0
-      focus-trap: ^6.7.1
       loader.js: ^4.7.0
       npm-run-all: ^4.1.5
       postcss: ^8.3.9
@@ -83,7 +83,6 @@ importers:
       ember-cli-htmlbars: 5.7.1
       ember-cli-typescript: 4.2.1
       ember-modifier: 2.1.2
-      focus-trap: 6.7.1
     devDependencies:
       '@ember/optional-features': 2.0.0
       '@ember/test-helpers': 2.5.0
@@ -133,6 +132,7 @@ importers:
       ember-source: 3.28.1
       ember-source-channel-url: 3.0.0
       ember-template-lint: 3.10.0
+      ember-truth-helpers: 3.0.0
       ember-try: 1.4.0
       eslint: 7.32.0
       eslint-config-prettier: 8.3.0_eslint@7.32.0
@@ -6141,6 +6141,15 @@ packages:
       slash: 3.0.0
       tmp: 0.2.1
       workerpool: 6.1.5
+    dev: true
+
+  /ember-truth-helpers/3.0.0:
+    resolution: {integrity: sha512-hPKG9QqruAELh0li5xaiLZtr88ioWYxWCXisAWHWE0qCP4a2hgtuMzKUPpiTCkltvKjuqpzTZCU4VhQ+IlRmew==}
+    engines: {node: 10.* || >= 12.*}
+    dependencies:
+      ember-cli-babel: 7.26.6
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /ember-try-config/3.0.0:
