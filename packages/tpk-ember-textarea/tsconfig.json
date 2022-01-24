@@ -12,6 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "skipLibCheck": true,
     "noImplicitReturns": true,
     "noEmitOnError": true,
     "noEmit": true,
