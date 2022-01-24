@@ -1,7 +1,7 @@
 <div class="select" ...attributes>
     {{#if @label}}
         <label id="listbox-label" class="block text-sm font-medium text-gray-700 label-select" data-test-select-label>
-            {{@label}}
+            {{@label}}{{#if @mandatory}}<span class="mandatory">*</span>{{/if}}
         </label>
     {{/if}}
     <div class="mt-1 relative">

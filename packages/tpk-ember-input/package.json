@@ -1,12 +1,11 @@
 {
-  "name": "@triptyk/tpk-ember-select",
+  "name": "@triptyk/tpk-ember-input",
   "version": "0.0.8",
-  "description": "This addon will give you a simple select alternative in TailwindCSS with Ember",
+  "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
-    "select",
+    "input",
     "ember",
-    "focus-trap",
     "TailwindCSS"
   ],
   "license": "MIT",
@@ -30,13 +29,10 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "@ember/render-modifiers": "^1.0.2",
     "ember-auto-import": "^2.2.3",
     "ember-cli-babel": "^7.26.6",
     "ember-cli-htmlbars": "^5.7.1",
-    "ember-cli-typescript": "^4.2.1",
-    "ember-modifier": "^2.1.2",
-    "focus-trap": "^6.7.1"
+    "ember-cli-typescript": "^4.2.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
@@ -87,6 +83,7 @@
     "ember-source": "~3.28.1",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^3.10.0",
+    "ember-truth-helpers": "^3.0.0",
     "ember-try": "^1.4.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",

@@ -1,0 +1,89 @@
+<h2 class="text-3xl mb-4 text-center font-semibold">Set of demo of textarea</h2>
+<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
+  <h3 class="text-xl ml-2">Simple textarea with mandatory</h3>
+  <Ui::Textarea
+    @label="Add your favorite JS framework"
+    @name="favoriteJSFramework"
+    @updateValue={{this.setValueSimple}}
+    @value={{this.valueSimple}}
+    @mandatory={{true}}
+    @placeholder="EmberJS"
+    @containerStyle="w-96"
+    @labelStyle="labelClass"
+    @textareaStyle="textareaClass"
+    @rows={{5}}
+  />
+
+  <div class="mx-8 mt-2 text-xl font-bold ">
+    {{this.valueSimple}}
+    
+  </div>
+</div>
+<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
+  <h3 class="text-xl ml-2">Limit textarea</h3>
+  <Ui::Textarea
+    @label="Tell me something"
+    @name="limit"
+    @updateValue={{this.setValueLimit}}
+    @value={{this.valueLimit}}
+    @limit={{10}}
+    @containerStyle="w-96"
+    @labelStyle="labelClass"
+    @textareaStyle="textareaClass"
+    @limitStyle="text-yellow-500 text-sm mt-1"
+    @rows={{5}}
+  />
+  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
+    {{this.valueLimit}}
+  </div>
+</div>
+<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
+  <h3 class="text-xl ml-2">Error textarea</h3>
+  <Ui::Textarea
+    @name="error"
+    @updateValue={{this.setValueError}}
+    @value={{this.valueError}}
+    @containerStyle="w-96"
+    @labelStyle="labelClass"
+    @textareaStyle="textareaClass"
+    @tooltipStyle="text-red-500 text-sm"
+    @hasError={{true}}
+    @rows={{5}}
+  >
+    Because we have an error, we add a yield that contains an error
+  </Ui::Textarea>
+  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
+    {{this.valueError}}
+  </div>
+</div>
+<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
+  <h3 class="text-xl ml-2">Tooltip textarea</h3>
+  <Ui::Textarea
+    @label="Information"
+    @name="info"
+    @updateValue={{this.setValueInfo}}
+    @value={{this.valueInfo}}
+    @containerStyle="w-96"
+    @labelStyle="labelClass"
+    @textareaStyle="textareaClass"
+    @infoTooltip="My custom message"
+    @tooltipStyle="text-green-500 text-sm mt-1"
+    @rows={{5}}
+  />
+  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
+    {{this.valueInfo}}
+  </div>
+</div>
+{{!-- <h2 class="text-3xl">CSS Class</h2>
+<div class="mx-8 mt-8">
+  <ul>
+    <li>Class for select : <strong>.select</strong></li>
+    <li>Class for label : <strong>.label-select</strong></li>
+    <li>Class for selected : <strong>.selected</strong></li>
+    <li>Class for button : <strong>.btn-select</strong></li>
+    <li>Class for select options : <strong>.options-select</strong></li>
+    <li>Class for select option : <strong>.option-select</strong></li>
+    <li>Class when option is selected : <strong>.option-selected</strong></li>
+  </ul> --}}
+
+{{!-- </div> --}}
