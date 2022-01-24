@@ -13,6 +13,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "skipLibCheck": true,
     "noEmitOnError": true,
     "noEmit": true,
     "inlineSourceMap": true,
