@@ -1,7 +1,7 @@
-tpk-ember-select
+tpk-ember-checkbox
 ==============================================================================
 
-This addon will give you a simple select alternative in TailwindCSS
+This addon will give you a simple checkbox alternative in TailwindCSS
 
 
 Compatibility
@@ -10,42 +10,34 @@ Compatibility
 * Ember.js v3.20 or above
 * Ember CLI v3.20 or above
 * Node.js v12 or above
-* You need tailwind v2 or above to use this simple select
+* You need tailwind v2 or above to use this simple checkbox
 
 
 Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install tpk-ember-select
+ember install tpk-ember-checkbox
 ```
 
 
 Usage
 ------------------------------------------------------------------------------
 
-Once the plugin is added you can simply add a select as shown.
-
-The @options should be an array with this structure and the @updatedValue catch the selected item values
-```js
-options = [
-    { id: 1, text: 'Monkey D. Luffy', value: 1 },
-    { id: 1, text: 'Joe Boy', value: 2 },
-    { id: 2, text: 'Gol D. Roger', value: 5678 },
-  ];
-```
 #### Integration example 
 
 Template .hbs
 ```hbs
-<Ui::Select
-  @label={{"Choose your captain"}}
-  @options={{this.options}}
+<Ui::Checkbox
+  @label="RGPD ?"
+  @checked={{this.checked}}
   @updateValue={{this.setValue}}
-  @selectedValue={{this.value}}
-  @placeholder="Select a value"
-  @key="text"
-  class="w-1/3"
+  @value={{this.value}}
+  @name="rgpd"
+  @imageUrl='/assets/icons/check.svg'
+  @containerStyle=""
+  @checkboxStyle=""
+  @labelStyle=""
 />
 ```
 
@@ -53,27 +45,14 @@ Controller .ts/.js
 ```js
 @tracked value = '';
 
-options = [
-  { id: 1, text: 'Monkey D. Luffy', value: 1 },
-  { id: 1, text: 'Joe Boy', value: 2 },
-  { id: 2, text: 'Gol D. Roger', value: 5678 },
-];
+@tracked checked: boolean = false;
+value: string = 'rgpd';
+
 @action
-setValue(value: any) {
-  this.value = value.value;
+setChecked(checked: boolean) {
+  this.checked = checked;
 }
 ```
-
-#### CSS Classes
-
-- Class for select : **.select**
-- Class for label : **.label-select**
-- Class for selected : **.selected**
-- Class for button : **.btn-select**
-- Class for select options : **.options-select**
-- Class for select option : **.option-select**
-- Class when option is selected : **.option-selected**
-- Class when select is disabled(only on label) : **.disable**
 
 Contributing
 ------------------------------------------------------------------------------
