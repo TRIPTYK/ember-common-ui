@@ -42,12 +42,12 @@ module('Integration | Component | ui/input', function (hooks) {
       />
     `);
     //Attr
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.value,
       value
     );
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.name,
       name
@@ -58,7 +58,7 @@ module('Integration | Component | ui/input', function (hooks) {
       .dom(document.querySelector('[data-test-input-content]'))
       .hasClass(inputStyle);
     assert
-      .dom(document.querySelector(`[data-test-input]`))
+      .dom(document.querySelector(`[data-test-input-container]`))
       .hasClass(containerStyle);
     assert
       .dom(document.querySelector('[data-test-input-label]'))
@@ -68,7 +68,7 @@ module('Integration | Component | ui/input', function (hooks) {
 
     const newValue = 'wsh';
     await fillIn('[data-test-input-content]', newValue);
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.value,
       newValue
@@ -121,7 +121,7 @@ module('Integration | Component | ui/input', function (hooks) {
 
     const newValue = 'wshlamiff';
     await fillIn('[data-test-input-content]', newValue);
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.value,
       newValue
@@ -172,19 +172,19 @@ module('Integration | Component | ui/input', function (hooks) {
     assert
       .dom(document.querySelector('[data-test-input-password-button]'))
       .exists();
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.type,
       'password'
     );
     await click('[data-test-input-password-button]');
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.type,
       'text'
     );
     await click('[data-test-input-password-button]');
-    assert.equal(
+    assert.strictEqual(
       (<HTMLInputElement>document.querySelector('[data-test-input-content]'))
         ?.type,
       'password'
@@ -231,7 +231,7 @@ module('Integration | Component | ui/input', function (hooks) {
       </Ui::Input>
     `);
     assert
-      .dom(document.querySelector('[data-test-container]'))
+      .dom(document.querySelector('[data-test-input-container]'))
       .hasClass('error');
   });
   test('it renders with tooltip', async function (assert) {
@@ -275,7 +275,7 @@ module('Integration | Component | ui/input', function (hooks) {
       />
     `);
     assert
-      .dom(document.querySelector('[data-test-container]'))
+      .dom(document.querySelector('[data-test-input-container]'))
       .hasClass('tooltipInfo');
   });
 });
