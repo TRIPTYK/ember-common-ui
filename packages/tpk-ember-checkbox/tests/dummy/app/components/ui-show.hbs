@@ -1,0 +1,12 @@
+<h2 class='text-3xl'>Demo of checkbox</h2>
+<div class='flex space-x-6'>
+  <Ui::Checkbox
+    @label='Positif'
+    @checked={{this.checked}}
+    @name='optin'
+    @value={{this.value}}
+    @imageUrl='/assets/icons/check.svg'
+    @updateValue={{this.setChecked}}
+  />
+</div>
+<p>La valeur de la checkbox est {{this.value}} et elles est {{this.checked}}</p>

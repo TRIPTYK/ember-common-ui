@@ -1,0 +1,27 @@
+{
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "eslint.workingDirectories": {
+        "pattern": "tpk-*"
+    },
+    "[handlebars]": {
+        "editor.suggest.insertMode": "replace",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "html",
+        "Handlebars": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "emmet.includeLanguages": {
+        "Handlebars": "html"
+    },
+    "css.validate": false,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

@@ -1,0 +1,24 @@
+<div class={{if @hasError 'error'}} data-test-checkbox>
+  <p class={{this.containerStyles}} data-test-checkbox-container>
+    <input
+      data-test-checkbox-content
+      type='checkbox'
+      id={{this.guid}}
+      value={{@value}}
+      name={{@name}}
+      checked={{@checked}}
+      class={{this.checkboxStyles}}
+      style={{if @checked this.image}}
+      {{on 'click' this.toggleCheck}}
+      ...attributes
+    />
+    <label
+      for={{this.guid}}
+      class={{this.labelStyles}}
+      data-test-checkbox-label
+    >{{@label}}</label>
+  </p>
+  <span class='errorTooltip' data-test-checkbox-error>
+    {{yield}}
+  </span>
+</div>
