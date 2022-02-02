@@ -1,7 +1,7 @@
 tpk-ember-select
 ==============================================================================
 
-This addon will give you a simple select alternative in TailwindCSS
+This addon will give you a simple input alternative in TailwindCSS
 
 
 Compatibility
@@ -10,7 +10,7 @@ Compatibility
 * Ember.js v3.20 or above
 * Ember CLI v3.20 or above
 * Node.js v12 or above
-* You need tailwind v2 or above to use this simple select
+* You need tailwind v2 or above to use this simple input
 
 
 Installation

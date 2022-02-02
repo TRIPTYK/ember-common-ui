@@ -1,7 +1,7 @@
 tpk-ember-select
 ==============================================================================
 
-This addon will give you a simple select alternative in TailwindCSS
+This addon will give you a simple textarea alternative in TailwindCSS
 
 
 Compatibility
@@ -10,7 +10,7 @@ Compatibility
 * Ember.js v3.20 or above
 * Ember CLI v3.20 or above
 * Node.js v12 or above
-* You need tailwind v2 or above to use this simple select
+* You need tailwind v2 or above to use this simple textarea
 
 
 Installation
@@ -30,14 +30,9 @@ Usage
 #### Features
 
 - Limit of characters
-```html
 - Add class error trigger when @hasError is true and you can add a **yield** with the error
 - A info tooltip under the textarea with @infoTooltip
 
-```html
-<span class='mandatory'>*</span>
-```
-After the label
 #### Integration example 
 
 Template .hbs

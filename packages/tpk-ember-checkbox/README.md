@@ -17,7 +17,11 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install tpk-ember-checkbox
+ember install @triptyk/tpk-ember-checkbox
+```
+OR
+```zsh
+pnpm add -D @triptyk/tpk-ember-checkbox
 ```
 
 
