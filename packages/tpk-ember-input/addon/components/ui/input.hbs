@@ -1,9 +1,8 @@
 <div
-  data-test-container
-  data-test-input={{@name}}
+  data-test-input-container={{@name}}
   class='{{this.containerStyle}}
-    {{if @hasError 'error'}}
-    {{if (and @infoTooltip (not @hasError)) 'tooltipInfo'}}'
+    {{if @hasError "error"}}
+    {{if (and @infoTooltip (not @hasError)) "tooltipInfo"}}'
 >
   <label data-test-input-label for={{this.guid}} class={{this.labelStyle}}>
     {{@label}}{{#if @mandatory}}<span class='mandatory'>*</span>{{/if}}
@@ -11,7 +10,7 @@
   <div class='relative'>
     <input
       data-test-input-content
-      class='{{this.inputStyle}} {{if @password 'password'}}'
+      class='{{this.inputStyle}} {{if @password "password"}}'
       name={{@name}}
       id={{this.guid}}
       value={{@value}}
@@ -45,10 +44,7 @@
     {{/if}}
   </div>
   {{#if @limit}}
-    <div
-      data-test-input-limit
-      class={{this.limitStyle}}
-    >
+    <div data-test-input-limit class={{this.limitStyle}}>
       Caractères :
       {{this.actualSize}}/{{@limit}}
     </div>
