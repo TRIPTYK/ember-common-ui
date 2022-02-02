@@ -6,7 +6,7 @@ interface UiShowArgs {}
 
 export default class UiShow extends Component<UiShowArgs> {
   @tracked checked: boolean = false;
-  value: string = 'trucmuch';
+  value: string = 'covid';
 
   @action
   setChecked(checked: boolean) {

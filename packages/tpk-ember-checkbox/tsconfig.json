@@ -11,6 +11,7 @@
     "strictPropertyInitialization": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
+    "skipLibCheck": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noEmitOnError": true,
