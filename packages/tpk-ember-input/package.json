@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/tpk-ember-input",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
@@ -82,7 +82,7 @@
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
-    "ember-source": "~3.24.3",
+    "ember-source": "~4.1.0",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^4.0.0",
     "ember-truth-helpers": "^3.0.0",

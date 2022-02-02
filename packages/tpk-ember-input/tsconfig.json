@@ -29,16 +29,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "tpk-ember-select": [
+      "@triptyk/tpk-ember-input": [
         "addon"
       ],
-      "tpk-ember-select/*": [
+      "@triptyk/tpk-ember-input/*": [
         "addon/*"
       ],
-      "tpk-ember-select/test-support": [
+      "@triptyk/tpk-ember-input/test-support": [
         "addon-test-support"
       ],
-      "tpk-ember-select/test-support/*": [
+      "@triptyk/tpk-ember-input/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [
