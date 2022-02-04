@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/tpk-ember-checkbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This addon will give you a simple checkbox alternative in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",

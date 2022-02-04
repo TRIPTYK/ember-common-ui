@@ -66,7 +66,6 @@ export default class UiTextarea extends Component<UiTextareaArgs> {
 
   @action
   hasChange(event: Event) {
-    console.log('kok');
     if (this.args.limit) {
       this.actualSize = (
         (event.target as HTMLTextAreaElement).value as string
