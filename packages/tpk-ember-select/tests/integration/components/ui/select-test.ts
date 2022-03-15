@@ -41,7 +41,7 @@ module('Integration | Component | ui/select', function (hooks) {
 
     await click('[data-test-select-btn]');
 
-    assert.equal(
+    assert.strictEqual(
       document.querySelectorAll('[data-test-select-option]').length,
       options.length
     );
