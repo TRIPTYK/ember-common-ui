@@ -1,4 +1,4 @@
-tpk-ember-select
+tpk-ember-textarea
 ==============================================================================
 
 This addon will give you a simple textarea alternative in TailwindCSS
@@ -51,8 +51,8 @@ Template .hbs
   @infoTooltip="A good info"
   @hasError={{true}}
   @updateValue={{this.setValue}}
-  @selectedValue={{this.value}}
-  @placeholder="Select a value"
+  @value={{this.value}}
+  @placeholder="Write a value"
   @key="text"
   type="nothing | text | date | string | password"
   {{on "focus" this.focusOtherTextarea}}

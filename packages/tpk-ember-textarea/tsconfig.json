@@ -29,16 +29,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "tpk-ember-select": [
+      "tpk-ember-textarea": [
         "addon"
       ],
-      "tpk-ember-select/*": [
+      "tpk-ember-textarea/*": [
         "addon/*"
       ],
-      "tpk-ember-select/test-support": [
+      "tpk-ember-textarea/test-support": [
         "addon-test-support"
       ],
-      "tpk-ember-select/test-support/*": [
+      "tpk-ember-textarea/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [

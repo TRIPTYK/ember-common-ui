@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd tpk-ember-select`
+* `cd tpk-ember-checkbox`
 * `yarn install`
 
 ## Linting
