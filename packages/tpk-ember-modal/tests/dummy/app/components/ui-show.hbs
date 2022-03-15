@@ -16,7 +16,7 @@
   </p>
 </Ui::Modal>
 <button type='button' {{on 'click' this.toggle1}}>Toggle modal 1</button>
-{{!-- 
+
 <Ui::Modal
   @title='title'
   class='bg-red-900'
@@ -24,22 +24,32 @@
   @onClose={{this.closed2}}
   as |M|
 >
-  <M.Head class='bg-red-700' />
-  <p class='bg-red-500'>
-    Content
-  </p>
+  <M.Content as |Content|>
+    <Content.Head />
+    <p>
+      The red modal
+    </p>
+  </M.Content>
 </Ui::Modal>
 <button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
 
 <Ui::Modal
-  @title='title'
-  class='bg-green-400'
+  @title='The green modal'
+  class='bg-green-900'
   @isOpen={{this.open3}}
   @onClose={{this.closed3}}
+  as |M|
 >
-  <p class='bg-green-500'>
-    Content
-  </p>
+  <M.Content as |Content|>
+    <Content.Head as |Head|>
+      Custom
+    </Content.Head>
+    <p>
+      The green modal
+    </p>
+    <button class='text-yellow-500' {{on 'click' this.closed3}}>Click me to
+      close</button>
+  </M.Content>
 </Ui::Modal>
 
-<button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button> --}}
+<button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button>
