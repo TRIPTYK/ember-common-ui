@@ -1,0 +1,28 @@
+{{#if @isOpen}}
+  {{#in-element this.modalContainer}}
+    <div class='tpk-modal-cover'>
+      <div
+        data-test-tpk-modal
+        class='tpk-modal'
+        {{on-click-outside @onClose}}
+        role='dialog'
+        aria-modal='true'
+        aria-labelledby='modal'
+        ...attributes
+      >
+        {{#if (has-block-params)}}
+          {{yield
+            (hash
+              Head=(component 'ui/modal/head' onClose=@onClose title=@title)
+            )
+          }}
+        {{else}}
+          <Ui::Modal::Head @onClose={{@onClose}} @title={{@title}} />
+          {{#if (has-block)}}
+            {{yield}}
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  {{/in-element}}
+{{/if}}

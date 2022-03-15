@@ -37,26 +37,6 @@ Usage
 
 Template .hbs
 ```hbs
-<Ui::Textarea
-  @label="Add your favorite JS framework"
-  @value={{this.value}}
-  @containerStyle=""
-  @labelStyle=""
-  @textareaStyle=""
-  @col=""
-  @row=""
-  @limitStyle=""
-  @tooltipStyle=""
-  @mandatory={{true}}
-  @infoTooltip="A good info"
-  @hasError={{true}}
-  @updateValue={{this.setValue}}
-  @value={{this.value}}
-  @placeholder="Write a value"
-  @key="text"
-  type="nothing | text | date | string | password"
-  {{on "focus" this.focusOtherTextarea}}
-/>
 ```
 
 Controller .ts/.js

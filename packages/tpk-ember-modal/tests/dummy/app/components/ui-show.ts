@@ -4,35 +4,39 @@ import { tracked } from '@glimmer/tracking';
 
 interface UiShowArgs {}
 
+// eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class UiShow extends Component<UiShowArgs> {
-  @tracked valueSimple = '';
-  @tracked valuePassword = '';
-  @tracked valueLimit = '';
-  @tracked valueError = '';
-  @tracked valueInfo = '';
+  @tracked open1: boolean = false;
+  @tracked open2: boolean = false;
+  @tracked open3: boolean = false;
 
   @action
-  setValueSimple(value: string) {
-    this.valueSimple = value;
+  closed1() {
+    this.open1 = false;
   }
 
   @action
-  setValuePassword(value: string) {
-    this.valuePassword = value;
+  toggle1() {
+    this.open1 = !this.open1;
   }
 
   @action
-  setValueLimit(value: string) {
-    this.valueLimit = value;
+  closed2() {
+    this.open2 = false;
   }
 
   @action
-  setValueError(value: string) {
-    this.valueError = value;
+  toggle2() {
+    this.open2 = !this.open2;
   }
 
   @action
-  setValueInfo(value: string) {
-    this.valueInfo = value;
+  closed3() {
+    this.open3 = false;
+  }
+
+  @action
+  toggle3() {
+    this.open3 = !this.open3;
   }
 }

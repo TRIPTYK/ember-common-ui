@@ -6,26 +6,11 @@
   @apply text-gray-800 font-semibold mb-2 block;
 }
 
-.textareaClass {
-  @apply bg-gray-200 outline-none transition-all duration-200 rounded-lg border-2 border-gray-200 pt-1.5 pb-1.5 px-3 font-semibold text-gray-700 focus:outline-none focus:border-indigo-600 focus:ring-0 w-full;
+
+.tpk-modal {
+  @apply fixed px-4 py-4 top-0 right-0 left-0 bottom-0 flex items-center justify-center z-20;
 }
 
-.error .textareaClass{
-  @apply border-red-600;
-}
-
-.tooltipInfo .textareaClass {
-  @apply border-green-500;
-}
-
-.tpk-textarea {
-  @apply w-96;
-}
-
-.tpk-textarea > textarea {
-  @apply bg-gray-200 outline-none transition-all duration-200 rounded-lg border-2 border-gray-200 pt-1.5 pb-1.5 px-3 font-semibold text-gray-700 focus:outline-none focus:border-indigo-600 focus:ring-0 w-full;
-}
-
-.tpk-textarea > label {
-  @apply text-gray-800 font-semibold mb-2 block;
+.tpk-modal-cover {
+  @apply absolute inset-0 bg-gray-500 opacity-75;
 }
