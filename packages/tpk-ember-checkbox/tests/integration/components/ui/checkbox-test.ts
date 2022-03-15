@@ -33,7 +33,7 @@ module('Integration | Component | ui/checkbox', function (hooks) {
   />`);
     assert.dom('[data-test-checkbox-label]').hasText(argsDTO.label);
     // assert.dom('[data-test-checkbox-content]').
-    assert.equal(
+    assert.strictEqual(
       find('[data-test-checkbox-content]')?.getAttribute('name'),
       argsDTO.name
     );

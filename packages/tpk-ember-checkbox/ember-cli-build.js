@@ -29,12 +29,12 @@ module.exports = function (defaults) {
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
 
-    const { Webpack } = require('@embroider/webpack');
-    return require('@embroider/compat').compatBuild(app, Webpack, {
-      staticAddonTestSupportTrees: true,
-      staticAddonTrees: true,
-      staticHelpers: true,
-      staticModifiers: true,
-      staticComponents: true,
-    });
+  const { Webpack } = require('@embroider/webpack');
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    staticAddonTestSupportTrees: true,
+    staticAddonTrees: true,
+    staticHelpers: true,
+    staticModifiers: true,
+    staticComponents: true,
+  });
 };
