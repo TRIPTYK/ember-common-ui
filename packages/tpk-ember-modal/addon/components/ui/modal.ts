@@ -1,16 +1,16 @@
-import { guidFor } from '@ember/object/internals';
+import { getOwner } from '@ember/application';
+import ApplicationInstance from '@ember/application/instance';
 import Component from '@glimmer/component';
 
 interface UiModalArgs {
   isOpen: boolean;
   onClose?: () => void;
-  container?: string;
+  title: string;
+  coverClass: string;
 }
 
 // eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class UiModal extends Component<UiModalArgs> {
-  guid = guidFor(this);
-
   constructor(owner: unknown, args: UiModalArgs) {
     super(owner, args);
     if (!args.onClose) {
@@ -18,12 +18,16 @@ export default class UiModal extends Component<UiModalArgs> {
     }
   }
 
-  get modalContainer(): Element {
-    const containerSelector = this.args.container ?? '#tpk-modal-container';
-    const element = document.querySelector(containerSelector);
+  get modalKey(): string {
+    const config = (getOwner(this) as ApplicationInstance).resolveRegistration(
+      'config:environment'
+    ) as Record<string, any>;
+    return config.modal?.id ?? 'tpk-modal';
+  }
 
-    if (!element)
-      throw new Error(`Modal container ${containerSelector} not found`);
+  get modalContainer(): Element {
+    const element = document.getElementById(this.modalKey);
+    if (!element) throw new Error(`Modal container ${this.modalKey} not found`);
 
     return element;
   }

@@ -4,24 +4,13 @@
 {{this.open2}}
 {{this.open3}}
 
-<Ui::Modal
-  @title='title'
-  class='bg-yellow-900'
-  @isOpen={{this.open1}}
-  @onClose={{this.closed1}}
-  as |M|
->
-  <M.Head class='bg-yellow-700' as |H|>
-    <H.Button>
-      X
-    </H.Button>
-  </M.Head>
-  <p class='bg-yellow-500'>
+<Ui::Modal @title='title' @isOpen={{this.open1}} @onClose={{this.closed1}}>
+  <p>
     Content
   </p>
 </Ui::Modal>
 <button type='button' {{on 'click' this.toggle1}}>Toggle modal 1</button>
-
+{{!-- 
 <Ui::Modal
   @title='title'
   class='bg-red-900'
@@ -47,4 +36,4 @@
   </p>
 </Ui::Modal>
 
-<button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button>
+<button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button> --}}
