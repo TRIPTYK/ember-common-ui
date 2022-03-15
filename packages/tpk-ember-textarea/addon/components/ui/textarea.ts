@@ -41,29 +41,6 @@ export default class UiTextarea extends Component<UiTextareaArgs> {
     }
   }
 
-  get containerStyle() {
-    return this.args.containerStyle ?? 'w-full';
-  }
-
-  get labelStyle() {
-    return this.args.labelStyle ?? 'text-gray-800 font-semibold mb-1 block';
-  }
-
-  get textareaStyle() {
-    return (
-      this.args.textareaStyle ??
-      'bg-gray-200 outline-none transition-all duration-200 rounded-full border-2 border-gray-200 pt-1.5 pb-1.5 px-3 font-semibold text-gray-700 focus:outline-none focus:border-gray-600 focus:ring-0 w-full'
-    );
-  }
-
-  get limitStyle() {
-    return this.args.limitStyle ?? 'text-gray-500 text-sm mt-1';
-  }
-
-  get tooltipStyle() {
-    return this.args.tooltipStyle ?? 'text-gray-500 text-sm mt-1';
-  }
-
   @action
   hasChange(event: Event) {
     if (this.args.limit) {

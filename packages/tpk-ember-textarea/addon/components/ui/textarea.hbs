@@ -1,15 +1,15 @@
 <div
   data-test-textarea={{@name}}
-  class='{{this.containerStyle}}
+  class='{{@containerStyle}}
     {{if @hasError 'error'}}
     {{if (and @infoTooltip (not @hasError)) 'tooltipInfo'}}'
 >
-  <label data-test-textarea-label for={{this.guid}} class={{this.labelStyle}}>
+  <label data-test-textarea-label for={{this.guid}} class={{@labelStyle}}>
     {{@label}}{{#if @mandatory}}<span class='mandatory'>*</span>{{/if}}
   </label>
   <textarea
     data-test-textarea-content
-    class='{{this.textareaStyle}}'
+    class='{{@textareaStyle}}'
     name={{@name}}
     id={{this.guid}}
     value={{@value}}
@@ -22,15 +22,12 @@
     {{on 'input' this.hasChange}}
   ></textarea>
   {{#if @limit}}
-    <div
-      data-test-textarea-limit
-      class={{this.limitStyle}}
-    >
+    <div data-test-textarea-limit class={{@limitStyle}}>
       Caractères :
       {{this.actualSize}}/{{@limit}}
     </div>
   {{/if}}
-  <span data-test-textarea-tooltip class={{this.tooltipStyle}}>
+  <span data-test-textarea-tooltip class={{@tooltipStyle}}>
     {{yield}}
     {{#if (and @infoTooltip (not @hasError))}}
       {{@infoTooltip}}
