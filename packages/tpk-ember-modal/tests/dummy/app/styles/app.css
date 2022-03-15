@@ -6,8 +6,17 @@
   @apply text-gray-800 font-semibold mb-2 block;
 }
 
-.tpk-modal {
-  z-index: 20;
+.tpk-modal-content {
+  @apply z-20 bg-white p-4 rounded-sm;
+  width: 50vw;
+}
+
+.tpk-modal-content-head {
+  @apply flex justify-between mb-8;
+}
+
+.tpk-modal-content-head > h3 {
+  @apply text-2xl;
 }
 
 .tpk-modal-container {
