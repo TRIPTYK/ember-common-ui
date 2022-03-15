@@ -1,36 +1,40 @@
-<div
-  data-test-textarea={{@name}}
-  class='{{@containerStyle}}
-    {{if @hasError 'error'}}
-    {{if (and @infoTooltip (not @hasError)) 'tooltipInfo'}}'
->
-  <label data-test-textarea-label for={{this.guid}} class={{@labelStyle}}>
-    {{@label}}{{#if @mandatory}}<span class='mandatory'>*</span>{{/if}}
-  </label>
-  <textarea
-    data-test-textarea-content
-    class='{{@textareaStyle}}'
-    name={{@name}}
-    id={{this.guid}}
-    value={{@value}}
-    disabled={{@disabled}}
-    placeholder={{@placeholder}}
-    maxlength={{@limit}}
-    cols={{@cols}}
-    rows={{@rows}}
-    ...attributes
-    {{on 'input' this.hasChange}}
-  ></textarea>
-  {{#if @limit}}
-    <div data-test-textarea-limit class={{@limitStyle}}>
-      Caractères :
-      {{this.actualSize}}/{{@limit}}
-    </div>
-  {{/if}}
-  <span data-test-textarea-tooltip class={{@tooltipStyle}}>
-    {{yield}}
-    {{#if (and @infoTooltip (not @hasError))}}
-      {{@infoTooltip}}
+<div class='tpk-textarea' ...attributes>
+  {{#if (has-block)}}
+    {{yield
+      (hash
+        Label=(component
+          'ui/textarea/label' guid=this.guid mandatory=@mandatory label=@label
+        )
+        Area=(component
+          'ui/textarea/area'
+          guid=this.guid
+          value=@value
+          limit=@limit
+          updateValue=this.updateValue
+        )
+        Counter=(component 'ui/textarea/counter' count=this.count limit=@limit)
+        Tooltip=(component 'ui/textarea/tooltip' tooltip=@tooltip)
+        guid=this.guid
+        count=this.count
+        updateValue=this.updateValue
+      )
+    }}
+  {{else}}
+    <Ui::Textarea::Label
+      @mandatory={{@mandatory}}
+      @guid={{this.guid}}
+      @label={{@label}}
+    />
+    {{! template-lint-disable no-duplicate-id }}
+    <Ui::Textarea::Area
+      @guid={{this.guid}}
+      @updateValue={{this.updateValue}}
+      @limit={{@limit}}
+      @value={{@value}}
+    />
+    {{#if @limit}}
+      <Ui::Textarea::Counter @count={{this.count}} @limit={{@limit}} />
     {{/if}}
-  </span>
+    <Ui::Textarea::Tooltip @tooltip={{@tooltip}} />
+  {{/if}}
 </div>

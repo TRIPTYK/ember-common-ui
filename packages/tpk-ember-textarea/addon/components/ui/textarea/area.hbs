@@ -1,0 +1,9 @@
+<textarea
+  data-test-textarea-area
+  class='tpk-textarea-area'
+  id={{this.guid}}
+  value={{@value}}
+  maxlength={{@limit}}
+  {{on 'input' this.hasChange}}
+  ...attributes
+></textarea>
