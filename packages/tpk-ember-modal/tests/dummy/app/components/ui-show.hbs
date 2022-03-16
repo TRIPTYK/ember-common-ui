@@ -1,8 +1,4 @@
-<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of textarea</h2>
-
-{{this.open1}}
-{{this.open2}}
-{{this.open3}}
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of modal</h2>
 
 <Ui::Modal
   @title='My modal title'
@@ -15,7 +11,6 @@
     neque magni enim corporis, sed, magnam molestiae.
   </p>
 </Ui::Modal>
-<button type='button' {{on 'click' this.toggle1}}>Toggle modal 1</button>
 
 <Ui::Modal
   @title='title'
@@ -31,7 +26,6 @@
     </p>
   </M.Content>
 </Ui::Modal>
-<button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
 
 <Ui::Modal
   @title='The green modal'
@@ -41,15 +35,36 @@
   as |M|
 >
   <M.Content as |Content|>
-    <Content.Head as |Head|>
-      Custom
+    <Content.Head>
+      Custom Head
     </Content.Head>
     <p>
       The green modal
     </p>
-    <button class='text-yellow-500' {{on 'click' this.closed3}}>Click me to
-      close</button>
+    <button
+      type='button'
+      class='text-yellow-500'
+      {{on 'click' this.closed3}}
+    >Click me to close</button>
   </M.Content>
 </Ui::Modal>
 
-<button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button>
+<div class='flex justify-around'>
+  <div>
+    Open :
+    {{this.open1}}
+  </div>
+  <div>
+    Open :
+    {{this.open2}}
+  </div>
+  <div>
+    Open :
+    {{this.open3}}
+  </div>
+</div>
+<div class='flex justify-around'>
+  <button type='button' {{on 'click' this.toggle1}}>Toggle modal 1</button>
+  <button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
+  <button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button>
+</div>

@@ -1,25 +1,30 @@
 <div class='tpk-modal-content-head' ...attributes>
-  <h3 data-test-tpk-modal-title>{{@title}}</h3>
   {{#if (has-block-params)}}
+    <h3 data-test-tpk-modal-title>{{@title}}</h3>
     {{yield
       (hash Button=(component 'ui/modal/content/head/button' onClose=@onClose))
     }}
   {{else}}
-    <Ui::Modal::Content::Head::Button @onClose={{@onClose}}>
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        width='24'
-        viewBox='0 0 24 24'
-        stroke='currentColor'
-      >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          stroke-width='2'
-          d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
-        ></path>
-      </svg>
-    </Ui::Modal::Content::Head::Button>
+    {{#if (has-block)}}
+      {{yield}}
+    {{else}}
+      <h3 data-test-tpk-modal-title>{{@title}}</h3>
+      <Ui::Modal::Content::Head::Button @onClose={{@onClose}}>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          width='24'
+          viewBox='0 0 24 24'
+          stroke='currentColor'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
+          ></path>
+        </svg>
+      </Ui::Modal::Content::Head::Button>
+    {{/if}}
   {{/if}}
 </div>
