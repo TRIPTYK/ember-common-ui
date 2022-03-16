@@ -1,24 +1,13 @@
-<div class={{if @hasError 'error'}} data-test-checkbox>
-  <p class={{this.containerStyles}} data-test-checkbox-container>
+<div ...attributes>
+  <div class='flex items-center h-5'>
     <input
-      data-test-checkbox-content
+      id='comments'
+      name='comments'
       type='checkbox'
-      id={{this.guid}}
-      value={{@value}}
-      name={{@name}}
-      checked={{@checked}}
-      class={{this.checkboxStyles}}
-      style={{if @checked this.image}}
-      {{on 'click' this.toggleCheck}}
-      ...attributes
+      class='focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded'
     />
-    <label
-      for={{this.guid}}
-      class={{this.labelStyles}}
-      data-test-checkbox-label
-    >{{@label}}</label>
-  </p>
-  <span class='errorTooltip' data-test-checkbox-error>
-    {{yield}}
-  </span>
+  </div>
+  <div class='ml-3 text-sm'>
+    <label for='comments' class='font-medium text-gray-700'>Comments</label>
+  </div>
 </div>

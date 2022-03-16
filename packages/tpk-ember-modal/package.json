@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/tpk-ember-modal",
-  "version": "0.0.8",
+  "version": "0.0.0",
   "description": "This addon will give you a textarea in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
