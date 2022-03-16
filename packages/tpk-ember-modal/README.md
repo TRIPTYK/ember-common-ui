@@ -55,6 +55,8 @@ Arguments :
 </Ui::Modal>
 ```
 
+
+
 For the extended syntax, [see examples](/packages/tpk-ember-modal/tests/dummy/app/components/ui-show.hbs).
 
 Default tailwind style example : 
@@ -82,6 +84,19 @@ Default tailwind style example :
 }
 ```
 
+Structure of the component (Emmet like)
+------------------------------------------------------------------------------
+
+- Modal
+  - div.tpk-modal-container
+    - div.tpk-modal-cover
+    - Modal::Content.tpk-modal-content
+      - Modal::Content::Head.tpk-modal-content-head
+        - h3
+        - Modal::Content::Head::Button.tpk-modal-content-head-button
+      - {{yield}}
+
+  
 
 Contributing
 ------------------------------------------------------------------------------
