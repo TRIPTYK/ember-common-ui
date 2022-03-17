@@ -1,6 +1,11 @@
 {{#if @isOpen}}
   {{#in-element this.modalContainer}}
-    <div class='tpk-modal-container' {{on-escape @onClose}} ...attributes>
+    <div
+      class='tpk-modal-container'
+      {{on-escape @onClose}}
+      {{focus-trap}}
+      ...attributes
+    >
       <div class={{concat 'tpk-modal-cover ' @coverClass}}></div>
       {{#if (has-block)}}
         {{#if (has-block-params)}}
