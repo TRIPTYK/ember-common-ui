@@ -2,10 +2,13 @@
   {{#in-element this.modalContainer}}
     <div
       class='tpk-modal-container'
+      role='dialog'
+      aria-labelledby={{@title}}
       {{on-escape @onClose}}
       {{focus-trap}}
       ...attributes
     >
+      {{! Waiting for the backdrop filter css attribute }}
       <div class={{concat 'tpk-modal-cover ' @coverClass}}></div>
       {{#if (has-block)}}
         {{#if (has-block-params)}}
