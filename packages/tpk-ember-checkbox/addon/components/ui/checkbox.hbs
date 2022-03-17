@@ -6,14 +6,17 @@
           'ui/checkbox/label' guid=this.guid checked=@checked label=@label
         )
         Input=(component
-          'ui/checkbox/input' guid=this.guid checked=@checked onChange=@onChange
+          'ui/checkbox/input'
+          guid=this.guid
+          checked=@checked
+          onChange=this.onChange
         )
       )
     }}
   {{else}}
     <Ui::Checkbox::Input
       @guid={{this.guid}}
-      @onChange={{@onChange}}
+      @onChange={{this.onChange}}
       @checked={{@checked}}
     />
     <Ui::Checkbox::Label @guid={{this.guid}} @label={{@label}} />

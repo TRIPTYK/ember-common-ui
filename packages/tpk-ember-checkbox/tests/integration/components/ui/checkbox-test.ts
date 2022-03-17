@@ -1,119 +1,68 @@
+/* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { find, render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import click from '@ember/test-helpers/dom/click';
 
 module('Integration | Component | ui/checkbox', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-    const argsDTO = {
-      label: 'coucou',
-      name: 'simpson',
-      value: 'trucmuche',
-      checked: true,
-      imageUrl: '/assets/icons/check.svg',
-      containerStyle: 'bg-red-100',
-      checkboxStyle: 'appearance-none w-14 h-14 bg-yellow-500',
-      labelStyle: 'text-gray-600 text-3xl',
-    };
-    this.set('argsDTO', argsDTO);
-    await render(hbs`<Ui::Checkbox
-    @label={{this.argsDTO.label}}
-    @checked={{this.argsDTO.checked}}
-    @name={{this.argsDTO.name}}
-    @value={{this.argsDTO.value}}
-    @imageUrl={{this.argsDTO.imageUrl}}    
-    @containerStyle={{this.argsDTO.containerStyle}}    
-    @checkboxStyle={{this.argsDTO.checkboxStyle}}    
-    @labelStyle={{this.argsDTO.labelStyle}}    
-  />`);
-    assert.dom('[data-test-checkbox-label]').hasText(argsDTO.label);
-    // assert.dom('[data-test-checkbox-content]').
-    assert.strictEqual(
-      find('[data-test-checkbox-content]')?.getAttribute('name'),
-      argsDTO.name
-    );
-    assert.dom('[data-test-checkbox-content]').isChecked();
-    assert.dom('[data-test-checkbox-content]').hasValue(argsDTO.value);
-    assert.true(
-      find('[data-test-checkbox-content]')
-        ?.getAttribute('style')
-        ?.includes(argsDTO.imageUrl)
-    );
-    assert.true(
-      find('[data-test-checkbox-content]')
-        ?.getAttribute('class')
-        ?.includes(argsDTO.checkboxStyle)
-    );
-    assert.true(
-      find('[data-test-checkbox-container]')
-        ?.getAttribute('class')
-        ?.includes(argsDTO.containerStyle)
-    );
-    assert.true(
-      find('[data-test-checkbox-label]')
-        ?.getAttribute('class')
-        ?.includes(argsDTO.labelStyle)
-    );
+  test('it renders default', async function (assert) {
+    this.set('setChecked', (checked: boolean, value: string, e: Event) => {
+      assert.step('check');
+      assert.strictEqual(typeof checked, 'boolean');
+      assert.strictEqual(typeof value, 'string');
+      assert.true(e instanceof Event);
 
-    // await this.pauseTest();
+      assert.true(checked);
+    });
 
-    // assert.equal(this.element.textContent?.trim(), '');
+    await render(hbs`
+      <Ui::Checkbox 
+        data-test-checkbox
+        @label='Label'
+        @checked={{false}}
+        @onChange={{this.setChecked}}
+      />
+    `);
+
+    await click('[data-test-checkbox] > label');
+
+    assert.dom('[data-test-checkbox] > label').containsText('Label');
+
+    assert.verifySteps(['check']);
   });
-  test('it checks', async function (assert) {
-    const argsDTO = {
-      label: 'coucou',
-      name: 'simpson',
-      value: 'trucmuche',
-      checked: false,
-      imageUrl: '/assets/icons/check.svg',
-      containerStyle: 'bg-red-100',
-      checkboxStyle: 'appearance-none w-14 h-14 bg-yellow-500',
-      labelStyle: 'text-gray-600 text-3xl',
-    };
-    this.set('argsDTO', argsDTO);
-    await render(hbs`<Ui::Checkbox
-    @label={{this.argsDTO.label}}
-    @checked={{this.argsDTO.checked}}
-    @name={{this.argsDTO.name}}
-    @value={{this.argsDTO.value}}
-    @imageUrl={{this.argsDTO.imageUrl}}    
-    @containerStyle={{this.argsDTO.containerStyle}}    
-    @checkboxStyle={{this.argsDTO.checkboxStyle}}    
-    @labelStyle={{this.argsDTO.labelStyle}}    
-  />`);
 
-    await click('[data-test-checkbox-content]');
-    assert.dom('[data-test-checkbox-content]').isChecked();
-  });
-  test('it has error', async function (assert) {
-    const argsDTO = {
-      label: 'coucou',
-      name: 'simpson',
-      value: 'trucmuche',
-      checked: false,
-      imageUrl: '/assets/icons/check.svg',
-      containerStyle: 'bg-red-100',
-      checkboxStyle: 'appearance-none w-14 h-14 bg-yellow-500',
-      labelStyle: 'text-gray-600 text-3xl',
-    };
-    this.set('argsDTO', argsDTO);
-    await render(hbs`<Ui::Checkbox
-    @label={{this.argsDTO.label}}
-    @checked={{this.argsDTO.checked}}
-    @name={{this.argsDTO.name}}
-    @value={{this.argsDTO.value}}
-    @imageUrl={{this.argsDTO.imageUrl}}    
-    @containerStyle={{this.argsDTO.containerStyle}}    
-    @checkboxStyle={{this.argsDTO.checkboxStyle}}    
-    @labelStyle={{this.argsDTO.labelStyle}}   
-    @hasError={{true}}
-  />`);
+  test('it renders complex', async function (assert) {
+    this.set('setChecked', (checked: boolean, value: string, e: Event) => {
+      assert.step('check');
+      assert.strictEqual(typeof checked, 'boolean');
+      assert.strictEqual(typeof value, 'string');
+      assert.true(e instanceof Event);
 
-    assert.dom('[data-test-checkbox]').hasClass('error');
+      assert.true(checked);
+    });
+
+    await render(hbs`
+        <Ui::Checkbox
+          @label='Label'
+          @checked={{false}}
+          @onChange={{this.setChecked}}
+          data-test-checkbox
+          as |C|
+        >
+          <C.Input class='text-yellow-300' />
+          <C.Label class='text-blue-300' />
+        </Ui::Checkbox>
+    `);
+
+    await click('[data-test-checkbox] > label');
+    assert.dom('[data-test-checkbox] > input.text-yellow-300').exists();
+    assert.dom('[data-test-checkbox] > label.text-blue-300').exists();
+
+    assert.dom('[data-test-checkbox] > label').containsText('Label');
+
+    assert.verifySteps(['check']);
   });
 });
