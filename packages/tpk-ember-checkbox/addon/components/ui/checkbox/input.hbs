@@ -2,6 +2,8 @@
   id={{@guid}}
   checked={{@checked}}
   type='checkbox'
+  tabindex='0'
+  aria-checked='{{@checked}}'
   ...attributes
   {{on 'change' @onChange}}
 />
