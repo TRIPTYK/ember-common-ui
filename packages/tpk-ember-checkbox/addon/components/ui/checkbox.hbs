@@ -1,13 +1,21 @@
-<div ...attributes>
-  <div class='flex items-center h-5'>
-    <input
-      id='comments'
-      name='comments'
-      type='checkbox'
-      class='focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded'
+<div class='tpk-checkbox-container' ...attributes>
+  {{#if (has-block-params)}}
+    {{yield
+      (hash
+        Label=(component
+          'ui/checkbox/label' guid=this.guid checked=@checked label=@label
+        )
+        Input=(component
+          'ui/checkbox/input' guid=this.guid checked=@checked onChange=@onChange
+        )
+      )
+    }}
+  {{else}}
+    <Ui::Checkbox::Input
+      @guid={{this.guid}}
+      @onChange={{@onChange}}
+      @checked={{@checked}}
     />
-  </div>
-  <div class='ml-3 text-sm'>
-    <label for='comments' class='font-medium text-gray-700'>Comments</label>
-  </div>
+    <Ui::Checkbox::Label @guid={{this.guid}} @label={{@label}} />
+  {{/if}}
 </div>

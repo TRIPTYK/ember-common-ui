@@ -1,39 +1,4 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-.select{
-  @apply mx-8 mt-8;
-}
-
-.label-select{
-  @apply text-lg pl-2;
-}
-
-.btn-select{
-  @apply border-2 border-blue-900;
-}
-
-.selected{
-  @apply font-bold;
-}
-
-.options-select{
-  @apply py-0 rounded-none;
-}
-
-.btn-select, .option-select{
-  @apply cursor-pointer;
-} 
-
-.options-select:first-of-type{
-  @apply rounded-t-md;
-}
-
-.options-select:last-of-type{
-  @apply rounded-b-md;
-}
-
-.option-selected{
-  @apply bg-blue-300;
-}
+@import 'tpk-ember-checkbox';
