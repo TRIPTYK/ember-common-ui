@@ -1,0 +1,38 @@
+<div class={{unless @classless 'tpk-input'}} ...attributes>
+  {{#if (has-block)}}
+    {{yield
+      (hash
+        Input=(component
+          'tpk-input/input'
+          onChange=@onChange
+          onInput=@onInput
+          type=@type
+          value=@value
+          guid=this.guid
+          classless=@classless
+        )
+        Label=(component
+          'tpk-input/label'
+          onChange=@onChange
+          guid=this.guid
+          onInput=@onInput
+          classless=@classless
+        )
+        guid=this.guid
+      )
+    }}
+  {{else}}
+    {{! Quick version }}
+    <TpkInput::Label @guid={{@guid}} @classless={{@classless}}>
+      {{@label}}
+    </TpkInput::Label>
+    <TpkInput::Input
+      @value={{@value}}
+      @type={{@type}}
+      @onChange={{@onChange}}
+      @onInput={{@onInput}}
+      @guid={{@guid}}
+      @classless={{@classless}}
+    />
+  {{/if}}
+</div>

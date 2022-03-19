@@ -5,34 +5,21 @@ import { tracked } from '@glimmer/tracking';
 interface UiShowArgs {}
 
 export default class UiShow extends Component<UiShowArgs> {
-  @tracked valueSimple = '';
-  @tracked valuePassword = '';
-  @tracked valueLimit = '';
-  @tracked valueError = '';
-  @tracked valueInfo = '';
+  @tracked checked: boolean = false;
+  @tracked input: string = '';
 
   @action
-  setValueSimple(value: string) {
-    this.valueSimple = value;
-  }
-  
-  @action
-  setValuePassword(value: string) {
-    this.valuePassword = value;
+  setChecked(checked: boolean) {
+    this.checked = checked;
   }
 
   @action
-  setValueLimit(value: string) {
-    this.valueLimit = value;
+  onChange(value: string) {
+    this.input = value;
   }
 
   @action
-  setValueError(value: string) {
-    this.valueError = value;
-  }
-
-  @action
-  setValueInfo(value: string) {
-    this.valueInfo = value;
+  iconClick() {
+    console.log('click');
   }
 }

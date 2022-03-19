@@ -1,94 +1,63 @@
-<h2 class="text-3xl mb-4 text-center font-semibold">Set of demo of input</h2>
-<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
-  <h3 class="text-xl ml-2">Simple input with mandatory</h3>
-  <Ui::Input
-    @label="Add your favorite JS framework"
-    @name="favoriteJSFramework"
-    @updateValue={{this.setValueSimple}}
-    @value={{this.valueSimple}}
-    @mandatory={{true}}
-    @placeholder="EmberJS"
-    @containerStyle="w-96"
-    @labelStyle="labelClass"
-    @inputStyle="inputClass"
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of inputs</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Simple input</h3>
+  <TpkInput @onChange={{this.onChange}} @value={{this.input}} as |I|>
+    <I.Label>
+      <span class='text-red-500'>Mon texte</span>
+      en
+      <span>HTML</span>
+    </I.Label>
+    <I.Input />
+  </TpkInput>
+  <TpkInput
+    @onChange={{this.onChange}}
+    @value={{this.input}}
+    @type='password'
+    @label='Champ texte'
   />
-
-  <div class="mx-8 mt-2 text-xl font-bold ">
-    {{this.valueSimple}}
-    
-  </div>
-</div>
-<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
-  <h3 class="text-xl ml-2">Password input</h3>
-  <Ui::Input
-    @label="Add your secret password"
-    @name="password"
-    @updateValue={{this.setValuePassword}}
-    @value={{this.valuePassword}}
-    @password={{true}}
-    @containerStyle="w-96"
-    @labelStyle="labelClass"
-    @inputStyle="inputClass"
-    @passwordStyle=""
-    type="password"
-  />
-  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
-    {{this.valuePassword}}
-  </div>
-</div>
-<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
-  <h3 class="text-xl ml-2">Limit input</h3>
-  <Ui::Input
-    @label="Tell me something"
-    @name="limit"
-    @updateValue={{this.setValueLimit}}
-    @value={{this.valueLimit}}
-    @limit={{10}}
-    @containerStyle="w-96"
-    @labelStyle="labelClass"
-    @inputStyle="inputClass"
-    @limitStyle="text-yellow-500 text-sm mt-1"
-  />
-  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
-    {{this.valueLimit}}
-  </div>
-</div>
-<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
-  <h3 class="text-xl ml-2">Error input</h3>
-  <Ui::Input
-    @name="error"
-    @updateValue={{this.setValueError}}
-    @value={{this.valueError}}
-    @containerStyle="w-96"
-    @labelStyle="labelClass"
-    @inputStyle="inputClass"
-    @tooltipStyle="text-red-500 text-sm"
-    @hasError={{true}}
+  <TpkInputIcon
+    @onChange={{this.onChange}}
+    @value={{this.input}}
+    @onIconClick={{this.iconClick}}
+    @label='Email'
   >
-    Because we have an error, we add a yield that contains an error
-  </Ui::Input>
-  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
-    {{this.valueError}}
+    <svg
+      class='h-5 w-5 text-gray-400'
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 20 20'
+      fill='currentColor'
+      aria-hidden='true'
+    >
+      <path
+        d='M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z'
+      ></path>
+      <path d='M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z'></path>
+    </svg>
+  </TpkInputIcon>
+</div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of checkboxes</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Checkboxes</h3>
+  <div class='flex justify-around'>
+    <TpkCheckbox
+      @label='Label'
+      @checked={{this.checked}}
+      @onChange={{this.setChecked}}
+    />
+
+    <TpkCheckbox
+      @label='Label'
+      @checked={{this.checked}}
+      @onChange={{this.setChecked}}
+      as |C|
+    >
+      <C.Input class='text-yellow-300' />
+      <C.Label class='text-blue-300' />
+    </TpkCheckbox>
   </div>
 </div>
-<div class="shadow-sm bg-gray-100 rounded-lg p-8 mb-4">
-  <h3 class="text-xl ml-2">Tooltip input</h3>
-  <Ui::Input
-    @label="Information"
-    @name="info"
-    @updateValue={{this.setValueInfo}}
-    @value={{this.valueInfo}}
-    @containerStyle="w-96"
-    @labelStyle="labelClass"
-    @inputStyle="inputClass"
-    @infoTooltip="My custom message"
-    @tooltipStyle="text-green-500 text-sm mt-1"
-  />
-  <div class="mx-8 mb-8 mt-2 text-xl font-bold">
-    {{this.valueInfo}}
-  </div>
-</div>
-{{!-- <h2 class="text-3xl">CSS Class</h2>
+
+{{! <h2 class="text-3xl">CSS Class</h2>
 <div class="mx-8 mt-8">
   <ul>
     <li>Class for select : <strong>.select</strong></li>
@@ -98,6 +67,6 @@
     <li>Class for select options : <strong>.options-select</strong></li>
     <li>Class for select option : <strong>.option-select</strong></li>
     <li>Class when option is selected : <strong>.option-selected</strong></li>
-  </ul> --}}
+  </ul> }}
 
-{{!-- </div> --}}
+{{! </div> }}

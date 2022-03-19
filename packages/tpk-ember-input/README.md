@@ -45,7 +45,7 @@ After the label
 
 Template .hbs
 ```hbs
-<Ui::Input
+<Tpk:Input
   @label="Add your favorite JS framework"
   @value={{this.value}}
   @containerStyle=""
