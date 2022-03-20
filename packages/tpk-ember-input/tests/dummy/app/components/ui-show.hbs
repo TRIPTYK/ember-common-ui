@@ -41,7 +41,12 @@
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
   <h3 class='text-xl ml-2'>Textarea</h3>
   <div class='flex justify-around'>
-    <TpkTextarea @onChange={{this.onChangeArea}} @value={{this.inputArea}} />
+    <TpkTextarea
+      class='w-full'
+      @label='My textarea'
+      @onChange={{this.onChangeArea}}
+      @value={{this.inputArea}}
+    />
   </div>
 </div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of file inputs</h2>

@@ -7,58 +7,40 @@
   @apply block text-sm font-semibold text-gray-700;
 }
 
-/* Input Error */
-
-.tpk-input-error-label {
-  @apply block text-sm font-semibold text-gray-700;
-}
-
-.tpk-input-error-input-container {
-  @apply mt-1 relative rounded-md shadow-sm;
-}
-
-.tpk-input-error-input {
-  @apply tpk-input-input;
-}
-
-.tpk-input-error-input.error {
-  @apply focus:ring-red-500 text-red-500 focus:border-red-500;
-}
-
-.tpk-input-error-icon-container {
-  @apply absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none;
-}
-
 /* Textarea */
 .tpk-textarea {
   @apply block text-sm font-medium text-gray-700;
 }
 
-.tpk-textarea-area {
-  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md;
+.tpk-textarea-label {
+  @apply font-semibold;
+}
+
+.tpk-textarea-input {
+  @apply mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md;
 }
 
 /* Checkbox */
-.tpk-checkbox-container {
+.tpk-checkbox {
   @apply inline-flex cursor-pointer items-center;
 }
 
-.tpk-checkbox-container label {
+.tpk-checkbox-label {
   @apply ml-1;
 }
 
-.tpk-checkbox-container input:checked::before {
+.tpk-checkbox-input:checked::before {
   content: '\2713';
   color: #41b883;
   font-size: 22px;
   line-height: 0;
 }
 
-.tpk-checkbox-container input {
+.tpk-checkbox-input {
   @apply appearance-none h-4 w-4 border-2 relative;
 }
 
-.tpk-checkbox-container input::before {
+.tpk-checkbox-input::before {
   @apply block h-full w-full absolute;
 }
 

@@ -1,4 +1,8 @@
-<div class='tpk-textarea' ...attributes>
+<div
+  class={{unless @classless 'tpk-textarea'}}
+  ...attributes
+  data-test-tpk-textarea
+>
   {{#if (has-block)}}
     {{yield
       (hash

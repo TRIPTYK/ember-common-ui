@@ -1,15 +1,24 @@
-<div class='tpk-checkbox-container' ...attributes>
+<div
+  class={{unless @classless 'tpk-checkbox'}}
+  ...attributes
+  data-test-tpk-checkbox
+>
   {{#if (has-block-params)}}
     {{yield
       (hash
         Label=(component
-          'tpk-checkbox/label' guid=this.guid checked=@checked label=@label
+          'tpk-checkbox/label'
+          guid=this.guid
+          checked=@checked
+          label=@label
+          classless=@classless
         )
         Input=(component
           'tpk-checkbox/input'
           guid=this.guid
           checked=@checked
           onChange=this.onChange
+          classless=@classless
         )
       )
     }}
@@ -18,7 +27,12 @@
       @guid={{this.guid}}
       @onChange={{this.onChange}}
       @checked={{@checked}}
+      @classless={{@classless}}
     />
-    <TpkCheckbox::Label @guid={{this.guid}} @label={{@label}} />
+    <TpkCheckbox::Label
+      @classless={{@classless}}
+      @guid={{this.guid}}
+      @label={{@label}}
+    />
   {{/if}}
 </div>

@@ -1,13 +1,11 @@
-<div class={{unless @classless 'tpk-file'}} ...attributes>
+<div class={{unless @classless 'tpk-file'}} ...attributes data-test-tpk-file>
   {{#if (has-block)}}
     {{yield
       (hash
         Input=(component
           'tpk-file/input'
           onChange=this.onChange
-          onInput=@onInput
           accept=@accept
-          type=@type
           value=@value
           guid=this.guid
           classless=@classless
@@ -16,7 +14,6 @@
           'tpk-file/label'
           onChange=this.onChange
           guid=this.guid
-          onInput=@onInput
           classless=@classless
         )
         guid=this.guid
@@ -32,7 +29,6 @@
       @value={{@value}}
       @type={{@type}}
       @onChange={{this.onChange}}
-      @onInput={{@onInput}}
       @guid={{@guid}}
       @classless={{@classless}}
     />

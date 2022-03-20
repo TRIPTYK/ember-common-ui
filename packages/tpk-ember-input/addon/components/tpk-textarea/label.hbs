@@ -1,8 +1,8 @@
 <label
-  data-test-textarea-label
   for={{@guid}}
-  class='tpk-textarea-label'
+  class={{unless @classless 'tpk-textarea-label'}}
   ...attributes
+  data-test-tpk-textarea-label
 >
-  {{@label}}{{#if @mandatory}}<span class='mandatory'>*</span>{{/if}}
+  {{yield}}
 </label>

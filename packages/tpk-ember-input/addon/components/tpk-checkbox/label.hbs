@@ -1,3 +1,8 @@
-<label for={{@guid}} ...attributes>
+<label
+  class={{unless @classless 'tpk-checkbox-label'}}
+  for={{@guid}}
+  ...attributes
+  data-test-tpk-checkbox-label
+>
   {{@label}}
 </label>
