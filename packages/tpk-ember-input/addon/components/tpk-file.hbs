@@ -1,0 +1,40 @@
+<div class={{unless @classless 'tpk-file'}} ...attributes>
+  {{#if (has-block)}}
+    {{yield
+      (hash
+        Input=(component
+          'tpk-file/input'
+          onChange=this.change
+          onInput=@onInput
+          accept=@accept
+          type=@type
+          value=@value
+          guid=this.guid
+          classless=@classless
+        )
+        Label=(component
+          'tpk-file/label'
+          onChange=this.change
+          guid=this.guid
+          onInput=@onInput
+          classless=@classless
+        )
+        guid=this.guid
+      )
+    }}
+  {{else}}
+    {{! Quick version }}
+    <TpkFile::Label @guid={{@guid}} @classless={{@classless}}>
+      {{@label}}
+    </TpkFile::Label>
+    <TpkFile::Input
+      accept={{@accept}}
+      @value={{@value}}
+      @type={{@type}}
+      @onChange={{this.change}}
+      @onInput={{@onInput}}
+      @guid={{@guid}}
+      @classless={{@classless}}
+    />
+  {{/if}}
+</div>
