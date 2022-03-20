@@ -1,25 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { action } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
-import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
 
-interface TpkFileArgs {
-  onUpload?: (files: FileList | null, e: Event) => unknown;
+interface TpkFileArgs extends BaseUIComponentArgs {
   accept?: string;
 }
 
-interface HtmlInputFileEvent extends Event {
-  target: HTMLInputElement;
-}
+export default class TpkFile extends BaseUIComponent<TpkFileArgs> {
+  @tracked files?: FileList | null = null;
 
-export default class TpkFile extends Component<TpkFileArgs> {
-  guid = guidFor(this);
-  @tracked files: FileList | null = null;
-
-  @action change(e: HtmlInputFileEvent) {
+  @action onChange(e: HtmlInputEvent) {
     e.preventDefault();
     this.files = e.target?.files;
-    this.args.onUpload?.(e.target?.files, e);
+    this.args.onChange?.(e.target?.files, e);
   }
 }

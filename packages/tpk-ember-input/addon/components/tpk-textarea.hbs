@@ -5,18 +5,15 @@
         Label=(component
           'tpk-textarea/label' guid=this.guid mandatory=@mandatory label=@label
         )
-        Area=(component
-          'tpk-textarea/area'
+        Input=(component
+          'tpk-textarea/input'
           guid=this.guid
           value=@value
-          limit=@limit
-          updateValue=this.updateValue
+          onChange=this.onChange
         )
-        Counter=(component 'tpk-textarea/counter' count=this.count limit=@limit)
-        Tooltip=(component 'tpk-textarea/tooltip' tooltip=@tooltip)
-        guid=this.guid
         count=this.count
-        updateValue=this.updateValue
+        guid=this.guid
+        onChange=this.onChange
       )
     }}
   {{else}}
@@ -26,15 +23,12 @@
       @label={{@label}}
     />
     {{! template-lint-disable no-duplicate-id }}
-    <TpkTextarea::Area
+    <TpkTextarea::Input
+      @onChange={{this.onChange}}
       @guid={{this.guid}}
       @updateValue={{this.updateValue}}
       @limit={{@limit}}
       @value={{@value}}
     />
-    {{#if @limit}}
-      <TpkTextarea::Counter @count={{this.count}} @limit={{@limit}} />
-    {{/if}}
-    <TpkTextarea::Tooltip @tooltip={{@tooltip}} />
   {{/if}}
 </div>

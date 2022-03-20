@@ -4,7 +4,7 @@
       (hash
         Input=(component
           'tpk-file/input'
-          onChange=this.change
+          onChange=this.onChange
           onInput=@onInput
           accept=@accept
           type=@type
@@ -14,7 +14,7 @@
         )
         Label=(component
           'tpk-file/label'
-          onChange=this.change
+          onChange=this.onChange
           guid=this.guid
           onInput=@onInput
           classless=@classless
@@ -31,7 +31,7 @@
       accept={{@accept}}
       @value={{@value}}
       @type={{@type}}
-      @onChange={{this.change}}
+      @onChange={{this.onChange}}
       @onInput={{@onInput}}
       @guid={{@guid}}
       @classless={{@classless}}

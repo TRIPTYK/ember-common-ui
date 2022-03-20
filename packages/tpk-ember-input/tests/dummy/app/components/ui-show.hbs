@@ -15,18 +15,6 @@
     @type='password'
     @label='Champ texte'
   />
-  <h3 class='text-xl ml-2'>Prefab error input</h3>
-  <Prefab::TpkInputError
-    @hasError={{this.hasError}}
-    @onChange={{this.onChange}}
-    @value={{this.input}}
-    @type='password'
-    @label='Champ texte'
-  >
-    <:error>
-      <span class='text-red-500'>Votre mot de passe est trop court</span>
-    </:error>
-  </Prefab::TpkInputError>
 </div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of checkboxes</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
@@ -53,7 +41,7 @@
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
   <h3 class='text-xl ml-2'>Textarea</h3>
   <div class='flex justify-around'>
-    <TpkTextarea />
+    <TpkTextarea @onChange={{this.onChangeArea}} @value={{this.inputArea}} />
   </div>
 </div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of file inputs</h2>

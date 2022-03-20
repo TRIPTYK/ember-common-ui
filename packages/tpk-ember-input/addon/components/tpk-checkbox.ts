@@ -1,26 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { action } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
-import Component from '@glimmer/component';
+import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
 
-interface UiCheckboxArgs {
-  onChange: (
-    checked: boolean,
-    value: string,
-    e: CheckboxEvent
-  ) => Promise<unknown> | unknown;
-}
+interface UiCheckboxArgs extends BaseUIComponentArgs {}
 
-interface CheckboxEvent extends Event {
-  target: HTMLInputElement | null;
-}
-
-export default class UiCheckbox extends Component<UiCheckboxArgs> {
-  guid = guidFor(this);
-
+export default class UiCheckbox extends BaseUIComponent<UiCheckboxArgs> {
   @action
-  onChange(e: CheckboxEvent) {
+  public onChange(e: HtmlInputEvent) {
     e.preventDefault();
-    this.args.onChange(e.target!.checked, e.target!.value, e);
+    this.args.onChange?.(e.target!.checked, e.target!.value, e);
   }
 }

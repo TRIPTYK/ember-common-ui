@@ -1,11 +1,8 @@
-{{! template-lint-disable require-input-label }}
 <input
   class={{unless @classless 'tpk-input-input'}}
   for={{@guid}}
-  {{! defaults to "text" in HTML }}
   type={{@type}}
   value={{@value}}
-  {{on 'change' (fn this.on 'change')}}
-  {{on 'input' (fn this.on 'input')}}
+  {{on 'change' @onChange}}
   ...attributes
 />

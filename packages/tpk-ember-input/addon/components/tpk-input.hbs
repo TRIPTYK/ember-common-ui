@@ -4,8 +4,7 @@
       (hash
         Input=(component
           'tpk-input/input'
-          onChange=@onChange
-          onInput=@onInput
+          onChange=this.onChange
           type=@type
           value=@value
           guid=this.guid
@@ -13,9 +12,8 @@
         )
         Label=(component
           'tpk-input/label'
-          onChange=@onChange
+          onChange=this.onChange
           guid=this.guid
-          onInput=@onInput
           classless=@classless
         )
         guid=this.guid
@@ -29,8 +27,7 @@
     <TpkInput::Input
       @value={{@value}}
       @type={{@type}}
-      @onChange={{@onChange}}
-      @onInput={{@onInput}}
+      @onChange={{this.onChange}}
       @guid={{@guid}}
       @classless={{@classless}}
     />

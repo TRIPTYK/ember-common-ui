@@ -7,6 +7,7 @@ interface UiShowArgs {}
 export default class UiShow extends Component<UiShowArgs> {
   @tracked checked: boolean = false;
   @tracked input: string = '';
+  @tracked inputArea: string = '';
 
   get hasError() {
     return this.input.length < 2;
@@ -15,6 +16,11 @@ export default class UiShow extends Component<UiShowArgs> {
   @action
   setChecked(checked: boolean) {
     this.checked = checked;
+  }
+
+  @action
+  onChangeArea(value: string) {
+    this.inputArea = value;
   }
 
   @action

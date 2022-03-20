@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
-import Component from '@glimmer/component';
-import { guidFor } from '@ember/object/internals';
+import { action } from '@ember/object';
+import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
 
-export interface TpkInputArgs {
-  classLess?: boolean;
-  label?: string;
+export interface TpkInputArgs extends BaseUIComponentArgs {
   type?: string;
-  value: string;
-  onChange?: (value: string, e: Event) => unknown;
-  onInput?: (value: string, e: Event) => unknown;
 }
 
-export default class TpkInput<T extends TpkInputArgs> extends Component<T> {
-  guid = guidFor(this);
+// eslint-disable-next-line ember/no-empty-glimmer-component-classes
+export default class TpkInput<
+  T extends TpkInputArgs
+> extends BaseUIComponent<T> {
+  @action onChange(e: HtmlInputEvent): void {
+    this.args.onChange?.(e.target?.value, e);
+  }
 }

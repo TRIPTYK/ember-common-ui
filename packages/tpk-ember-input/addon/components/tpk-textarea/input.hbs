@@ -3,7 +3,6 @@
   class='tpk-textarea-area'
   id={{this.guid}}
   value={{@value}}
-  maxlength={{@limit}}
-  {{on 'input' this.hasChange}}
+  {{on 'input' @onChange}}
   ...attributes
 ></textarea>
