@@ -8,6 +8,10 @@ export default class UiShow extends Component<UiShowArgs> {
   @tracked checked: boolean = false;
   @tracked input: string = '';
 
+  get hasError() {
+    return this.input.length < 2;
+  }
+
   @action
   setChecked(checked: boolean) {
     this.checked = checked;
