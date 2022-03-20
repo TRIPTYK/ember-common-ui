@@ -1,16 +1,4 @@
 /* Input */
-.tpk-input-icon-container {
-  @apply mt-1 relative rounded-md shadow-sm;
-}
-
-.tpk-input-icon-icon {
-  @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
-}
-
-.tpk-input-icon .tpk-input-input {
-  @apply pl-10;
-}
-
 .tpk-input-input {
   @apply mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 leading-3 block w-full sm:text-sm border-gray-300 rounded-md;
 }

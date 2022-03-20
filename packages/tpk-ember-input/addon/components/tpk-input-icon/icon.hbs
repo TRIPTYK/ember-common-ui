@@ -1,9 +1,0 @@
-<button
-  type='button'
-  {{on 'click' this.iconClicked}}
-  class={{unless @classless 'tpk-input-icon-icon'}}
-  disabled={{if @onClick false true}}
-  ...attributes
->
-  {{yield}}
-</button>

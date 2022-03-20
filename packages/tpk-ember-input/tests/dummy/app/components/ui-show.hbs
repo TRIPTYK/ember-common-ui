@@ -15,25 +15,6 @@
     @type='password'
     @label='Champ texte'
   />
-  <TpkInputIcon
-    @onChange={{this.onChange}}
-    @value={{this.input}}
-    @onIconClick={{this.iconClick}}
-    @label='Email'
-  >
-    <svg
-      class='h-5 w-5 text-gray-400'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 20 20'
-      fill='currentColor'
-      aria-hidden='true'
-    >
-      <path
-        d='M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z'
-      ></path>
-      <path d='M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z'></path>
-    </svg>
-  </TpkInputIcon>
 </div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of checkboxes</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
@@ -56,24 +37,17 @@
     </TpkCheckbox>
   </div>
 </div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Textarea</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Textarea</h3>
+  <div class='flex justify-around'>
+    <TpkTextarea />
+  </div>
+</div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of file inputs</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
   <h3 class='text-xl ml-2'>File inputs</h3>
   <div class='flex justify-around'>
-    <TpkFile />
+    <TpkFile class='w-full' />
   </div>
 </div>
-
-{{! <h2 class="text-3xl">CSS Class</h2>
-<div class="mx-8 mt-8">
-  <ul>
-    <li>Class for select : <strong>.select</strong></li>
-    <li>Class for label : <strong>.label-select</strong></li>
-    <li>Class for selected : <strong>.selected</strong></li>
-    <li>Class for button : <strong>.btn-select</strong></li>
-    <li>Class for select options : <strong>.options-select</strong></li>
-    <li>Class for select option : <strong>.option-select</strong></li>
-    <li>Class when option is selected : <strong>.option-selected</strong></li>
-  </ul> }}
-
-{{! </div> }}
