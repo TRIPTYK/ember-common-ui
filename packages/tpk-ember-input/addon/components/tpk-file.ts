@@ -8,11 +8,12 @@ interface TpkFileArgs extends BaseUIComponentArgs {
 }
 
 export default class TpkFile extends BaseUIComponent<TpkFileArgs> {
-  @tracked files?: FileList | null = null;
+  @tracked files?: File[] | null = null;
 
   @action onChange(e: HtmlInputEvent) {
     e.preventDefault();
-    this.files = e.target?.files;
-    this.args.onChange?.(e.target?.files, e);
+    const files = Array.from(e.target!.files ?? []);
+    this.files = files;
+    this.args.onChange?.(files, e);
   }
 }

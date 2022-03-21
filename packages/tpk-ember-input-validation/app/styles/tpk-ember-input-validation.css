@@ -13,3 +13,19 @@
 .tpk-checkbox .tpk-validation-label {
     @apply  block ;
 }
+
+.tpk-file.error .tpk-validation-file-error {
+    @apply text-red-500 block;
+}
+
+.tpk-file.error .tpk-file-input {
+    @apply focus:outline-red-500 border  border-red-500;
+}
+
+.tpk-textarea.error .tpk-textarea-input {
+    @apply focus:outline-red-500 border  border-red-500;
+}
+
+.tpk-textarea.error .tpk-validation-textarea-error {
+    @apply text-red-500 block;
+}

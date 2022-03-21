@@ -46,7 +46,7 @@
 
 /* File input */
 .tpk-file-label {
-  @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+  @apply block mb-2 text-sm font-semibold text-gray-900 ;
 }
 
 .tpk-file-input {

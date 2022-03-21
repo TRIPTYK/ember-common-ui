@@ -6,7 +6,7 @@ export interface BaseValidationArgs {
   validationField: string;
 }
 
-export class BaseValidationComponent<
+export abstract class BaseValidationComponent<
   T extends BaseValidationArgs
 > extends Component<T> {
   get hasError() {

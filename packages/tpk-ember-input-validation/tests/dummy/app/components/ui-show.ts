@@ -20,7 +20,9 @@ const validation = {
       min: 2,
     }),
   ],
+  comment: [validatePresence(true)],
   hasDriverLicence: [validatePresence(true)],
+  avatar: [validatePresence(true)],
 };
 
 export default class UiShow extends Component<UiShowArgs> {
@@ -37,6 +39,7 @@ export default class UiShow extends Component<UiShowArgs> {
       {
         name: '',
         hasDriverLicence: '',
+        files: undefined,
       },
       lookupValidator(validation),
       validation

@@ -1,28 +1,28 @@
-<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of validations</h2>
-<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
-  <h3 class='text-xl ml-2 mb-2'>Simple validation input</h3>
-  <TpkValidationInput
-    @label="Nom d'utilisateur"
-    @changeset={{this.changeset}}
-    @validationField='name'
-  />
-  <TpkValidationInput
-    @label="Nom d'utilisateur"
-    @changeset={{this.changeset}}
-    @validationField='name'
-  >
-    <:errors as |errors|>
-      {{#each errors as |err|}}
-        <div class='text-red-200'>
-          {{err}}
-        </div>
-      {{/each}}
-    </:errors>
-  </TpkValidationInput>
-</div>
-<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
-  <h3 class='text-xl ml-2 mb-2'>Checkbox input validation</h3>
-  <form {{on 'submit' this.submit}}>
+<form {{on 'submit' this.submit}}>
+  <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of validations</h2>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>Simple validation input</h3>
+    <TpkValidationInput
+      @label="Nom d'utilisateur"
+      @changeset={{this.changeset}}
+      @validationField='name'
+    />
+    <TpkValidationInput
+      @label="Nom d'utilisateur"
+      @changeset={{this.changeset}}
+      @validationField='name'
+    >
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationInput>
+  </div>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>Checkbox input validation</h3>
     <TpkValidationCheckbox
       @label="Nom d'utilisateur"
       @changeset={{this.changeset}}
@@ -41,6 +41,51 @@
         {{/each}}
       </:errors>
     </TpkValidationCheckbox>
-    <button type='submit'>Submit</button>
-  </form>
-</div>
+  </div>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>File input validation</h3>
+    <TpkValidationFile
+      @label='Avatar'
+      @changeset={{this.changeset}}
+      @validationField='avatar'
+    />
+    <TpkValidationFile
+      @label='Avatar'
+      @changeset={{this.changeset}}
+      @validationField='avatar'
+    >
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationFile>
+  </div>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>Textarea input validation </h3>
+    <TpkValidationTextarea
+      @label='Comments'
+      @changeset={{this.changeset}}
+      @validationField='comment'
+    />
+    <TpkValidationTextarea
+      @label='Comments'
+      @changeset={{this.changeset}}
+      @validationField='comment'
+    >
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationTextarea>
+  </div>
+  <button
+    class='w-full mb-4 lg:shadow-lg border border-black'
+    type='submit'
+  >Submit</button>
+</form>
