@@ -1,58 +1,46 @@
-<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of inputs</h2>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of validations</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
-  <h3 class='text-xl ml-2'>Simple input</h3>
-  <TpkInput @onChange={{this.onChange}} @value={{this.input}} as |I|>
-    <I.Label>
-      <span class='text-red-500'>Mon texte</span>
-      en
-      <span>HTML</span>
-    </I.Label>
-    <I.Input />
-  </TpkInput>
-  <TpkInput
-    @onChange={{this.onChange}}
-    @value={{this.input}}
-    @type='password'
-    @label='Champ texte'
+  <h3 class='text-xl ml-2 mb-2'>Simple validation input</h3>
+  <TpkValidationInput
+    @label="Nom d'utilisateur"
+    @changeset={{this.changeset}}
+    @validationField='name'
   />
+  <TpkValidationInput
+    @label="Nom d'utilisateur"
+    @changeset={{this.changeset}}
+    @validationField='name'
+  >
+    <:errors as |errors|>
+      {{#each errors as |err|}}
+        <div class='text-red-200'>
+          {{err}}
+        </div>
+      {{/each}}
+    </:errors>
+  </TpkValidationInput>
 </div>
-<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of checkboxes</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
-  <h3 class='text-xl ml-2'>Checkboxes</h3>
-  <div class='flex justify-around'>
-    <TpkCheckbox
-      @label='Label'
-      @checked={{this.checked}}
-      @onChange={{this.setChecked}}
+  <h3 class='text-xl ml-2 mb-2'>Checkbox input validation</h3>
+  <form {{on 'submit' this.submit}}>
+    <TpkValidationCheckbox
+      @label="Nom d'utilisateur"
+      @changeset={{this.changeset}}
+      @validationField='hasDriverLicence'
     />
-
-    <TpkCheckbox
-      @label='Label'
-      @checked={{this.checked}}
-      @onChange={{this.setChecked}}
-      as |C|
+    <TpkValidationCheckbox
+      @label="Nom d'utilisateur"
+      @changeset={{this.changeset}}
+      @validationField='hasDriverLicence'
     >
-      <C.Input class='text-yellow-300' />
-      <C.Label class='text-blue-300' />
-    </TpkCheckbox>
-  </div>
-</div>
-<h2 class='text-3xl mb-4 text-center font-semibold'>Textarea</h2>
-<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
-  <h3 class='text-xl ml-2'>Textarea</h3>
-  <div class='flex justify-around'>
-    <TpkTextarea
-      class='w-full'
-      @label='My textarea'
-      @onChange={{this.onChangeArea}}
-      @value={{this.inputArea}}
-    />
-  </div>
-</div>
-<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of file inputs</h2>
-<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
-  <h3 class='text-xl ml-2'>File inputs</h3>
-  <div class='flex justify-around'>
-    <TpkFile class='w-full' />
-  </div>
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationCheckbox>
+    <button type='submit'>Submit</button>
+  </form>
 </div>

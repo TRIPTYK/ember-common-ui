@@ -1,0 +1,15 @@
+.tpk-input.error .tpk-input-input {
+    @apply focus:outline-red-500 border  border-red-500;
+}
+
+.tpk-input.error .tpk-validation-input-error {
+    @apply text-red-500 block ;
+}
+
+.tpk-checkbox.error .tpk-validation-input-error {
+    @apply text-red-500 block ;
+}
+
+.tpk-checkbox .tpk-validation-label {
+    @apply  block ;
+}

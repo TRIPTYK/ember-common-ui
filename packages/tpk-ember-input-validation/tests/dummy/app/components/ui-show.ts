@@ -1,35 +1,45 @@
-import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { BufferedChangeset } from 'ember-changeset/types';
+import { Changeset } from 'ember-changeset';
+// @ts-expect-error
+import lookupValidator from 'ember-changeset-validations';
+import {
+  validatePresence,
+  validateLength,
+  // @ts-expect-error
+} from 'ember-changeset-validations/validators';
+import { action } from '@ember/object';
 
 interface UiShowArgs {}
 
+const validation = {
+  name: [
+    validatePresence(true),
+    validateLength({
+      min: 2,
+    }),
+  ],
+  hasDriverLicence: [validatePresence(true)],
+};
+
 export default class UiShow extends Component<UiShowArgs> {
-  @tracked checked: boolean = false;
-  @tracked input: string = '';
-  @tracked inputArea: string = '';
+  @tracked changeset: BufferedChangeset;
 
-  get hasError() {
-    return this.input.length < 2;
+  @action submit(e: Event) {
+    e.preventDefault();
+    this.changeset.validate();
   }
 
-  @action
-  setChecked(checked: boolean) {
-    this.checked = checked;
-  }
-
-  @action
-  onChangeArea(value: string) {
-    this.inputArea = value;
-  }
-
-  @action
-  onChange(value: string) {
-    this.input = value;
-  }
-
-  @action
-  iconClick() {
-    console.log('click');
+  constructor(owner: unknown, args: UiShowArgs) {
+    super(owner, args);
+    this.changeset = Changeset(
+      {
+        name: '',
+        hasDriverLicence: '',
+      },
+      lookupValidator(validation),
+      validation
+    );
   }
 }

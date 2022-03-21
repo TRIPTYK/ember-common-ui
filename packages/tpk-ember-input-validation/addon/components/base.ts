@@ -1,25 +1,27 @@
 import Component from '@glimmer/component';
-import { guidFor } from '@ember/object/internals';
+import { BufferedChangeset } from 'ember-changeset/types';
 
-// We have a base class to keep consistency between the inputs
-export interface BaseUIComponentArgs {
-  classless?: boolean;
-  label?: string;
-  value: unknown;
-  changeEvent: 'input' | 'change';
-  // eslint-disable-next-line no-unused-vars
-  onChange?: (...args: unknown[]) => unknown;
+export interface BaseValidationArgs {
+  changeset: BufferedChangeset;
+  validationField: string;
 }
 
-export interface HtmlInputEvent extends Event {
-  target: HTMLInputElement | null;
-}
-
-export abstract class BaseUIComponent<
-  T extends BaseUIComponentArgs
+export class BaseValidationComponent<
+  T extends BaseValidationArgs
 > extends Component<T> {
-  guid = guidFor(this);
+  get hasError() {
+    return this.errors.length > 0;
+  }
 
-  // eslint-disable-next-line no-unused-vars
-  abstract onChange(e: HtmlInputEvent): unknown;
+  get firstError() {
+    return this.errors[0];
+  }
+
+  get errors() {
+    return (
+      (this.args.changeset.errors.find(
+        (err) => err.key === this.args.validationField
+      )?.validation as unknown[]) ?? []
+    );
+  }
 }

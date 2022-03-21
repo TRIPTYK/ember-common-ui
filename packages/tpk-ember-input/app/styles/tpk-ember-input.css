@@ -22,7 +22,7 @@
 
 /* Checkbox */
 .tpk-checkbox {
-  @apply inline-flex cursor-pointer items-center;
+  @apply block cursor-pointer items-center;
 }
 
 .tpk-checkbox-label {
