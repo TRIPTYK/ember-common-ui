@@ -21,6 +21,7 @@ const validation = {
     }),
   ],
   comment: [validatePresence(true)],
+  firstname: [validatePresence(true)],
   hasDriverLicence: [validatePresence(true)],
   avatar: [validatePresence(true)],
 };
@@ -40,6 +41,7 @@ export default class UiShow extends Component<UiShowArgs> {
         name: '',
         hasDriverLicence: '',
         files: undefined,
+        firstname: '',
       },
       lookupValidator(validation),
       validation

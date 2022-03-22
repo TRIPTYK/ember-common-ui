@@ -3,3 +3,15 @@
 @import 'tailwindcss/utilities';
 @import 'tpk-ember-input';
 @import 'tpk-ember-input-validation';
+
+.tooltip-input .tpk-validation-input-error-container {
+
+}
+
+.tooltip-input .tpk-validation-input-error-container {
+
+}
+
+.tooltip-input .tpk-validation-input-error {
+    
+}

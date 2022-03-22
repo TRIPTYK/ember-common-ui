@@ -26,7 +26,7 @@
         {{#if (has-block 'errors')}}
           {{yield this.errors to='errors'}}
         {{else}}
-          <span class={{unless @classless 'tpk-validation-input-error'}}>
+          <span class={{unless @classless 'tpk-validation-checkbox-error'}}>
             {{this.firstError}}
           </span>
         {{/if}}

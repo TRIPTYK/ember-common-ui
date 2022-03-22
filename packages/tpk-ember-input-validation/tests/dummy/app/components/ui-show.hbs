@@ -8,9 +8,9 @@
       @validationField='name'
     />
     <TpkValidationInput
-      @label="Nom d'utilisateur"
+      @label='Prénom'
       @changeset={{this.changeset}}
-      @validationField='name'
+      @validationField='firstname'
     >
       <:errors as |errors|>
         {{#each errors as |err|}}
