@@ -17,18 +17,19 @@
           classless=@classless
         )
         guid=this.guid
+        onChange=this.onChange
       )
     }}
   {{else}}
     {{! Quick version }}
-    <TpkInput::Label @guid={{@guid}} @classless={{@classless}}>
+    <TpkInput::Label @guid={{this.guid}} @classless={{@classless}}>
       {{@label}}
     </TpkInput::Label>
     <TpkInput::Input
       @value={{@value}}
       @type={{@type}}
       @onChange={{this.onChange}}
-      @guid={{@guid}}
+      @guid={{this.guid}}
       @classless={{@classless}}
     />
   {{/if}}

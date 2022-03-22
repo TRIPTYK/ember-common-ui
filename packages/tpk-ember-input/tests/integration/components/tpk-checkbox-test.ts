@@ -4,6 +4,9 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import click from '@ember/test-helpers/dom/click';
+import { getOwner } from '@ember/application';
+import ApplicationInstance from '@ember/application/instance';
+import CatchState from 'dummy/tests/dummy/app/services/catch-state';
 
 module('Integration | Component | ui/checkbox', function (hooks) {
   setupRenderingTest(hooks);
@@ -64,5 +67,21 @@ module('Integration | Component | ui/checkbox', function (hooks) {
     assert.dom('[data-test-checkbox] > label').containsText('Label');
 
     assert.verifySteps(['check']);
+  });
+
+  test('input yield only', async function (assert) {
+    await render(
+      hbs`<TpkCheckbox @onChange={{this.change}} @label="label" @checked={{true}} as |O|>
+        {{catch-state O}}
+      </TpkCheckbox>`
+    );
+
+    const { state }: { state: any } = (
+      getOwner(this) as ApplicationInstance
+    ).lookup('service:catch-state') as CatchState;
+
+    assert.strictEqual(typeof state.Input, 'object');
+    assert.strictEqual(typeof state.Label, 'object');
+    assert.strictEqual(typeof state.guid, 'string');
   });
 });

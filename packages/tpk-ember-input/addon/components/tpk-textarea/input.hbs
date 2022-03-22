@@ -1,6 +1,6 @@
 <textarea
   class={{unless @classless 'tpk-textarea-input'}}
-  id={{this.guid}}
+  id={{@guid}}
   value={{@value}}
   {{on 'input' @onChange}}
   ...attributes

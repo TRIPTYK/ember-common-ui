@@ -7,30 +7,36 @@
     {{yield
       (hash
         Label=(component
-          'tpk-textarea/label' guid=this.guid mandatory=@mandatory label=@label
+          'tpk-textarea/label'
+          classless=@classless
+          guid=this.guid
+          mandatory=@mandatory
+          label=@label
         )
         Input=(component
           'tpk-textarea/input'
           guid=this.guid
           value=@value
+          classless=@classless
           onChange=this.onChange
         )
-        count=this.count
         guid=this.guid
         onChange=this.onChange
       )
     }}
   {{else}}
     <TpkTextarea::Label
+      @classless={{@classless}}
       @mandatory={{@mandatory}}
       @guid={{this.guid}}
-      @label={{@label}}
-    />
+    >
+      {{@label}}
+    </TpkTextarea::Label>
     {{! template-lint-disable no-duplicate-id }}
     <TpkTextarea::Input
+      @classless={{@classless}}
       @onChange={{this.onChange}}
       @guid={{this.guid}}
-      @updateValue={{this.updateValue}}
       @limit={{@limit}}
       @value={{@value}}
     />

@@ -21,14 +21,14 @@
     }}
   {{else}}
     {{! Quick version }}
-    <TpkFile::Label @guid={{@guid}} @classless={{@classless}}>
+    <TpkFile::Label @guid={{this.guid}} @classless={{@classless}}>
       {{@label}}
     </TpkFile::Label>
     <TpkFile::Input
       accept={{@accept}}
       @type={{@type}}
       @onChange={{this.onChange}}
-      @guid={{@guid}}
+      @guid={{this.guid}}
       @classless={{@classless}}
     />
   {{/if}}
