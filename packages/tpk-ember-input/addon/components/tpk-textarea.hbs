@@ -25,19 +25,13 @@
       )
     }}
   {{else}}
-    <TpkTextarea::Label
-      @classless={{@classless}}
-      @mandatory={{@mandatory}}
-      @guid={{this.guid}}
-    >
+    <TpkTextarea::Label @classless={{@classless}} @guid={{this.guid}}>
       {{@label}}
     </TpkTextarea::Label>
-    {{! template-lint-disable no-duplicate-id }}
     <TpkTextarea::Input
       @classless={{@classless}}
       @onChange={{this.onChange}}
       @guid={{this.guid}}
-      @limit={{@limit}}
       @value={{@value}}
     />
   {{/if}}
