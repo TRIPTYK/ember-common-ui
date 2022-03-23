@@ -21,7 +21,7 @@ jobs:
           run_install: |
             - recursive: true
       - run: pnpm -C packages/tpk-ember-input test
-  modal:
+  input-validation:
     runs-on: ubuntu-latest
 
     steps:
