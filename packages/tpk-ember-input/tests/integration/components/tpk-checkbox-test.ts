@@ -81,7 +81,9 @@ module('Integration | Component | ui/checkbox', function (hooks) {
     ).lookup('service:catch-state') as CatchState;
 
     assert.strictEqual(typeof state.Input, 'object');
+    assert.strictEqual(typeof state.onChange, 'object');
     assert.strictEqual(typeof state.Label, 'object');
+    assert.strictEqual(typeof state.changeEvent, 'string');
     assert.strictEqual(typeof state.guid, 'string');
   });
 });

@@ -55,8 +55,10 @@ module('Integration | Component | tpk-file', function (hooks) {
       getOwner(this) as ApplicationInstance
     ).lookup('service:catch-state') as CatchState;
 
+    assert.strictEqual(typeof state.onChange, 'object');
     assert.strictEqual(typeof state.Input, 'object');
     assert.strictEqual(typeof state.Label, 'object');
+    assert.strictEqual(typeof state.changeEvent, 'string');
     assert.strictEqual(typeof state.guid, 'string');
     assert.true(Array.isArray(state.files));
   });
