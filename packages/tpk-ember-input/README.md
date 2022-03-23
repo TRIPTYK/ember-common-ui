@@ -27,54 +27,124 @@ pnpm add -D @triptyk/tpk-ember-input
 
 Usage
 ------------------------------------------------------------------------------
-#### Features
 
-- Limit of characters
-- Password show or hide. You should add
-```html
-type="password"
-```
-- Add class error trigger when @hasError is true and you can add a **yield** with the error
-- A info tooltip under the input with @infoTooltip
-- When @mandatory is {{true}}, it's adding this :
-```html
-<span class='mandatory'>*</span>
-```
-After the label
-#### Integration example 
+### HTLM class naming convention 
 
-Template .hbs
-```hbs
-<Tpk:Input
-  @label="Add your favorite JS framework"
-  @value={{this.value}}
-  @containerStyle=""
-  @labelStyle=""
-  @inputStyle=""
-  @passwordStyle=""
-  @limitStyle=""
-  @tooltipStyle=""
-  @password={{true}}
-  @mandatory={{true}}
-  @infoTooltip="A good info"
-  @hasError={{true}}
-  @updateValue={{this.setValue}}
-  @selectedValue={{this.value}}
-  @placeholder="Select a value"
-  @key="text"
-  type="nothing | text | date | string | password"
-  {{on "focus" this.focusOtherInput}}
-/>
-```
+Every HTML element has a class assigned to it.
 
-Controller .ts/.js
-```js
-@tracked value = '';
+**Path of the component to kebab case**
 
-@action
-setValue(value: string | number) {
-  this.value = value;
+Ex : 
+  - `<TpkInput>` : .tpk-input
+  - `<TpkInput::Label>` : .tpk-input-label
+  - `<TpkInput::Input>` : .tpk-input-input
+
+If you want no base class applied to the component you can use the @classless argument.
+
+### Common arguments
+
+All the inputs in this addon accepts these arguments.
+
+```ts
+interface TpkBaseInputArgs {
+  classless?: boolean;
+  label?: string;
+  value: unknown;
+  changeEvent: 'input' | 'change';
+  onChange?: (...args: unknown[]) => unknown;
 }
+```
+
+### Tpk-Input
+
+#### Special Args
+
+- type : The input type
+
+#### No-Block version
+
+```hbs
+  <TpkInput
+    ...@TpkInputArgs
+  />
+```
+
+#### Block version
+
+Yielded :
+  - Label : Component
+  - Input : Component
+  - guid : string
+  
+```hbs
+  <TpkInput
+    ...@TpkInputArgs
+  as |TI|>
+    <TI.Input />
+    <TI.Label />
+  </TpkInput>
+```
+
+### Tpk-Textarea
+
+#### Special arguments
+
+- None
+
+#### No-Block version
+
+```hbs
+  <TpkTextarea
+    ...@TpkInputArgs
+  />
+```
+
+#### Block version
+
+Yielded :
+  - Label : Component
+  - Input : Component
+  - guid : string
+
+  
+```hbs
+  <TpkTextarea
+    ...@TpkInputArgs
+  as |TI|>
+    <TI.Input />
+    <TI.Label />
+  </TpkTextarea>
+```
+
+### Tpk-File
+
+#### Special arguments
+
+- accept : accepted mimetypes
+
+#### No-Block version
+
+```hbs
+  <TpkFile
+    ...@TpkInputArgs
+  />
+```
+
+#### Block version
+
+Yielded :
+  - Label : Component
+  - Input : Component
+  - guid : string
+  - files : File[]
+  
+```hbs
+  <TpkFile
+    ...@TpkInputArgs
+  as |TI|>
+    <TI.Input />
+    <TI.Label />
+  </TpkFile>
 ```
 
 Contributing
