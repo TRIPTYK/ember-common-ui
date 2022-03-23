@@ -1,0 +1,18 @@
+<ul
+  tabindex='-1'
+  role='listbox'
+  aria-labelledby={{@label}}
+  aria-activedescendant='listbox-option-{{@selectedIndex}}'
+  ...attributes
+>
+  {{#each @options as |o i|}}
+    {{yield
+      (component
+        'tpk-select/container/options/option'
+        option=o
+        index=i
+        selectElement=@selectElement
+      )
+    }}
+  {{/each}}
+</ul>

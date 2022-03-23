@@ -1,0 +1,8 @@
+<li
+  {{on 'click' (fn @selectElement @option)}}
+  id='listbox-option-{{@index}}'
+  role='option'
+  ...attributes
+>
+  {{yield @option}}
+</li>

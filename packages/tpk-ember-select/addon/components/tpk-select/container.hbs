@@ -1,0 +1,14 @@
+<div ...attributes>
+  {{yield
+    (hash
+      Button=(component 'tpk-select/container/button' selected=@selected)
+      Options=(component
+        'tpk-select/container/options'
+        label=@label
+        selectElement=@selectElement
+        selectedIndex=@selectedIndex
+        options=@options
+      )
+    )
+  }}
+</div>
