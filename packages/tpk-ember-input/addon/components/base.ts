@@ -6,7 +6,7 @@ export interface BaseUIComponentArgs {
   classless?: boolean;
   label?: string;
   value: unknown;
-  changeEvent: 'input' | 'change';
+  changeEvent?: 'input' | 'change';
   // eslint-disable-next-line no-unused-vars
   onChange?: (...args: unknown[]) => unknown;
 }
@@ -19,6 +19,10 @@ export abstract class BaseUIComponent<
   T extends BaseUIComponentArgs
 > extends Component<T> {
   guid = guidFor(this);
+
+  get changeEvent() {
+    return this.args.changeEvent ?? 'change';
+  }
 
   // eslint-disable-next-line no-unused-vars
   abstract onChange(e: HtmlInputEvent): unknown;

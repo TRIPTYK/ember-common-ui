@@ -2,7 +2,7 @@
   class={{unless @classless 'tpk-file-input'}}
   id={{@guid}}
   multiple={{@multiple}}
-  {{on 'change' @onChange}}
+  {{on @changeEvent @onChange}}
   type='file'
   ...attributes
   data-test-tpk-file-input

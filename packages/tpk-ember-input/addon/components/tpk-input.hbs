@@ -6,6 +6,7 @@
           'tpk-input/input'
           onChange=this.onChange
           type=@type
+          changeEvent=this.changeEvent
           value=@value
           guid=this.guid
           classless=@classless
@@ -28,6 +29,7 @@
     <TpkInput::Input
       @value={{@value}}
       @type={{@type}}
+      @changeEvent={{this.changeEvent}}
       @onChange={{this.onChange}}
       @guid={{this.guid}}
       @classless={{@classless}}

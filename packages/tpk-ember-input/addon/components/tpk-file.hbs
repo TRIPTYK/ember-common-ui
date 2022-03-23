@@ -6,6 +6,7 @@
           'tpk-file/input'
           onChange=this.onChange
           accept=@accept
+          changeEvent=this.changeEvent
           guid=this.guid
           classless=@classless
         )
@@ -26,6 +27,7 @@
     </TpkFile::Label>
     <TpkFile::Input
       accept={{@accept}}
+      @changeEvent={{this.changeEvent}}
       @onChange={{this.onChange}}
       @guid={{this.guid}}
       @classless={{@classless}}

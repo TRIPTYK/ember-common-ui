@@ -3,9 +3,8 @@
   id={{@guid}}
   checked={{@checked}}
   type='checkbox'
-  tabindex='0'
   aria-checked={{@checked}}
-  {{on 'change' @onChange}}
+  {{on @changeEvent @onChange}}
   ...attributes
   data-test-tpk-checkbox-input
 />

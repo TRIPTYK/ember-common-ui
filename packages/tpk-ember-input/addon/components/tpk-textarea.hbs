@@ -7,16 +7,13 @@
     {{yield
       (hash
         Label=(component
-          'tpk-textarea/label'
-          classless=@classless
-          guid=this.guid
-          mandatory=@mandatory
-          label=@label
+          'tpk-textarea/label' classless=@classless guid=this.guid label=@label
         )
         Input=(component
           'tpk-textarea/input'
           guid=this.guid
           value=@value
+          changeEvent=this.changeEvent
           classless=@classless
           onChange=this.onChange
         )
@@ -29,6 +26,7 @@
       {{@label}}
     </TpkTextarea::Label>
     <TpkTextarea::Input
+      @changeEvent={{this.changeEvent}}
       @classless={{@classless}}
       @onChange={{this.onChange}}
       @guid={{this.guid}}
