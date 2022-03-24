@@ -3,8 +3,8 @@
   aria-expanded='{{@isOpen}}'
   aria-labelledby={{@guid}}
   type='button'
-  class={{unless @classless 'tpk-select-container-button'}}
-  {{on 'click' @selectButtonClicked}}
+  class={{unless @classless 'tpk-select-button'}}
+  {{on 'click' @onSelectButtonClick}}
   ...attributes
 >
   {{yield @selected}}

@@ -3,20 +3,19 @@
   role='listbox'
   aria-labelledby={{@guid}}
   aria-activedescendant='{{@guid}}-listbox-option-{{@selectedIndex}}'
-  class={{unless @classless 'tpk-select-container-options'}}
-  data-is-open='{{@isOpen}}'
+  class={{unless @classless 'tpk-select-options'}}
   ...attributes
 >
   {{#each @options as |o i|}}
     {{yield
       (component
-        'tpk-select/container/options/option'
+        'tpk-select/options/option'
         option=o
         guid=@guid
         index=i
         selected=@selected
         multiple=@multiple
-        selectElement=@selectElement
+        onSelect=@onSelect
       )
     }}
   {{/each}}

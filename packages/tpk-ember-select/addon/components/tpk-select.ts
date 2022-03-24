@@ -10,7 +10,7 @@ interface TpkSelectArgs<T> {
   label?: string;
   classless?: boolean;
   // eslint-disable-next-line no-unused-vars
-  selectElement: (newSelected: T, alreadySelected: boolean) => unknown;
+  onSelect: (newSelected: T, alreadySelected: boolean) => unknown;
 }
 
 export default class TpkSelect<T = unknown> extends Component<
@@ -20,22 +20,30 @@ export default class TpkSelect<T = unknown> extends Component<
   guid = guidFor(this);
 
   @action
-  selectButtonClicked() {
+  clickOutside() {
+    this.isOpen = false;
+  }
+
+  @action
+  rm(e: Event) {
+    console.log(e);
+  }
+
+  @action
+  onSelectButtonClick() {
     this.isOpen = !this.isOpen;
   }
 
   @action
-  selectElement(e: T, alreadySelected: boolean) {
+  onSelect(e: T, alreadySelected: boolean) {
     this.isOpen = false;
-    this.args.selectElement(e, alreadySelected);
+    this.args.onSelect(e, alreadySelected);
   }
 
-  get selected(): (T | undefined) | T[] {
-    if (this.args.multiple) {
-      const selected = this.args.selected as T[];
-      return this.args.options.filter((e) => selected.includes(e));
-    }
-    return this.args.options.find((e) => e === this.args.selected);
+  get hasSelection() {
+    return this.args.multiple
+      ? (this.args.selected as T[]).length > 0
+      : this.args.selected === undefined;
   }
 
   get selectedIndex() {

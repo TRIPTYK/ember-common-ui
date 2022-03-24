@@ -1,0 +1,7 @@
+<input
+  class={{unless @classless 'tpk-select-searchbar'}}
+  aria-label='search'
+  type='search'
+  {{on 'input' this.search}}
+  ...attributes
+/>

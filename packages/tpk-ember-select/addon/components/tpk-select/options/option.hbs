@@ -1,5 +1,5 @@
 <li
-  {{on 'click' (fn @selectElement @option this.isSelected)}}
+  {{on 'click' (fn @onSelect @option this.isSelected)}}
   id='{{@guid}}-listbox-option-{{@index}}'
   role='option'
   class={{unless @classless 'tpk-select-container-options-option'}}
