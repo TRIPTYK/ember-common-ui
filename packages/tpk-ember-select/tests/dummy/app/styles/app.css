@@ -1,37 +1,4 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-.tpk-select {}
-
-.tpk-select-label {
-  @apply block text-sm font-medium text-gray-700;
-}
-
-.tpk-select-container {
-  @apply z-10 w-full mt-1 relative hidden;
-}
-
-.tpk-select-searchbar {
-  @apply w-full bg-white;
-}
-
-.tpk-select-options {
-  @apply  w-full bg-white  shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm;
-}
-
-.tpk-select[data-is-open='true'] .tpk-select-container {
-  @apply block;
-}
-
-.tpk-select-container-internal {
-  @apply absolute w-full;
-}
-
-.tpk-select-options-option {
-  @apply text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-500;
-}
-
-.tpk-select-button {
-  @apply bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
-}
+@import 'tpk-ember-select';

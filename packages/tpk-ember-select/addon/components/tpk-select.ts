@@ -2,13 +2,15 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
+import { assert } from '@ember/debug';
 
 interface TpkSelectArgs<T> {
   options: T[];
-  selected: T | T[];
+  selected: (T | undefined) | T[];
   multiple?: boolean;
   label?: string;
   classless?: boolean;
+  defaultText?: string;
   // eslint-disable-next-line no-unused-vars
   onSelect: (newSelected: T, alreadySelected: boolean) => unknown;
 }
@@ -19,14 +21,27 @@ export default class TpkSelect<T = unknown> extends Component<
   @tracked isOpen = false;
   guid = guidFor(this);
 
-  @action
-  clickOutside() {
-    this.isOpen = false;
+  constructor(owner: unknown, args: TpkSelectArgs<T>) {
+    super(owner, args);
+    assert(
+      'Please provide an @options array to component',
+      args.options !== undefined
+    );
+    assert(
+      'Please provide an @onSelect function',
+      typeof args.onSelect === 'function'
+    );
+    if (this.args.multiple === true) {
+      assert(
+        'Please provide an array for @selected',
+        Array.isArray(args.selected)
+      );
+    }
   }
 
   @action
-  rm(e: Event) {
-    console.log(e);
+  clickOutside() {
+    this.isOpen = false;
   }
 
   @action
@@ -41,9 +56,9 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   get hasSelection() {
-    return this.args.multiple
+    return this.args.multiple === true
       ? (this.args.selected as T[]).length > 0
-      : this.args.selected === undefined;
+      : this.args.selected !== undefined;
   }
 
   get selectedIndex() {

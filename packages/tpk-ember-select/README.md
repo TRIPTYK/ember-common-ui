@@ -1,7 +1,7 @@
 tpk-ember-select
 ==============================================================================
 
-This addon will give you a simple select alternative in TailwindCSS
+This addon will give you a simple select alternative for TailwindCSS
 
 
 Compatibility
@@ -28,7 +28,38 @@ pnpm add -D @triptyk/tpk-ember-select
 Usage
 ------------------------------------------------------------------------------
 
+### Default style
 
+```css
+@import 'tpk-ember-select';
+```
+
+### Simple syntax
+
+```hbs
+<TpkSelect 
+  @multiple={{true}} 
+  @options={{this.options}} 
+  @selected={{this.selected}} 
+  @onSelect={{this.selectElement}} 
+  @onSearch={{this.search}}
+  @label="My select"
+  @defaultText="Please select something"
+>
+  <:selected as |s|>
+    <span class="text-red-400">{{s}}</span>
+  </:selected>
+  <:option as |o|>
+    {{o.option}}
+  </:option>
+</TpkSelect>
+```
+
+### Extended syntax
+
+```
+
+```
 
 Contributing
 ------------------------------------------------------------------------------

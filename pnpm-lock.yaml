@@ -525,6 +525,7 @@ importers:
       ember-source: ^4.2.0
       ember-source-channel-url: ^3.0.0
       ember-template-lint: ^4.2.0
+      ember-test-selectors: ^6.0.0
       ember-try: ^2.0.0
       eslint: ^8.11.0
       eslint-config-prettier: ^8.4.0
@@ -548,6 +549,7 @@ importers:
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 6.0.1
       ember-cli-typescript: 5.0.0
+      ember-test-selectors: 6.0.0
       focus-trap: 6.7.3
     devDependencies:
       '@ember/optional-features': 2.0.0
@@ -711,7 +713,7 @@ packages:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/compat-data': 7.17.7
-      '@babel/core': 7.17.8
+      '@babel/core': 7.17.8_supports-color@8.1.1
       '@babel/helper-validator-option': 7.16.7
       browserslist: 4.20.2
       semver: 6.3.0

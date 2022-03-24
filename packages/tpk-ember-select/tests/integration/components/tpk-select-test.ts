@@ -394,90 +394,31 @@ const backendArray = [
 module('Integration | Component | tpk-select', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders complex', async function (assert) {
-    this.set('selected', []);
-    this.set('options', [...backendArray]);
-    this.set('selectElement', (e: string, alreadySelected: boolean) => {
-      // eslint-disable-next-line ember/no-get
-      const selected = this.get('selected') as string[];
-      this.set(
-        'selected',
-        alreadySelected ? selected.filter((s) => s !== e) : [...selected, e]
-      );
-    });
-    this.set('search', (searchText: string) => {
-      this.set(
-        'options',
-        backendArray.filter((e) => e.includes(searchText))
-      );
-    });
-
-    await render(hbs`
-      <TpkSelect 
-        @multiple={{true}} 
-        @options={{this.options}} 
-        @selected={{this.selected}} 
-        @onSelect={{this.selectElement}} 
-        @onSearch={{this.search}}
-      as |S|>
-        <S.Label />
-        <S.Button as |selected|>
-        </S.Button>
-        <S.Container as |C|>
-          <div class="absolute w-full">
-            <C.Searchbar />
-            <C.Options as |Opts|>
-              <Opts as |Opt|>
-                <span class={{if Opt.isSelected "text-green-400"}}>{{Opt.option}}</span>
-              </Opts>
-            </C.Options>
-          </div>
-        </S.Container>
-      </TpkSelect>
-      <div>aaaa</div>
-    `);
-
-    assert.expect(0);
-  });
-
   test('it renders default', async function (assert) {
-    this.set('selected', []);
+    this.set('selected', undefined);
     this.set('options', [...backendArray]);
-    this.set('selectElement', (e: string, alreadySelected: boolean) => {
-      // eslint-disable-next-line ember/no-get
-      const selected = this.get('selected') as string[];
-      this.set(
-        'selected',
-        alreadySelected ? selected.filter((s) => s !== e) : [...selected, e]
-      );
-    });
-    this.set('search', (searchText: string) => {
-      this.set(
-        'options',
-        backendArray.filter((e) => e.includes(searchText))
-      );
-    });
-    this.set('rm', (e: Event) => {
-      console.log(e);
+    this.set('selectElement', (e: string) => {
+      this.set('selected', e);
     });
 
     await render(hbs`
       <TpkSelect 
-        @multiple={{true}} 
         @options={{this.options}} 
         @selected={{this.selected}} 
         @onSelect={{this.selectElement}} 
-        @onSearch={{this.search}}
         @defaultText="Please select something"
+        @label="My select"
       >
         <:selected as |s|>
-          <button type="button" {{on "click" this.rm}} class="text-red-400">{{s}}</button>
+          <span class="text-red-400">{{s}}</span>
         </:selected>
         <:option as |o|>
           {{o.option}}
         </:option>
+        <:notSelected>
+          <span class="text-blue-500">Nothing selected</span>
+        </:notSelected>
       </TpkSelect>
-      <div>aaa</div>
     `);
 
     await this.pauseTest();

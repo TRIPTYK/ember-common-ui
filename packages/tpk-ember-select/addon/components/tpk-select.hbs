@@ -33,8 +33,14 @@
           'tpk-select/button'
           onSelectButtonClick=this.onSelectButtonClick
           selected=@selected
+          classless=@classless
           isOpen=this.isOpen
         )
+        isOpen=this.isOpen
+        guid=this.guid
+        onSelect=this.onSelect
+        onSelectButtonClick=this.onSelectButtonClick
+        selectedIndex=this.selectedIndex
       )
     }}
   {{else}}
@@ -48,6 +54,7 @@
     <TpkSelect::Button
       @onSelectButtonClick={{this.onSelectButtonClick}}
       @selected={{@selected}}
+      classless={{@classless}}
       @isOpen={{this.isOpen}}
       as |selected|
     >
@@ -62,7 +69,11 @@
           {{/if}}
         {{/if}}
       {{else}}
-        {{@defaultText}}
+        {{#if (has-block 'notSelected')}}
+          {{yield @defaultText to='notSelected'}}
+        {{else}}
+          {{@defaultText}}
+        {{/if}}
       {{/if}}
     </TpkSelect::Button>
     <div class='tpk-select-container'>
@@ -72,6 +83,7 @@
             @label={{@label}}
             @guid={{this.guid}}
             @onSearch={{@onSearch}}
+            @classless={{@classless}}
             @options={{@options}}
             @isOpen={{this.isOpen}}
           />
@@ -81,6 +93,7 @@
           @guid={{this.guid}}
           @selected={{@selected}}
           @multiple={{@multiple}}
+          @classless={{@classless}}
           @onSelect={{this.onSelect}}
           @selectedIndex={{this.selectedIndex}}
           @options={{@options}}
