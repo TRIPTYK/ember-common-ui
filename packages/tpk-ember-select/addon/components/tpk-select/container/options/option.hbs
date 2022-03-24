@@ -1,8 +1,9 @@
 <li
-  {{on 'click' (fn @selectElement @option)}}
-  id='listbox-option-{{@index}}'
+  {{on 'click' (fn @selectElement @option this.isSelected)}}
+  id='{{@guid}}-listbox-option-{{@index}}'
   role='option'
+  class={{unless @classless 'tpk-select-container-options-option'}}
   ...attributes
 >
-  {{yield @option}}
+  {{yield (hash option=@option isSelected=this.isSelected)}}
 </li>

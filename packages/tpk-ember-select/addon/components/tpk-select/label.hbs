@@ -1,3 +1,7 @@
-<label class={{unless @classless 'tpk-select-label'}} ...attributes>
+<label
+  class={{unless @classless 'tpk-select-label'}}
+  id={{@guid}}
+  ...attributes
+>
   {{yield}}
 </label>

@@ -1,8 +1,10 @@
 <ul
   tabindex='-1'
   role='listbox'
-  aria-labelledby={{@label}}
-  aria-activedescendant='listbox-option-{{@selectedIndex}}'
+  aria-labelledby={{@guid}}
+  aria-activedescendant='{{@guid}}-listbox-option-{{@selectedIndex}}'
+  class={{unless @classless 'tpk-select-container-options'}}
+  data-is-open='{{@isOpen}}'
   ...attributes
 >
   {{#each @options as |o i|}}
@@ -10,7 +12,10 @@
       (component
         'tpk-select/container/options/option'
         option=o
+        guid=@guid
         index=i
+        selected=@selected
+        multiple=@multiple
         selectElement=@selectElement
       )
     }}

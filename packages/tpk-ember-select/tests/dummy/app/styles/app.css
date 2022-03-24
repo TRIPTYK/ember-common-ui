@@ -2,38 +2,32 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.select{
-  @apply mx-8 mt-8;
+.tpk-select {}
+
+.tpk-select-label {
+  @apply block text-sm font-medium text-gray-700;
 }
 
-.label-select{
-  @apply text-lg pl-2;
+.tpk-select-container {
+  @apply mt-1 relative;
 }
 
-.btn-select{
-  @apply border-2 border-blue-900;
+.tpk-select-container-options {
+  @apply absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm;
 }
 
-.selected{
-  @apply font-bold;
+.tpk-select-container-options {
+  @apply absolute z-10 mt-1 w-full hidden bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm;
 }
 
-.options-select{
-  @apply py-0 rounded-none;
+.tpk-select-container-options[data-is-open='true'] {
+  @apply block;
 }
 
-.btn-select, .option-select{
-  @apply cursor-pointer;
-} 
-
-.options-select:first-of-type{
-  @apply rounded-t-md;
+.tpk-select-container-options-option {
+  @apply text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-500;
 }
 
-.options-select:last-of-type{
-  @apply rounded-b-md;
-}
-
-.option-selected{
-  @apply bg-blue-300;
+.tpk-select-container-button {
+  @apply bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
 }

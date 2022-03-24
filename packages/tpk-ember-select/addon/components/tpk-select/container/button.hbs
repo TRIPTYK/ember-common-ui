@@ -1,8 +1,10 @@
 <button
   aria-haspopup='listbox'
-  aria-expanded='true'
-  aria-labelledby='listbox-label'
+  aria-expanded='{{@isOpen}}'
+  aria-labelledby={{@guid}}
   type='button'
+  class={{unless @classless 'tpk-select-container-button'}}
+  {{on 'click' @selectButtonClicked}}
   ...attributes
 >
   {{yield @selected}}

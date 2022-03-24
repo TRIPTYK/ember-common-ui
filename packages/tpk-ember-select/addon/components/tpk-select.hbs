@@ -1,13 +1,19 @@
-<div ...attributes>
+<div class={{unless @classless 'tpk-select'}} ...attributes>
   {{yield
     (hash
-      Label=(component 'tpk-select/label' classless=@classless label=@label)
+      Label=(component
+        'tpk-select/label' guid=this.guid classless=@classless label=@label
+      )
       Container=(component
         'tpk-select/container'
-        selectElement=@selectElement
+        isOpen=this.isOpen
+        selectElement=this.selectElement
+        selectButtonClicked=this.selectButtonClicked
         selected=this.selected
         classless=@classless
+        multiple=@multiple
         label=@label
+        guid=this.guid
         options=@options
         selectedIndex=this.selectedIndex
       )
