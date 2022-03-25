@@ -3,6 +3,7 @@
   id='{{@guid}}-listbox-option-{{@index}}'
   role='option'
   class={{unless @classless 'tpk-select-container-options-option'}}
+  data-test-option={{@index}}
   ...attributes
 >
   {{yield (hash option=@option isSelected=this.isSelected)}}

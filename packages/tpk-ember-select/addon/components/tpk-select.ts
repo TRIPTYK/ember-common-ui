@@ -14,7 +14,7 @@ export interface TpkSelectArgs<T> {
   // eslint-disable-next-line no-unused-vars
   onSearch: (searchString: string) => unknown;
   // eslint-disable-next-line no-unused-vars
-  onSelect: (newSelected: T, alreadySelected: boolean) => unknown;
+  onChange: (newSelected: T, alreadySelected: boolean) => unknown;
 }
 
 export default class TpkSelect<T = unknown> extends Component<
