@@ -20,7 +20,7 @@ module('Integration | Component | tpk-select', function (hooks) {
       <TpkSelect 
         @options={{this.options}} 
         @selected={{this.selected}} 
-        @onSelect={{this.selectElement}} 
+        @onChange={{this.selectElement}} 
         @defaultText="Please select something"
         @label="My select"
       >

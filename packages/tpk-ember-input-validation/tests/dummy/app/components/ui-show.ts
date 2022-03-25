@@ -59,7 +59,7 @@ export default class UiShow extends Component<UiShowArgs> {
   }
 
   @action
-  onSelect(e: Option) {
+  onChange(e: Option) {
     this.changeset.set('country', e);
   }
 

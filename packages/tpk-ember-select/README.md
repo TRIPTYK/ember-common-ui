@@ -41,7 +41,7 @@ Usage
   @multiple={{true}} 
   @options={{this.options}} 
   @selected={{this.selected}} 
-  @onSelect={{this.selectElement}} 
+  @onChange={{this.selectElement}} 
   @onSearch={{this.search}}
   @label="My select"
   @defaultText="Please select something"

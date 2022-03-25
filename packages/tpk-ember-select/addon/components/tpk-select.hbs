@@ -16,7 +16,7 @@
           guid=this.guid
           selected=@selected
           multiple=@multiple
-          onSelect=this.onSelect
+          onChange=this.onChange
           selectedIndex=this.selectedIndex
           options=@options
           isOpen=this.isOpen
@@ -38,7 +38,7 @@
         )
         isOpen=this.isOpen
         guid=this.guid
-        onSelect=this.onSelect
+        onChange=this.onChange
         onSelectButtonClick=this.onSelectButtonClick
         selectedIndex=this.selectedIndex
         hasSelection=this.hasSelection
@@ -96,7 +96,7 @@
           @selected={{@selected}}
           @multiple={{@multiple}}
           @classless={{@classless}}
-          @onSelect={{this.onSelect}}
+          @onChange={{this.onChange}}
           @selectedIndex={{this.selectedIndex}}
           @options={{@options}}
           @isOpen={{this.isOpen}}

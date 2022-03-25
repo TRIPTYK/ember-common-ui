@@ -30,8 +30,8 @@ export default class TpkSelect<T = unknown> extends Component<
       args.options !== undefined
     );
     assert(
-      'Please provide an @onSelect function',
-      typeof args.onSelect === 'function'
+      'Please provide an @onChange function',
+      typeof args.onChange === 'function'
     );
     if (this.args.multiple === true) {
       assert(
@@ -52,9 +52,9 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   @action
-  onSelect(e: T, alreadySelected: boolean) {
+  onChange(e: T, alreadySelected: boolean) {
     this.isOpen = false;
-    this.args.onSelect(e, alreadySelected);
+    this.args.onChange(e, alreadySelected);
   }
 
   get hasSelection() {
