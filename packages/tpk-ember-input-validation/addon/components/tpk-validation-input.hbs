@@ -3,7 +3,7 @@
   @label={{@label}}
   @type={{@type}}
   @classless={{@classless}}
-  class={{unless @classless (if this.hasError 'error')}}
+  data-has-error='{{this.hasError}}'
   as |I|
 >
   {{#if (has-block-params)}}

@@ -84,6 +84,48 @@
       </:errors>
     </TpkValidationTextarea>
   </div>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>Select input validation</h3>
+    <TpkValidationSelect
+      @label='Country'
+      @changeset={{this.changeset}}
+      @onSelect={{this.onSelect}}
+      @defaultText='Select something ...'
+      @selected={{changeset-get this.changeset 'country'}}
+      @validationField='country'
+      @options={{this.options}}
+    >
+      <:selected as |s|>
+        {{s.username}}
+      </:selected>
+      <:option as |o|>
+        {{o.option.username}}
+      </:option>
+    </TpkValidationSelect>
+    <TpkValidationSelect
+      @label='Country'
+      @changeset={{this.changeset}}
+      @onSelect={{this.onSelect}}
+      @defaultText='Select something ...'
+      @selected={{changeset-get this.changeset 'country'}}
+      @validationField='country'
+      @options={{this.options}}
+    >
+      <:selected as |s|>
+        {{s.username}}
+      </:selected>
+      <:option as |o|>
+        {{o.option.username}}
+      </:option>
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationSelect>
+  </div>
   <button
     class='w-full mb-4 lg:shadow-lg border border-black'
     type='submit'

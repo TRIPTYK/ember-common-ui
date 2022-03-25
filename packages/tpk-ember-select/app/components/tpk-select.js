@@ -1,1 +1,4 @@
-export { default } from '@triptyk/tpk-ember-select/components/tpk-select';
+export {
+  default,
+  TpkSelectArgs,
+} from '@triptyk/tpk-ember-select/components/tpk-select';

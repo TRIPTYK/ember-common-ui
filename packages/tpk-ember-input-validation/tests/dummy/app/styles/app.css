@@ -2,6 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'tpk-ember-input';
+@import 'tpk-ember-select';
 @import 'tpk-ember-input-validation';
 
 .tooltip-input .tpk-validation-input-error-container {

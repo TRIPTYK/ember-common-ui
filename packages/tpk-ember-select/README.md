@@ -58,7 +58,7 @@ Usage
 ### Extended syntax
 
 ```
-
+  
 ```
 
 Contributing

@@ -1,12 +1,12 @@
-.tpk-input.error .tpk-input-input {
+.tpk-input[data-has-error='true'] .tpk-input-input {
     @apply focus:outline-red-500 border  border-red-500;
 }
 
-.tpk-input.error .tpk-validation-input-error {
+.tpk-input[data-has-error='true'] .tpk-validation-input-error {
     @apply text-red-500 block ;
 }
 
-.tpk-checkbox.error .tpk-validation-input-error {
+.tpk-checkbox[data-has-error='true'] .tpk-validation-input-error {
     @apply text-red-500 block ;
 }
 
@@ -14,18 +14,22 @@
     @apply  block ;
 }
 
-.tpk-file.error .tpk-validation-file-error {
+.tpk-file[data-has-error='true'] .tpk-validation-file-error {
     @apply text-red-500 block;
 }
 
-.tpk-file.error .tpk-file-input {
+.tpk-file[data-has-error='true'] .tpk-file-input {
     @apply focus:outline-red-500 border  border-red-500;
 }
 
-.tpk-textarea.error .tpk-textarea-input {
+.tpk-textarea[data-has-error='true'] .tpk-textarea-input {
     @apply focus:outline-red-500 border  border-red-500;
 }
 
-.tpk-textarea.error .tpk-validation-textarea-error {
+.tpk-textarea[data-has-error='true'] .tpk-validation-textarea-error {
+    @apply text-red-500 block;
+}
+
+.tpk-select[data-has-error='true'] .tpk-validation-select-error {
     @apply text-red-500 block;
 }

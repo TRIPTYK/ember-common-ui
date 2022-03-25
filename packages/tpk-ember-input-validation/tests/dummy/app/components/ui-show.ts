@@ -24,14 +24,43 @@ const validation = {
   firstname: [validatePresence(true)],
   hasDriverLicence: [validatePresence(true)],
   avatar: [validatePresence(true)],
+  country: [validatePresence(true)],
 };
+
+interface Option {
+  username: string;
+  id: number;
+}
 
 export default class UiShow extends Component<UiShowArgs> {
   @tracked changeset: BufferedChangeset;
+  @tracked options: Option[] = [
+    {
+      username: 'Amaury',
+      id: 1,
+    },
+    {
+      username: 'Sebastien',
+      id: 2,
+    },
+    {
+      username: 'Coco',
+      id: 3,
+    },
+    {
+      username: 'Anthony Gonzalez',
+      id: 4,
+    },
+  ];
 
   @action submit(e: Event) {
     e.preventDefault();
     this.changeset.validate();
+  }
+
+  @action
+  onSelect(e: Option) {
+    this.changeset.set('country', e);
   }
 
   constructor(owner: unknown, args: UiShowArgs) {
@@ -42,6 +71,7 @@ export default class UiShow extends Component<UiShowArgs> {
         hasDriverLicence: '',
         files: undefined,
         firstname: '',
+        country: undefined,
       },
       lookupValidator(validation),
       validation

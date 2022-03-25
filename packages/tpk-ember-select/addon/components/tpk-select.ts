@@ -4,13 +4,15 @@ import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
 import { assert } from '@ember/debug';
 
-interface TpkSelectArgs<T> {
+export interface TpkSelectArgs<T> {
   options: T[];
   selected: (T | undefined) | T[];
   multiple?: boolean;
   label?: string;
   classless?: boolean;
   defaultText?: string;
+  // eslint-disable-next-line no-unused-vars
+  onSearch: (searchString: string) => unknown;
   // eslint-disable-next-line no-unused-vars
   onSelect: (newSelected: T, alreadySelected: boolean) => unknown;
 }

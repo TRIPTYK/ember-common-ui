@@ -41,9 +41,11 @@
         onSelect=this.onSelect
         onSelectButtonClick=this.onSelectButtonClick
         selectedIndex=this.selectedIndex
+        hasSelection=this.hasSelection
       )
     }}
   {{else}}
+    {{! 'Quick' already built syntax }}
     <TpkSelect::Label
       @guid={{this.guid}}
       @classless={{@classless}}
@@ -103,6 +105,8 @@
           <Opts as |Opt|>
             {{#if (has-block 'option')}}
               {{yield Opt to='option'}}
+            {{else}}
+              {{Opt.option}}
             {{/if}}
           </Opts>
         </TpkSelect::Options>
