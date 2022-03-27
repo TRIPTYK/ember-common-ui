@@ -35,12 +35,12 @@ module('Integration | Component | tpk-validation-file', function (hooks) {
 
     await c.validate();
 
-    assert.dom('[data-test-tpk-file].error').exists();
+    assert.dom('[data-test-tpk-file]').hasAttribute('data-has-error', 'true');
     assert.dom('.tpk-validation-file-error').exists().hasAnyText();
 
     await triggerEvent('[data-test-tpk-file-input]', 'change', {
       files: [new File(['Ember Rules!'], 'file.txt')],
     });
-    assert.dom('[data-test-tpk-file].error').doesNotExist();
+    assert.dom('[data-test-tpk-file]').hasAttribute('data-has-error', 'false');
   });
 });

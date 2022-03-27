@@ -38,7 +38,7 @@ module('Integration | Component | tpk-validation-checkbox', function (hooks) {
 
     await click('[data-test-tpk-checkbox-input]');
     assert.dom('[data-test-tpk-checkbox-input]').isNotChecked();
-    assert.dom('[data-test-tpk-checkbox].error').exists();
+    assert.dom('[data-test-tpk-checkbox][data-has-error="true"]').exists();
     assert.dom('.tpk-validation-checkbox-error').exists().hasAnyText();
   });
 });

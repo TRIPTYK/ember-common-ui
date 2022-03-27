@@ -38,7 +38,9 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
 
     await fillIn('[data-test-tpk-textarea-input]', '');
     assert.dom('[data-test-tpk-textarea-input]').hasNoText();
-    assert.dom('[data-test-tpk-textarea].error').exists();
+    assert
+      .dom('[data-test-tpk-textarea]')
+      .hasAttribute('data-has-error', 'true');
     assert.dom('.tpk-validation-textarea-error').exists().hasAnyText();
   });
 });
