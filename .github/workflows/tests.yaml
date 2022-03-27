@@ -78,7 +78,7 @@ jobs:
       - run: pnpm -C packages/ember-modal test
   deploy:
     runs-on: ubuntu-latest
-    #if: github.event_name == 'release' && github.event.action == 'created'
+    if: github.event_name == 'release' && github.event.action == 'created'
     needs:
       - modal
       - input-validation
@@ -102,8 +102,20 @@ jobs:
         with:
           version: 6.0.2
           run_install: true
-      - run: pnpm publish --dry-run
+      - run: pnpm publish
         working-directory: packages/ember-modal
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm publish
+        working-directory: packages/ember-select
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm publish
+        working-directory: packages/ember-input
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm publish
+        working-directory: packages/ember-input-validation
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
     
