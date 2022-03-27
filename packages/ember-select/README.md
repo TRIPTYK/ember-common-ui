@@ -31,7 +31,7 @@ Usage
 ### Default style
 
 ```css
-@import 'ember-select';
+@import 'tpk-ember-select';
 ```
 
 ### Simple syntax
