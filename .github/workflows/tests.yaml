@@ -1,6 +1,7 @@
 name: Tests
 
-on: push
+on: [push, release]
+
 
 jobs:
   input:
@@ -75,3 +76,31 @@ jobs:
           run_install: |
             - recursive: true
       - run: pnpm -C packages/ember-modal test
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'created'
+    needs:
+      - modal
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+          scope: "@triptyk"
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 6.0.2
+          run_install: true
+      - run: npm publish
+        working-directory: packages/tpk-ember-modal
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    
