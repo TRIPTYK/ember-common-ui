@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 importers:
 
-  packages/tpk-ember-input:
+  packages/ember-input:
     specifiers:
       '@ember/optional-features': ^2.0.0
       '@ember/test-helpers': ^2.6.0
@@ -153,7 +153,7 @@ importers:
       typescript: 4.6.2
       webpack: 5.70.0
 
-  packages/tpk-ember-input-validation:
+  packages/ember-input-validation:
     specifiers:
       '@ember/optional-features': ^2.0.0
       '@ember/test-helpers': ^2.6.0
@@ -233,8 +233,8 @@ importers:
       typescript: ^4.5.5
       webpack: ^5.67.0
     dependencies:
-      '@triptyk/ember-input': link:../tpk-ember-input
-      '@triptyk/ember-select': link:../tpk-ember-select
+      '@triptyk/ember-input': link:../ember-input
+      '@triptyk/ember-select': link:../ember-select
       ember-auto-import: 2.4.0_webpack@5.70.0
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 6.0.1
@@ -312,7 +312,7 @@ importers:
       typescript: 4.6.2
       webpack: 5.70.0
 
-  packages/tpk-ember-modal:
+  packages/ember-modal:
     specifiers:
       '@ember/optional-features': ^2.0.0
       '@ember/test-helpers': ^2.6.0
@@ -469,7 +469,7 @@ importers:
       typescript: 4.6.2
       webpack: 5.70.0
 
-  packages/tpk-ember-select:
+  packages/ember-select:
     specifiers:
       '@ember/optional-features': ^2.0.0
       '@ember/render-modifiers': ^2.0.4

@@ -1,5 +1,2 @@
 packages:
   - 'packages/**'
-  # exclude packages that are inside test directories
-  - '!**/test/**'
-  - '!**/__tests__/**'
