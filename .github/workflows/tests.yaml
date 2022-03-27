@@ -102,20 +102,6 @@ jobs:
         with:
           version: 6.0.2
           run_install: true
-      - run: pnpm publish --access=public --publish-branch=main
-        working-directory: packages/ember-modal
+      - run: cd packages/ember-modal && pnpm publish --access=public --publish-branch=main
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-      - run: pnpm publish --access=public --publish-branch=main
-        working-directory: packages/ember-select
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-      - run: pnpm publish --access=public --publish-branch=main
-        working-directory: packages/ember-input
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-      - run: pnpm publish --access=public --publish-branch=main
-        working-directory: packages/ember-input-validation
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-    
