@@ -29,16 +29,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "@triptyk/tpk-ember-modal": [
+      "@triptyk/ember-modal": [
         "addon"
       ],
-      "@triptyk/tpk-ember-modal/*": [
+      "@triptyk/ember-modal/*": [
         "addon/*"
       ],
-      "@triptyk/tpk-ember-modal/test-support": [
+      "@triptyk/ember-modal/test-support": [
         "addon-test-support"
       ],
-      "@triptyk/tpk-ember-modal/test-support/*": [
+      "@triptyk/ember-modal/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [

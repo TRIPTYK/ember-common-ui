@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd tpk-ember-select`
+* `cd ember-select`
 * `yarn install`
 
 ## Linting

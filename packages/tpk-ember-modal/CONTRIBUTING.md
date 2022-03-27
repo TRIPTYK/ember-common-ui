@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd tpk-ember-modal`
+* `cd ember-modal`
 * `yarn install`
 
 ## Linting

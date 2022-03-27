@@ -1,10 +1,10 @@
 {
-  "name": "@triptyk/tpk-ember-modal",
+  "name": "@triptyk/ember-modal",
   "version": "0.0.0",
-  "description": "This addon will give you a textarea in TailwindCSS with Ember",
+  "description": "Easy tailwindcss modal in Ember.JS",
   "keywords": [
     "ember-addon",
-    "textarea",
+    "modal",
     "ember",
     "TailwindCSS"
   ],
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "ember-auto-import": "^2.4.0",
+    "ember-test-selectors": "^6.0.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
     "ember-cli-typescript": "^4.2.1",

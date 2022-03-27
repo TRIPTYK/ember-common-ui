@@ -1,1 +1,1 @@
-export { default } from '@triptyk/tpk-ember-input-validation/components/tpk-validation-input';
+export { default } from '@triptyk/ember-input-validation/components/tpk-validation-input';

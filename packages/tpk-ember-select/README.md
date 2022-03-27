@@ -1,4 +1,4 @@
-tpk-ember-select
+ember-select
 ==============================================================================
 
 This addon will give you a simple select alternative for TailwindCSS
@@ -17,11 +17,11 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install @triptyk/tpk-ember-select
+ember install @triptyk/ember-select
 ```
 OR
 ```zsh
-pnpm add -D @triptyk/tpk-ember-select
+pnpm add -D @triptyk/ember-select
 ```
 
 
@@ -31,7 +31,7 @@ Usage
 ### Default style
 
 ```css
-@import 'tpk-ember-select';
+@import 'ember-select';
 ```
 
 ### Simple syntax

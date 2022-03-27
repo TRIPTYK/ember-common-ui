@@ -1,1 +1,1 @@
-export { default } from '@triptyk/tpk-ember-input/components/tpk-textarea/label';
+export { default } from '@triptyk/ember-input/components/tpk-textarea/label';

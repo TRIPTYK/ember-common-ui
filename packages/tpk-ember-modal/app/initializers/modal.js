@@ -1,4 +1,4 @@
 export {
   default,
   initialize,
-} from '@triptyk/tpk-ember-modal/initializers/modal';
+} from '@triptyk/ember-modal/initializers/modal';

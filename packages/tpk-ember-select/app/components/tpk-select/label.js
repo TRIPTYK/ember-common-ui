@@ -1,1 +1,1 @@
-export { default } from '@triptyk/tpk-ember-select/components/tpk-select/label';
+export { default } from '@triptyk/ember-select/components/tpk-select/label';

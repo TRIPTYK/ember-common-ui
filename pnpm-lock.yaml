@@ -163,8 +163,8 @@ importers:
       '@embroider/webpack': ^1.0.0
       '@glimmer/component': ^1.0.4
       '@glimmer/tracking': ^1.0.4
-      '@triptyk/tpk-ember-input': workspace:*
-      '@triptyk/tpk-ember-select': workspace:*
+      '@triptyk/ember-input': workspace:*
+      '@triptyk/ember-select': workspace:*
       '@types/ember__application': ^4.0.0
       '@types/ember__array': ^4.0.0
       '@types/ember__component': ^4.0.0
@@ -233,8 +233,8 @@ importers:
       typescript: ^4.5.5
       webpack: ^5.67.0
     dependencies:
-      '@triptyk/tpk-ember-input': link:../tpk-ember-input
-      '@triptyk/tpk-ember-select': link:../tpk-ember-select
+      '@triptyk/ember-input': link:../tpk-ember-input
+      '@triptyk/ember-select': link:../tpk-ember-select
       ember-auto-import: 2.4.0_webpack@5.70.0
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 6.0.1
@@ -395,6 +395,7 @@ importers:
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 6.0.1
       ember-cli-typescript: 4.2.1
+      ember-test-selectors: 6.0.0
       focus-trap: 6.7.3
     devDependencies:
       '@ember/optional-features': 2.0.0
@@ -449,7 +450,6 @@ importers:
       ember-source: 4.2.0_webpack@5.70.0
       ember-source-channel-url: 3.0.0
       ember-template-lint: 4.3.0
-      ember-test-selectors: 6.0.0
       ember-truth-helpers: 3.0.0
       ember-try: 2.0.0
       eslint: 8.11.0
@@ -7345,6 +7345,7 @@ packages:
       ember-cli-version-checker: 5.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /ember-truth-helpers/3.0.0:
     resolution: {integrity: sha512-hPKG9QqruAELh0li5xaiLZtr88ioWYxWCXisAWHWE0qCP4a2hgtuMzKUPpiTCkltvKjuqpzTZCU4VhQ+IlRmew==}
@@ -13463,7 +13464,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: true
 
   /word-wrap/1.2.3:

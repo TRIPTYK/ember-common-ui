@@ -1,4 +1,4 @@
-tpk-ember-select
+ember-select
 ==============================================================================
 
 This addon will give you a simple input alternative in TailwindCSS
@@ -17,11 +17,11 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install @triptyk/tpk-ember-input-validation
+ember install @triptyk/ember-input-validation
 ```
 OR
 ```zsh
-pnpm add -D @triptyk/tpk-ember-input-validation
+pnpm add -D @triptyk/ember-input-validation
 ```
 
 

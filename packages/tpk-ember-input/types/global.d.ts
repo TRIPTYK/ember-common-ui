@@ -1,5 +1,5 @@
 // Types for compiled templates
-declare module 'tpk-ember-select/templates/*' {
+declare module 'ember-select/templates/*' {
   import { TemplateFactory } from 'htmlbars-inline-precompile';
   const tmpl: TemplateFactory;
   export default tmpl;

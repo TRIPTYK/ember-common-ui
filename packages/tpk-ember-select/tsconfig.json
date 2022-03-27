@@ -29,16 +29,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "tpk-ember-select": [
+      "ember-select": [
         "addon"
       ],
-      "tpk-ember-select/*": [
+      "ember-select/*": [
         "addon/*"
       ],
-      "tpk-ember-select/test-support": [
+      "ember-select/test-support": [
         "addon-test-support"
       ],
-      "tpk-ember-select/test-support/*": [
+      "ember-select/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [

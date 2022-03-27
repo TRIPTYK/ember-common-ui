@@ -2,4 +2,4 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import "tpk-ember-modal";
+@import "ember-modal";
