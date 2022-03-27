@@ -1,4 +1,1 @@
-export {
-  default,
-  initialize,
-} from '@triptyk/ember-modal/initializers/modal';
+export { default, initialize } from '@triptyk/ember-modal/initializers/modal';
