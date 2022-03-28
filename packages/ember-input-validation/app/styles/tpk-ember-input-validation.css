@@ -1,3 +1,6 @@
+@import 'tpk-ember-input';
+@import 'tpk-ember-select';
+
 .tpk-input[data-has-error='true'] .tpk-input-input {
     @apply focus:outline-red-500 border  border-red-500;
 }
