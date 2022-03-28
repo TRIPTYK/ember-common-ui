@@ -9,12 +9,12 @@
     @apply text-red-500 block ;
 }
 
-.tpk-checkbox[data-has-error='true'] .tpk-validation-input-error {
+.tpk-checkbox[data-has-error='true'] .tpk-validation-checkbox-error {
     @apply text-red-500 block ;
 }
 
-.tpk-checkbox .tpk-validation-label {
-    @apply  block ;
+.tpk-checkbox .tpk-checkbox-label {
+    @apply block;
 }
 
 .tpk-file[data-has-error='true'] .tpk-validation-file-error {
