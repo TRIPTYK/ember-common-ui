@@ -5,6 +5,7 @@ import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
 
 interface TpkFileArgs extends BaseUIComponentArgs {
   accept?: string;
+  value: string | unknown;
 }
 
 export default class TpkFile extends BaseUIComponent<TpkFileArgs> {

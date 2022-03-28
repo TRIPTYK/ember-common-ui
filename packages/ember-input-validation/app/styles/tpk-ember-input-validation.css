@@ -13,9 +13,6 @@
     @apply text-red-500 block ;
 }
 
-.tpk-checkbox .tpk-checkbox-label {
-    @apply block;
-}
 
 .tpk-file[data-has-error='true'] .tpk-validation-file-error {
     @apply text-red-500 block;

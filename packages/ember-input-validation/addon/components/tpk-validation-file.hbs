@@ -23,9 +23,7 @@
     </I.Label>
     <div class={{if @classless 'tpk-validation-file-error-container'}}>
       <I.Input aria-invalid={{this.hasError}} />
-      {{#each I.files as |f|}}
-        <p>{{f.name}}</p>
-      {{/each}}
+      {{yield I.files to='files'}}
       {{#if this.hasError}}
         {{#if (has-block 'errors')}}
           {{yield this.errors to='errors'}}

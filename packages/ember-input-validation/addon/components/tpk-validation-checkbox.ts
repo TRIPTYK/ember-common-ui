@@ -4,10 +4,10 @@ import { BaseValidationArgs, BaseValidationComponent } from './base';
 interface TpkValidationCheckboxArgs extends BaseValidationArgs {}
 
 export default class TpkValidationCheckbox extends BaseValidationComponent<TpkValidationCheckboxArgs> {
-  @action onChange(e: Event) {
-    this.args.changeset.set(
-      this.args.validationField,
-      (e.target as HTMLInputElement).checked
-    );
+  @action onChange(checked: boolean) {
+    if (this.args.onChange) {
+      return this.args.onChange(checked);
+    }
+    this.args.changeset.set(this.args.validationField, checked);
   }
 }

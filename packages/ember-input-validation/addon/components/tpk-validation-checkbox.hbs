@@ -3,6 +3,8 @@
   @label={{@label}}
   @type={{@type}}
   @classless={{@classless}}
+  @value={{@value}}
+  @onChange={{this.onChange}}
   data-has-error='{{this.hasError}}'
   as |I|
 >
@@ -18,7 +20,7 @@
     }}
   {{else}}
     <div class={{if @classless 'tpk-validation-checkbox-error-container'}}>
-      <I.Input aria-invalid={{this.hasError}} @onChange={{this.onChange}} />
+      <I.Input aria-invalid={{this.hasError}} />
       <I.Label>
         {{@label}}
       </I.Label>

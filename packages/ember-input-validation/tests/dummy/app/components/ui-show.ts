@@ -68,10 +68,11 @@ export default class UiShow extends Component<UiShowArgs> {
     this.changeset = Changeset(
       {
         name: '',
-        hasDriverLicence: '',
-        files: undefined,
+        hasDriverLicence: false,
+        files: [],
         firstname: '',
-        country: undefined,
+        country: '',
+        comment: '',
       },
       lookupValidator(validation),
       validation

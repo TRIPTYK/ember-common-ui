@@ -5,9 +5,10 @@ interface TpkValidationInputArgs extends BaseValidationArgs {}
 
 export default class TpkValidationInput extends BaseValidationComponent<TpkValidationInputArgs> {
   @action onChange(e: Event) {
-    this.args.changeset.set(
-      this.args.validationField,
-      (e.target as HTMLInputElement).value
-    );
+    const value = (e.target as HTMLInputElement).value;
+    if (this.args.onChange) {
+      return this.args.onChange(value);
+    }
+    this.args.changeset.set(this.args.validationField, value);
   }
 }

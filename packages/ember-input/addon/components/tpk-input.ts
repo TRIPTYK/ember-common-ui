@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
 
@@ -10,7 +11,13 @@ export interface TpkInputArgs extends BaseUIComponentArgs {
 export default class TpkInput<
   T extends TpkInputArgs
 > extends BaseUIComponent<T> {
+  constructor(owner: unknown, args: T) {
+    super(owner, args);
+    assert('@value is required', args.value !== undefined);
+  }
+
   @action onChange(e: HtmlInputEvent): void {
+    e.preventDefault();
     this.args.onChange?.(e.target?.value, e);
   }
 }

@@ -24,11 +24,13 @@
   <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
     <h3 class='text-xl ml-2 mb-2'>Checkbox input validation</h3>
     <TpkValidationCheckbox
+      @value="driver"
       @label="Nom d'utilisateur"
       @changeset={{this.changeset}}
       @validationField='hasDriverLicence'
     />
     <TpkValidationCheckbox
+      @value="driver"
       @label="Nom d'utilisateur"
       @changeset={{this.changeset}}
       @validationField='hasDriverLicence'

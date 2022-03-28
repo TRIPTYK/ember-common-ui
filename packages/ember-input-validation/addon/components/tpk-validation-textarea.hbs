@@ -3,6 +3,7 @@
   @label={{@label}}
   @type={{@type}}
   @classless={{@classless}}
+  @onChange={{this.onChange}}
   data-has-error='{{this.hasError}}'
   as |I|
 >
@@ -21,7 +22,7 @@
       {{@label}}
     </I.Label>
     <div class={{if @classless 'tpk-validation-textarea-error-container'}}>
-      <I.Input aria-invalid={{this.hasError}} @onChange={{this.onChange}} />
+      <I.Input aria-invalid={{this.hasError}} />
       {{#if this.hasError}}
         {{#if (has-block 'errors')}}
           {{yield this.errors to='errors'}}
