@@ -9,16 +9,17 @@
       ...attributes
     >
       {{! Waiting for the backdrop filter css attribute }}
-      <div class={{concat 'tpk-modal-cover ' @coverClass}}></div>
       {{#if (has-block-params)}}
        {{yield
           (hash
             Content=(component
               'tpk-modal/content' title=@title isOpen=@isOpen onClose=@onClose
+            Cover=(component  'tpk-modal/cover')
             )
           )
         }}
       {{else}}
+        <TpkModal::Cover />
         <TpkModal::Content
           @title={{@title}}
           @isOpen={{@isOpen}}
