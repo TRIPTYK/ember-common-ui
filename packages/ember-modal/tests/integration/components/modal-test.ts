@@ -19,14 +19,14 @@ module('Integration | Component | modal', function (hooks) {
 
     await render(hbs`
     <div id="other"></div>
-    <Ui::Modal
+    <TpkModal
       @isOpen={{this.isOpen}}
       @title={{this.title}}
       @onClose={{this.onClose}}
       data-test-modal-toggle
     >
       Content
-    </Ui::Modal>`);
+    </TpkModal>`);
 
     assert.dom('[data-test-modal-toggle]').doesNotExist();
 

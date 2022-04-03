@@ -1,6 +1,6 @@
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of modal</h2>
 
-<Ui::Modal
+<TpkModal
   @title='My modal title'
   @isOpen={{this.open1}}
   @onClose={{this.closed1}}
@@ -10,9 +10,9 @@
     hic sunt odio velit quo quasi dolores? Cumque, iusto iste qui obcaecati ex
     neque magni enim corporis, sed, magnam molestiae.
   </p>
-</Ui::Modal>
+</TpkModal>
 
-<Ui::Modal
+<TpkModal
   @title='title'
   class='bg-red-900'
   @isOpen={{this.open2}}
@@ -25,9 +25,9 @@
       The red modal
     </p>
   </M.Content>
-</Ui::Modal>
+</TpkModal>
 
-<Ui::Modal
+<TpkModal
   @title='The green modal'
   class='bg-green-900'
   @isOpen={{this.open3}}
@@ -47,7 +47,7 @@
       {{on 'click' this.closed3}}
     >Click me to close</button>
   </M.Content>
-</Ui::Modal>
+</TpkModal>
 
 <div class='flex justify-around'>
   <div>

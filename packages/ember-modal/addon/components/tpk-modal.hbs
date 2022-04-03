@@ -15,21 +15,21 @@
           {{yield
             (hash
               Content=(component
-                'ui/modal/content' title=@title isOpen=@isOpen onClose=@onClose
+                'tpk-modal/content' title=@title isOpen=@isOpen onClose=@onClose
               )
             )
           }}
         {{else}}
-          <Ui::Modal::Content
+          <TpkModal::Content
             @title={{@title}}
             @isOpen={{@isOpen}}
             @onClose={{@onClose}}
           >
             {{yield}}
-          </Ui::Modal::Content>
+          </TpkModal::Content>
         {{/if}}
       {{else}}
-        <Ui::Modal::Content
+        <TpkModal::Content
           @title={{@title}}
           @isOpen={{@isOpen}}
           @onClose={{@onClose}}

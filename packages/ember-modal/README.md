@@ -42,7 +42,7 @@ Arguments :
   -  @onClose : The function triggered when modal is closed  
 
 ```hbs
-<Ui::Modal
+<TpkModal
   @title='My modal title'
   @isOpen={{this.isOpen}}
   @onClose={{this.isClosed}}
@@ -52,7 +52,7 @@ Arguments :
     hic sunt odio velit quo quasi dolores? Cumque, iusto iste qui obcaecati ex
     neque magni enim corporis, sed, magnam molestiae.
   </p>
-</Ui::Modal>
+</TpkModal>
 ```
 
 
