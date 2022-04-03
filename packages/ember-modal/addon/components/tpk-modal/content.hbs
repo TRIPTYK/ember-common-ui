@@ -15,8 +15,6 @@
     }}
   {{else}}
     <TpkModal::Content::Head @onClose={{@onClose}} @title={{@title}} />
-    {{#if (has-block)}}
       {{yield}}
-    {{/if}}
   {{/if}}
 </div>
