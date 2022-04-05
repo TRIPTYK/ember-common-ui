@@ -6,6 +6,7 @@ import TpkStepperStep from './tpk-stepper/step';
 
 interface TpkStepperArgs {
   startStep?: number;
+  classless?: boolean;
 }
 
 export default class TpkStepper extends Component<TpkStepperArgs> {

@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | tpk-stepper', function (hooks) {
@@ -35,11 +35,12 @@ module('Integration | Component | tpk-stepper', function (hooks) {
     </TpkStepper>
     `);
 
-    assert.dom('*').hasNoClass(/.*/);
+    findAll('*').forEach((e) => {
+      assert.dom(e).hasNoClass(/tpk-.*/);
+    });
 
     this.set('classless', false);
 
-    assert.dom('*').hasClass(/.*/);
     assert.dom('.tpk-stepper').exists();
     assert.dom('.tpk-stepper-step').exists();
     assert.dom('.tpk-stepper-stepper').exists();

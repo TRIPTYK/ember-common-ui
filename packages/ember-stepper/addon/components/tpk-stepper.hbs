@@ -1,20 +1,23 @@
 <div class={{unless @classless 'tpk-stepper'}} ...attributes>
-    {{yield (hash 
-        Stepper=(
-            component "tpk-stepper/stepper"
-            guid=this.guid
-        )
-        Step=(component "tpk-stepper/step" 
-            active=this.active 
-            steps=this.steps
-            unregisterStep=this.unregisterStep 
-            registerStep=this.registerStep 
-            guid=this.guid
-        )
-        goTo=this.goTo
-        goToNext=this.goToNext
-        goToPrevious=this.goToPrevious
-        isFirst=this.isFirst
-        isLast=this.isLast
-    )}}
+  {{yield
+    (hash
+      Stepper=(component
+        'tpk-stepper/stepper' classless=@classless guid=this.guid
+      )
+      Step=(component
+        'tpk-stepper/step'
+        active=this.active
+        steps=this.steps
+        classless=@classless
+        unregisterStep=this.unregisterStep
+        registerStep=this.registerStep
+        guid=this.guid
+      )
+      goTo=this.goTo
+      goToNext=this.goToNext
+      goToPrevious=this.goToPrevious
+      isFirst=this.isFirst
+      isLast=this.isLast
+    )
+  }}
 </div>

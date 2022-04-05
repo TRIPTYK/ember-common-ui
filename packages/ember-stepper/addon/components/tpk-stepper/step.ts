@@ -1,8 +1,12 @@
 import Component from '@glimmer/component';
 
 interface TpkStepperStepArgs {
-  active: TpkStepperStep;
+  active?: TpkStepperStep;
   steps: TpkStepperStep[];
+  guid: string;
+  registerStep: Function;
+  unregisterStep: Function;
+  classless?: boolean;
 }
 
 export default class TpkStepperStep extends Component<TpkStepperStepArgs> {

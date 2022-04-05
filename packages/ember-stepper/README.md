@@ -1,8 +1,7 @@
-ember-select
+ember-stepper
 ==============================================================================
 
-This addon will give you a simple select alternative for TailwindCSS
-
+Headless stepper, no default style provided here.
 
 Compatibility
 ------------------------------------------------------------------------------
@@ -10,7 +9,6 @@ Compatibility
 * Ember.js v3.24 or above
 * Ember CLI v3.24 or above
 * Node.js v12 or above
-* You need tailwind v2 or above to use this simple select
 
 
 Installation
@@ -28,38 +26,38 @@ pnpm add -D @triptyk/ember-stepper
 Usage
 ------------------------------------------------------------------------------
 
-### Default style
+### ...@Args
 
-```css
-@import 'tpk-ember-select';
+```ts
+interface TpkStepperArgs {
+  startStep?: number;
+  classless?: boolean;
+}
 ```
-
-### Simple syntax
 
 ```hbs
-<TpkSelect 
-  @multiple={{true}} 
-  @options={{this.options}} 
-  @selected={{this.selected}} 
-  @onChange={{this.selectElement}} 
-  @onSearch={{this.search}}
-  @label="My select"
-  @defaultText="Please select something"
->
-  <:selected as |s|>
-    <span class="text-red-400">{{s}}</span>
-  </:selected>
-  <:option as |o|>
-    {{o.option}}
-  </:option>
-</TpkSelect>
+<TpkStepper ...@Args |Stepper|>
+      <Stepper.Stepper />
+      <Stepper.Step as |S|>
+        <S.Header>
+          Step {{S.index}}
+        </S.Header>
+        <div>
+          Content {{S.index}}
+        </div>
+    </Stepper.Step>
+    <Stepper.Step as |S|>
+        <S.Header>
+        Step {{S.index}}
+        </S.Header>
+        <div>
+          Content {{S.index}}
+        </div>
+      </Stepper.Step>
+  </TpkStepper>
 ```
 
-### Extended syntax
-
-```
-  
-```
+Each step has a "Header", this is the title of the steps. The content is transfered to the `TpkStepper::Stepper` using `#in-element`. It may be customised to your needs.
 
 Contributing
 ------------------------------------------------------------------------------

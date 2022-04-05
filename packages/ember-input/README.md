@@ -28,19 +28,6 @@ pnpm add -D @triptyk/ember-input
 Usage
 ------------------------------------------------------------------------------
 
-### HTML class naming convention 
-
-Every HTML element has a class assigned to it.
-
-**Path of the component to kebab case**
-
-Ex : 
-  - `<TpkInput>` : .tpk-input
-  - `<TpkInput::Label>` : .tpk-input-label
-  - `<TpkInput::Input>` : .tpk-input-input
-
-If you want no base class applied to the component you can use the @classless argument.
-
 ### Common arguments
 
 All the inputs in this addon accepts these arguments.
