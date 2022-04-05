@@ -13,10 +13,6 @@ export default class TpkStepper extends Component<TpkStepperArgs> {
   @tracked steps: TpkStepperStep[] = [];
   guid = guidFor(this);
 
-  get startStep() {
-    return this.args.startStep ?? 1;
-  }
-
   get activeIndex() {
     const idx = this.steps.findIndex((s) => s === this.active);
     return idx === -1 ? undefined : idx + 1;
@@ -24,8 +20,8 @@ export default class TpkStepper extends Component<TpkStepperArgs> {
 
   @action registerStep(_: HTMLElement, [step]: [TpkStepperStep]) {
     this.steps = [...this.steps, step];
-    if (this.steps.length === this.startStep) {
-      this.goTo(this.startStep);
+    if (this.args.startStep && this.steps.length === this.args.startStep) {
+      this.goTo(this.args.startStep);
     }
   }
 
