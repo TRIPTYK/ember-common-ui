@@ -28,7 +28,7 @@ pnpm add -D @triptyk/ember-input
 Usage
 ------------------------------------------------------------------------------
 
-### HTLM class naming convention 
+### HTML class naming convention 
 
 Every HTML element has a class assigned to it.
 

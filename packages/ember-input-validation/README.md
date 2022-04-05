@@ -25,57 +25,34 @@ pnpm add -D @triptyk/ember-input-validation
 ```
 
 
-Usage
-------------------------------------------------------------------------------
-#### Features
+### Common arguments
 
-- Limit of characters
-- Password show or hide. You should add
-```html
-type="password"
-```
-- Add class error trigger when @hasError is true and you can add a **yield** with the error
-- A info tooltip under the input with @infoTooltip
-- When @mandatory is {{true}}, it's adding this :
-```html
-<span class='mandatory'>*</span>
-```
-After the label
-#### Integration example 
+All the inputs in this addon accepts these arguments.
 
-Template .hbs
-```hbs
-<Tpk:Input
-  @label="Add your favorite JS framework"
-  @value={{this.value}}
-  @containerStyle=""
-  @labelStyle=""
-  @inputStyle=""
-  @passwordStyle=""
-  @limitStyle=""
-  @tooltipStyle=""
-  @password={{true}}
-  @mandatory={{true}}
-  @infoTooltip="A good info"
-  @hasError={{true}}
-  @updateValue={{this.setValue}}
-  @selectedValue={{this.value}}
-  @placeholder="Select a value"
-  @key="text"
-  type="nothing | text | date | string | password"
-  {{on "focus" this.focusOtherInput}}
-/>
-```
 
-Controller .ts/.js
-```js
-@tracked value = '';
-
-@action
-setValue(value: string | number) {
-  this.value = value;
+```ts
+interface TpkBaseValidationArgs {
+  classless?: boolean;
+  label?: string;
+  changeset: BufferedChangeset;
+  validationField: string;
+  value: unknown;
+  changeEvent: 'input' | 'change';
+  onChange?: (...args: unknown[]) => unknown;
 }
 ```
+
+## Template usage
+
+Same as https://github.com/TRIPTYK/ember-common-ui/blob/main/packages/ember-input/README.md
+
+In addition, all root components yields
+  - `hasError` : boolean - check if has errros in changeset
+  - `errors` : array - The validation errors
+  - `firstError` : object - The first validation error
+
+Every root component has also an HTML attribute 
+  - `data-has-error='{{this.hasError}}'`
 
 Contributing
 ------------------------------------------------------------------------------
