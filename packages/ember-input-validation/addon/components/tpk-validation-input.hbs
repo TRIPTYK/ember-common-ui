@@ -23,7 +23,7 @@
       {{@label}}
     </I.Label>
     <div class={{unless @classless 'tpk-validation-input-error-container'}}>
-      <I.Input aria-invalid={{this.hasError}} @onChange={{this.onChange}} />
+      <I.Input aria-invalid={{this.hasError}} />
       {{#if this.hasError}}
         {{#if (has-block 'errors')}}
           {{yield this.errors to='errors'}}
