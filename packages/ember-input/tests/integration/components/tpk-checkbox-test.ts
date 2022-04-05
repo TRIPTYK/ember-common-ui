@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
@@ -10,6 +10,30 @@ import CatchState from 'dummy/tests/dummy/app/services/catch-state';
 
 module('Integration | Component | ui/checkbox', function (hooks) {
   setupRenderingTest(hooks);
+
+  test('class/less by default', async function (assert) {
+    this.set('setChecked', () => {});
+
+    await render(hbs`
+      <TpkCheckbox 
+        data-test-checkbox
+        @label='Label'
+        @classless={{this.classless}}
+        @checked={{false}}
+        @onChange={{this.setChecked}}
+      />
+    `);
+
+    findAll('*').forEach((e) => {
+      assert.dom(e).hasClass(/tpk-.*/);
+    });
+
+    this.set('classless', true);
+
+    findAll('*').forEach((e) => {
+      assert.dom(e).hasNoClass(/tpk-.*/);
+    });
+  });
 
   test('it renders default', async function (assert) {
     this.set('setChecked', (checked: boolean, value: string, e: Event) => {

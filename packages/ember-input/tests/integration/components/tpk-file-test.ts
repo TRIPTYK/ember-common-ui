@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, triggerEvent } from '@ember/test-helpers';
+import { findAll, render, triggerEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
@@ -21,9 +21,9 @@ module('Integration | Component | tpk-file', function (hooks) {
 
     this.set('classless', true);
 
-    assert.dom('.tpk-file-label').doesNotExist();
-    assert.dom('.tpk-file-input').doesNotExist();
-    assert.dom('.tpk-file').doesNotExist();
+    findAll('*').forEach((e) => {
+      assert.dom(e).hasNoClass(/tpk-.*/);
+    });
   });
 
   test('input by default', async function (assert) {

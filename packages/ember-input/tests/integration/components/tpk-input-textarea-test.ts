@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn } from '@ember/test-helpers';
+import { render, fillIn, findAll } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
@@ -22,9 +22,9 @@ module('Integration | Component | tpk-area', function (hooks) {
 
     this.set('classless', true);
 
-    assert.dom('.tpk-textarea-label').doesNotExist();
-    assert.dom('.tpk-textarea-input').doesNotExist();
-    assert.dom('.tpk-textarea').doesNotExist();
+    findAll('*').forEach((e) => {
+      assert.dom(e).hasNoClass(/tpk-.*/);
+    });
   });
 
   test('input by default', async function (assert) {
