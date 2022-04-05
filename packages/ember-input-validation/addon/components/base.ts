@@ -12,10 +12,6 @@ export interface BaseValidationArgs {
 export abstract class BaseValidationComponent<
   T extends BaseValidationArgs
 > extends Component<T> {
-  get hasError() {
-    return this.errors.length > 0;
-  }
-
   constructor(owner: unknown, args: T) {
     super(owner, args);
     assert('@changeset is required', typeof args.changeset === 'object');
@@ -23,6 +19,10 @@ export abstract class BaseValidationComponent<
       '@validationField is required',
       typeof args.validationField === 'string'
     );
+  }
+
+  get hasError() {
+    return this.errors.length > 0;
   }
 
   get firstError() {

@@ -2,8 +2,9 @@
   @value={{changeset-get @changeset @validationField}}
   @label={{@label}}
   @type={{@type}}
+  @onChange={{this.onChange}}
   @classless={{@classless}}
-   ...attributes
+  ...attributes
   data-has-error='{{this.hasError}}'
   as |I|
 >

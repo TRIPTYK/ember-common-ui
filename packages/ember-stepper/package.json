@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-stepper",
-  "version":"0.0.4",
+  "version": "0.0.4",
   "description": "This addon will give you a simple select alternative in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
@@ -33,13 +33,11 @@
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
     "ember-cli-typescript": "^5.0.0",
-    "ember-click-outside": "^4.0.0",
     "ember-test-selectors": "^6.0.0",
-    "focus-trap": "^6.7.3"
+    "@ember/render-modifiers": "^2.0.4"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
-    "@ember/render-modifiers": "^2.0.4",
     "@ember/test-helpers": "^2.6.0",
     "@embroider/compat": "^1.5.0",
     "@embroider/core": "^1.5.0",
@@ -76,6 +74,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~4.2.0",
     "ember-cli-dependency-checker": "^3.2.0",
+    "ember-cli-htmlbars-inline-precompile": "^3.0.2",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-postcss": "^8.0.0",
     "ember-cli-sri": "^2.1.1",
