@@ -62,11 +62,4 @@ export default class TpkSelect<T = unknown> extends Component<
       ? (this.args.selected as T[]).length > 0
       : this.args.selected !== undefined;
   }
-
-  get selectedIndex() {
-    if (!this.args.selected) {
-      return -1;
-    }
-    return this.args.options.findIndex((e) => e === this.args.selected);
-  }
 }
