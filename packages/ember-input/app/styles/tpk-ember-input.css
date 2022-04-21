@@ -7,6 +7,15 @@
   @apply block text-sm font-semibold text-gray-700;
 }
 
+/* Datepicker */
+.tpk-datepicker-input {
+  @apply mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 leading-3 block w-full sm:text-sm border-gray-300 rounded-md;
+}
+
+.tpk-datepicker-label {
+  @apply block text-sm font-semibold text-gray-700;
+}
+
 /* Textarea */
 .tpk-textarea {
   @apply block text-sm font-medium text-gray-700;

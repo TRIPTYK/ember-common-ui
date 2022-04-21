@@ -37,6 +37,42 @@
     </TpkCheckbox>
   </div>
 </div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of datepicker</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Datepicker inputs</h3>
+  <TpkDatepicker
+    @value={{this.selectedDate}}
+    @onChange={{this.setDate}}
+    @label='Datepicker'
+    @placeholder='Pick a date'
+  />
+
+  <TpkDatepicker
+    @value={{this.selectedDate}}
+    @onChange={{this.setDate}}
+    @label='Datepicker'
+    class='mt-4'
+    as |D|
+  >
+    <D.Label>
+      <span class='text-red-500'>Mon datepicker</span>
+      en
+      <span>HTML</span>
+    </D.Label>
+    <D.Input class='text-red-500' @disabled={{true}} />
+  </TpkDatepicker>
+  <TpkDatepicker
+    @value={{this.selectedDate}}
+    @onChange={{this.setDate}}
+    @label='Timepicker'
+    @placeholder='Pick a time'
+    @noCalendar={{true}}
+    @enableTime={{true}}
+    @dateFormat='H:i'
+    @allowInput={{true}}
+    class='mt-4'
+  />
+</div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Textarea</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
   <h3 class='text-xl ml-2'>Textarea</h3>

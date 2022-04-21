@@ -1,0 +1,20 @@
+<EmberFlatpickr
+  data-test-datepicker-content
+  @locale='fr'
+  @date={{@value}}
+  @dateFormat={{@dateFormat}}
+  @enableTime={{@enableTime}}
+  @noCalendar={{@noCalendar}}
+  @maxDate={{@maxDate}}
+  @minDate={{@minDate}}
+  @onChange={{@onChange}}
+  @mode={{@mode}}
+  @time_24hr={{true}}
+  @disabled={{@disabled}}
+  @defaultDate={{@defaultDate}}
+  @allowInput={{@allowInput}}
+  placeholder={{@placeholder}}
+  id={{@guid}}
+  class={{unless @classless 'tpk-datepicker-input'}}
+  ...attributes
+/>

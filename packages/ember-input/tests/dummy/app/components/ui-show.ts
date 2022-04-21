@@ -8,6 +8,7 @@ export default class UiShow extends Component<UiShowArgs> {
   @tracked checked: boolean = false;
   @tracked input: string = '';
   @tracked inputArea: string = '';
+  @tracked selectedDate: Date | string = '';
 
   get hasError() {
     return this.input.length < 2;
@@ -31,5 +32,10 @@ export default class UiShow extends Component<UiShowArgs> {
   @action
   iconClick() {
     console.log('click');
+  }
+
+  @action
+  setDate(dates: Date[]) {
+    this.selectedDate = dates[0];
   }
 }
