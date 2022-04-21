@@ -6,6 +6,7 @@ export interface BaseValidationArgs {
   changeset: BufferedChangeset;
   validationField: string;
   // Override change function
+  // eslint-disable-next-line no-unused-vars
   onChange?: (value: unknown) => unknown;
 }
 

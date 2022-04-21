@@ -1,0 +1,51 @@
+<TpkDatepicker
+  @value={{changeset-get @changeset @validationField}}
+  @label={{@label}}
+  @type={{@type}}
+  @onChange={{this.onChange}}
+  @classless={{@classless}}
+  @dateFormat={{@dateFormat}}
+  @enableTime={{@enableTime}}
+  @noCalendar={{@noCalendar}}
+  @maxDate={{@maxDate}}
+  @minDate={{@minDate}}
+  @disabled={{@disabled}}
+  @placeholder={{@placeholder}}
+  @defaultDate={{@defaultDate}}
+  @allowInput={{@allowInput}}
+  @mode={{@mode}}
+  ...attributes
+  data-has-error='{{this.hasError}}'
+  as |D|
+>
+  {{#if (has-block-params)}}
+    {{yield
+      (hash
+        Input=D.Input
+        Label=D.Label
+        errors=this.errors
+        hasError=this.hasError
+        firstError=this.firstError
+      )
+    }}
+  {{else}}
+    <D.Label>
+      {{@label}}
+    </D.Label>
+    <div
+      class={{unless @classless 'tpk-validation-datepicker-error-container'}}
+    >
+      <D.Input aria-invalid={{this.hasError}} />
+      {{#if this.hasError}}
+        {{#if (has-block 'errors')}}
+          {{yield this.errors to='errors'}}
+        {{else}}
+          <span class={{unless @classless 'tpk-validation-datepicker-error'}}>
+            {{this.firstError}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+    {{yield}}
+  {{/if}}
+</TpkDatepicker>

@@ -13,6 +13,10 @@
     @apply text-red-500 block ;
 }
 
+.tpk-datepicker[data-has-error='true'] .tpk-validation-datepicker-error {
+    @apply text-red-500 block ;
+}
+
 
 .tpk-file[data-has-error='true'] .tpk-validation-file-error {
     @apply text-red-500 block;

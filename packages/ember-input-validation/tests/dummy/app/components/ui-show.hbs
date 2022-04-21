@@ -77,6 +77,40 @@
     </TpkValidationFile>
   </div>
   <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>Simple validation datepicker</h3>
+    <TpkValidationDatepicker
+      @label='Datepicker'
+      @changeset={{this.changeset}}
+      @validationField='date'
+    />
+    <TpkValidationDatepicker
+      @label='Datepicker'
+      @changeset={{this.changeset}}
+      @validationField='date'
+      class='mt-4'
+      as |I|
+    >
+      <I.Label>
+        Label de Datepicker
+      </I.Label>
+      <I.Input />
+    </TpkValidationDatepicker>
+    <TpkValidationDatepicker
+      @label='Datepicker'
+      @changeset={{this.changeset}}
+      @validationField='date'
+      class='mt-4'
+    >
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationDatepicker>
+  </div>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
     <h3 class='text-xl ml-2 mb-2'>Textarea input validation </h3>
     <TpkValidationTextarea
       @label='Comments'

@@ -24,6 +24,7 @@ const validation = {
   firstname: [validatePresence(true)],
   hasDriverLicence: [validatePresence(true)],
   avatar: [validatePresence(true)],
+  date: [validatePresence(true)],
   country: [validatePresence(true)],
 };
 
@@ -72,6 +73,7 @@ export default class UiShow extends Component<UiShowArgs> {
         files: [],
         firstname: '',
         country: '',
+        date: '',
         comment: '',
       },
       lookupValidator(validation),
