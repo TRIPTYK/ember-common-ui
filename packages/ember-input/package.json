@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-input",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
