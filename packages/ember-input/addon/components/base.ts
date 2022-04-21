@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
-import { assert } from '@ember/debug';
+// import { assert } from '@ember/debug';
 
 // We have a base class to keep consistency between the inputs
 export interface BaseUIComponentArgs {
@@ -23,7 +23,7 @@ export abstract class BaseUIComponent<
 
   constructor(owner: unknown, args: T) {
     super(owner, args);
-    assert('@label is required', args.label !== undefined);
+    // assert('@label is required', args.label !== undefined);
   }
 
   get changeEvent() {
