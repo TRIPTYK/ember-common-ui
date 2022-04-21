@@ -4,9 +4,6 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, findAll } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { getOwner } from '@ember/application';
-import ApplicationInstance from '@ember/application/instance';
-import CatchState from 'dummy/tests/dummy/app/services/catch-state';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
 
