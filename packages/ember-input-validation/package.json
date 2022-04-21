@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-input-validation",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
@@ -28,8 +28,8 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "@triptyk/ember-input": "workspace:*",
-    "@triptyk/ember-select": "workspace:*",
+    "@triptyk/ember-input": "^0.0.9",
+    "@triptyk/ember-select": "^0.0.6",
     "ember-auto-import": "^2.4.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
