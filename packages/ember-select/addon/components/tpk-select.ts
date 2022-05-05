@@ -60,6 +60,6 @@ export default class TpkSelect<T = unknown> extends Component<
   get hasSelection() {
     return this.args.multiple === true
       ? (this.args.selected as T[]).length > 0
-      : this.args.selected !== undefined;
+      : !!this.args.selected;
   }
 }
