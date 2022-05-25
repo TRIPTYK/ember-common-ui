@@ -37,6 +37,7 @@
     "ember-test-selectors": "^6.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
     "@embroider/compat": "^1.5.0",
