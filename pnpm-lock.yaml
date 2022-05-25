@@ -7786,7 +7786,7 @@ packages:
       '@ember/test-helpers': ^2.4.0
       qunit: ^2.13.0
     dependencies:
-      '@ember/test-helpers': 2.8.1_bfozq3hgwnlicsu2zb5lumec2a
+      '@ember/test-helpers': 2.8.1_5dg2zfxodhqv6taq4iskx5raf4
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 3.0.2
       common-tags: 1.8.2
