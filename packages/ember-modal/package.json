@@ -31,7 +31,7 @@
     "ember-auto-import": "^2.4.1",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
-    "ember-cli-typescript": "^5.0.0",
+    "ember-cli-typescript": "^5.1.0",
     "ember-test-selectors": "^6.0.0",
     "focus-trap": "^6.7.3"
   },
