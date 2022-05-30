@@ -18,6 +18,7 @@ module('Integration | Component | modal', function (hooks) {
     this.set('title', 'My modal');
 
     await render(hbs`
+    <div id="tpk-modal"></div>
     <div id="other"></div>
     <TpkModal
       @isOpen={{this.isOpen}}

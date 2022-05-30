@@ -29,7 +29,6 @@ Usage
 ------------------------------------------------------------------------------
 #### Features
 
-- Auto inject div modal in body with id "tpk-modal" by default.
 - Modal dialog, only 1 active at a time.
 - Triggers @onClose on ESC key press.
 - Completely customatizable with blocks
