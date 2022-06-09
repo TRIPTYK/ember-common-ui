@@ -5,16 +5,18 @@
       role='dialog'
       aria-labelledby={{@title}}
       {{on-escape @onClose}}
-      {{focus-trap}}
       ...attributes
     >
       {{! Waiting for the backdrop filter css attribute }}
       {{#if (has-block-params)}}
-       {{yield
+        {{yield
           (hash
             Content=(component
-              'tpk-modal/content' title=@title isOpen=@isOpen onClose=@onClose
-            Cover=(component  'tpk-modal/cover')
+              'tpk-modal/content'
+              title=@title
+              isOpen=@isOpen
+              onClose=@onClose
+              Cover=(component 'tpk-modal/cover')
             )
           )
         }}
