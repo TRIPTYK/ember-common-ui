@@ -1,7 +1,7 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, triggerKeyEvent } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | modal', function (hooks) {
@@ -50,13 +50,6 @@ module('Integration | Component | modal', function (hooks) {
     assert
       .dom('[data-test-modal-toggle] h3')
       .hasText(this.get('title') as string);
-
-    await triggerKeyEvent(document, 'keydown', 'Escape');
-    assert.dom('[data-test-modal-toggle]').doesNotExist();
-    assert.false(this.get('isOpen'));
-
-    this.set('isOpen', true);
-    assert.dom('[data-test-modal-toggle]').exists();
 
     await click('[data-test-tpk-modal-close]');
     assert.dom('[data-test-modal-toggle]').doesNotExist();
