@@ -1,7 +1,7 @@
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import Component from '@glimmer/component';
-import { action } from '@ember/action';
+import { action } from '@ember/object';
 
 interface UiModalArgs {
   isOpen: boolean;
