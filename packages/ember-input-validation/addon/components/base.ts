@@ -5,7 +5,6 @@ import { BufferedChangeset } from 'ember-changeset/types';
 export interface BaseValidationArgs {
   changeset: BufferedChangeset;
   validationField: string;
-  // Override change function
   // eslint-disable-next-line no-unused-vars
   onChange?: (value: unknown) => unknown;
 }
@@ -32,9 +31,9 @@ export abstract class BaseValidationComponent<
 
   get errors() {
     return (
-      (this.args.changeset.errors.find(
+      (this.args.changeset.errors.filter(
         (err) => err.key === this.args.validationField
-      )?.validation as unknown[]) ?? []
+      ) as unknown[]) ?? []
     );
   }
 }
