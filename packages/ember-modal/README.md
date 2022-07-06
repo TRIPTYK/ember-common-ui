@@ -4,8 +4,7 @@ ember-modal
 This addon will give you a simple modal mechanic
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
 * Ember.js v3.24 or above
 * Ember CLI v3.24 or above
@@ -13,8 +12,7 @@ Compatibility
 * You need tailwind v2 or above to use this simple textarea
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```zsh
 ember install @triptyk/ember-modal
@@ -97,14 +95,12 @@ Structure of the component (Emmet like)
 
   
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 You can also contact info@triptyk for more informations on how contributing on this project.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
