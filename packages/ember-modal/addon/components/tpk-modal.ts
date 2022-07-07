@@ -6,6 +6,7 @@ import { action } from '@ember/object';
 interface UiModalArgs {
   isOpen: boolean;
   onClose?: () => void;
+  onClickOutside?: () => void;
   title: string;
   coverClass: string;
 }

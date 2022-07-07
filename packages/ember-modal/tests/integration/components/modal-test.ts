@@ -55,4 +55,40 @@ module('Integration | Component | modal', function (hooks) {
     assert.dom('[data-test-modal-toggle]').doesNotExist();
     assert.false(this.get('isOpen'));
   });
+
+  test('click outside', async function (assert) {
+    this.set('onClose', () => {
+      this.set('isOpen', false);
+    });
+    this.set('onClickOutside', () => {
+      console.log('clicked');
+      assert.step('clickOutside');
+    });
+    this.set('isOpen', false);
+    this.set('title', 'My modal');
+
+    await render(hbs`
+    <div id="tpk-modal"></div>
+    <button type="button" id="other" class="absolute top-0 z-10 p-5">Banana</button>
+    <TpkModal
+      @isOpen={{this.isOpen}}
+      @title={{this.title}}
+      @onClose={{this.onClose}}
+      @onClickOutside={{this.onClickOutside}}
+      data-test-modal-toggle
+    >
+      Content
+    </TpkModal>`);
+
+    assert.dom('[data-test-modal-toggle]').doesNotExist();
+
+    this.set('isOpen', true);
+
+    assert.dom('[data-test-modal-toggle]').exists('modal should be open');
+    await click('#other');
+    assert.verifySteps(
+      ['clickOutside'],
+      'clickOutside function must have been called'
+    );
+  });
 });

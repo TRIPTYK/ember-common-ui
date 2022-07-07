@@ -16,6 +16,7 @@
               title=@title
               isOpen=@isOpen
               onClose=@onClose
+              onClickOutside=@onClickOutside
               Cover=(component 'tpk-modal/cover')
             )
           )
@@ -26,6 +27,7 @@
           @title={{@title}}
           @isOpen={{@isOpen}}
           @onClose={{@onClose}}
+          @onClickOutside={{@onClickOutside}}
         >
           {{yield}}
         </TpkModal::Content>
