@@ -21,6 +21,8 @@ export default class TpkSelect<T = unknown> extends Component<
   TpkSelectArgs<T>
 > {
   @tracked isOpen = false;
+  @tracked focusIndex?: number;
+
   guid = guidFor(this);
 
   constructor(owner: unknown, args: TpkSelectArgs<T>) {

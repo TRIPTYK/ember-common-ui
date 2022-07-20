@@ -24,8 +24,8 @@
   @apply absolute w-full;
 }
 
-.tpk-select-options-option {
-  @apply text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-500;
+.tpk-select-container-options-option {
+  @apply text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-500 focus:border-solid focus:border-2 focus:border-indigo-500;
 }
 
 .tpk-select-button {
