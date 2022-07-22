@@ -1,7 +1,7 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, waitUntil } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | modal', function (hooks) {
@@ -61,7 +61,7 @@ module('Integration | Component | modal', function (hooks) {
       this.set('isOpen', false);
     });
     this.set('onClickOutside', () => {
-      console.log('clicked');
+      this.set('isOpen', false);
       assert.step('clickOutside');
     });
     this.set('isOpen', false);
@@ -86,6 +86,7 @@ module('Integration | Component | modal', function (hooks) {
 
     assert.dom('[data-test-modal-toggle]').exists('modal should be open');
     await click('#other');
+    await waitUntil(() => !this.get('isOpen'));
     assert.verifySteps(
       ['clickOutside'],
       'clickOutside function must have been called'
