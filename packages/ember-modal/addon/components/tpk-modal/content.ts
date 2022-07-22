@@ -9,9 +9,6 @@ interface UiModalContentArgs {
 export default class UiModalContent extends Component<UiModalContentArgs> {
   @action
   public onClickOutside(e: PointerEvent) {
-    if (this.args.onClickOutside) {
-      return this.args.onClickOutside(e);
-    }
-    return this.args.onClose();
+    return this.args.onClickOutside?.(e) ?? this.args.onClose();
   }
 }
