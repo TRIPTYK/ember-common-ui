@@ -1,7 +1,7 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, waitUntil } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | modal', function (hooks) {
@@ -61,6 +61,7 @@ module('Integration | Component | modal', function (hooks) {
       this.set('isOpen', false);
     });
     this.set('onClickOutside', () => {
+      console.log('out');
       this.set('isOpen', false);
       assert.step('clickOutside');
     });
@@ -69,7 +70,7 @@ module('Integration | Component | modal', function (hooks) {
 
     await render(hbs`
     <div id="tpk-modal"></div>
-    <button type="button" id="other" class="absolute top-0 z-10 p-5">Banana</button>
+    <button type="button" data-test-other class="absolute top-0 z-30 p-5">Banana</button>
     <TpkModal
       @isOpen={{this.isOpen}}
       @title={{this.title}}
@@ -85,8 +86,11 @@ module('Integration | Component | modal', function (hooks) {
     this.set('isOpen', true);
 
     assert.dom('[data-test-modal-toggle]').exists('modal should be open');
-    await click('#other');
-    await waitUntil(() => !this.get('isOpen'));
+    /**
+     * The modifier seems to take some time to listen (some ms), we must wait a little
+     */
+    await new Promise((res) => setTimeout(res, 50));
+    await click('[data-test-other]');
     assert.verifySteps(
       ['clickOutside'],
       'clickOutside function must have been called'

@@ -1,11 +1,11 @@
 <div
   data-test-tpk-modal
   class='tpk-modal-content'
-  {{on-click-outside this.onClickOutside}}
   role='dialog'
   aria-modal='true'
   aria-labelledby='modal'
   ...attributes
+  {{on-click-outside this.onClickOutside}}
 >
   {{#if (has-block-params)}}
     {{yield
@@ -15,6 +15,6 @@
     }}
   {{else}}
     <TpkModal::Content::Head @onClose={{@onClose}} @title={{@title}} />
-      {{yield}}
+    {{yield}}
   {{/if}}
 </div>
