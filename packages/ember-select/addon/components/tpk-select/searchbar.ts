@@ -5,7 +5,7 @@ interface TpkSelectContainerSearchbarArgs<T = unknown> {
   options: T[];
   selected: T;
   isOpen: boolean;
-  // eslint-disable-next-line no-unused-vars
+
   onSearch: (searchValue: string) => void;
 }
 

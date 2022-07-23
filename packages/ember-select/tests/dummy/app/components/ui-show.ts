@@ -7,7 +7,7 @@ interface UiShowArgs {}
 export default class UiShow extends Component<UiShowArgs> {
   @tracked value = '';
 
-  options = [];
+  options = ['a', 'b', 'c'];
   @action
   setValue(value: any) {
     this.value = value.value;

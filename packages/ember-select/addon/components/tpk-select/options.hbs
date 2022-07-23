@@ -1,3 +1,4 @@
+{{! template-lint-disable no-down-event-binding }}
 <ul
   tabindex='-1'
   role='listbox'
@@ -11,6 +12,7 @@
         'tpk-select/options/option'
         option=o
         guid=@guid
+        registerChild=this.registerChild
         index=i
         selected=@selected
         multiple=@multiple
