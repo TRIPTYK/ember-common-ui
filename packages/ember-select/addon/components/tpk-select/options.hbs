@@ -1,9 +1,13 @@
 {{! template-lint-disable no-down-event-binding }}
-<ul
+
+<div
   tabindex='-1'
   role='listbox'
+  aria-multiselectable={{@multiple}}
+  aria-activedescendant={{@activeChild.id}}
   aria-labelledby={{@guid}}
   class={{unless @classless 'tpk-select-options'}}
+  {{did-insert @registerOptionsDiv}}
   ...attributes
 >
   {{#each @options as |o i|}}
@@ -12,7 +16,7 @@
         'tpk-select/options/option'
         option=o
         guid=@guid
-        registerChild=this.registerChild
+        registerChild=@registerChild
         index=i
         selected=@selected
         multiple=@multiple
@@ -20,4 +24,4 @@
       )
     }}
   {{/each}}
-</ul>
+</div>

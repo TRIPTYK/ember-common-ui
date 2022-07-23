@@ -37,6 +37,10 @@ module.exports = function (defaults) {
   //     },
   //   ],
   // });
+  process.on('uncaughtException', (e) => {
+    console.error(e);
+  });
+
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: true,

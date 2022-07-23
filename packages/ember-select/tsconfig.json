@@ -9,7 +9,7 @@
     "alwaysStrict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,

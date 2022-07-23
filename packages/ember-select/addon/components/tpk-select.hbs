@@ -1,7 +1,11 @@
+{{! template-lint-disable no-invalid-interactive }}
+{{! template-lint-disable no-down-event-binding }}
 <div
   class={{unless @classless 'tpk-select'}}
   data-is-open='{{this.isOpen}}'
-  {{on-click-outside this.clickOutside}}
+  {{on-click-outside this.close}}
+  {{on 'keydown' this.keyDown}}
+  {{focus-trap}}
   ...attributes
 >
   {{#if (has-block-params)}}
@@ -16,15 +20,9 @@
           guid=this.guid
           selected=@selected
           multiple=@multiple
+          activeChild=this.activeChild
+          registerChild=this.registerChild
           onChange=this.onChange
-          options=@options
-          isOpen=this.isOpen
-        )
-        Searchbar=(component
-          'tpk-select/searchbar'
-          label=@label
-          guid=this.guid
-          onSearch=@onSearch
           options=@options
           isOpen=this.isOpen
         )
@@ -78,21 +76,13 @@
     </TpkSelect::Button>
     <div class='tpk-select-container'>
       <div class='tpk-select-container-internal'>
-        {{#if @onSearch}}
-          <TpkSelect::Searchbar
-            @label={{@label}}
-            @guid={{this.guid}}
-            @onSearch={{@onSearch}}
-            @classless={{@classless}}
-            @options={{@options}}
-            @isOpen={{this.isOpen}}
-          />
-        {{/if}}
         <TpkSelect::Options
           @label={{@label}}
           @guid={{this.guid}}
           @selected={{@selected}}
+          @activeChild={{this.activeChild}}
           @multiple={{@multiple}}
+          @registerChild={{this.registerChild}}
           @classless={{@classless}}
           @onChange={{this.onChange}}
           @options={{@options}}

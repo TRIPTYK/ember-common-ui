@@ -10,7 +10,8 @@ export default class UiShow extends Component<UiShowArgs> {
   options = ['a', 'b', 'c'];
   @action
   setValue(value: any) {
-    this.value = value.value;
+    console.log(value);
+    this.value = value;
   }
 
   @action

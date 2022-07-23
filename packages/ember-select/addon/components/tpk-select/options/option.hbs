@@ -1,12 +1,13 @@
-<li
+<div
   {{on 'click' (fn @onChange @option this.isSelected)}}
-  {{on 'keyup' this.keyUp}}
   id='{{@guid}}-listbox-option-{{@index}}'
+  aria-selected={{this.isSelected}}
   role='option'
-  tabindex='0'
+  tabindex='-1'
   class={{unless @classless 'tpk-select-container-options-option'}}
   data-test-option={{@index}}
+  {{did-insert @registerChild}}
   ...attributes
 >
   {{yield (hash option=@option isSelected=this.isSelected)}}
-</li>
+</div>

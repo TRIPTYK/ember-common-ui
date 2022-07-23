@@ -1,13 +1,16 @@
 <h2 class='text-3xl'>Demo of select</h2>
 <div>
   <TpkSelect
-    @label={{'Choose your captain'}}
+    @label='Choose your captain'
     @options={{this.options}}
     @onChange={{this.setValue}}
-    @selectedValue={{this.value}}
+    @selected={{this.value}}
     @placeholder='Select a value'
-    @onSearch={{this.search}}
     @key='text'
     class='w-1/3'
-  />
+  >
+    <:selected as |s|>
+      {{s}}
+    </:selected>
+  </TpkSelect>
 </div>

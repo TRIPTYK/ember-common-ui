@@ -1,11 +1,14 @@
-<button
-  aria-haspopup='listbox'
+<div
+  aria-controls='listbox1'
   aria-expanded='{{@isOpen}}'
+  aria-haspopup='listbox'
   aria-labelledby={{@guid}}
-  type='button'
-  class={{unless @classless 'tpk-select-button'}}
+  role='combobox'
+  tabindex='0'
   {{on 'click' @onSelectButtonClick}}
+  class={{unless @classless 'tpk-select-button'}}
+  {{did-insert @registerControllerDiv}}
   ...attributes
 >
   {{yield @selected}}
-</button>
+</div>

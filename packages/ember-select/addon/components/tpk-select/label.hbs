@@ -1,6 +1,6 @@
 <label
   class={{unless @classless 'tpk-select-label'}}
-  id={{@guid}}
+  {{did-insert @registerLabel}}
   ...attributes
 >
   {{yield}}
