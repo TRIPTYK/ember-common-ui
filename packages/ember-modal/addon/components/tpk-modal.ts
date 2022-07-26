@@ -13,7 +13,7 @@ export interface UiModalArgs {
   onClose: () => void;
   onClickOutside?: () => void;
   title: string;
-  coverClass: string;
+  classless: boolean;
 }
 
 export default class UiModal extends Component<UiModalArgs> {
@@ -33,10 +33,11 @@ export default class UiModal extends Component<UiModalArgs> {
         if (event.key !== 'Escape') return;
         if (!isOpen) return;
 
-        if (this.dialogLayer.hasOpenChild(this.guid)) return;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        onClose();
+        if (this.isOnTop) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          onClose();
+        }
       };
 
       window.addEventListener('keyup', handler);
@@ -56,12 +57,16 @@ export default class UiModal extends Component<UiModalArgs> {
   @action
   willDestroyNode(): void {
     this.dialogLayer.remove(this.guid);
-    super.willDestroy();
+    return super.willDestroy();
+  }
+
+  get isOnTop() {
+    return this.dialogLayer.hasOpenChild(this.guid) === false;
   }
 
   @action
-  controlledClose() {
-    if (this.dialogLayer.hasOpenChild(this.guid)) return;
+  close() {
+    if (!this.isOnTop) return;
     this.args.onClose();
   }
 

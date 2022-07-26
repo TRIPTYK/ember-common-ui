@@ -16,13 +16,11 @@ export default class DialogLayer extends Service {
 
   @action
   add(dialog: string) {
-    console.log(dialog);
     this.dialogs.push(dialog);
   }
 
   @action
   remove(dialog: string) {
-    console.log('rr', dialog);
     let ix = this.dialogs.findIndex((guid) => guid === dialog);
 
     this.dialogs.splice(ix, 1);

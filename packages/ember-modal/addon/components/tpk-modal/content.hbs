@@ -1,16 +1,12 @@
 <div
   data-test-tpk-modal
-  class='tpk-modal-content'
+   class={{unless @classless 'tpk-modal-content'}}
+  role='dialog'
+  aria-labelledby={{@title}}
+  {{focus-trap options=(hash
+      allowOutsideClick=@onClose
+ )}}
   ...attributes
 >
-  {{#if (has-block-params)}}
-    {{yield
-      (hash
-        Head=(component 'tpk-modal/content/head' onClose=@onClose title=@title)
-      )
-    }}
-  {{else}}
-    <TpkModal::Content::Head @onClose={{@onClose}} @title={{@title}} />
     {{yield}}
-  {{/if}}
-</div>  
+</div>
