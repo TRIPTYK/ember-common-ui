@@ -38,6 +38,7 @@ Arguments :
   -  @isOpen : The variable that toggles the modal
   -  @onClose : The function triggered when modal is trying to get closed
   -  @classless : Disable generated css classes
+  -  @outsideClickHandler : Custom handler for click outside
 
 ```hbs
   <TpkModal

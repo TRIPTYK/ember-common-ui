@@ -46,7 +46,42 @@ module('Integration | Component | modal', function (hooks) {
     this.set('isOpen', true);
 
     await click(this.element);
-    assert.dom('[data-test-modal-toggle]').doesNotExist();
     assert.false(this.get('isOpen'), 'Click outside closes modal');
+  });
+
+  test('override click outside', async function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+
+    this.set('onClose', () => {});
+    this.set('handler', (e: PointerEvent) => {
+      if ((e.target as HTMLElement).id !== 'other') {
+        this.set('isOpen', false);
+      }
+    });
+    this.set('isOpen', true);
+    this.set('title', 'My modal');
+
+    await render(hbs`
+
+    <div id="tpk-modal"></div>
+    <div id="other"></div>
+    <div id="bloup"></div>
+    <TpkModal
+      @isOpen={{this.isOpen}}
+      @title={{this.title}}
+      @onClose={{this.onClose}}
+      @outsideClickHandler={{this.handler}}
+      data-test-modal-toggle
+    as |Modal|>
+      <Modal.Content>
+        <button type="button">Content</button>
+      </Modal.Content>
+    </TpkModal>`);
+
+    await click('#other');
+    assert.true(this.get('isOpen'), 'Modal stay open');
+    await click('#bloup');
+    assert.false(this.get('isOpen'), 'Modal closes on other element');
   });
 });

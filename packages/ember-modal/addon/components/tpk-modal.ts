@@ -10,7 +10,8 @@ import { guidFor } from '@ember/object/internals';
 
 export interface UiModalArgs {
   isOpen: boolean;
-  onClose: () => void;
+  onClose: () => unknown;
+  outsideClickHandler?: (e: PointerEvent) => unknown;
   // used for ARIA
   title: string;
   classless: boolean;
@@ -25,6 +26,10 @@ export default class UiModal extends Component<UiModalArgs> {
     super(owner, args);
     assert('Modal initialized without @onClose', args.onClose !== undefined);
     assert('Modal @title is mandatory', args.title !== undefined);
+  }
+
+  get isOnTop() {
+    return this.dialogLayer.hasOpenChild(this.guid) === false;
   }
 
   handleEscapeKey = modifier(
@@ -50,6 +55,15 @@ export default class UiModal extends Component<UiModalArgs> {
   );
 
   @action
+  outsideClickHandler(e: PointerEvent) {
+    if (this.args.outsideClickHandler) {
+      if (!this.isOnTop) return;
+      return this.args.outsideClickHandler(e);
+    }
+    return this.args.onClose();
+  }
+
+  @action
   updateStack() {
     this.dialogLayer.add(this.guid);
   }
@@ -58,10 +72,6 @@ export default class UiModal extends Component<UiModalArgs> {
   willDestroyNode(): void {
     this.dialogLayer.remove(this.guid);
     return super.willDestroy();
-  }
-
-  get isOnTop() {
-    return this.dialogLayer.hasOpenChild(this.guid) === false;
   }
 
   @action
