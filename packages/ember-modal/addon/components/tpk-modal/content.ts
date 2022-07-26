@@ -1,3 +1,4 @@
+import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 
 interface UiModalContentArgs {
@@ -5,5 +6,6 @@ interface UiModalContentArgs {
   classless: boolean;
 }
 
-// eslint-disable-next-line ember/no-empty-glimmer-component-classes
-export default class UiModalContent extends Component<UiModalContentArgs> {}
+export default class UiModalContent extends Component<UiModalContentArgs> {
+  guid = guidFor(this);
+}

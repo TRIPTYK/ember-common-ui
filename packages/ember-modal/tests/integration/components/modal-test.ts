@@ -1,7 +1,7 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | modal', function (hooks) {
@@ -25,8 +25,10 @@ module('Integration | Component | modal', function (hooks) {
       @title={{this.title}}
       @onClose={{this.onClose}}
       data-test-modal-toggle
-    >
-      Content
+    as |Modal|>
+      <Modal.Content>
+        <button type="button">Content</button>
+      </Modal.Content>
     </TpkModal>`);
 
     assert.dom('[data-test-modal-toggle]').doesNotExist();
@@ -34,24 +36,10 @@ module('Integration | Component | modal', function (hooks) {
     this.set('isOpen', true);
 
     assert.dom('[data-test-modal-toggle]').exists();
-    assert.dom('.tpk-modal-container').exists();
-    assert.dom('.tpk-modal-container > .tpk-modal-cover').exists();
-    assert.dom('.tpk-modal-container > .tpk-modal-content').exists();
-    assert
-      .dom(
-        '.tpk-modal-container > .tpk-modal-content > .tpk-modal-content-head'
-      )
-      .exists();
-    assert
-      .dom(
-        '.tpk-modal-container > .tpk-modal-content > .tpk-modal-content-head > .tpk-modal-content-head-button'
-      )
-      .exists();
-    assert
-      .dom('[data-test-modal-toggle] h3')
-      .hasText(this.get('title') as string);
+    assert.dom('.tpk-modal').exists();
+    assert.dom('.tpk-modal > .tpk-modal-content').exists();
 
-    await click('[data-test-tpk-modal-close]');
+    await triggerKeyEvent(this.element, 'keyup', 'Escape');
     assert.dom('[data-test-modal-toggle]').doesNotExist();
     assert.false(this.get('isOpen'));
   });
@@ -71,9 +59,11 @@ module('Integration | Component | modal', function (hooks) {
       @title={{this.title}}
       @onClose={{this.onClose}}
       data-test-modal-toggle
-    >
+    as |M|>
+      <M.Content>
       Content
       <button type="button" data-test-other class="absolute top-0 z-30 p-5">Banana</button>
+      </M.Content>
     </TpkModal>`);
 
     assert.dom('[data-test-modal-toggle]').doesNotExist();

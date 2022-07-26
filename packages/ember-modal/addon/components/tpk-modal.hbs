@@ -7,28 +7,23 @@
       class={{unless @classless "tpk-modal"}}
       ...attributes
     >
-      {{! Waiting for the backdrop filter css attribute }}
-      {{#if (has-block-params)}}
         {{yield
           (hash
             Content=(component
               'tpk-modal/content'
               title=@title
               isOpen=@isOpen
-              isOnTop=this.isOnTop
               onClose=this.close
+              classless=@classless
             )
+            title=@title
+            isOpen=@isOpen
+            isOnTop=this.isOnTop
+            onClose=this.close
+            classless=@classless
+            guid=this.guid
           )
         }}
-      {{else}}
-        <TpkModal::Content
-          @title={{@title}}
-          @isOpen={{@isOpen}}
-          @onClose={{this.close}}
-        >
-          {{yield}}
-        </TpkModal::Content>
-      {{/if}}
     </div>
   {{/in-element}}
 {{/if}}

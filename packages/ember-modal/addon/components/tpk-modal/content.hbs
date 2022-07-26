@@ -1,6 +1,6 @@
 <div
   data-test-tpk-modal
-   class={{unless @classless 'tpk-modal-content'}}
+  class={{unless @classless 'tpk-modal-content'}}
   role='dialog'
   aria-labelledby={{@title}}
   {{focus-trap options=(hash
@@ -8,5 +8,7 @@
  )}}
   ...attributes
 >
-    {{yield}}
+    {{yield (hash
+      guid=this.guid
+    )}}
 </div>

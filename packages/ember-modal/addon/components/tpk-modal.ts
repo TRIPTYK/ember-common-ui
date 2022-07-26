@@ -11,7 +11,7 @@ import { guidFor } from '@ember/object/internals';
 export interface UiModalArgs {
   isOpen: boolean;
   onClose: () => void;
-  onClickOutside?: () => void;
+  // used for ARIA
   title: string;
   classless: boolean;
 }
