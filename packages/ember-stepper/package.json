@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-stepper",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "This addon will give you a simple select alternative in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
