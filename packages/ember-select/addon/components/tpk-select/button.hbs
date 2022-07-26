@@ -1,8 +1,8 @@
 <div
-  aria-controls='listbox1'
+  aria-controls={{@optionListId}}
   aria-expanded='{{@isOpen}}'
-  aria-haspopup='listbox'
-  aria-labelledby={{@guid}}
+  aria-labelledby={{@labelId}}
+  optionListId='listbox'
   role='combobox'
   tabindex='0'
   {{on 'click' @onSelectButtonClick}}

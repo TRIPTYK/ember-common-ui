@@ -3,9 +3,10 @@
 <div
   tabindex='-1'
   role='listbox'
+  id={{this.guid}}
   aria-multiselectable={{@multiple}}
   aria-activedescendant={{@activeChild.id}}
-  aria-labelledby={{@guid}}
+  aria-labelledby={{@labelId}}
   class={{unless @classless 'tpk-select-options'}}
   {{did-insert @registerOptionsDiv}}
   ...attributes
@@ -18,6 +19,7 @@
         guid=@guid
         registerChild=@registerChild
         index=i
+        activeChild=@activeChild
         selected=@selected
         multiple=@multiple
         onChange=@onChange

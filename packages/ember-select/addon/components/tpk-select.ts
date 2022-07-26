@@ -42,14 +42,10 @@ export default class TpkSelect<T = unknown> extends Component<
   @tracked isOpen = false;
 
   @tracked activeChildIndex?: number;
-  @tracked children: HTMLLIElement[] = [];
+  @tracked children: HTMLDivElement[] = [];
   @tracked optionListId?: string;
   @tracked labelId?: string;
   @tracked controllerId?: string;
-
-  get activeChild() {
-    return this.children[this.activeChildIndex ?? -1];
-  }
 
   guid = guidFor(this);
 
@@ -92,7 +88,7 @@ export default class TpkSelect<T = unknown> extends Component<
         return SelectActions.PageDown;
       } else if (key === 'Escape') {
         return SelectActions.Close;
-      } else if (key === 'Enter' || key === ' ') {
+      } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
         return SelectActions.CloseSelect;
       }
     }
@@ -119,7 +115,22 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   @action
-  registerChild(e: HTMLLIElement) {
+  registerOptionsDiv(div: HTMLInputElement) {
+    this.optionListId = div.id;
+  }
+
+  @action
+  registerControllerDiv(d: HTMLInputElement) {
+    this.controllerId = d.id;
+  }
+
+  @action
+  registerLabel(label: HTMLInputElement) {
+    this.labelId = label.id;
+  }
+
+  @action
+  registerChild(e: HTMLDivElement) {
     this.children.push(e);
   }
 
@@ -178,7 +189,6 @@ export default class TpkSelect<T = unknown> extends Component<
       case SelectActions.PageDown:
         event.preventDefault();
         this.navigate(action);
-        this.activeChild.focus();
         return;
       case SelectActions.Close:
         event.preventDefault();
@@ -219,5 +229,9 @@ export default class TpkSelect<T = unknown> extends Component<
     return this.args.multiple === true
       ? (this.args.selected as T[]).length > 0
       : !!this.args.selected;
+  }
+
+  get activeChild() {
+    return this.children[this.activeChildIndex ?? -1];
   }
 }

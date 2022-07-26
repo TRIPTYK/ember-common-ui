@@ -2,6 +2,11 @@
   class={{unless @classless 'tpk-select-label'}}
   {{did-insert @registerLabel}}
   ...attributes
+  id={{this.guid}}
 >
-  {{yield}}
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
 </label>

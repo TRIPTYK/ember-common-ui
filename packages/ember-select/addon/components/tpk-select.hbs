@@ -5,99 +5,43 @@
   data-is-open='{{this.isOpen}}'
   {{on-click-outside this.close}}
   {{on 'keydown' this.keyDown}}
-  {{focus-trap}}
   ...attributes
 >
-  {{#if (has-block-params)}}
     {{yield
       (hash
         Label=(component
-          'tpk-select/label' guid=this.guid classless=@classless label=@label
+          'tpk-select/label' guid=this.guid classless=@classless label=@label registerLabel=this.registerLabel
         )
         Options=(component
           'tpk-select/options'
           label=@label
-          guid=this.guid
+          labelId=this.labelId
           selected=@selected
           multiple=@multiple
           activeChild=this.activeChild
           registerChild=this.registerChild
+          registerOptionsDiv=this.registerOptionsDiv
           onChange=this.onChange
           options=@options
+          guid=this.guid
           isOpen=this.isOpen
         )
         Button=(component
           'tpk-select/button'
+          labelId=this.labelId
+          optionListId=this.optionListId
           onSelectButtonClick=this.onSelectButtonClick
+          registerControllerDiv=this.registerControllerDiv
           selected=@selected
           classless=@classless
           isOpen=this.isOpen
         )
         isOpen=this.isOpen
+        selected=@selected
         guid=this.guid
         onChange=this.onChange
         onSelectButtonClick=this.onSelectButtonClick
         hasSelection=this.hasSelection
       )
     }}
-  {{else}}
-    {{! 'Quick' already built syntax }}
-    <TpkSelect::Label
-      @guid={{this.guid}}
-      @classless={{@classless}}
-      @label={{@label}}
-    >
-      {{@label}}
-    </TpkSelect::Label>
-    <TpkSelect::Button
-      @onSelectButtonClick={{this.onSelectButtonClick}}
-      @selected={{@selected}}
-      classless={{@classless}}
-      @isOpen={{this.isOpen}}
-      as |selected|
-    >
-      {{#if this.hasSelection}}
-        {{#if (has-block 'selected')}}
-          {{#if @multiple}}
-            {{#each selected as |s|}}
-              {{yield s to='selected'}}
-            {{/each}}
-          {{else}}
-            {{yield selected to='selected'}}
-          {{/if}}
-        {{/if}}
-      {{else}}
-        {{#if (has-block 'notSelected')}}
-          {{yield @defaultText to='notSelected'}}
-        {{else}}
-          {{@defaultText}}
-        {{/if}}
-      {{/if}}
-    </TpkSelect::Button>
-    <div class='tpk-select-container'>
-      <div class='tpk-select-container-internal'>
-        <TpkSelect::Options
-          @label={{@label}}
-          @guid={{this.guid}}
-          @selected={{@selected}}
-          @activeChild={{this.activeChild}}
-          @multiple={{@multiple}}
-          @registerChild={{this.registerChild}}
-          @classless={{@classless}}
-          @onChange={{this.onChange}}
-          @options={{@options}}
-          @isOpen={{this.isOpen}}
-          as |Opts|
-        >
-          <Opts as |Opt|>
-            {{#if (has-block 'option')}}
-              {{yield Opt to='option'}}
-            {{else}}
-              {{Opt.option}}
-            {{/if}}
-          </Opts>
-        </TpkSelect::Options>
-      </div>
-    </div>
-  {{/if}}
 </div>
