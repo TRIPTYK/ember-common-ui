@@ -2,9 +2,9 @@
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "eslint.workingDirectories": {
-        "pattern": "tpk-*"
-    },
+    "eslint.workingDirectories": [{
+        "pattern": "packages/ember-*"
+    }],
     "[handlebars]": {
         "editor.suggest.insertMode": "replace",
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -22,6 +22,6 @@
         "strings": true
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     }
 }

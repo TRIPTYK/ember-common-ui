@@ -10,15 +10,14 @@
     hic sunt odio velit quo quasi dolores? Cumque, iusto iste qui obcaecati ex
     neque magni enim corporis, sed, magnam molestiae.
   </p>
-</TpkModal>
-
-<TpkModal
+    <button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
+  <TpkModal
   @title='title'
-  class='bg-red-900'
   @isOpen={{this.open2}}
   @onClose={{this.closed2}}
   as |M|
 >
+  <M.Cover />
   <M.Content as |Content|>
     <Content.Head />
     <p>
@@ -26,6 +25,9 @@
     </p>
   </M.Content>
 </TpkModal>
+</TpkModal>
+
+
 
 <TpkModal
   @title='The green modal'
@@ -65,6 +67,5 @@
 </div>
 <div class='flex justify-around'>
   <button type='button' {{on 'click' this.toggle1}}>Toggle modal 1</button>
-  <button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
   <button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button>
 </div>

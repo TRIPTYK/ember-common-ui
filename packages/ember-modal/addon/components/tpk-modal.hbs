@@ -1,10 +1,15 @@
 {{#if @isOpen}}
-  {{#in-element this.modalContainer}}
+  {{#in-element this.modalContainer insertBefore=null}}
     <div
       class='tpk-modal-container'
       role='dialog'
       aria-labelledby={{@title}}
-      {{on-escape this.onEscape}}
+      {{this.handleEscapeKey @isOpen @onClose}}
+      {{focus-trap options=(hash
+        allowOutsideClick=this.controlledClose
+      )}}
+      {{did-insert this.updateStack}}
+      {{will-destroy this.willDestroyNode}}
       ...attributes
     >
       {{! Waiting for the backdrop filter css attribute }}
@@ -16,18 +21,16 @@
               title=@title
               isOpen=@isOpen
               onClose=@onClose
-              onClickOutside=@onClickOutside
-              Cover=(component 'tpk-modal/cover')
             )
+            Cover=(component 'tpk-modal/cover' onCoverClick=this.controlledClose)
           )
         }}
       {{else}}
-        <TpkModal::Cover />
+        <TpkModal::Cover @onCoverClick={{this.controlledClose}} />
         <TpkModal::Content
           @title={{@title}}
           @isOpen={{@isOpen}}
           @onClose={{@onClose}}
-          @onClickOutside={{@onClickOutside}}
         >
           {{yield}}
         </TpkModal::Content>

@@ -60,25 +60,20 @@ module('Integration | Component | modal', function (hooks) {
     this.set('onClose', () => {
       this.set('isOpen', false);
     });
-    this.set('onClickOutside', () => {
-      console.log('out');
-      this.set('isOpen', false);
-      assert.step('clickOutside');
-    });
     this.set('isOpen', false);
     this.set('title', 'My modal');
 
     await render(hbs`
     <div id="tpk-modal"></div>
-    <button type="button" data-test-other class="absolute top-0 z-30 p-5">Banana</button>
+
     <TpkModal
       @isOpen={{this.isOpen}}
       @title={{this.title}}
       @onClose={{this.onClose}}
-      @onClickOutside={{this.onClickOutside}}
       data-test-modal-toggle
     >
       Content
+      <button type="button" data-test-other class="absolute top-0 z-30 p-5">Banana</button>
     </TpkModal>`);
 
     assert.dom('[data-test-modal-toggle]').doesNotExist();
@@ -91,9 +86,9 @@ module('Integration | Component | modal', function (hooks) {
      */
     await new Promise((res) => setTimeout(res, 50));
     await click('[data-test-other]');
-    assert.verifySteps(
-      ['clickOutside'],
-      'clickOutside function must have been called'
+    assert.true(
+      this.get('isOpen'),
+      'Modal should stay opened even with absolute element'
     );
   });
 });
