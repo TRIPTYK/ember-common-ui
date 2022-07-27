@@ -46,6 +46,7 @@ export default class TpkSelect<T = unknown> extends Component<
   @tracked optionListId?: string;
   @tracked labelId?: string;
   @tracked controllerId?: string;
+  private searchString = '';
 
   guid = guidFor(this);
 
@@ -63,6 +64,14 @@ export default class TpkSelect<T = unknown> extends Component<
     }
     if (key === 'End') {
       return SelectActions.Last;
+    }
+
+    if (
+      key === 'Backspace' ||
+      key === 'Clear' ||
+      (key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey)
+    ) {
+      return SelectActions.Type;
     }
 
     // handle typing characters when open or closed
@@ -201,10 +210,21 @@ export default class TpkSelect<T = unknown> extends Component<
         const selectedOption = this.args.options[this.activeChildIndex ?? 0];
         this.onChange(selectedOption, this.isElementSelected(selectedOption));
       }
-      default:
+      case SelectActions.Type:
+        return this.onComboType(event.key);
     }
 
     return;
+  }
+
+  private onComboType(letter: string) {
+    this.searchString += letter;
+
+    const match = this.children.findIndex((c) => {
+      return c.innerText.startsWith(this.searchString);
+    });
+
+    this.activeChildIndex = match;
   }
 
   private isElementSelected(option: T) {
