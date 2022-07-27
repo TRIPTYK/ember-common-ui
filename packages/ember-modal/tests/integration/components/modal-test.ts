@@ -53,11 +53,14 @@ module('Integration | Component | modal', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    this.set('onClose', () => {});
+    this.set('onClose', () => {
+      this.set('isOpen', false);
+    });
     this.set('handler', (e: PointerEvent) => {
       if ((e.target as HTMLElement).id !== 'other') {
-        this.set('isOpen', false);
+        return true;
       }
+      return false;
     });
     this.set('isOpen', true);
     this.set('title', 'My modal');
