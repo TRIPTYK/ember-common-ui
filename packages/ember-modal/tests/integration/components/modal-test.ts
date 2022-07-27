@@ -58,9 +58,9 @@ module('Integration | Component | modal', function (hooks) {
     });
     this.set('handler', (e: PointerEvent) => {
       if ((e.target as HTMLElement).id !== 'other') {
-        return true;
+        return false;
       }
-      return false;
+      return true;
     });
     this.set('isOpen', true);
     this.set('title', 'My modal');

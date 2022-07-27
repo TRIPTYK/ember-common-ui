@@ -58,12 +58,14 @@ export default class UiModal extends Component<UiModalArgs> {
   outsideClickHandler(e: PointerEvent) {
     if (!this.isOnTop) return;
     if (this.args.outsideClickHandler) {
-      if (this.args.outsideClickHandler(e)) {
-        return this.args.onClose();
+      if (!this.args.outsideClickHandler(e)) {
+        this.args.onClose();
+        return false;
       }
-      return;
+      return true;
     }
-    return this.args.onClose();
+    this.args.onClose();
+    return false;
   }
 
   @action
