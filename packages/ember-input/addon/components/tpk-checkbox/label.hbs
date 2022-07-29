@@ -4,5 +4,9 @@
   ...attributes
   data-test-tpk-checkbox-label
 >
-  {{yield @label}}
+  {{#if (has-block "label")}}
+    {{yield @label to="label"}}
+  {{else}}
+    {{@label}}
+  {{/if}}
 </label>
