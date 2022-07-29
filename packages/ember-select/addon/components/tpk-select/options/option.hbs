@@ -2,10 +2,10 @@
 <div
   {{on 'click' (fn @onChange @option this.isSelected)}}
   id={{this.id}}
-  aria-selected={{this.isSelected}}
-  role='option'
+  aria-selected='{{this.isSelected}}'
+  role="option"
   class={{unless @classless 'tpk-select-container-options-option'}}
-  data-has-focus="{{this.hasVirtualFocus}}"
+  data-has-focus='{{this.hasVirtualFocus}}'
   data-test-option={{@index}}
   {{did-insert @registerChild}}
   ...attributes

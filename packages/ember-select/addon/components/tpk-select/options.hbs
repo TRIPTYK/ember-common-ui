@@ -4,8 +4,6 @@
   tabindex='-1'
   role='listbox'
   id={{this.guid}}
-  aria-multiselectable={{@multiple}}
-  aria-activedescendant={{@activeChild.id}}
   aria-labelledby={{@labelId}}
   class={{unless @classless 'tpk-select-options'}}
   {{did-insert @registerOptionsDiv}}

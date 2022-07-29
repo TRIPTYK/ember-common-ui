@@ -1,5 +1,5 @@
-{{! template-lint-disable no-invalid-interactive }}
-{{! template-lint-disable no-down-event-binding }}
+{{!-- template-lint-disable no-down-event-binding --}}
+{{!-- template-lint-disable no-invalid-interactive --}}
 <div
   class={{unless @classless 'tpk-select'}}
   data-is-open='{{this.isOpen}}'
@@ -23,13 +23,14 @@
           registerOptionsDiv=this.registerOptionsDiv
           onChange=this.onChange
           options=@options
-          guid=this.guid
+          guid=this.controllerId
           isOpen=this.isOpen
         )
         Button=(component
           'tpk-select/button'
           labelId=this.labelId
           optionListId=this.optionListId
+          activeChild=this.activeChild
           onSelectButtonClick=this.onSelectButtonClick
           registerControllerDiv=this.registerControllerDiv
           selected=@selected

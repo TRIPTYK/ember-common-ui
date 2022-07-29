@@ -4,6 +4,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
 import { assert } from '@ember/debug';
+import { cancel, later } from '@ember/runloop';
+import { EmberRunTimer } from '@ember/runloop/types';
 
 export interface TpkSelectArgs<T> {
   options: T[];
@@ -40,20 +42,21 @@ export default class TpkSelect<T = unknown> extends Component<
   TpkSelectArgs<T>
 > {
   @tracked isOpen = false;
-
   @tracked activeChildIndex?: number;
   @tracked children: HTMLDivElement[] = [];
   @tracked optionListId?: string;
   @tracked labelId?: string;
   @tracked controllerId?: string;
+
   private searchString = '';
+  private typeTimer?: EmberRunTimer;
 
   guid = guidFor(this);
 
   private getActionFromKey(event: KeyboardEvent): SelectActions | undefined {
     const { key, altKey, ctrlKey, metaKey } = event;
     const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
-    // handle opening when closed
+
     if (!this.isOpen && openKeys.includes(key)) {
       return SelectActions.Open;
     }
@@ -146,6 +149,7 @@ export default class TpkSelect<T = unknown> extends Component<
   @action
   close() {
     this.isOpen = false;
+    this.activeChildIndex = undefined;
   }
 
   private navigate(
@@ -183,15 +187,12 @@ export default class TpkSelect<T = unknown> extends Component<
 
   @action
   keyDown(event: KeyboardEvent) {
-    // const max = this.args.options.length - 1;
-
     const action = this.getActionFromKey(event);
 
     switch (action) {
       case SelectActions.Last:
       case SelectActions.First:
         this.isOpen = true;
-      // intentional fallthrough
       case SelectActions.Next:
       case SelectActions.Previous:
       case SelectActions.PageUp:
@@ -201,14 +202,17 @@ export default class TpkSelect<T = unknown> extends Component<
         return;
       case SelectActions.Close:
         event.preventDefault();
-        return (this.isOpen = false);
+        return this.close();
       case SelectActions.Open:
         event.preventDefault();
         return (this.isOpen = true);
       case SelectActions.Select:
       case SelectActions.CloseSelect: {
         const selectedOption = this.args.options[this.activeChildIndex ?? 0];
-        this.onChange(selectedOption, this.isElementSelected(selectedOption));
+        return this.onChange(
+          selectedOption,
+          this.isElementSelected(selectedOption)
+        );
       }
       case SelectActions.Type:
         return this.onComboType(event.key);
@@ -217,14 +221,32 @@ export default class TpkSelect<T = unknown> extends Component<
     return;
   }
 
+  /**
+   * Handles typing on combobox
+   */
   private onComboType(letter: string) {
+    this.isOpen = true;
+
     this.searchString += letter;
 
-    const match = this.children.findIndex((c) => {
-      return c.innerText.startsWith(this.searchString);
-    });
+    const match = this.children.findIndex((c) =>
+      c.innerText.startsWith(this.searchString)
+    );
 
-    this.activeChildIndex = match;
+    if (!this.typeTimer) {
+      this.typeTimer = later(() => {
+        this.searchString = '';
+        this.typeTimer = undefined;
+      }, 500);
+    }
+
+    if (match !== -1) {
+      this.activeChildIndex = match;
+    } else {
+      cancel(this.typeTimer);
+      this.searchString = '';
+      this.typeTimer = undefined;
+    }
   }
 
   private isElementSelected(option: T) {

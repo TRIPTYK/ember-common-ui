@@ -2,8 +2,10 @@
   aria-controls={{@optionListId}}
   aria-expanded='{{@isOpen}}'
   aria-labelledby={{@labelId}}
-  optionListId='listbox'
+  aria-haspopup="listbox"
   role='combobox'
+  id={{this.guid}}
+    aria-activedescendant='{{@activeChild.id}}'
   tabindex='0'
   {{on 'click' @onSelectButtonClick}}
   class={{unless @classless 'tpk-select-button'}}

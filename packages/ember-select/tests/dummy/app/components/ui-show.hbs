@@ -9,12 +9,12 @@
   as |S|>
     <S.Label />
     <S.Button>
-      {{S.selected}}
+      {{if S.hasSelection S.selected "Please select something"}}
     </S.Button>
     <S.Options as |Opts|>
-      <Opts as |opt|>
-        {{opt.option}}
-      </Opts>
+        <Opts as |opt|>
+          {{opt.option}}
+        </Opts>
     </S.Options>
   </TpkSelect>
 </div>
