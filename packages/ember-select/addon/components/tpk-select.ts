@@ -11,9 +11,7 @@ export interface TpkSelectArgs<T> {
   label?: string;
   classless?: boolean;
   defaultText?: string;
-  // eslint-disable-next-line no-unused-vars
   onSearch: (searchString: string) => unknown;
-  // eslint-disable-next-line no-unused-vars
   onChange: (newSelected: T, alreadySelected: boolean) => unknown;
 }
 
@@ -21,6 +19,8 @@ export default class TpkSelect<T = unknown> extends Component<
   TpkSelectArgs<T>
 > {
   @tracked isOpen = false;
+  @tracked focusIndex?: number;
+
   guid = guidFor(this);
 
   constructor(owner: unknown, args: TpkSelectArgs<T>) {

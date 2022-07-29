@@ -1,5 +1,6 @@
 <input
   class={{unless @classless 'tpk-select-searchbar'}}
+  {{did-update this.focus @isOpen}}
   aria-label='search'
   type='search'
   {{on 'input' this.search}}

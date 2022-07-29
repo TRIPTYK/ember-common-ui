@@ -4,28 +4,28 @@
   @title='My modal title'
   @isOpen={{this.open1}}
   @onClose={{this.closed1}}
->
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolorum
-    hic sunt odio velit quo quasi dolores? Cumque, iusto iste qui obcaecati ex
-    neque magni enim corporis, sed, magnam molestiae.
-  </p>
+as |Modal|>
+  <Modal.Content>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolorum
+        hic sunt odio velit quo quasi dolores? Cumque, iusto iste qui obcaecati ex
+        neque magni enim corporis, sed, magnam molestiae.
+      </p>
+    <button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
+  </Modal.Content>
+  <TpkModal
+    @title='title'
+    @isOpen={{this.open2}}
+    @onClose={{this.closed2}}
+    as |M|
+  >
+    <M.Content>
+        <button type="button">Class</button>
+    </M.Content>
+  </TpkModal>
 </TpkModal>
 
-<TpkModal
-  @title='title'
-  class='bg-red-900'
-  @isOpen={{this.open2}}
-  @onClose={{this.closed2}}
-  as |M|
->
-  <M.Content as |Content|>
-    <Content.Head />
-    <p>
-      The red modal
-    </p>
-  </M.Content>
-</TpkModal>
+
 
 <TpkModal
   @title='The green modal'
@@ -65,6 +65,5 @@
 </div>
 <div class='flex justify-around'>
   <button type='button' {{on 'click' this.toggle1}}>Toggle modal 1</button>
-  <button type='button' {{on 'click' this.toggle2}}>Toggle modal 2</button>
   <button type='button' {{on 'click' this.toggle3}}>Toggle modal 3</button>
 </div>

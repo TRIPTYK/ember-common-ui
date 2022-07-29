@@ -2,6 +2,7 @@
   {{on 'click' (fn @onChange @option this.isSelected)}}
   id='{{@guid}}-listbox-option-{{@index}}'
   role='option'
+  tabindex='0'
   class={{unless @classless 'tpk-select-container-options-option'}}
   data-test-option={{@index}}
   ...attributes

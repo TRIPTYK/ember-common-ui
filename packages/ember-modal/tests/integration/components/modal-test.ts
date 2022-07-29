@@ -1,7 +1,7 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | modal', function (hooks) {
@@ -25,8 +25,10 @@ module('Integration | Component | modal', function (hooks) {
       @title={{this.title}}
       @onClose={{this.onClose}}
       data-test-modal-toggle
-    >
-      Content
+    as |Modal|>
+      <Modal.Content>
+        <button type="button">Content</button>
+      </Modal.Content>
     </TpkModal>`);
 
     assert.dom('[data-test-modal-toggle]').doesNotExist();
@@ -34,61 +36,55 @@ module('Integration | Component | modal', function (hooks) {
     this.set('isOpen', true);
 
     assert.dom('[data-test-modal-toggle]').exists();
-    assert.dom('.tpk-modal-container').exists();
-    assert.dom('.tpk-modal-container > .tpk-modal-cover').exists();
-    assert.dom('.tpk-modal-container > .tpk-modal-content').exists();
-    assert
-      .dom(
-        '.tpk-modal-container > .tpk-modal-content > .tpk-modal-content-head'
-      )
-      .exists();
-    assert
-      .dom(
-        '.tpk-modal-container > .tpk-modal-content > .tpk-modal-content-head > .tpk-modal-content-head-button'
-      )
-      .exists();
-    assert
-      .dom('[data-test-modal-toggle] h3')
-      .hasText(this.get('title') as string);
+    assert.dom('.tpk-modal').exists();
+    assert.dom('.tpk-modal > .tpk-modal-content').exists();
 
-    await click('[data-test-tpk-modal-close]');
+    await triggerKeyEvent(this.element, 'keyup', 'Escape');
     assert.dom('[data-test-modal-toggle]').doesNotExist();
-    assert.false(this.get('isOpen'));
+    assert.false(this.get('isOpen'), 'Esc closes modal');
+
+    this.set('isOpen', true);
+
+    await click(this.element);
+    assert.false(this.get('isOpen'), 'Click outside closes modal');
   });
 
-  test('click outside', async function (assert) {
+  test('override click outside', async function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+
     this.set('onClose', () => {
       this.set('isOpen', false);
     });
-    this.set('onClickOutside', () => {
-      console.log('clicked');
-      assert.step('clickOutside');
+    this.set('handler', (e: PointerEvent) => {
+      if ((e.target as HTMLElement).id !== 'other') {
+        return false;
+      }
+      return true;
     });
-    this.set('isOpen', false);
+    this.set('isOpen', true);
     this.set('title', 'My modal');
 
     await render(hbs`
+
     <div id="tpk-modal"></div>
-    <button type="button" id="other" class="absolute top-0 z-10 p-5">Banana</button>
+    <div id="other"></div>
+    <div id="bloup"></div>
     <TpkModal
       @isOpen={{this.isOpen}}
       @title={{this.title}}
       @onClose={{this.onClose}}
-      @onClickOutside={{this.onClickOutside}}
+      @outsideClickHandler={{this.handler}}
       data-test-modal-toggle
-    >
-      Content
+    as |Modal|>
+      <Modal.Content>
+        <button type="button">Content</button>
+      </Modal.Content>
     </TpkModal>`);
 
-    assert.dom('[data-test-modal-toggle]').doesNotExist();
-
-    this.set('isOpen', true);
-
-    assert.dom('[data-test-modal-toggle]').exists('modal should be open');
     await click('#other');
-    assert.verifySteps(
-      ['clickOutside'],
-      'clickOutside function must have been called'
-    );
+    assert.true(this.get('isOpen'), 'Modal stay open');
+    await click('#bloup');
+    assert.false(this.get('isOpen'), 'Modal closes on other element');
   });
 });

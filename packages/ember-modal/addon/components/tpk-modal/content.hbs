@@ -1,20 +1,14 @@
 <div
   data-test-tpk-modal
-  class='tpk-modal-content'
-  {{on-click-outside this.onClickOutside}}
+  class={{unless @classless 'tpk-modal-content'}}
   role='dialog'
-  aria-modal='true'
-  aria-labelledby='modal'
+  aria-labelledby={{@title}}
+  {{focus-trap options=(hash
+      allowOutsideClick=@outsideClickHandler
+ )}}
   ...attributes
 >
-  {{#if (has-block-params)}}
-    {{yield
-      (hash
-        Head=(component 'tpk-modal/content/head' onClose=@onClose title=@title)
-      )
-    }}
-  {{else}}
-    <TpkModal::Content::Head @onClose={{@onClose}} @title={{@title}} />
-      {{yield}}
-  {{/if}}
+    {{yield (hash
+      guid=this.guid
+    )}}
 </div>

@@ -4,11 +4,22 @@ import Component from '@glimmer/component';
 interface TpkSelectContainerSearchbarArgs<T = unknown> {
   options: T[];
   selected: T;
-  // eslint-disable-next-line no-unused-vars
+  isOpen: boolean;
+
   onSearch: (searchValue: string) => void;
 }
 
 export default class TpkSelectContainerSearchbar extends Component<TpkSelectContainerSearchbarArgs> {
+  @action
+  /**
+   * Focus on deploy
+   */
+  focus(e: HTMLElement, [isOpen]: [boolean]) {
+    if (isOpen) {
+      e.focus();
+    }
+  }
+
   @action
   search(e: Event) {
     e.preventDefault();

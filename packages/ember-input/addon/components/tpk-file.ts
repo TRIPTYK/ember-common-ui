@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';

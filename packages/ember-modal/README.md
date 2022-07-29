@@ -1,7 +1,7 @@
 ember-modal
 ==============================================================================
 
-This addon will give you a simple modal mechanic
+This addon will give you a simple stackable dialog system
 
 
 ## Compatibility
@@ -27,28 +27,30 @@ Usage
 ------------------------------------------------------------------------------
 #### Features
 
-- Modal dialog, only 1 active at a time.
-- Triggers @onClose on ESC key press.
-- Completely customatizable with blocks
+-  Modal dialog, can stack on each other
+-  Triggers @onClose on ESC key press or click outside.
+-  Customatizable content.
 
 #### Integration example 
 
 Arguments : 
-  -  @title : The title of the modal
+  -  @title : The title of the modal - needed for Accessibility (won't show by default visually)
   -  @isOpen : The variable that toggles the modal
-  -  @onClose : The function triggered when modal is closed  
+  -  @onClose : The function triggered when modal is trying to get closed
+  -  @classless : Disable generated css classes
+  -  @outsideClickHandler : Custom handler for click outside
 
 ```hbs
-<TpkModal
-  @title='My modal title'
-  @isOpen={{this.isOpen}}
-  @onClose={{this.isClosed}}
->
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolorum
-    hic sunt odio velit quo quasi dolores? Cumque, iusto iste qui obcaecati ex
-    neque magni enim corporis, sed, magnam molestiae.
-  </p>
+  <TpkModal
+    @title='title'
+    @isOpen={{this.open2}}
+    @onClose={{this.closed2}}
+    @classless={{false}}
+    as |M|
+  >
+  <M.Content>
+      <button type="button">Hello</button>
+  </M.Content>
 </TpkModal>
 ```
 
@@ -56,44 +58,12 @@ Arguments :
 
 For the extended syntax, [see examples](/packages/ember-modal/tests/dummy/app/components/ui-show.hbs).
 
-Default tailwind style example : 
-
-```css
-.tpk-modal-content {
-  @apply z-20 bg-white p-6 rounded-lg;
-  width: 50vw;
-}
-
-.tpk-modal-content-head {
-  @apply flex justify-between mb-8;
-}
-
-.tpk-modal-content-head > h3 {
-  @apply text-2xl font-semibold;
-}
-
-.tpk-modal-container {
-  @apply fixed px-4 py-4 top-0 right-0 left-0 bottom-0 flex items-center justify-center z-20;
-}
-
-.tpk-modal-cover {
-  @apply absolute inset-0 bg-gray-500 opacity-75 z-10;
-}
-```
-
 Structure of the component (Emmet like)
 ------------------------------------------------------------------------------
 
 - Modal
   - div.tpk-modal-container
-    - div.tpk-modal-cover
     - Modal::Content.tpk-modal-content
-      - Modal::Content::Head.tpk-modal-content-head
-        - h3
-        - Modal::Content::Head::Button.tpk-modal-content-head-button
-      - {{yield}}
-
-  
 
 ## Contributing
 
