@@ -7,7 +7,7 @@
 .tpk-select-searchbar {
   @apply w-full bg-white;
 }
-.tpk-select-container-options-option[data-has-focus="true"] {
+.tpk-select-options-option[data-has-focus="true"] {
   @apply  outline-indigo-800 bg-slate-600;
 }
 .tpk-select-options {
@@ -18,11 +18,11 @@
   @apply block;
 }
 
-.tpk-select-container-internal {
+.tpk-select-internal {
   @apply absolute w-full;
 }
 
-.tpk-select-container-options-option {
+.tpk-select-options-option {
   @apply text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-500 focus:border-solid focus:border-2 focus-visible:border-indigo-500;
 }
 

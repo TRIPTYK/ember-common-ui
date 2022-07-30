@@ -28,5 +28,10 @@ export default class UiShow extends Component<UiShowArgs> {
   }
 
   @action
+  removeSelection(value: any) {
+    this.selections = this.selections.filter((f) => f !== value);
+  }
+
+  @action
   search() {}
 }

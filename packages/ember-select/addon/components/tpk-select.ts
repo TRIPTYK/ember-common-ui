@@ -1,11 +1,9 @@
 /* eslint-disable no-fallthrough */
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
+import { tracked } from 'tracked-built-ins';
 import { guidFor } from '@ember/object/internals';
 import { assert } from '@ember/debug';
-import { cancel, later } from '@ember/runloop';
-import { EmberRunTimer } from '@ember/runloop/types';
 
 export interface TpkSelectArgs<T> {
   options: T[];
@@ -24,6 +22,7 @@ export enum SelectActions {
   Last = 3,
   Next = 4,
   Open = 5,
+  OpenFocus = 11,
   PageDown = 6,
   PageUp = 7,
   Previous = 8,
@@ -46,10 +45,10 @@ export default class TpkSelect<T = unknown> extends Component<
   @tracked children: HTMLDivElement[] = [];
   @tracked optionListId?: string;
   @tracked labelId?: string;
-  @tracked controllerId?: string;
+  @tracked controller?: HTMLDivElement;
 
   private searchString = '';
-  private typeTimer?: EmberRunTimer;
+  private typeTimer?: number;
 
   guid = guidFor(this);
 
@@ -58,6 +57,9 @@ export default class TpkSelect<T = unknown> extends Component<
     const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
 
     if (!this.isOpen && openKeys.includes(key)) {
+      if (key === 'ArrowUp') {
+        return SelectActions.OpenFocus;
+      }
       return SelectActions.Open;
     }
 
@@ -127,17 +129,17 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   @action
-  registerOptionsDiv(div: HTMLInputElement) {
+  registerOptionsDiv(div: HTMLDivElement) {
     this.optionListId = div.id;
   }
 
   @action
-  registerControllerDiv(d: HTMLInputElement) {
-    this.controllerId = d.id;
+  registerControllerDiv(d: HTMLDivElement) {
+    this.controller = d;
   }
 
   @action
-  registerLabel(label: HTMLInputElement) {
+  registerLabel(label: HTMLDivElement) {
     this.labelId = label.id;
   }
 
@@ -158,18 +160,18 @@ export default class TpkSelect<T = unknown> extends Component<
       | SelectActions.First
       | SelectActions.Last
   ) {
-    if (this.activeChildIndex === undefined) {
-      this.activeChildIndex = 0;
-      return;
-    }
-
     if (action === SelectActions.First) {
       this.activeChildIndex = 0;
       return;
     }
 
     if (action === SelectActions.Last) {
-      this.activeChildIndex = this.args.options.length - 1;
+      this.activeChildIndex = this.children.length - 1;
+      return;
+    }
+
+    if (this.activeChildIndex === undefined) {
+      this.activeChildIndex = 0;
       return;
     }
 
@@ -189,6 +191,8 @@ export default class TpkSelect<T = unknown> extends Component<
   keyDown(event: KeyboardEvent) {
     const action = this.getActionFromKey(event);
 
+    console.log(action);
+
     switch (action) {
       case SelectActions.Last:
       case SelectActions.First:
@@ -203,8 +207,11 @@ export default class TpkSelect<T = unknown> extends Component<
       case SelectActions.Close:
         event.preventDefault();
         return this.close();
+      case SelectActions.OpenFocus:
+        this.activeChildIndex = 0;
       case SelectActions.Open:
         event.preventDefault();
+        this.controller!.focus();
         return (this.isOpen = true);
       case SelectActions.Select:
       case SelectActions.CloseSelect: {
@@ -227,23 +234,34 @@ export default class TpkSelect<T = unknown> extends Component<
   private onComboType(letter: string) {
     this.isOpen = true;
 
-    this.searchString += letter;
+    clearTimeout(this.typeTimer);
+    this.typeTimer = setTimeout(() => {
+      this.searchString = '';
+      this.typeTimer = undefined;
+    }, 1000);
 
-    const match = this.children.findIndex((c) =>
-      c.innerText.startsWith(this.searchString)
-    );
-
-    if (!this.typeTimer) {
-      this.typeTimer = later(() => {
-        this.searchString = '';
-        this.typeTimer = undefined;
-      }, 500);
+    if (letter === this.searchString[this.searchString.length - 1]) {
+      this.searchString = letter;
+      const nextChild = this.children[this.activeChildIndex! + 1];
+      if (nextChild.innerText.trim().startsWith(this.searchString)) {
+        this.activeChildIndex!++;
+      } else {
+        this.activeChildIndex = this.children.findIndex((c) => {
+          return c.innerText.trim().startsWith(this.searchString);
+        });
+      }
+      return;
     }
+
+    this.searchString += letter;
+    const match = this.children.findIndex((c) => {
+      return c.innerText.trim().startsWith(this.searchString);
+    });
 
     if (match !== -1) {
       this.activeChildIndex = match;
     } else {
-      cancel(this.typeTimer);
+      clearTimeout(this.typeTimer);
       this.searchString = '';
       this.typeTimer = undefined;
     }

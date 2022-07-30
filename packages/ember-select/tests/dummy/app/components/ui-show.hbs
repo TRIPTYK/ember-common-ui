@@ -29,12 +29,20 @@
     class='w-1/3'
   as |S|>
     <S.Label />
-    <S.Button>
+    <S.Button >
       {{if S.hasSelection S.selected "Please select something"}}
+      <span>{{if S.isOpen "^" "v"}}</span>
     </S.Button>
     <S.Options as |Opts|>
         <Opts as |opt|>
-          {{opt.option}}
+          <div>
+            {{opt.option}}  
+          </div>
+          {{#if opt.isSelected}}
+            <div>
+              V
+            </div>
+         {{/if}}
         </Opts>
     </S.Options>
   </TpkSelect>
