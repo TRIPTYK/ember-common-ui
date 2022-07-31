@@ -6,6 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import CatchState from 'dummy/tests/dummy/app/services/catch-state';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | tpk-input', function (hooks) {
   setupRenderingTest(hooks);
@@ -63,5 +64,14 @@ module('Integration | Component | tpk-input', function (hooks) {
     assert.strictEqual(typeof state.changeEvent, 'string', 'changeEvent');
     assert.strictEqual(typeof state.Label, 'object', 'Label');
     assert.strictEqual(typeof state.guid, 'string', 'guid');
+  });
+
+  test('Accessibility', async function (assert) {
+    await render(
+      hbs`<TpkInput @onChange={{this.change}} @label="label" @value="value"/>`
+    );
+
+    await a11yAudit(this.element);
+    assert.expect(0);
   });
 });

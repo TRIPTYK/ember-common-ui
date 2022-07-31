@@ -6,6 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import CatchState from 'dummy/tests/dummy/app/services/catch-state';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | tpk-area', function (hooks) {
   setupRenderingTest(hooks);
@@ -63,5 +64,14 @@ module('Integration | Component | tpk-area', function (hooks) {
     assert.strictEqual(typeof state.Label, 'object');
     assert.strictEqual(typeof state.changeEvent, 'string');
     assert.strictEqual(typeof state.guid, 'string');
+  });
+
+  test('Accessibility', async function (assert) {
+    await render(
+      hbs`<TpkTextarea @onChange={{this.change}} @label="label" @value="value"/>`
+    );
+
+    await a11yAudit(this.element);
+    assert.expect(0);
   });
 });

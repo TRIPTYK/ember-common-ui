@@ -12,6 +12,7 @@ export default class UiCheckbox extends BaseUIComponent<UiCheckboxArgs> {
   constructor(owner: unknown, args: UiCheckboxArgs) {
     super(owner, args);
     assert('@checked is required', typeof args.checked === 'boolean');
+    assert('@label is required', args.label !== undefined);
   }
 
   @action

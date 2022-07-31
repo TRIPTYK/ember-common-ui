@@ -6,6 +6,7 @@ import { render, findAll } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | tpk-datepicker', function (hooks) {
   setupRenderingTest(hooks);
@@ -46,5 +47,15 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
       .dom('[data-test-tpk-datepicker-label]')
       .hasAttribute('for', { any: true });
     assert.verifySteps(['step']);
+  });
+
+  test('Accessibility', async function (assert) {
+    this.set('setDate', function () {});
+
+    await render(
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="label" @value=""/>`
+    );
+    await a11yAudit(this.element);
+    assert.expect(0);
   });
 });
