@@ -18,6 +18,10 @@
   @apply block;
 }
 
+.tpk-select-options-option[aria-selected='true'] {
+  @apply bg-indigo-100;
+}
+
 .tpk-select-internal {
   @apply absolute w-full;
 }

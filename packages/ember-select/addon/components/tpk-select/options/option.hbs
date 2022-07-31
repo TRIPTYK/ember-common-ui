@@ -1,5 +1,5 @@
 
-<div
+<li
   {{on 'click' (fn @onChange @option this.isSelected)}}
   id={{this.id}}
   aria-selected='{{this.isSelected}}'
@@ -11,4 +11,4 @@
   ...attributes
 >
   {{yield (hash option=@option isSelected=this.isSelected)}}
-</div>
+</li>
