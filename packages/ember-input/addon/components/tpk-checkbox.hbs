@@ -38,6 +38,14 @@
       @classless={{@classless}}
       @guid={{this.guid}}
       @label={{@label}}
-    />
+    >
+      <:label>
+        {{#if (has-block "label")}}
+          {{yield @label to="label"}}
+        {{else}}
+          {{@label}}
+        {{/if}}
+      </:label>
+    </TpkCheckbox::Label>
   {{/if}}
 </div>
