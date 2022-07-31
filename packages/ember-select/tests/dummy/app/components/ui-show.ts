@@ -17,14 +17,11 @@ export default class UiShow extends Component<UiShowArgs> {
 
   @action
   setValueMultiple(value: any, alreadyInSelection: boolean) {
-    console.log(value, alreadyInSelection);
     if (!alreadyInSelection) {
       this.selections.push(value);
     } else {
       this.selections = this.selections.filter((f) => f !== value);
     }
-
-    console.log(this.selections);
   }
 
   @action

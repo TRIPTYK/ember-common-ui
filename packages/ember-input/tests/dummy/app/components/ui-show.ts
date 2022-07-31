@@ -30,9 +30,7 @@ export default class UiShow extends Component<UiShowArgs> {
   }
 
   @action
-  iconClick() {
-    console.log('click');
-  }
+  iconClick() {}
 
   @action
   setDate(dates: Date[]) {

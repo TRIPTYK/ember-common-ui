@@ -14,10 +14,17 @@ export default create({
   scope: '.tpk-select',
   isOpen: attribute('data-is-open'),
   click: clickable(),
+  escape: triggerable('keydown', undefined, {
+    eventProperties: { key: 'Escape' },
+  }),
+  tab: triggerable('keydown', undefined, {
+    eventProperties: { key: 'Tab' },
+  }),
   button: create({
     scope: '.tpk-select-button',
     click: clickable(),
     hasFocus: getter(function (this: Component) {
+      console.log(document.activeElement, findOne(this));
       return document.activeElement === findOne(this);
     }),
     isExpanded: attribute('aria-expanded'),
@@ -40,9 +47,18 @@ export default create({
     arrowUp: triggerable('keydown', undefined, {
       eventProperties: { key: 'ArrowUp' },
     }),
+    tab: triggerable('keydown', undefined, {
+      eventProperties: { key: 'Tab' },
+    }),
     altArrowDown: triggerable('keydown', undefined, {
       eventProperties: {
         key: 'ArrowDown',
+        altKey: true,
+      } as Partial<KeyboardEvent>,
+    }),
+    altArrowUp: triggerable('keydown', undefined, {
+      eventProperties: {
+        key: 'ArrowUp',
         altKey: true,
       } as Partial<KeyboardEvent>,
     }),

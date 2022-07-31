@@ -191,8 +191,6 @@ export default class TpkSelect<T = unknown> extends Component<
   keyDown(event: KeyboardEvent) {
     const action = this.getActionFromKey(event);
 
-    console.log(action);
-
     switch (action) {
       case SelectActions.Last:
       case SelectActions.First:
@@ -216,6 +214,7 @@ export default class TpkSelect<T = unknown> extends Component<
       case SelectActions.Select:
       case SelectActions.CloseSelect: {
         const selectedOption = this.args.options[this.activeChildIndex ?? 0];
+        this.close();
         return this.onChange(
           selectedOption,
           this.isElementSelected(selectedOption)
