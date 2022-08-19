@@ -237,7 +237,7 @@ export default class TpkSelect<T = unknown> extends Component<
     this.typeTimer = setTimeout(() => {
       this.searchString = '';
       this.typeTimer = undefined;
-    }, 1000);
+    }, 1000) as unknown as number;
 
     if (letter === this.searchString[this.searchString.length - 1]) {
       this.searchString = letter;
