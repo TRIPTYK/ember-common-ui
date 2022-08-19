@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-modal",
-  "version": "0.0.21",
+  "version": "0.1.0",
   "description": "Easy tailwindcss modal in Ember.JS",
   "keywords": [
     "ember-addon",
