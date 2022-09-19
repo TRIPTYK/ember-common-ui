@@ -2,7 +2,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, findAll } from '@ember/test-helpers';
+import { findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
