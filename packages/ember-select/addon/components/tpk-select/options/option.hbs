@@ -7,7 +7,6 @@
   class={{unless @classless 'tpk-select-options-option'}}
   data-has-focus='{{this.hasVirtualFocus}}'
   data-test-option={{@index}}
-  {{did-insert @registerChild}}
   ...attributes
 >
   {{yield (hash option=@option isSelected=this.isSelected)}}

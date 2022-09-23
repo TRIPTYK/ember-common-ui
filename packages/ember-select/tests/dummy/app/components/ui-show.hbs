@@ -46,3 +46,30 @@
     </S.Options>
   </TpkSelect>
 </div>
+
+
+<div>
+    <TpkSelectSearch
+      @label='Select something'
+      @options={{this.options}}
+      @onChange={{this.setValue}}
+      @selected={{this.selected}}
+      @onInput={{perform this.onInput}}
+      class="tpk-select-search"
+    as |S|>
+      <S.Label />
+      <div class="tpk-select-search-container">
+        <S.Input />
+        <S.Button>
+        <svg width="18" height="16" aria-hidden="true" focusable="false">
+          <polygon class="arrow" stroke-width="0" fill-opacity="0.75" fill="currentcolor" points="3,6 15,6 9,14"></polygon>
+        </svg>
+        </S.Button>
+      </div>
+      <S.Options as |Opts|>
+        <Opts as |opt|>
+        {{opt.option}}
+        </Opts>
+      </S.Options>
+    </TpkSelectSearch>
+</div>

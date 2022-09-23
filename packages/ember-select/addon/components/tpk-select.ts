@@ -37,12 +37,12 @@ const moveOperations = {
   [SelectActions.Previous]: -1,
 };
 
-export default class TpkSelect<T = unknown> extends Component<
-  TpkSelectArgs<T>
-> {
+export default class TpkSelect<
+  T extends TpkSelectArgs<any>
+> extends Component<T> {
   @tracked isOpen = false;
   @tracked activeChildIndex?: number;
-  @tracked children: HTMLDivElement[] = [];
+  @tracked children: HTMLLIElement[] = [];
   @tracked optionListId?: string;
   @tracked labelId?: string;
   @tracked controller?: HTMLDivElement;
@@ -129,6 +129,11 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   @action
+  refreshChildren(e: HTMLDivElement) {
+    this.children = Array.from(e.querySelectorAll('li')) as HTMLLIElement[];
+  }
+
+  @action
   registerOptionsDiv(div: HTMLDivElement) {
     this.optionListId = div.id;
   }
@@ -141,11 +146,6 @@ export default class TpkSelect<T = unknown> extends Component<
   @action
   registerLabel(label: HTMLDivElement) {
     this.labelId = label.id;
-  }
-
-  @action
-  registerChild(e: HTMLDivElement) {
-    this.children.push(e);
   }
 
   @action
@@ -176,6 +176,7 @@ export default class TpkSelect<T = unknown> extends Component<
     }
 
     let value = moveOperations[action];
+
     const res = this.activeChildIndex + value;
 
     if (res > this.args.options.length - 1) {
@@ -237,7 +238,7 @@ export default class TpkSelect<T = unknown> extends Component<
     this.typeTimer = setTimeout(() => {
       this.searchString = '';
       this.typeTimer = undefined;
-    }, 1000) as unknown as number;
+    }, 400) as unknown as number;
 
     if (letter === this.searchString[this.searchString.length - 1]) {
       this.searchString = letter;
