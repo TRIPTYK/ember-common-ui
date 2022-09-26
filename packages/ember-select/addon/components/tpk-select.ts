@@ -11,6 +11,7 @@ export interface TpkSelectArgs<T> {
   multiple?: boolean;
   label?: string;
   classless?: boolean;
+  generatedClassPrefix: string;
   defaultText?: string;
   onChange: (newSelected: T, alreadySelected: boolean) => unknown;
 }
@@ -30,19 +31,19 @@ export enum SelectActions {
   Type = 10,
 }
 
-const moveOperations = {
+export const moveOperations = {
   [SelectActions.Next]: 1,
   [SelectActions.PageDown]: -10,
   [SelectActions.PageUp]: 10,
   [SelectActions.Previous]: -1,
 };
 
-export default class TpkSelect<T = unknown> extends Component<
-  TpkSelectArgs<T>
-> {
+export default class TpkSelect<
+  T extends TpkSelectArgs<any>
+> extends Component<T> {
   @tracked isOpen = false;
   @tracked activeChildIndex?: number;
-  @tracked children: HTMLDivElement[] = [];
+  @tracked children: HTMLLIElement[] = [];
   @tracked optionListId?: string;
   @tracked labelId?: string;
   @tracked controller?: HTMLDivElement;
@@ -129,8 +130,9 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   @action
-  registerOptionsDiv(div: HTMLDivElement) {
-    this.optionListId = div.id;
+  refreshChildren(e: HTMLDivElement) {
+    this.optionListId = e.id;
+    this.children = Array.from(e.querySelectorAll('li')) as HTMLLIElement[];
   }
 
   @action
@@ -144,17 +146,12 @@ export default class TpkSelect<T = unknown> extends Component<
   }
 
   @action
-  registerChild(e: HTMLDivElement) {
-    this.children.push(e);
-  }
-
-  @action
   close() {
     this.isOpen = false;
     this.activeChildIndex = undefined;
   }
 
-  private navigate(
+  protected navigate(
     action:
       | keyof typeof moveOperations
       | SelectActions.First
@@ -176,6 +173,7 @@ export default class TpkSelect<T = unknown> extends Component<
     }
 
     let value = moveOperations[action];
+
     const res = this.activeChildIndex + value;
 
     if (res > this.args.options.length - 1) {
@@ -237,7 +235,7 @@ export default class TpkSelect<T = unknown> extends Component<
     this.typeTimer = setTimeout(() => {
       this.searchString = '';
       this.typeTimer = undefined;
-    }, 1000) as unknown as number;
+    }, 400) as unknown as number;
 
     if (letter === this.searchString[this.searchString.length - 1]) {
       this.searchString = letter;

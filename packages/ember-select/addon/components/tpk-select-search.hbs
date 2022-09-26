@@ -1,7 +1,7 @@
 {{!-- template-lint-disable no-down-event-binding --}}
 {{!-- template-lint-disable no-invalid-interactive --}}
 <div
-  class={{unless @classless 'tpk-select'}}
+  class={{unless @classless 'tpk-select-search'}}
   data-is-open='{{this.isOpen}}'
   {{on-click-outside this.close}}
   {{on 'keydown' this.keyDown}}
@@ -10,10 +10,10 @@
     {{yield
       (hash
         Label=(component
-          'tpk-select/label' guid=this.guid classless=@classless label=@label registerLabel=this.registerLabel
+          'tpk-select-search/label' guid=this.guid classless=@classless label=@label registerLabel=this.registerLabel
         )
         Options=(component
-          'tpk-select/options'
+          'tpk-select-search/options'
           label=@label
           labelId=this.labelId
           selected=@selected
@@ -27,13 +27,25 @@
           isOpen=this.isOpen
         )
         Button=(component
-          'tpk-select/button'
+          'tpk-select-search/button'
           labelId=this.labelId
           optionListId=this.optionListId
           multiple=@multiple
           activeChild=this.activeChild
           onSelectButtonClick=this.onSelectButtonClick
+          selected=@selected
+          classless=@classless
+          isOpen=this.isOpen
+        )
+        Input=(component
+          'tpk-select-search/input'
+          labelId=this.labelId
+          optionListId=this.optionListId
+          multiple=@multiple
+          activeChild=this.activeChild
           registerControllerDiv=this.registerControllerDiv
+          onInput=this.onInput
+          onClick=this.onSelectButtonClick
           selected=@selected
           classless=@classless
           isOpen=this.isOpen
