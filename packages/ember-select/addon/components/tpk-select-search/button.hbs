@@ -4,11 +4,9 @@
   aria-labelledby={{@labelId}}
   aria-haspopup="listbox"
   id={{this.guid}}
-  aria-activedescendant='{{@activeChild.id}}'
   tabindex='-1'
   {{on 'click' @onSelectButtonClick}}
-  class={{unless @classless 'tpk-select-button'}}
-  {{did-insert @registerControllerDiv}}
+  class={{unless @classless 'tpk-select-search-button'}}
   ...attributes
 >
   {{yield @selected}}

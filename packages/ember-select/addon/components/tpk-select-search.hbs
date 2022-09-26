@@ -10,10 +10,10 @@
     {{yield
       (hash
         Label=(component
-          'tpk-select/label' guid=this.guid classless=@classless label=@label registerLabel=this.registerLabel
+          'tpk-select-search/label' guid=this.guid classless=@classless label=@label registerLabel=this.registerLabel
         )
         Options=(component
-          'tpk-select/options'
+          'tpk-select-search/options'
           label=@label
           labelId=this.labelId
           selected=@selected
@@ -33,7 +33,6 @@
           multiple=@multiple
           activeChild=this.activeChild
           onSelectButtonClick=this.onSelectButtonClick
-          registerControllerDiv=this.registerControllerDiv
           selected=@selected
           classless=@classless
           isOpen=this.isOpen
@@ -44,6 +43,7 @@
           optionListId=this.optionListId
           multiple=@multiple
           activeChild=this.activeChild
+          registerControllerDiv=this.registerControllerDiv
           onInput=this.onInput
           onClick=this.onSelectButtonClick
           selected=@selected

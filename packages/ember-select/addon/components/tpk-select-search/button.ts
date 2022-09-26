@@ -1,6 +1,3 @@
-import { guidFor } from '@ember/object/internals';
-import Component from '@glimmer/component';
+import TpkSelectLabel from '../tpk-select/label';
 
-export default class TpkSelectLabel extends Component {
-  guid = guidFor(this);
-}
+export default class TpkSearchSelectLabel extends TpkSelectLabel {}

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkSelectContainerOptionsOptionArgs<T = unknown> {
+export interface TpkSelectContainerOptionsOptionArgs<T = unknown> {
   multiple?: boolean;
   option: T;
   selected?: (T | undefined) | T[];

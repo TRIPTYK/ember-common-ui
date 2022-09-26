@@ -29,16 +29,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "ember-select": [
+      "@triptyk/ember-select": [
         "addon"
       ],
-      "ember-select/*": [
+      "@triptyk/ember-select/*": [
         "addon/*"
       ],
-      "ember-select/test-support": [
+      "@triptyk/ember-select/test-support": [
         "addon-test-support"
       ],
-      "ember-select/test-support/*": [
+      "@triptyk/ember-select/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [

@@ -11,6 +11,7 @@ export interface TpkSelectArgs<T> {
   multiple?: boolean;
   label?: string;
   classless?: boolean;
+  generatedClassPrefix: string;
   defaultText?: string;
   onChange: (newSelected: T, alreadySelected: boolean) => unknown;
 }
@@ -30,7 +31,7 @@ export enum SelectActions {
   Type = 10,
 }
 
-const moveOperations = {
+export const moveOperations = {
   [SelectActions.Next]: 1,
   [SelectActions.PageDown]: -10,
   [SelectActions.PageUp]: 10,
@@ -130,12 +131,8 @@ export default class TpkSelect<
 
   @action
   refreshChildren(e: HTMLDivElement) {
+    this.optionListId = e.id;
     this.children = Array.from(e.querySelectorAll('li')) as HTMLLIElement[];
-  }
-
-  @action
-  registerOptionsDiv(div: HTMLDivElement) {
-    this.optionListId = div.id;
   }
 
   @action
@@ -154,7 +151,7 @@ export default class TpkSelect<
     this.activeChildIndex = undefined;
   }
 
-  private navigate(
+  protected navigate(
     action:
       | keyof typeof moveOperations
       | SelectActions.First

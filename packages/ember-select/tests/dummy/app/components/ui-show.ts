@@ -5,8 +5,20 @@ import { restartableTask, timeout } from 'ember-concurrency';
 
 interface UiShowArgs {}
 
-const searchableOptions = [
-  { name: 'Afghanistan', code: 'AF' },
+interface Country {
+  name: string;
+  code: string;
+  toString?: () => string;
+}
+
+const searchableOptions: Country[] = [
+  {
+    name: 'Afghanistan',
+    code: 'AF',
+    toString() {
+      return this.name;
+    },
+  },
   { name: 'Åland Islands', code: 'AX' },
   { name: 'Albania', code: 'AL' },
   { name: 'Algeria', code: 'DZ' },
@@ -253,22 +265,31 @@ const searchableOptions = [
 
 export default class UiShow extends Component<UiShowArgs> {
   @tracked value = '';
+  @tracked country?: Country;
   @tracked selections: string[] = new TrackedArray([]);
-  @tracked options = ['a', 'b', 'c'];
+  @tracked options: Country[] = searchableOptions;
 
   @action
   setValue(value: any) {
     this.value = value;
   }
 
+  @action
+  setCountry(value: Country) {
+    console.log(value);
+
+    this.country = value;
+  }
+
   @restartableTask
   *onInput(searchString: string) {
+    if (searchString === '') {
+      this.options = searchableOptions;
+    }
     yield timeout(200);
-    this.options = searchableOptions
-      .filter((so) =>
-        so.name.toLowerCase().includes(searchString.toLowerCase())
-      )
-      .map((e) => e.name);
+    this.options = searchableOptions.filter((so) =>
+      so.name.toLowerCase().includes(searchString.toLowerCase())
+    );
   }
 
   @action
