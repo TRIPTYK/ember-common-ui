@@ -1,0 +1,48 @@
+<div
+  class={{unless @classless 'tpk-radio'}}
+  ...attributes
+  data-test-tpk-radio
+>
+  {{#if (has-block-params)}}
+    {{yield
+      (hash
+        Label=(component
+          'tpk-radio/label'
+          guid=this.guid
+          label=@label
+          classless=@classless
+        )
+        Input=(component
+          'tpk-radio/input'
+          guid=this.guid
+          selected=@selected
+          disabled=@disabled
+          name=@name
+          value=@value
+          changeEvent=this.changeEvent
+          onChange=this.onChange
+          classless=@classless
+        )
+        onChange=this.onChange
+        changeEvent=this.changeEvent
+        guid=this.guid
+      )
+    }}
+  {{else}}
+    <TpkRadio::Input
+      @guid={{this.guid}}
+      @onChange={{this.onChange}}
+      @name={{@name}}
+      @changeEvent={{this.changeEvent}}
+      @disabled={{@disabled}}
+      @value={{@value}}
+      @selected={{@selected}}
+      @classless={{@classless}}
+    />
+    <TpkRadio::Label
+      @classless={{@classless}}
+      @guid={{this.guid}}
+      @label={{@label}}
+    />
+  {{/if}}
+</div>

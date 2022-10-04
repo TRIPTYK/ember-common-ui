@@ -12,6 +12,9 @@
 .tpk-checkbox[data-has-error='true'] .tpk-validation-checkbox-error {
     @apply text-red-500 block ;
 }
+.tpk-validation-radio-container[data-has-error='true'] .tpk-validation-radio-error {
+    @apply text-red-500 block ;
+}
 
 .tpk-datepicker[data-has-error='true'] .tpk-validation-datepicker-error {
     @apply text-red-500 block ;

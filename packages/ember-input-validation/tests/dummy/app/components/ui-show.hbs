@@ -56,6 +56,37 @@
     </TpkValidationCheckbox>
   </div>
   <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+    <h3 class='text-xl ml-2 mb-2'>Radio input validation</h3>
+    <TpkValidationRadioGroup
+      @changeset={{this.changeset}}
+      @validationField='gender'
+    >
+      <:default>
+          <TpkValidationRadio
+            @value='female'
+            @name="gender"
+            @label="Femme"
+            @changeset={{this.changeset}}
+            @validationField='gender'
+          />
+          <TpkValidationRadio
+            @value='male'
+            @name="gender"
+            @label="Homme"
+            @changeset={{this.changeset}}
+            @validationField='gender'
+          />
+      </:default>
+      <:errors as |errors|>
+        {{#each errors as |err|}}
+          <div class='text-red-200'>
+            {{err}}
+          </div>
+        {{/each}}
+      </:errors>
+    </TpkValidationRadioGroup>
+  </div>
+  <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
     <h3 class='text-xl ml-2 mb-2'>File input validation</h3>
     <TpkValidationFile
       @label='Avatar'

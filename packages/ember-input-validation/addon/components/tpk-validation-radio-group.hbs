@@ -1,0 +1,14 @@
+<div class={{unless @classless 'tpk-validation-radio-container'}} 
+  data-has-error='{{this.hasError}}' ...attributes>
+  {{yield}}
+
+  {{#if this.hasError}}
+    {{#if (has-block 'errors')}}
+      {{yield this.errors to='errors'}}
+    {{else}}
+      <span class={{unless @classless 'tpk-validation-radio-error'}}>
+        {{this.firstError}}
+      </span>
+    {{/if}}
+  {{/if}}
+</div>

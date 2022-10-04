@@ -6,6 +6,7 @@ interface UiShowArgs {}
 
 export default class UiShow extends Component<UiShowArgs> {
   @tracked checked: boolean = false;
+  @tracked radio: string = 'amaury';
   @tracked input: string = '';
   @tracked inputArea: string = '';
   @tracked selectedDate: Date | string = '';
@@ -17,6 +18,11 @@ export default class UiShow extends Component<UiShowArgs> {
   @action
   setChecked(checked: boolean) {
     this.checked = checked;
+  }
+
+  @action
+  setRadio(value: string) {
+    this.radio = value;
   }
 
   @action

@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-select",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "This addon will give you a simple select alternative in TailwindCSS with Ember",
   "keywords": [
     "ember-addon",
