@@ -3,6 +3,10 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function (defaults) {
+  process.on('uncaughtException', (err) => {
+    // eslint-disable-next-line no-console
+    console.error(err.stack);
+  });
   let app = new EmberAddon(defaults, {
     postcssOptions: {
       compile: {

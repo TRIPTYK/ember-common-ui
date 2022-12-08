@@ -44,6 +44,5 @@ module('Integration | Component | tpk-select', function (hooks) {
     </TpkSelectSearch>
     <a href="#">Focusable element</a>
     `);
-    await this.pauseTest();
   });
 });

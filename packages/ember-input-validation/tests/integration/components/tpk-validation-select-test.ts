@@ -46,7 +46,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
       </TpkValidationSelect>`
     );
 
-    await click('.tpk-select button');
+    await click('.tpk-select-button');
     await click('[data-test-option="1"]');
 
     assert.verifySteps(['change']);
