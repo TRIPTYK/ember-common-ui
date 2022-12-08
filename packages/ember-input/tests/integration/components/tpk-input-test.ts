@@ -66,9 +66,60 @@ module('Integration | Component | tpk-input', function (hooks) {
     assert.strictEqual(typeof state.guid, 'string', 'guid');
   });
 
+  test('input with mask return masked value', async function (assert) {
+    const maskPrefix = 'MLP';
+    const maskContent = '0000';
+    const valueToApply = '1234';
+
+    this.set('mask', `${maskPrefix}${maskContent}`);
+    this.set('change', function (e: string) {
+      assert.step('step');
+      assert.strictEqual(e, `${maskPrefix}${valueToApply}`);
+    });
+    await render(
+      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} />`
+    );
+
+    await fillIn('[data-test-tpk-input-input]', valueToApply);
+    assert.verifySteps(['step']);
+  });
+
+  test('input with mask return unmasked value', async function (assert) {
+    const maskPrefix = 'MLP';
+    const maskContent = '0000';
+    const valueToApply = '1234';
+
+    this.set('mask', `${maskPrefix}${maskContent}`);
+    this.set('change', function (e: string) {
+      assert.step('step');
+      assert.strictEqual(e, `${valueToApply}`);
+    });
+    await render(
+      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @unmaskValue={{true}} />`
+    );
+
+    await fillIn('[data-test-tpk-input-input]', valueToApply);
+    assert.verifySteps(['step']);
+  });
+
+  test('input apply maskOptions', async function (assert) {
+    const maskPrefix = 'MLP';
+    const maskContent = '0000';
+    this.set('maskOptions', {
+      lazy: false,
+      placeholderChar: '#',
+    });
+    this.set('mask', `${maskPrefix}${maskContent}`);
+    this.set('change', () => {});
+    await render(
+      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @maskOptions={{this.maskOptions}} @unmaskValue={{true}} />`
+    );
+    assert.dom('[data-test-tpk-input-input]').hasValue(`${maskPrefix}####`);
+  });
+
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkInput @onChange={{this.change}} @label="label" @value="value"/>`
+      hbs`<TpkInput @type="password" @onChange={{this.change}} @label="label" @value="value"/>`
     );
 
     await a11yAudit(this.element);

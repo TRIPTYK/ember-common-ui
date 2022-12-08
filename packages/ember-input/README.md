@@ -39,6 +39,9 @@ interface TpkBaseInputArgs {
   value: unknown;
   changeEvent: 'input' | 'change';
   onChange?: (...args: unknown[]) => unknown;
+  mask?: string;
+  maskOptions?: IMask.AnyMaskedOptionsArray;
+  unmaskValue?: boolean;
 }
 ```
 
@@ -47,6 +50,9 @@ interface TpkBaseInputArgs {
 #### Special Args
 
 - type : The input type
+- mask: Pattern for mask
+- maskOptions: Options for mask (doc: https://imask.js.org/guide.html)
+- unmaskValue: Need explanation ??? 🙄
 
 #### No-Block version
 

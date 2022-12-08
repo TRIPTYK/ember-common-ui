@@ -16,6 +16,28 @@
     @label='Champ texte'
   />
 </div>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Simple input with mask</h3>
+  <TpkInput @onChange={{this.onChangeMask}} @value={{this.inputMask}} @mask='+32000/00.00.00' @maskOptions={{hash lazy=false placeholderChar="*"}} @unmaskValue={{true}} as |I|>
+    <I.Label>
+      <span class='text-red-500'>Mon texte</span>
+      en
+      <span>HTML</span>
+    </I.Label>
+    <I.Input />
+  </TpkInput>
+</div>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Complex input with mask</h3>
+  <TpkInput @onChange={{this.onChangeMaskComplex}} @value={{this.inputMaskComplex}} @mask='+32000/00.00.00' @maskOptions={{this.complexOptionsMasked}} as |I|>
+    <I.Label>
+      <span class='text-red-500'>Mon texte</span>
+      en
+      <span>HTML</span>
+    </I.Label>
+    <I.Input />
+  </TpkInput>
+</div>
 <h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of checkboxes</h2>
 <div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
   <h3 class='text-xl ml-2'>Checkboxes</h3>

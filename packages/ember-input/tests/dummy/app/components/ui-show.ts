@@ -8,8 +8,18 @@ export default class UiShow extends Component<UiShowArgs> {
   @tracked checked: boolean = false;
   @tracked radio: string = 'amaury';
   @tracked input: string = '';
+  @tracked inputMask: string = '';
+  @tracked inputMaskComplex: string = 'BE';
   @tracked inputArea: string = '';
   @tracked selectedDate: Date | string = '';
+
+  complexOptionsMasked = {
+    mask: '{TVA: }&&[&]000000000[0000]',
+    lazy: false,
+    definitions: {
+      '&': /[A-Z]/,
+    },
+  };
 
   get hasError() {
     return this.input.length < 2;
@@ -33,6 +43,16 @@ export default class UiShow extends Component<UiShowArgs> {
   @action
   onChange(value: string) {
     this.input = value;
+  }
+
+  @action
+  onChangeMask(value: string) {
+    this.inputMask = value;
+  }
+
+  @action
+  onChangeMaskComplex(value: string) {
+    this.inputMaskComplex = value;
   }
 
   @action

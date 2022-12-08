@@ -1,4 +1,4 @@
-<div class={{unless @classless 'tpk-input'}} ...attributes data-test-tpk-input>
+<div class={{unless @classless 'tpk-input'}} {{did-insert this.setMask}} ...attributes data-test-tpk-input>
   {{#if (has-block)}}
     {{yield
       (hash
