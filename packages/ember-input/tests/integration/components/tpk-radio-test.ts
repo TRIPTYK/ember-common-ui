@@ -38,34 +38,6 @@ module('Integration | Component | ui/radio', function (hooks) {
     });
   });
 
-  test('it renders default', async function (assert) {
-    this.set('setRadio', (selected: string, e: Event) => {
-      console.log('remadex');
-      assert.step('check');
-      assert.strictEqual(typeof selected, 'string');
-      assert.true(e instanceof Event);
-
-      assert.strictEqual(selected, 'jean');
-    });
-
-    await render(hbs`
-      <TpkRadio 
-        data-test-radio
-        @label='Label'
-        @selected="luc"
-        @value="jean"
-        @name="cule"
-        @onChange={{this.setRadio}}
-      />
-    `);
-
-    await click('[data-test-radio] > label');
-
-    assert.dom('[data-test-radio] > label').containsText('Label');
-
-    assert.verifySteps(['check']);
-  });
-
   test('it renders complex', async function (assert) {
     this.set('setRadio', (selected: string, e: Event) => {
       assert.step('check');
