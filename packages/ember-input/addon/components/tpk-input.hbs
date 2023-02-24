@@ -1,5 +1,4 @@
 <div class={{unless @classless 'tpk-input'}} {{did-insert this.setMask}} ...attributes data-test-tpk-input>
-  {{#if (has-block)}}
     {{yield
       (hash
         Input=(component
@@ -23,20 +22,4 @@
         onChange=this.onChange
       )
     }}
-  {{else}}
-    {{! Quick version }}
-    <TpkInput::Label @guid={{this.guid}} @classless={{@classless}}>
-      {{@label}}
-    </TpkInput::Label>
-    <TpkInput::Input
-      @value={{@value}}
-      @type={{@type}}
-      @changeEvent={{this.changeEvent}}
-      @onChange={{this.onChange}}
-      @guid={{this.guid}}
-      @classless={{@classless}}
-      disabled={{@disabled}}
-      placeholder={{@placeholder}}
-    />
-  {{/if}}
 </div>

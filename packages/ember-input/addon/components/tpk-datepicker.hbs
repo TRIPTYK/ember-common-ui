@@ -3,57 +3,35 @@
   ...attributes
   data-test-tpk-datepicker
 >
-  {{#if (has-block)}}
-    {{yield
-      (hash
-        Input=(component
-          'tpk-datepicker/input'
-          onChange=@onChange
-          type=@type
-          value=@value
-          guid=this.guid
-          classless=@classless
-          dateFormat=this.dateFormat
-          enableTime=@enableTime
-          noCalendar=@noCalendar
-          maxDate=@maxDate
-          minDate=@minDate
-          placeholder=@placeholder
-          disabled=@disabled
-          defaultDate=@defaultDate
-          mode=@mode
-          allowInput=@allowInput
-        )
-        Label=(component
-          'tpk-datepicker/label'
-          onChange=this.onChange
-          guid=this.guid
-          classless=@classless
-        )
-        changeEvent=this.changeEvent
+  {{yield
+    (hash
+      Input=(component
+        'tpk-datepicker/input'
+        onChange=@onChange
+        type=@type
+        value=@value
         guid=this.guid
-        onChange=this.onChange
+        classless=@classless
+        dateFormat=this.dateFormat
+        enableTime=@enableTime
+        noCalendar=@noCalendar
+        maxDate=@maxDate
+        minDate=@minDate
+        placeholder=@placeholder
+        disabled=@disabled
+        defaultDate=@defaultDate
+        mode=@mode
+        allowInput=@allowInput
       )
-    }}
-  {{else}}
-    <TpkDatepicker::Label @guid={{this.guid}} @classless={{@classless}}>
-      {{@label}}
-    </TpkDatepicker::Label>
-    <TpkDatepicker::Input
-      @value={{@value}}
-      @dateFormat={{this.dateFormat}}
-      @enableTime={{@enableTime}}
-      @noCalendar={{@noCalendar}}
-      @maxDate={{@maxDate}}
-      @minDate={{@minDate}}
-      @onChange={{@onChange}}
-      @guid={{this.guid}}
-      @classless={{@classless}}
-      @disabled={{@disabled}}
-      @placeholder={{@placeholder}}
-      @defaultDate={{@defaultDate}}
-      @allowInput={{@allowInput}}
-      @mode={{@mode}}
-    />
-  {{/if}}
+      Label=(component
+        'tpk-datepicker/label'
+        onChange=this.onChange
+        guid=this.guid
+        classless=@classless
+      )
+      changeEvent=this.changeEvent
+      guid=this.guid
+      onChange=this.onChange
+    )
+  }}
 </div>

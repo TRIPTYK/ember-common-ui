@@ -3,43 +3,27 @@
   ...attributes
   data-test-tpk-checkbox
 >
-  {{#if (has-block-params)}}
-    {{yield
-      (hash
-        Label=(component
-          'tpk-checkbox/label'
-          guid=this.guid
-          checked=@checked
-          label=@label
-          classless=@classless
-        )
-        Input=(component
-          'tpk-checkbox/input'
-          guid=this.guid
-          checked=@checked
-          disabled=@disabled
-          changeEvent=this.changeEvent
-          onChange=this.onChange
-          classless=@classless
-        )
-        onChange=this.onChange
-        changeEvent=this.changeEvent
+  {{yield
+    (hash
+      Label=(component
+        'tpk-checkbox/label'
         guid=this.guid
+        checked=@checked
+        label=@label
+        classless=@classless
       )
-    }}
-  {{else}}
-    <TpkCheckbox::Input
-      @guid={{this.guid}}
-      @onChange={{this.onChange}}
-      @changeEvent={{this.changeEvent}}
-      @disabled={{@disabled}}
-      @checked={{@checked}}
-      @classless={{@classless}}
-    />
-    <TpkCheckbox::Label
-      @classless={{@classless}}
-      @guid={{this.guid}}
-      @label={{@label}}
-    />
-  {{/if}}
+      Input=(component
+        'tpk-checkbox/input'
+        guid=this.guid
+        checked=@checked
+        disabled=@disabled
+        changeEvent=this.changeEvent
+        onChange=this.onChange
+        classless=@classless
+      )
+      onChange=this.onChange
+      changeEvent=this.changeEvent
+      guid=this.guid
+    )
+  }}
 </div>

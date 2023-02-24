@@ -1,40 +1,25 @@
 <div class={{unless @classless 'tpk-file'}} ...attributes data-test-tpk-file>
-  {{#if (has-block)}}
-    {{yield
-      (hash
-        Input=(component
-          'tpk-file/input'
-          onChange=this.onChange
-          accept=@accept
-          disabled=@disabled
-          changeEvent=this.changeEvent
-          guid=this.guid
-          classless=@classless
-        )
-        Label=(component
-          'tpk-file/label'
-          onChange=this.onChange
-          guid=this.guid
-          classless=@classless
-        )
+  {{yield
+    (hash
+      Input=(component
+        'tpk-file/input'
+        onChange=this.onChange
+        accept=@accept
+        disabled=@disabled
         changeEvent=this.changeEvent
+        guid=this.guid
+        classless=@classless
+      )
+      Label=(component
+        'tpk-file/label'
         onChange=this.onChange
         guid=this.guid
-        files=this.files
+        classless=@classless
       )
-    }}
-  {{else}}
-    {{! Quick version }}
-    <TpkFile::Label @guid={{this.guid}} @classless={{@classless}}>
-      {{@label}}
-    </TpkFile::Label>
-    <TpkFile::Input
-      accept={{@accept}}
-      @changeEvent={{this.changeEvent}}
-      @onChange={{this.onChange}}
-      @guid={{this.guid}}
-      @classless={{@classless}}
-      disabled={{@disabled}}
-    />
-  {{/if}}
+      changeEvent=this.changeEvent
+      onChange=this.onChange
+      guid=this.guid
+      files=this.files
+    )
+  }}
 </div>
