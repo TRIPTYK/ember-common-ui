@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { findAll, render, triggerEvent } from '@ember/test-helpers';
+import { findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
@@ -14,7 +14,10 @@ module('Integration | Component | tpk-file', function (hooks) {
   test('class/less by default', async function (assert) {
     this.set('classless', false);
     await render(
-      hbs`<TpkFile @classless={{this.classless}} @label="label" @value="value"/>`
+      hbs`<TpkFile @classless={{this.classless}} @label="label" @value="value" as |F|>
+        <F.Label />
+        <F.Input />
+</TpkFile>`
     );
 
     assert.dom('.tpk-file-label').exists().containsText('label');
@@ -25,24 +28,6 @@ module('Integration | Component | tpk-file', function (hooks) {
     findAll('*').forEach((e) => {
       assert.dom(e).hasNoClass(/tpk-.*/);
     });
-  });
-
-  test('input by default', async function (assert) {
-    this.set('change', function (e: File[]) {
-      assert.step('step');
-      assert.true(Array.isArray(e));
-      assert.true(e[0] instanceof File);
-    });
-
-    await render(hbs`<TpkFile @onChange={{this.change}} @label="label"/>`);
-
-    await triggerEvent('[data-test-tpk-file-input]', 'change', {
-      files: [new File(['Ember Rules!'], 'err.txt')],
-    });
-    assert.dom("[data-test-tpk-file-input][type='file']").exists();
-    assert.dom('[data-test-tpk-file-input]').hasAttribute('id', { any: true });
-    assert.dom('[data-test-tpk-file-label]').hasAttribute('for', { any: true });
-    assert.verifySteps(['step']);
   });
 
   test('input yield only', async function (assert) {

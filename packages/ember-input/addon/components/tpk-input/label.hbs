@@ -4,5 +4,9 @@
   ...attributes
   data-test-tpk-input-label
 >
-  {{yield}}
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
 </label>

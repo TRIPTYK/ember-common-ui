@@ -22,7 +22,10 @@ module('Integration | Component | ui/checkbox', function (hooks) {
         @classless={{this.classless}}
         @checked={{false}}
         @onChange={{this.setChecked}}
-      />
+      as |C|>
+        <C.Label />
+        <C.Input />
+      </TpkCheckbox>
     `);
 
     findAll('*').forEach((e) => {
@@ -34,32 +37,6 @@ module('Integration | Component | ui/checkbox', function (hooks) {
     findAll('*').forEach((e) => {
       assert.dom(e).hasNoClass(/tpk-.*/);
     });
-  });
-
-  test('it renders default', async function (assert) {
-    this.set('setChecked', (checked: boolean, value: string, e: Event) => {
-      assert.step('check');
-      assert.strictEqual(typeof checked, 'boolean');
-      assert.strictEqual(typeof value, 'string');
-      assert.true(e instanceof Event);
-
-      assert.true(checked);
-    });
-
-    await render(hbs`
-      <TpkCheckbox 
-        data-test-checkbox
-        @label='Label'
-        @checked={{false}}
-        @onChange={{this.setChecked}}
-      />
-    `);
-
-    await click('[data-test-checkbox] > label');
-
-    assert.dom('[data-test-checkbox] > label').containsText('Label');
-
-    assert.verifySteps(['check']);
   });
 
   test('it renders complex', async function (assert) {

@@ -14,7 +14,10 @@ module('Integration | Component | tpk-input', function (hooks) {
   test('class/less by default', async function (assert) {
     this.set('classless', false);
     await render(
-      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value"/>`
+      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" as |I|>
+      <I.Input />
+      <I.Label />
+</TpkInput>`
     );
 
     assert.dom('.tpk-input-label').exists().containsText('label');
@@ -26,26 +29,6 @@ module('Integration | Component | tpk-input', function (hooks) {
     findAll('*').forEach((e) => {
       assert.dom(e).hasNoClass(/tpk-.*/);
     });
-  });
-
-  test('input by default', async function (assert) {
-    this.set('change', function (e: string) {
-      assert.step('step');
-      assert.strictEqual(e, 'data');
-    });
-
-    await render(
-      hbs`<TpkInput @type="password" @onChange={{this.change}} @label="label" @value="value"/>`
-    );
-
-    await fillIn('[data-test-tpk-input-input]', 'data');
-    assert.dom("[data-test-tpk-input-input][type='password']").exists();
-    assert.dom("[data-test-tpk-input-input][type='text']").doesNotExist();
-    assert.dom('[data-test-tpk-input-input]').hasAttribute('id', { any: true });
-    assert
-      .dom('[data-test-tpk-input-label]')
-      .hasAttribute('for', { any: true });
-    assert.verifySteps(['step']);
   });
 
   test('input yield only', async function (assert) {
@@ -77,7 +60,12 @@ module('Integration | Component | tpk-input', function (hooks) {
       assert.strictEqual(e, `${maskPrefix}${valueToApply}`);
     });
     await render(
-      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} />`
+      hbs`
+      <TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} as |I|>
+        <I.Input />
+        <I.Label />
+      </TpkInput>
+      `
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -95,7 +83,10 @@ module('Integration | Component | tpk-input', function (hooks) {
       assert.strictEqual(e, `${valueToApply}`);
     });
     await render(
-      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @unmaskValue={{true}} />`
+      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @unmaskValue={{true}} as |I|>
+      <I.Input></I.Input>
+      <I.Label></I.Label>
+</TpkInput>`
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -112,7 +103,10 @@ module('Integration | Component | tpk-input', function (hooks) {
     this.set('mask', `${maskPrefix}${maskContent}`);
     this.set('change', () => {});
     await render(
-      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @maskOptions={{this.maskOptions}} @unmaskValue={{true}} />`
+      hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @maskOptions={{this.maskOptions}} @unmaskValue={{true}} as |I|>
+      <I.Input />
+      <I.Label />
+    </TpkInput>`
     );
     assert.dom('[data-test-tpk-input-input]').hasValue(`${maskPrefix}####`);
   });
