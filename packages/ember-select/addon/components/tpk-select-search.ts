@@ -10,6 +10,16 @@ export interface TpkSelectSearchArgs extends TpkSelectArgs<unknown> {
 }
 
 export default class TpkSelectSearch extends TpkSelect<TpkSelectSearchArgs> {
+  protected keyToOpenSelectAction: { [key: string]: SelectActions } = {
+    ArrowUp: SelectActions.Previous,
+    ArrowDown: SelectActions.Next,
+    PageUp: SelectActions.PageUp,
+    PageDown: SelectActions.PageDown,
+    Escape: SelectActions.Close,
+    Enter: SelectActions.CloseSelect,
+    Tab: SelectActions.CloseSelect,
+  };
+
   @action
   onInput(e: Event) {
     this.isOpen = true;

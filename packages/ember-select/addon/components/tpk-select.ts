@@ -51,6 +51,17 @@ export default class TpkSelect<
   private searchString = '';
   private typeTimer?: number;
 
+  protected keyToOpenSelectAction: { [key: string]: SelectActions } = {
+    ArrowUp: SelectActions.Previous,
+    ArrowDown: SelectActions.Next,
+    PageUp: SelectActions.PageUp,
+    PageDown: SelectActions.PageDown,
+    Escape: SelectActions.Close,
+    Enter: SelectActions.CloseSelect,
+    ' ': SelectActions.CloseSelect,
+    Tab: SelectActions.CloseSelect,
+  };
+
   guid = guidFor(this);
 
   private getActionFromKey(event: KeyboardEvent): SelectActions | undefined {
@@ -93,18 +104,8 @@ export default class TpkSelect<
     if (this.isOpen) {
       if (key === 'ArrowUp' && altKey) {
         return SelectActions.CloseSelect;
-      } else if (key === 'ArrowDown' && !altKey) {
-        return SelectActions.Next;
-      } else if (key === 'ArrowUp') {
-        return SelectActions.Previous;
-      } else if (key === 'PageUp') {
-        return SelectActions.PageUp;
-      } else if (key === 'PageDown') {
-        return SelectActions.PageDown;
-      } else if (key === 'Escape') {
-        return SelectActions.Close;
-      } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
-        return SelectActions.CloseSelect;
+      } else if (Object.keys(this.keyToOpenSelectAction).includes(key)) {
+        return this.keyToOpenSelectAction[key];
       }
     }
 
