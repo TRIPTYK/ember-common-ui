@@ -18,6 +18,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
 
   function setConfirmModalProperties(
     this: ConfirmModalTestContext,
+    // eslint-disable-next-line no-undef
     assert: Assert
   ) {
     this.onClose = function () {
@@ -33,6 +34,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
 
   async function renderConfirmModal(
     this: ConfirmModalTestContext,
+    // eslint-disable-next-line no-undef
     assert: Assert
   ) {
     setConfirmModalProperties.call(this, assert);
