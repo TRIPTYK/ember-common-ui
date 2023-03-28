@@ -8,6 +8,7 @@ import { actionMenuObject } from 'dummy/tests/pages/ember-actions-menu';
 interface ActionMenuTestContext extends TestContext {
   action: () => unknown;
   iconSrc?: string;
+  classless?: boolean;
 }
 
 module('Integration | Component | Action Menu', function (hooks) {
@@ -27,7 +28,7 @@ module('Integration | Component | Action Menu', function (hooks) {
   async function renderActionMenu(this: ActionMenuTestContext, assert: Assert) {
     setActionMenuProperties.call(this, assert);
     return render(hbs`
-        <TpkActionsMenu as |Action|>
+        <TpkActionsMenu @classless={{this.classless}} as |Action|>
           <Action
             @icon={{this.iconSrc}}
             @action={{this.action}}
@@ -79,5 +80,32 @@ module('Integration | Component | Action Menu', function (hooks) {
     await renderAndOpenActionsMenu.call(this, assert);
     await actionMenuObject.escape();
     assert.false(actionMenuObject.areActionsVisible);
+  });
+
+  // eslint-disable-next-line no-undef
+  function assertBaseClassesNoPresence(assert: Assert) {
+    assert.dom('.actions').doesNotExist();
+    assert.dom('.open_actions').doesNotExist();
+  }
+
+  test<ActionMenuTestContext>('when classless true, remove all base classes', async function (assert) {
+    assert.expect(2);
+
+    this.set('classless', true);
+    await renderAndOpenActionsMenu.call(this, assert);
+    assertBaseClassesNoPresence(assert);
+  });
+
+  // eslint-disable-next-line no-undef
+  function assertBaseClassesPresence(assert: Assert) {
+    assert.dom('.actions').exists();
+    assert.dom('.open_actions').exists();
+  }
+
+  test<ActionMenuTestContext>('when classless false, all base classes are present', async function (assert) {
+    assert.expect(2);
+
+    await renderAndOpenActionsMenu.call(this, assert);
+    assertBaseClassesPresence(assert);
   });
 });

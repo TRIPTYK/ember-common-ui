@@ -1,6 +1,6 @@
 {{! template-lint-disable no-invalid-interactive }}
 <div
-  class={{if this.isOpen "actions aopened" "actions"}}
+  class={{this.ActionsMenuClass}}
   data-test-actions-menu
   {{on-click-outside this.closeMenu}}
   {{on "keyup" this.handleKeyUp}}
@@ -8,7 +8,7 @@
 >
   <button
     type="button"
-    class="open_actions"
+		class={{unless @classless "open_actions"}}
     {{on "click" this.toggle}}
     title="actions"
     data-test-actions-open-action

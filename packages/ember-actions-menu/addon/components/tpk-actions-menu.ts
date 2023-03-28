@@ -2,8 +2,19 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 
-export default class ActionsMenuComponent extends Component {
+interface ActionsMenuComponentArgs {
+  classless: boolean;
+}
+
+export default class ActionsMenuComponent extends Component<ActionsMenuComponentArgs> {
   @tracked isOpen = false;
+
+  get ActionsMenuClass() {
+    if (this.args.classless) {
+      return '';
+    }
+    return this.isOpen ? 'actions aopened' : 'actions';
+  }
 
   @action closeMenu() {
     this.isOpen = false;
