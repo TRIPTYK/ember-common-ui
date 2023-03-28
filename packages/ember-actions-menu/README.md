@@ -1,25 +1,25 @@
 ember-modal
 ==============================================================================
 
-This addon will give you a simple stackable dialog system
+This addon will give you a simple menu with visibility toggle
 
 
 ## Compatibility
 
-* Ember.js v3.24 or above
-* Ember CLI v3.24 or above
-* Node.js v12 or above
+* Ember.js v4.6 or above
+* Ember CLI v4.6 or above
+* Node.js v18 or above
 * You need tailwind v2 or above to use this simple textarea
 
 
 ## Installation
 
 ```zsh
-ember install @triptyk/ember-modal
+ember install @triptyk/ember-actions-menu
 ```
 OR
 ```zsh
-pnpm add -D @triptyk/ember-modal
+pnpm add -D @triptyk/ember-actions-menu
 ```
 
 
@@ -27,43 +27,44 @@ Usage
 ------------------------------------------------------------------------------
 #### Features
 
--  Modal dialog, can stack on each other
--  Triggers @onClose on ESC key press or click outside.
--  Customatizable content.
+-  Actions menu, visibility is toggled by a button
+-  Close on ESC key press or click outside.
+-  Customatizable Action.
 
 #### Integration example 
 
 Arguments : 
-  -  @title : The title of the modal - needed for Accessibility (won't show by default visually)
-  -  @isOpen : The variable that toggles the modal
-  -  @onClose : The function triggered when modal is trying to get closed
   -  @classless : Disable generated css classes
-  -  @outsideClickHandler : Custom handler for click outside
+
+Yielded Component:
+
+	Action:
+		Arguments:
+			- action: The function triggered when the action is clicked
+			- icon: src of an image that would be displayed to the left of the action button
 
 ```hbs
-  <TpkModal
-    @title='title'
-    @isOpen={{this.open2}}
-    @onClose={{this.closed2}}
+  <TpkActionsMenu
     @classless={{false}}
-    as |M|
+		as |Action|
   >
-  <M.Content>
-      <button type="button">Hello</button>
-  </M.Content>
-</TpkModal>
+		<Action
+			@icon={{this.iconSrc}}
+			@action={{this.action}}
+		>
+			ActionText
+		</Action>
+	</TpkActionsMenu>
 ```
-
-
-
-For the extended syntax, [see examples](/packages/ember-modal/tests/dummy/app/components/ui-show.hbs).
 
 Structure of the component (Emmet like)
 ------------------------------------------------------------------------------
 
-- Modal
-  - div.tpk-modal-container
-    - Modal::Content.tpk-modal-content
+- ActionsMenu
+  - button.open_actions
+		-img
+  - ul
+		- Action
 
 ## Contributing
 
