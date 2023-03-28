@@ -24,7 +24,6 @@ export default create({
     scope: '.tpk-select-search-button',
     click: clickable(),
     hasFocus: getter(function (this: Component) {
-      console.log(document.activeElement, findOne(this));
       return document.activeElement === findOne(this);
     }),
     isExpanded: attribute('aria-expanded'),

@@ -1,0 +1,12 @@
+.actions {
+  @apply relative flex items-center justify-center p-0;
+}
+
+.actions.aopened ul {
+  @apply scale-y-100;
+}
+
+.actions .open_actions {
+  @apply flex items-center justify-center w-auto px-4 py-2;
+}
+
