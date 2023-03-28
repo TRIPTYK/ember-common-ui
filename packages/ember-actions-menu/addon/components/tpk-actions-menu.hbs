@@ -1,0 +1,25 @@
+{{! template-lint-disable no-invalid-interactive }}
+<div
+  class={{if this.isOpen "actions aopened" "actions"}}
+  data-test-actions-menu
+  {{on-click-outside this.closeMenu}}
+  {{on "keyup" this.handleKeyUp}}
+  ...attributes
+>
+  <button
+    type="button"
+    class="open_actions"
+    {{on "click" this.toggle}}
+    title="actions"
+    data-test-actions-open-action
+  >
+    <img src="/assets/icons/kebab.svg" alt="seeAllAction"/>
+  </button>
+  {{#if this.isOpen}}
+    <ul>
+      {{yield
+        (component "tpk-actions-menu/element" handleAction=this.handleAction)
+      }}
+    </ul>
+  {{/if}}
+</div>
