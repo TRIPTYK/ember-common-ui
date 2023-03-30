@@ -17,15 +17,15 @@ export interface UnpersistedFile {
 }
 
 
-interface InputsListFileFileComponentArgs {
+interface TpkFileListElementComponentArgs {
   document: FileObject;
   disabled?: boolean;
   onDownload?: (document: FileObject) => unknown;
   onRemove?: (document: FileObject) => unknown;
 }
 
-export default class InputsListFileFileComponent extends Component<InputsListFileFileComponentArgs> {
-  public constructor(owner: unknown, args: InputsListFileFileComponentArgs) {
+export default class TpkFileListElementComponent extends Component<TpkFileListElementComponentArgs> {
+  public constructor(owner: unknown, args: TpkFileListElementComponentArgs) {
     super(owner, args);
     assert('@document is mandatory', args.document !== undefined);
   }

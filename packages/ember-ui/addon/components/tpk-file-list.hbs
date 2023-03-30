@@ -1,4 +1,4 @@
-<ul ...attributes>
+<ul  data-test-tpk-file-list ...attributes>
   {{#each this.documents as |document|}}
     {{yield
       (component "inputs/list-file/file" disabled=@disabled document=document)

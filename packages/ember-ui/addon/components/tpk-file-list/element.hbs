@@ -1,0 +1,12 @@
+<li class="tpk-list-file-file" data-test-tpk-file-list-element ...attributes>
+  {{#if this.isDownloadable}}
+     {{yield (hash 
+      Download=(component 'tpk-button' onClick=@onDownload)
+    )}}
+  {{/if}}
+  {{#if this.isDeleteable}}
+     {{yield (hash 
+      Delete=(component 'tpk-button' onClick=@onDelete))
+     }}
+  {{/if}}
+</li>
