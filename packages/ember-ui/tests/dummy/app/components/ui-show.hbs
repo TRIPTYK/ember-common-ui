@@ -1,0 +1,141 @@
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of inputs</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Simple input</h3>
+  <TpkInput @onChange={{this.onChange}} @value={{this.input}} as |I|>
+    <I.Label>
+      <span class='text-red-500'>Mon texte</span>
+      en
+      <span>HTML</span>
+    </I.Label>
+    <I.Input />
+  </TpkInput>
+  <TpkInput
+    @onChange={{this.onChange}}
+    @value={{this.input}}
+    @type='password'
+    @label='Champ texte'
+  />
+</div>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Simple input with mask</h3>
+  <TpkInput @onChange={{this.onChangeMask}} @value={{this.inputMask}} @mask='+32000/00.00.00' @maskOptions={{hash lazy=false placeholderChar="*"}} @unmaskValue={{true}} as |I|>
+    <I.Label>
+      <span class='text-red-500'>Mon texte</span>
+      en
+      <span>HTML</span>
+    </I.Label>
+    <I.Input />
+  </TpkInput>
+</div>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Complex input with mask</h3>
+  <TpkInput @onChange={{this.onChangeMaskComplex}} @value={{this.inputMaskComplex}} @mask='+32000/00.00.00' @maskOptions={{this.complexOptionsMasked}} as |I|>
+    <I.Label>
+      <span class='text-red-500'>Mon texte</span>
+      en
+      <span>HTML</span>
+    </I.Label>
+    <I.Input />
+  </TpkInput>
+</div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of checkboxes</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Checkboxes</h3>
+  <div class='flex justify-around'>
+    <TpkCheckbox
+      @label='Label'
+      @checked={{this.checked}}
+      @onChange={{this.setChecked}}
+    />
+
+    <TpkCheckbox
+      @label='Label'
+      @checked={{this.checked}}
+      @onChange={{this.setChecked}}
+      as |C|
+    >
+      <C.Input class='text-yellow-300' />
+      <C.Label class='text-blue-300' />
+    </TpkCheckbox>
+  </div>
+</div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of radio buttons</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Radio</h3>
+  <div class='flex justify-around'>
+    <TpkRadio
+      @label='Amaury'
+      @name="bogoss"
+      @selected={{this.radio}}
+      @value="amaury"
+      @onChange={{this.setRadio}}
+    />
+
+    <TpkRadio
+      @label='Sébastien'
+      @name="bogoss"
+      @selected={{this.radio}}
+      @value="sebastien"
+      @onChange={{this.setRadio}}
+      as |C|
+    >
+      <C.Input class='text-yellow-300' />
+      <C.Label class='text-blue-300' />
+    </TpkRadio>
+  </div>
+</div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of datepicker</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Datepicker inputs</h3>
+  <TpkDatepicker
+    @value={{this.selectedDate}}
+    @onChange={{this.setDate}}
+    @label='Datepicker'
+    @placeholder='Pick a date'
+  />
+
+  <TpkDatepicker
+    @value={{this.selectedDate}}
+    @onChange={{this.setDate}}
+    @label='Datepicker'
+    class='mt-4'
+    as |D|
+  >
+    <D.Label>
+      <span class='text-red-500'>Mon datepicker</span>
+      en
+      <span>HTML</span>
+    </D.Label>
+    <D.Input class='text-red-500' @disabled={{true}} />
+  </TpkDatepicker>
+  <TpkDatepicker
+    @value={{this.selectedDate}}
+    @onChange={{this.setDate}}
+    @label='Timepicker'
+    @placeholder='Pick a time'
+    @noCalendar={{true}}
+    @enableTime={{true}}
+    @dateFormat='H:i'
+    @allowInput={{true}}
+    class='mt-4'
+  />
+</div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Textarea</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>Textarea</h3>
+  <div class='flex justify-around'>
+    <TpkTextarea
+      class='w-full'
+      @label='My textarea'
+      @onChange={{this.onChangeArea}}
+      @value={{this.inputArea}}
+    />
+  </div>
+</div>
+<h2 class='text-3xl mb-4 text-center font-semibold'>Set of demo of file inputs</h2>
+<div class='shadow-sm bg-gray-100 rounded-lg p-8 mb-4'>
+  <h3 class='text-xl ml-2'>File inputs</h3>
+  <div class='flex justify-around'>
+    <TpkFile class='w-full' />
+  </div>
+</div>

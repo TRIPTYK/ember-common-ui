@@ -119,4 +119,20 @@ module('Integration | Component | tpk-input', function (hooks) {
     await a11yAudit(this.element);
     assert.expect(0);
   });
+
+  test('when input type=number, onChange value should be a number', async function (assert) {
+    this.set('change', function (e: number) {
+      assert.step('step');
+      assert.strictEqual(e, 123);
+    });
+    await render(
+      hbs`<TpkInput @type="number" @onChange={{this.change}} @label="label" @value={{123}} as |I|>
+      <I.Input></I.Input>
+      <I.Label></I.Label>
+</TpkInput>`
+    );
+
+    await fillIn('[data-test-tpk-input-input]', '123');
+    assert.verifySteps(['step']);
+  });
 });

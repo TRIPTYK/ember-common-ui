@@ -23,7 +23,6 @@ export abstract class BaseUIComponent<
 
   constructor(owner: unknown, args: T) {
     super(owner, args);
-    // assert('@label is required', args.label !== undefined);
   }
 
   get changeEvent() {
