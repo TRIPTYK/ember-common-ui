@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noEmitOnError": true,
+    "noEmit": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "baseUrl": ".",
+    "module": "es6",
+    "experimentalDecorators": true,
+    "paths": {
+      "dummy/tests/*": [
+        "tests/*"
+      ],
+      "dummy/*": [
+        "tests/dummy/app/*",
+        "app/*"
+      ],
+      "@triptyk/ember-modal": [
+        "addon"
+      ],
+      "@triptyk/ember-modal/*": [
+        "addon/*"
+      ],
+      "@triptyk/ember-modal/test-support": [
+        "addon-test-support"
+      ],
+      "@triptyk/ember-modal/test-support/*": [
+        "addon-test-support/*"
+      ],
+      "*": [
+        "types/*"
+      ]
+    }
+  },
+  "include": [
+    "app/**/*",
+    "addon/**/*",
+    "tests/**/*",
+    "types/**/*",
+    "test-support/**/*",
+    "addon-test-support/**/*"
+  ]
+}

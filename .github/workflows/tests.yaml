@@ -94,6 +94,24 @@ jobs:
           run_install: |
             - recursive: true
       - run: pnpm -C packages/ember-modal test
+  actions-menu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.1.1
+          run_install: |
+            - recursive: true
+      - run: pnpm -C packages/ember-actions-menu test
   
   deploy:
     runs-on: ubuntu-latest
@@ -104,6 +122,7 @@ jobs:
       - input
       - select
       - stepper
+      - actions-menu
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2

@@ -1,5 +1,5 @@
 .tpk-modal-content {
-    @apply z-20 bg-white p-6 rounded-lg w-full sm:w-1/2;
+    @apply z-20 w-full p-6 bg-white rounded-lg sm:w-1/2;
 }
 
 .tpk-modal-content-head {
@@ -11,5 +11,13 @@
 }
 
 .tpk-modal {
-    @apply inset-0 fixed px-4 py-4 top-0 right-0 left-0 bottom-0 flex items-center justify-center z-20 bg-gray-500 bg-opacity-50;
+    @apply fixed inset-0 top-0 bottom-0 left-0 right-0 z-20 flex items-center justify-center px-4 py-4 bg-gray-500 bg-opacity-50;
+}
+
+.tpk-confirm-modal-title {
+		@apply flex-1 text-3xl text-center justify-self-center;
+}
+
+.tpk-confirm-modal-btn-section {
+		@apply flex justify-around mt-8;
 }

@@ -1,0 +1,28 @@
+<TpkModal
+  data-test-confirm-modal
+	@title={{@confirmQuestion}}
+  @isOpen={{@isOpen}}
+  @onClose={{@onClose}}
+	@classless={{@classless}}
+>
+  <h3
+    class={{unless @classless "tpk-confirm-modal-title"}}
+    data-test-tpk-modal-title
+  >
+    {{@confirmQuestion}}
+  </h3>
+  <section class={{unless @classless "tpk-confirm-modal-btn-section"}}>
+			{{yield
+				(hash
+					Confirm=(component
+						'tpk-confirm-modal/confirm'
+						onConfirm=@onConfirm
+					)
+					Cancel=(component
+						'tpk-confirm-modal/cancel'
+						onClose=@onClose
+					)
+				)
+			}}
+  </section>
+</TpkModal>

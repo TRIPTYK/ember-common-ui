@@ -1,0 +1,8 @@
+<li ...attributes>
+  <button {{on "click" (fn @handleAction @action)}} type="button">
+    {{#if @icon}}
+      <img src={{@icon}} class="w-6" alt="" role="presentation" />
+    {{/if}}
+    {{yield}}
+  </button>
+</li>

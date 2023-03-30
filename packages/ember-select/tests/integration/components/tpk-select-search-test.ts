@@ -4,12 +4,12 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
 
 module('Integration | Component | tpk-select', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it select default', async function (assert) {
-    assert.expect(0);
+  hooks.beforeEach(async function () {
     this.set('selectElement', (e: string) => {
       this.set('selected', e);
     });
@@ -44,5 +44,17 @@ module('Integration | Component | tpk-select', function (hooks) {
     </TpkSelectSearch>
     <a href="#">Focusable element</a>
     `);
+  });
+
+  test('it select default', async function (assert) {
+    assert.expect(0);
+  });
+
+  test('Open combobox key Space does not close and select', async function (assert) {
+    //open the selectBox
+    await tpkSelectSearch.button.enter();
+
+    await tpkSelectSearch.button.space();
+    assert.strictEqual(tpkSelectSearch.button.isExpanded, 'true');
   });
 });
