@@ -17,11 +17,11 @@ Installation
 ------------------------------------------------------------------------------
 
 ```zsh
-ember install @triptyk/ember-input
+ember install @triptyk/ember-ui
 ```
 OR
 ```zsh
-pnpm add -D @triptyk/ember-input
+pnpm add -D @triptyk/ember-ui
 ```
 
 
