@@ -34,7 +34,7 @@ module('Integration | Component | tpk-area', function (hooks) {
       hbs`<TpkTextarea @onChange={{this.change}} @label="label" @value="value"/>`
     );
 
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 });

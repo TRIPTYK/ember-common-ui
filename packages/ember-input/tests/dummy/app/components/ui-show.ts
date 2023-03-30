@@ -60,6 +60,6 @@ export default class UiShow extends Component<UiShowArgs> {
 
   @action
   setDate(dates: Date[]) {
-    this.selectedDate = dates[0];
+    this.selectedDate = dates[0]!;
   }
 }

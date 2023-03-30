@@ -94,7 +94,7 @@ module('Integration | Component | ui/radio', function (hooks) {
       hbs`<TpkRadio @onChange={{this.change}} @label="label" @selected="luc" @value="jean" @name="cule" as |O| />`
     );
 
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 });

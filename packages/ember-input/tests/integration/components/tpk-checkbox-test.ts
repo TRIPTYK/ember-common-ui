@@ -73,7 +73,7 @@ module('Integration | Component | ui/checkbox', function (hooks) {
 
   test('input yield only', async function (assert) {
     await render(
-      hbs`<TpkCheckbox @onChange={{this.change}} @label="label" @checked={{true}} as |O|>
+      hbs`<TpkCheckbox @onChange={{this.change}} @label="label" @checked={{true}}>
         {{catch-state O}}
       </TpkCheckbox>`
     );
@@ -91,10 +91,10 @@ module('Integration | Component | ui/checkbox', function (hooks) {
 
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkCheckbox @onChange={{this.change}} @label="label" @checked={{true}} as |O| />`
+      hbs`<TpkCheckbox @onChange={{this.change}} @label="label" @checked={{true}} />`
     );
 
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 });

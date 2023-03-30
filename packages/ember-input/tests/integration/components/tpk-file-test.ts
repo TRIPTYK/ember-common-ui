@@ -54,7 +54,7 @@ module('Integration | Component | tpk-file', function (hooks) {
       hbs`<TpkFile @type="password" @onChange={{this.change}} @label="label" @value="value"/>`
     );
 
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 });

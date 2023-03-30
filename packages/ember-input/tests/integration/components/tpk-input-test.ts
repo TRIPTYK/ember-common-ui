@@ -116,7 +116,7 @@ module('Integration | Component | tpk-input', function (hooks) {
       hbs`<TpkInput @type="password" @onChange={{this.change}} @label="label" @value="value"/>`
     );
 
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 
