@@ -1,0 +1,8 @@
+<button type="button" class="tpk-button" ...attributes>
+  {{#if @icon}}
+    <img src={{@icon}} alt={{t "global.buttonIcon"}} class={{@iconClass}} />
+  {{/if}}
+  <span>
+    {{yield}}
+  </span>
+</button>

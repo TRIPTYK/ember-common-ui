@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import type { FileObject } from 'ember-boilerplate/services/base-document';
+import { FileObject } from './file/component';
 
 interface UiListFileArgs {
   documents: FileObject[] | FileObject;

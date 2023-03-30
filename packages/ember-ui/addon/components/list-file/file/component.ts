@@ -1,6 +1,22 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
+export type FileObject = PersistedFile | UnpersistedFile;
+
+export interface PersistedFile {
+  filename: string;
+  path: string;
+  id: string;
+}
+
+export interface UnpersistedFile {
+  filename: string;
+  path?: string;
+  id?: string;
+  file?: File;
+}
+
+
 interface InputsListFileFileComponentArgs {
   document: FileObject;
   disabled?: boolean;
@@ -9,7 +25,7 @@ interface InputsListFileFileComponentArgs {
 }
 
 export default class InputsListFileFileComponent extends Component<InputsListFileFileComponentArgs> {
-  public constructor(owner: Owner, args: InputsListFileFileComponentArgs) {
+  public constructor(owner: unknown, args: InputsListFileFileComponentArgs) {
     super(owner, args);
     assert('@document is mandatory', args.document !== undefined);
   }
