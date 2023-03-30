@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-select`
+* `cd triptyk-ember-ui`
 * `yarn install`
 
 ## Linting
