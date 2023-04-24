@@ -44,6 +44,7 @@
     "@ember/render-modifiers": "^2.0.4",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.3",
+    "@ember/test-waiters": "~3.0.2",
     "@embroider/compat": "^2.1.1",
     "@embroider/core": "^2.1.1",
     "@embroider/test-setup": "^2.1.1",
@@ -51,8 +52,12 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.0.4",
     "@tsconfig/ember": "^2.0.0",
+    "@triptyk/ember-actions-menu": "workspace:*",
     "@triptyk/ember-input": "workspace:*",
+    "@triptyk/ember-utils": "^1.0.6",
     "@types/ember": "^4.0.3",
+    "@types/ember-data": "~4.4.8",
+    "@types/ember-data__store": "~4.0.2",
     "@types/ember__application": "^4.0.5",
     "@types/ember__array": "^4.0.3",
     "@types/ember__component": "^4.0.12",
@@ -71,7 +76,7 @@
     "@types/ember__test": "^4.0.1",
     "@types/ember__utils": "^4.0.2",
     "@types/htmlbars-inline-precompile": "^3.0.0",
-    "@types/qunit": "^2.19.4",
+    "@types/qunit": "~2.19.4",
     "@types/rsvp": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
@@ -84,7 +89,10 @@
     "ember-cli-postcss": "^8.2.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
+    "ember-click-outside": "^5.0.1",
+    "ember-data": "~4.11.3",
     "ember-flatpickr": "^3.2.3",
+    "ember-intl": "^5.7.2",
     "ember-load-initializers": "^2.1.2",
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^6.2.0",
@@ -94,6 +102,7 @@
     "ember-template-lint": "^5.6.0",
     "ember-truth-helpers": "^3.1.1",
     "ember-try": "^2.0.0",
+    "ember-yeti-table": "^1.7.4",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-ember": "^11.4.7",
@@ -104,9 +113,11 @@
     "postcss": "^8.4.21",
     "postcss-import": "^15.1.0",
     "prettier": "^2.8.4",
+    "msw": "1.2.1",
     "qunit": "^2.19.4",
     "qunit-dom": "^2.0.0",
     "tailwindcss": "^3.3.0",
+    "tracked-built-ins": "^3.1.0",
     "typescript": "^5.0.2",
     "webpack": "^5.75.0"
   },
@@ -122,5 +133,8 @@
   "main": "index.js",
   "volta": {
     "node": "16.13.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

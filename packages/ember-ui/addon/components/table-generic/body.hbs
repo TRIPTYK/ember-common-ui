@@ -1,0 +1,31 @@
+{{! Introduire une logique dans les classes CSS: ex: tpk-table-body }}
+<@table.tbody class="w-full" as |body data|>
+  {{#each data as |element|}}
+    <body.row data-test-row {{on "click" (fn @rowClick element)}} as |row|>
+      {{#each @header as |headerElement|}}
+        <row.cell class="small">
+          {{get element headerElement.prop}}
+        </row.cell>
+      {{/each}}
+
+      <row.cell class="small">
+        <TpkActionsMenu as |Action|>
+          {{#each @rowActions as |act|}}
+            <Action @icon={{act.icon}} @action={{act.action}}>
+              {{t (concat "global." act.name)}}
+            </Action>
+          {{/each}}
+        </TpkActionsMenu>
+      </row.cell>
+
+    </body.row>
+  {{else}}
+    <body.row as |row|>
+      <row.cell colspan={{@table.visibleColumns.length}}>
+        <div class="flex justify-center py-4">
+          {{t "global.missing"}}
+        </div>
+      </row.cell>
+    </body.row>
+  {{/each}}
+</@table.tbody>
