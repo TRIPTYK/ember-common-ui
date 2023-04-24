@@ -58,7 +58,7 @@ module('Integration | Component | tpk-select', function (hooks) {
     await tpkSelect.click();
     await tpkSelect.listbox.options[0].click();
     assert.verifySteps(['selected']);
-    await a11yAudit(this.element);
+    await a11yAudit();
   });
 
   /**
