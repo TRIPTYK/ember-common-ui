@@ -1,13 +1,18 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, triggerKeyEvent } from '@ember/test-helpers';
+import {
+  RenderingTestContext,
+  click,
+  render,
+  triggerKeyEvent,
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('default modal behavior', async function (assert) {
+  test<RenderingTestContext>('default modal behavior', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 

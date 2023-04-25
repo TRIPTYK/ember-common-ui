@@ -4,8 +4,7 @@ ember-select
 This addon will give you a simple input alternative in TailwindCSS
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
 * Ember.js v3.24 or above
 * Ember CLI v3.24 or above
@@ -13,8 +12,7 @@ Compatibility
 * You need tailwind v2 or above to use this simple input
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```zsh
 ember install @triptyk/ember-input-validation
@@ -61,7 +59,6 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 You can also contact info@triptyk for more informations on how contributing on this project.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
