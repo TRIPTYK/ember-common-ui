@@ -1,4 +1,10 @@
-{{yield (hash SearchBar=(component "table-generic/search-bar"))}}
+{{#if @onSearch}}
+  <Inputs::Search
+    @onSearch={{this.onSearch}}
+    @label={{t "global.search"}}
+    @placeholder={{t "global.search"}}
+  />
+{{/if}}
 <YetiTable
   class="tableYeti w-full relative"
   @loadData={{this.loadData}}
@@ -11,7 +17,13 @@
   ...attributes
   as |table|
 >
-  {{yield (hash Table=(component "table-generic/table" table=table))}}
+  <TableGeneric::Header @table={{table}} @header={{@header}} />
+  <TableGeneric::Body
+    @header={{@header}}
+    @table={{table}}
+    @rowClick={{@rowClick}}
+    @rowActions={{@rowActions}}
+  />
   <TableGeneric::Footer @table={{table}} />
   {{#if table.isLoading}}
     <LoadingIndicator />
