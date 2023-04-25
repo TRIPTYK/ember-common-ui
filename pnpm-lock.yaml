@@ -861,7 +861,7 @@ importers:
         specifier: ~2.1.0
         version: 2.1.0
       ember-cli-page-object:
-        specifier: ~2.0.0-beta.4
+        specifier: ~2.0.0
         version: 2.0.0(@ember/test-helpers@2.9.3)
       ember-cli-postcss:
         specifier: ~8.0.0
@@ -4379,7 +4379,7 @@ packages:
     resolution: {integrity: sha512-G6kbLaS3ke4QspHkgLlGY0t1v0G22hGavyphezZucj7LLk1N+r11w913CYkBg3cJsJD+TG2Wo4eVbgRcotvuvQ==}
     dependencies:
       '@types/ember': 4.0.3(@babel/core@7.18.13)
-      '@types/ember__object': 4.0.5(@babel/core@7.18.13)
+      '@types/ember__object': 4.0.5(@babel/core@7.21.4)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -4399,7 +4399,7 @@ packages:
     resolution: {integrity: sha512-mxPme8PexMrv/GPUOE9uPzxjVhHhrznGG4HRUsZNvrHwBbvVwJ/ClgDxz1NZeaYrKhAstQ6QjorssoEXaoer+A==}
     dependencies:
       '@types/ember': 4.0.3(@babel/core@7.18.13)
-      '@types/ember__object': 4.0.5(@babel/core@7.18.13)
+      '@types/ember__object': 4.0.5(@babel/core@7.21.4)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -4513,9 +4513,9 @@ packages:
     resolution: {integrity: sha512-zxPS43JP8/dEmNrSucN5KzTvOm+JUrbFGWsJ1m5a395FwxYbpgs7JujV0JWl+eVhnCh/PmsNcCdJT16+jouktQ==}
     dependencies:
       '@types/ember': 4.0.3(@babel/core@7.18.13)
-      '@types/ember__controller': 4.0.4(@babel/core@7.18.13)
-      '@types/ember__object': 4.0.5(@babel/core@7.18.13)
-      '@types/ember__service': 4.0.2(@babel/core@7.18.13)
+      '@types/ember__controller': 4.0.4(@babel/core@7.21.4)
+      '@types/ember__object': 4.0.5(@babel/core@7.21.4)
+      '@types/ember__service': 4.0.2(@babel/core@7.21.4)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
