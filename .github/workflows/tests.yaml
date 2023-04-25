@@ -11,6 +11,7 @@ jobs:
       matrix:
         package: [ "ember-input", "ember-input-validation", "ember-stepper", "ember-select", "ember-modal", "ember-actions-menu", "ember-ui" ]
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v3
