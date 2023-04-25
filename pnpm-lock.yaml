@@ -1107,9 +1107,6 @@ importers:
       ember-cli-terser:
         specifier: ~4.0.2
         version: 4.0.2
-      ember-cli-typescript-blueprints:
-        specifier: ~3.0.0
-        version: 3.0.0
       ember-concurrency:
         specifier: ~3.0.0
         version: 3.0.0(@babel/core@7.21.8)
@@ -1339,9 +1336,6 @@ importers:
       ember-cli-terser:
         specifier: ~4.0.2
         version: 4.0.2
-      ember-cli-typescript-blueprints:
-        specifier: ~3.0.0
-        version: 3.0.0
       ember-load-initializers:
         specifier: ~2.1.2
         version: 2.1.2(@babel/core@7.18.13)
@@ -9207,12 +9201,6 @@ packages:
       - supports-color
     dev: true
 
-  /ember-cli-test-info@1.0.0:
-    resolution: {integrity: sha512-dEVTIpmUfCzweC97NGf6p7L6XKBwV2GmSM4elmzKvkttEp5P7AvGA9uGyN4GqFq+RwhW+2b0I2qlX00w+skm+A==}
-    dependencies:
-      ember-cli-string-utils: 1.1.0
-    dev: true
-
   /ember-cli-test-loader@3.0.0:
     resolution: {integrity: sha512-wfFRBrfO9gaKScYcdQxTfklx9yp1lWK6zv1rZRpkas9z2SHyJojF7NOQRWQgSB3ypm7vfpiF8VsFFVVr7VBzAQ==}
     engines: {node: 10.* || >= 12}
@@ -11261,11 +11249,6 @@ packages:
       onetime: 5.1.2
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
-    dev: true
-
-  /exists-sync@0.1.0:
-    resolution: {integrity: sha512-qEfFekfBVid4b14FNug/RNY1nv+BADnlzKGHulc+t6ZLqGY4kdHGh1iFha8lnE3sJU/1WzMzKRNxS6EvSakJUg==}
-    deprecated: Please replace with usage of fs.existsSync
     dev: true
 
   /exit@0.1.2:
