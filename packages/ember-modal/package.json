@@ -126,8 +126,5 @@
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
-  "main": "index.js",
-  "volta": {
-    "node": "16.14.0"
-  }
+  "main": "index.js"
 }
