@@ -17,6 +17,7 @@ module('Integration | Component | file-list/element', function (hooks) {
       `);
   }
 
+  // eslint-disable-next-line qunit/require-expect
   test('@document is mandatory', async function (assert) {
     setupOnerror((e) => {
       assert.strictEqual(e.message, 'Assertion Failed: @document is mandatory');
