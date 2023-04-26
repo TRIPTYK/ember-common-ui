@@ -6,7 +6,6 @@ import { setupIntl } from 'ember-intl/test-support';
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
 import { TableGenericUserWorker } from '../../../workers/table-generic';
 module('Integration | Component | table-generic', function (hooks) {
-  setupApplicationTest(hooks);
   setupRenderingTest(hooks);
   setupIntl(hooks, ['fr-fr']);
   setupMock(hooks);
