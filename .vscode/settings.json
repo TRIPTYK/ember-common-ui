@@ -6,7 +6,8 @@
         "pattern": "packages/ember-*"
     }],
     "[handlebars]": {
-        "editor.suggest.insertMode": "replace"
+        "editor.suggest.insertMode": "replace",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "tailwindCSS.includeLanguages": {
         "plaintext": "html",

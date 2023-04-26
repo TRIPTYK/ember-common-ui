@@ -1,27 +1,14 @@
 {{! Introduire une logique dans les classes CSS: ex: tpk-table-body }}
-<@table.tbody class="w-full" as |body data|>
+<@table.tbody class="w-full" ...attributes as |body data|>
   {{#each data as |element|}}
     <body.row data-test-row {{on "click" (fn @rowClick element)}} as |row|>
       {{yield
         (hash
-          element=element
           Cell=(component "table-generic/body/cell" element=element row=row)
           ActionMenu=(component "table-generic/body/action-menu" row=row)
         )
         element
       }}
-      <row.cell class="small" />
-
-      {{!-- <row.cell class="small">
-        <TpkActionsMenu as |Action|>
-          {{#each @rowActions as |act|}}
-            <Action @icon={{act.icon}} @action={{act.action}}>
-              {{t (concat "global." act.name)}}
-            </Action>
-          {{/each}}
-        </TpkActionsMenu>
-      </row.cell> --}}
-
     </body.row>
   {{else}}
     <body.row as |row|>

@@ -1,12 +1,4 @@
 export default {
-  headerTest: [
-    { prop: 'lastName', label: 'Nom', sortable: true },
-    { prop: 'firstName', label: 'Prénom', sortable: true },
-    { prop: 'email', label: 'Email', sortable: true },
-    { prop: 'phone', label: 'Téléphone', sortable: true },
-    { prop: 'job', label: 'travail', sortable: true },
-    { prop: 'country', label: 'pays', sortable: true },
-  ],
   dataTest: [
     {
       type: 'user',
@@ -14,10 +6,7 @@ export default {
       attributes: {
         lastName: 'Marc',
         firstName: 'Jean',
-        phone: '04569593934',
         email: 'dev@triptyk.eu',
-        job: 'Boulanger',
-        country: 'Belgique',
       },
     },
     {
@@ -26,10 +15,7 @@ export default {
       attributes: {
         lastName: 'Lepond',
         firstName: 'Louis',
-        phone: '04569432034',
         email: 'dev@triptyk.eu',
-        job: 'dev',
-        country: 'France',
       },
     },
     {
@@ -38,10 +24,7 @@ export default {
       attributes: {
         lastName: 'Dragon',
         firstName: 'Lucas',
-        phone: '048593944',
         email: 'dev@triptyk.eu',
-        job: 'Vétérinaire',
-        country: 'Espagne',
       },
     },
     {
@@ -50,10 +33,7 @@ export default {
       attributes: {
         lastName: 'Leroy',
         firstName: 'Simon',
-        phone: '048234563944',
         email: 'dev@triptyk.eu',
-        job: 'ouvrier',
-        country: 'Russie',
       },
     },
     {
@@ -62,19 +42,8 @@ export default {
       attributes: {
         lastName: 'Giga',
         firstName: 'Chad',
-        phone: '2345679838',
         email: 'dev@triptyk.eu',
-        job: 'Pilote',
-        country: 'France',
       },
     },
-  ],
-  actionData: [
-    {
-      name: 'delete',
-      icon: '/assets/icons/delete.svg',
-      action: function () {},
-    },
-    { name: 'edit', icon: '/assets/icons/edit.svg', action: function () {} },
   ],
 };

@@ -1,8 +1,7 @@
 import { module, test } from 'qunit';
 import { setupApplicationTest, setupRenderingTest } from '../../../helpers';
-import { render, fillIn } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import FakeData from './data/fake-data';
 import { setupIntl } from 'ember-intl/test-support';
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
 import { TableGenericUserWorker } from '../../../workers/table-generic';
@@ -12,44 +11,51 @@ module('Integration | Component | table-generic', function (hooks) {
   setupIntl(hooks, ['fr-fr']);
   setupMock(hooks);
 
-  hooks.beforeEach(function () {
-    this.set('headerTest', FakeData.headerTest),
-      this.set('dataTest', FakeData.dataTest);
-  });
-
   test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
     await TableGenericUserWorker(this.worker);
     assert.expect(0);
     this.set('onSearch', () => assert.ok(true, 'onSearch function called'));
     this.set('rowClick', () => assert.ok(true, 'rowClick function called'));
+    this.set('deleteAction', () => console.log('je passe ici dragon'));
 
     await render(hbs`
       <TableGeneric
         @onSearch={{this.onSearch}}
         @rowClick={{this.rowClick}}
         @entity="user"
-      as | GT |>
-        <GT.SearchBar />
-        <GT.Table as | Table |>
-          <Table.Header as |cellHeader|>
-            <cellHeader>
-              wesh
-            </cellHeader>
-            <cellHeader>
-              Dene
-            </cellHeader>
+      as | TG |>
+        <TG.SearchBar />
+        <TG.Table as | Table |>
+          <Table.Header as |Header|>
+            <Header.Cell @sortable={{true}} @prop='firstName'>
+              Prénom
+            </Header.Cell>
+            <Header.Cell @sortable={{true}} @prop='lastName'>
+              Nom
+            </Header.Cell>
+            <Header.Cell @sortable={{false}} @prop='email'>
+              Email
+            </Header.Cell>
           </Table.Header>
-          <Table.Body as |element Cell ActionMenu|>
-            {{log element}}
-            <Cell>
+          <Table.Body as |Body element|>
+            <Body.Cell>
+              {{element.firstName}}
+            </Body.Cell>
+            <Body.Cell>
               {{element.lastName}}
-            </Cell>
+            </Body.Cell>
+            <Body.Cell>
+              {{element.email}}
+            </Body.Cell>
+            <Body.ActionMenu as |Action|>
+              <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
+                lustre
+              </Action>
+            </Body.ActionMenu>
           </Table.Body>
-        </GT.Table>
+        </TG.Table>
       </TableGeneric>
     `);
-
-    await this.pauseTest();
 
     // assert.dom('input[type="search"]').exists();
     // await fillIn('input[type="search"]', 'test');
