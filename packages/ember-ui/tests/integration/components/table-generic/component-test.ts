@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
-import { setupApplicationTest, setupRenderingTest } from '../../../helpers';
-import { render } from '@ember/test-helpers';
+import { setupRenderingTest } from '../../../helpers';
+import { click, fillIn, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupIntl } from 'ember-intl/test-support';
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
@@ -10,13 +10,14 @@ module('Integration | Component | table-generic', function (hooks) {
   setupIntl(hooks, ['fr-fr']);
   setupMock(hooks);
 
-  test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-    assert.expect(0);
+  hooks.beforeEach(async function (assert) {
     this.set('onSearch', () => assert.ok(true, 'onSearch function called'));
     this.set('rowClick', () => assert.ok(true, 'rowClick function called'));
     this.set('deleteAction', () => console.log('je passe ici dragon'));
-
+  });
+  test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+    assert.expect(5);
     await render(hbs`
       <TableGeneric
         @onSearch={{this.onSearch}}
@@ -55,17 +56,127 @@ module('Integration | Component | table-generic', function (hooks) {
         </TG.Table>
       </TableGeneric>
     `);
+    assert.dom('input[type="search"]').exists();
+    await fillIn('input[type="search"]', 'test');
 
-    // assert.dom('input[type="search"]').exists();
-    // await fillIn('input[type="search"]', 'test');
+    assert.dom('.tableYeti').exists();
+    assert.dom('thead th').hasText('Prénom', 'Table header ok');
+    assert.dom('.yeti-table-pagination-controls').exists('Table pagination ok');
 
-    // assert.dom('.tableYeti').exists();
-    // assert.dom('thead th').hasText('Nom', 'Table header ok');
-    // assert.dom('.yeti-table-pagination-controls').exists('Table pagination ok');
-    // // await this.pauseTest();
+    // vérifier que les rows sont là avec les bonnes données.
+    const rows = document.querySelectorAll('[data-test-row]');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+  });
 
-    // // vérifier que les rows sont là avec les bonnes données.
-    // const rows = document.querySelectorAll('[data-test-row]');
-    // assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+  test<ServiceWorkerTestContext>('test sortable of column', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+
+    await render(hbs`
+    <TableGeneric
+      @onSearch={{this.onSearch}}
+      @rowClick={{this.rowClick}}
+      @entity="user"
+    as | TG |>
+      <TG.SearchBar />
+      <TG.Table as | Table |>
+        <Table.Header as |Header|>
+          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
+            Prénom
+          </Header.Cell>
+          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
+            Nom
+          </Header.Cell>
+          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
+            Email
+          </Header.Cell>
+        </Table.Header>
+        <Table.Body as |Body element|>
+          <Body.Cell>
+            {{element.firstName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.lastName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.email}}
+          </Body.Cell>
+          <Body.ActionMenu as |Action|>
+            <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
+              lustre
+            </Action>
+          </Body.ActionMenu>
+        </Table.Body>
+      </TG.Table>
+    </TableGeneric>
+  `);
+
+    assert.expect(5);
+    assert
+      .dom('thead th[data-test-table="firstName"]')
+      .exists('Sort button for firstName exists');
+    assert
+      .dom('thead th[data-test-table="lastName"]')
+      .exists('Sort button for lastName exists');
+    assert
+      .dom('thead th[data-test-table="email"]')
+      .exists('Sort button for email does not exist');
+
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
+
+    await click('thead th[data-test-table="firstName"]');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Simon');
+  });
+
+  test<ServiceWorkerTestContext>('test search', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+
+    await render(hbs`
+    <TableGeneric
+      @onSearch={{this.onSearch}}
+      @rowClick={{this.rowClick}}
+      @entity="user"
+    as | TG |>
+      <TG.SearchBar />
+      <TG.Table as | Table |>
+        <Table.Header as |Header|>
+          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
+            Prénom
+          </Header.Cell>
+          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
+            Nom
+          </Header.Cell>
+          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
+            Email
+          </Header.Cell>
+        </Table.Header>
+        <Table.Body as |Body element|>
+          <Body.Cell>
+            {{element.firstName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.lastName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.email}}
+          </Body.Cell>
+          <Body.ActionMenu as |Action|>
+            <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
+              lustre
+            </Action>
+          </Body.ActionMenu>
+        </Table.Body>
+      </TG.Table>
+    </TableGeneric>
+  `);
+
+    assert.expect(3);
+    let rows = document.querySelectorAll('[data-test-row]');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+
+    await fillIn('[data-test-tpk-input-input]', 'gig');
+    await click('[data-test-search-submit]');
+    rows = document.querySelectorAll('[data-test-row]');
+    assert.strictEqual(rows.length, 1, 'Correct number of rows rendered');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
 });
