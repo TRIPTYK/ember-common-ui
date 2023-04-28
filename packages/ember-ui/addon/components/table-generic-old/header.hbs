@@ -1,8 +1,0 @@
-<@table.header as |header|>
-  {{#each @header as |headerElement|}}
-    <header.column @prop={{headerElement.prop}} @sortable={{headerElement.sortable}}>
-      {{headerElement.label}}
-    </header.column>
-  {{/each}}
-  <header.column @sortable={{false}} />
-</@table.header>
