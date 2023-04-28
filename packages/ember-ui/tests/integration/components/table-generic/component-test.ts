@@ -13,7 +13,7 @@ module('Integration | Component | table-generic', function (hooks) {
   hooks.beforeEach(async function (assert) {
     this.set('onSearch', () => assert.ok(true, 'onSearch function called'));
     this.set('rowClick', () => assert.ok(true, 'rowClick function called'));
-    this.set('deleteAction', () => console.log('je passe ici dragon'));
+    this.set('deleteAction', () => console.log('je passe ici'));
   });
   test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
     await TableGenericUserWorker(this.worker);
@@ -63,7 +63,6 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.dom('thead th').hasText('Prénom', 'Table header ok');
     assert.dom('.yeti-table-pagination-controls').exists('Table pagination ok');
 
-    // vérifier que les rows sont là avec les bonnes données.
     const rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
   });
@@ -168,7 +167,6 @@ module('Integration | Component | table-generic', function (hooks) {
       </TG.Table>
     </TableGeneric>
   `);
-
     assert.expect(3);
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
@@ -177,6 +175,61 @@ module('Integration | Component | table-generic', function (hooks) {
     await click('[data-test-search-submit]');
     rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 1, 'Correct number of rows rendered');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
+  });
+
+  test<ServiceWorkerTestContext>('test pagination', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+
+    await render(hbs`
+    <TableGeneric
+      @onSearch={{this.onSearch}}
+      @rowClick={{this.rowClick}}
+      @entity="user"
+    as | TG |>
+      <TG.SearchBar />
+      <TG.Table as | Table |>
+        <Table.Header as |Header|>
+          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
+            Prénom
+          </Header.Cell>
+          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
+            Nom
+          </Header.Cell>
+          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
+            Email
+          </Header.Cell>
+        </Table.Header>
+        <Table.Body as |Body element|>
+          <Body.Cell>
+            {{element.firstName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.lastName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.email}}
+          </Body.Cell>
+          <Body.ActionMenu as |Action|>
+            <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
+              lustre
+            </Action>
+          </Body.ActionMenu>
+        </Table.Body>
+      </TG.Table>
+    </TableGeneric>
+  `);
+    assert.expect(5);
+    let rows = document.querySelectorAll('[data-test-row]');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
+
+    await click('.yeti-table-pagination-controls-next');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Romain');
+
+    await click('.yeti-table-pagination-controls-previous');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
 });

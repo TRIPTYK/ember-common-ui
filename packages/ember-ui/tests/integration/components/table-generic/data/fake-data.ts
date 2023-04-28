@@ -140,4 +140,51 @@ export default {
       },
     },
   ],
+  secondPage: [
+    {
+      type: 'user',
+      id: '1',
+      attributes: {
+        lastName: 'Dramix',
+        firstName: 'Romain',
+        email: 'dev@triptyk.eu',
+      },
+    },
+    {
+      type: 'user',
+      id: '2',
+      attributes: {
+        lastName: 'Larris',
+        firstName: 'Gilles',
+        email: 'dev@triptyk.eu',
+      },
+    },
+    {
+      type: 'user',
+      id: '3',
+      attributes: {
+        lastName: 'Truc',
+        firstName: 'Sam',
+        email: 'dev@triptyk.eu',
+      },
+    },
+    {
+      type: 'user',
+      id: '4',
+      attributes: {
+        lastName: 'Jelra',
+        firstName: 'Jacques',
+        email: 'dev@triptyk.eu',
+      },
+    },
+    {
+      type: 'user',
+      id: '5',
+      attributes: {
+        lastName: 'Lefou',
+        firstName: 'Seb',
+        email: 'dev@triptyk.eu',
+      },
+    },
+  ],
 };

@@ -61,7 +61,7 @@ export default class TableGenericTable<
 
   @tracked totalRows?: number;
   @tracked filterText?: string;
-  pageSize: number = 50;
+  pageSize: number = 2;
   public tableApi?: TableApi;
 
   entityName: K = this.args.entity;
