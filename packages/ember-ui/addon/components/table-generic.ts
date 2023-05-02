@@ -3,7 +3,6 @@ import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import type Store from '@ember-data/store';
 import type ArrayProxy from '@ember/array/proxy';
-import sanitizeString from '@triptyk/ember-utils/utils/sanitize-string';
 import { action } from '@ember/object';
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import type ModelRegistry from 'ember-data/types/registries/model';
@@ -40,6 +39,7 @@ export interface TableApi {
 interface TableGenericTableArgs {
   entity: keyof ModelRegistry;
   relationships: string;
+  // eslint-disable-next-line no-unused-vars
   registerApi?: (api: TableApi) => unknown;
   rowClick: Function;
   deleteElement: Function;
@@ -61,11 +61,13 @@ export default class TableGenericTable<
 
   @tracked totalRows?: number;
   @tracked filterText?: string;
-  pageSize: number = 2;
-  public tableApi?: TableApi;
 
-  entityName: K = this.args.entity;
-  relationships: string | undefined = this.args.relationships;
+  public get entityName(): K {
+    return this.args.entity;
+  }
+  public get relationships(): string | undefined {
+    return this.args.relationships;
+  }
 
   get additionalFilters() {
     return this.args.additionalFilters ?? {};
@@ -78,7 +80,6 @@ export default class TableGenericTable<
   @action
   registerApi(api: TableApi) {
     this.args.registerApi?.(api);
-    this.tableApi = api;
   }
   @action
   @waitFor
@@ -96,9 +97,7 @@ export default class TableGenericTable<
       include: this.relationships ?? undefined,
       filter: {
         search: {
-          $fulltext: data.filterData?.filter
-            ? formatSearchValue(sanitizeString(data.filterData?.filter))
-            : undefined,
+          $fulltext: data.filterData?.filter,
         },
         ...this.additionalFilters,
       },

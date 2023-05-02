@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from '../../../helpers';
-import { click, fillIn, render } from '@ember/test-helpers';
+import { click, fillIn, findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupIntl } from 'ember-intl/test-support';
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
@@ -11,65 +11,17 @@ module('Integration | Component | table-generic', function (hooks) {
   setupMock(hooks);
 
   hooks.beforeEach(async function (assert) {
-    this.set('onSearch', () => assert.ok(true, 'onSearch function called'));
-    this.set('rowClick', () => assert.ok(true, 'rowClick function called'));
+    assert.step('onSearch function called');
+    assert.step('rowClick function called');
+    this.set('onSearch', () => {
+      assert.step('onSearch function called');
+    });
+    this.set('rowClick', () => {
+      assert.step('rowClick function called');
+    });
     this.set('deleteAction', () => console.log('je passe ici'));
   });
-  test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-    assert.expect(5);
-    await render(hbs`
-      <TableGeneric
-        @onSearch={{this.onSearch}}
-        @rowClick={{this.rowClick}}
-        @entity="user"
-      as | TG |>
-        <TG.SearchBar />
-        <TG.Table as | Table |>
-          <Table.Header as |Header|>
-            <Header.Cell @sortable={{true}} @prop='firstName'>
-              Prénom
-            </Header.Cell>
-            <Header.Cell @sortable={{true}} @prop='lastName'>
-              Nom
-            </Header.Cell>
-            <Header.Cell @sortable={{false}} @prop='email'>
-              Email
-            </Header.Cell>
-          </Table.Header>
-          <Table.Body as |Body element|>
-            <Body.Cell>
-              {{element.firstName}}
-            </Body.Cell>
-            <Body.Cell>
-              {{element.lastName}}
-            </Body.Cell>
-            <Body.Cell>
-              {{element.email}}
-            </Body.Cell>
-            <Body.ActionMenu as |Action|>
-              <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
-                lustre
-              </Action>
-            </Body.ActionMenu>
-          </Table.Body>
-        </TG.Table>
-      </TableGeneric>
-    `);
-    assert.dom('input[type="search"]').exists();
-    await fillIn('input[type="search"]', 'test');
-
-    assert.dom('.tableYeti').exists();
-    assert.dom('thead th').hasText('Prénom', 'Table header ok');
-    assert.dom('.yeti-table-pagination-controls').exists('Table pagination ok');
-
-    const rows = document.querySelectorAll('[data-test-row]');
-    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
-  });
-
-  test<ServiceWorkerTestContext>('test sortable of column', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-
+  async function renderTableGeneric() {
     await render(hbs`
     <TableGeneric
       @onSearch={{this.onSearch}}
@@ -108,8 +60,37 @@ module('Integration | Component | table-generic', function (hooks) {
       </TG.Table>
     </TableGeneric>
   `);
+  }
 
-    assert.expect(5);
+  test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+    assert.expect(8);
+    await renderTableGeneric.call(this);
+    assert.verifySteps([
+      'onSearch function called',
+      'rowClick function called',
+    ]);
+
+    assert.dom('input[type="search"]').exists();
+    await fillIn('input[type="search"]', 'test');
+
+    assert.dom('.tableYeti').exists();
+    assert.dom('thead th').hasText('Prénom', 'Table header ok');
+    assert.dom('.yeti-table-pagination-controls').exists('Table pagination ok');
+
+    const rows = findAll('[data-test-row]');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+  });
+
+  test<ServiceWorkerTestContext>('test sortable of column', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+
+    await renderTableGeneric.call(this);
+    assert.expect(8);
+    assert.verifySteps([
+      'onSearch function called',
+      'rowClick function called',
+    ]);
     assert
       .dom('thead th[data-test-table="firstName"]')
       .exists('Sort button for firstName exists');
@@ -129,45 +110,12 @@ module('Integration | Component | table-generic', function (hooks) {
   test<ServiceWorkerTestContext>('test search', async function (assert) {
     await TableGenericUserWorker(this.worker);
 
-    await render(hbs`
-    <TableGeneric
-      @onSearch={{this.onSearch}}
-      @rowClick={{this.rowClick}}
-      @entity="user"
-    as | TG |>
-      <TG.SearchBar />
-      <TG.Table as | Table |>
-        <Table.Header as |Header|>
-          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
-            Prénom
-          </Header.Cell>
-          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
-            Nom
-          </Header.Cell>
-          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
-            Email
-          </Header.Cell>
-        </Table.Header>
-        <Table.Body as |Body element|>
-          <Body.Cell>
-            {{element.firstName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.lastName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.email}}
-          </Body.Cell>
-          <Body.ActionMenu as |Action|>
-            <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
-              lustre
-            </Action>
-          </Body.ActionMenu>
-        </Table.Body>
-      </TG.Table>
-    </TableGeneric>
-  `);
-    assert.expect(3);
+    await renderTableGeneric.call(this);
+    assert.expect(6);
+    assert.verifySteps([
+      'onSearch function called',
+      'rowClick function called',
+    ]);
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
 
@@ -180,45 +128,8 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('test pagination', async function (assert) {
     await TableGenericUserWorker(this.worker);
+    await renderTableGeneric.call(this);
 
-    await render(hbs`
-    <TableGeneric
-      @onSearch={{this.onSearch}}
-      @rowClick={{this.rowClick}}
-      @entity="user"
-    as | TG |>
-      <TG.SearchBar />
-      <TG.Table as | Table |>
-        <Table.Header as |Header|>
-          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
-            Prénom
-          </Header.Cell>
-          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
-            Nom
-          </Header.Cell>
-          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
-            Email
-          </Header.Cell>
-        </Table.Header>
-        <Table.Body as |Body element|>
-          <Body.Cell>
-            {{element.firstName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.lastName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.email}}
-          </Body.Cell>
-          <Body.ActionMenu as |Action|>
-            <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} >
-              lustre
-            </Action>
-          </Body.ActionMenu>
-        </Table.Body>
-      </TG.Table>
-    </TableGeneric>
-  `);
     assert.expect(5);
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
