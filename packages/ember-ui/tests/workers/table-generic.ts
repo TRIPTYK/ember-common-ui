@@ -5,9 +5,6 @@ import fakeData from '../integration/components/table-generic/data/fake-data';
 export async function TableGenericUserWorker(worker: SetupWorker) {
   worker.use(
     rest.get('http://localhost:4200/users', (req, res, ctx) => {
-      console.log(req.url.searchParams.get('filter'));
-      console.log(req.url.searchParams.get('sort'));
-
       let data;
       if (req.url.searchParams.get('sort') === 'firstName') {
         data = fakeData.dataTestSortedReversed;

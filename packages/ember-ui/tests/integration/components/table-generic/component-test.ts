@@ -143,4 +143,21 @@ module('Integration | Component | table-generic', function (hooks) {
     await click('.yeti-table-pagination-controls-previous');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
+
+  test<ServiceWorkerTestContext>('it calls deleteAction method on delete button click', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+    assert.expect(9);
+
+    await renderTableGeneric.call(this);
+
+    const deleteButton = findAll('[data-test-delete]');
+    assert.strictEqual(
+      deleteButton.length,
+      5,
+      'Correct number of delete buttons rendered'
+    );
+
+    await click(deleteButton[0]!);
+    assert.verifySteps(['deleteAction function called']);
+  });
 });
