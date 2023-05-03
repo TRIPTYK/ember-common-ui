@@ -21,10 +21,12 @@ module.exports = function (defaults) {
           },
           require('tailwindcss')('./tailwind.config.js'),
         ],
-        cacheInclude: [/.*\.(css|hbs|html)$/, /config\.js/],
+        cacheInclude: [/.*\.(css|hbs|html|ts)$/, /config\.js/],
       },
     },
   });
+
+  process.on('uncaughtException', console.error);
 
   /*
     This build file specifies the options for the dummy test app of this
@@ -41,10 +43,6 @@ module.exports = function (defaults) {
   //     },
   //   ],
   // });
-  process.on('uncaughtException', (e) => {
-    console.error(e);
-  });
-
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: true,
