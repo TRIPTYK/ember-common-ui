@@ -2,10 +2,10 @@
   <foot.row as |row|>
     <row.cell @visible={{true}} colspan={{@table.visibleColumns.length}}>
       <YetiTable::Pagination
-        @customClass={{@customClass}}
         @disabled={{@table.isLoading}}
         @theme={{@table.mergedTheme}}
         @paginationData={{@table.paginationData}}
+        @pageSizes={{@pageSizes}}
         @paginationActions={{hash
           previousPage=@table.actions.previousPage
           nextPage=@table.actions.nextPage

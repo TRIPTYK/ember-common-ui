@@ -1,5 +1,5 @@
 {{! Introduire une logique dans les classes CSS: ex: tpk-table-body }}
-<@table.tbody class="w-full" ...attributes as |body data|>
+<@table.tbody class="tpk-table-body" ...attributes as |body data|>
   {{#each data as |element|}}
     <body.row data-test-row {{on "click" (fn @rowClick element)}} as |row|>
       {{yield

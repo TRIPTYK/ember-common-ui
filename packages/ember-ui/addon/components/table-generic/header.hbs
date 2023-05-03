@@ -1,4 +1,4 @@
-<@table.header as |header|>
+<@table.header class="tpk-table-header" as |header|>
   {{yield (hash Cell=(component "table-generic/header/cell" header=header))}}
   <header.column @sortable={{false}} />
 </@table.header>

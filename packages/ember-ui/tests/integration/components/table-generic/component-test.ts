@@ -9,13 +9,13 @@ module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, ['fr-fr']);
   setupMock(hooks);
+  const pageSize = 5;
+  const pageSizes: number[] = [5, 10, 25];
 
-  hooks.beforeEach(async function (assert) {
-    assert.step('onSearch function called');
-    assert.step('rowClick function called');
-    this.set('onSearch', () => {
-      assert.step('onSearch function called');
-    });
+  hooks.beforeEach<ServiceWorkerTestContext>(async function (assert) {
+    await TableGenericUserWorker(this.worker);
+    this.set('pageSize', pageSize);
+    this.set('pageSizes', pageSizes);
     this.set('rowClick', () => {
       assert.step('rowClick function called');
     });
@@ -26,8 +26,9 @@ module('Integration | Component | table-generic', function (hooks) {
   async function renderTableGeneric() {
     await render(hbs`
     <TableGeneric
-      @onSearch={{this.onSearch}}
       @rowClick={{this.rowClick}}
+      @pageSize={{this.pageSize}}
+      @pageSizes={{this.pageSizes}}
       @entity="user"
     as | TG |>
       <TG.SearchBar />
@@ -64,60 +65,41 @@ module('Integration | Component | table-generic', function (hooks) {
   `);
   }
 
-  test<ServiceWorkerTestContext>('it renders search input and table', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-    assert.verifySteps([
-      'onSearch function called',
-      'rowClick function called',
-    ]);
-    assert.expect(8);
+  test<ServiceWorkerTestContext>('It renders search input and table', async function (assert) {
+    assert.expect(7);
     await renderTableGeneric.call(this);
 
     assert.dom('input[type="search"]').exists();
-    await fillIn('input[type="search"]', 'test');
-
-    assert.dom('.tableYeti').exists();
+    assert.dom('.tpk-table-generic').exists();
     assert.dom('thead th').hasText('Prénom', 'Table header ok');
-    assert.dom('.yeti-table-pagination-controls').exists('Table pagination ok');
+    assert.dom('.tpk-table-pagination').exists('Table pagination ok');
 
     const rows = findAll('[data-test-row]');
+    if (rows.length && rows[0]) {
+      await click(rows[0]);
+    }
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+    assert.verifySteps(['rowClick function called']);
   });
 
-  test<ServiceWorkerTestContext>('test sortable of column', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-
+  test<ServiceWorkerTestContext>('It can sort firstName & lastName and cannot sort email', async function (assert) {
+    assert.expect(5);
     await renderTableGeneric.call(this);
-    assert.expect(8);
-    assert.verifySteps([
-      'onSearch function called',
-      'rowClick function called',
-    ]);
-    assert
-      .dom('thead th[data-test-table="firstName"]')
-      .exists('Sort button for firstName exists');
-    assert
-      .dom('thead th[data-test-table="lastName"]')
-      .exists('Sort button for lastName exists');
+
+    assert.dom('thead th[data-test-table="firstName"]').hasAttribute('role');
+    assert.dom('thead th[data-test-table="lastName"]').hasAttribute('role');
     assert
       .dom('thead th[data-test-table="email"]')
-      .exists('Sort button for email does not exist');
-
+      .doesNotHaveAttribute('role');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
-
     await click('thead th[data-test-table="firstName"]');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Simon');
   });
 
-  test<ServiceWorkerTestContext>('test search', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-
+  test<ServiceWorkerTestContext>('It triggers search', async function (assert) {
+    assert.expect(3);
     await renderTableGeneric.call(this);
-    assert.expect(6);
-    assert.verifySteps([
-      'onSearch function called',
-      'rowClick function called',
-    ]);
+
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
 
@@ -128,10 +110,8 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
 
-  test<ServiceWorkerTestContext>('it calls deleteAction method on delete button click', async function (assert) {
-    await TableGenericUserWorker(this.worker);
-    assert.expect(5);
-
+  test<ServiceWorkerTestContext>('It calls deleteAction method on delete button click', async function (assert) {
+    assert.expect(3);
     await renderTableGeneric.call(this);
     const deleteButton = findAll('[data-test-actions-open-action]');
     assert.strictEqual(
@@ -142,28 +122,34 @@ module('Integration | Component | table-generic', function (hooks) {
     await click('[data-test-actions-open-action]');
     await click('[data-test-delete] button');
     await click(deleteButton[0]!);
-    assert.verifySteps([
-      'onSearch function called',
-      'rowClick function called',
-      'delete function called',
-    ]);
+    assert.verifySteps(['delete function called']);
   });
 
-  // test<ServiceWorkerTestContext>('test pagination', async function (assert) {
-  //   await TableGenericUserWorker(this.worker);
-  //   await renderTableGeneric.call(this);
+  test<ServiceWorkerTestContext>('It renders pageSizes args', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+    await renderTableGeneric.call(this);
+    assert.expect(3);
 
-  //   assert.expect(5);
-  //   let rows = document.querySelectorAll('[data-test-row]');
-  //   assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+    const selectPageSizes = findAll('[data-test-pagination-select] option');
+    for (const [index, option] of selectPageSizes.entries()) {
+      assert.dom(option).hasValue(`${pageSizes[index]}`);
+    }
+  });
+  test<ServiceWorkerTestContext>('It can change page', async function (assert) {
+    await TableGenericUserWorker(this.worker);
+    await renderTableGeneric.call(this);
+    assert.expect(5);
 
-  //   assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
+    let rows = document.querySelectorAll('[data-test-row]');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
 
-  //   await click('.yeti-table-pagination-controls-next');
-  //   assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
-  //   assert.dom('tbody tr:first-child td:first-of-type').hasText('Romain');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
 
-  //   await click('.yeti-table-pagination-controls-previous');
-  //   assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
-  // });
+    await click('.yeti-table-pagination-controls-next');
+    assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Romain');
+
+    await click('.yeti-table-pagination-controls-previous');
+    assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
+  });
 });

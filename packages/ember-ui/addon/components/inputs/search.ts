@@ -3,15 +3,15 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-export interface TableGenericInputsSearchComponentArgs {
+export interface InputsSearchComponentArgs {
   onChange?: (value: string, e: Event) => unknown;
   onSearch: (value: string, e: Event) => unknown;
 }
 
-export default class TableGenericInputsSearchComponent extends Component<TableGenericInputsSearchComponentArgs> {
+export default class InputsSearchComponent extends Component<InputsSearchComponentArgs> {
   @tracked searchValue = '';
 
-  constructor(owner: unknown, args: TableGenericInputsSearchComponentArgs) {
+  constructor(owner: unknown, args: InputsSearchComponentArgs) {
     super(owner, args);
     assert(
       'Please provide @onSearch to search input',

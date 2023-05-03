@@ -25,7 +25,7 @@
       Table=(component "table-generic/table" table=table rowClick=@rowClick)
     )
   }}
-  <TableGeneric::Footer @table={{table}} />
+  <TableGeneric::Footer @table={{table}} @pageSizes={{@pageSizes}} />
   {{#if table.isLoading}}
     <LoadingIndicator />
   {{/if}}

@@ -1,8 +1,8 @@
 {{! template-lint-disable no-inline-styles }}
 {{! template-lint-disable template-length }}
 <div
-  style={{@customClass}}
-  class="{{@theme.pagination.controls}} yeti-table-pagination-controls"
+  class="{{@theme.pagination.controls}} tpk-table-pagination"
+  data-test-pagination
   ...attributes
 >
   {{#if (not-eq @paginationData.totalRows 0)}}
@@ -15,8 +15,12 @@
         disabled={{this.shouldDisablePrevious}}
         title={{t "global.previous"}}
         {{on "click" @paginationActions.previousPage}}
+        data-test-pagination-previous
       >
-        <img src="/assets/icons/chevron-left.svg" alt="Précédent" />
+        <img
+          src="/assets/icons/chevron-left.svg"
+          alt={{t "global.table.previous"}}
+        />
         <span class="sr-only">
           {{t "global.previous"}}
         </span>
@@ -27,11 +31,15 @@
         disabled={{this.shouldDisableNext}}
         title={{t "global.next"}}
         {{on "click" @paginationActions.nextPage}}
+        data-test-pagination-next
       >
         <span class="sr-only">
           {{t "global.next"}}
         </span>
-        <img src="/assets/icons/chevron-right.svg" alt="Suivant" />
+        <img
+          src="/assets/icons/chevron-right.svg"
+          alt={{t "global.table.next"}}
+        />
       </button>
     </div>
   {{/if}}
@@ -39,6 +47,7 @@
     <div
       class="{{@theme.pagination.info}}
         yeti-table-pagination-controls-page-info"
+      data-test-pagination-result
     >
       {{@paginationData.pageStart}}
       -
@@ -53,7 +62,11 @@
     >
       {{t "global.table.results_by_page"}}:
       {{! template-lint-disable require-input-label }}
-      <select disabled={{@disabled}} {{on "change" this.changePageSize}}>
+      <select
+        disabled={{@disabled}}
+        {{on "change" this.changePageSize}}
+        data-test-pagination-select
+      >
         {{#each this.pageSizes as |pageSize|}}
           <option
             value={{pageSize}}

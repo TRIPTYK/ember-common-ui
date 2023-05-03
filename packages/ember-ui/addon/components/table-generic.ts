@@ -39,6 +39,7 @@ export interface TableApi {
 interface TableGenericTableArgs {
   entity: keyof ModelRegistry;
   relationships: string;
+  pageSize?: number;
   // eslint-disable-next-line no-unused-vars
   registerApi?: (api: TableApi) => unknown;
   rowClick: Function;
@@ -61,6 +62,10 @@ export default class TableGenericTable<
 
   @tracked totalRows?: number;
   @tracked filterText?: string;
+
+  public get pageSize(): number {
+    return this.args.pageSize || 30;
+  }
 
   public get entityName(): K {
     return this.args.entity;
