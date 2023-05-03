@@ -8,26 +8,30 @@ import { action } from '@ember/object';
 import type ModelRegistry from 'ember-data/types/registries/model';
 import { waitFor } from '@ember/test-waiters';
 
+export interface SortData {
+  prop: string;
+  direction: string;
+}
+export interface FilterData {
+  filter: string;
+  filterUsing?: string;
+  columnFilters: { filter: string; fitlerUsing: string }[];
+}
+export interface PaginationData {
+  pageSize: number;
+  pageNumber: number;
+  pageStart: number;
+  pageEnd: number;
+  isFirstPage: boolean;
+  isLastPage: boolean;
+  totalRows: number;
+  totalPages: number;
+}
+
 export interface TableLoadDataApi {
-  paginationData: {
-    pageSize: number;
-    pageNumber: number;
-    pageStart: number;
-    pageEnd: number;
-    isFirstPage: boolean;
-    isLastPage: boolean;
-    totalRows: number;
-    totalPages: number;
-  };
-  sortData: {
-    prop: string;
-    direction: string;
-  }[];
-  filterData: {
-    filter: string;
-    filterUsing?: string;
-    columnFilters: { filter: string; fitlerUsing: string }[];
-  };
+  paginationData: PaginationData;
+  sortData: SortData[];
+  filterData: FilterData;
   filterRole: {
     filter: string;
   };
@@ -91,27 +95,15 @@ export default class TableGenericTable<
   async loadData(
     data: TableLoadDataApi
   ): Promise<ArrayProxy<ModelRegistry[K]>> {
-    const sortString = data.sortData
-      .map(
-        (sortField) =>
-          `${sortField.direction === 'asc' ? '' : '-'}${sortField.prop}`
-      )
-      .join(',');
+    const sortString = this.getSortString(data.sortData);
 
-    const queryOptions = {
-      include: this.relationships ?? undefined,
-      filter: {
-        search: {
-          $fulltext: data.filterData?.filter,
-        },
-        ...this.additionalFilters,
-      },
-      page: {
-        size: data.paginationData.pageSize,
-        number: data.paginationData.pageNumber,
-      },
-      sort: sortString || '-updatedAt',
-    };
+    const queryOptions = this.buildQueryOptions(
+      this.relationships,
+      this.additionalFilters,
+      data.filterData,
+      data.paginationData,
+      sortString
+    );
 
     const array = await this.store.query(this.entityName, queryOptions);
 
@@ -122,5 +114,37 @@ export default class TableGenericTable<
     ).meta.total;
 
     return array;
+  }
+
+  private getSortString(sortData: SortData[]): string {
+    return sortData
+      .map(
+        (sortField) =>
+          `${sortField.direction === 'asc' ? '' : '-'}${sortField.prop}`
+      )
+      .join(',');
+  }
+
+  private buildQueryOptions(
+    relationships: string | undefined,
+    additionalFilters: Record<string, unknown>,
+    filterData: FilterData | undefined,
+    paginationData: PaginationData,
+    sortString: string
+  ): Record<string, unknown> {
+    return {
+      include: relationships,
+      filter: {
+        search: {
+          $fulltext: filterData?.filter,
+        },
+        ...additionalFilters,
+      },
+      page: {
+        size: paginationData.pageSize,
+        number: paginationData.pageNumber,
+      },
+      sort: sortString || '-updatedAt',
+    };
   }
 }
