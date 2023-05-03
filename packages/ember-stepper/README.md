@@ -3,14 +3,16 @@ ember-stepper
 
 Headless stepper, no default style provided here.
 
-## Compatibility
+Compatibility
+------------------------------------------------------------------------------
 
-* Ember.js v3.28 or above
-* Ember CLI v3.28 or above
-* Node.js v14 or above
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v12 or above
 
 
-## Installation
+Installation
+------------------------------------------------------------------------------
 
 ```zsh
 ember install @triptyk/ember-stepper
@@ -21,7 +23,8 @@ pnpm add -D @triptyk/ember-stepper
 ```
 
 
-## Usage
+Usage
+------------------------------------------------------------------------------
 
 ### ...@Args
 
@@ -56,12 +59,14 @@ interface TpkStepperArgs {
 
 Each step has a "Header", this is the title of the steps. The content is transfered to the `TpkStepper::Stepper` using `#in-element`. It may be customised to your needs.
 
-## Contributing
+Contributing
+------------------------------------------------------------------------------
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 You can also contact info@triptyk for more informations on how contributing on this project.
 
 
-## License
+License
+------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).

@@ -6,6 +6,7 @@ import {
   property,
   triggerable,
 } from 'ember-cli-page-object';
+import { Component } from 'ember-cli-page-object/-private';
 import { findOne } from 'ember-cli-page-object/extend';
 import { getter } from 'ember-cli-page-object/macros';
 
@@ -22,7 +23,7 @@ export default create({
   button: create({
     scope: '.tpk-select-button',
     click: clickable(),
-    hasFocus: getter(function (this: any) {
+    hasFocus: getter(function (this: Component) {
       console.log(document.activeElement, findOne(this));
       return document.activeElement === findOne(this);
     }),

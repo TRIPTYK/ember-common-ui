@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-ui",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.0",
   "description": "Some utilitary components",
   "keywords": [
     "ember-addon",
@@ -29,20 +29,20 @@
   },
   "dependencies": {
     "@glimmer/tracking": "~1.1.2",
-    "ember-auto-import": "~2.6.3",
-    "ember-cli-babel": "~7.26.11",
-    "ember-cli-htmlbars": "~6.2.0",
-    "ember-cli-typescript": "~5.2.1",
-    "ember-test-selectors": "~6.0.0"
+    "ember-auto-import": "^2.6.1",
+    "ember-cli-babel": "^7.26.11",
+    "ember-cli-htmlbars": "^6.2.0",
+    "ember-cli-typescript": "^5.2.1",
+    "ember-test-selectors": "^6.0.0"
   },
   "peerDependencies": {
-    "ember-source": "~3.28.0 || ^4.0.0"
+    "ember-source": "^3.28.0 || ^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.21.4",
-    "@ember/optional-features": "~2.0.0",
-    "@ember/render-modifiers": "~2.0.4",
-    "@ember/string": "~3.0.1",
+    "@babel/core": "^7.18.10",
+    "@ember/optional-features": "^2.0.0",
+    "@ember/render-modifiers": "^2.0.4",
+    "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.3",
     "@ember/test-waiters": "~3.0.2",
     "@embroider/compat": "^2.1.1",
