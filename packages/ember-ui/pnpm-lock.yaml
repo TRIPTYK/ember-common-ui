@@ -19,6 +19,9 @@ dependencies:
   ember-test-selectors:
     specifier: 6.0.0
     version: 6.0.0
+  tracked-built-ins:
+    specifier: 3.1.1
+    version: 3.1.1
 
 devDependencies:
   '@babel/core':
@@ -178,7 +181,7 @@ devDependencies:
     specifier: ^6.0.1
     version: 6.0.1(ember-source@4.12.0)
   ember-data:
-    specifier: 4.11.0
+    specifier: ~4.11.0
     version: 4.11.0(@babel/core@7.21.8)(@ember/string@3.0.1)(@glimmer/tracking@1.1.2)(ember-source@4.12.0)(webpack@5.82.0)
   ember-flatpickr:
     specifier: 4.0.0
@@ -5371,7 +5374,6 @@ packages:
   /common-tags@1.8.2:
     resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
     engines: {node: '>=4.0.0'}
-    dev: true
 
   /commondir@1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
@@ -6363,7 +6365,6 @@ packages:
       walk-sync: 2.2.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /ember-cli-htmlbars@6.2.0:
     resolution: {integrity: sha512-j5EGixjGau23HrqRiW/JjoAovg5UBHfjbyN7wX5ekE90knIEqUUj1z/Mo/cTx/J2VepQ2lE6HdXW9LWQ/WdMtw==}
@@ -7193,6 +7194,16 @@ packages:
       calculate-cache-key-for-tree: 2.0.0
       ember-cli-babel: 7.26.11
       ember-cli-version-checker: 5.1.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /ember-tracked-storage-polyfill@1.0.0:
+    resolution: {integrity: sha512-eL7lZat68E6P/D7b9UoTB5bB5Oh/0aju0Z7PCMi3aTwhaydRaxloE7TGrTRYU+NdJuyNVZXeGyxFxn2frvd3TA==}
+    engines: {node: 12.* || >= 14}
+    dependencies:
+      ember-cli-babel: 7.26.11
+      ember-cli-htmlbars: 5.7.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -12539,7 +12550,6 @@ packages:
   /strip-bom@4.0.0:
     resolution: {integrity: sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==}
     engines: {node: '>=8'}
-    dev: true
 
   /strip-eof@1.0.0:
     resolution: {integrity: sha512-7FCwGGmx8mD5xQd3RPUvnSpUXHM3BWuzjtpD4TXsfcZ9EL4azvVVUscFYwD9nx8Kh+uCBC00XBtAykoMHwTh8Q==}
@@ -13038,6 +13048,17 @@ packages:
     dependencies:
       punycode: 2.3.0
     dev: true
+
+  /tracked-built-ins@3.1.1:
+    resolution: {integrity: sha512-W8qLBxZzeC2zhEDdbPKi2GTffsiFn8PRbgal/2Fl6E/84CMvnpS6cPMmkvUmSLgKbqcAxl/RhyjWnhIZ9iPQjQ==}
+    engines: {node: 14.* || 16.* || >= 18.*}
+    dependencies:
+      ember-cli-babel: 7.26.11
+      ember-cli-typescript: 5.2.1
+      ember-tracked-storage-polyfill: 1.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /tree-kill@1.2.2:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
