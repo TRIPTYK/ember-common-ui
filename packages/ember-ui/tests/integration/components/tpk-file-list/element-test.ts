@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
-// @ts-expect-error
-import { setupRenderingTest } from 'dummy/tests/helpers';
+
+import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { FileObject } from '@triptyk/ember-ui/components/tpk-file-list/element';
