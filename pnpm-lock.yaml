@@ -737,8 +737,8 @@ importers:
         specifier: ~6.0.0
         version: 6.0.0
       focus-trap:
-        specifier: ~7.0.0
-        version: 7.0.0
+        specifier: ~7.4.0
+        version: 7.4.0
     devDependencies:
       '@babel/core':
         specifier: ~7.18.13
@@ -11712,12 +11712,6 @@ packages:
     dependencies:
       inherits: 2.0.4
       readable-stream: 2.3.8
-
-  /focus-trap@7.0.0:
-    resolution: {integrity: sha512-uT4Bl8TwU+5vVAx/DHil/1eVS54k9unqhK/vGy2KSh7esPmqgC0koAB9J2sJ+vtj8+vmiFyGk2unLkhNLQaxoA==}
-    dependencies:
-      tabbable: 6.1.2
-    dev: false
 
   /focus-trap@7.4.0:
     resolution: {integrity: sha512-yI7FwUqU4TVb+7t6PaQ3spT/42r/KLEi8mtdGoQo2li/kFzmu9URmalTvw7xCCJtSOyhBxscvEAmvjeN9iHARg==}
