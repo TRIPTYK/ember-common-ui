@@ -32,14 +32,15 @@
     "ember-cli-babel": "~7.26.11",
     "ember-cli-htmlbars": "~6.2.0",
     "ember-cli-typescript": "~5.1.1",
-    "ember-test-selectors": "~6.0.0"
+    "ember-test-selectors": "~6.0.0",
+    "ember-click-outside": "~5.0.1"
   },
   "devDependencies": {
     "@babel/core": "~7.18.13",
     "@ember/optional-features": "~2.0.0",
     "@ember/render-modifiers": "~2.0.4",
     "@ember/string": "^3.0.1",
-    "@ember/test-helpers": "~2.9.3",
+    "@ember/test-helpers": "^2.9.3",
     "@ember/test-waiters": "~3.0.2",
     "@embroider/compat": "~1.8.3",
     "@embroider/core": "~1.8.3",
@@ -74,12 +75,10 @@
     "ember-cli": "~4.11.0",
     "ember-cli-dependency-checker": "~3.3.1",
     "ember-cli-inject-live-reload": "~2.1.0",
-    "ember-cli-page-object": "~2.0.0-beta.4",
+    "ember-cli-page-object": "~2.0.0",
     "ember-cli-postcss": "~8.0.0",
     "ember-cli-sri": "~2.1.1",
     "ember-cli-terser": "~4.0.2",
-    "ember-cli-typescript-blueprints": "~3.0.0",
-    "ember-click-outside": "~5.0.1",
     "ember-load-initializers": "~2.1.2",
     "ember-modifier": "~3.2.7",
     "ember-page-title": "~7.0.0",
@@ -119,8 +118,5 @@
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
-  "main": "index.js",
-  "volta": {
-    "node": "16.14.0"
-  }
+  "main": "index.js"
 }
