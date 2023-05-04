@@ -1,10 +1,10 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from '../../../helpers';
 import { click, fillIn, findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
 import { TableGenericUserWorker } from '../../../workers/table-generic';
+import { setupRenderingTest } from 'dummy/tests/helpers';
+
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
   setupMock(hooks);
