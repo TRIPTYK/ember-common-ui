@@ -2,12 +2,11 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from '../../../helpers';
 import { click, fillIn, findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { setupIntl } from 'ember-intl/test-support';
+
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
 import { TableGenericUserWorker } from '../../../workers/table-generic';
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks, ['fr-fr']);
   setupMock(hooks);
   const pageSize = 5;
   const pageSizes: number[] = [5, 10, 25];
