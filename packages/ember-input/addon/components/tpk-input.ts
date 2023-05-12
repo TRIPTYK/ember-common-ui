@@ -21,7 +21,10 @@ export default class TpkInput<
   constructor(owner: unknown, args: T) {
     super(owner, args);
     if (args.type === 'number') {
-      assert('@value must be a number', typeof args.value === 'number');
+      assert(
+        '@value must be a number',
+        typeof args.value === 'number' || typeof args.value === 'undefined'
+      );
     }
   }
 
