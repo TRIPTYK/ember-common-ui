@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-modal",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Easy tailwindcss modal in Ember.JS",
   "keywords": [
     "ember-addon",
@@ -75,11 +75,10 @@
     "ember-cli": "~4.11.0",
     "ember-cli-dependency-checker": "~3.3.1",
     "ember-cli-inject-live-reload": "~2.1.0",
-    "ember-cli-page-object":"^2.0.0" ,
+    "ember-cli-page-object": "^2.0.0",
     "ember-cli-postcss": "~8.0.0",
     "ember-cli-sri": "~2.1.1",
     "ember-cli-terser": "~4.0.2",
-    
     "ember-click-outside": "~5.0.1",
     "ember-load-initializers": "~2.1.2",
     "ember-modifier": "~3.2.7",
