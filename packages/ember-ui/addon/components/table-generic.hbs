@@ -6,27 +6,15 @@
       label=(t "global.search")
       placeholder=(t "global.search")
     )
+    Table=(component "table-generic/table" 
+      rowClick=@rowClick
+      filterText=this.filterText
+      pageSize=@pageSize
+      relationships=@relationships
+      registerApi=@registerApi
+      entity=@entity
+      pageSizes=@pageSizes
+      additionalFilters=@additionalFilters
+    )
   )
 }}
-<YetiTable
-  class="tpk-table-generic"
-  @loadData={{this.loadData}}
-  @totalRows={{this.totalRows}}
-  @filter={{this.filterText}}
-  @pagination={{true}}
-  @registerApi={{this.registerApi}}
-  @pageSize={{this.pageSize}}
-  data-test-table
-  ...attributes
-  as |table|
->
-  {{yield
-    (hash
-      Table=(component "table-generic/table" table=table rowClick=@rowClick)
-    )
-  }}
-  <TableGeneric::Footer @table={{table}} @pageSizes={{@pageSizes}} />
-  {{#if table.isLoading}}
-    <LoadingIndicator />
-  {{/if}}
-</YetiTable>

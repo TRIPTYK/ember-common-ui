@@ -1,6 +1,23 @@
-{{yield
-  (hash
-    Header=(component "table-generic/header" table=@table)
-    Body=(component "table-generic/body" table=@table rowClick=@rowClick)
-  )
-}}
+<YetiTable
+  class="tpk-table-generic"
+  @loadData={{this.loadData}}
+  @totalRows={{this.totalRows}}
+  @filter={{@filterText}}
+  @pagination={{true}}
+  @registerApi={{this.registerApi}}
+  @pageSize={{this.pageSize}}
+  data-test-table
+  ...attributes
+  as |table|
+>
+  {{yield
+    (hash
+      Header=(component "table-generic/header" table=table)
+      Body=(component "table-generic/body" table=table rowClick=@rowClick)
+    )
+  }}
+  <TableGeneric::Footer @table={{table}} @pageSizes={{@pageSizes}} />
+  {{#if table.isLoading}}
+    <LoadingIndicator />
+  {{/if}}
+</YetiTable>

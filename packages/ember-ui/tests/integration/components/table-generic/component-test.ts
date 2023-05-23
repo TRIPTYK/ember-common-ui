@@ -70,6 +70,7 @@ module('Integration | Component | table-generic', function (hooks) {
 
     assert.dom('input[type="search"]').exists();
     assert.dom('.tpk-table-generic').exists();
+
     assert.dom('thead th').hasText('Prénom', 'Table header ok');
     assert.dom('.tpk-table-pagination').exists('Table pagination ok');
 
