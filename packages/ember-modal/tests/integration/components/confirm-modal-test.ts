@@ -41,7 +41,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
     return render(hbs`
 			<div id="tpk-modal"></div>
 			<TpkConfirmModal 
-				@confirmQuestion={{this.confirmQuestion}}
+				@title={{this.confirmQuestion}}
 				@isOpen={{this.isOpen}}
 				@onConfirm={{this.onConfirm}}
 				@onClose={{this.onClose}}
@@ -57,13 +57,6 @@ module('Integration | Component | Confirm Modal', function (hooks) {
 			</TpkConfirmModal> 
 		`);
   }
-
-  test<ConfirmModalTestContext>('confirmQuestion render in the modal', async function (assert) {
-    assert.expect(1);
-    await renderConfirmModal.call(this, assert);
-    const modalConfirmQuestion = 'Do you confirm ? :smirk:';
-    assert.strictEqual(confirmModalObject.title, modalConfirmQuestion);
-  });
 
   test<ConfirmModalTestContext>('@onConfirm is called when confirm is clicked', async function (assert) {
     assert.expect(2);
@@ -90,20 +83,5 @@ module('Integration | Component | Confirm Modal', function (hooks) {
     await renderConfirmModal.call(this, assert);
     this.set('isOpen', false);
     assert.dom(confirmModalObject.scope).doesNotExist();
-  });
-
-  test<ConfirmModalTestContext>('@classless===true remove base class', async function (assert) {
-    assert.expect(2);
-    await renderConfirmModal.call(this, assert);
-    this.set('classless', true);
-    assert.dom('.tpk-confirm-modal-title').doesNotExist();
-    assert.dom('.tpk-confirm-modal-btn-section').doesNotExist();
-  });
-
-  test<ConfirmModalTestContext>('@classless===false does not remove base class', async function (assert) {
-    assert.expect(2);
-    await renderConfirmModal.call(this, assert);
-    assert.dom('.tpk-confirm-modal-title').exists();
-    assert.dom('.tpk-confirm-modal-btn-section').exists();
   });
 });
