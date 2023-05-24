@@ -31,7 +31,7 @@ devDependencies:
     specifier: 2.0.0
     version: 2.0.0
   '@ember/render-modifiers':
-    specifier: 2.0.5
+    specifier: ~2.0.5
     version: 2.0.5(@babel/core@7.21.8)(ember-source@4.11.0)
   '@ember/string':
     specifier: 3.0.1

@@ -114,6 +114,12 @@ export default class TableGenericTable<
       .join(',');
   }
 
+  @tracked hasActionMenu = false;
+
+  @action registerActionMenu() {
+    this.hasActionMenu = true;
+  }
+
   private buildQueryOptions(
     relationships: string | undefined,
     additionalFilters: Record<string, unknown>,

@@ -5,7 +5,7 @@
       {{yield
         (hash
           Cell=(component "table-generic/body/cell" element=element row=row)
-          ActionMenu=(component "table-generic/body/action-menu" row=row)
+          ActionMenu=(component "table-generic/body/action-menu" row=row registerActionMenu=@registerActionMenu)
         )
         element
       }}

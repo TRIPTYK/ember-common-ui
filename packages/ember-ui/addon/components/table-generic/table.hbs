@@ -12,8 +12,8 @@
 >
   {{yield
     (hash
-      Header=(component "table-generic/header" table=table)
-      Body=(component "table-generic/body" table=table rowClick=@rowClick)
+      Header=(component "table-generic/header" table=table hasActionMenu=this.hasActionMenu)
+      Body=(component "table-generic/body" table=table rowClick=@rowClick registerActionMenu=this.registerActionMenu)
     )
   }}
   <TableGeneric::Footer @table={{table}} @pageSizes={{@pageSizes}} />

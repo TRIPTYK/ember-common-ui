@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { click, fillIn, findAll, render } from '@ember/test-helpers';
+import { click, fillIn, find, findAll, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
 import { TableGenericUserWorker } from '../../../workers/table-generic';
@@ -64,9 +64,45 @@ module('Integration | Component | table-generic', function (hooks) {
   `);
   }
 
+  async function renderTableGenericWithNoAction() {
+    await render(hbs`
+    <TableGeneric
+      @rowClick={{this.rowClick}}
+      @pageSize={{this.pageSize}}
+      @pageSizes={{this.pageSizes}}
+      @entity="user"
+    as | TG |>
+      <TG.Table as | Table |>
+        <Table.Header as |Header|>
+          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
+            Prénom
+          </Header.Cell>
+          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
+            Nom
+          </Header.Cell>
+          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
+            Email
+          </Header.Cell>
+        </Table.Header>
+        <Table.Body as |Body element|>
+          <Body.Cell>
+            {{element.firstName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.lastName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.email}}
+          </Body.Cell>
+        </Table.Body>
+      </TG.Table>
+    </TableGeneric>
+  `);
+  }
+
   test<ServiceWorkerTestContext>('It renders search input and table', async function (assert) {
-    assert.expect(7);
     await renderTableGeneric.call(this);
+    assert.expect(7);
 
     assert.dom('input[type="search"]').exists();
     assert.dom('.tpk-table-generic').exists();
@@ -83,8 +119,8 @@ module('Integration | Component | table-generic', function (hooks) {
   });
 
   test<ServiceWorkerTestContext>('It can sort firstName & lastName and cannot sort email', async function (assert) {
-    assert.expect(5);
     await renderTableGeneric.call(this);
+    assert.expect(5);
 
     assert.dom('thead th[data-test-table="firstName"]').hasAttribute('role');
     assert.dom('thead th[data-test-table="lastName"]').hasAttribute('role');
@@ -97,8 +133,8 @@ module('Integration | Component | table-generic', function (hooks) {
   });
 
   test<ServiceWorkerTestContext>('It triggers search', async function (assert) {
-    assert.expect(3);
     await renderTableGeneric.call(this);
+    assert.expect(3);
 
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
@@ -111,8 +147,8 @@ module('Integration | Component | table-generic', function (hooks) {
   });
 
   test<ServiceWorkerTestContext>('It calls deleteAction method on delete button click', async function (assert) {
-    assert.expect(3);
     await renderTableGeneric.call(this);
+    assert.expect(3);
     const deleteButton = findAll('[data-test-actions-open-action]');
     assert.strictEqual(
       deleteButton.length,
@@ -126,7 +162,6 @@ module('Integration | Component | table-generic', function (hooks) {
   });
 
   test<ServiceWorkerTestContext>('It renders pageSizes args', async function (assert) {
-    await TableGenericUserWorker(this.worker);
     await renderTableGeneric.call(this);
     assert.expect(3);
 
@@ -136,7 +171,6 @@ module('Integration | Component | table-generic', function (hooks) {
     }
   });
   test<ServiceWorkerTestContext>('It can change page', async function (assert) {
-    await TableGenericUserWorker(this.worker);
     await renderTableGeneric.call(this);
     assert.expect(5);
 
@@ -151,5 +185,17 @@ module('Integration | Component | table-generic', function (hooks) {
 
     await click('.yeti-table-pagination-controls-previous');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
+  });
+  test<ServiceWorkerTestContext>('Table does not create an additional column when no action is specified', async function (assert) {
+    await renderTableGenericWithNoAction.call(this);
+    assert
+      .dom('thead th:last-child')
+      .doesNotHaveAttribute('data-test-action-menu-header');
+  });
+  test<ServiceWorkerTestContext>('Table creates an additional column when an action menu is yielded', async function (assert) {
+    await renderTableGeneric.call(this);
+    assert
+      .dom('thead th:last-child')
+      .hasAttribute('data-test-action-menu-header');
   });
 });
