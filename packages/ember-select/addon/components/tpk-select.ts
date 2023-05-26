@@ -179,8 +179,10 @@ export default class TpkSelect<
     const res = this.activeChildIndex + value;
 
     if (res > this.args.options.length - 1) {
+      this.activeChildIndex = 0;
+    } else if (res < 0) {
       this.activeChildIndex = this.args.options.length - 1;
-    } else if (res <= 0) {
+    } else if (res === 0) {
       this.activeChildIndex = 0;
     } else {
       this.activeChildIndex = res;
@@ -221,9 +223,7 @@ export default class TpkSelect<
             this.isElementSelected(selectedOption)
           );
         } else {
-          return this.args.onEnter(
-            (event.target as HTMLInputElement).value
-          );
+          return this.args.onEnter((event.target as HTMLInputElement).value);
         }
       }
       case SelectActions.Type:
