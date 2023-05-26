@@ -293,11 +293,6 @@ export default class TpkSelect<
     this.isOpen = false;
     this.args.onChange(e, alreadySelected);
   }
-  @action
-  onEnter(e: string) {
-    this.isOpen = false;
-    this.args.onEnter(e);
-  }
 
   get hasSelection() {
     return this.args.multiple === true
