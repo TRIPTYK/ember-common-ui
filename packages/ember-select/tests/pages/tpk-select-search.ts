@@ -19,6 +19,9 @@ export default create({
   tab: triggerable('keydown', undefined, {
     eventProperties: { key: 'Tab' },
   }),
+  input: {
+    scope: '.tpk-select-search-input',
+  },
   button: create({
     scope: '.tpk-select-search-button',
     click: clickable(),
