@@ -1,0 +1,8 @@
+{{! template-lint-disable quotes }}
+<div
+  class="origin-top transform duration-200
+    {{if @isExpanded 'h-full scale-y-100' 'h-0 scale-y-0'}}"
+  data-test-content-stackList-item
+>
+  {{yield (hash item=@item index=@index)}}
+</div>

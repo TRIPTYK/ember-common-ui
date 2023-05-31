@@ -9,7 +9,7 @@ jobs:
   test:
     strategy:
       matrix:
-        package: [ "ember-input", "ember-input-validation", "ember-stepper", "ember-select", "ember-modal", "ember-actions-menu", "ember-ui" ]
+        package: [ "ember-input", "ember-input-validation", "ember-stepper", "ember-select", "ember-modal", "ember-actions-menu", "ember-ui", "ember-stack-list" ]
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
