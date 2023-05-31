@@ -6,7 +6,7 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
 
-module('Integration | Component | tpk-select', function (hooks) {
+module('Integration | Component | tpk-select-search', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(async function () {
@@ -67,12 +67,11 @@ module('Integration | Component | tpk-select', function (hooks) {
     await tpkSelectSearch.button.click();
     assert.strictEqual(tpkSelectSearch.button.isExpanded, 'true');
     assert.strictEqual(tpkSelectSearch.isOpen, 'true');
-
     await tpkSelectSearch.input.fillIn(fillValue);
     await tpkSelectSearch.button.enter();
 
     assert.strictEqual(tpkSelectSearch.button.isExpanded, 'false');
     assert.strictEqual(tpkSelectSearch.isOpen, 'false');
-    assert.strictEqual(tpkSelectSearch.button.text, fillValue);
+    assert.strictEqual(tpkSelectSearch.input.value, fillValue);
   });
 });
