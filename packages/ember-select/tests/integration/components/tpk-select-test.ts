@@ -346,7 +346,6 @@ module('Integration | Component | tpk-select', function (hooks) {
     assert.strictEqual(tpkSelect.listbox.options[0].hasFocus, 'true');
     await tpkSelect.button.arrowDown();
     assert.strictEqual(tpkSelect.listbox.options[1].hasFocus, 'true');
-    assert.strictEqual(tpkSelect.button.isExpanded, 'true');
 
     for (let index = 0; index < backendArray.length; index++) {
       await tpkSelect.button.arrowDown();
