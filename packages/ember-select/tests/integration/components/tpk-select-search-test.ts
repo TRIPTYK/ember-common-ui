@@ -67,7 +67,6 @@ module('Integration | Component | tpk-select-search', function (hooks) {
     await tpkSelectSearch.button.click();
     assert.strictEqual(tpkSelectSearch.button.isExpanded, 'true');
     assert.strictEqual(tpkSelectSearch.isOpen, 'true');
-    
     await tpkSelectSearch.input.fillIn(fillValue);
     await tpkSelectSearch.button.enter();
 
