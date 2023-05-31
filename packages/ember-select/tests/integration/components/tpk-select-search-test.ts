@@ -6,7 +6,7 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
 
-module('Integration | Component | tpk-select', function (hooks) {
+module('Integration | Component | tpk-select-search', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(async function () {
@@ -29,7 +29,7 @@ module('Integration | Component | tpk-select', function (hooks) {
     as |S|>
       <S.Label />
       <div class="tpk-select-search-container">
-        <S.Input @inputChanged={{this.onInput}} />
+        <S.Input @onInput={{this.onInput}} />
         <S.Button>
         <svg width="18" height="16" aria-hidden="true" focusable="false">
           <polygon class="arrow" stroke-width="0" fill-opacity="0.75" fill="currentcolor" points="3,6 15,6 9,14"></polygon>
@@ -56,5 +56,22 @@ module('Integration | Component | tpk-select', function (hooks) {
 
     await tpkSelectSearch.button.space();
     assert.strictEqual(tpkSelectSearch.button.isExpanded, 'true');
+  });
+
+  /**
+   * Sets the value to the content of input.
+      Closes the listbox.
+   */
+  test('Set value in the input when no option selected', async function (assert) {
+    const fillValue = 'other';
+    await tpkSelectSearch.button.click();
+    assert.strictEqual(tpkSelectSearch.button.isExpanded, 'true');
+    assert.strictEqual(tpkSelectSearch.isOpen, 'true');
+    await tpkSelectSearch.input.fillIn(fillValue);
+    await tpkSelectSearch.button.enter();
+
+    assert.strictEqual(tpkSelectSearch.button.isExpanded, 'false');
+    assert.strictEqual(tpkSelectSearch.isOpen, 'false');
+    assert.strictEqual(tpkSelectSearch.input.value, fillValue);
   });
 });

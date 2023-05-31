@@ -91,10 +91,10 @@ module('Integration | Component | ui/radio', function (hooks) {
 
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkRadio @onChange={{this.change}} @label="label" @selected="luc" @value="jean" @name="cule" as |O| />`
+      hbs`<TpkRadio @onChange={{this.change}} @label="label" @selected="luc" @value="jean" @name="cule" />`
     );
 
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 });

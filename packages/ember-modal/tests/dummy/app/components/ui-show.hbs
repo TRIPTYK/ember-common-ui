@@ -25,19 +25,31 @@ as |Modal|>
   </TpkModal>
 </TpkModal>
 
+<TpkConfirmModal
+  @title='The green modal'
+  class='bg-green-900'
+  @isOpen={{this.open3}}
+  @onClose={{this.closed3}}
+  @onConfirm={{this.confirm}}
+  as |M|
+>
+  aaaa
+  <M.Confirm>
+    Confirmer
+  </M.Confirm>
+  <M.Cancel>
+    Annuler
+  </M.Cancel>
+</TpkConfirmModal>
 
-
-<TpkModal
+{{!-- <TpkModal
   @title='The green modal'
   class='bg-green-900'
   @isOpen={{this.open3}}
   @onClose={{this.closed3}}
   as |M|
 >
-  <M.Content as |Content|>
-    <Content.Head>
-      Custom Head
-    </Content.Head>
+  <M.Content>
     <p>
       The green modal
     </p>
@@ -47,7 +59,7 @@ as |Modal|>
       {{on 'click' this.closed3}}
     >Click me to close</button>
   </M.Content>
-</TpkModal>
+</TpkModal> --}}
 
 <div class='flex justify-around'>
   <div>

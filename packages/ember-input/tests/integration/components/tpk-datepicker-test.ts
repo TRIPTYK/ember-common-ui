@@ -36,7 +36,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date();
     this.set('setDate', function (dates: Date[]) {
       assert.step('step');
-      assert.strictEqual(dates[0].toDateString(), date.toDateString());
+      assert.strictEqual(dates[0]?.toDateString(), date.toDateString());
     });
 
     await render(
@@ -61,7 +61,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     await render(
       hbs`<TpkDatepicker @onChange={{this.setDate}} @label="label" @value=""/>`
     );
-    await a11yAudit(this.element);
+    await a11yAudit();
     assert.expect(0);
   });
 });

@@ -13,7 +13,7 @@ export interface TpkSelectArgs<T> {
   classless?: boolean;
   generatedClassPrefix: string;
   defaultText?: string;
-  onChange: (newSelected: T, alreadySelected: boolean) => unknown;
+  onChange: (newSelected: T | string, alreadySelected: boolean) => unknown;
 }
 
 export enum SelectActions {
@@ -212,12 +212,21 @@ export default class TpkSelect<
         return (this.isOpen = true);
       case SelectActions.Select:
       case SelectActions.CloseSelect: {
-        const selectedOption = this.args.options[this.activeChildIndex ?? 0];
-        this.close();
-        return this.onChange(
-          selectedOption,
-          this.isElementSelected(selectedOption)
-        );
+        console.log(this.activeChildIndex);
+        if (this.activeChildIndex !== undefined && this.activeChildIndex >= 0) {
+          const selectedOption = this.args.options[this.activeChildIndex ?? 0];
+          this.close();
+          return this.onChange(
+            selectedOption,
+            this.isElementSelected(selectedOption)
+          );
+        } else {
+          this.close();
+          return this.args.onChange(
+            (event.target as HTMLInputElement).value,
+            false
+          );
+        }
       }
       case SelectActions.Type:
         return this.onComboType(event.key);
@@ -278,7 +287,7 @@ export default class TpkSelect<
   }
 
   @action
-  onChange(e: T, alreadySelected: boolean) {
+  onChange(e: T | string, alreadySelected: boolean) {
     this.isOpen = false;
     this.args.onChange(e, alreadySelected);
   }

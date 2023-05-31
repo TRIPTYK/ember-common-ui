@@ -11,6 +11,9 @@ export default class UiShow extends Component<UiShowArgs> {
   @tracked open3: boolean = false;
 
   @action
+  confirm() {}
+
+  @action
   closed1() {
     this.open1 = false;
   }

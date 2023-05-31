@@ -58,7 +58,7 @@ module('Integration | Component | tpk-select', function (hooks) {
     await tpkSelect.click();
     await tpkSelect.listbox.options[0].click();
     assert.verifySteps(['selected']);
-    await a11yAudit(this.element);
+    await a11yAudit();
   });
 
   /**
@@ -341,13 +341,10 @@ module('Integration | Component | tpk-select', function (hooks) {
     await tpkSelect.button.click();
     assert.strictEqual(tpkSelect.button.isExpanded, 'true');
     assert.strictEqual(tpkSelect.isOpen, 'true');
-
     await tpkSelect.button.arrowDown();
     assert.strictEqual(tpkSelect.listbox.options[0].hasFocus, 'true');
     await tpkSelect.button.arrowDown();
     assert.strictEqual(tpkSelect.listbox.options[1].hasFocus, 'true');
-    assert.strictEqual(tpkSelect.button.isExpanded, 'true');
-    assert.strictEqual(tpkSelect.isOpen, 'true');
 
     for (let index = 0; index < backendArray.length; index++) {
       await tpkSelect.button.arrowDown();

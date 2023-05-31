@@ -1,0 +1,7 @@
+<@table.header class="tpk-table-header" ...attributes as |header|>
+  {{yield (hash Cell=(component "table-generic/header/cell" header=header))}}
+  {{#if @hasActionMenu}}
+    {{!-- A simple th,  no need to register this column to yeti table --}}
+    <th data-test-action-menu-header></th>
+  {{/if}}
+</@table.header>

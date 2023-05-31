@@ -51,7 +51,9 @@ export default class UiModal extends Component<UiModalArgs> {
         window.removeEventListener('keyup', handler);
       };
     },
-    { eager: false }
+    {
+      eager: false,
+    }
   );
 
   @action

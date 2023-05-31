@@ -53,8 +53,10 @@ export default class TpkSelectSearch extends TpkSelect<TpkSelectSearchArgs> {
 
     if (res > this.args.options.length - 1) {
       this.activeChildIndex = 0;
-    } else if (res <= 0) {
+    } else if (res < 0) {
       this.activeChildIndex = this.args.options.length - 1;
+    } else if (res === 0) {
+      this.activeChildIndex = 0;
     } else {
       this.activeChildIndex = res;
     }
