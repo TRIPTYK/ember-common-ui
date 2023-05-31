@@ -1,7 +1,7 @@
 {
   "name": "@triptyk/ember-stack-list",
-  "version": "0.1.0",
-  "description": "Easy tailwindcss actions menu in Ember.JS",
+  "version": "1.0.0-beta.8",
+  "description": "Stack List in TailwindCSS & Ember.JS",
   "keywords": [
     "ember-addon",
     "modal",
