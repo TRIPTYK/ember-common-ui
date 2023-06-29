@@ -130,9 +130,7 @@ export default class TableGenericTable<
     return {
       include: relationships,
       filter: {
-        search: {
-          $fulltext: filterData?.filter,
-        },
+        search: filterData?.filter,
         ...additionalFilters,
       },
       page: {
