@@ -7,7 +7,7 @@ export async function TableGenericUserWorker(worker: SetupWorker) {
     rest.get('http://localhost:4200/users', (req, res, ctx) => {
       let data;
       const sort = req.url.searchParams.get('sort');
-      const search = req.url.searchParams.get('filter[search][$fulltext]');
+      const search = req.url.searchParams.get('filter[search]');
       const pageNumber = req.url.searchParams.get('page[number]');
 
       if (sort !== null && sort === 'firstName') {
