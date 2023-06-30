@@ -1,1 +1,1 @@
-export { default } from '@triptyk/ember-ui/components/table-generic/body.js';
+export { default } from '@triptyk/ember-ui/components/table-generic/body';

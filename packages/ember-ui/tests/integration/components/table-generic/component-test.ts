@@ -59,6 +59,7 @@ module('Integration | Component | table-generic', function (hooks) {
             </Action>
           </Body.ActionMenu>
         </Table.Body>
+        <Table.Footer />
       </TG.Table>
     </TableGeneric>
   `);

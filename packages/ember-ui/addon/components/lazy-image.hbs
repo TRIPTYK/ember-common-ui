@@ -1,0 +1,13 @@
+{{#if this.isLoaded}}
+  <img 
+    ...attributes 
+    data-test-image-loaded={{this.isLoaded}}
+  />
+{{else}}
+  <img
+    {{on "load" this.imageLoaded}}
+    data-test-image-loaded={{this.isLoaded}}
+    ...attributes
+    src={{@defaultImage}} 
+  />
+{{/if}}
