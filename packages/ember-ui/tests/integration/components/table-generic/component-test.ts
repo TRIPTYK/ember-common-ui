@@ -96,6 +96,7 @@ module('Integration | Component | table-generic', function (hooks) {
             {{element.email}}
           </Body.Cell>
         </Table.Body>
+        <Table.Footer />
       </TG.Table>
     </TableGeneric>
   `);
@@ -198,5 +199,13 @@ module('Integration | Component | table-generic', function (hooks) {
     assert
       .dom('thead th:last-child')
       .hasAttribute('data-test-action-menu-header');
+  });
+  test<ServiceWorkerTestContext>('Colspan of the footer is adjusted when an action menu is yielded', async function (assert) {
+    await renderTableGeneric.call(this);
+    assert.dom('tfoot td').hasAttribute('colspan', '4');
+  });
+  test<ServiceWorkerTestContext>('Colspan of the footer is reduced when no action menu is yielded', async function (assert) {
+    await renderTableGenericWithNoAction.call(this);
+    assert.dom('tfoot td').hasAttribute('colspan', '3');
   });
 });
