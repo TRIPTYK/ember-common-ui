@@ -31,9 +31,9 @@ export abstract class BaseValidationComponent<
 
   get errors() {
     return (
-      (this.args.changeset.errors.filter(
-        (err) => err.key === this.args.validationField
-      ) as unknown[]) ?? []
+      this.args.changeset.errors.filter((err) =>
+        err.key.startsWith(this.args.validationField)
+      ) ?? []
     );
   }
 }
