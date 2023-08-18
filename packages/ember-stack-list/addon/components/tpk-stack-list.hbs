@@ -34,7 +34,7 @@
 {{#unless @readOnly}}
   <button
     type="button"
-    class="link icon"
+    class="link icon {{@customButtonClass}}"
     data-test-add-stackList-item
     {{on "click" @onAdd}}
   >
