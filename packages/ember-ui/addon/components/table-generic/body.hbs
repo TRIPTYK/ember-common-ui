@@ -1,7 +1,7 @@
 {{! Introduire une logique dans les classes CSS: ex: tpk-table-body }}
 <@table.tbody class="tpk-table-body" ...attributes as |body data|>
   {{#each data as |element|}}
-    <body.row data-test-row {{on "click" (fn @rowClick element)}} as |row|>
+    <body.row data-test-row={{element.id}} {{on "click" (fn @rowClick element)}} as |row|>
       {{yield
         (hash
           Cell=(component "table-generic/body/cell" element=element row=row)
