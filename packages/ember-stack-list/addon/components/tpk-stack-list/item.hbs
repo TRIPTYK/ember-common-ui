@@ -2,7 +2,7 @@
 {{! template-lint-disable style-concatenation }}
 <div
   data-test-stackList-item={{@index}}
-  class="tpk-stack {{if @item.errors 'custom-error'}}"
+  class="tpk-stack relative {{@tpkStackClass}}  {{if @item.errors 'custom-error'}}"
   style="z-index: {{this.index}}"
 >
   {{yield (hash toggleExpanded=this.toggleExpanded isExpanded=this.isExpanded)}}
