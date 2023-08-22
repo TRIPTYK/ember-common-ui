@@ -25,11 +25,11 @@ export abstract class BaseValidationComponent<
     return this.errors.length > 0;
   }
 
-  get firstError() {
+  get firstError(): Record<string, unknown> {
     return this.errors[0];
   }
 
-  get errors() {
+  get errors(): Record<string, unknown>[] {
     return (
       this.args.changeset.errors.filter((err) =>
         err.key.startsWith(this.args.validationField)
