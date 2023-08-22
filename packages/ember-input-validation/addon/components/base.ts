@@ -36,4 +36,8 @@ export abstract class BaseValidationComponent<
       ) ?? []
     );
   }
+
+  get value() {
+    return this.args.changeset.get(this.args.validationField);
+  }
 }
