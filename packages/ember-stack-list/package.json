@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-stack-list",
-  "version": "1.0.0-beta.15",
+  "version": "1.0.0-beta.16",
   "description": "Stack List in TailwindCSS & Ember.JS",
   "keywords": [
     "ember-addon",

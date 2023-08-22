@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-actions-menu",
-  "version": "1.0.0-beta.15",
+  "version": "1.0.0-beta.16",
   "description": "Easy tailwindcss actions menu in Ember.JS",
   "keywords": [
     "ember-addon",
