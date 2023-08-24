@@ -212,21 +212,16 @@ export default class TpkSelect<
         return (this.isOpen = true);
       case SelectActions.Select:
       case SelectActions.CloseSelect: {
-        console.log(this.activeChildIndex);
         if (this.activeChildIndex !== undefined && this.activeChildIndex >= 0) {
-          const selectedOption = this.args.options[this.activeChildIndex ?? 0];
+          const selectedOption = this.args.options[this.activeChildIndex];
           this.close();
           return this.onChange(
             selectedOption,
             this.isElementSelected(selectedOption)
           );
-        } else {
-          this.close();
-          return this.args.onChange(
-            (event.target as HTMLInputElement).value,
-            false
-          );
         }
+        this.close();
+        return;
       }
       case SelectActions.Type:
         return this.onComboType(event.key);
@@ -240,7 +235,6 @@ export default class TpkSelect<
    */
   private onComboType(letter: string) {
     this.isOpen = true;
-
     clearTimeout(this.typeTimer);
     this.typeTimer = setTimeout(() => {
       this.searchString = '';
@@ -288,7 +282,7 @@ export default class TpkSelect<
 
   @action
   onChange(e: T | string, alreadySelected: boolean) {
-    this.isOpen = false;
+    this.close();
     this.args.onChange(e, alreadySelected);
   }
 

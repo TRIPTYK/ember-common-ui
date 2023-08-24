@@ -46,10 +46,6 @@ module('Integration | Component | tpk-select-search', function (hooks) {
     `);
   });
 
-  test('it select default', async function (assert) {
-    assert.expect(0);
-  });
-
   test('Open combobox key Space does not close and select', async function (assert) {
     //open the selectBox
     await tpkSelectSearch.button.enter();
@@ -73,5 +69,33 @@ module('Integration | Component | tpk-select-search', function (hooks) {
     assert.strictEqual(tpkSelectSearch.button.isExpanded, 'false');
     assert.strictEqual(tpkSelectSearch.isOpen, 'false');
     assert.strictEqual(tpkSelectSearch.input.value, fillValue);
+  });
+
+  test('Searching does not trigger onChange', async function (assert) {
+    this.set('selectElement', (e: unknown) => {
+      assert.deepEqual(e, {
+        id: 'a',
+        name: 'name-a',
+      });
+      assert.step('selectElement');
+    });
+    this.set('onInput', (e: Event) => {
+      assert.deepEqual((e.target as HTMLInputElement).value, 'cccc');
+      assert.step('onInput');
+    });
+    this.set('options', [
+      {
+        id: 'a',
+        name: 'name-a',
+      },
+      {
+        id: 'b',
+        name: 'name-b',
+      },
+    ]);
+
+    await tpkSelectSearch.input.fillIn('cccc');
+    await tpkSelectSearch.button.enter();
+    assert.verifySteps(['onInput']);
   });
 });

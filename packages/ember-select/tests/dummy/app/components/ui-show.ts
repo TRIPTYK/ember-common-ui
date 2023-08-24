@@ -276,8 +276,6 @@ export default class UiShow extends Component<UiShowArgs> {
 
   @action
   setCountry(value: Country) {
-    console.log(value);
-
     this.country = value;
   }
 

@@ -247,6 +247,7 @@ module('Integration | Component | tpk-select', function (hooks) {
     await tpkSelect.button.enter();
     assert.strictEqual(tpkSelect.button.isExpanded, 'false');
     assert.strictEqual(tpkSelect.isOpen, 'false');
+
     assert.strictEqual(tpkSelect.button.text, backendArray[1]);
     assert.strictEqual(this.get('selected'), backendArray[1]);
     assert.true(tpkSelect.button.hasFocus);
