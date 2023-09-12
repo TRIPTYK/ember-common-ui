@@ -25,7 +25,7 @@ export abstract class BaseUIComponent<
     super(owner, args);
   }
 
-  get changeEvent() {
+  get changeEvent() : string {
     return this.args.changeEvent ?? 'change';
   }
 
