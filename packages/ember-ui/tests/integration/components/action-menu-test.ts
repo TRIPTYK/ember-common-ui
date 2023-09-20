@@ -17,7 +17,7 @@ module('Integration | Component | Action Menu', function (hooks) {
   function setActionMenuProperties(
     this: ActionMenuTestContext,
     // eslint-disable-next-line no-undef
-    assert: Assert
+    assert: Assert,
   ) {
     this.action = () => {
       assert.step('action');
@@ -42,7 +42,7 @@ module('Integration | Component | Action Menu', function (hooks) {
   async function renderAndOpenActionsMenu(
     this: ActionMenuTestContext,
     // eslint-disable-next-line no-undef
-    assert: Assert
+    assert: Assert,
   ) {
     await renderActionMenu.call(this, assert);
     await actionMenuObject.seeAllAction();

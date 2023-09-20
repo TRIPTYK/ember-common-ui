@@ -4,10 +4,12 @@ import hbs from 'htmlbars-inline-precompile';
 import { ServiceWorkerTestContext, setupMock } from '../../../worker';
 import { TableGenericUserWorker } from '../../../workers/table-generic';
 import { setupRenderingTest } from 'dummy/tests/helpers';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
   setupMock(hooks);
+  setupIntl(hooks);
   const pageSize = 5;
   const pageSizes: number[] = [5, 10, 25];
 

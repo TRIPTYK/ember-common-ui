@@ -14,7 +14,7 @@ export interface TpkInputArgs extends BaseUIComponentArgs {
 
 // eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class TpkInput<
-  T extends TpkInputArgs
+  T extends TpkInputArgs,
 > extends BaseUIComponent<T> {
   @tracked mask?: IMask.InputMask<IMask.AnyMaskedOptions>;
 
@@ -23,7 +23,7 @@ export default class TpkInput<
     if (args.type === 'number') {
       assert(
         '@value must be a number',
-        typeof args.value === 'number' || typeof args.value === 'undefined'
+        typeof args.value === 'number' || typeof args.value === 'undefined',
       );
     }
   }
@@ -33,7 +33,7 @@ export default class TpkInput<
     if (!this.args.mask) return;
 
     const inputElement = element.querySelector(
-      `input#${this.guid}`
+      `input#${this.guid}`,
     ) as HTMLElement;
 
     this.mask = IMask(inputElement, {

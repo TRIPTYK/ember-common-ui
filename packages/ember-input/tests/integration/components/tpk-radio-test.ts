@@ -75,7 +75,7 @@ module('Integration | Component | ui/radio', function (hooks) {
     await render(
       hbs`<TpkRadio @onChange={{this.change}} @label="label" @selected="luc" @value="jean" @name="cule" as |O|>
         {{catch-state O}}
-      </TpkRadio>`
+      </TpkRadio>`,
     );
 
     const { state }: { state: any } = (
@@ -91,7 +91,7 @@ module('Integration | Component | ui/radio', function (hooks) {
 
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkRadio @onChange={{this.change}} @label="label" @selected="luc" @value="jean" @name="cule" />`
+      hbs`<TpkRadio @onChange={{this.change}} @label="label" @selected="luc" @value="jean" @name="cule" />`,
     );
 
     await a11yAudit();

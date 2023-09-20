@@ -1,1 +1,1 @@
-export { default } from '@triptyk/ember-select/components/tpk-select/options/option';
+export { default } from '@triptyk/ember-input/components/tpk-select/options/option';

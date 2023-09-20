@@ -173,12 +173,13 @@ module('Integration | Component | tpk-select', function (hooks) {
     assert.strictEqual(tpkSelect.button.isExpanded, 'true');
     assert.strictEqual(tpkSelect.isOpen, 'true');
     assert.strictEqual(
-      tpkSelect.listbox.options[tpkSelect.listbox.options.length - 1]?.ariaSelected,
-      'false'
+      tpkSelect.listbox.options[tpkSelect.listbox.options.length - 1]
+        ?.ariaSelected,
+      'false',
     );
     assert.strictEqual(
       tpkSelect.listbox.options[tpkSelect.listbox.options.length - 1]?.hasFocus,
-      'true'
+      'true',
     );
   });
 
@@ -354,7 +355,7 @@ module('Integration | Component | tpk-select', function (hooks) {
     assert.strictEqual(
       tpkSelect.listbox.options[tpkSelect.listbox.options.length - 1]?.hasFocus,
       'true',
-      'Last is focused'
+      'Last is focused',
     );
 
     tpkSelect.listbox.options.forEach((o) => {

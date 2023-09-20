@@ -1,4 +1,4 @@
 export {
   default,
   TpkSelectArgs,
-} from '@triptyk/ember-select/components/tpk-select';
+} from '@triptyk/ember-input/components/tpk-select';
