@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-ui",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Some utilitary components",
   "keywords": [
     "ember-addon",
@@ -36,11 +36,11 @@
     "ember-cli-babel": "8.0.0",
     "ember-cli-htmlbars": "6.3.0",
     "ember-cli-typescript": "5.2.1",
-    "ember-intl": "~6.1.0" ,
+    "ember-flatpickr": "~4.0.0",
+    "ember-intl": "~6.1.0",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "6.0.0",
     "focus-trap": "~7.5.2",
-    "ember-flatpickr": "~4.0.0",
     "tracked-built-ins": "3.2.0"
   },
   "peerDependencies": {

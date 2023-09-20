@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { action } from '@ember/object';
 import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
-import IMask from 'imask';
+import IMask, { FactoryArg, FactoryOpts, InputMask } from 'imask';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 
 export interface TpkInputArgs extends BaseUIComponentArgs {
   type?: HTMLInputElement['type'];
-  mask?: string;
-  maskOptions?: IMask.AnyMaskedOptionsArray;
+  mask?: unknown;
+  maskOptions?: Record<string, unknown>;
   unmaskValue?: boolean;
 }
 
@@ -16,7 +16,7 @@ export interface TpkInputArgs extends BaseUIComponentArgs {
 export default class TpkInput<
   T extends TpkInputArgs,
 > extends BaseUIComponent<T> {
-  @tracked mask?: IMask.InputMask<IMask.AnyMaskedOptions>;
+  @tracked mask?: InputMask<FactoryArg>;
 
   constructor(owner: unknown, args: T) {
     super(owner, args);
@@ -37,9 +37,9 @@ export default class TpkInput<
     ) as HTMLElement;
 
     this.mask = IMask(inputElement, {
-      mask: this.args.mask as string,
+      mask: this.args.mask,
       ...this.args.maskOptions,
-    });
+    } as never);
   }
 
   @action onChange(e: HtmlInputEvent): void {
