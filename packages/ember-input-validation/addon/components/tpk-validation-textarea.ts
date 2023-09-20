@@ -8,6 +8,6 @@ export default class TpkValidationTextarea extends BaseValidationComponent<TpkVa
     if (this.args.onChange) {
       return this.args.onChange(e);
     }
-    this.args.changeset.set(this.args.validationField, e);
+    return this.args.changeset.set(this.args.validationField, e);
   }
 }

@@ -106,7 +106,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It renders search input and table', async function (assert) {
     await renderTableGeneric.call(this);
-    assert.expect(7);
 
     assert.dom('input[type="search"]').exists();
     assert.dom('.tpk-table-generic').exists();
@@ -124,7 +123,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It can sort firstName & lastName and cannot sort email', async function (assert) {
     await renderTableGeneric.call(this);
-    assert.expect(5);
 
     assert.dom('thead th[data-test-table="firstName"]').hasAttribute('role');
     assert.dom('thead th[data-test-table="lastName"]').hasAttribute('role');
@@ -138,7 +136,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It triggers search', async function (assert) {
     await renderTableGeneric.call(this);
-    assert.expect(3);
 
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
@@ -152,12 +149,11 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It calls deleteAction method on delete button click', async function (assert) {
     await renderTableGeneric.call(this);
-    assert.expect(3);
     const deleteButton = findAll('[data-test-actions-open-action]');
     assert.strictEqual(
       deleteButton.length,
       5,
-      'Correct number of delete buttons rendered'
+      'Correct number of delete buttons rendered',
     );
     await click('[data-test-actions-open-action]');
     await click('[data-test-delete] button');
@@ -167,7 +163,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It renders pageSizes args', async function (assert) {
     await renderTableGeneric.call(this);
-    assert.expect(3);
 
     const selectPageSizes = findAll('[data-test-pagination-select] option');
     for (const [index, option] of selectPageSizes.entries()) {
@@ -176,7 +171,6 @@ module('Integration | Component | table-generic', function (hooks) {
   });
   test<ServiceWorkerTestContext>('It can change page', async function (assert) {
     await renderTableGeneric.call(this);
-    assert.expect(5);
 
     let rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');

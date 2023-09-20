@@ -19,7 +19,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
   function setConfirmModalProperties(
     this: ConfirmModalTestContext,
     // eslint-disable-next-line no-undef
-    assert: Assert
+    assert: Assert,
   ) {
     this.onClose = function () {
       assert.step('onClose');
@@ -35,7 +35,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
   async function renderConfirmModal(
     this: ConfirmModalTestContext,
     // eslint-disable-next-line no-undef
-    assert: Assert
+    assert: Assert,
   ) {
     setConfirmModalProperties.call(this, assert);
     return render(hbs`
@@ -59,27 +59,23 @@ module('Integration | Component | Confirm Modal', function (hooks) {
   }
 
   test<ConfirmModalTestContext>('@onConfirm is called when confirm is clicked', async function (assert) {
-    assert.expect(2);
     await renderConfirmModal.call(this, assert);
     await confirmModalObject.confirm.click();
     assert.verifySteps(['onConfirm']);
   });
 
   test<ConfirmModalTestContext>('@onClose is called when cancel is clicked', async function (assert) {
-    assert.expect(2);
     await renderConfirmModal.call(this, assert);
     await confirmModalObject.cancel.click();
     assert.verifySteps(['onClose']);
   });
 
   test<ConfirmModalTestContext>('Modal is open if @isOpen is true', async function (assert) {
-    assert.expect(1);
     await renderConfirmModal.call(this, assert);
     assert.dom(confirmModalObject.scope).exists();
   });
 
   test<ConfirmModalTestContext>('Modal is close if @isOpen is false', async function (assert) {
-    assert.expect(1);
     await renderConfirmModal.call(this, assert);
     this.set('isOpen', false);
     assert.dom(confirmModalObject.scope).doesNotExist();

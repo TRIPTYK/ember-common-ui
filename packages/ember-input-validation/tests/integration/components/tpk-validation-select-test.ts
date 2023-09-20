@@ -1,31 +1,17 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { click, render } from '@ember/test-helpers';
-import { Changeset } from 'ember-changeset';
-// @ts-expect-error
-import lookupValidator from 'ember-changeset-validations';
-import {
-  validatePresence,
-  // @ts-expect-error
-} from 'ember-changeset-validations/validators';
-
-const validations = {
-  name: [validatePresence(true)],
-};
+import { click, render, settled } from '@ember/test-helpers';
+import { ImmerChangeset } from 'ember-form-changeset-validations';
 
 module('Integration | Component | tpk-validation-select', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it works with default syntax', async function (assert) {
     const options = ['a', 'b', 'c'];
-    const changeset = Changeset(
-      {
-        name: undefined,
-      },
-      lookupValidator(validations),
-      validations
-    );
+    const changeset = new ImmerChangeset({
+      name: undefined,
+    });
     this.set('changeset', changeset);
 
     this.set('options', options);
@@ -43,7 +29,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
         <:selected as |s|>
           {{s}}
         </:selected>
-      </TpkValidationSelect>`
+      </TpkValidationSelect>`,
     );
 
     await click('.tpk-select-button');
@@ -53,7 +39,14 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
 
     assert.dom('.tpk-select').hasAttribute('data-has-error', 'false');
 
-    await changeset.validate();
+    changeset.addError('name', {
+      message: 'required',
+      value: '',
+      originalValue: 'a',
+      key: 'name',
+    });
+
+    await settled();
 
     assert.dom('.tpk-select').hasAttribute('data-has-error', 'true');
 

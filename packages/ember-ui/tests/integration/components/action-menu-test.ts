@@ -49,8 +49,6 @@ module('Integration | Component | Action Menu', function (hooks) {
   }
 
   test<ActionMenuTestContext>('when seeAllAction button is clicked, toggle actions visibility', async function (assert) {
-    assert.expect(2);
-
     await renderAndOpenActionsMenu.call(this, assert);
     assert.true(actionMenuObject.areActionsVisible);
     await actionMenuObject.seeAllAction();
@@ -58,8 +56,6 @@ module('Integration | Component | Action Menu', function (hooks) {
   });
 
   test<ActionMenuTestContext>('when action is clicked, action is triggered and menu closes itself', async function (assert) {
-    assert.expect(3);
-
     await renderAndOpenActionsMenu.call(this, assert);
     await actionMenuObject.actions.objectAt(0).trigger();
     assert.verifySteps(['action']);
@@ -67,16 +63,12 @@ module('Integration | Component | Action Menu', function (hooks) {
   });
 
   test<ActionMenuTestContext>('when icon is passed, icon is displayed', async function (assert) {
-    assert.expect(1);
-
     this.set('iconSrc', 'assets/action.svg');
     await renderAndOpenActionsMenu.call(this, assert);
     assert.true(actionMenuObject.actions.objectAt(0).isIconRendered);
   });
 
   test<ActionMenuTestContext>('when menu is opened, pressing ESC close it', async function (assert) {
-    assert.expect(1);
-
     await renderAndOpenActionsMenu.call(this, assert);
     await actionMenuObject.escape();
     assert.false(actionMenuObject.areActionsVisible);
@@ -89,8 +81,6 @@ module('Integration | Component | Action Menu', function (hooks) {
   }
 
   test<ActionMenuTestContext>('when classless true, remove all base classes', async function (assert) {
-    assert.expect(2);
-
     this.set('classless', true);
     await renderAndOpenActionsMenu.call(this, assert);
     assertBaseClassesNoPresence(assert);
@@ -103,8 +93,6 @@ module('Integration | Component | Action Menu', function (hooks) {
   }
 
   test<ActionMenuTestContext>('when classless false, all base classes are present', async function (assert) {
-    assert.expect(2);
-
     await renderAndOpenActionsMenu.call(this, assert);
     assertBaseClassesPresence(assert);
   });
