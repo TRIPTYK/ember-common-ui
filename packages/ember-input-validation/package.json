@@ -39,7 +39,6 @@
   },
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
-    "@triptyk/ember-select": "workspace:*",
     "ember-changeset-validations": "~4.1.0",
     "ember-source": ">= 4.0.0"
   },
@@ -56,7 +55,6 @@
     "@glimmer/component": "~1.1.2",
     "@glimmer/tracking": "~1.1.2",
     "@triptyk/ember-input": "workspace:*",
-    "@triptyk/ember-select": "workspace:*",
     "@types/ember__application": "~4.0.0",
     "@types/ember__array": "~4.0.1",
     "@types/ember__component": "~4.0.8",

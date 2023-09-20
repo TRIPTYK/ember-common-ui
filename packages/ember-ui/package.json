@@ -28,13 +28,15 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "ember-auto-import": "2.6.3",
+    "ember-auto-import": "~2.6.3",
     "ember-cli-babel": "7.26.11",
     "ember-cli-htmlbars": "6.2.0",
     "ember-cli-typescript": "5.2.1",
     "ember-intl": "5.7.2",
     "ember-test-selectors": "6.0.0",
-    "tracked-built-ins": "3.1.1"
+    "tracked-built-ins": "3.1.1",
+    "focus-trap": "~7.5.2",
+    "ember-modifier": "~4.1.0"
   },
   "peerDependencies": {
     "ember-source": "~3.28.0 || ^4.0.0"
@@ -53,7 +55,6 @@
     "@embroider/webpack": "~2.0.0",
     "@glimmer/component": "1.1.2",
     "@glimmer/tracking": "1.1.2",
-    "@triptyk/ember-actions-menu": "workspace:*",
     "@triptyk/ember-input": "workspace:*",
     "@tsconfig/ember": "2.0.0",
     "@types/ember": "4.0.3",
