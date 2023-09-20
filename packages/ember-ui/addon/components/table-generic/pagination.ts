@@ -35,7 +35,7 @@ class Pagination extends Component<PaginationArgs> {
   @action
   changePageSize(ev: Event) {
     this.args['paginationActions'].changePageSize(
-      (ev.target as HTMLInputElement).value
+      (ev.target as HTMLInputElement).value,
     );
   }
 }

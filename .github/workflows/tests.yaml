@@ -38,21 +38,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm -C packages/${{ matrix.package }} test
-  deploy:
-    runs-on: ubuntu-latest
-    needs:
-      - test
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
-          scope: "@triptyk"
-      - uses: pnpm/action-setup@v2.2.1
-        with:
-          version: 8
-          run_install: true
-      - run: pnpm recursive publish --access=public --tag=beta
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - test
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 20
+  #         registry-url: https://registry.npmjs.org/
+  #         scope: "@triptyk"
+  #     - uses: pnpm/action-setup@v2.2.1
+  #       with:
+  #         version: 8
+  #         run_install: true
+  #     - run: pnpm recursive publish --access=public --tag=beta
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
