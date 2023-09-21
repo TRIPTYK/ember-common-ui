@@ -17,7 +17,7 @@ module('Integration | Component | tpk-input', function (hooks) {
       hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" as |I|>
       <I.Input />
       <I.Label />
-</TpkInput>`
+</TpkInput>`,
     );
 
     assert.dom('.tpk-input-label').exists().containsText('label');
@@ -35,7 +35,7 @@ module('Integration | Component | tpk-input', function (hooks) {
     await render(
       hbs`<TpkInput @type="password" @onChange={{this.change}} @label="label" @value="value" as |O|>
         {{catch-state O}}
-      </TpkInput>`
+      </TpkInput>`,
     );
 
     const { state }: { state: any } = (
@@ -65,7 +65,7 @@ module('Integration | Component | tpk-input', function (hooks) {
         <I.Input />
         <I.Label />
       </TpkInput>
-      `
+      `,
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -86,7 +86,7 @@ module('Integration | Component | tpk-input', function (hooks) {
       hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @unmaskValue={{true}} as |I|>
       <I.Input></I.Input>
       <I.Label></I.Label>
-</TpkInput>`
+</TpkInput>`,
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -106,14 +106,14 @@ module('Integration | Component | tpk-input', function (hooks) {
       hbs`<TpkInput @type="text" @onChange={{this.change}} @label="label" @value="value" @mask={{this.mask}} @maskOptions={{this.maskOptions}} @unmaskValue={{true}} as |I|>
       <I.Input />
       <I.Label />
-    </TpkInput>`
+    </TpkInput>`,
     );
     assert.dom('[data-test-tpk-input-input]').hasValue(`${maskPrefix}####`);
   });
 
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkInput @type="password" @onChange={{this.change}} @label="label" @value="value"/>`
+      hbs`<TpkInput @type="password" @onChange={{this.change}} @label="label" @value="value"/>`,
     );
 
     await a11yAudit();
@@ -129,7 +129,7 @@ module('Integration | Component | tpk-input', function (hooks) {
       hbs`<TpkInput @type="number" @onChange={{this.change}} @label="label" @value={{123}} as |I|>
       <I.Input></I.Input>
       <I.Label></I.Label>
-</TpkInput>`
+</TpkInput>`,
     );
 
     await fillIn('[data-test-tpk-input-input]', '123');

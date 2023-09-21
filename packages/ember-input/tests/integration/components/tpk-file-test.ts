@@ -17,7 +17,7 @@ module('Integration | Component | tpk-file', function (hooks) {
       hbs`<TpkFile @classless={{this.classless}} @label="label" @value="value" as |F|>
         <F.Label />
         <F.Input />
-</TpkFile>`
+</TpkFile>`,
     );
 
     assert.dom('.tpk-file-label').exists().containsText('label');
@@ -34,7 +34,7 @@ module('Integration | Component | tpk-file', function (hooks) {
     await render(
       hbs`<TpkFile @type="password" @onChange={{this.change}} @label="label" @value="value" as |O|>
         {{catch-state O}}
-      </TpkFile>`
+      </TpkFile>`,
     );
 
     const { state }: { state: any } = (
@@ -51,7 +51,7 @@ module('Integration | Component | tpk-file', function (hooks) {
 
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkFile @type="password" @onChange={{this.change}} @label="label" @value="value"/>`
+      hbs`<TpkFile @type="password" @onChange={{this.change}} @label="label" @value="value"/>`,
     );
 
     await a11yAudit();

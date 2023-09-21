@@ -18,7 +18,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
       hbs`<TpkDatepicker @classless={{this.classless}} @label="label" @value="value" @onChange={{this.setDate}} as |D|>
         <D.Input />
         <D.Label />
-      </TpkDatepicker>`
+      </TpkDatepicker>`,
     );
 
     assert.dom('.tpk-datepicker-label').exists().containsText('label');
@@ -43,7 +43,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
       hbs`<TpkDatepicker @onChange={{this.setDate}} @label="label" @value="" as |D|>
       <D.Input />
       <D.Label />
-</TpkDatepicker>`
+</TpkDatepicker>`,
     );
     await setFlatpickrDate('[data-test-tpk-datepicker-content]', date);
     assert
@@ -59,7 +59,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     this.set('setDate', function () {});
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="label" @value=""/>`
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="label" @value=""/>`,
     );
     await a11yAudit();
     assert.expect(0);

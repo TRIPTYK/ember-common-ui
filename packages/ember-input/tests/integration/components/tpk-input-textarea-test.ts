@@ -15,7 +15,7 @@ module('Integration | Component | tpk-area', function (hooks) {
     await render(
       hbs`<TpkTextarea @onChange={{this.change}} @label="label" @value="value" as |O|>
         {{catch-state O}}
-      </TpkTextarea>`
+      </TpkTextarea>`,
     );
 
     const { state }: { state: any } = (
@@ -31,7 +31,7 @@ module('Integration | Component | tpk-area', function (hooks) {
 
   test('Accessibility', async function (assert) {
     await render(
-      hbs`<TpkTextarea @onChange={{this.change}} @label="label" @value="value"/>`
+      hbs`<TpkTextarea @onChange={{this.change}} @label="label" @value="value"/>`,
     );
 
     await a11yAudit();
