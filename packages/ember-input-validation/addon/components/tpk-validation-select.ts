@@ -8,6 +8,6 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
     if (this.args.onChange) {
       return this.args.onChange(value);
     }
-    this.args.changeset.set(this.args.validationField, value);
+    return this.args.changeset.set(this.args.validationField, value);
   }
 }

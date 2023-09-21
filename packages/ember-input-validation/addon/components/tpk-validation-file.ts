@@ -11,9 +11,9 @@ export default class TpkValidationFile extends BaseValidationComponent<TpkValida
     if (this.args.onChange) {
       return this.args.onChange(file);
     }
-    this.args.changeset.set(
+    return this.args.changeset.set(
       this.args.validationField,
-      this.args.multiple === true ? file : file[0]
+      this.args.multiple === true ? file : file[0],
     );
   }
 }

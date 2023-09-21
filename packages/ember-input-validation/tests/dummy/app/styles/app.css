@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import 'tpk-ember-input';
-@import 'tpk-ember-select';
-@import 'tpk-ember-input-validation';;
+@import url("tailwindcss/base");
+@import url("tailwindcss/components");
+@import url("tailwindcss/utilities");
+@import url("tpk-ember-input");
+@import url("tpk-ember-select");
+@import url("tpk-ember-input-validation");

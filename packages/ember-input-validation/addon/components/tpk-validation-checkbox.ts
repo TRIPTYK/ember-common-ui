@@ -8,6 +8,6 @@ export default class TpkValidationCheckbox extends BaseValidationComponent<TpkVa
     if (this.args.onChange) {
       return this.args.onChange(checked);
     }
-    this.args.changeset.set(this.args.validationField, checked);
+    return this.args.changeset.set(this.args.validationField, checked);
   }
 }

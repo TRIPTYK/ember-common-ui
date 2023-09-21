@@ -10,11 +10,11 @@ export default class TpkValidationDatepicker extends BaseValidationComponent<Tpk
     if (this.args.onChange) {
       return this.args.onChange(dates);
     }
-    this.args.changeset.set(
+    return this.args.changeset.set(
       this.args.validationField,
       this.args.mode === 'multiple' || this.args.mode === 'range'
         ? dates
-        : dates[0]
+        : dates[0],
     );
   }
 }

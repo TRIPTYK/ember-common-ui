@@ -38,8 +38,12 @@
   @apply ml-1;
 }
 
+.tpk-checkbox-input::before {
+  @apply block h-full w-full absolute;
+}
+
 .tpk-checkbox-input:checked::before {
-  content: '\2713';
+  content: "\2713";
   color: #41b883;
   font-size: 22px;
   line-height: 0;
@@ -49,13 +53,9 @@
   @apply appearance-none h-4 w-4 border-2 relative;
 }
 
-.tpk-checkbox-input::before {
-  @apply block h-full w-full absolute;
-}
-
 /* File input */
 .tpk-file-label {
-  @apply block mb-2 text-sm font-semibold text-gray-900 ;
+  @apply block mb-2 text-sm font-semibold text-gray-900;
 }
 
 .tpk-file-input {
@@ -64,6 +64,7 @@
 
 .tpk-file-input::file-selector-button {
   @apply text-white bg-gray-700 hover:bg-gray-600 font-medium text-sm cursor-pointer border-0 py-2.5 pl-8 pr-4;
+
   margin-inline-start: -1rem;
   margin-inline-end: 1rem;
 }

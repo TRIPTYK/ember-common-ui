@@ -52,7 +52,7 @@ interface TableGenericTableArgs {
 
 export default class TableGenericTable<
   T extends TableGenericTableArgs,
-  K extends keyof ModelRegistry
+  K extends keyof ModelRegistry,
 > extends Component<T> {
   @service declare store: Store;
 
@@ -81,9 +81,7 @@ export default class TableGenericTable<
 
   @action
   @waitFor
-  async loadData(
-    data: TableLoadDataApi
-  ): Promise<ArrayProxy<ModelRegistry[K]>> {
+  async loadData(data: TableLoadDataApi) {
     const sortString = this.getSortString(data.sortData);
 
     const queryOptions = this.buildQueryOptions(
@@ -91,7 +89,7 @@ export default class TableGenericTable<
       this.additionalFilters,
       data.filterData,
       data.paginationData,
-      sortString
+      sortString,
     );
 
     const array = await this.store.query(this.entityName, queryOptions);
@@ -109,7 +107,7 @@ export default class TableGenericTable<
     return sortData
       .map(
         (sortField) =>
-          `${sortField.direction === 'asc' ? '' : '-'}${sortField.prop}`
+          `${sortField.direction === 'asc' ? '' : '-'}${sortField.prop}`,
       )
       .join(',');
   }
@@ -125,7 +123,7 @@ export default class TableGenericTable<
     additionalFilters: Record<string, unknown>,
     filterData: FilterData | undefined,
     paginationData: PaginationData,
-    sortString: string
+    sortString: string,
   ): Record<string, unknown> {
     return {
       include: relationships,
