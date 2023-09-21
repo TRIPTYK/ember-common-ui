@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 import { Changeset } from 'ember-form-changeset-validations';
+import { isFieldError } from '../utils/is-field-error';
 
 export interface BaseValidationArgs {
   changeset: Changeset;
@@ -29,10 +30,11 @@ export abstract class BaseValidationComponent<
     return this.errors[0];
   }
 
+  // dotted path only
   get errors(): Record<string, unknown>[] {
     return (
       this.args.changeset.errors.filter((err) =>
-        (err.key as string).startsWith(this.args.validationField),
+        isFieldError(this.args.validationField, err.key as string),
       ) ?? []
     );
   }
