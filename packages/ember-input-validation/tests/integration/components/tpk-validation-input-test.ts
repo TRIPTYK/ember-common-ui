@@ -2,57 +2,59 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { fillIn, findAll, render } from '@ember/test-helpers';
-import { Changeset } from 'ember-changeset';
-// @ts-expect-error
-import lookupValidator from 'ember-changeset-validations';
 import {
-  validatePresence,
-  // @ts-expect-error
-} from 'ember-changeset-validations/validators';
-
-const validations = {
-  name: [validatePresence(true)],
-};
+  TestContext,
+  fillIn,
+  findAll,
+  render,
+  settled,
+} from '@ember/test-helpers';
+import { ImmerChangeset } from 'ember-form-changeset-validations';
 
 module('Integration | Component | tpk-validation-input', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('DEFAULT | it works with default syntax', async function (assert) {
-    this.set(
-      'changeset',
-      Changeset(
-        {
-          name: 'a',
-        },
-        lookupValidator(validations),
-        validations
-      )
-    );
-
+  async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput @label="label" @changeset={{this.changeset}} @validationField="name" />`
+      hbs`<TpkValidationInput data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" />`,
     );
+  }
+
+  function setupChangeset(this: TestContext) {
+    const changeset = new ImmerChangeset({
+      name: 'a',
+    });
+
+    this.set('changeset', changeset);
+    return changeset;
+  }
+
+  test('DEFAULT | it works with default syntax', async function (assert) {
+    const changeset = setupChangeset.call(this);
+
+    await renderComponent();
     assert.dom('[data-test-tpk-input]').exists();
     assert.dom('[data-test-tpk-input-label]').containsText('label');
     assert.dom('[data-test-tpk-input-input]').hasValue('a');
 
     await fillIn('[data-test-tpk-input-input]', '');
+    assert.strictEqual(changeset.get('name'), '');
+
+    changeset.addError('name', {
+      message: 'required',
+      value: '',
+      originalValue: 'a',
+      key: 'name',
+    });
+
+    await settled();
     assert.dom('[data-test-tpk-input-input]').hasNoText();
     assert.dom('[data-test-tpk-input]').hasAttribute('data-has-error', 'true');
     assert.dom('.tpk-validation-input-error').exists().hasAnyText();
   });
 
   test('DEFAULT | override change function', async function (assert) {
-    const changeset = Changeset(
-      {
-        name: 'a',
-      },
-      lookupValidator(validations),
-      validations
-    );
-
-    this.set('changeset', changeset);
+    const changeset = setupChangeset.call(this);
 
     this.set('onChange', (value: string) => {
       assert.step('change');
@@ -60,73 +62,21 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       assert.strictEqual(
         changeset.get('name'),
         'a',
-        'Value not changed in the changeset'
+        'Value not changed in the changeset',
       );
     });
 
-    await render(
-      hbs`<TpkValidationInput data-test-validation-input @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" />`
-    );
+    await renderComponent();
 
     await fillIn('[data-test-validation-input] input', 'blah');
     assert.verifySteps(['change']);
   });
 
   test('DEFAULT | classless removes all the classes', async function (assert) {
-    this.set(
-      'changeset',
-      Changeset(
-        {
-          name: 'a',
-        },
-        lookupValidator(validations),
-        validations
-      )
-    );
+    this.set('classless', false);
+    setupChangeset.call(this);
 
-    await render(
-      hbs`<TpkValidationInput @label="label" @changeset={{this.changeset}} @classless={{this.classless}} @validationField="name" />`
-    );
-
-    findAll('*').forEach((e) => {
-      assert.dom(e).hasClass(/tpk-.*/);
-    });
-
-    this.set('classless', true);
-
-    findAll('*').forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
-  });
-
-  test('COMPLEX | classless removes all the classes', async function (assert) {
-    this.set(
-      'changeset',
-      Changeset(
-        {
-          name: 'a',
-        },
-        lookupValidator(validations),
-        validations
-      )
-    );
-
-    await render(
-      hbs`<TpkValidationInput
-      @label="Mot de passe"
-      @placeholder="mot de passe"
-      @onChange={{this.onChange}}
-      @changeset={{this.changeset}}
-      @classless={{this.classless}}
-      @validationField="name"
-      data-test-input="name" as |TI|
-    >
-      <TI.Label>
-        Mot de passe
-      </TI.Label>
-      <TI.Input/>
-    </TpkValidationInput>`
-    );
+    await renderComponent();
 
     findAll('*').forEach((e) => {
       assert.dom(e).hasClass(/tpk-.*/);
@@ -140,15 +90,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
   });
 
   test('COMPLEX | override change function', async function (assert) {
-    const changeset = Changeset(
-      {
-        name: 'a',
-      },
-      lookupValidator(validations),
-      validations
-    );
-
-    this.set('changeset', changeset);
+    const changeset = setupChangeset.call(this);
 
     this.set('onChange', (value: string) => {
       assert.step('change');
@@ -156,7 +98,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       assert.strictEqual(
         changeset.get('name'),
         'a',
-        'Value not changed in the changeset'
+        'Value not changed in the changeset',
       );
     });
 
@@ -173,7 +115,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
         Mot de passe
       </TI.Label>
       <TI.Input/>
-    </TpkValidationInput>`
+    </TpkValidationInput>`,
     );
 
     await fillIn('[data-test-input="name"] input', 'blah');
@@ -181,15 +123,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
   });
 
   test('COMPLEX | changeset change when element is modified', async function (assert) {
-    const changeset = Changeset(
-      {
-        name: 'a',
-      },
-      lookupValidator(validations),
-      validations
-    );
-
-    this.set('changeset', changeset);
+    const changeset = setupChangeset.call(this);
 
     await render(
       hbs`<TpkValidationInput
@@ -203,7 +137,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
         Mot de passe
       </TI.Label>
       <TI.Input/>
-    </TpkValidationInput>`
+    </TpkValidationInput>`,
     );
 
     await fillIn('[data-test-input="name"] input', 'blah');

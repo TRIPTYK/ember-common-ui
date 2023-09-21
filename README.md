@@ -4,11 +4,9 @@ This repository contains our simplified ui for our ember projects .
 
 You can find more documentation in the sub-projects.
 
-- [@triptyk/ember-select](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-select/README.md)
+- [@triptyk/ember-ui](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-ui/README.md)
 - [@triptyk/ember-input](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-input/README.md)
 - [@triptyk/ember-input-validation](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-input-validation/README.md)
-- [@triptyk/ember-modal](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-modal/README.md)
-- [@triptyk/ember-stepper](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-stepper/README.md)
 
 ## HTML naming conventions
 

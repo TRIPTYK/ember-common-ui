@@ -135,6 +135,55 @@ Yielded :
   </TpkFile>
 ```
 
+### TpkSelect
+
+```hbs
+<TpkSelect
+  @label='Select something'
+  @options={{this.options}}
+  @onChange={{this.selectElement}}
+  @selected={{this.selected}}
+as |S|>
+  <S.Label />
+  <S.Button >
+    {{if S.hasSelection S.selected "Please select something"}}
+  </S.Button>
+  <S.Options as |Opts|>
+    <Opts as |opt|>
+    {{opt.option}}
+    </Opts>
+  </S.Options>
+</TpkSelect>
+```
+
+### TpkSelectSearch
+
+```hbs
+<TpkSelectSearch
+  @label='Select something'
+  @options={{this.options}}
+  @onChange={{this.selectElement}}
+  @selected={{this.selected}}
+  class="tpk-select-search"
+as |S|>
+  <S.Label />
+  <div class="tpk-select-search-container">
+    <S.Input @onInput={{this.onInput}} />
+    <S.Button>
+    <svg width="18" height="16" aria-hidden="true" focusable="false">
+      <polygon class="arrow" stroke-width="0" fill-opacity="0.75" fill="currentcolor" points="3,6 15,6 9,14"></polygon>
+    </svg>
+    </S.Button>
+  </div>
+  <S.Options as |Opts|>
+    <Opts as |opt|>
+    {{opt.option}}
+    </Opts>
+  </S.Options>
+</TpkSelectSearch>
+```
+
+
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.

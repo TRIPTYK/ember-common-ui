@@ -1,146 +1,151 @@
 # @triptyk/ember-ui
 
-This addon will give you a simple input alternative in TailwindCSS
+This addon will give you some components to build your UI.
 
+## Components
 
-## Compatibility
+### TableGeneric
 
-* Ember.js v3.28 or above
-* Ember CLI v3.28 or above
-* Node.js v14 or above
-
-
-## Installation
-
-```zsh
-ember install @triptyk/ember-ui
-```
-OR
-```zsh
-pnpm add -D @triptyk/ember-ui
-```
-
-?
-## Usage
-
-### Common arguments
-
-All the inputs in this addon accepts these arguments.
-
-```ts
-interface TpkBaseInputArgs {
-  classless?: boolean;
-  label?: string;
-  value: unknown;
-  changeEvent: 'input' | 'change';
-  onChange?: (...args: unknown[]) => unknown;
-  mask?: string;
-  maskOptions?: IMask.AnyMaskedOptionsArray;
-  unmaskValue?: boolean;
-}
-```
-
-### Tpk-Input
-
-#### Special Args
-
-- type : The input type
-- mask: Pattern for mask
-- maskOptions: Options for mask (doc: https://imask.js.org/guide.html)
-- unmaskValue: Need explanation ??? 🙄
-
-#### No-Block version
+This component will display a table with the data you give it. 
 
 ```hbs
-  <TpkInput
-    ...@TpkInputArgs
-  />
+   <TableGeneric
+      @rowClick={{this.rowClick}}
+      @pageSize={{this.pageSize}}
+      @pageSizes={{this.pageSizes}}
+      @entity="user"
+    as | TG |>
+      <TG.SearchBar />
+      <TG.Table as | Table |>
+        <Table.Header as |Header|>
+          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
+            Prénom
+          </Header.Cell>
+          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
+            Nom
+          </Header.Cell>
+          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
+            Email
+          </Header.Cell>
+        </Table.Header>
+        <Table.Body as |Body element|>
+          <Body.Cell>
+            {{element.firstName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.lastName}}
+          </Body.Cell>
+          <Body.Cell>
+            {{element.email}}
+          </Body.Cell>
+          <Body.ActionMenu as |Action|>
+            <Action @icon="/assets/icons/delete.svg" @action={{this.deleteAction}} data-test-delete >
+              lustre
+            </Action>
+          </Body.ActionMenu>
+        </Table.Body>
+        <Table.Footer />
+      </TG.Table>
+    </TableGeneric>
 ```
 
-#### Block version
-
-Yielded :
-  - Label : Component
-  - Input : Component
-  - guid : string
-  
-```hbs
-  <TpkInput
-    ...@TpkInputArgs
-  as |TI|>
-    <TI.Input />
-    <TI.Label />
-  </TpkInput>
-```
-
-### Tpk-Textarea
-
-#### Special arguments
-
-- None
-
-#### No-Block version
-
-```hbs
-  <TpkTextarea
-    ...@TpkInputArgs
-  />
-```
-
-#### Block version
-
-Yielded :
-  - Label : Component
-  - Input : Component
-  - guid : string
-
-  
-```hbs
-  <TpkTextarea
-    ...@TpkInputArgs
-  as |TI|>
-    <TI.Input />
-    <TI.Label />
-  </TpkTextarea>
-```
-
-### Tpk-File
-
-#### Special arguments
-
-- accept : accepted mimetypes
-
-#### No-Block version
+### TpkActionsMenu
 
 ```hbs
-  <TpkFile
-    ...@TpkInputArgs
-  />
+<TpkActionsMenu @classless={{this.classless}} as |Action|>
+  <Action
+    @icon={{this.iconSrc}}
+    @action={{this.action}}
+  >
+    ActionText
+  </Action>
+</TpkActionsMenu>
 ```
 
-#### Block version
+### TpkConfirmModal
 
-Yielded :
-  - Label : Component
-  - Input : Component
-  - guid : string
-  - files : File[]
-  
 ```hbs
-  <TpkFile
-    ...@TpkInputArgs
-  as |TI|>
-    <TI.Input />
-    <TI.Label />
-  </TpkFile>
+<TpkConfirmModal 
+  @title={{this.confirmQuestion}}
+  @isOpen={{this.isOpen}}
+  @onConfirm={{this.onConfirm}}
+  @onClose={{this.onClose}}
+  @classless={{this.classless}}
+  as |confirmModal|
+  >
+  <confirmModal.Confirm>
+    Confirmez banane
+  </confirmModal.Confirm>
+  <confirmModal.Cancel>
+    Annuler banane
+  </confirmModal.Cancel>
+</TpkConfirmModal> 
 ```
 
-## Contributing
+### TpkModal
 
-See the [Contributing](CONTRIBUTING.md) guide for details.
-You can also contact info@triptyk for more informations on how contributing on this project.
+```hbs
+<TpkModal
+  @isOpen={{this.isOpen}}
+  @title={{this.title}}
+  @onClose={{this.onClose}}
+  data-test-modal-toggle
+as |Modal|>
+  <Modal.Content>
+    <button type="button">Content</button>
+  </Modal.Content>
+</TpkModal>
+```
 
+### TpkFileList
 
-## License
+```
+<TpkFileList::Element @document={{this.document}} as |E|>
+    <E.Download data-test-download-button />
+    <E.Delete data-test-delete-button />
+</TpkFileList::Element>
+```
 
-This project is licensed under the [MIT License](LICENSE.md).
+### TpkStackList
+
+```hbs
+<TpkStackList
+  @data={{this.data}}
+  @onRemove={{this.onRemoveData}}
+  @onAdd={{this.onAddData}}
+  @titleForAdd={{this.titleForAdd}}
+  as |S|
+>
+  <S.Title as |T|>
+    {{get T.item 'title'}}
+  </S.Title>
+  <S.Content as |C|>
+    {{get C.item 'title'}}
+  </S.Content>
+</TpkStackList>
+```
+
+### TpkStepper
+
+```hbs
+<TpkStepper @startStep={{this.startStep}} @classless={{this.classless}} as |Stepper|>
+    <Stepper.Stepper />
+    <Stepper.Step as |S|>
+      <S.Header>
+        Step {{S.index}}
+      </S.Header>
+      <div>
+        Content {{S.index}}
+      </div>
+  </Stepper.Step>
+  <Stepper.Step as |S|>
+      <S.Header>
+      Step {{S.index}}
+      </S.Header>
+      <div>
+        Content {{S.index}}
+      </div>
+    </Stepper.Step>
+</TpkStepper>
+```
+

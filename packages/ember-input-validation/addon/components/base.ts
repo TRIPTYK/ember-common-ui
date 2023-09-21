@@ -1,23 +1,23 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
-import { BufferedChangeset } from 'ember-changeset/types';
+import { Changeset } from 'ember-form-changeset-validations';
 
 export interface BaseValidationArgs {
-  changeset: BufferedChangeset;
+  changeset: Changeset;
   validationField: string;
   // eslint-disable-next-line no-unused-vars
   onChange?: (value: unknown) => unknown;
 }
 
 export abstract class BaseValidationComponent<
-  T extends BaseValidationArgs
+  T extends BaseValidationArgs,
 > extends Component<T> {
   constructor(owner: unknown, args: T) {
     super(owner, args);
     assert('@changeset is required', typeof args.changeset === 'object');
     assert(
       '@validationField is required',
-      typeof args.validationField === 'string'
+      typeof args.validationField === 'string',
     );
   }
 
@@ -32,7 +32,7 @@ export abstract class BaseValidationComponent<
   get errors(): Record<string, unknown>[] {
     return (
       this.args.changeset.errors.filter((err) =>
-        err.key.startsWith(this.args.validationField)
+        (err.key as string).startsWith(this.args.validationField),
       ) ?? []
     );
   }
