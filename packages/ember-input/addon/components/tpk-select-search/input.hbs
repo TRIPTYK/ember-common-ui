@@ -11,7 +11,7 @@
   aria-expanded="{{@isOpen}}"
   aria-activedescendant="{{@activeChild.id}}"
   aria-controls={{@optionListId}}
-  {{on "click" this.keyDown}}
+  {{on "keydown" this.keyDown}}
   ...attributes
   value={{@selectedText}}
 />
