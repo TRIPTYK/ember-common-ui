@@ -188,7 +188,6 @@ export default class TpkSelect<
 
   @action
   keyDown(event: KeyboardEvent) {
-    event.preventDefault();
     const action = this.getActionFromKey(event);
 
     switch (action) {
