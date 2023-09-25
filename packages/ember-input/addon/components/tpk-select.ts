@@ -39,7 +39,7 @@ export const moveOperations = {
 };
 
 export default class TpkSelect<
-  T extends TpkSelectArgs<any>
+  T extends TpkSelectArgs<any>,
 > extends Component<T> {
   @tracked isOpen = false;
   @tracked activeChildIndex?: number;
@@ -116,16 +116,16 @@ export default class TpkSelect<
     super(owner, args);
     assert(
       'Please provide an @options array to component',
-      args.options !== undefined
+      args.options !== undefined,
     );
     assert(
       'Please provide an @onChange function',
-      typeof args.onChange === 'function'
+      typeof args.onChange === 'function',
     );
     if (this.args.multiple === true) {
       assert(
         'Please provide an array for @selected',
-        Array.isArray(args.selected)
+        Array.isArray(args.selected),
       );
     }
   }
@@ -156,7 +156,7 @@ export default class TpkSelect<
     action:
       | keyof typeof moveOperations
       | SelectActions.First
-      | SelectActions.Last
+      | SelectActions.Last,
   ) {
     if (action === SelectActions.First) {
       this.activeChildIndex = 0;
@@ -188,6 +188,7 @@ export default class TpkSelect<
 
   @action
   keyDown(event: KeyboardEvent) {
+    event.preventDefault();
     const action = this.getActionFromKey(event);
 
     switch (action) {
@@ -217,7 +218,7 @@ export default class TpkSelect<
           this.close();
           return this.onChange(
             selectedOption,
-            this.isElementSelected(selectedOption)
+            this.isElementSelected(selectedOption),
           );
         }
         this.close();
