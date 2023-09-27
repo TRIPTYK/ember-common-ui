@@ -8,9 +8,6 @@ module.exports = function (defaults) {
     console.error(err.stack);
   });
   let app = new EmberAddon(defaults, {
-    flatpickr: {
-      locales: ['fr'],
-    },
     postcssOptions: {
       compile: {
         enabled: true,
