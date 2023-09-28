@@ -1,0 +1,51 @@
+{{! template-lint-disable no-inline-styles }}
+{{! template-lint-disable style-concatenation }}
+{{#each @data as |item index|}}
+  <TpkStackList::Item
+    @zIndex={{index}}
+    @item={{item}}
+    @readOnly={{@readOnly}}
+    @tpkStackClass={{@tpkStackClass}}
+    as |I|
+  >
+    <div class="tpk-stack-head">
+      {{yield
+        (hash
+          Title=(component "tpk-stack-list/title" isExpanded=I.isExpanded item=item)
+        )
+      }}
+      <TpkStackList::Head
+        @isExpanded={{I.isExpanded}}
+        @toggleExpanded={{I.toggleExpanded}}
+        @item={{item}}
+        @index={{index}}
+        @onRemove={{@onRemove}}
+        @readOnly={{@readOnly}}
+      />
+    </div>
+    {{yield
+      (hash
+        Content=(component
+          "tpk-stack-list/content" isExpanded=I.isExpanded item=item index=index
+        )
+      )
+    }}
+  </TpkStackList::Item>
+{{/each}}
+{{#unless @readOnly}}
+  <button
+    type="button"
+    class="link icon {{@customButtonClass}}"
+    data-test-add-stackList-item
+    {{on "click" @onAdd}}
+  >
+    <span>
+      <img
+        src="/assets/icons/plus.svg"
+        alt="add"
+        class="w-5 h-5"
+      />
+    </span>
+    {{@titleForAdd}}
+  </button>
+{{/unless}}

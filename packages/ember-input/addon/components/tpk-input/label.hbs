@@ -1,0 +1,12 @@
+<label
+  class={{unless @classless 'tpk-input-label'}}
+  for={{@guid}}
+  ...attributes
+  data-test-tpk-input-label
+>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
+</label>

@@ -1,0 +1,12 @@
+<label
+  class={{unless @classless 'tpk-file-label'}}
+  for={{@guid}}
+  ...attributes
+  data-test-tpk-file-label
+>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
+</label>

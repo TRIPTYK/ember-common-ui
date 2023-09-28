@@ -1,0 +1,86 @@
+<TpkSelect
+  @label={{@label}}
+  @options={{@options}}
+  @multiple={{@multiple}}
+  @selected={{@selected}}
+  @onChange={{this.onChange}}
+  @classless={{@classless}}
+  @onSearch={{@onSearch}}
+  @defaultText={{@defaultText}}
+  ...attributes
+  data-has-error='{{this.hasError}}'
+  as |I|
+>
+  {{#if (has-block-params)}}
+    {{yield
+      (hash
+        Input=I.Input
+        Label=I.Label
+        Options=I.Options
+        Button=I.Button
+        selected=@selected
+        hasSelection=I.hasSelection
+        errors=this.errors
+        hasError=this.hasError
+        firstError=this.firstError
+      )
+    }}
+  {{else}}
+    <I.Label @guid={{I.guid}}>
+      {{@label}}
+    </I.Label>
+    <I.Button
+      @onSelectButtonClick={{I.onSelectButtonClick}}
+      @isOpen={{I.isOpen}}
+      as |selected|
+    >
+      {{#if I.hasSelection}}
+        {{#if (has-block 'selected')}}
+          {{#if @multiple}}
+            {{#each selected as |s|}}
+              {{yield s to='selected'}}
+            {{/each}}
+          {{else}}
+            {{yield selected to='selected'}}
+          {{/if}}
+        {{/if}}
+      {{else}}
+        {{#if (has-block 'notSelected')}}
+          {{yield @defaultText to='notSelected'}}
+        {{else}}
+          {{@defaultText}}
+        {{/if}}
+      {{/if}}
+    </I.Button>
+    <div class='tpk-select-container'>
+      <div class='tpk-select-container-internal'>
+        {{#if @onSearch}}
+          <I.Searchbar @guid={{I.guid}} @isOpen={{I.isOpen}} />
+        {{/if}}
+        <I.Options
+          @guid={{I.guid}}
+          @onChange={{I.onChange}}
+          @isOpen={{I.isOpen}}
+          as |Opts|
+        >
+          <Opts as |Opt|>
+            {{#if (has-block 'option')}}
+              {{yield Opt to='option'}}
+            {{else}}
+              {{Opt.option}}
+            {{/if}}
+          </Opts>
+        </I.Options>
+      </div>
+    </div>
+    {{#if this.hasError}}
+      {{#if (has-block 'errors')}}
+        {{yield this.errors to='errors'}}
+      {{else}}
+        <span class={{unless @classless 'tpk-validation-select-error'}}>
+          {{this.firstError}}
+        </span>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</TpkSelect>

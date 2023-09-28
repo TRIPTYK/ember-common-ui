@@ -1,0 +1,12 @@
+<label
+  class={{unless @classless 'tpk-datepicker-label'}}
+  for={{@guid}}
+  ...attributes
+  data-test-tpk-datepicker-label
+>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
+</label>

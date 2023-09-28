@@ -1,0 +1,14 @@
+<div
+  data-test-tpk-modal
+  class={{unless @classless 'tpk-modal-content'}}
+  role='dialog'
+  aria-labelledby={{@title}}
+  {{focus-trap options=(hash
+      allowOutsideClick=@outsideClickHandler
+ )}}
+  ...attributes
+>
+    {{yield (hash
+      guid=this.guid
+    )}}
+</div>

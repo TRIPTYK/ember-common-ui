@@ -1,0 +1,40 @@
+<TpkTextarea
+  @value={{this.value}}
+  @label={{@label}}
+  @type={{@type}}
+  @classless={{@classless}}
+  @changeEvent={{@changeEvent}}
+  @onChange={{this.onChange}}
+  ...attributes
+  data-has-error='{{this.hasError}}'
+  as |I|
+>
+  {{#if (has-block-params)}}
+    {{yield
+      (hash
+        Input=I.Input
+        Label=I.Label
+        errors=this.errors
+        hasError=this.hasError
+        firstError=this.firstError
+      )
+    }}
+  {{else}}
+    <I.Label>
+      {{@label}}
+    </I.Label>
+    <div class={{if @classless 'tpk-validation-textarea-error-container'}}>
+      <I.Input aria-invalid={{this.hasError}} />
+      {{#if this.hasError}}
+        {{#if (has-block 'errors')}}
+          {{yield this.errors to='errors'}}
+        {{else}}
+          <span class={{unless @classless 'tpk-validation-textarea-error'}}>
+            {{this.firstError}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+    {{yield}}
+  {{/if}}
+</TpkTextarea>

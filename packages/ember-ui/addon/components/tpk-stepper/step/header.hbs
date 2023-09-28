@@ -1,0 +1,5 @@
+{{#in-element this.container insertBefore=null}}
+    <li role="tab" aria-selected='{{@isActive}}' class={{unless @classless "tpk-stepper-step-header"}} ...attributes>
+        {{yield}}
+    </li>
+{{/in-element}}

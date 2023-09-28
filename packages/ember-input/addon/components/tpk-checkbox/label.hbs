@@ -1,0 +1,12 @@
+<label
+  class={{unless @classless 'tpk-checkbox-label'}}
+  for={{@guid}}
+  ...attributes
+  data-test-tpk-checkbox-label
+>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
+</label>

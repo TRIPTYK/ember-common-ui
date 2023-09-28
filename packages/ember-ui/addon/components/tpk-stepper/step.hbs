@@ -1,0 +1,18 @@
+<div
+  data-is-active='{{this.isActive}}'
+  class={{unless @classless 'tpk-stepper-step'}}
+  role="tabpanel"
+  {{will-destroy @unregisterStep this}}
+  {{did-insert @registerStep this}}
+  ...attributes
+>
+  {{yield
+    (hash
+      index=this.index
+      isActive=this.isActive
+      Header=(component
+        'tpk-stepper/step/header' guid=@guid classless=@classless isActive=this.isActive
+      )
+    )
+  }}
+</div>

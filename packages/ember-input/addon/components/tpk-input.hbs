@@ -1,0 +1,26 @@
+<div class={{unless @classless 'tpk-input'}} {{did-insert this.setMask}} ...attributes data-test-tpk-input>
+    {{yield
+      (hash
+        Input=(component
+          'tpk-input/input'
+          onChange=this.onChange
+          type=@type
+          changeEvent=this.changeEvent
+          value=@value
+          disabled=@disabled
+          guid=this.guid
+          classless=@classless
+        )
+        Label=(component
+          'tpk-input/label'
+          label=@label
+          onChange=this.onChange
+          guid=this.guid
+          classless=@classless
+        )
+        changeEvent=this.changeEvent
+        guid=this.guid
+        onChange=this.onChange
+      )
+    }}
+</div>

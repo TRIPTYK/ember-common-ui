@@ -1,0 +1,9 @@
+<input
+  class={{unless @classless 'tpk-input-input'}}
+  id={{@guid}}
+  type={{@type}}
+  value={{@value}}
+  {{on @changeEvent @onChange}}
+  ...attributes
+  data-test-tpk-input-input
+/>

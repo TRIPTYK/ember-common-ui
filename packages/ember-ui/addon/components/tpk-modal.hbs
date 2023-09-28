@@ -1,0 +1,30 @@
+{{#if @isOpen}}
+  {{#in-element this.modalContainer insertBefore=null}}
+    <div
+      {{this.handleEscapeKey @isOpen this.close}}
+      {{did-insert this.updateStack}}
+      {{will-destroy this.willDestroyNode}}
+      class={{unless @classless "tpk-modal"}}
+      ...attributes
+    >
+        {{yield
+          (hash
+            Content=(component
+              'tpk-modal/content'
+              title=@title
+              isOpen=@isOpen
+              onClose=this.close
+              classless=@classless
+              outsideClickHandler=this.outsideClickHandler
+            )
+            title=@title
+            isOpen=@isOpen
+            isOnTop=this.isOnTop
+            onClose=this.close
+            classless=@classless
+            guid=this.guid
+          )
+        }}
+    </div>
+  {{/in-element}}
+{{/if}}

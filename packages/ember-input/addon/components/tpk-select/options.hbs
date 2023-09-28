@@ -1,0 +1,28 @@
+<ul
+  tabindex='-1'
+  role='listbox'
+  aria-multiselectable={{@multiple}}
+  id={{this.guid}}
+  aria-labelledby={{@labelId}}
+  class={{unless @classless 'tpk-select-options'}}
+  {{did-insert @refreshChildren @options}}
+  {{did-update @refreshChildren @options}}
+  ...attributes
+>
+  {{#each @options as |o i|}}
+    {{yield
+      (component
+        'tpk-select/options/option'
+        option=o
+        guid=@guid
+        registerChild=@registerChild
+        unregisterChild=@unregisterChild
+        index=i
+        activeChild=@activeChild
+        selected=@selected
+        multiple=@multiple
+        onChange=@onChange
+      )
+    }}
+  {{/each}}
+</ul>

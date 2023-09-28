@@ -1,0 +1,7 @@
+@import url("tailwindcss/base");
+@import url("tailwindcss/components");
+@import url("tailwindcss/utilities");
+
+.flatpickr-wrapper {
+  @apply w-full;
+}

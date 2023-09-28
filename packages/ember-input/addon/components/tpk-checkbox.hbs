@@ -1,0 +1,29 @@
+<div
+  class={{unless @classless 'tpk-checkbox'}}
+  ...attributes
+  data-test-tpk-checkbox
+>
+  {{yield
+    (hash
+      Label=(component
+        'tpk-checkbox/label'
+        guid=this.guid
+        checked=@checked
+        label=@label
+        classless=@classless
+      )
+      Input=(component
+        'tpk-checkbox/input'
+        guid=this.guid
+        checked=@checked
+        disabled=@disabled
+        changeEvent=this.changeEvent
+        onChange=this.onChange
+        classless=@classless
+      )
+      onChange=this.onChange
+      changeEvent=this.changeEvent
+      guid=this.guid
+    )
+  }}
+</div>

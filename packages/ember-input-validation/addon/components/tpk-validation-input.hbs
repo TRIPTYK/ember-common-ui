@@ -1,0 +1,43 @@
+<TpkInput
+  @value={{this.value}}
+  @label={{@label}}
+  @type={{@type}}
+  @onChange={{this.onChange}}
+  @classless={{@classless}}
+  @changeEvent={{@changeEvent}}
+  @mask={{@mask}}
+  @maskOptions={{@maskOptions}}
+  @unmaskValue={{@unmaskValue}}
+  ...attributes
+  data-has-error='{{this.hasError}}'
+  as |I|
+>
+  {{#if (has-block-params)}}
+    {{yield
+      (hash
+        Input=I.Input
+        Label=I.Label
+        errors=this.errors
+        hasError=this.hasError
+        firstError=this.firstError
+      )
+    }}
+  {{else}}
+    <I.Label>
+      {{@label}}
+    </I.Label>
+    <div class={{unless @classless 'tpk-validation-input-error-container'}}>
+      <I.Input aria-invalid={{this.hasError}} />
+      {{#if this.hasError}}
+        {{#if (has-block 'errors')}}
+          {{yield this.errors to='errors'}}
+        {{else}}
+          <span class={{unless @classless 'tpk-validation-input-error'}}>
+            {{this.firstError}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+    {{yield}}
+  {{/if}}
+</TpkInput>

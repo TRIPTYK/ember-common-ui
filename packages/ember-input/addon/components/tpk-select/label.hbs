@@ -1,0 +1,12 @@
+<label
+  class={{unless @classless 'tpk-select-label'}}
+  {{did-insert @registerLabel}}
+  ...attributes
+  id={{this.guid}}
+>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{@label}}
+  {{/if}}
+</label>
