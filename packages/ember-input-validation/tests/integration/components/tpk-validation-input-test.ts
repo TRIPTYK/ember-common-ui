@@ -9,7 +9,7 @@ import {
   render,
   settled,
 } from '@ember/test-helpers';
-import { ImmerChangeset } from 'ember-form-changeset-validations';
+import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-input', function (hooks) {
   setupRenderingTest(hooks);
@@ -40,7 +40,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     await fillIn('[data-test-tpk-input-input]', '');
     assert.strictEqual(changeset.get('name'), '');
 
-    changeset.addError('name', {
+    changeset.addError({
       message: 'required',
       value: '',
       originalValue: 'a',

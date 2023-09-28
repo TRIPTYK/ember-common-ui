@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { click, render, settled } from '@ember/test-helpers';
-import { ImmerChangeset } from 'ember-form-changeset-validations';
+import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-checkbox', function (hooks) {
   setupRenderingTest(hooks);
@@ -24,7 +24,7 @@ module('Integration | Component | tpk-validation-checkbox', function (hooks) {
     assert.dom('[data-test-tpk-checkbox-input]').isNotChecked();
     assert.false(changeset.get('checked'));
 
-    changeset.addError('checked', {
+    changeset.addError({
       message: 'required',
       value: false,
       originalValue: true,

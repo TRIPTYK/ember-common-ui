@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { render, settled, triggerEvent } from '@ember/test-helpers';
-import { ImmerChangeset } from 'ember-form-changeset-validations';
+import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-file', function (hooks) {
   setupRenderingTest(hooks);
@@ -22,7 +22,7 @@ module('Integration | Component | tpk-validation-file', function (hooks) {
     assert.dom('[data-test-tpk-file]').exists();
     assert.dom('[data-test-tpk-file-label]').containsText('label');
 
-    changeset.addError('file', {
+    changeset.addError({
       message: 'required',
       value: '',
       originalValue: 'a',

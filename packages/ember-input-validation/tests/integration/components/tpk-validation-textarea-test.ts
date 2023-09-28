@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { fillIn, render, settled } from '@ember/test-helpers';
-import { ImmerChangeset } from 'ember-form-changeset-validations';
+import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-textarea', function (hooks) {
   setupRenderingTest(hooks);
@@ -24,7 +24,7 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
     await fillIn('[data-test-tpk-textarea-input]', '');
     assert.strictEqual(immerChangeset.get('name'), '');
 
-    immerChangeset.addError('name', {
+    immerChangeset.addError({
       message: 'required',
       value: '',
       originalValue: 'a',

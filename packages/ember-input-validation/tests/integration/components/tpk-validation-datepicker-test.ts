@@ -5,7 +5,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { render, settled } from '@ember/test-helpers';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
-import { ImmerChangeset } from 'ember-form-changeset-validations';
+import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-datepicker', function (hooks) {
   setupRenderingTest(hooks);
@@ -28,7 +28,7 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
 
     assert.dom('[data-test-tpk-datepicker-content]').hasNoText();
 
-    changeset.addError('date', {
+    changeset.addError({
       message: 'required',
       value: '',
       originalValue: 'a',

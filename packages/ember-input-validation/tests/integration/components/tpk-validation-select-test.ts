@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { click, render, settled } from '@ember/test-helpers';
-import { ImmerChangeset } from 'ember-form-changeset-validations';
+import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-select', function (hooks) {
   setupRenderingTest(hooks);
@@ -39,7 +39,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
 
     assert.dom('.tpk-select').hasAttribute('data-has-error', 'false');
 
-    changeset.addError('name', {
+    changeset.addError({
       message: 'required',
       value: '',
       originalValue: 'a',
