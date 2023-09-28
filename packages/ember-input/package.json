@@ -11,8 +11,7 @@
   "license": "MIT",
   "author": "Triptyk",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/TRIPTYK/ember-common-ui"
+    "url": "git@github.com:TRIPTYK/ember-common-ui.git"
   },
   "directories": {
     "test": "tests"
@@ -44,6 +43,7 @@
     "ember-click-outside": "^6.0.1",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "~6.0.0",
+    "focus-trap": "^7.5.3",
     "imask": "~7.1.3",
     "tracked-built-ins": "~3.3.0"
   },
@@ -119,7 +119,6 @@
     "eslint-plugin-n": "~16.1.0",
     "eslint-plugin-prettier": "~5.0.0",
     "eslint-plugin-qunit": "~8.0.0",
-    "focus-trap": "^7.5.3",
     "loader.js": "~4.7.0",
     "postcss": "~8.4.30",
     "postcss-import": "~15.1.0",
