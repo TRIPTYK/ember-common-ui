@@ -9,7 +9,7 @@ interface ActionsMenuComponentArgs {
 export default class ActionsMenuComponent extends Component<ActionsMenuComponentArgs> {
   @tracked isOpen = false;
 
-  get ActionsMenuClass() {
+  get actionsMenuClass() {
     if (this.args.classless) {
       return '';
     }
