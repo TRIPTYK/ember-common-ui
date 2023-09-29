@@ -17,6 +17,26 @@ Router.map(function () {
       this.route('stack-list');
       this.route('stepper');
     });
+    this.route('ember-input', function() {
+      this.route('input');
+      this.route('checkbox');
+      this.route('datepicker');
+      this.route('file');
+      this.route('radio');
+      this.route('select');
+      this.route('select-search');
+      this.route('textarea');
+    });
+    this.route('ember-input-validation', function() {
+      this.route('checkbox');
+      this.route('datepicker');
+      this.route('file');
+      this.route('input');
+      this.route('radio-group');
+      this.route('radio');
+      this.route('select');
+      this.route('textarea');
+    });
   });
 });
 

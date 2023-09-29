@@ -1,0 +1,7 @@
+global:
+  search: "Search"
+  previous: "Previous"
+  next: "Next"
+  results: "Results"
+  results_by_page: "Results by page"
+  on: "on"

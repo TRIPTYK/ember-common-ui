@@ -19,7 +19,7 @@
       >
         <img
           src="/assets/icons/chevron-left.svg"
-          alt={{t "global.table.previous"}}
+          alt={{t "global.previous"}}
         />
         <span class="sr-only">
           {{t "global.previous"}}
@@ -38,7 +38,7 @@
         </span>
         <img
           src="/assets/icons/chevron-right.svg"
-          alt={{t "global.table.next"}}
+          alt={{t "global.next"}}
         />
       </button>
     </div>
@@ -52,15 +52,15 @@
       {{@paginationData.pageStart}}
       -
       {{@paginationData.pageEnd}}
-      {{t "global.table.on"}}
+      {{t "global.on"}}
       {{@paginationData.totalRows}}
-      {{t "global.table.results"}}
+      {{t "global.results"}}
     </div>
     <div
       class="{{@theme.pagination.pageSize}}
         yeti-table-pagination-controls-page-size"
     >
-      {{t "global.table.results_by_page"}}:
+      {{t "global.results_by_page"}}:
       {{! template-lint-disable require-input-label }}
       <select
         disabled={{@disabled}}
