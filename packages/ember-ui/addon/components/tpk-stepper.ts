@@ -19,6 +19,18 @@ export default class TpkStepper extends Component<TpkStepperArgs> {
     return idx === -1 ? undefined : idx + 1;
   }
 
+  get lastIndex() {
+    return this.steps.length;
+  }
+
+  get nextIndex() {
+    return this.activeIndex! + 1;
+  }
+
+  get previousIndex() {
+    return this.activeIndex! - 1;
+  }
+
   @action registerStep(_: HTMLElement, [step]: [TpkStepperStep]) {
     this.steps = [...this.steps, step];
     if (this.args.startStep && this.steps.length === this.args.startStep) {
