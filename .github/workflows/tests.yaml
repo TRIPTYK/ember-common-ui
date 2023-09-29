@@ -50,6 +50,8 @@ jobs:
             run_install: true
         - run: pnpm ember deploy production
           working-directory: doc-app
+          env:
+            DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
     
   # deploy:
   #   runs-on: ubuntu-latest
