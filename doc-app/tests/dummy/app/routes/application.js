@@ -32,6 +32,10 @@ export default class ApplicationRoute extends Route {
           }),
         );
       }),
-    ]).start();
+    ]).start({
+      serviceWorker: {
+        url: "/ember-common-ui/mockServiceWorker.js"
+      }
+    });
   }
 }
