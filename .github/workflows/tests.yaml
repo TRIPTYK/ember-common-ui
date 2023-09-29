@@ -38,25 +38,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm -C packages/${{ matrix.package }} test
-  deploy_docs:
-      runs-on: ubuntu-latest
-      needs:
-        - test
-      steps:
-        - uses: actions/checkout@v3
-        - name: Install Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: 20
-        - uses: pnpm/action-setup@v2.2.1
-          with:
-            version: 8
-            run_install: true
-        - run: pnpm ember deploy production
-          working-directory: doc-app
-          env:
-            DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-    
   # deploy:
   #   runs-on: ubuntu-latest
   #   needs:
