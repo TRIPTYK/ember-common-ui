@@ -1,0 +1,181 @@
+/* stylelint-disable selector-class-pattern */
+.tpk-table-generic {
+  @apply mt-8 w-full;
+}
+
+.tpk-table-generic a {
+  @apply text-blue-500 inline-block;
+}
+
+.tpk-table-generic a::before {
+  display: none;
+}
+
+.tpk-table-generic tr {
+  @apply bg-gray-100;
+}
+
+.tpk-table-generic thead tr {
+  @apply border-b-2 bg-gray-100;
+}
+
+.tpk-table-generic th {
+  @apply py-3 h-12 font-medium border-b-2 border-b-gray-900/30 shrink-0 grow-0;
+}
+
+.tpk-table-generic td {
+  @apply relative text-center py-4 border-b-[3px] border-white shrink-0 grow-0;
+}
+
+.tpk-table-search button {
+  @apply absolute left-0 top-2.5 w-5 h-5 ml-3;
+
+  background: url("/assets/icons/search.svg") center left no-repeat;
+  background-size: cover;
+}
+
+.custom-table td,
+.custom-table th {
+  flex-grow: 1;
+}
+
+.tpk-table-generic th,
+.tpk-table-generic td {
+  @apply w-[100px] max-w-[150px] px-4 box-content;
+}
+
+.tpk-table-generic td.small,
+.tpk-table-generic th.small {
+  @apply w-[50px] max-w-[50px] grow-0 shrink;
+}
+
+.tpk-table-generic td.selectable,
+.tpk-table-generic th.selectable {
+  @apply w-[50px] max-w-[50px] m-0 p-0;
+}
+
+.tpk-table-generic td.custom-cell,
+.tpk-table-generic th.custom-cell {
+  @apply w-[30px];
+}
+
+.tpk-table-generic td.big,
+.tpk-table-generic th.big {
+  @apply w-[250px]  min-w-[150px]  grow whitespace-normal;
+}
+
+.tpk-table-generic td,
+.tpk-table-generic td:last-child,
+.tpk-table-generic th:last-child {
+  @apply rounded-r;
+}
+
+.tpk-table-generic td:first-child,
+.tpk-table-generic th:first-child {
+  @apply rounded-l-md;
+}
+
+.tpk-table-generic .status::before {
+  content: "";
+
+  @apply absolute w-2.5 rounded-sm h-full block left-0 top-0;
+}
+
+.tpk-table-generic tfoot tr {
+  @apply bg-transparent;
+}
+
+.yeti-table-pagination-controls {
+  @apply w-full flex flex-col justify-center items-center my-8;
+}
+
+.yeti-table-pagination-controls-page-info,
+.yeti-table-pagination-controls-page-size {
+  @apply bg-transparent text-center text-gray-800;
+}
+
+.yeti-table-pagination-controls-page-size select {
+  @apply border-b-2 border-gray-400;
+}
+
+.yeti-table-pagination-buttons button {
+  @apply cursor-pointer;
+}
+
+.yeti-table-pagination-buttons button img {
+  filter: invert(13%) sepia(6%) saturate(5813%) hue-rotate(157deg)
+    brightness(100%) contrast(90%);
+}
+
+.yeti-table-pagination-buttons button:hover img {
+  filter: invert(61%) sepia(99%) saturate(3877%) hue-rotate(167deg)
+    brightness(89%) contrast(96%);
+}
+
+.yeti-table-pagination-buttons button:disabled {
+  @apply cursor-default;
+}
+
+.yeti-table-pagination-buttons button:disabled img {
+  filter: invert(70%) sepia(0%) saturate(2309%) hue-rotate(26deg)
+    brightness(92%) contrast(97%);
+  opacity: 0.5;
+}
+
+.yeti-table-pagination-controls-previous {
+  @apply mr-12;
+}
+
+.yeti-table-pagination-controls-next {
+  @apply ml-12;
+}
+
+.tpk-table-generic th.yeti-table-sortable {
+  @apply relative;
+}
+
+.tpk-table-generic th.yeti-table-sortable::after {
+  @apply inline-block text-orange-400;
+
+  content: "\25BF";
+  margin-left: 5px;
+}
+
+table.yeti-table thead th.yeti-table-sorted-asc::after {
+  @apply text-orange-400;
+
+  content: "\25BE";
+  margin-left: 5px;
+}
+
+table.yeti-table thead th.yeti-table-sorted-desc::after {
+  @apply text-orange-400;
+
+  content: "\25BE";
+  transform: rotate(180deg);
+  margin-left: 5px;
+}
+
+table.yeti-table .yeti-table-sortable {
+  white-space: nowrap;
+}
+
+.statusSelector .tpk-select-button {
+  @apply bg-white rounded-xl;
+}
+
+.tpk-table-search {
+  @apply relative rounded-lg bg-gray-100;
+}
+
+.tpk-table-search label {
+  @apply sr-only;
+}
+
+.tpk-table-search input {
+  @apply p-2 bg-transparent w-full pl-14;
+}
+
+.tpk-table-search button span {
+  @apply sr-only;
+}

@@ -14,10 +14,10 @@ A table component.
         <TG.Table as | Table |>
         <Table.Header as |Header|>
             <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
-            Prénom
+            Firstname
             </Header.Cell>
             <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
-            Nom
+            Lastname
             </Header.Cell>
             <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
             Email
