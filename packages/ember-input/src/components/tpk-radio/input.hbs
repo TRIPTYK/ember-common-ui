@@ -1,0 +1,12 @@
+<input
+  class={{unless @classless 'tpk-radio-input'}}
+  id={{@guid}}
+  name={{@name}}
+  value={{@value}}
+  checked={{this.isChecked}}
+  disabled={{@disabled}}
+  type='radio'
+  {{on @changeEvent @onChange}}
+  ...attributes
+  data-test-tpk-radio-input
+/>

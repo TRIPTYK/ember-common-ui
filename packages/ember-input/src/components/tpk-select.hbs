@@ -1,0 +1,48 @@
+{{! template-lint-disable no-invalid-interactive }}
+<div
+  class={{unless @classless 'tpk-select'}}
+  data-is-open='{{this.isOpen}}'
+  {{on-click-outside this.close}}
+  {{on 'keydown' this.keyDown}}
+  ...attributes
+>
+    {{yield
+      (hash
+        Label=(component
+          'tpk-select/label' 
+          guid=this.guid 
+          classless=@classless
+          label=@label 
+          registerLabel=this.registerLabel
+        )
+        Options=(component
+          'tpk-select/options'
+          labelId=this.labelId
+          selected=@selected
+          multiple=@multiple
+          activeChild=this.activeChild
+          refreshChildren=this.refreshChildren
+          onChange=this.onChange
+          options=@options
+          guid=this.controller.id
+        )
+        Button=(component
+          'tpk-select/button'
+          labelId=this.labelId
+          optionListId=this.optionListId
+          activeChild=this.activeChild
+          onSelectButtonClick=this.onSelectButtonClick
+          registerControllerDiv=this.registerControllerDiv
+          selected=@selected
+          classless=@classless
+          isOpen=this.isOpen
+        )
+        isOpen=this.isOpen
+        selected=@selected
+        guid=this.guid
+        onChange=this.onChange
+        onSelectButtonClick=this.onSelectButtonClick
+        hasSelection=this.hasSelection
+      )
+    }}
+</div>

@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { rest } from 'msw';
+import config from 'dummy/config/environment';
 
 export default class ApplicationRoute extends Route {
   @service intl;
@@ -34,7 +35,7 @@ export default class ApplicationRoute extends Route {
       }),
     ]).start({
       serviceWorker: {
-        url: "/ember-common-ui/mockServiceWorker.js"
+        url: `${config.rootURL}mockServiceWorker.js`
       }
     });
   }
