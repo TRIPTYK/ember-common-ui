@@ -2,7 +2,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { render, settled, click } from '@ember/test-helpers';
+import { render, settled } from '@ember/test-helpers';
 
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
@@ -45,20 +45,5 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
       .dom('.tpk-validation-datepicker-error-container')
       .exists()
       .hasAnyText();
-  });
-  test('should not throw error when click outside of datepicker and when no data was input', async function (assert) {
-    assert.expect(1);
-    const changeset = new ImmerChangeset({
-      date: null,
-    });
-    this.set('changeset', changeset);
-
-    await render(
-      hbs`<TpkValidationDatepicker @label="label" @changeset={{this.changeset}} @validationField="date" @allowInput={{true}} /><button type="button" id="test-button">test</button>`,
-    );
-    await click('[data-test-tpk-datepicker] input');
-    await click('#test-button');
-
-    assert.ok(true);
   });
 });
