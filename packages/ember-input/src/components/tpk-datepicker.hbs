@@ -1,0 +1,35 @@
+<div
+  class={{unless @classless 'tpk-datepicker'}}
+  ...attributes
+  data-test-tpk-datepicker
+>
+  {{yield
+    (hash
+      Input=(component
+        'tpk-datepicker/input'
+        onChange=@onChange
+        value=@value
+        guid=this.guid
+        classless=@classless
+        dateFormat=this.dateFormat
+        enableTime=@enableTime
+        noCalendar=@noCalendar
+        maxDate=@maxDate
+        minDate=@minDate
+        placeholder=@placeholder
+        disabled=@disabled
+        disabledDates=@disabledDates
+        defaultDate=@defaultDate
+        mode=@mode
+        allowInput=@allowInput
+      )
+      Label=(component
+        'tpk-datepicker/label'
+        guid=this.guid
+        classless=@classless
+        label=@label
+      )
+      guid=this.guid
+    )
+  }}
+</div>

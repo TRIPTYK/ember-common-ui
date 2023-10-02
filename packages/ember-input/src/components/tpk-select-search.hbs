@@ -1,0 +1,59 @@
+{{! template-lint-disable no-invalid-interactive }}
+<div
+  class={{unless @classless 'tpk-select-search'}}
+  data-is-open='{{this.isOpen}}'
+  {{on-click-outside this.close}}
+  {{on 'keydown' this.keyDown}}
+  ...attributes
+>
+    {{yield
+      (hash
+        Label=(component
+          'tpk-select-search/label' guid=this.guid classless=@classless label=@label registerLabel=this.registerLabel
+        )
+        Options=(component
+          'tpk-select-search/options'
+          label=@label
+          labelId=this.labelId
+          selected=@selected
+          multiple=@multiple
+          activeChild=this.activeChild
+          refreshChildren=this.refreshChildren
+          onChange=this.onChange
+          options=@options
+          guid=this.controller.id
+          isOpen=this.isOpen
+        )
+        Button=(component
+          'tpk-select-search/button'
+          labelId=this.labelId
+          optionListId=this.optionListId
+          multiple=@multiple
+          activeChild=this.activeChild
+          onSelectButtonClick=this.onSelectButtonClick
+          selected=@selected
+          classless=@classless
+          isOpen=this.isOpen
+        )
+        Input=(component
+          'tpk-select-search/input'
+          labelId=this.labelId
+          optionListId=this.optionListId
+          multiple=@multiple
+          activeChild=this.activeChild
+          registerControllerDiv=this.registerControllerDiv
+          onInput=this.onInput
+          onClick=this.onSelectButtonClick
+          selected=@selected
+          classless=@classless
+          isOpen=this.isOpen
+        )
+        isOpen=this.isOpen
+        selected=@selected
+        guid=this.guid
+        onChange=this.onChange
+        onSelectButtonClick=this.onSelectButtonClick
+        hasSelection=this.hasSelection
+      )
+    }}
+</div>

@@ -4,6 +4,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build": "pnpm recursive run build"
+  },
   "devDependencies": {
     "lerna": "^7.3.0"
   }

@@ -37,7 +37,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm -C packages/${{ matrix.package }} test
+      - name: Build packages before
+        run: pnpm recursive run build
+      - name: Run tests
+        run: pnpm -C packages/${{ matrix.package }} test
   # deploy:
   #   runs-on: ubuntu-latest
   #   needs:
