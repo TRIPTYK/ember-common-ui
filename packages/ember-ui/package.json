@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-ui",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "description": "User interface components for Ember.js applications",
   "keywords": [
     "ember-addon",
