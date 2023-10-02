@@ -14,8 +14,6 @@ export type TpkDatepickerSignature = {
     BaseUIComponentArgs['Args'],
     {
       disabled?: boolean;
-      dateFormat?: string;
-      disabledDates?: Date[] | ((date: Date) => boolean);
     } & FlatpickerArgs
   >;
   Blocks: {
@@ -35,5 +33,9 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
 
   get dateFormat() {
     return this.args.dateFormat ? this.args.dateFormat : 'd/m/Y';
+  }
+
+  get onClose() {
+    return this.args.onClose ? this.args.onClose : this.args.onChange;
   }
 }
