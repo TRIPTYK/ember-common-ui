@@ -7,6 +7,7 @@ interface TpkValidationDatepickerArgs extends BaseValidationArgs {
 
 export default class TpkValidationDatepicker extends BaseValidationComponent<TpkValidationDatepickerArgs> {
   @action onChange(dates: Date[]) {
+    if (dates.length === 0) return;
     const date =
       this.args.mode === 'multiple' || this.args.mode === 'range'
         ? dates
