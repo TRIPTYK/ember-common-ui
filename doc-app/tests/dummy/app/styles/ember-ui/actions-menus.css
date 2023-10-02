@@ -1,0 +1,38 @@
+.actions {
+  @apply flex justify-center items-center p-0 relative;
+}
+
+.actions ul {
+  @apply flex flex-col overflow-hidden absolute z-50 bg-white top-[50px] translate-x-full shadow-xl rounded transform scale-y-0 items-start origin-top-right transition duration-300 ease-in-out;
+}
+
+.actions li {
+  @apply w-full relative my-1;
+}
+
+.actions button {
+  @apply px-4  py-3 flex items-center justify-start transition duration-300;
+}
+
+.actions button:focus,
+.actions button:active {
+  @apply outline-none;
+}
+
+button.open_actions {
+  @apply rounded-md shadow-md border;
+}
+
+.actions ul button img {
+  @apply mr-3 block;
+
+  transition: all 0.5s cubic-bezier(0.2, 2.36, 0.36, 0.34);
+}
+
+.actions button:hover img {
+  @apply transform rotate-[360deg];
+}
+
+.actions.aopened ul {
+  @apply scale-y-100;
+}

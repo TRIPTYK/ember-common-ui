@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -20486,3 +20482,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
