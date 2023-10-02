@@ -2,11 +2,9 @@
 
 This repository contains our simplified ui for our ember projects .
 
-You can find more documentation in the sub-projects.
+## Documentation 
 
-- [@triptyk/ember-ui](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-ui/README.md)
-- [@triptyk/ember-input](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-input/README.md)
-- [@triptyk/ember-input-validation](https://github.com/TRIPTYK/ember-common-ui/tree/main/packages/ember-input-validation/README.md)
+🚧 - https://triptyk.github.io/ember-common-ui/
 
 ## HTML naming conventions
 
@@ -24,4 +22,4 @@ If you want no base class applied to the component, you can use the `@classless`
 
 ##  Disclaimer
 
-Versions *0.X.X* will not follow SemVer.
+Versions *0.X.X* does not follow SemVer.
