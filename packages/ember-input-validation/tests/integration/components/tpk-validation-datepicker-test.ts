@@ -46,7 +46,7 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
       .exists()
       .hasAnyText();
   });
-  test('should not throw error when blur datepicker when ', async function (assert) {
+  test('should not throw error when click outside of datepicker and when no data was input', async function (assert) {
     assert.expect(1);
     const changeset = new ImmerChangeset({
       date: null,
