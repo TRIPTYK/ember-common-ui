@@ -15,7 +15,47 @@ export type TpkDatepickerSignature = {
     {
       disabled?: boolean;
       dateFormat?: string;
-      disabledDates?: Date[] | ((date: Date) => boolean);
+      altFormat?: string;
+      altInput?: boolean;
+      altInputClass?: string;
+      allowInput?: boolean;
+      allowInvalidPreload?: boolean;
+      appendTo?: HTMLElement | string;
+      ariaDateFormat?: string;
+      conjuction?: string;
+      clickOpens?: boolean;
+      defaultDate?: Date | Date[];
+      defaultHour?: number;
+      defaultMinute?: number;
+      disabledDate?: Date[] | ((date: Date) => boolean);
+      disableMobile?: boolean;
+      enable?: Date[] | ((date: Date) => boolean);
+      enableTime?: boolean;
+      classless?: boolean;
+      enableSeconds?: boolean;
+      formatDate?: string | ((date: Date, format: string) => string);
+      hourIncrement?: number;
+      inline?: boolean;
+      maxDate?: Date | string;
+      minDate?: Date | string;
+      locale?: string | object;
+      minuteIncrement?: number;
+      mode?: string;
+      nextArrow?: string;
+      noCalendar?: boolean;
+      onOpen?: () => void;
+      onClose?: () => void;
+      onReady?: () => void;
+      parseDate?: string | ((date: string, format: string) => Date);
+      position?: string;
+      positionElement?: HTMLElement;
+      prevArrow?: string;
+      shorthandCurrentMonth?: boolean;
+      showMonths?: number;
+      time_24hr?: boolean;
+      weekNumbers?: boolean;
+      wrap?: boolean;
+      monthSelectorType?: 'static' | 'dropdown';
     } & FlatpickerArgs
   >;
   Blocks: {
@@ -35,5 +75,9 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
 
   get dateFormat() {
     return this.args.dateFormat ? this.args.dateFormat : 'd/m/Y';
+  }
+
+  get onClose() {
+    return this.args.onClose ? this.args.onClose : this.args.onChange;
   }
 }

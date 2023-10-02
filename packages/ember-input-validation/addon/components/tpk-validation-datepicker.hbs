@@ -3,19 +3,52 @@
   @label={{@label}}
   @type={{@type}}
   @onChange={{this.onChange}}
-  @classless={{@classless}}
-  @dateFormat={{@dateFormat}}
-  @enableTime={{@enableTime}}
-  @noCalendar={{@noCalendar}}
-  @maxDate={{@maxDate}}
-  @minDate={{@minDate}}
+  @onClose={{@onClose}}
   @disabled={{@disabled}}
   @placeholder={{@placeholder}}
-  @defaultDate={{@defaultDate}}
+  @altFormat={{@altFormat}}
+  @altInput={{@altInput}}
+  @altInputClass={{@altInputClass}}
   @allowInput={{@allowInput}}
+  @allowInvalidPreload={{@allowInvalidPreload}}
+  @appendTo={{@appendTo}}
+  @ariaDateFormat={{@ariaDateFormat}}
+  @conjunction={{@conjunction}}
+  @clickOpens={{@clickOpens}}
+  @dateFormat={{@dateFormat}}
+  @defaultDate={{@defaultDate}}
+  @defaultHour={{@defaultHour}}
+  @defaultMinute={{@defaultMinute}}
+  @disabledDates={{@disabledDates}}
+  @disableMobile={{@disableMobile}}
+  @enable={{@enable}}
+  @enableTime={{@enableTime}}
+  @classless={{@classless}}
+  @enableSeconds={{@enableSeconds}}
+  @formatDate={{@formatDate}}
+  @hourIncrement={{@hourIncrement}}
+  @inline={{@inline}}
+  @maxDate={{@maxDate}}
+  @minDate={{@minDate}}
+  @locale={{@locale}}
+  @minuteIncrement={{@minuteIncrement}}
+  @nextArrow={{@nextArrow}}
+  @noCalendar={{@noCalendar}}
+  @onOpen={{@onOpen}}
+  @onReady={{@onReady}}
+  @parseDate={{@parseDate}}
+  @position={{@position}}
+  @positionElement={{@positionElement}}
+  @prevArrow={{@prevArrow}}
+  @shorthandCurrentMonth={{@shorthandCurrentMonth}}
+  @showMonths={{@showMonths}}
+  @time_24hr={{@time_24hr}}
+  @weekNumbers={{@weekNumbers}}
+  @wrap={{@wrap}}
+  @monthSelectorType={{@monthSelectorType}}
   @mode={{@mode}}
   ...attributes
-  data-has-error='{{this.hasError}}'
+  data-has-error="{{this.hasError}}"
   as |D|
 >
   {{#if (has-block-params)}}
@@ -33,14 +66,14 @@
       {{@label}}
     </D.Label>
     <div
-      class={{unless @classless 'tpk-validation-datepicker-error-container'}}
+      class={{unless @classless "tpk-validation-datepicker-error-container"}}
     >
       <D.Input aria-invalid={{this.hasError}} />
       {{#if this.hasError}}
-        {{#if (has-block 'errors')}}
-          {{yield this.errors to='errors'}}
+        {{#if (has-block "errors")}}
+          {{yield this.errors to="errors"}}
         {{else}}
-          <span class={{unless @classless 'tpk-validation-datepicker-error'}}>
+          <span class={{unless @classless "tpk-validation-datepicker-error"}}>
             {{this.firstError}}
           </span>
         {{/if}}
