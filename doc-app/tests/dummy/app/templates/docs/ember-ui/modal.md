@@ -4,7 +4,7 @@ A modal component.
 
 <DocsDemo as |demo|>
   <demo.example @name="tpk-modal.hbs">
-    <button {{on "click" this.open}} type="button">
+    <button class="open-modal" {{on "click" this.open}} type="button">
       Open the modal
     </button>
     <div class="static" id="tpk-modal"></div>

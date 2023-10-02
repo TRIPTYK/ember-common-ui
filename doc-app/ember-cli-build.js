@@ -7,7 +7,24 @@ module.exports = function (defaults) {
     // eslint-disable-next-line no-console
     console.error(err.stack);
   });
-  let app = new EmberAddon(defaults, {});
+  let app = new EmberAddon(defaults, {
+    postcssOptions: {
+      compile: {
+        enabled: true,
+        includePaths: ['app', 'addon', 'tests'],
+        plugins: [
+          {
+            module: require('postcss-import'),
+            options: {
+              path: ['node_modules'],
+            },
+          },
+          require('tailwindcss')('./tailwind.config.js'),
+        ],
+        cacheInclude: [/.*\.(css|hbs|html|ts)$/, /config\.js/],
+      },
+    },
+  });
 
   /*
     This build file specifies the options for the dummy test app of this
