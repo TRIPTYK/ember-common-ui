@@ -17,7 +17,15 @@
       {
         "name": "ember-ui",
         "path": "packages/ember-ui"
-      }
+      },
+      {
+        "name": "doc",
+        "path": "doc-app"
+      },
+      {
+        "name": "doc-app",
+        "path": "doc-app/tests/dummy"
+      },
     ]
   }
   
