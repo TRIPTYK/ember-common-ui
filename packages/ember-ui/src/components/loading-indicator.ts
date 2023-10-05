@@ -1,6 +1,10 @@
 import Component from '@glimmer/component';
 
-export default class LoadingIndicator extends Component {}
+export interface LoadingIndicatorComponentSignature {
+  Element: HTMLDivElement;
+}
+
+export default class LoadingIndicator extends Component<LoadingIndicatorComponentSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

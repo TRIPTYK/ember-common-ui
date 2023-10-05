@@ -4,8 +4,8 @@ import { assert } from '@ember/debug';
 
 interface UiModalContentArgs {
   onClose: () => void;
-  classless: boolean;
-  outsideClickHandler: (e: PointerEvent) => boolean | undefined;
+  classless?: boolean;
+  outsideClickHandler: (e: MouseEvent | TouchEvent) => boolean;
   title: string;
 }
 

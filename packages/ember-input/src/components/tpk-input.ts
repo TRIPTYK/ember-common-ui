@@ -7,7 +7,7 @@ import { assert } from '@ember/debug';
 import { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input';
 import TpkInputLabelComponent from './tpk-input/label';
-import { ComponentLike, WithBoundArgs } from '@glint/template';
+import { WithBoundArgs } from '@glint/template';
 
 export type TpkInputSignature = {
   Args: MergeDeep<

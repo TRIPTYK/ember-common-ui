@@ -6,20 +6,15 @@
   @onClose={{@onClose}}
   @classless={{@classless}}
   ...attributes
-as |Modal|>
-	<Modal.Content>
-		{{yield
-			(hash
-				title=@title
-				Confirm=(component
-					'tpk-confirm-modal/confirm'
-					onConfirm=@onConfirm
-				)
-				Cancel=(component
-					'tpk-confirm-modal/cancel'
-					onClose=@onClose
-				)
-			)
-		}}
-	</Modal.Content>
+  as |Modal|
+>
+  <Modal.Content>
+    {{yield
+      (hash
+        title=@title
+        Confirm=(component 'tpk-confirm-modal/confirm' onConfirm=@onConfirm)
+        Cancel=(component 'tpk-confirm-modal/cancel' onClose=@onClose)
+      )
+    }}
+  </Modal.Content>
 </TpkModal>

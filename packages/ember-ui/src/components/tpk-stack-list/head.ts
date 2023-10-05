@@ -25,5 +25,6 @@ export default class TpkStackListHeadComponent extends Component<TpkStackListHea
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-stack-list/head': typeof TpkStackListHeadComponent;
+    'TpkStackList::Head': typeof TpkStackListHeadComponent;
   }
 }

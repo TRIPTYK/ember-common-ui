@@ -45,7 +45,7 @@ export default class ActionsMenuComponent extends Component<ActionsMenuElementCo
   @action handleAction(action: (...args: unknown[]) => void, e: Event) {
     e.stopImmediatePropagation();
     this.isOpen = false;
-    return action(e);
+    action(e);
   }
 
   @action toggle(e: Event) {

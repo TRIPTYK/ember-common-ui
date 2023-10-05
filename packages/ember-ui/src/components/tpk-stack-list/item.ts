@@ -4,7 +4,6 @@ import { tracked } from 'tracked-built-ins';
 
 interface StackListItemComponentArgs {
   index: number;
-  toggleExpanded: StackListItemComponent['toggleExpanded'];
   zIndex: number;
 }
 
@@ -39,5 +38,6 @@ export default class StackListItemComponent extends Component<StackListItemCompo
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-stack-list/item': typeof StackListItemComponent;
+    'TpkStackList::Item': typeof StackListItemComponent;
   }
 }

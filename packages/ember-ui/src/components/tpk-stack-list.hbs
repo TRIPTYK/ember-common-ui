@@ -3,9 +3,7 @@
 {{#each @data as |item index|}}
   <TpkStackList::Item
     @zIndex={{index}}
-    @item={{item}}
-    @readOnly={{@readOnly}}
-    @tpkStackClass={{@tpkStackClass}}
+    @index={{index}}
     as |I|
   >
     <div class="tpk-stack-head">

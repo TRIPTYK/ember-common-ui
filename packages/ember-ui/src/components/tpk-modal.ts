@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { modifier } from 'ember-modifier';
-import DialogLayer from '../services/dialog-layer';
+import DialogLayerService from '../services/dialog-layer';
 import { guidFor } from '@ember/object/internals';
 import { WithBoundArgs } from '@glint/template';
 import type TpkModalContentComponent from './tpk-modal/content';
@@ -13,9 +13,9 @@ import type TpkModalContentComponent from './tpk-modal/content';
 export interface TpkModalComponentArgs {
   isOpen: boolean;
   onClose: () => unknown;
-  outsideClickHandler?: (e: PointerEvent) => unknown;
+  outsideClickHandler?: (e: MouseEvent | TouchEvent) => unknown;
   title: string;
-  classless: boolean;
+  classless?: boolean;
 }
 
 interface TpkModalEnv {
@@ -38,7 +38,7 @@ interface TpkModalComponentSignature {
         isOnTop: boolean;
         isOpen: boolean;
         onClose: () => unknown;
-        classless: boolean;
+        classless?: boolean;
         guid: string;
       },
     ];
@@ -46,7 +46,7 @@ interface TpkModalComponentSignature {
 }
 
 export default class TpkModalComponent extends Component<TpkModalComponentSignature> {
-  @service declare dialogLayer: DialogLayer;
+  @service declare dialogLayer: DialogLayerService;
 
   guid = guidFor(this);
 
@@ -82,8 +82,8 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
   );
 
   @action
-  outsideClickHandler(e: PointerEvent) {
-    if (!this.isOnTop) return;
+  outsideClickHandler(e: MouseEvent | TouchEvent) {
+    if (!this.isOnTop) return false;
     if (this.args.outsideClickHandler) {
       if (!this.args.outsideClickHandler(e)) {
         this.args.onClose();
@@ -124,5 +124,12 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     if (!element) throw new Error(`Modal container ${this.modalKey} not found`);
 
     return element;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-modal': typeof TpkModalComponent;
+    TpkModal: typeof TpkModalComponent;
   }
 }

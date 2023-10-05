@@ -1,15 +1,49 @@
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
+import { tracked } from 'tracked-built-ins';
 import TpkStepperStepComponent from './tpk-stepper/step';
+import TpkStepperStepperComponent from './tpk-stepper/stepper';
+import { WithBoundArgs } from '@glint/template';
 
-interface TpkStepperArgs {
+interface TpkStepperComponentArgs {
   startStep?: number;
   classless?: boolean;
 }
 
-export default class TpkStepper extends Component<TpkStepperArgs> {
+export interface TpkStepperComponentSignature {
+  Args: TpkStepperComponentArgs;
+  Blocks: {
+    default: [
+      {
+        Stepper: WithBoundArgs<
+          typeof TpkStepperStepperComponent,
+          'classless' | 'guid'
+        >;
+        Step: WithBoundArgs<
+          typeof TpkStepperStepComponent,
+          | 'active'
+          | 'steps'
+          | 'classless'
+          | 'unregisterStep'
+          | 'registerStep'
+          | 'guid'
+        >;
+        goTo: TpkStepperComponent['goTo'];
+        goToNext: TpkStepperComponent['goToNext'];
+        goToPrevious: TpkStepperComponent['goToPrevious'];
+        isFirst: TpkStepperComponent['isFirst'];
+        isLast: TpkStepperComponent['isLast'];
+        nextIndex: TpkStepperComponent['nextIndex'];
+        previousIndex: TpkStepperComponent['previousIndex'];
+        lastIndex: TpkStepperComponent['lastIndex'];
+      },
+    ];
+  };
+  Element: HTMLDivElement;
+}
+
+export default class TpkStepperComponent extends Component<TpkStepperComponentSignature> {
   @tracked active?: TpkStepperStepComponent;
   @tracked steps: TpkStepperStepComponent[] = [];
   guid = guidFor(this);
@@ -76,5 +110,11 @@ export default class TpkStepper extends Component<TpkStepperArgs> {
       return false;
     }
     return this.activeIndex === 1;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-stepper': typeof TpkStepperComponent;
   }
 }

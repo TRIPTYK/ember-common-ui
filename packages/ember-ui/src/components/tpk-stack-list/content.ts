@@ -17,10 +17,10 @@ export interface TpkStackListComponentSignature {
   };
 }
 
-export default class TpkStackListComponent extends Component<TpkStackListComponentSignature> {}
+export default class TpkStackListContentComponent extends Component<TpkStackListComponentSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'tpk-stack-list/content': typeof TpkStackListComponent;
+    'tpk-stack-list/content': typeof TpkStackListContentComponent;
   }
 }

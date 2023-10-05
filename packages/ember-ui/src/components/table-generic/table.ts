@@ -78,7 +78,7 @@ interface TableGenericTableSignature {
   };
 }
 
-export default class TableGenericTable<
+export default class TableGenericTableComponent<
   K extends keyof ModelRegistry,
 > extends Component<TableGenericTableSignature> {
   @service declare store: Store;
@@ -169,6 +169,6 @@ export default class TableGenericTable<
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'table-generic/table': typeof TableGenericTable;
+    'table-generic/table': typeof TableGenericTableComponent;
   }
 }

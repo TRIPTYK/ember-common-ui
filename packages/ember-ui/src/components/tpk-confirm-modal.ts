@@ -1,12 +1,30 @@
 import Component from '@glimmer/component';
+import { WithBoundArgs } from '@glint/template';
+import TpkConfirmModalConfirmComponent from './tpk-confirm-modal/confirm';
+import TpkConfirmModalCancelComponent from './tpk-confirm-modal/cancel';
 
 export interface TpkConfirmModalSignature {
   Args: {
-    onClose: (e: Event) => unknown;
-    onConfirm: (e: Event) => unknown;
+    onClose: () => unknown;
+    onConfirm: (...args: unknown[]) => unknown;
     confirmQuestion: string;
-    isOpen?: boolean;
+    isOpen: boolean;
+    outsideClickHandler: ((e: MouseEvent | TouchEvent) => unknown) | undefined;
     classless?: boolean;
+    title: string;
+  };
+  Element: HTMLDivElement;
+  Blocks: {
+    default: [
+      {
+        Confirm: WithBoundArgs<
+          typeof TpkConfirmModalConfirmComponent,
+          'onConfirm'
+        >;
+        Cancel: WithBoundArgs<typeof TpkConfirmModalCancelComponent, 'onClose'>;
+        title: string;
+      },
+    ];
   };
 }
 

@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Service from '@ember/service';
 import { tracked } from 'tracked-built-ins';
 
-export default class DialogLayer extends Service {
+export default class DialogLayerService extends Service {
   @tracked dialogs: string[] = [];
 
   get dialogIsOpen() {
@@ -21,16 +21,14 @@ export default class DialogLayer extends Service {
 
   @action
   remove(dialog: string) {
-    let ix = this.dialogs.findIndex((guid) => guid === dialog);
+    const ix = this.dialogs.findIndex((guid) => guid === dialog);
 
     this.dialogs.splice(ix, 1);
   }
 }
 
-// DO NOT DELETE: this is how TypeScript knows how to look up your services.
 declare module '@ember/service' {
-  // eslint-disable-next-line no-unused-vars
   interface Registry {
-    'dialog-layer': DialogLayer;
+    'dialog-layer': DialogLayerService;
   }
 }

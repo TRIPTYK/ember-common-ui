@@ -117,6 +117,7 @@
     "prettier-plugin-ember-template-tag": "^1.1.0",
     "rollup": "^3.21.8",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-ts": "^3.4.5",
     "typescript": "^5.0.4"
   },
   "publishConfig": {
@@ -128,7 +129,39 @@
   "ember-addon": {
     "version": 2,
     "type": "addon",
-    "main": "addon-main.cjs"
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/lazy-image.js": "./dist/_app_/components/lazy-image.js",
+      "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
+      "./components/table-generic.js": "./dist/_app_/components/table-generic.js",
+      "./components/table-generic/body.js": "./dist/_app_/components/table-generic/body.js",
+      "./components/table-generic/body/action-menu.js": "./dist/_app_/components/table-generic/body/action-menu.js",
+      "./components/table-generic/body/action.js": "./dist/_app_/components/table-generic/body/action.js",
+      "./components/table-generic/body/cell.js": "./dist/_app_/components/table-generic/body/cell.js",
+      "./components/table-generic/footer.js": "./dist/_app_/components/table-generic/footer.js",
+      "./components/table-generic/header.js": "./dist/_app_/components/table-generic/header.js",
+      "./components/table-generic/header/cell.js": "./dist/_app_/components/table-generic/header/cell.js",
+      "./components/table-generic/pagination.js": "./dist/_app_/components/table-generic/pagination.js",
+      "./components/table-generic/search-bar.js": "./dist/_app_/components/table-generic/search-bar.js",
+      "./components/table-generic/table.js": "./dist/_app_/components/table-generic/table.js",
+      "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
+      "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
+      "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",
+      "./components/tpk-confirm-modal/cancel.js": "./dist/_app_/components/tpk-confirm-modal/cancel.js",
+      "./components/tpk-confirm-modal/confirm.js": "./dist/_app_/components/tpk-confirm-modal/confirm.js",
+      "./components/tpk-modal.js": "./dist/_app_/components/tpk-modal.js",
+      "./components/tpk-modal/content.js": "./dist/_app_/components/tpk-modal/content.js",
+      "./components/tpk-stack-list.js": "./dist/_app_/components/tpk-stack-list.js",
+      "./components/tpk-stack-list/content.js": "./dist/_app_/components/tpk-stack-list/content.js",
+      "./components/tpk-stack-list/head.js": "./dist/_app_/components/tpk-stack-list/head.js",
+      "./components/tpk-stack-list/item.js": "./dist/_app_/components/tpk-stack-list/item.js",
+      "./components/tpk-stack-list/title.js": "./dist/_app_/components/tpk-stack-list/title.js",
+      "./components/tpk-stepper.js": "./dist/_app_/components/tpk-stepper.js",
+      "./components/tpk-stepper/step.js": "./dist/_app_/components/tpk-stepper/step.js",
+      "./components/tpk-stepper/step/header.js": "./dist/_app_/components/tpk-stepper/step/header.js",
+      "./components/tpk-stepper/stepper.js": "./dist/_app_/components/tpk-stepper/stepper.js",
+      "./services/dialog-layer.js": "./dist/_app_/services/dialog-layer.js"
+    }
   },
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
