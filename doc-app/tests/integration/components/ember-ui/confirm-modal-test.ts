@@ -1,9 +1,9 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import { render, TestContext } from '@ember/test-helpers';
-import { confirmModalObject } from 'test-app/tests/pages/ember-confirm-modal';
+import { confirmModalObject } from 'dummy/tests/pages/ember-confirm-modal';
 
 interface ConfirmModalTestContext extends TestContext {
   onClose: () => unknown;

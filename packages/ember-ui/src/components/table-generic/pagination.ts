@@ -42,16 +42,16 @@ interface PaginationComponentSignature {
 }
 
 export default class TableGenericPaginationComponent extends Component<PaginationComponentSignature> {
-  isPageSizeSelected(pageSize: number): boolean {
+  isPageSizeSelected = (pageSize: number) => {
     return this.args['paginationData'].pageSize === pageSize;
-  }
+  };
 
   get pageSizes(): number[] {
     return this.args.pageSizes || [50, 60, 70, 80, 90, 100];
   }
 
   get hasRows(): boolean {
-    return this.args['paginationData'].totalRows === 0;
+    return this.args['paginationData'].totalRows !== 0;
   }
 
   get shouldDisablePrevious(): boolean {

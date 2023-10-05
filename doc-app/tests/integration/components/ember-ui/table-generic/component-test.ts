@@ -1,15 +1,16 @@
 import { module, test } from 'qunit';
-import { click, fillIn, findAll, render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
-import { ServiceWorkerTestContext, setupMock } from '../../../worker';
-import { TableGenericUserWorker } from '../../../workers/table-generic';
-import { setupRenderingTest } from 'test-app/tests/helpers';
+import { click, fillIn, findAll, pauseTest, render } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
+import { hbs } from 'ember-cli-htmlbars';
+import { setupMock, ServiceWorkerTestContext } from 'dummy/tests/worker';
+import { TableGenericUserWorker } from 'dummy/tests/workers/table-generic';
+import { setupRenderingTest } from 'ember-qunit';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
   setupMock(hooks);
   setupIntl(hooks);
+
   const pageSize = 5;
   const pageSizes: number[] = [5, 10, 25];
 

@@ -7,7 +7,7 @@ import {
   render,
   triggerKeyEvent,
 } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);

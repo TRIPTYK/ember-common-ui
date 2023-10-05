@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { findAll, pauseTest, render } from '@ember/test-helpers';
+import { findAll, render } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';

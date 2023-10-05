@@ -1,6 +1,6 @@
 import type { SetupWorker } from 'msw';
 import { rest } from 'msw';
-import fakeData from '../integration/components/table-generic/data/fake-data';
+import fakeData from '../integration/components/ember-ui/table-generic/data/fake-data';
 
 export async function TableGenericUserWorker(worker: SetupWorker) {
   worker.use(

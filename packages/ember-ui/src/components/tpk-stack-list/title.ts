@@ -15,8 +15,8 @@ export interface TpkStackListTitleComponentSignature {
 }
 
 export default class TpkStackListTitleComponent extends Component<TpkStackListTitleComponentSignature> {
-  get isExpanded(): boolean {
-    return this.args.isExpanded === true;
+  get isNotExpanded(): boolean {
+    return this.args.isExpanded !== true;
   }
 }
 

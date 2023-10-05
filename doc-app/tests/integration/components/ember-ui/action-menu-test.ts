@@ -1,9 +1,9 @@
 /* eslint-disable ember/no-get */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import { render, TestContext } from '@ember/test-helpers';
-import { actionMenuObject } from 'test-app/tests/pages/ember-actions-menu';
+import { actionMenuObject } from 'dummy/tests/pages/ember-actions-menu';
 
 interface ActionMenuTestContext extends TestContext {
   action: () => unknown;

@@ -11,6 +11,7 @@ export interface TableGenericComponentSignature {
     relationships: string;
     pageSizes?: number[];
     filterText?: string;
+    pageSize?: number;
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
     rowClick: () => void;

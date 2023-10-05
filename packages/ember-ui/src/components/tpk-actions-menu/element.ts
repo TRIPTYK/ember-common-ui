@@ -24,7 +24,7 @@ export default class ActionsMenuElementComponent extends Component<ActionsMenuEl
   }
 
   get action() {
-    assert('@action is mandatory', typeof this.args.action === 'string');
+    assert('@action is mandatory', typeof this.args.action === 'function');
     return this.args.action;
   }
 }
