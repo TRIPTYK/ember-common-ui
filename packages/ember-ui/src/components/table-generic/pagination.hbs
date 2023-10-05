@@ -1,0 +1,77 @@
+<div
+  class="{{@theme.pagination.controls}} tpk-table-pagination"
+  data-test-pagination
+  ...attributes
+>
+  {{#if this.hasRows}}
+    <div class="yeti-table-pagination-buttons">
+      <button
+        type="button"
+        class="{{@theme.pagination.previous}}
+          yeti-table-pagination-controls-previous"
+        disabled={{this.shouldDisablePrevious}}
+        title={{t "global.previous"}}
+        {{on "click" @paginationActions.previousPage}}
+        data-test-pagination-previous
+      >
+        <img
+          src="/assets/icons/chevron-left.svg"
+          alt={{t "global.previous"}}
+        />
+        <span class="sr-only">
+          {{t "global.previous"}}
+        </span>
+      </button>
+      <button
+        type="button"
+        class="{{@theme.pagination.next}} yeti-table-pagination-controls-next"
+        disabled={{this.shouldDisableNext}}
+        title={{t "global.next"}}
+        {{on "click" @paginationActions.nextPage}}
+        data-test-pagination-next
+      >
+        <span class="sr-only">
+          {{t "global.next"}}
+        </span>
+        <img
+          src="/assets/icons/chevron-right.svg"
+          alt={{t "global.next"}}
+        />
+      </button>
+    </div>
+  {{/if}}
+  <div>
+    <div
+      class="{{@theme.pagination.info}}
+        yeti-table-pagination-controls-page-info"
+      data-test-pagination-result
+    >
+      {{@paginationData.pageStart}}
+      -
+      {{@paginationData.pageEnd}}
+      {{t "global.on"}}
+      {{@paginationData.totalRows}}
+      {{t "global.results"}}
+    </div>
+    <div
+      class="{{@theme.pagination.pageSize}}
+        yeti-table-pagination-controls-page-size"
+    >
+      {{t "global.results_by_page"}}:
+      <select
+        disabled={{@disabled}}
+        {{on "change" this.changePageSize}}
+        data-test-pagination-select
+      >
+        {{#each this.pageSizes as |pageSize|}}
+          <option
+            value={{pageSize}}
+            selected={{this.isPageSizeSelected pageSize}}
+          >
+            {{pageSize}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>

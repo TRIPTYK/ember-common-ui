@@ -15,6 +15,7 @@ export type TpkRadioSignature = {
       disabled?: boolean;
       name: string;
       selected?: string;
+      onChange?: (value: string, e: Event) => unknown;
     }
   >;
   Blocks: {
@@ -22,7 +23,7 @@ export type TpkRadioSignature = {
       {
         Label: ComponentLike<TpkRadioLabelComponent>;
         Input: ComponentLike<TpkRadioInputComponent>;
-        onChange: UiRadio['onChange'];
+        onChange: TpkRadioComponent['onChange'];
         changeEvent: 'input' | 'change';
         guid: string;
       },
@@ -31,7 +32,7 @@ export type TpkRadioSignature = {
   Element: HTMLDivElement;
 };
 
-export default class UiRadio extends BaseUIComponent<TpkRadioSignature> {
+export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature> {
   constructor(owner: unknown, args: TpkRadioSignature['Args']) {
     super(owner, args);
     assert('@name is required', args.name !== undefined);
@@ -44,5 +45,11 @@ export default class UiRadio extends BaseUIComponent<TpkRadioSignature> {
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     this.args.onChange?.(target.value, e);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-radio': typeof TpkRadioComponent;
   }
 }

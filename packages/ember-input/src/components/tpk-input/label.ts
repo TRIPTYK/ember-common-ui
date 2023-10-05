@@ -8,7 +8,7 @@ interface TpkInputLabelComponentSignature {
   };
   Element: HTMLLabelElement;
   Blocks: {
-    default: [];
+    default: [string] | [];
   };
 }
 

@@ -9,10 +9,16 @@ import TpkDatepickerInputComponent, {
 } from './tpk-datepicker/input';
 import TpkDatepickerLabelComponent from './tpk-datepicker/label';
 
+type NullableDate = Date | null | undefined;
+
 export type TpkDatepickerSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
+      onChange?: (
+        value: NullableDate | [NullableDate | NullableDate],
+        e: Event,
+      ) => void;
       disabled?: boolean;
     } & FlatpickerArgs
   >;
@@ -37,5 +43,11 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
 
   get onClose() {
     return this.args.onClose ? this.args.onClose : this.args.onChange;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-datepicker': typeof TpkDatepicker;
   }
 }

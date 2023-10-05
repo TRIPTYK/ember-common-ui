@@ -1,0 +1,23 @@
+<YetiTable
+  class="tpk-table-generic"
+  @loadData={{this.loadData}}
+  @totalRows={{this.totalRows}}
+  @filter={{@filterText}}
+  @pagination={{true}}
+  @registerApi={{this.registerApi}}
+  @pageSize={{this.pageSizes}}
+  data-test-table
+  ...attributes
+  as |table|
+>
+  {{yield
+    (hash
+      Header=(component "table-generic/header" table=table hasActionMenu=this.hasActionMenu)
+      Body=(component "table-generic/body" table=table rowClick=@rowClick registerActionMenu=this.registerActionMenu)
+      Footer=(component "table-generic/footer" table=table pageSizes=@pageSizes hasActionMenu=this.hasActionMenu)
+    )
+  }}
+  {{#if table.isLoading}}
+    <LoadingIndicator />
+  {{/if}}
+</YetiTable>

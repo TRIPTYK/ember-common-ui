@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import Component from '@glimmer/component';
 
+type NullableDate = Date | null | undefined;
+
 export interface FlatpickerArgs {
   altFormat?: string;
   altInput?: boolean;
@@ -56,7 +58,10 @@ interface TpkDatepickerInputComponentSignature {
     disabled?: boolean;
     disabledDates?: Date[] | ((date: Date) => boolean);
     value?: string;
-    onChange: (event: Event) => void;
+    onChange: (
+      value: NullableDate | [NullableDate | NullableDate],
+      e: Event,
+    ) => void;
   } & FlatpickerArgs;
   Element: HTMLInputElement;
 }

@@ -1,6 +1,9 @@
 /* eslint-disable no-fallthrough */
 import { action } from '@ember/object';
-import TpkSelect, { moveOperations, SelectActions } from './tpk-select';
+import TpkSelectComponent, {
+  moveOperations,
+  SelectActions,
+} from './tpk-select';
 import { ComponentLike } from '@glint/template';
 import TpkSelectSearchLabelComponent from './tpk-select-search/label';
 import TpkSelectSearchOptionsComponent from './tpk-select-search/options';
@@ -35,7 +38,7 @@ export interface TpkSelectSearchSignature {
         isOpen: boolean;
         selected: unknown;
         guid: string;
-        onChange: TpkSelect['onChange'];
+        onChange: TpkSelectComponent['onChange'];
         onSelectButtonClick: () => void;
         hasSelection: boolean;
       },
@@ -44,7 +47,7 @@ export interface TpkSelectSearchSignature {
   Element: HTMLDivElement;
 }
 
-export default class TpkSelectSearch extends Component<TpkSelectSearchSignature> {
+export default class TpkSelectSearchComponent extends Component<TpkSelectSearchSignature> {
   protected keyToOpenSelectAction: { [key: string]: SelectActions } = {
     ArrowUp: SelectActions.Previous,
     ArrowDown: SelectActions.Next,
@@ -287,5 +290,11 @@ export default class TpkSelectSearch extends Component<TpkSelectSearchSignature>
     } else {
       this.activeChildIndex = res;
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-select-search': typeof TpkSelectSearchComponent;
   }
 }

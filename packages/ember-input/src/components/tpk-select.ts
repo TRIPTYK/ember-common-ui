@@ -63,7 +63,7 @@ export const moveOperations = {
   [SelectActions.Previous]: -1,
 };
 
-export default class TpkSelect extends Component<TpkSelectSignature> {
+export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   @tracked isOpen = false;
   @tracked activeChildIndex?: number;
   @tracked children: HTMLLIElement[] = [];
@@ -317,5 +317,11 @@ export default class TpkSelect extends Component<TpkSelectSignature> {
 
   get activeChild() {
     return this.children[this.activeChildIndex ?? -1];
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-select': typeof TpkSelectComponent;
   }
 }

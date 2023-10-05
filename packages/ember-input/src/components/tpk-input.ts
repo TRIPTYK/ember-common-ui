@@ -7,7 +7,7 @@ import { assert } from '@ember/debug';
 import { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input';
 import TpkInputLabelComponent from './tpk-input/label';
-import { ComponentLike } from '@glint/template';
+import { ComponentLike, WithBoundArgs } from '@glint/template';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -18,13 +18,26 @@ export type TpkInputSignature = {
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
       unmaskValue?: boolean;
+      onChange?: (value: string | number | Date | null, e: Event) => unknown;
     }
   >;
   Blocks: {
     default: [
       {
-        Input: ComponentLike<TpkInputInputComponent>;
-        Label: ComponentLike<TpkInputLabelComponent>;
+        Input: WithBoundArgs<
+          typeof TpkInputInputComponent,
+          | 'value'
+          | 'onChange'
+          | 'type'
+          | 'changeEvent'
+          | 'disabled'
+          | 'guid'
+          | 'classless'
+        >;
+        Label: WithBoundArgs<
+          typeof TpkInputLabelComponent,
+          'label' | 'guid' | 'classless'
+        >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
         guid: string;
@@ -34,7 +47,7 @@ export type TpkInputSignature = {
   Element: HTMLDivElement;
 };
 
-export default class TpkInput extends BaseUIComponent<TpkInputSignature> {
+export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature> {
   @tracked mask?: InputMask<FactoryArg>;
 
   constructor(owner: unknown, args: TpkInputSignature['Args']) {
@@ -87,6 +100,7 @@ export default class TpkInput extends BaseUIComponent<TpkInputSignature> {
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'tpk-input': typeof TpkInput;
+    'tpk-input': typeof TpkInputComponent;
+    TpkInput: typeof TpkInputComponent;
   }
 }

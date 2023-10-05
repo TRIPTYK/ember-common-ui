@@ -11,6 +11,9 @@ interface TpkInputInputComponentSignature {
     onChange: (event: Event) => void;
   };
   Element: HTMLInputElement;
+  Blocks: {
+    default: [];
+  };
 }
 
 export default class TpkInputInputComponent extends Component<TpkInputInputComponentSignature> {}
