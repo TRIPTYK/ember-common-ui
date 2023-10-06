@@ -7,8 +7,6 @@ export interface BaseUIComponentArgs {
     label: string;
     value?: string;
     changeEvent?: 'input' | 'change';
-    // eslint-disable-next-line no-unused-vars
-    onChange?: (...args: unknown[]) => unknown;
   };
 }
 
@@ -28,7 +26,4 @@ export abstract class BaseUIComponent<
   get changeEvent(): 'input' | 'change' {
     return this.args.changeEvent ?? 'change';
   }
-
-  // eslint-disable-next-line no-unused-vars
-  abstract onChange(e: Event): unknown;
 }

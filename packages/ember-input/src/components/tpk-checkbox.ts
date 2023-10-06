@@ -12,6 +12,7 @@ export type TpkCheckboxArgs = {
     {
       checked?: boolean;
       disabled?: boolean;
+      onChange?: (isChecked: boolean, value: string, e: Event) => unknown;
     }
   >;
   Blocks: {
@@ -19,7 +20,7 @@ export type TpkCheckboxArgs = {
       {
         Label: ComponentLike<TpkCheckboxLabelComponent>;
         Input: ComponentLike<TpkCheckboxInputComponent>;
-        onChange: UiCheckbox['onChange'];
+        onChange: TpkCheckboxComponent['onChange'];
         changeEvent: 'input' | 'change';
         guid: string;
       },
@@ -28,7 +29,7 @@ export type TpkCheckboxArgs = {
   Element: HTMLDivElement;
 };
 
-export default class UiCheckbox extends BaseUIComponent<TpkCheckboxArgs> {
+export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxArgs> {
   constructor(owner: unknown, args: TpkCheckboxArgs['Args']) {
     super(owner, args);
     assert('@checked is required', typeof args.checked === 'boolean');
@@ -40,5 +41,11 @@ export default class UiCheckbox extends BaseUIComponent<TpkCheckboxArgs> {
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     this.args.onChange?.(target.checked, target.value, e);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-checkbox': typeof TpkCheckboxComponent;
   }
 }

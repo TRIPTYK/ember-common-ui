@@ -1,0 +1,20 @@
+{{yield
+  (hash
+    SearchBar=(component
+      "table-generic/search-bar"
+      onSearch=this.onSearch
+      label=(t "global.search")
+      placeholder=(t "global.search")
+    )
+    Table=(component "table-generic/table" 
+      rowClick=@rowClick
+      filterText=this.filterText
+      relationships=@relationships
+      registerApi=@registerApi
+      entity=@entity
+      pageSizes=@pageSizes
+      pageSize=@pageSize
+      additionalFilters=@additionalFilters
+    )
+  )
+}}

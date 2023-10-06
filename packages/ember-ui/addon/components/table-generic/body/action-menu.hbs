@@ -1,8 +1,0 @@
-{{#if (has-block-params)}}
-  {{!-- A simple td, cannot use ember-yeti-table row beacause it  does not seems to understand the did-insert helper   --}}
-  <td {{did-insert @registerActionMenu}} data-test-action-menu-cell ...attributes>
-    <TpkActionsMenu as |Action|>
-      {{yield (component "table-generic/body/action" Action=Action)}}
-    </TpkActionsMenu>
-  </td>
-{{/if}}

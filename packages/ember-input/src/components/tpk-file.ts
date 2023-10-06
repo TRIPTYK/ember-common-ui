@@ -12,6 +12,7 @@ export type TpkFileSignature = {
     {
       accept?: string;
       disabled?: boolean;
+      onChange?: (value: File[], e: Event) => unknown;
     }
   >;
   Blocks: {
@@ -21,15 +22,15 @@ export type TpkFileSignature = {
         Label: ComponentLike<TpkFileLabelComponent>;
         guid: string;
         changeEvent: 'input' | 'change';
-        onChange: TpkFile['onChange'];
-        files: TpkFile['files'];
+        onChange: TpkFileComponent['onChange'];
+        files: TpkFileComponent['files'];
       },
     ];
   };
   Element: HTMLDivElement;
 };
 
-export default class TpkFile extends BaseUIComponent<TpkFileSignature> {
+export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> {
   @tracked files: File[] = [];
 
   @action onChange(e: Event) {
@@ -38,5 +39,11 @@ export default class TpkFile extends BaseUIComponent<TpkFileSignature> {
     const files = Array.from(target.files ?? []);
     this.files = files;
     this.args.onChange?.(files, e);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-file': typeof TpkFileComponent;
   }
 }

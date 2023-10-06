@@ -14,6 +14,7 @@ export type TpkTextareaSignature = {
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
       unmaskValue?: boolean;
+      onChange?: (value: string, e: Event) => unknown;
     }
   >;
   Blocks: {
@@ -29,11 +30,17 @@ export type TpkTextareaSignature = {
   };
   Element: HTMLDivElement;
 };
-export default class UiTextarea extends BaseUIComponent<TpkTextareaSignature> {
+export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
   @action
   onChange(e: Event) {
     e.preventDefault();
     const { value } = e.target as HTMLInputElement;
-    this.args.onChange?.(value);
+    this.args.onChange?.(value, e);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-textarea': typeof TpkTextareaComponent;
   }
 }

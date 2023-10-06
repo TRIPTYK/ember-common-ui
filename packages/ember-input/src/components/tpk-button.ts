@@ -17,11 +17,17 @@ export type TpkButtonSignature = {
   Element: HTMLButtonElement;
 };
 
-export default class TpkButton extends Component<TpkButtonSignature> {
+export default class TpkButtonComponent extends Component<TpkButtonSignature> {
   guid = guidFor(this);
 
   @action
   onClick(e: Event) {
     return this.args.onClick?.(e);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'tpk-button': typeof TpkButtonComponent;
   }
 }

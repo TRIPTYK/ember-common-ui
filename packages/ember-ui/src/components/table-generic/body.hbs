@@ -1,0 +1,22 @@
+{{! Introduire une logique dans les classes CSS: ex: tpk-table-body }}
+<@table.tbody class="tpk-table-body" ...attributes as |body data|>
+  {{#each data as |element|}}
+    <body.row data-test-row={{element.id}} {{on "click" (fn @rowClick element)}} as |row|>
+      {{yield
+        (hash
+          Cell=(component "table-generic/body/cell" element=element row=row)
+          ActionMenu=(component "table-generic/body/action-menu" registerActionMenu=@registerActionMenu)
+        )
+        element
+      }}
+    </body.row>
+  {{else}}
+    <body.row as |row|>
+      <row.cell colspan={{@table.visibleColumns.length}}>
+        <div class="flex justify-center py-4">
+          {{t "global.missing"}}
+        </div>
+      </row.cell>
+    </body.row>
+  {{/each}}
+</@table.tbody>
