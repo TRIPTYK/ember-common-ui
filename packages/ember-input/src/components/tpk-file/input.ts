@@ -4,7 +4,6 @@ interface TpkFileInputComponentSignature {
   Args: {
     guid: string;
     classless?: boolean;
-    value?: string;
     accept?: string;
     disabled?: boolean;
     multiple?: boolean;

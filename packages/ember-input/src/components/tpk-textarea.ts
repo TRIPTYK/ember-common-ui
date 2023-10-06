@@ -42,5 +42,6 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-textarea': typeof TpkTextareaComponent;
+    TpkTextarea: typeof TpkTextareaComponent;
   }
 }

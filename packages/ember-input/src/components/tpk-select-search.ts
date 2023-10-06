@@ -296,5 +296,6 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-select-search': typeof TpkSelectSearchComponent;
+    TpkSelectSearch: typeof TpkSelectSearchComponent;
   }
 }

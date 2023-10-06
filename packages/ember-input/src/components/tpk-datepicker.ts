@@ -44,5 +44,6 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-datepicker': typeof TpkDatepicker;
+    TpkDatepicker: typeof TpkDatepicker;
   }
 }
