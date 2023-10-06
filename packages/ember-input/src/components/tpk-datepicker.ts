@@ -9,16 +9,11 @@ import TpkDatepickerInputComponent, {
 } from './tpk-datepicker/input';
 import TpkDatepickerLabelComponent from './tpk-datepicker/label';
 
-type NullableDate = Date | null | undefined;
-
 export type TpkDatepickerSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
-      onChange?: (
-        value: NullableDate | [NullableDate | NullableDate],
-        e: Event,
-      ) => void;
+      onChange?: (value: Date[], e: Event) => void;
       disabled?: boolean;
     } & FlatpickerArgs
   >;
