@@ -40,7 +40,7 @@ jobs:
           version: 8
           run_install: true
       - name: Build packages before
-        run: pnpm recursive run build
+        run: pnpm build
       - run: pnpm ember build --env=production
         working-directory: doc-app
         env:
