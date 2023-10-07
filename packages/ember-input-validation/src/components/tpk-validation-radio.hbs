@@ -1,0 +1,22 @@
+<TpkRadio
+  @selected={{this.value}}
+  @value={{@value}}
+  @name={{if @name @name @validationField}}
+  @label={{@label}}
+  @classless={{@classless}}
+  @changeEvent={{@changeEvent}}
+  @disabled={{@disabled}}
+  @onChange={{this.onChange}}
+  ...attributes
+  as |I|
+>
+  {{yield
+    (hash
+      Input=I.Input
+      Label=I.Label
+      errors=this.errors
+      hasError=this.hasError
+      firstError=this.firstError
+    )
+  }}
+</TpkRadio>

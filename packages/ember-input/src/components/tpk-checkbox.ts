@@ -47,5 +47,6 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxArg
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-checkbox': typeof TpkCheckboxComponent;
+    TpkCheckbox: typeof TpkCheckboxComponent;
   }
 }

@@ -5,7 +5,6 @@ export interface BaseUIComponentArgs {
   Args: {
     classless?: boolean;
     label: string;
-    value?: string;
     changeEvent?: 'input' | 'change';
   };
 }

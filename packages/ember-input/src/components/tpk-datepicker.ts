@@ -13,6 +13,7 @@ export type TpkDatepickerSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
+      value?: Date[] | Date | string | string[];
       onChange?: (value: Date[], e: Event) => void;
       disabled?: boolean;
     } & FlatpickerArgs
@@ -44,5 +45,6 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-datepicker': typeof TpkDatepicker;
+    TpkDatepicker: typeof TpkDatepicker;
   }
 }

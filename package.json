@@ -5,9 +5,13 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm recursive run build"
+    "build": "pnpm --filter @triptyk/ember-input run build && pnpm --filter @triptyk/ember-input-validation run build && pnpm --filter @triptyk/ember-ui run build",
+    "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
+    "start:ui": "pnpm --filter @triptyk/ember-ui start",
+    "start:test-app": "pnpm --filter doc-app start"
   },
   "devDependencies": {
+    "concurrently": "^8.2.1",
     "lerna": "^7.3.0"
   }
 }

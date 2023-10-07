@@ -11,6 +11,7 @@ export type TpkRadioSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
+      value?: string;
       checked?: boolean;
       disabled?: boolean;
       name: string;
@@ -51,5 +52,6 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-radio': typeof TpkRadioComponent;
+    TpkRadio: typeof TpkRadioComponent;
   }
 }

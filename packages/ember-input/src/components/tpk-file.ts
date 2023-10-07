@@ -45,5 +45,6 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-file': typeof TpkFileComponent;
+    TpkFile: typeof TpkFileComponent;
   }
 }

@@ -16,7 +16,6 @@ export interface TpkSelectSignature {
     multiple?: boolean;
     label: string;
     classless?: boolean;
-    generatedClassPrefix: string;
     defaultText?: string;
     onChange: (
       newSelected: unknown | string,
@@ -323,5 +322,6 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-select': typeof TpkSelectComponent;
+    TpkSelect: typeof TpkSelectComponent;
   }
 }

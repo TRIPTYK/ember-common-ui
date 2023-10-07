@@ -1,0 +1,21 @@
+<TpkCheckbox
+  @checked={{this.value}}
+  @label={{@label}}
+  @classless={{@classless}}
+  @changeEvent={{@changeEvent}}
+  @disabled={{@disabled}}
+  @onChange={{this.onChange}}
+  ...attributes
+  data-has-error='{{this.hasError}}'
+  as |I|
+>
+  {{yield
+    (hash
+      Input=I.Input
+      Label=I.Label
+      errors=this.errors
+      hasError=this.hasError
+      firstError=this.firstError
+    )
+  }}
+</TpkCheckbox>

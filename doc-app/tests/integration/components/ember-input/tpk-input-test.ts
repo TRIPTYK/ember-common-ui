@@ -26,9 +26,11 @@ module('Integration | Component | tpk-input', function (hooks) {
 
     this.set('classless', true);
 
-    findAll('*').filter((e) => e.id !== "modal-overlays").forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
+    findAll('*')
+      .filter((e) => e.id !== 'modal-overlays')
+      .forEach((e) => {
+        assert.dom(e).hasNoClass(/tpk-.*/);
+      });
   });
 
   test('input yield only', async function (assert) {

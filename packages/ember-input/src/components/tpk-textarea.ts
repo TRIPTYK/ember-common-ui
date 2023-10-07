@@ -11,6 +11,7 @@ export type TpkTextareaSignature = {
     {
       type?: HTMLInputElement['type'];
       mask?: unknown;
+      value?: string;
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
       unmaskValue?: boolean;
@@ -42,5 +43,6 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-textarea': typeof TpkTextareaComponent;
+    TpkTextarea: typeof TpkTextareaComponent;
   }
 }

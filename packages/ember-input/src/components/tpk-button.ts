@@ -29,5 +29,6 @@ export default class TpkButtonComponent extends Component<TpkButtonSignature> {
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'tpk-button': typeof TpkButtonComponent;
+    TpkButton: typeof TpkButtonComponent;
   }
 }

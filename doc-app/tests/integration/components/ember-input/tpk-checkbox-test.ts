@@ -27,10 +27,12 @@ module('Integration | Component | ui/checkbox', function (hooks) {
         <C.Input />
       </TpkCheckbox>
     `);
-    
-    findAll('*').filter((e) => e.id !== "modal-overlays").forEach((e) => {
-      assert.dom(e).hasClass(/tpk-.*/);
-    });
+
+    findAll('*')
+      .filter((e) => e.id !== 'modal-overlays')
+      .forEach((e) => {
+        assert.dom(e).hasClass(/tpk-.*/);
+      });
 
     this.set('classless', true);
 

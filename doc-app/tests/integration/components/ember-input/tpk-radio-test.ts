@@ -27,15 +27,19 @@ module('Integration | Component | ui/radio', function (hooks) {
       />
     `);
 
-    findAll('*').filter((e) => e.id !== "modal-overlays").forEach((e) => {
-      assert.dom(e).hasClass(/tpk-.*/);
-    });
+    findAll('*')
+      .filter((e) => e.id !== 'modal-overlays')
+      .forEach((e) => {
+        assert.dom(e).hasClass(/tpk-.*/);
+      });
 
     this.set('classless', true);
 
-    findAll('*').filter((e) => e.id !== "modal-overlays").forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
+    findAll('*')
+      .filter((e) => e.id !== 'modal-overlays')
+      .forEach((e) => {
+        assert.dom(e).hasNoClass(/tpk-.*/);
+      });
   });
 
   test('it renders complex', async function (assert) {
