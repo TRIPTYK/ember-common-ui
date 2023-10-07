@@ -1,9 +1,7 @@
-/* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { render, settled } from '@ember/test-helpers';
-
+import { TestContext, render, settled } from '@ember/test-helpers';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
@@ -11,16 +9,25 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 module('Integration | Component | tpk-validation-datepicker', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('DEFAULT | it works with default syntax', async function (assert) {
+  async function setupComponent(this: TestContext) {
     const date = new Date();
     const changeset = new ImmerChangeset({
       date,
     });
     this.set('changeset', changeset);
-
+  
     await render(
-      hbs`<TpkValidationDatepicker @label="label" @changeset={{this.changeset}} @validationField="date" />`,
+      hbs`<TpkValidationDatepicker @label="label" @changeset={{this.changeset}} @validationField="date" as |T|>
+          <T.Input />
+          <T.Label />
+        </TpkValidationDatepicker>
+      `
     );
+    return changeset;
+  }
+
+  test('It changes data-has-error attribue on error', async function (assert) {
+    const changeset = await setupComponent.call(this);
     assert.dom('[data-test-tpk-datepicker]').exists();
     assert.dom('[data-test-tpk-datepicker-label]').containsText('label');
 
@@ -28,6 +35,10 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
     await settled();
 
     assert.dom('[data-test-tpk-datepicker-content]').hasNoText();
+
+    assert
+      .dom('[data-test-tpk-datepicker]')
+      .hasAttribute('data-has-error', 'false');
 
     changeset.addError({
       message: 'required',
@@ -41,9 +52,5 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
     assert
       .dom('[data-test-tpk-datepicker]')
       .hasAttribute('data-has-error', 'true');
-    assert
-      .dom('.tpk-validation-datepicker-error-container')
-      .exists()
-      .hasAnyText();
   });
 });

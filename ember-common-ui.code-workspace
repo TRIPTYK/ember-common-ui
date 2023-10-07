@@ -1,10 +1,18 @@
 {
     "settings": {
+      "files.exclude": {
+          "packages/": true,
+          "doc-app/": true,
+      },
     },
     "folders": [
       {
         "name": "ROOT",
         "path": "."
+      },
+      {
+        "name": "doc-app",
+        "path": "doc-app"
       },
       {
         "name": "ember-input",

@@ -15,7 +15,10 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
     this.set('changeset', immerChangeset);
 
     await render(
-      hbs`<TpkValidationTextarea @label="label" @changeset={{this.changeset}} @validationField="name" />`,
+      hbs`<TpkValidationTextarea @label="label" @changeset={{this.changeset}} @validationField="name" as |T|>
+          <T.Input />
+          <T.Label />
+      </TpkValidationTextarea>`,
     );
     assert.dom('[data-test-tpk-textarea]').exists();
     assert.dom('[data-test-tpk-textarea-label]').containsText('label');
@@ -36,6 +39,5 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
     assert
       .dom('[data-test-tpk-textarea]')
       .hasAttribute('data-has-error', 'true');
-    assert.dom('.tpk-validation-textarea-error').exists().hasAnyText();
   });
 });

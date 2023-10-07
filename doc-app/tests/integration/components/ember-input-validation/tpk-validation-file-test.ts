@@ -7,7 +7,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 module('Integration | Component | tpk-validation-file', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it works with default syntax', async function (assert) {
+  test('It changes data-has-error attribue on error', async function (assert) {
     const changeset = new ImmerChangeset<{
       file: File | undefined;
     }>({
@@ -17,7 +17,11 @@ module('Integration | Component | tpk-validation-file', function (hooks) {
     this.set('changeset', changeset);
 
     await render(
-      hbs`<TpkValidationFile @label="label" @changeset={{this.changeset}} @validationField="file" />`,
+      hbs`<TpkValidationFile @label="label" @changeset={{this.changeset}} @validationField="file" as |T|>
+          <T.Input />
+          <T.Label />
+        </TpkValidationFile>
+      `,
     );
     assert.dom('[data-test-tpk-file]').exists();
     assert.dom('[data-test-tpk-file-label]').containsText('label');
@@ -31,7 +35,6 @@ module('Integration | Component | tpk-validation-file', function (hooks) {
     await settled();
 
     assert.dom('[data-test-tpk-file]').hasAttribute('data-has-error', 'true');
-    assert.dom('.tpk-validation-file-error').exists().hasAnyText();
 
     await triggerEvent('[data-test-tpk-file-input]', 'change', {
       files: [new File(['Ember Rules!'], 'file.txt')],

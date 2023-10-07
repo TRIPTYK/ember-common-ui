@@ -16,7 +16,12 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" />`,
+      hbs`<TpkValidationInput data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
+        <I.Label>
+          label
+        </I.Label>
+        <I.Input/>
+      </TpkValidationInput>`,
     );
   }
 
@@ -29,7 +34,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     return changeset;
   }
 
-  test('DEFAULT | it works with default syntax', async function (assert) {
+  test('It changes data-has-error attribue on error', async function (assert) {
     const changeset = setupChangeset.call(this);
 
     await renderComponent();
@@ -50,10 +55,9 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     await settled();
     assert.dom('[data-test-tpk-input-input]').hasNoText();
     assert.dom('[data-test-tpk-input]').hasAttribute('data-has-error', 'true');
-    assert.dom('.tpk-validation-input-error').exists().hasAnyText();
   });
 
-  test('DEFAULT | override change function', async function (assert) {
+  test('It overrides change function', async function (assert) {
     const changeset = setupChangeset.call(this);
 
     this.set('onChange', (value: string) => {
@@ -72,13 +76,13 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     assert.verifySteps(['change']);
   });
 
-  test('DEFAULT | classless removes all the classes', async function (assert) {
+  test('Classless removes all the classes', async function (assert) {
     this.set('classless', false);
     setupChangeset.call(this);
 
     await renderComponent();
 
-    findAll('*').forEach((e) => {
+    findAll('*').filter((e) => e.id !== "modal-overlays").forEach((e) => {
       assert.dom(e).hasClass(/tpk-.*/);
     });
 

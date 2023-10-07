@@ -7,7 +7,20 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 module('Integration | Component | tpk-validation-select', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it works with default syntax', async function (assert) {
+  async function renderComponent() {
+    await render(
+      hbs`
+        <TpkValidationSelect @onChange={{this.onChange}} @label="label" @changeset={{this.changeset}} @validationField="name" @options={{this.options}} @selected={{this.selected}} as |T|>
+          <T.Options as |Option|>
+              <Option />
+          </T.Options>
+          <T.Label />
+          <T.Button />
+        </TpkValidationSelect>`
+    );
+  }
+
+  test('It changes data-has-error attribue on error', async function (assert) {
     const options = ['a', 'b', 'c'];
     const changeset = new ImmerChangeset({
       name: undefined,
@@ -20,17 +33,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
       assert.step('change');
     });
 
-    await render(
-      hbs`
-      <TpkValidationSelect @onChange={{this.onChange}} @label="label" @changeset={{this.changeset}} @validationField="name" @options={{this.options}} @selected={{this.selected}}>
-        <:option as |o|>
-          {{o}}
-        </:option>
-        <:selected as |s|>
-          {{s}}
-        </:selected>
-      </TpkValidationSelect>`,
-    );
+    await renderComponent();
 
     await click('.tpk-select-button');
     await click('[data-test-option="1"]');
@@ -49,7 +52,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
     await settled();
 
     assert.dom('.tpk-select').hasAttribute('data-has-error', 'true');
-
-    assert.dom('.tpk-validation-select-error').exists();
   });
 });
+
+
