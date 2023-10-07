@@ -9,7 +9,11 @@ module.exports = function (defaults) {
   });
   let app = new EmberAddon(defaults, {
     autoImport: {
-      watchDependencies: ['@triptyk/ember-ui','@triptyk/ember-input', '@triptyk/ember-input-validation'],
+      watchDependencies: [
+        '@triptyk/ember-ui',
+        '@triptyk/ember-input',
+        '@triptyk/ember-input-validation',
+      ],
     },
     postcssOptions: {
       compile: {

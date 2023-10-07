@@ -16,7 +16,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
           </T.Options>
           <T.Label />
           <T.Button />
-        </TpkValidationSelect>`
+        </TpkValidationSelect>`,
     );
   }
 
@@ -54,5 +54,3 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
     assert.dom('.tpk-select').hasAttribute('data-has-error', 'true');
   });
 });
-
-

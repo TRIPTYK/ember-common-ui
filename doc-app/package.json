@@ -28,7 +28,6 @@
     "start": "ember serve",
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each",
     "prepack": "ember ts:precompile",
     "postpack": "ember ts:clean"
   },
@@ -40,9 +39,6 @@
     "ember-cli-typescript": "^5.2.1"
   },
   "devDependencies": {
-    "@triptyk/ember-input": "workspace:*",
-    "@triptyk/ember-input-validation": "workspace:*",
-    "@triptyk/ember-ui": "workspace:*",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-proposal-decorators": "^7.22.15",
     "@ember/optional-features": "^2.0.0",
@@ -52,6 +48,9 @@
     "@embroider/webpack": "^3.2.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@triptyk/ember-input": "workspace:*",
+    "@triptyk/ember-input-validation": "workspace:*",
+    "@triptyk/ember-ui": "workspace:*",
     "@tsconfig/ember": "^3.0.1",
     "@types/ember": "^4.0.6",
     "@types/ember-data": "^4.4.12",
@@ -81,6 +80,7 @@
     "@types/ember__utils": "^4.0.4",
     "@types/qunit": "^2.19.6",
     "@types/rsvp": "^4.0.5",
+    "@typescript-eslint/parser": "^6.7.2",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.1",
     "ember-a11y-testing": "6.1.1",

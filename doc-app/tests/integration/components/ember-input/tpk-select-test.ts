@@ -7,7 +7,6 @@ import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 import tpkSelect from 'dummy/tests/pages/tpk-select';
 
-
 const backendArray = [
   'amaury',
   'armand',
@@ -110,7 +109,7 @@ module('Integration | Component | tpk-select', function (hooks) {
     assert.strictEqual(tpkSelect.button.isExpanded, 'true');
     assert.strictEqual(tpkSelect.isOpen, 'true');
     assert.true(tpkSelect.button.hasFocus);
-    
+
     assert.strictEqual(tpkSelect.listbox.options[0]?.ariaSelected, 'false');
     assert.strictEqual(tpkSelect.listbox.options[0]?.hasFocus, 'true');
   });

@@ -35,8 +35,8 @@ export default class ApplicationRoute extends Route {
       }),
     ]).start({
       serviceWorker: {
-        url: `${config.rootURL}mockServiceWorker.js`
-      }
+        url: `${config.rootURL}mockServiceWorker.js`,
+      },
     });
   }
 }

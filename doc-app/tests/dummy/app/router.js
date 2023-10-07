@@ -8,7 +8,7 @@ const Router = AddonDocsRouter.extend({
 
 Router.map(function () {
   docsRoute(this, function () {
-    this.route('ember-ui', function() {
+    this.route('ember-ui', function () {
       this.route('lazy-image');
       this.route('actions-menu');
       this.route('modal');
@@ -17,7 +17,7 @@ Router.map(function () {
       this.route('stack-list');
       this.route('stepper');
     });
-    this.route('ember-input', function() {
+    this.route('ember-input', function () {
       this.route('input');
       this.route('checkbox');
       this.route('datepicker');
@@ -27,7 +27,7 @@ Router.map(function () {
       this.route('select-search');
       this.route('textarea');
     });
-    this.route('ember-input-validation', function() {
+    this.route('ember-input-validation', function () {
       this.route('checkbox');
       this.route('datepicker');
       this.route('file');

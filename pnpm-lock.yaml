@@ -156,6 +156,9 @@ importers:
       '@types/rsvp':
         specifier: ^4.0.5
         version: 4.0.5
+      '@typescript-eslint/parser':
+        specifier: ^6.7.2
+        version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
       broccoli-asset-rev:
         specifier: ^3.0.0
         version: 3.0.0

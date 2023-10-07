@@ -82,9 +82,11 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
     await renderComponent();
 
-    findAll('*').filter((e) => e.id !== "modal-overlays").forEach((e) => {
-      assert.dom(e).hasClass(/tpk-.*/);
-    });
+    findAll('*')
+      .filter((e) => e.id !== 'modal-overlays')
+      .forEach((e) => {
+        assert.dom(e).hasClass(/tpk-.*/);
+      });
 
     this.set('classless', true);
 

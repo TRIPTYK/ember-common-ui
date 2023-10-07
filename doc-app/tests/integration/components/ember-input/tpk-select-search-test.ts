@@ -6,7 +6,6 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
 
-
 module('Integration | Component | tpk-select-search', function (hooks) {
   setupRenderingTest(hooks);
 

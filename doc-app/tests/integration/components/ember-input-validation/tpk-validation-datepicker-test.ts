@@ -15,13 +15,13 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
       date,
     });
     this.set('changeset', changeset);
-  
+
     await render(
       hbs`<TpkValidationDatepicker @label="label" @changeset={{this.changeset}} @validationField="date" as |T|>
           <T.Input />
           <T.Label />
         </TpkValidationDatepicker>
-      `
+      `,
     );
     return changeset;
   }

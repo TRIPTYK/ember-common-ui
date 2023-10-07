@@ -19,6 +19,7 @@
   @apply outline-none;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 button.open_actions {
   @apply rounded-md shadow-md border;
 }

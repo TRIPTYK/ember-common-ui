@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { TestContext, click, pauseTest, render, settled } from '@ember/test-helpers';
+import { TestContext, click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-checkbox', function (hooks) {
@@ -12,12 +12,12 @@ module('Integration | Component | tpk-validation-checkbox', function (hooks) {
       checked: true,
     });
     this.set('changeset', changeset);
-  
+
     await render(
       hbs`<TpkValidationCheckbox @label="label" @changeset={{this.changeset}} @validationField="checked" as |T|>
           <T.Input />
           <T.Label />
-        </TpkValidationCheckbox>`
+        </TpkValidationCheckbox>`,
     );
     return changeset;
   }
