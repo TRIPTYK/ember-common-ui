@@ -13,6 +13,7 @@ export type TpkDatepickerSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
+      value?: Date[] | Date | string | string[];
       onChange?: (value: Date[], e: Event) => void;
       disabled?: boolean;
     } & FlatpickerArgs

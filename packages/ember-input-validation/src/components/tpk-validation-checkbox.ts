@@ -11,7 +11,6 @@ interface TpkValidationCheckboxComponentSignature
     label: string;
     classless?: boolean;
     changeEvent?: 'input' | 'change';
-    value: string;
     disabled?: boolean;
   };
   Blocks: {

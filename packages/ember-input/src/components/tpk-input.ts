@@ -13,6 +13,7 @@ export type TpkInputSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
+      value?: string | number | boolean | null | undefined;
       type?: HTMLInputElement['type'];
       mask?: unknown;
       disabled?: boolean;

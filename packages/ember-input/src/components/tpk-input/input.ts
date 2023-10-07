@@ -6,7 +6,7 @@ interface TpkInputInputComponentSignature {
     type?: string;
     classless?: boolean;
     disabled?: boolean;
-    value?: string;
+    value?: string | number | boolean | null | undefined;
     changeEvent: 'input' | 'change';
     onChange: (event: Event) => void;
   };

@@ -55,7 +55,7 @@ interface TpkDatepickerInputComponentSignature {
     classless?: boolean;
     disabled?: boolean;
     disabledDates?: Date[] | ((date: Date) => boolean);
-    value?: string;
+    value: Date[] | Date | string | string[];
     onChange: (value: Date[], e: Event) => void;
   } & FlatpickerArgs;
   Element: HTMLInputElement;

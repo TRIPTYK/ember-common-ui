@@ -37,7 +37,7 @@ jobs:
       - name: Build packages before
         run: pnpm build
       - name: Run tests
-        run: pnpm --filter doc-app test
+        run: pnpm recursive run test
   # deploy:
   #   runs-on: ubuntu-latest
   #   needs:

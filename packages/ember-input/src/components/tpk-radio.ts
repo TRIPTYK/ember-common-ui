@@ -11,6 +11,7 @@ export type TpkRadioSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
+      value?: string;
       checked?: boolean;
       disabled?: boolean;
       name: string;

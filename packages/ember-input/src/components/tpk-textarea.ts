@@ -11,6 +11,7 @@ export type TpkTextareaSignature = {
     {
       type?: HTMLInputElement['type'];
       mask?: unknown;
+      value?: string;
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
       unmaskValue?: boolean;

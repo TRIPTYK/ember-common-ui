@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm --filter \"./packages/**\" run build",
+    "build": "pnpm --filter @triptyk/ember-input run build && pnpm --filter @triptyk/ember-input-validation run build && pnpm --filter @triptyk/ember-ui run build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:ui": "pnpm --filter @triptyk/ember-ui start",
     "start:test-app": "pnpm --filter doc-app start"
