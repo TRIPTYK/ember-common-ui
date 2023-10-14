@@ -31,8 +31,11 @@ export interface FlatpickerArgs {
   mode?: 'single' | 'multiple' | 'range';
   nextArrow?: string;
   noCalendar?: boolean;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onClose?: Function;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onOpen?: Function;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onReady?: Function;
   parseDate?: (date: string, format: string) => Date | void;
   position?: 'auto' | 'top' | 'right' | 'bottom' | 'left';

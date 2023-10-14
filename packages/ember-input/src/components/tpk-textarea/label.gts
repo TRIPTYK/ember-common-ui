@@ -1,6 +1,6 @@
 import { TOC } from '@ember/component/template-only';
 
-export interface TpkInputLabelComponentSignature {
+export interface TpkTextareaLabelComponentSignature {
   Args: {
     guid: string;
     label: string;
@@ -12,12 +12,13 @@ export interface TpkInputLabelComponentSignature {
   };
 }
 
-const TpkDatepickerLabelComponent: TOC<TpkInputLabelComponentSignature> = <template>
+const TpkTextareaLabelComponent: TOC<TpkTextareaLabelComponentSignature> =
+  <template>
     <label
-      class={{unless @classless 'tpk-datepicker-label'}}
       for={{@guid}}
+      class={{unless @classless 'tpk-textarea-label'}}
       ...attributes
-      data-test-tpk-datepicker-label
+      data-test-tpk-textarea-label
     >
       {{#if (has-block)}}
         {{yield}}
@@ -27,4 +28,4 @@ const TpkDatepickerLabelComponent: TOC<TpkInputLabelComponentSignature> = <templ
     </label>
   </template>;
 
-export default TpkDatepickerLabelComponent;
+export default TpkTextareaLabelComponent;
