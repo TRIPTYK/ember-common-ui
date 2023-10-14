@@ -28,10 +28,3 @@ const TpkRadioLabelComponent: TOC<TpkRadioLabelComponentSignature> = <template>
 </template>;
 
 export default TpkRadioLabelComponent;
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'tpk-radio/label': typeof TpkRadioLabelComponent;
-    TpkRadioLabel: typeof TpkRadioLabelComponent;
-  }
-}

@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
 import { BaseUIComponentArgs } from './base';
 import { MergeDeep } from 'type-fest';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkDatepickerInputComponent, {
   FlatpickerArgs,
 } from './tpk-datepicker/input';

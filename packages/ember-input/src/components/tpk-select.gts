@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import { guidFor } from '@ember/object/internals';
 import { assert } from '@ember/debug';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkSelectLabelComponent from './tpk-select/label';
 import TpkSelectOptionsComponent from './tpk-select/options';
 import TpkSelectButtonComponent from './tpk-select/button';

@@ -27,6 +27,7 @@ import type TpkSelectContainerOptionsOption from './components/tpk-select/option
 import type TpkTextareaComponent from './components/tpk-textarea';
 import type TpkTextareaInputComponent from './components/tpk-textarea/input';
 import type TpkTextareaLabelComponent from './components/tpk-textarea/label';
+import type tpkFocusTrap from './modifiers/focus-trap';
 
 export default interface Registry {
   'tpk-checkbox/input': typeof TpkCheckboxInputComponent;
@@ -87,4 +88,5 @@ export default interface Registry {
   TpkSelect: typeof TpkSelectComponent;
   'tpk-textarea': typeof TpkTextareaComponent;
   TpkTextarea: typeof TpkTextareaComponent;
+  'focus-trap': typeof tpkFocusTrap;
 }

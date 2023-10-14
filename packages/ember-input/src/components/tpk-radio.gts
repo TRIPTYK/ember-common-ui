@@ -2,7 +2,7 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { BaseUIComponent, BaseUIComponentArgs } from './base';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input';
 import TpkRadioLabelComponent from './tpk-radio/label';
 import { MergeDeep } from 'type-fest';

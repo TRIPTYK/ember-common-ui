@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { BaseUIComponent, BaseUIComponentArgs } from './base';
 import { MergeDeep } from 'type-fest';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkFileInputComponent from './tpk-file/input';
 import TpkFileLabelComponent from './tpk-file/label';
 import { hash } from '@ember/helper';

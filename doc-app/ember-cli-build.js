@@ -54,6 +54,7 @@ module.exports = function (defaults) {
     staticAddonTrees: true,
     staticHelpers: true,
     staticModifiers: true,
+    staticEmberSource: true,
     staticComponents: true,
   });
 };

@@ -6,7 +6,7 @@ import { assert } from '@ember/debug';
 import { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input';
 import TpkInputLabelComponent from './tpk-input/label';
-import { WithBoundArgs } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 

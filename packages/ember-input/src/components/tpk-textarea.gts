@@ -3,7 +3,7 @@ import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
 import { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input';
 import TpkTextareaLabelComponent from './tpk-textarea/label';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export type TpkTextareaSignature = {

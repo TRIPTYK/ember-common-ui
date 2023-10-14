@@ -1,6 +1,7 @@
 import ts from 'rollup-plugin-ts';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -20,7 +21,7 @@ export default {
     // up your addon's public API. Also make sure your package.json#exports
     // is aligned to the config here.
     // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
-    addon.publicEntrypoints(['index.js', '**/*.js']),
+    addon.publicEntrypoints(["index.js", "**/*.js"]),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
@@ -30,7 +31,7 @@ export default {
       'helpers/**/*.js',
       'modifiers/**/*.js',
       'services/**/*.js',
-      'modifiers/**/*.js',
+      "modifiers/**/*.js"
     ]),
 
     // Follow the V2 Addon rules about dependencies. Your code can import from
@@ -38,29 +39,16 @@ export default {
     // package names.
     addon.dependencies(),
 
+    glimmerTemplateTag({ preprocessOnly: true }),
+
     ts({
-      // can be changed to swc or other transpilers later
-      // but we need the ember plugins converted first
-      // (template compilation and co-location)
       transpiler: 'babel',
-      babelConfig: './babel.config.json',
-      browserslist: ['last 2 firefox versions', 'last 2 chrome versions'],
-      tsconfig: {
-        fileName: 'tsconfig.json',
-        hook: (config) => ({
-          ...config,
-          declaration: true,
-          declarationMap: true,
-          declarationDir: './dist',
-        }),
-      },
+      browserslist: false,
+      transpileOnly: true,
     }),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),
-
-    // Ensure that .gjs files are properly integrated as Javascript
-    addon.gjs(),
 
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.

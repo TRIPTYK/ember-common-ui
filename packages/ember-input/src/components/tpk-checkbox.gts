@@ -4,7 +4,7 @@ import { BaseUIComponent, BaseUIComponentArgs } from './base';
 import { MergeDeep } from 'type-fest';
 import TpkCheckboxLabelComponent from './tpk-checkbox/label';
 import TpkCheckboxInputComponent from './tpk-checkbox/input';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export type TpkCheckboxArgs = {

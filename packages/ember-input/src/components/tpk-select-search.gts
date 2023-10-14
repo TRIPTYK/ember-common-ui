@@ -4,7 +4,7 @@ import TpkSelectComponent, {
   moveOperations,
   SelectActions,
 } from './tpk-select';
-import { ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkSelectSearchLabelComponent from './tpk-select-search/label';
 import TpkSelectSearchOptionsComponent from './tpk-select-search/options';
 import TpkSelectSearchButtonComponent from './tpk-select-search/button';
