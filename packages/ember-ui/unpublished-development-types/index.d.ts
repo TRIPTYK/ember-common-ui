@@ -3,6 +3,7 @@
 // These will *not* be published as part of your addon, so be careful that your published code does not rely on them!
 
 import '@glint/environment-ember-loose';
+import '@glint/environment-ember-template-imports';
 import '@triptyk/ember-input/modifiers/focus-trap';
 import '@triptyk/ember-input/components/tpk-input';
 import type RenderModifiersRegistry from '@ember/render-modifiers/template-registry';

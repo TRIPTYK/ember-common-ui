@@ -15,7 +15,7 @@ export interface TpkValidationTextareaComponentSignature
   Blocks: {
     default: [
       {
-        Label: DirectInvokable<TpkTextareaLabelComponent>;
+        Label: ComponentLike<TpkTextareaLabelComponent>;
         Input: ComponentLike<TpkTextareaInputComponent>;
         errors: TpkValidationTextareaComponent['errors'];
         hasError: TpkValidationTextareaComponent['hasError'];
