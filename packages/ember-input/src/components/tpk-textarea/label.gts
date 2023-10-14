@@ -12,8 +12,7 @@ export interface TpkTextareaLabelComponentSignature {
   };
 }
 
-const TpkTextareaLabelComponent: TOC<TpkTextareaLabelComponentSignature> =
-  <template>
+const TpkTextareaLabelComponent: TOC<TpkTextareaLabelComponentSignature> = <template>
     <label
       for={{@guid}}
       class={{unless @classless 'tpk-textarea-label'}}

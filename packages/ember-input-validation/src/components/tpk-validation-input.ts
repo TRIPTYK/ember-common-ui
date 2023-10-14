@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
-import { BaseValidationSignature, BaseValidationComponent } from './base';
+import { type BaseValidationSignature, BaseValidationComponent } from './base';
 import TpkInputInputComponent from '@triptyk/ember-input/components/tpk-input/input';
 import TpkInputLabelComponent from '@triptyk/ember-input/components/tpk-input/label';
-import { ComponentLike } from '@glint/template';
+import { type ComponentLike } from '@glint/template';
 
 export interface TpkValidationInputComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
@@ -18,8 +18,8 @@ export interface TpkValidationInputComponentSignature extends BaseValidationSign
   Blocks: {
     default: [
       {
-        Input: ComponentLike<TpkInputInputComponent>;
-        Label: ComponentLike<TpkInputLabelComponent>;
+        Input: ComponentLike<typeof TpkInputInputComponent>;
+        Label: ComponentLike<typeof TpkInputLabelComponent>;
         errors: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];

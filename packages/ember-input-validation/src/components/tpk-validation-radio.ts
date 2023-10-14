@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
-import { BaseValidationSignature, BaseValidationComponent } from './base';
+import { type BaseValidationSignature, BaseValidationComponent } from './base';
 import TpkRadioLabelComponent from '@triptyk/ember-input/components/tpk-radio/label';
 import TpkRadioInputComponent from '@triptyk/ember-input/components/tpk-radio/input';
-import { ComponentLike } from '@glint/template';
+import { type ComponentLike } from '@glint/template';
 
 export interface TpkValidationRadioComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
@@ -16,8 +16,8 @@ export interface TpkValidationRadioComponentSignature extends BaseValidationSign
   Blocks: {
     default: [
       {
-        Input: ComponentLike<TpkRadioInputComponent>;
-        Label: ComponentLike<TpkRadioLabelComponent>;
+        Input: ComponentLike<typeof TpkRadioInputComponent>;
+        Label: ComponentLike<typeof TpkRadioLabelComponent>;
         errors: TpkValidationRadioComponent['errors'];
         hasError: TpkValidationRadioComponent['hasError'];
         firstError: TpkValidationRadioComponent['firstError'];

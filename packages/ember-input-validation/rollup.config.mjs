@@ -50,16 +50,7 @@ export default {
       // (template compilation and co-location)
       transpiler: 'babel',
       babelConfig: './babel.config.json',
-      browserslist: ['last 2 firefox versions', 'last 2 chrome versions'],
-      tsconfig: {
-        fileName: 'tsconfig.json',
-        hook: (config) => ({
-          ...config,
-          declaration: true,
-          declarationMap: true,
-          declarationDir: './dist',
-        }),
-      },
+      browserslist: ['last 2 firefox versions', 'last 2 chrome versions']
     }),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.

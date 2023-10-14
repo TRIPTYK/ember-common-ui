@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
-import { BaseValidationComponent, BaseValidationSignature } from './base';
-import { ComponentLike } from '@glint/template';
+import { BaseValidationComponent, type BaseValidationSignature } from './base';
+import type { ComponentLike } from '@glint/template';
 import TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
 import TpkFileLabelComponent from '@triptyk/ember-input/components/tpk-file/label';
 
@@ -15,8 +15,8 @@ export interface TpkValidationFileComponentSignature extends BaseValidationSigna
   Blocks: {
     default: [
       {
-        Input: ComponentLike<TpkFileInputComponent>;
-        Label: ComponentLike<TpkFileLabelComponent>;
+        Input: ComponentLike<typeof TpkFileInputComponent>;
+        Label: ComponentLike<typeof TpkFileLabelComponent>;
         errors: TpkValidationFileComponent['errors'];
         hasError: TpkValidationFileComponent['hasError'];
         firstError: TpkValidationFileComponent['firstError'];

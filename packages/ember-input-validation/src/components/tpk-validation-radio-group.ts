@@ -1,4 +1,4 @@
-import { BaseValidationSignature, BaseValidationComponent } from './base';
+import { type BaseValidationSignature, BaseValidationComponent } from './base';
 
 export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {

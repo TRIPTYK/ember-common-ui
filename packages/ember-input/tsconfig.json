@@ -3,5 +3,10 @@
   "include": ["src/**/*", "unpublished-development-types/**/*"],
   "glint": {
     "environment": ["ember-loose", "ember-template-imports"]
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "declarationDir": "declarations",
+    "allowImportingTsExtensions": true
   }
 }

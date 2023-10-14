@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
-import { Changeset } from 'ember-immer-changeset';
+import { type Changeset } from 'ember-immer-changeset';
 import { isFieldError } from '../utils/is-field-error';
 
 export interface BaseValidationSignature {
