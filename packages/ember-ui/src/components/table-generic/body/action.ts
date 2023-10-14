@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TableGenericBodyActionComponentSignature {
+export interface TableGenericBodyActionComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Action: any;

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkStackListHeadComponentSignature {
+export interface TpkStackListHeadComponentSignature {
   Args: {
     isExpanded: boolean;
     item: unknown;

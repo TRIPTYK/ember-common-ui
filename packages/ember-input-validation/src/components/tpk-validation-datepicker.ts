@@ -7,7 +7,7 @@ import TpkDatepickerInputComponent, {
 } from '@triptyk/ember-input/components/tpk-datepicker/input';
 import TpkDatepickerLabelComponent from '@triptyk/ember-input/components/tpk-datepicker/label';
 
-interface TpkValidationDatepickerComponentSignature
+export interface TpkValidationDatepickerComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;

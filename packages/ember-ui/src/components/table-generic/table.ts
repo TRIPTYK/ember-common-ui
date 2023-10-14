@@ -56,7 +56,7 @@ interface TableGenericTableArgs {
   additionalFilters: Record<string, unknown>;
 }
 
-interface TableGenericTableSignature {
+export interface TableGenericTableSignature {
   Args: TableGenericTableArgs;
   Element: HTMLDivElement;
   Blocks: {

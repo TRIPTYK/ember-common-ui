@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkRadioLabelComponentSignature {
+export interface TpkRadioLabelComponentSignature {
   Args: {
     guid: string;
     label: string;

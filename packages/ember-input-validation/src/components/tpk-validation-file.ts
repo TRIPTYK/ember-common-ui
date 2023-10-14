@@ -4,7 +4,7 @@ import { ComponentLike } from '@glint/template';
 import TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
 import TpkFileLabelComponent from '@triptyk/ember-input/components/tpk-file/label';
 
-interface TpkValidationFileComponentSignature extends BaseValidationSignature {
+export interface TpkValidationFileComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;

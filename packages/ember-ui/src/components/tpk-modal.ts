@@ -24,7 +24,7 @@ interface TpkModalEnv {
   };
 }
 
-interface TpkModalComponentSignature {
+export interface TpkModalComponentSignature {
   Args: TpkModalComponentArgs;
   Element: HTMLDivElement;
   Blocks: {

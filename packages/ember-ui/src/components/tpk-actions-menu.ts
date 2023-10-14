@@ -8,7 +8,7 @@ interface ActionsMenuComponentArgs {
   classless?: boolean;
 }
 
-interface ActionsMenuElementComponentSignature {
+export interface ActionsMenuElementComponentSignature {
   Args: ActionsMenuComponentArgs;
   Element: HTMLDivElement;
   Blocks: {

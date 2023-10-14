@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkFileInputComponentSignature {
+export interface TpkFileInputComponentSignature {
   Args: {
     guid: string;
     classless?: boolean;

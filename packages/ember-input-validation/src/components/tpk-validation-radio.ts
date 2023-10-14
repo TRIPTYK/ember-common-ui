@@ -4,7 +4,7 @@ import TpkRadioLabelComponent from '@triptyk/ember-input/components/tpk-radio/la
 import TpkRadioInputComponent from '@triptyk/ember-input/components/tpk-radio/input';
 import { ComponentLike } from '@glint/template';
 
-interface TpkValidationRadioComponentSignature extends BaseValidationSignature {
+export interface TpkValidationRadioComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     name?: string;

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TableGenericBodyCellComponentSignature {
+export interface TableGenericBodyCellComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     row: any;

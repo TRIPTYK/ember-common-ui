@@ -5,7 +5,7 @@ import { ComponentLike } from '@glint/template';
 import TpkCheckboxInputComponent from '@triptyk/ember-input/components/tpk-checkbox/input';
 import TpkCheckboxLabelComponent from '@triptyk/ember-input/components/tpk-checkbox/label';
 
-interface TpkValidationCheckboxComponentSignature
+export interface TpkValidationCheckboxComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;

@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 
-interface TpkSelectSearchInputComponentSignature {
+export interface TpkSelectSearchInputComponentSignature {
   Args: {
     classless?: boolean;
     registerControllerDiv: (element: HTMLDivElement) => void;

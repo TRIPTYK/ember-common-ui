@@ -49,7 +49,7 @@ export interface FlatpickerArgs {
   id?: string;
 }
 
-interface TpkDatepickerInputComponentSignature {
+export interface TpkDatepickerInputComponentSignature {
   Args: {
     guid: string;
     classless?: boolean;

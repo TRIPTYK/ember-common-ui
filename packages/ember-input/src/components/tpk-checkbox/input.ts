@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkCheckboxInputComponentSignature {
+export interface TpkCheckboxInputComponentSignature {
   Args: {
     guid: string;
     classless?: boolean;

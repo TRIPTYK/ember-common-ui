@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkConfirmModalCancelComponentSignature {
+export interface TpkConfirmModalCancelComponentSignature {
   Args: {
     onClose: (...args: unknown[]) => unknown;
     action: string;

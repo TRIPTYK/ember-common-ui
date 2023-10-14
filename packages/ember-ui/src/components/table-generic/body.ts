@@ -5,7 +5,7 @@ import { ComponentLike, WithBoundArgs } from '@glint/template';
 import TableGenericBodyCellComponent from './body/cell';
 import TableGenericBodyActionMenuComponent from './body/action-menu';
 
-interface TableGenericBodyComponentSignature {
+export interface TableGenericBodyComponentSignature {
   Args: {
     classless?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { ComponentLike } from '@glint/template';
 import TableGenericHeaderCellComponent from './header/cell';
 
-interface TableGenericHeaderComponentSignature {
+export interface TableGenericHeaderComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;

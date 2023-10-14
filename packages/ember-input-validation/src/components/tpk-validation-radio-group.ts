@@ -1,6 +1,6 @@
 import { BaseValidationSignature, BaseValidationComponent } from './base';
 
-interface TpkValidationRadioGroupComponentSignature
+export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;

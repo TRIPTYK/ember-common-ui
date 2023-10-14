@@ -7,7 +7,7 @@ interface TpkStepperStepHeaderArgs {
   isActive: boolean;
 }
 
-interface TpkStepperStepHeaderSignature {
+export interface TpkStepperStepHeaderSignature {
   Args: TpkStepperStepHeaderArgs;
   Element: HTMLElement;
   Blocks: {

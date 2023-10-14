@@ -36,7 +36,7 @@ interface PaginationArgs {
   paginationActions: TableGenericPaginationActions;
 }
 
-interface PaginationComponentSignature {
+export interface PaginationComponentSignature {
   Args: PaginationArgs;
   Element: HTMLDivElement;
 }

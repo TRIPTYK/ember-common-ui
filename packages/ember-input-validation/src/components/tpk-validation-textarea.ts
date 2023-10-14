@@ -4,7 +4,7 @@ import TpkTextareaInputComponent from '@triptyk/ember-input/components/tpk-texta
 import TpkTextareaLabelComponent from '@triptyk/ember-input/components/tpk-textarea/label';
 import { ComponentLike } from '@glint/template';
 
-interface TpkValidationTextareaComponentSignature
+export interface TpkValidationTextareaComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
@@ -15,7 +15,7 @@ interface TpkValidationTextareaComponentSignature
   Blocks: {
     default: [
       {
-        Label: ComponentLike<TpkTextareaLabelComponent>;
+        Label: DirectInvokable<TpkTextareaLabelComponent>;
         Input: ComponentLike<TpkTextareaInputComponent>;
         errors: TpkValidationTextareaComponent['errors'];
         hasError: TpkValidationTextareaComponent['hasError'];

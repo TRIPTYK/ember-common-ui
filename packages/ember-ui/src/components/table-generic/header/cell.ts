@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TableGenericHeaderCellComponentSignature {
+export interface TableGenericHeaderCellComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     header: any;

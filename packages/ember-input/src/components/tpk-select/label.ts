@@ -1,7 +1,7 @@
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 
-interface TpkSelectLabelComponentSignature {
+export interface TpkSelectLabelComponentSignature {
   Args: {
     guid: string;
     label: string;

@@ -9,7 +9,7 @@ interface UiModalContentArgs {
   title: string;
 }
 
-interface UiModalContentSignature {
+export interface UiModalContentSignature {
   Args: UiModalContentArgs;
   Element: HTMLDivElement;
   Blocks: {

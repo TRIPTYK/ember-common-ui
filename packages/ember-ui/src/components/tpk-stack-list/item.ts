@@ -7,7 +7,7 @@ interface StackListItemComponentArgs {
   zIndex: number;
 }
 
-interface StackListItemComponentSignature {
+export interface StackListItemComponentSignature {
   Args: StackListItemComponentArgs;
   Element: HTMLDivElement;
   Blocks: {

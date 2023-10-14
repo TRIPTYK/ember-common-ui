@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { WithBoundArgs } from '@glint/template';
 import type TableGenericBodyActionComponent from './action';
 
-interface TableGenericBodyActionMenuComponentSignature {
+export interface TableGenericBodyActionMenuComponentSignature {
   Args: {
     item: unknown;
     index: number;

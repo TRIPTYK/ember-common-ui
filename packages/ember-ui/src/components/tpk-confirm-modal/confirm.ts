@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-interface TpkConfirmModalConfirmComponentSignature {
+export interface TpkConfirmModalConfirmComponentSignature {
   Args: {
     onConfirm: (...args: unknown[]) => unknown;
   };
