@@ -665,6 +665,9 @@ importers:
       rollup-plugin-copy:
         specifier: ^3.4.0
         version: 3.5.0
+      rollup-plugin-glimmer-template-tag:
+        specifier: ^0.4.1
+        version: 0.4.1(@babel/core@7.23.2)(ember-source@5.3.0)(ember-template-imports@3.4.2)
       rollup-plugin-ts:
         specifier: ^3.4.5
         version: 3.4.5(@babel/core@7.23.2)(@babel/preset-typescript@7.23.2)(@babel/runtime@7.23.2)(rollup@4.1.0)(typescript@5.2.2)

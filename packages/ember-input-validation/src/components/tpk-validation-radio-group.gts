@@ -20,4 +20,24 @@ export default class TpkValidationRadioGroupComponent extends BaseValidationComp
   get firstErrorFormatted() {
     return super.firstError?.toString();
   }
+
+  <template>
+    <div
+      class={{unless @classless 'tpk-validation-radio-container'}}
+      data-has-error='{{this.hasError}}'
+      ...attributes
+    >
+      {{yield}}
+
+      {{#if this.hasError}}
+        {{#if (has-block 'errors')}}
+          {{yield this.errors to='errors'}}
+        {{else}}
+          <span class={{unless @classless 'tpk-validation-radio-error'}}>
+            {{this.firstErrorFormatted}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+  </template>
 }
