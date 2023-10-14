@@ -1,6 +1,10 @@
 import { action } from '@ember/object';
-import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
-import { MergeDeep } from 'type-fest';
+import {
+  BaseUIComponent,
+  type BaseUIComponentArgs,
+  type HtmlInputEvent,
+} from './base';
+import { type MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input';
 import TpkTextareaLabelComponent from './tpk-textarea/label';
 import type { ComponentLike } from '@glint/template';

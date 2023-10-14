@@ -1,5 +1,5 @@
 import { on } from '@ember/modifier';
-import { TOC } from '@ember/component/template-only';
+import type { TOC } from '@ember/component/template-only';
 
 export interface TpkCheckboxInputComponentSignature {
   Args: {

@@ -1,6 +1,6 @@
 import { on } from '@ember/modifier';
 import TpkSelectContainerOptionsOption, {
-  TpkSelectContainerOptionsOptionArgs,
+  type TpkSelectContainerOptionsOptionArgs,
 } from '../../tpk-select/options/option';
 import { fn, hash } from '@ember/helper';
 

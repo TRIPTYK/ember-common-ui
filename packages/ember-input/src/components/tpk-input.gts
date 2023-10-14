@@ -1,9 +1,13 @@
 import { action } from '@ember/object';
-import { BaseUIComponent, BaseUIComponentArgs, HtmlInputEvent } from './base';
-import IMask, { FactoryArg, InputMask } from 'imask';
+import {
+  BaseUIComponent,
+  type BaseUIComponentArgs,
+  type HtmlInputEvent,
+} from './base';
+import IMask, { type FactoryArg, InputMask } from 'imask';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
-import { MergeDeep } from 'type-fest';
+import { type MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input';
 import TpkInputLabelComponent from './tpk-input/label';
 import type { WithBoundArgs } from '@glint/template';
@@ -119,7 +123,10 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
             classless=@classless
           )
           Label=(component
-            TpkInputLabelComponent label=@label guid=this.guid classless=@classless
+            TpkInputLabelComponent
+            label=@label
+            guid=this.guid
+            classless=@classless
           )
           changeEvent=this.changeEvent
           guid=this.guid

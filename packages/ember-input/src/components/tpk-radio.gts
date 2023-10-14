@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { BaseUIComponent, BaseUIComponentArgs } from './base';
+import { BaseUIComponent, type BaseUIComponentArgs } from './base';
 import type { ComponentLike } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input';
 import TpkRadioLabelComponent from './tpk-radio/label';
-import { MergeDeep } from 'type-fest';
+import { type MergeDeep } from 'type-fest';
 import { hash } from '@ember/helper';
 
 export type TpkRadioSignature = {

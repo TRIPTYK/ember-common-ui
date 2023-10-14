@@ -1,4 +1,4 @@
-import { TOC } from '@ember/component/template-only';
+import { type TOC } from '@ember/component/template-only';
 import EmberFlatpickr from 'ember-flatpickr/components/ember-flatpickr';
 
 export interface FlatpickerArgs {

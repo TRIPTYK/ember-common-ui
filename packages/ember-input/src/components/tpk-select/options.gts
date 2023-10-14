@@ -2,7 +2,7 @@ import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
-import TpkSelectOptionsOptionComponent from './options/option';
+import TpkSelectOptionsOptionComponent from './options/option.gts';
 
 export interface TpkSelectOptionSignature {
   Args: {

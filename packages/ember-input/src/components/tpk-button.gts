@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
-import { BaseUIComponentArgs } from './base';
-import { MergeDeep } from 'type-fest';
+import { type BaseUIComponentArgs } from './base';
+import { type MergeDeep } from 'type-fest';
 import { on } from '@ember/modifier';
 
 export type TpkButtonSignature = {

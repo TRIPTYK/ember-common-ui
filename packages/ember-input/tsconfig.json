@@ -7,6 +7,7 @@
   "compilerOptions": {
     "allowJs": true,
     "declarationDir": "declarations",
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true
   }
 }
