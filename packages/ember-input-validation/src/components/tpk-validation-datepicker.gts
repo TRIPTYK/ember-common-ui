@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import { type BaseValidationSignature, BaseValidationComponent } from './base';
+import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
 import type { ComponentLike } from '@glint/template';
 import { assert } from '@ember/debug';
 import TpkDatepickerInputComponent, {

@@ -3,10 +3,10 @@ import {
   BaseUIComponent,
   type BaseUIComponentArgs,
   type HtmlInputEvent,
-} from './base';
+} from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import TpkTextareaInputComponent from './tpk-textarea/input';
-import TpkTextareaLabelComponent from './tpk-textarea/label';
+import TpkTextareaInputComponent from './tpk-textarea/input.gts';
+import TpkTextareaLabelComponent from './tpk-textarea/label.gts';
 import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 

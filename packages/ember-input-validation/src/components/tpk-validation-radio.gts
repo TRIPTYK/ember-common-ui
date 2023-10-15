@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import { type BaseValidationSignature, BaseValidationComponent } from './base';
+import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import TpkRadioLabelComponent from '@triptyk/ember-input/components/tpk-radio/label';
 import TpkRadioInputComponent from '@triptyk/ember-input/components/tpk-radio/input';

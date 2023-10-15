@@ -1,7 +1,7 @@
-import TpkSelectOptionsComponent from '../tpk-select/options';
+import TpkSelectOptionsComponent from '../tpk-select/options.gts';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
-import TpkSelectSearchOptionsOptionComponent from './options/option';
+import TpkSelectSearchOptionsOptionComponent from './options/option.gts';
 
 export default class TpkSelectSearchOptionsComponent extends TpkSelectOptionsComponent {
   <template>

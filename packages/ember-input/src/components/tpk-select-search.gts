@@ -3,15 +3,15 @@ import { action } from '@ember/object';
 import TpkSelectComponent, {
   moveOperations,
   SelectActions,
-} from './tpk-select';
+} from './tpk-select.gts';
 import type { ComponentLike } from '@glint/template';
-import TpkSelectSearchLabelComponent from './tpk-select-search/label';
-import TpkSelectSearchOptionsComponent from './tpk-select-search/options';
-import TpkSelectSearchButtonComponent from './tpk-select-search/button';
+import TpkSelectSearchLabelComponent from './tpk-select-search/label.gts';
+import TpkSelectSearchOptionsComponent from './tpk-select-search/options.gts';
+import TpkSelectSearchButtonComponent from './tpk-select-search/button.gts';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import { guidFor } from '@ember/object/internals';
-import TpkSelectSearchInputComponent from './tpk-select-search/input';
+import TpkSelectSearchInputComponent from './tpk-select-search/input.gts';
 import onClickOutside from 'ember-click-outside/modifiers/on-click-outside';
 import { on } from '@ember/modifier';
 import { hash } from '@ember/helper';

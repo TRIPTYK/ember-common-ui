@@ -1,10 +1,10 @@
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { BaseUIComponent, type BaseUIComponentArgs } from './base';
+import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { ComponentLike } from '@glint/template';
-import TpkFileInputComponent from './tpk-file/input';
-import TpkFileLabelComponent from './tpk-file/label';
+import TpkFileInputComponent from './tpk-file/input.gts';
+import TpkFileLabelComponent from './tpk-file/label.gts';
 import { hash } from '@ember/helper';
 
 export type TpkFileSignature = {

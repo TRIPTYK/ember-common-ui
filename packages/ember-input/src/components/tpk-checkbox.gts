@@ -1,9 +1,9 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { BaseUIComponent, type BaseUIComponentArgs } from './base';
+import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import TpkCheckboxLabelComponent from './tpk-checkbox/label';
-import TpkCheckboxInputComponent from './tpk-checkbox/input';
+import TpkCheckboxLabelComponent from './tpk-checkbox/label.gts';
+import TpkCheckboxInputComponent from './tpk-checkbox/input.gts';
 import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 

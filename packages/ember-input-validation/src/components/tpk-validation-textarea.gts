@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import { BaseValidationComponent, type BaseValidationSignature } from './base';
+import { BaseValidationComponent, type BaseValidationSignature } from './base.ts';
 import TpkTextarea from '@triptyk/ember-input/components/tpk-textarea';
 import TpkTextareaInputComponent from '@triptyk/ember-input/components/tpk-textarea/input';
 import TpkTextareaLabelComponent from '@triptyk/ember-input/components/tpk-textarea/label';

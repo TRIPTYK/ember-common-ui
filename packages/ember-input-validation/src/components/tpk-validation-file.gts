@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import { BaseValidationComponent, type BaseValidationSignature } from './base';
+import { BaseValidationComponent, type BaseValidationSignature } from './base.ts';
 import type { ComponentLike } from '@glint/template';
 import TpkFile from '@triptyk/ember-input/components/tpk-file';
 import TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';

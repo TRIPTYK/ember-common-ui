@@ -3,13 +3,13 @@ import {
   BaseUIComponent,
   type BaseUIComponentArgs,
   type HtmlInputEvent,
-} from './base';
+} from './base.ts';
 import IMask, { type FactoryArg, InputMask } from 'imask';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import type { MergeDeep } from 'type-fest';
-import TpkInputInputComponent from './tpk-input/input';
-import TpkInputLabelComponent from './tpk-input/label';
+import TpkInputInputComponent from './tpk-input/input.gts';
+import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
