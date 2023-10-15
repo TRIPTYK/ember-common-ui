@@ -1,12 +1,12 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
 import { type BaseUIComponentArgs } from './base';
-import { type MergeDeep } from 'type-fest';
+import type { MergeDeep } from 'type-fest';
 import type { ComponentLike } from '@glint/template';
 import TpkDatepickerInputComponent, {
   type FlatpickerArgs,
 } from './tpk-datepicker/input';
-import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
+import TpkDatepickerLabelComponent from './tpk-datepicker/label';
 import { hash } from '@ember/helper';
 
 export type TpkDatepickerSignature = {

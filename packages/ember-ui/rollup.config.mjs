@@ -39,7 +39,7 @@ export default {
     // package names.
     addon.dependencies(),
 
-    glimmerTemplateTag({ preprocessOnly: true }),
+//     glimmerTemplateTag(),
 
     ts({
       transpiler: 'babel',
@@ -49,6 +49,9 @@ export default {
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),
+
+    // Ensure that .gjs files are properly integrated as Javascript
+addon.gjs(),
 
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.

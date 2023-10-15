@@ -3,7 +3,7 @@ import { type BaseValidationSignature, BaseValidationComponent } from './base';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import TpkRadioLabelComponent from '@triptyk/ember-input/components/tpk-radio/label';
 import TpkRadioInputComponent from '@triptyk/ember-input/components/tpk-radio/input';
-import { type ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationRadioComponentSignature

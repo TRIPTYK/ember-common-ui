@@ -7,7 +7,7 @@ import {
 import IMask, { type FactoryArg, InputMask } from 'imask';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
-import { type MergeDeep } from 'type-fest';
+import type { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input';
 import TpkInputLabelComponent from './tpk-input/label';
 import type { WithBoundArgs } from '@glint/template';

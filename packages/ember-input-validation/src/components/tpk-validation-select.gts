@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { type BaseValidationSignature, BaseValidationComponent } from './base';
 import TpkSelectLabelComponent from '@triptyk/ember-input/components/tpk-select/label';
-import { type ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkSelect from '@triptyk/ember-input/components/tpk-select';
 import TpkSelectOptionsComponent from '@triptyk/ember-input/components/tpk-select/options';
 import TpkSelectButtonComponent from '@triptyk/ember-input/components/tpk-select/button';

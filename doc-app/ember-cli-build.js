@@ -15,6 +15,9 @@ module.exports = function (defaults) {
         '@triptyk/ember-input-validation',
       ],
     },
+    'ember-fetch': {
+      nativePromise: true
+    },
     postcssOptions: {
       compile: {
         enabled: true,

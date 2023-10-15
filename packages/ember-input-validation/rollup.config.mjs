@@ -12,6 +12,7 @@ export default {
   // This provides defaults that work well alongside `publicEntrypoints` below.
   // You can augment this if you need to.
   output: addon.output(),
+  external: [],
 
   plugins: [
     // These are the modules that users should be able to import from your
@@ -21,7 +22,7 @@ export default {
     // up your addon's public API. Also make sure your package.json#exports
     // is aligned to the config here.
     // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
-    addon.publicEntrypoints(["index.js", "**/*.js"]),
+    addon.publicEntrypoints(['index.js', '**/*.js']),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
@@ -31,7 +32,7 @@ export default {
       'helpers/**/*.js',
       'modifiers/**/*.js',
       'services/**/*.js',
-      "modifiers/**/*.js"
+      'modifiers/**/*.js',
     ]),
 
     // Follow the V2 Addon rules about dependencies. Your code can import from
@@ -39,13 +40,16 @@ export default {
     // package names.
     addon.dependencies(),
 
-    glimmerTemplateTag({ preprocessOnly: true }),
+//     glimmerTemplateTag(),
 
     ts({
       transpiler: 'babel',
       browserslist: false,
       transpileOnly: true,
     }),
+
+    // Ensure that .gjs files are properly integrated as Javascript
+addon.gjs(),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),

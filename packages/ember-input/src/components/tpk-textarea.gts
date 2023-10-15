@@ -4,7 +4,7 @@ import {
   type BaseUIComponentArgs,
   type HtmlInputEvent,
 } from './base';
-import { type MergeDeep } from 'type-fest';
+import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input';
 import TpkTextareaLabelComponent from './tpk-textarea/label';
 import type { ComponentLike } from '@glint/template';

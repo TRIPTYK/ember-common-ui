@@ -288,6 +288,9 @@ importers:
       qunit-dom:
         specifier: ^3.0.0
         version: 3.0.0
+      rsvp:
+        specifier: ^4.8.5
+        version: 4.8.5
       stylelint:
         specifier: ^15.10.3
         version: 15.10.3(typescript@5.2.2)

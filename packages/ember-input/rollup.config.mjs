@@ -1,4 +1,6 @@
-import { babel } from '@rollup/plugin-babel';
+import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
+import babel from '@rollup/plugin-babel';
+import ts from 'rollup-plugin-ts';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
 
@@ -43,6 +45,8 @@ export default {
     //
     // By default, this will load the actual babel config from the file
     // babel.config.json.
+    //     glimmerTemplateTag(),
+
     babel({
       extensions: ['.js', '.gjs', '.ts', '.gts'],
       babelHelpers: 'bundled',

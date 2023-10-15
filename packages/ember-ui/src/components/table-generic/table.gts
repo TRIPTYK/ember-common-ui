@@ -12,7 +12,7 @@ import TableGenericBodyComponent from './body';
 import TableGenericHeaderComponent from './header';
 import TableGenericFooterComponent from './footer';
 // @ts-expect-error missing types
-import YetiTable from 'ember-yeti-table/components/yeti-table';
+import YetiTable from 'ember-yeti-table/components/yeti-table/component';
 import { hash } from '@ember/helper';
 import LoadingIndicator from '../loading-indicator';
 

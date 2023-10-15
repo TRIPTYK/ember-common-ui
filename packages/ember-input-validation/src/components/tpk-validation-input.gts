@@ -3,7 +3,7 @@ import { type BaseValidationSignature, BaseValidationComponent } from './base';
 import TpkInputInputComponent from '@triptyk/ember-input/components/tpk-input/input';
 import TpkInputLabelComponent from '@triptyk/ember-input/components/tpk-input/label';
 import TpkInput from '@triptyk/ember-input/components/tpk-input';
-import { type ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationInputComponentSignature

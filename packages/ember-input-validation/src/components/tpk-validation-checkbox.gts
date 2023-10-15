@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { type BaseValidationSignature, BaseValidationComponent } from './base';
 import { assert } from '@ember/debug';
-import { type ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import TpkCheckbox from '@triptyk/ember-input/components/tpk-checkbox';
 import TpkCheckboxInputComponent from '@triptyk/ember-input/components/tpk-checkbox/input';
 import TpkCheckboxLabelComponent from '@triptyk/ember-input/components/tpk-checkbox/label';

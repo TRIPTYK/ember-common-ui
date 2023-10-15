@@ -3,7 +3,7 @@ import { BaseValidationComponent, type BaseValidationSignature } from './base';
 import TpkTextarea from '@triptyk/ember-input/components/tpk-textarea';
 import TpkTextareaInputComponent from '@triptyk/ember-input/components/tpk-textarea/input';
 import TpkTextareaLabelComponent from '@triptyk/ember-input/components/tpk-textarea/label';
-import { type ComponentLike } from '@glint/template';
+import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationTextareaComponentSignature

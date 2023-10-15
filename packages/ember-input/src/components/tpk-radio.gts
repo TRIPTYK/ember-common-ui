@@ -5,7 +5,7 @@ import { BaseUIComponent, type BaseUIComponentArgs } from './base';
 import type { ComponentLike } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input';
 import TpkRadioLabelComponent from './tpk-radio/label';
-import { type MergeDeep } from 'type-fest';
+import type { MergeDeep } from 'type-fest';
 import { hash } from '@ember/helper';
 
 export type TpkRadioSignature = {
