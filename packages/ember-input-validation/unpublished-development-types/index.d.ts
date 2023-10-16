@@ -2,14 +2,7 @@
 // These will *not* be published as part of your addon, so be careful that your published code does not rely on them!
 
 import '@glint/environment-ember-loose';
-import '@triptyk/ember-input/components/tpk-checkbox';
-import '@triptyk/ember-input/components/tpk-datepicker';
-import '@triptyk/ember-input/components/tpk-file';
-import '@triptyk/ember-input/components/tpk-input';
-import '@triptyk/ember-input/components/tpk-radio';
-import '@triptyk/ember-input/components/tpk-select';
-import '@triptyk/ember-input/components/tpk-textarea';
-import '@triptyk/ember-input/components/tpk-select-search';
+import '@glint/environment-ember-template-loose';
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

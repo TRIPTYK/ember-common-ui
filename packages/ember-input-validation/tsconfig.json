@@ -9,7 +9,8 @@
   },
   "compilerOptions": {
     "allowJs": true,
-    "allowImportingTsExtensions": true,
-    "declarationDir": "declarations"
+    "declarationDir": "declarations",
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true
   }
 }

@@ -11,6 +11,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
     "declarationDir": "declarations"
   }
 }
