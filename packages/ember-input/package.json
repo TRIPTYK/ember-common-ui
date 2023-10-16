@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-input",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.10",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon"
@@ -64,7 +64,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
-    "type-fest": "^4.4.0",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-decorators": "^7.23.2",
     "@babel/plugin-transform-class-static-block": "^7.20.0",
@@ -115,6 +114,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-glimmer-template-tag": "^0.4.1",
     "rollup-plugin-ts": "^3.4.5",
+    "type-fest": "^4.4.0",
     "typescript": "^5.0.4",
     "webpack": "^5.89.0"
   },
