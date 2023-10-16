@@ -1,6 +1,4 @@
-import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
 import babel from '@rollup/plugin-babel';
-import ts from 'rollup-plugin-ts';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
 
@@ -38,14 +36,6 @@ export default {
     // `dependencies` and `peerDependencies` as well as standard Ember-provided
     // package names.
     addon.dependencies(),
-
-    // This babel config should *not* apply presets or compile away ES modules.
-    // It exists only to provide development niceties for you, like automatic
-    // template colocation.
-    //
-    // By default, this will load the actual babel config from the file
-    // babel.config.json.
-    //     glimmerTemplateTag(),
 
     babel({
       extensions: ['.js', '.gjs', '.ts', '.gts'],

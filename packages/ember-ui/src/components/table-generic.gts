@@ -2,8 +2,10 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import type { WithBoundArgs } from '@glint/template';
-import TableGenericSearchBarComponent from './table-generic/search-bar';
-import TableGenericTableComponent, { TableApi } from './table-generic/table';
+import TableGenericSearchBarComponent from './table-generic/search-bar.gts';
+import TableGenericTableComponent, {
+  type TableApi,
+} from './table-generic/table.gts';
 import { hash } from '@ember/helper';
 import t from 'ember-intl/helpers/t';
 

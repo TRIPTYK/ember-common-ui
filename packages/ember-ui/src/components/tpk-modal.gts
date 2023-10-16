@@ -1,14 +1,14 @@
 import { getOwner } from '@ember/application';
-import ApplicationInstance from '@ember/application/instance';
+import type ApplicationInstance from '@ember/application/instance';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { modifier } from 'ember-modifier';
-import DialogLayerService from '../services/dialog-layer';
+import DialogLayerService from '../services/dialog-layer.ts';
 import { guidFor } from '@ember/object/internals';
 import type { WithBoundArgs } from '@glint/template';
-import TpkModalContentComponent from './tpk-modal/content';
+import TpkModalContentComponent from './tpk-modal/content.gts';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import { hash } from '@ember/helper';

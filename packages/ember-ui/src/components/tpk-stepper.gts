@@ -2,8 +2,8 @@ import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
-import TpkStepperStepComponent from './tpk-stepper/step';
-import TpkStepperStepperComponent from './tpk-stepper/stepper';
+import TpkStepperStepComponent from './tpk-stepper/step.gts';
+import TpkStepperStepperComponent from './tpk-stepper/stepper.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 

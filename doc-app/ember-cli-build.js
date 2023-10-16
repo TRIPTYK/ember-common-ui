@@ -16,7 +16,7 @@ module.exports = function (defaults) {
       ],
     },
     'ember-fetch': {
-      nativePromise: true
+      nativePromise: true,
     },
     postcssOptions: {
       compile: {
@@ -36,28 +36,21 @@ module.exports = function (defaults) {
     },
   });
 
-  /*
-    This build file specifies the options for the dummy test app of this
-    addon, located in `/tests/dummy`
-    This build file does *not* influence how the addon or the app using it
-    behave. You most likely want to be modifying `./index.js` or app's build file
-  */
-
-  // const { maybeEmbroider } = require('@embroider/test-setup');
-  // return maybeEmbroider(app, {
-  //   skipBabel: [
-  //     {
-  //       package: 'qunit',
-  //     },
-  //   ],
-  // });
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticAddonTestSupportTrees: true,
+    extraPublicTrees: [],
     staticAddonTrees: true,
+    staticAddonTestSupportTrees: true,
     staticHelpers: true,
     staticModifiers: true,
-    staticEmberSource: true,
     staticComponents: true,
+    splitControllers: true,
+    splitRouteClasses: true,
+    packagerOptions: {
+      webpackConfig: {
+        // Highest fidelity
+        devtool: 'source-map',
+      },
+    },
   });
 };

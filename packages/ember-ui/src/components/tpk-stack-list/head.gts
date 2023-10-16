@@ -1,5 +1,4 @@
-import { TOC } from '@ember/component/template-only';
-import { fn } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 
 export interface TpkStackListHeadComponentSignature {

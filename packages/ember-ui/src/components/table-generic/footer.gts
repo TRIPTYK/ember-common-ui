@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 import TableGenericPaginationComponent, {
-  TableGenericPaginationActions,
-  TableGenericPaginationData,
-  TableGenericTheme,
-} from './pagination';
+  type TableGenericPaginationActions,
+  type TableGenericPaginationData,
+  type TableGenericTheme,
+} from './pagination.gts';
 import { hash } from '@ember/helper';
 
 interface TableGenericFooterComponentArgs {

@@ -1,8 +1,7 @@
 import type { WithBoundArgs } from '@glint/template';
-import TableGenericBodyActionComponent from './action';
-import { TOC } from '@ember/component/template-only';
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import TpkActionsMenu from '../../tpk-actions-menu';
+import TableGenericBodyActionComponent from './action.gts';
+import type { TOC } from '@ember/component/template-only';import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+import TpkActionsMenu from '../../tpk-actions-menu.gts';
 
 export interface TableGenericBodyActionMenuComponentSignature {
   Args: {

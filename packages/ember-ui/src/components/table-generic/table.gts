@@ -8,13 +8,13 @@ import { action } from '@ember/object';
 import type ModelRegistry from 'ember-data/types/registries/model';
 import { waitFor } from '@ember/test-waiters';
 import type { WithBoundArgs } from '@glint/template';
-import TableGenericBodyComponent from './body';
-import TableGenericHeaderComponent from './header';
-import TableGenericFooterComponent from './footer';
+import TableGenericBodyComponent from './body.gts';
+import TableGenericHeaderComponent from './header.gts';
+import TableGenericFooterComponent from './footer.gts';
 // @ts-expect-error missing types
 import YetiTable from 'ember-yeti-table/components/yeti-table/component';
 import { hash } from '@ember/helper';
-import LoadingIndicator from '../loading-indicator';
+import LoadingIndicator from '../loading-indicator.gts';
 
 export interface SortData {
   prop: string;

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import type { ComponentLike } from '@glint/template';
-import TpkStepperStepHeaderComponent from './step/header';
+import TpkStepperStepHeaderComponent from './step/header.gts';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import { hash } from '@ember/helper';

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
-import { type BaseUIComponentArgs } from './base.ts';
+import type { BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { ComponentLike } from '@glint/template';
 import TpkDatepickerInputComponent, {

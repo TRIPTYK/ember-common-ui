@@ -1,9 +1,8 @@
 import type { WithBoundArgs } from '@glint/template';
-import TpkConfirmModalConfirmComponent from './tpk-confirm-modal/confirm';
-import TpkConfirmModalCancelComponent from './tpk-confirm-modal/cancel';
+import TpkConfirmModalConfirmComponent from './tpk-confirm-modal/confirm.gts';
+import TpkConfirmModalCancelComponent from './tpk-confirm-modal/cancel.gts';
 import { hash } from '@ember/helper';
-import { TOC } from '@ember/component/template-only';
-import TpkModal from './tpk-modal';
+import type { TOC } from '@ember/component/template-only';import TpkModal from './tpk-modal.gts';
 
 export interface TpkConfirmModalSignature {
   Args: {

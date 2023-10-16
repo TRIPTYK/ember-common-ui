@@ -1,5 +1,4 @@
-import { TOC } from '@ember/component/template-only';
-
+import type { TOC } from '@ember/component/template-only';
 export interface TableGenericHeaderCellComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

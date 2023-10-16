@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import type { WithBoundArgs } from '@glint/template';
-import TpkActionsMenuElementComponent from './tpk-actions-menu/element';
+import TpkActionsMenuElementComponent from './tpk-actions-menu/element.gts';
 import { on } from '@ember/modifier';
 import onClickOutside from 'ember-click-outside/modifiers/on-click-outside';
 

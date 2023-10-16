@@ -1,7 +1,6 @@
 import type { ComponentLike } from '@glint/template';
-import TableGenericHeaderCellComponent from './header/cell';
-import { TOC } from '@ember/component/template-only';
-import { hash } from '@ember/helper';
+import TableGenericHeaderCellComponent from './header/cell.gts';
+import type { TOC } from '@ember/component/template-only';import { hash } from '@ember/helper';
 
 export interface TableGenericHeaderComponentSignature {
   Args: {

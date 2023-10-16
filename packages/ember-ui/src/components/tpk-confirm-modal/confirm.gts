@@ -1,5 +1,4 @@
-import { TOC } from '@ember/component/template-only';
-import { on } from '@ember/modifier';
+import type { TOC } from '@ember/component/template-only';import { on } from '@ember/modifier';
 
 export interface TpkConfirmModalConfirmComponentSignature {
   Args: {
