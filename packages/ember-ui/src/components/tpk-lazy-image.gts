@@ -5,15 +5,15 @@ import { tracked } from 'tracked-built-ins';
 
 export interface LazyImageComponentSignature {
   Args: {
-    src: string;
-    alt: string;
-    class?: string;
     defaultImage: string;
   };
   Element: HTMLImageElement;
+  Blocks: {
+    default: [];
+  };
 }
 
-export default class LazyImageComponent extends Component<LazyImageComponentSignature> {
+export default class TpkLazyImageComponent extends Component<LazyImageComponentSignature> {
   @tracked isLoaded = false;
 
   @action imageLoaded() {

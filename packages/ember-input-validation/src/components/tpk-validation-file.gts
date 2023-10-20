@@ -50,6 +50,7 @@ export default class TpkValidationFileComponent extends BaseValidationComponent<
       @onChange={{this.onChange}}
       @changeEvent={{@changeEvent}}
       @classless={{@classless}}
+      @multiple={{@multiple}}
       ...attributes
       data-has-error='{{this.hasError}}'
       as |I|

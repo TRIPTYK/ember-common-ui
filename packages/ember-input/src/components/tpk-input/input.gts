@@ -13,7 +13,7 @@ export interface TpkInputInputComponentSignature {
   };
   Element: HTMLInputElement;
   Blocks: {
-    default: [];
+    default: unknown[];
   };
 }
 

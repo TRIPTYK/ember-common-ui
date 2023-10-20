@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input.gts';
 import TpkRadioLabelComponent from './tpk-radio/label.gts';
 import type { MergeDeep } from 'type-fest';
@@ -23,8 +22,21 @@ export type TpkRadioSignature = {
   Blocks: {
     default: [
       {
-        Label: ComponentLike<typeof TpkRadioLabelComponent>;
-        Input: ComponentLike<typeof TpkRadioInputComponent>;
+        Label: WithBoundArgs<
+          typeof TpkRadioLabelComponent,
+          'guid' | 'label' | 'classless'
+        >;
+        Input: WithBoundArgs<
+          typeof TpkRadioInputComponent,
+          | 'guid'
+          | 'selected'
+          | 'disabled'
+          | 'name'
+          | 'value'
+          | 'changeEvent'
+          | 'onChange'
+          | 'classless'
+        >;
         onChange: TpkRadioComponent['onChange'];
         changeEvent: 'input' | 'change';
         guid: string;
@@ -58,7 +70,10 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
       {{yield
         (hash
           Label=(component
-            TpkRadioLabelComponent guid=this.guid label=@label classless=@classless
+            TpkRadioLabelComponent
+            guid=this.guid
+            label=@label
+            classless=@classless
           )
           Input=(component
             TpkRadioInputComponent

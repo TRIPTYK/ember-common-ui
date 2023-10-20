@@ -2,12 +2,61 @@ import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
 import type { BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import TpkDatepickerInputComponent, {
   type FlatpickerArgs,
 } from './tpk-datepicker/input.gts';
 import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
 import { hash } from '@ember/helper';
+
+type DatepickerOptionKey =
+  | 'onChange'
+  | 'onClose'
+  | 'value'
+  | 'guid'
+  | 'disabled'
+  | 'placeholder'
+  | 'altFormat'
+  | 'altInput'
+  | 'altInputClass'
+  | 'allowInput'
+  | 'allowInvalidPreload'
+  | 'appendTo'
+  | 'ariaDateFormat'
+  | 'conjunction'
+  | 'clickOpens'
+  | 'defaultDate'
+  | 'defaultHour'
+  | 'defaultMinute'
+  | 'disabledDates'
+  | 'disableMobile'
+  | 'enable'
+  | 'enableTime'
+  | 'classless'
+  | 'dateFormat'
+  | 'enableSeconds'
+  | 'formatDate'
+  | 'hourIncrement'
+  | 'inline'
+  | 'maxDate'
+  | 'minDate'
+  | 'locale'
+  | 'minuteIncrement'
+  | 'mode'
+  | 'nextArrow'
+  | 'noCalendar'
+  | 'onOpen'
+  | 'onReady'
+  | 'parseDate'
+  | 'position'
+  | 'positionElement'
+  | 'prevArrow'
+  | 'shorthandCurrentMonth'
+  | 'showMonths'
+  | 'time_24hr'
+  | 'weekNumbers'
+  | 'wrap'
+  | 'monthSelectorType';
 
 export type TpkDatepickerSignature = {
   Args: MergeDeep<
@@ -21,8 +70,14 @@ export type TpkDatepickerSignature = {
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkDatepickerInputComponent>;
-        Label: ComponentLike<typeof TpkDatepickerLabelComponent>;
+        Input: WithBoundArgs<
+          typeof TpkDatepickerInputComponent,
+          DatepickerOptionKey
+        >;
+        Label: WithBoundArgs<
+          typeof TpkDatepickerLabelComponent,
+          'guid' | 'classless' | 'label'
+        >;
         guid: string;
       },
     ];

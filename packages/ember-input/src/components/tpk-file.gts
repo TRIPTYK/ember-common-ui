@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import TpkFileInputComponent from './tpk-file/input.gts';
 import TpkFileLabelComponent from './tpk-file/label.gts';
 import { hash } from '@ember/helper';
@@ -12,6 +12,7 @@ export type TpkFileSignature = {
     BaseUIComponentArgs['Args'],
     {
       accept?: string;
+      multiple?: boolean;
       disabled?: boolean;
       onChange?: (value: File[], e: Event) => unknown;
     }
@@ -19,8 +20,14 @@ export type TpkFileSignature = {
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkFileInputComponent>;
-        Label: ComponentLike<typeof TpkFileLabelComponent>;
+        Input: WithBoundArgs<
+          typeof TpkFileInputComponent,
+          'onChange' | 'accept' | 'disabled' | 'changeEvent' | 'guid'
+        >;
+        Label: WithBoundArgs<
+          typeof TpkFileLabelComponent,
+          'label' | 'guid' | 'classless'
+        >;
         guid: string;
         changeEvent: 'input' | 'change';
         onChange: TpkFileComponent['onChange'];
@@ -55,6 +62,7 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
             onChange=this.onChange
             accept=@accept
             disabled=@disabled
+            multiple=@multiple
             changeEvent=this.changeEvent
             guid=this.guid
             classless=@classless

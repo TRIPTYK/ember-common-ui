@@ -1,9 +1,7 @@
 import { action } from '@ember/object';
 import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
-import TpkInputInputComponent from '@triptyk/ember-input/components/tpk-input/input';
-import TpkInputLabelComponent from '@triptyk/ember-input/components/tpk-input/label';
+import type {TpkInputSignature} from '@triptyk/ember-input/components/tpk-input';
 import TpkInput from '@triptyk/ember-input/components/tpk-input';
-import type { ComponentLike } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationInputComponentSignature
@@ -21,8 +19,8 @@ export interface TpkValidationInputComponentSignature
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkInputInputComponent>;
-        Label: ComponentLike<typeof TpkInputLabelComponent>;
+        Input: TpkInputSignature['Blocks']['default'][0]['Input'];
+        Label: TpkInputSignature['Blocks']['default'][0]['Label'];
         errors: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];

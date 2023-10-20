@@ -4,10 +4,8 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import { assert } from '@ember/debug';
-import type { ComponentLike } from '@glint/template';
 import TpkCheckbox from '@triptyk/ember-input/components/tpk-checkbox';
-import TpkCheckboxInputComponent from '@triptyk/ember-input/components/tpk-checkbox/input';
-import TpkCheckboxLabelComponent from '@triptyk/ember-input/components/tpk-checkbox/label';
+import type { TpkCheckboxSignature } from '@triptyk/ember-input/components/tpk-checkbox';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationCheckboxComponentSignature
@@ -21,8 +19,8 @@ export interface TpkValidationCheckboxComponentSignature
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkCheckboxInputComponent>;
-        Label: ComponentLike<typeof TpkCheckboxLabelComponent>;
+        Input: TpkCheckboxSignature['Blocks']['default'][0]['Input'];
+        Label: TpkCheckboxSignature['Blocks']['default'][0]['Label'];
         errors: TpkValidationCheckboxComponent['errors'];
         hasError: TpkValidationCheckboxComponent['hasError'];
         firstError: TpkValidationCheckboxComponent['firstError'];

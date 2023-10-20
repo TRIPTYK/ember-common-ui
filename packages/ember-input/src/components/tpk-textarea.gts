@@ -7,7 +7,7 @@ import {
 import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
 import TpkTextareaLabelComponent from './tpk-textarea/label.gts';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 
 export type TpkTextareaSignature = {
@@ -26,8 +26,19 @@ export type TpkTextareaSignature = {
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkTextareaInputComponent>;
-        Label: ComponentLike<typeof TpkTextareaLabelComponent>;
+        Input: WithBoundArgs<
+          typeof TpkTextareaInputComponent,
+          | 'classless'
+          | 'guid'
+          | 'value'
+          | 'changeEvent'
+          | 'disabled'
+          | 'onChange'
+        >;
+        Label: WithBoundArgs<
+          typeof TpkTextareaLabelComponent,
+          'classless' | 'guid' | 'label'
+        >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
         guid: string;

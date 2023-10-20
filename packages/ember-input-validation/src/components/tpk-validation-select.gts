@@ -1,10 +1,10 @@
 import { action } from '@ember/object';
-import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
-import TpkSelectLabelComponent from '@triptyk/ember-input/components/tpk-select/label';
-import type { ComponentLike } from '@glint/template';
+import {
+  type BaseValidationSignature,
+  BaseValidationComponent,
+} from './base.ts';
+import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 import TpkSelect from '@triptyk/ember-input/components/tpk-select';
-import TpkSelectOptionsComponent from '@triptyk/ember-input/components/tpk-select/options';
-import TpkSelectButtonComponent from '@triptyk/ember-input/components/tpk-select/button';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationSelectComponentSignature
@@ -18,15 +18,14 @@ export interface TpkValidationSelectComponentSignature
     selected?: string;
     classless?: boolean;
     changeEvent?: 'input' | 'change';
-    value: string;
     disabled?: boolean;
   };
   Blocks: {
     default: [
       {
-        Label: ComponentLike<TpkSelectLabelComponent>;
-        Options: ComponentLike<TpkSelectOptionsComponent>;
-        Button: ComponentLike<TpkSelectButtonComponent>;
+        Label: TpkSelectSignature['Blocks']['default'][0]['Label'];
+        Options: TpkSelectSignature['Blocks']['default'][0]['Options'];
+        Button: TpkSelectSignature['Blocks']['default'][0]['Button'];
         label?: string;
         selected?: string;
         hasSelection: boolean;

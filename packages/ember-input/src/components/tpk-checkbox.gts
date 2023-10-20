@@ -4,10 +4,10 @@ import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import TpkCheckboxLabelComponent from './tpk-checkbox/label.gts';
 import TpkCheckboxInputComponent from './tpk-checkbox/input.gts';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 
-export type TpkCheckboxArgs = {
+export type TpkCheckboxSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
@@ -19,8 +19,14 @@ export type TpkCheckboxArgs = {
   Blocks: {
     default: [
       {
-        Label: ComponentLike<typeof TpkCheckboxLabelComponent>;
-        Input: ComponentLike<typeof TpkCheckboxInputComponent>;
+        Label: WithBoundArgs<
+          typeof TpkCheckboxLabelComponent,
+          'guid' | 'label' | 'classless'
+        >;
+        Input: WithBoundArgs<
+          typeof TpkCheckboxInputComponent,
+          'changeEvent' | 'onChange' | 'guid' | 'checked' | 'classless'
+        >;
         onChange: TpkCheckboxComponent['onChange'];
         changeEvent: 'input' | 'change';
         guid: string;
@@ -30,8 +36,8 @@ export type TpkCheckboxArgs = {
   Element: HTMLDivElement;
 };
 
-export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxArgs> {
-  constructor(owner: unknown, args: TpkCheckboxArgs['Args']) {
+export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSignature> {
+  constructor(owner: unknown, args: TpkCheckboxSignature['Args']) {
     super(owner, args);
     assert('@checked is required', typeof args.checked === 'boolean');
     assert('@label is required', args.label !== undefined);

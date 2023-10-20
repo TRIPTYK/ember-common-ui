@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import { guidFor } from '@ember/object/internals';
 import { assert } from '@ember/debug';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import TpkSelectLabelComponent from './tpk-select/label.gts';
 import TpkSelectOptionsComponent from './tpk-select/options.gts';
 import TpkSelectButtonComponent from './tpk-select/button.gts';
@@ -28,9 +28,32 @@ export interface TpkSelectSignature {
   Blocks: {
     default: [
       {
-        Label: ComponentLike<TpkSelectLabelComponent>;
-        Options: ComponentLike<TpkSelectOptionsComponent>;
-        Button: ComponentLike<TpkSelectButtonComponent>;
+        Label: WithBoundArgs<
+          typeof TpkSelectLabelComponent,
+          'guid' | 'classless' | 'label' | 'registerLabel'
+        >;
+        Options: WithBoundArgs<
+          typeof TpkSelectOptionsComponent,
+          | 'labelId'
+          | 'selected'
+          | 'multiple'
+          | 'activeChild'
+          | 'refreshChildren'
+          | 'onChange'
+          | 'options'
+          | 'guid'
+        >;
+        Button: WithBoundArgs<
+          typeof TpkSelectButtonComponent,
+          | 'labelId'
+          | 'optionListId'
+          | 'activeChild'
+          | 'onSelectButtonClick'
+          | 'registerControllerDiv'
+          | 'selected'
+          | 'classless'
+          | 'isOpen'
+        >;
         isOpen: boolean;
         selected: unknown;
         guid: string;

@@ -12,7 +12,7 @@ export interface FlatpickerArgs {
   conjunction?: string;
   clickOpens?: boolean;
   dateFormat?: string | Array<string>;
-  defaultDate?: string | Date;
+  defaultDate?: string | Date | null;
   defaultHour?: number;
   defaultMinute?: number;
   disable?: Array<string> | ((date: Date) => boolean);

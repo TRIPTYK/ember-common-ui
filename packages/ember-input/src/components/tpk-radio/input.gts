@@ -13,6 +13,9 @@ export interface TpkRadioInputComponentSignature {
     onChange: (event: Event) => void;
   };
   Element: HTMLInputElement;
+  Blocks: {
+    default: unknown[];
+  };
 }
 
 export default class TpkRadioInputComponent extends Component<TpkRadioInputComponentSignature> {

@@ -1,13 +1,14 @@
 import { action } from '@ember/object';
-import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
-import type { ComponentLike } from '@glint/template';
+import {
+  type BaseValidationSignature,
+  BaseValidationComponent,
+} from './base.ts';
 import { assert } from '@ember/debug';
-import TpkDatepickerInputComponent, {
-  type FlatpickerArgs,
-} from '@triptyk/ember-input/components/tpk-datepicker/input';
-import TpkDatepickerLabelComponent from '@triptyk/ember-input/components/tpk-datepicker/label';
+import { type FlatpickerArgs } from '@triptyk/ember-input/components/tpk-datepicker/input';
 import { hash } from '@ember/helper';
-import TpkDatepicker from '@triptyk/ember-input/components/tpk-datepicker';
+import TpkDatepicker, {
+  type TpkDatepickerSignature,
+} from '@triptyk/ember-input/components/tpk-datepicker';
 
 export interface TpkValidationDatepickerComponentSignature
   extends BaseValidationSignature {
@@ -20,8 +21,8 @@ export interface TpkValidationDatepickerComponentSignature
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkDatepickerInputComponent>;
-        Label: ComponentLike<typeof TpkDatepickerLabelComponent>;
+        Input: TpkDatepickerSignature['Blocks']['default'][0]['Input'];
+        Label: TpkDatepickerSignature['Blocks']['default'][0]['Label'];
         errors: TpkValidationDatepickerComponent['errors'];
         hasError: TpkValidationDatepickerComponent['hasError'];
         firstError: TpkValidationDatepickerComponent['firstError'];
