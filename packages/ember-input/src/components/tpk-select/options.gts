@@ -3,6 +3,7 @@ import Component from '@glimmer/component';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 import TpkSelectOptionsOptionComponent from './options/option.gts';
+import type { WithBoundArgs } from '@glint/template';
 
 export interface TpkSelectOptionSignature {
   Args: {
@@ -21,7 +22,18 @@ export interface TpkSelectOptionSignature {
   };
   Element: HTMLUListElement;
   Blocks: {
-    default: [unknown];
+    default: [
+      WithBoundArgs<
+        typeof TpkSelectOptionsOptionComponent,
+        | 'option'
+        | 'guid'
+        | 'index'
+        | 'selected'
+        | 'multiple'
+        | 'activeChild'
+        | 'onChange'
+      >,
+    ];
   };
 }
 

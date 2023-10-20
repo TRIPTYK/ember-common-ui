@@ -7,7 +7,7 @@ export interface TpkSelectButtonSignature {
   Args: {
     optionListId?: string;
     isOpen: boolean;
-    selected: unknown;
+    selected: unknown | unknown[];
     labelId: string;
     activeChild?: HTMLElement;
     onSelectButtonClick: () => void;
@@ -16,7 +16,7 @@ export interface TpkSelectButtonSignature {
   };
   Element: HTMLDivElement;
   Blocks: {
-    default: [unknown];
+    default: [unknown | unknown[]];
   };
 }
 
@@ -28,10 +28,10 @@ export default class TpkSelectButtonComponent extends Component<TpkSelectButtonS
       aria-controls={{@optionListId}}
       aria-expanded='{{@isOpen}}'
       aria-labelledby={{@labelId}}
-      aria-haspopup="listbox"
+      aria-haspopup='listbox'
       role='combobox'
       id={{this.guid}}
-        aria-activedescendant='{{@activeChild.id}}'
+      aria-activedescendant='{{@activeChild.id}}'
       tabindex='0'
       {{on 'click' @onSelectButtonClick}}
       class={{unless @classless 'tpk-select-button'}}

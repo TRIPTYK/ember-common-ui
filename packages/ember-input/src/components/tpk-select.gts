@@ -15,11 +15,10 @@ import { hash } from '@ember/helper';
 export interface TpkSelectSignature {
   Args: {
     options: unknown[];
-    selected: (unknown | undefined) | unknown[];
+    selected?: unknown | unknown[];
     multiple?: boolean;
     label: string;
     classless?: boolean;
-    defaultText?: string;
     onChange: (
       newSelected: unknown | string,
       alreadySelected: boolean,

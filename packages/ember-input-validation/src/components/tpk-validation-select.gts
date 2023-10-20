@@ -11,14 +11,13 @@ export interface TpkValidationSelectComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
-    defaultText?: string;
     name?: string;
     options: unknown[];
-    multiple?: boolean;
-    selected?: string;
     classless?: boolean;
     changeEvent?: 'input' | 'change';
     disabled?: boolean;
+    multiple?: boolean;
+    selected?: unknown | unknown[];
   };
   Blocks: {
     default: [
@@ -27,7 +26,7 @@ export interface TpkValidationSelectComponentSignature
         Options: TpkSelectSignature['Blocks']['default'][0]['Options'];
         Button: TpkSelectSignature['Blocks']['default'][0]['Button'];
         label?: string;
-        selected?: string;
+        selected?: unknown | unknown[];
         hasSelection: boolean;
         errors: TpkValidationSelect['errors'];
         hasError: TpkValidationSelect['hasError'];
@@ -54,7 +53,6 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
       @selected={{@selected}}
       @onChange={{this.onChange}}
       @classless={{@classless}}
-      @defaultText={{@defaultText}}
       ...attributes
       data-has-error='{{this.hasError}}'
       as |I|

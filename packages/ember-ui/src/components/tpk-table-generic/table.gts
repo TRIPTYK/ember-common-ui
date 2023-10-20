@@ -14,7 +14,7 @@ import TableGenericFooterComponent from './footer.gts';
 // @ts-expect-error missing types
 import YetiTable from 'ember-yeti-table/components/yeti-table/component';
 import { hash } from '@ember/helper';
-import LoadingIndicator from '../loading-indicator.gts';
+import LoadingIndicator from '../tpk-loading-indicator.gts';
 
 export interface SortData {
   prop: string;
