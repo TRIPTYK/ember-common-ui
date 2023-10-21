@@ -10,6 +10,9 @@
     "start:ui": "pnpm --filter @triptyk/ember-ui start",
     "start:test-app": "pnpm --filter doc-app start"
   },
+  "repository": {
+    "url": "git@github.com:TRIPTYK/ember-common-ui.git"
+  },
   "//": "Override content-tag to fix https://github.com/embroider-build/addon-blueprint/issues/195",
   "pnpm": {
     "overrides": {
@@ -17,7 +20,7 @@
     }
   },
   "devDependencies": {
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "lerna": "^7.4.1"
   }
 }

@@ -4,7 +4,7 @@ A table component.
 
 <DocsDemo as |demo|>
   <demo.example @name="table-generic.hbs">
-    <TableGeneric
+    <TpkTableGeneric
         @rowClick={{this.rowClick}}
         @pageSize={{this.pageSize}}
         @pageSizes={{this.pageSizes}}
@@ -41,7 +41,7 @@ A table component.
         </Table.Body>
         <Table.Footer />
         </TG.Table>
-    </TableGeneric>
+    </TpkTableGeneric>
   </demo.example>
   <demo.snippet @name="table-generic.hbs"/>
 </DocsDemo>

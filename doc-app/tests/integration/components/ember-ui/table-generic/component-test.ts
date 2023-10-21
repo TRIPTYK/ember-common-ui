@@ -27,7 +27,7 @@ module('Integration | Component | table-generic', function (hooks) {
   });
   async function renderTableGeneric() {
     await render(hbs`
-    <TableGeneric
+    <TpkTableGeneric
       @rowClick={{this.rowClick}}
       @pageSize={{this.pageSize}}
       @pageSizes={{this.pageSizes}}
@@ -64,13 +64,13 @@ module('Integration | Component | table-generic', function (hooks) {
         </Table.Body>
         <Table.Footer />
       </TG.Table>
-    </TableGeneric>
+    </TpkTableGeneric>
   `);
   }
 
   async function renderTableGenericWithNoAction() {
     await render(hbs`
-    <TableGeneric
+    <TpkTableGeneric
       @rowClick={{this.rowClick}}
       @pageSize={{this.pageSize}}
       @pageSizes={{this.pageSizes}}
@@ -101,7 +101,7 @@ module('Integration | Component | table-generic', function (hooks) {
         </Table.Body>
         <Table.Footer />
       </TG.Table>
-    </TableGeneric>
+    </TpkTableGeneric>
   `);
   }
 
