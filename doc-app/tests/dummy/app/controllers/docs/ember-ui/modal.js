@@ -4,7 +4,7 @@ import { tracked } from 'tracked-built-ins';
 
 export default class DocsModalController extends Controller {
   @tracked isOpen = false;
-  @tracked title = '';
+  @tracked title = 'Modal title';
 
   @action
   open() {

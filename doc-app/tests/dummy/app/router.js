@@ -19,6 +19,7 @@ Router.map(function () {
     });
     this.route('ember-input', function () {
       this.route('input');
+      this.route('button');
       this.route('checkbox');
       this.route('datepicker');
       this.route('file');
