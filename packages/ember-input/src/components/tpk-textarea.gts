@@ -9,18 +9,16 @@ import TpkTextareaInputComponent from './tpk-textarea/input.gts';
 import TpkTextareaLabelComponent from './tpk-textarea/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
+import { tracked } from 'tracked-built-ins';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
-      type?: HTMLInputElement['type'];
-      mask?: unknown;
       value?: string;
       disabled?: boolean;
-      maskOptions?: Record<string, unknown>;
-      unmaskValue?: boolean;
       onChange?: (value: string, e: Event) => unknown;
+      maxLength?: number;
     }
   >;
   Blocks: {
@@ -34,6 +32,9 @@ export type TpkTextareaSignature = {
           | 'changeEvent'
           | 'disabled'
           | 'onChange'
+          | 'updateCharacterCount'
+          | 'setupCharacterCount'
+          | 'maxLength'
         >;
         Label: WithBoundArgs<
           typeof TpkTextareaLabelComponent,
@@ -42,17 +43,32 @@ export type TpkTextareaSignature = {
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
         guid: string;
+        charCount: number;
+        maxLength?: number;
       },
     ];
   };
   Element: HTMLDivElement;
 };
 export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
+  @tracked charCount = 0;
+
   @action
   onChange(e: Event) {
     e.preventDefault();
     const { value } = e.target as HTMLInputElement;
     this.args.onChange?.(value, e);
+  }
+
+  @action
+  updateCharacterCount(e: Event) {
+    const { value } = e.target as HTMLTextAreaElement;
+    this.charCount = value.length;
+  }
+
+  @action
+  setupCharacterCount(e: HTMLTextAreaElement) {
+    this.charCount = e.value.length;
   }
 
   <template>
@@ -73,11 +89,16 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
             TpkTextareaInputComponent
             guid=this.guid
             value=@value
+            updateCharacterCount=this.updateCharacterCount
+            setupCharacterCount=this.setupCharacterCount
+            maxLength=@maxLength
             changeEvent=this.changeEvent
             classless=@classless
             disabled=@disabled
             onChange=this.onChange
           )
+          charCount=this.charCount
+          maxLength=@maxLength
           changeEvent=this.changeEvent
           guid=this.guid
           onChange=this.onChange

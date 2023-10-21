@@ -1,5 +1,7 @@
 import { type TOC } from '@ember/component/template-only';
 import { on } from '@ember/modifier';
+import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 
 export interface TpkTextareaInputComponentSignature {
   Args: {
@@ -7,6 +9,9 @@ export interface TpkTextareaInputComponentSignature {
     classless?: boolean;
     value?: string;
     disabled?: boolean;
+    maxLength?: number;
+    updateCharacterCount: (event: Event) => void;
+    setupCharacterCount: (element: HTMLTextAreaElement) => void;
     changeEvent: 'input' | 'change';
     onChange: (event: Event) => void;
   };
@@ -18,6 +23,10 @@ const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <temp
       class={{unless @classless 'tpk-textarea-input'}}
       id={{@guid}}
       value={{@value}}
+      maxLength={{@maxLength}}
+      {{on "input" @updateCharacterCount}}
+      {{didInsert @setupCharacterCount}}
+      {{didUpdate @setupCharacterCount @value}}
       {{on @changeEvent @onChange}}
       disabled={{@disabled}}
       ...attributes
