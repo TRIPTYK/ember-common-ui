@@ -9,11 +9,13 @@ By default, prevents spam click by waiting the current task to finish before acc
       <TpkButton
           @onClick={{this.incrementCounter}}
           @allowSpam={{true}}
+          class="button"
         >
           Spam me @allowSpam={{true}}
       </TpkButton>
       <TpkButton
         @onClick={{this.incrementCounter}}
+        class="button"
       >
         Spam me @allowSpam={{false}}
       </TpkButton>

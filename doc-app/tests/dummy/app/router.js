@@ -9,6 +9,7 @@ const Router = AddonDocsRouter.extend({
 Router.map(function () {
   docsRoute(this, function () {
     this.route('ember-ui', function () {
+      this.route('installation');
       this.route('lazy-image');
       this.route('actions-menu');
       this.route('modal');
@@ -18,6 +19,7 @@ Router.map(function () {
       this.route('stepper');
     });
     this.route('ember-input', function () {
+      this.route('installation');
       this.route('input');
       this.route('button');
       this.route('checkbox');
@@ -29,6 +31,7 @@ Router.map(function () {
       this.route('textarea');
     });
     this.route('ember-input-validation', function () {
+      this.route('installation');
       this.route('checkbox');
       this.route('datepicker');
       this.route('file');

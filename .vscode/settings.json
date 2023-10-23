@@ -1,4 +1,12 @@
 {
+    "[glimmer-js]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "[glimmer-ts]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -7,14 +15,6 @@
     }],
     "[handlebars]": {
         "editor.suggest.insertMode": "replace"
-    },
-    "tailwindCSS.includeLanguages": {
-        "plaintext": "html",
-        "Handlebars": "html"
-    },
-    "tailwindCSS.emmetCompletions": true,
-    "emmet.includeLanguages": {
-        "Handlebars": "html"
     },
     "css.validate": false,
     "editor.quickSuggestions": {
