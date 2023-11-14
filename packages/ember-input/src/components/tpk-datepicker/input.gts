@@ -15,7 +15,10 @@ export interface FlatpickerArgs {
   defaultDate?: string | Date | null;
   defaultHour?: number;
   defaultMinute?: number;
-  disable?: Array<string> | ((date: Date) => boolean);
+  disable?:
+    | Array<string>
+    | Array<{ from: string; to: string }>
+    | ((date: Date) => boolean);
   disabledDates?: Date[] | ((date: Date) => boolean);
   disableMobile?: boolean;
   enable?: Array<string> | ((date: Date) => boolean);
