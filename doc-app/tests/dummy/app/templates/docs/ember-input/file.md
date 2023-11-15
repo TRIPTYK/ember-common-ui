@@ -1,21 +1,40 @@
 # Ember input/file
 
+The **TpkFileInputComponent** is designed to handle file input in a web application. It encapsulates an HTML file field (`<input type='file'`) and offers various configurable features and options via its arguments.
+
+**Simple input/file**
 <DocsDemo as |demo|> 
-  <demo.example @name="tpk-file.hbs">
+  <demo.example @name="tpk-file-simple.hbs">
     <TpkFile 
       @label="Add your profile image"
       @accept="image/*"
-      @multiple={{false}}
       @disabled={{false}}
       @classless={{false}}
-      @changeEvent='change'
+      @changeEvent="change"
       @onChange={{this.onChange}}
+      class="input-file"
     as |I|>
         <I.Label />
         <I.Input />
     </TpkFile>
    </demo.example>
-  <demo.snippet @name="tpk-file.hbs"/>
+  <demo.snippet @name="tpk-file-simple.hbs"/>
+</DocsDemo>
+
+**Multiple input/file**
+<DocsDemo as |demo|> 
+  <demo.example @name="tpk-file-multiple.hbs">
+    <TpkFile 
+      @label="Add your images"
+      @multiple={{true}}
+      @onChange={{this.onChange}}
+      class="input-file"
+    as |I|>
+        <I.Label />
+        <I.Input/>
+    </TpkFile>
+   </demo.example>
+  <demo.snippet @name="tpk-file-multiple.hbs"/>
 </DocsDemo>
 
 ## Arguments description
