@@ -1,0 +1,16 @@
+.tpk-file {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tpk-file-input {
+  border: none;
+  background: #fefefe;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background 0.2s ease-in-out;
+  box-shadow:
+    rgb(0 0 0 / 5%) 0 6px 24px 0,
+    rgb(0 0 0 / 8%) 0 0 0 1px;
+}

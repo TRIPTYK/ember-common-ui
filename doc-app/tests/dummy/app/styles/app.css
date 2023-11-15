@@ -1,5 +1,6 @@
 @import url("ember-ui/index.css");
 @import url("ember-input/select.css");
+@import url("ember-input/tpk-file.css");
 
 .button {
   display: inline-block;
