@@ -5,14 +5,17 @@
 .tpk-stack-title {
   @apply pl-4 font-semibold text-gray-600;
 }
-.tpk-stack-head{
+
+.tpk-stack-head {
   @apply w-full h-6 flex justify-between items-center;
 }
+
 .origin-top {
   @apply bg-red-300 text-gray-800 pl-4;
 }
+
 .tpk-stack-head button {
-  @apply w-4 h-4 ;
+  @apply w-4 h-4;
 }
 
 .link {
@@ -20,7 +23,7 @@
 }
 
 .icon span {
-    @apply pl-2;
+  @apply pl-2;
 }
 
 [data-is-expanded="true"] {
@@ -32,7 +35,7 @@
 }
 
 .tpk-stack-head-expand-btn {
-  @apply duration-200 ;
+  @apply duration-200;
 }
 
 [data-is-expanded-btn="true"] {
@@ -40,5 +43,5 @@
 }
 
 [data-is-expanded-btn="false"] {
-  transform:rotate(90deg);
+  transform: rotate(90deg);
 }
