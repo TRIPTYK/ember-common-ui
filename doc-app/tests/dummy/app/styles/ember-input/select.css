@@ -1,0 +1,56 @@
+
+.docs-p-4{
+  @apply mb-5;
+}
+.tpk-select {
+  @apply relative;
+}
+.tpk-select-options {
+  @apply w-full bg-white z-[60] absolute hidden shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm mt-1.5;
+}
+
+.tpk-select .tpk-select-label{
+  @apply font-semibold text-gray-700 mb-3;
+}
+.tpk-select[data-is-open='true'] .tpk-select-options {
+  @apply block  z-[60];
+}
+
+.tpk-select .tpk-select-options-option[aria-selected='true']:after{
+  content: url(/assets/icons/check-solid.svg);
+  position: absolute;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  top: 10px;
+}
+.tpk-select .tpk-select-options-option[aria-selected='true']{
+  @apply bg-blue-100;
+}
+
+.tpk-select .tpk-select-options-option{
+  @apply pl-4 cursor-pointer py-2 mb-0 relative;
+}
+.tpk-select .tpk-select-options-option:hover{
+  @apply bg-blue-200;
+}
+.tpk-select-button {
+  @apply  relative w-full flex rounded shadow-sm px-3 py-2 text-left  focus:outline-none focus:ring-2 -mb-2 border-solid border-[1.5px] cursor-pointer;
+}
+.tpk-select-button:after {
+  content: '▾';
+  @apply absolute right-[5px];
+}
+.tpk-select[data-is-open='true'] .tpk-select-button:after {
+  @apply transform -rotate-180 mt-0.5;
+}
+.tpk-select-button:disabled,
+.disabled .tpk-select-button {
+  @apply border border-dashed cursor-not-allowed ring-0;
+}
+.disabled .tpk-select-options {
+  @apply hidden w-0 h-0 ring-0;
+}
+.tpk-select aside {
+  @apply mt-2;
+}
