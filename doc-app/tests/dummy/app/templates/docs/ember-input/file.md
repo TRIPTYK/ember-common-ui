@@ -5,18 +5,20 @@ The **TpkFileInputComponent** is designed to handle file input in a web applicat
 **Simple input/file**
 <DocsDemo as |demo|> 
   <demo.example @name="tpk-file-simple.hbs">
-    <TpkFile 
-      @label="Add your profile image"
-      @accept="image/*"
-      @disabled={{false}}
-      @classless={{false}}
-      @changeEvent="change"
-      @onChange={{this.onChange}}
-      class="input-file"
-    as |I|>
-        <I.Label />
-        <I.Input />
-    </TpkFile>
+  <div class="wrapper">
+      <TpkFile 
+        @label="Add your profile image"
+        @accept="image/*"
+        @disabled={{false}}
+        @classless={{false}}
+        @changeEvent="change"
+        @onChange={{this.onChange}}
+        class="input-file"
+      as |I|>
+          <I.Label class=".label" />
+          <I.Input class="test-one" />
+      </TpkFile>
+    </div>
    </demo.example>
   <demo.snippet @name="tpk-file-simple.hbs"/>
 </DocsDemo>
