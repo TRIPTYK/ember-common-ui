@@ -1,27 +1,23 @@
-.tpk-stack-head button {
-  @apply w-6 h-6;
+.tpk-stack-head button{
+  @apply w-6 h-6 ;
 }
 
-.link {
+.link{
   @apply w-full h-6 flex;
 }
 
-.icon span {
-  @apply pl-2;
+.icon span{
+    @apply pl-2;
 }
 
-.icon img {
-  @apply w-6 h-6;
-}
-
-.tpk-stack {
+.tpk-stack{
   @apply w-full;
 }
 
-[data-content="expanded"] {
+[data-is-expanded="true"] {
   @apply h-full scale-y-100;
 }
 
-[data-content="hidden"] {
+[data-is-expanded="false"] {
   @apply h-0 scale-y-0 overflow-hidden;
 }

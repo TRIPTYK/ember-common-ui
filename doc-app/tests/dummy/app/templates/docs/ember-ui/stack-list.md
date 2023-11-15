@@ -44,6 +44,6 @@ thrash icon in the "element added" header. This function should remove an elemen
 
 ### CSS
 
-**[data-content="expanded"]**: CSS class applied to S.Content div when the element is opened. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
+**[data-is-expanded="true"]**: CSS class applied to S.Content div when the element is opened. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
 
-**[data-content="hidden"]**: CSS class applied to S.Content div when the element is closed. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
+**[data-is-expanded="false"]**: CSS class applied to S.Content div when the element is closed. It has to be implemented because otherwise, you can't see the difference between closed/opened element.

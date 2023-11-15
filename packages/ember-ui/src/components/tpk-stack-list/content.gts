@@ -18,10 +18,9 @@ export interface TpkStackListComponentSignature {
   };
 }
 
-const TpkStackListContentComponent: TOC<TpkStackListComponentSignature> =
-  <template>
+const TpkStackListContentComponent: TOC<TpkStackListComponentSignature> = <template>
     <div
-      data-content={{if @isExpanded 'expanded' 'hidden'}}
+      data-is-expanded={{if @isExpanded 'true' 'false'}}
       class='origin-top transform duration-200'
       data-test-content-stackList-item
     >
