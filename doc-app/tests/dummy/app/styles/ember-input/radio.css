@@ -1,0 +1,7 @@
+h3 {
+  @apply text-2xl font-bold text-cyan-500;
+}
+
+.result-box {
+  @apply border-t-2 border-cyan-600;
+}
