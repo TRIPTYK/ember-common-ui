@@ -1,10 +1,10 @@
-.input-file {
+.tpk-file {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.input-file input {
+.tpk-file-input{
   border: none;
   background: #fefefe;
   padding: 10px 20px;
