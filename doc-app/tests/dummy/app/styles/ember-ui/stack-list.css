@@ -11,7 +11,7 @@
 }
 
 .origin-top {
-  @apply bg-red-300 text-gray-800 pl-4;
+  @apply text-gray-800 pl-4;
 }
 
 .tpk-stack-head button {
