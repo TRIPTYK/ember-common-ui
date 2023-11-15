@@ -2,7 +2,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, TestContext } from '@ember/test-helpers';
+import { render, type TestContext } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 import tpkSelect from 'dummy/tests/pages/tpk-select';
@@ -62,7 +62,7 @@ module('Integration | Component | tpk-select', function (hooks) {
   });
 
   /**
-   * Down Arrow 	
+   * Down Arrow
     Opens the listbox if it is not already displayed without moving focus or changing selection.
     DOM focus remains on the combobox.
    */
@@ -98,7 +98,7 @@ module('Integration | Component | tpk-select', function (hooks) {
 
   /**
    * Up arrow
-   * 
+   *
     First opens the listbox if it is not already displayed and then moves visual focus to the first option.
     DOM focus remains on the combobox.
    */
@@ -116,8 +116,8 @@ module('Integration | Component | tpk-select', function (hooks) {
 
   /**
    * Enter
-   * 
-     Opens the listbox without moving focus or changing selection. 
+   *
+     Opens the listbox without moving focus or changing selection.
    */
   test('navigation test - closed combobox - Enter', async function (assert) {
     await setupCombo.call(this);
@@ -134,8 +134,8 @@ module('Integration | Component | tpk-select', function (hooks) {
 
   /**
    * Space
-   * 
-     Opens the listbox without moving focus or changing selection. 
+   *
+     Opens the listbox without moving focus or changing selection.
    */
   test('navigation test - closed combobox - Space', async function (assert) {
     await setupCombo.call(this);
@@ -184,10 +184,10 @@ module('Integration | Component | tpk-select', function (hooks) {
   });
 
   /**
-   *  
+   *
     First opens the listbox if it is not already displayed and then moves visual focus to the first option that matches the typed character.
     If multiple keys are typed in quick succession, visual focus moves to the first option that matches the full string.
-    
+
    */
   test('navigation test - closed combobox - Input text', async function (assert) {
     await setupCombo.call(this);
@@ -280,7 +280,7 @@ module('Integration | Component | tpk-select', function (hooks) {
   });
 
   /**
-   * 
+   *
     Sets the value to the content of the focused option in the listbox.
     Closes the listbox.
     Performs the default action, moving focus to the next focusable element. Note: the native <select> element closes the listbox but does not move focus on tab. This pattern matches the behavior of the other comboboxes rather than the native element in this case.

@@ -2,7 +2,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { render, TestContext } from '@ember/test-helpers';
+import { render, type TestContext } from '@ember/test-helpers';
 import { confirmModalObject } from 'dummy/tests/pages/ember-confirm-modal';
 
 interface ConfirmModalTestContext extends TestContext {
@@ -40,7 +40,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
     setConfirmModalProperties.call(this, assert);
     return render(hbs`
 			<div id="tpk-modal"></div>
-			<TpkConfirmModal 
+			<TpkConfirmModal
 				@title={{this.confirmQuestion}}
 				@isOpen={{this.isOpen}}
 				@onConfirm={{this.onConfirm}}
@@ -54,7 +54,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
 				<confirmModal.Cancel>
 					Annuler banane
 				</confirmModal.Cancel>
-			</TpkConfirmModal> 
+			</TpkConfirmModal>
 		`);
   }
 

@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { TestContext, render, settled } from '@ember/test-helpers';
+import { type TestContext, render, settled } from '@ember/test-helpers';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';

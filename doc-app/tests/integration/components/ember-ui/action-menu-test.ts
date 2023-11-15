@@ -2,7 +2,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { render, TestContext } from '@ember/test-helpers';
+import { render, type TestContext } from '@ember/test-helpers';
 import { actionMenuObject } from 'dummy/tests/pages/ember-actions-menu';
 
 interface ActionMenuTestContext extends TestContext {

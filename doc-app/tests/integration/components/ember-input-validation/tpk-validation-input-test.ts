@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import {
-  TestContext,
+  type TestContext,
   fillIn,
   findAll,
   render,

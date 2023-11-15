@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { click, fillIn, findAll, pauseTest, render } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { hbs } from 'ember-cli-htmlbars';
-import { setupMock, ServiceWorkerTestContext } from 'dummy/tests/worker';
+import { setupMock, type ServiceWorkerTestContext } from 'dummy/tests/worker';
 import { TableGenericUserWorker } from 'dummy/tests/workers/table-generic';
 import { setupRenderingTest } from 'ember-qunit';
 
