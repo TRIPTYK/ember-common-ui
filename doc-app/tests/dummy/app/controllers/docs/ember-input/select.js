@@ -6,8 +6,8 @@ export default class DocsTpkSelectController extends Controller {
   @tracked selection = '';
   @tracked valueCar = [];
   @tracked multiple = true;
-  @tracked sauceOptions = ["BBQ", "Ketchup", "Dallas"];
-  @tracked carOptions = ["BMW","Mercedes","Audi", "Tesla"]
+  @tracked sauceOptions = ['BBQ', 'Ketchup', 'Dallas'];
+  @tracked carOptions = ['BMW', 'Mercedes', 'Audi', 'Tesla'];
 
   @action
   onChange(value) {
