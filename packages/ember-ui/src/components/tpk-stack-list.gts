@@ -74,10 +74,10 @@ const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
       data-test-add-stackList-item
       {{on 'click' @onAdd}}
     >
+    <img src='/assets/icons/plus.svg' alt='add' class='w-5 h-5' />
       <span>
-        <img src='/assets/icons/plus.svg' alt='add' class='w-5 h-5' />
-      </span>
-      {{@titleForAdd}}
+        {{@titleForAdd}}
+      </span> 
     </button>
   {{/unless}}
 </template>;

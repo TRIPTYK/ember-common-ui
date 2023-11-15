@@ -1,4 +1,5 @@
-import type { TOC } from '@ember/component/template-only';import { hash } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';
+import { hash } from '@ember/helper';
 
 export interface TpkStackListComponentSignature {
   Args: {
@@ -20,8 +21,8 @@ export interface TpkStackListComponentSignature {
 const TpkStackListContentComponent: TOC<TpkStackListComponentSignature> =
   <template>
     <div
-      class='origin-top transform duration-200
-        {{if @isExpanded "h-full scale-y-100" "h-0 scale-y-0"}}'
+      data-content={{if @isExpanded 'expanded' 'hidden'}}
+      class='origin-top transform duration-200'
       data-test-content-stackList-item
     >
       {{yield (hash item=@item index=@index)}}

@@ -1,0 +1,27 @@
+.tpk-stack-head button {
+  @apply w-6 h-6;
+}
+
+.link {
+  @apply w-full h-6 flex;
+}
+
+.icon span {
+  @apply pl-2;
+}
+
+.icon img {
+  @apply w-6 h-6;
+}
+
+.tpk-stack {
+  @apply w-full;
+}
+
+[data-content="expanded"] {
+  @apply h-full scale-y-100;
+}
+
+[data-content="hidden"] {
+  @apply h-0 scale-y-0 overflow-hidden;
+}
