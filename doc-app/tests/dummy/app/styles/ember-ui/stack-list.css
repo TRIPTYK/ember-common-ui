@@ -1,0 +1,47 @@
+.tpk-stack {
+  @apply w-full h-full rounded-md shadow-gray-300 shadow-md p-2 mb-4;
+}
+
+.tpk-stack-title {
+  @apply pl-4 font-semibold text-gray-600;
+}
+
+.tpk-stack-head {
+  @apply w-full h-6 flex justify-between items-center;
+}
+
+.origin-top {
+  @apply bg-red-300 text-gray-800 pl-4;
+}
+
+.tpk-stack-head button {
+  @apply w-4 h-4;
+}
+
+.link {
+  @apply w-full h-6 flex mt-4;
+}
+
+.icon span {
+  @apply pl-2;
+}
+
+[data-is-expanded="true"] {
+  @apply h-full scale-y-100;
+}
+
+[data-is-expanded="false"] {
+  @apply h-0 scale-y-0 overflow-hidden;
+}
+
+.tpk-stack-head-expand-btn {
+  @apply duration-200;
+}
+
+[data-is-expanded-btn="true"] {
+  @apply rotate-0;
+}
+
+[data-is-expanded-btn="false"] {
+  transform: rotate(90deg);
+}
