@@ -68,6 +68,7 @@ export interface TpkDatepickerInputComponentSignature {
 }
 
 // https://github.com/typed-ember/glint/issues/599 cast to any to prevent using glint directives
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const EmberFlatpickr1 = EmberFlatpickr as any;
 
 // Lot of @glint-expect-error. I do not want to loose all the type safety.

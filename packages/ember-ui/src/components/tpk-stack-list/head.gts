@@ -40,13 +40,14 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
         </button>
       {{/unless}}
       <button
+        data-is-expanded-btn={{if @isExpanded 'true' 'false'}}
         type='button'
         {{on 'click' @toggleExpanded}}
-        class='duration-200 transform
-          {{if @isExpanded "rotate-0" "-rotate-90"}}'
+        class='tpk-stack-head-expand-btn'
         data-test-toggle-stackList-item
       >
         <img
+        
           src='/assets/icons/arrow-down.svg'
           class='w-6 h-6'
           alt=''
