@@ -47,3 +47,19 @@ thrash icon in the "element added" header. This function should remove an elemen
 **[data-is-expanded="true"]**: CSS class applied to S.Content div when the element is opened. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
 
 **[data-is-expanded="false"]**: CSS class applied to S.Content div when the element is closed. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
+
+**[data-is-expanded-btn="true"]**: CSS class applied to the expand button div when the element is opened. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
+
+**[data-is-expanded-btn="false"]**: CSS class applied to the expand button div when the element is closed. It has to be implemented because otherwise, you can't see the difference between closed/opened element.
+
+**.tpk-stack**: Main CSS class that takes into account the entire stack list as a whole.
+
+**.tpk-stack-title**: CSS class for styling the title of the stack list.
+
+**.tpk-stack-head**: CSS class for styling the header of each element in the stack list.
+
+**.origin-top**: CSS class for styling the body of each element in the stack list.
+
+**.tpk-stack-head-expand-btn**: CSS class for styling the button that expands or collapses the body of each element in the stack list.
+
+
