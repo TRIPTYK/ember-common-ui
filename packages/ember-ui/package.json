@@ -138,6 +138,10 @@
     "version": 2,
     "type": "addon",
     "main": "addon-main.cjs",
+    "public-assets": {
+      "./src/static/chevron-left.svg": "/assets/icons/chevron-left.svg",
+      "./src/static/chevron-right.svg": "/assets/icons/chevron-right.svg"
+    },
     "app-js": {
       "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
       "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
