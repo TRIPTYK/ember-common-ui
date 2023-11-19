@@ -1,5 +1,6 @@
 @import url("ember-ui/index.css");
 @import url("ember-input/index.css");
+@import url("ember-input-validation/index.css");
 
 .button {
   display: inline-block;
