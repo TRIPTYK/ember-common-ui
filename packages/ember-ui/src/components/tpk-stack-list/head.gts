@@ -1,4 +1,5 @@
-import type { TOC } from '@ember/component/template-only';import { fn } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';
+import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 
 export interface TpkStackListHeadComponentSignature {
@@ -21,6 +22,7 @@ export interface TpkStackListHeadComponentSignature {
   };
 }
 
+// eslint-disable-next-line prettier/prettier
 const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
   <template>
     <div class='flex items-center space-x-2'>
@@ -47,7 +49,7 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
         data-test-toggle-stackList-item
       >
         <img
-        
+
           src='/assets/icons/arrow-down.svg'
           class='w-6 h-6'
           alt=''
