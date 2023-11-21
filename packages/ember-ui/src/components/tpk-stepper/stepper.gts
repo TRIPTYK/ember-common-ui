@@ -10,6 +10,7 @@ export interface TpkStepperStepperComponentSignature {
   };
 }
 
+// eslint-disable-next-line prettier/prettier
 const TpkStepperStepperComponent: TOC<TpkStepperStepperComponentSignature> =
   <template>
     <ol

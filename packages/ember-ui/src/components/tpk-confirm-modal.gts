@@ -2,7 +2,8 @@ import type { WithBoundArgs } from '@glint/template';
 import TpkConfirmModalConfirmComponent from './tpk-confirm-modal/confirm.gts';
 import TpkConfirmModalCancelComponent from './tpk-confirm-modal/cancel.gts';
 import { hash } from '@ember/helper';
-import type { TOC } from '@ember/component/template-only';import TpkModal from './tpk-modal.gts';
+import type { TOC } from '@ember/component/template-only';
+import TpkModal from './tpk-modal.gts';
 
 export interface TpkConfirmModalSignature {
   Args: {
@@ -29,6 +30,7 @@ export interface TpkConfirmModalSignature {
   };
 }
 
+// eslint-disable-next-line prettier/prettier
 const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
   <template>
     <TpkModal

@@ -1,7 +1,8 @@
 import type { WithBoundArgs } from '@glint/template';
 import TpkStackListTitleComponent from './tpk-stack-list/title.gts';
 import TpkStackListContentComponent from './tpk-stack-list/content.gts';
-import type { TOC } from '@ember/component/template-only';import { hash } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';
+import { hash } from '@ember/helper';
 import TpkStackListItem from './tpk-stack-list/item.gts';
 import TpkStackListHead from './tpk-stack-list/head.gts';
 import { on } from '@ember/modifier';

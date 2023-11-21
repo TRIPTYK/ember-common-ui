@@ -1,0 +1,39 @@
+.tpk-checkbox-input {
+  @apply w-5 h-5 rounded border-2 border-gray-300 cursor-pointer;
+}
+
+.tpk-checkbox-label {
+  @apply text-gray-600 text-xl;
+}
+
+[data-has-error="false"] div {
+  @apply hidden;
+}
+
+.error-message {
+  @apply bg-red-700 shrink-0 h-5 w-5 text-white font-bold flex justify-center items-center rounded-full relative top-[5px] cursor-pointer z-40;
+
+  content: "!";
+}
+
+[data-has-error="true"] div::before {
+  @apply error-message;
+}
+
+[data-has-error="true"] input {
+  @apply text-red-700 border-0 ring-2 ring-red-700;
+}
+
+[data-has-error="true"] div {
+  @apply visible text-red-700 absolute pl-4 min-h-[30px] w-auto flex text-sm z-40;
+}
+
+[data-has-error="true"] div span {
+  @apply flex items-center w-auto px-3 ml-2 bg-red-100 rounded leading-6;
+
+  transition: 0.5s cubic-bezier(0.18, 1.85, 0.16, 0.8);
+}
+
+[data-has-error="true"]:hover div {
+  z-index: 55;
+}
