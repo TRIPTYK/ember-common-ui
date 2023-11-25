@@ -47,13 +47,13 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
 
   get value() {
     assert(
-      '@value must be a string, number, date or null',
+      `@value must be a string, number, date or null for @${this.args.validationField}`,
       typeof super.value === 'string' ||
         typeof super.value === 'number' ||
         super.value instanceof Date ||
         super.value === null,
     );
-    return super.value as never;
+    return super.value;
   }
 
   <template>
