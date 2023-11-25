@@ -31,7 +31,8 @@
   "files": [
     "addon-main.cjs",
     "declarations",
-    "dist"
+    "dist",
+    "static"
   ],
   "scripts": {
     "build": "concurrently 'npm:build:*'",
@@ -139,8 +140,8 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "public-assets": {
-      "./src/static/chevron-left.svg": "/assets/icons/chevron-left.svg",
-      "./src/static/chevron-right.svg": "/assets/icons/chevron-right.svg"
+      "./static/chevron-left.svg": "/ember-ui/icons/chevron-left.svg",
+      "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
     },
     "app-js": {
       "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
