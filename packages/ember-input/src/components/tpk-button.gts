@@ -29,7 +29,6 @@ export default class TpkButtonComponent extends Component<TpkButtonSignature> {
   });
 
   onClick = task(this, async (e: Event) => {
-    e.preventDefault();
     if (this.args.allowSpam !== true) {
       return this.performClick.perform(e);
     }
