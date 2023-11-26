@@ -4,24 +4,24 @@ import { tracked } from 'tracked-built-ins';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
 export default class DocsInputValidationController extends Controller {
-  label = 'LastName';
+  label = 'Clear it';
   @tracked changeset = new ImmerChangeset({
-    last_name: '',
+    delete_text: 'Delete my text',
   });
 
   @action
   onChange(value) {
-    this.changeset.set('last_name', value);
+    this.changeset.set('delete_text', value);
     this.changeset.save();
-    if (this.changeset.get('last_name') === '') {
+    if (this.changeset.get('delete_text') === '') {
       this.changeset.addError({
-        message: 'You didnt have a last name?',
+        message: 'Why did you do that? Why??',
         value: '',
         originalValue: '',
-        key: 'last_name',
+        key: 'delete_text',
       });
     } else {
-      this.changeset.removeError('last_name');
+      this.changeset.removeError('delete_text');
     }
   }
 }
