@@ -18,7 +18,7 @@ export interface TableGenericComponentSignature {
     pageSize?: number;
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
-    rowClick?: () => void;
+    rowClick?: (...elements: unknown[]) => void;
     additionalFilters: Record<string, unknown>;
   };
   Blocks: {
@@ -51,8 +51,8 @@ export default class TableGenericComponent extends Component<TableGenericCompone
     this.filterText = value;
   }
 
-  @action rowClick() {
-    return this.args.rowClick?.();
+  @action rowClick(...args: unknown[]) {
+    return this.args.rowClick?.(args);
   }
 
   <template>
