@@ -52,7 +52,7 @@ export default class TableGenericComponent extends Component<TableGenericCompone
   }
 
   @action rowClick(...args: unknown[]) {
-    return this.args.rowClick?.(args);
+    return this.args.rowClick?.(...args);
   }
 
   <template>
