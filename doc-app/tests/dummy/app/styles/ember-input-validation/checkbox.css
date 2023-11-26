@@ -1,0 +1,7 @@
+.tpk-checkbox-input {
+  @apply w-5 h-5 rounded border-2 border-gray-300 cursor-pointer;
+}
+
+.tpk-checkbox-label {
+  @apply text-gray-600 text-xl;
+}

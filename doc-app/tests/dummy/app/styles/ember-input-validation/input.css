@@ -1,0 +1,8 @@
+
+.tpk-input input{
+  @apply relative block w-full px-3 py-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm
+}
+.tpk-input-label {
+  @apply relative block mb-1 text-gray-600
+}
+
