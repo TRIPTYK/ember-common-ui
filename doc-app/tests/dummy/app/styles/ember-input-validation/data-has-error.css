@@ -1,4 +1,5 @@
-.tpk-checkbox-input {
+.tpk-checkbox-input,
+.tpk-datepicker-input {
   @apply w-5 h-5 rounded border-2 border-gray-300 cursor-pointer;
 }
 
