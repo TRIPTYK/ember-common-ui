@@ -62,7 +62,7 @@
     "ember-intl": "~6.1.1",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "6.0.0",
-    "ember-yeti-table": "git+https://github.com/bgantzler/ember-yeti-table#helpers",
+    "ember-yeti-table": "git+https://github.com/bgantzler/ember-yeti-table#total-rows",
     "focus-trap": "~7.5.4",
     "tracked-built-ins": "3.3.0"
   },
@@ -121,7 +121,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-ember-template-tag": "^1.1.0",
-    "rollup": "^4.1.4",
+    "rollup": "^4.5.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-glimmer-template-tag": "^0.4.1",
     "rollup-plugin-ts": "^3.4.5",
