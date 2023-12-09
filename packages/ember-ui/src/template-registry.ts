@@ -27,7 +27,7 @@ import type TpkActionsMenuElementComponent from './components/tpk-actions-menu/e
 import type TpkStackListTitleComponent from './components/tpk-stack-list/title.gts';
 import type TpkLazyImageComponent from './components/tpk-lazy-image.gts';
 
-export interface Registry {
+export default interface Registry {
   'tpk-actions-menu/element': typeof TpkActionsMenuElementComponent;
   'tpk-stack-list/title': typeof TpkStackListTitleComponent;
   'tpk-stack-list/content': typeof TpkStackListContentComponent;

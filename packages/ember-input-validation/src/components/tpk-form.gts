@@ -1,4 +1,5 @@
 import type Owner from '@ember/owner';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { Promisable } from 'type-fest';
 import { assert } from '@ember/debug';
@@ -22,6 +23,8 @@ import TpkValidationFileComponent from '../components/tpk-validation-file.gts';
 import TpkValidationRadioComponent from '../components/tpk-validation-radio.gts';
 import TpkValidationCheckboxComponent from '../components/tpk-validation-checkbox.gts';
 import TpkValidationDatepickerComponent from '../components/tpk-validation-datepicker.gts';
+import TpkFormService from '../services/tpk-form.ts';
+import TpkButtonComponent from '@triptyk/ember-input/components/tpk-button';
 
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
@@ -78,6 +81,8 @@ export interface ChangesetFormComponentSignature {
 }
 
 export default class ChangesetFormComponent extends Component<ChangesetFormComponentSignature> {
+  @service declare tpkForm: TpkFormService;
+
   public constructor(
     owner: Owner,
     args: ChangesetFormComponentArgs<ImmerChangeset>,
@@ -153,35 +158,40 @@ export default class ChangesetFormComponent extends Component<ChangesetFormCompo
 
   <template>
     <form {{on 'submit' (perform this.submit)}} ...attributes>
+      {{log this.tpkForm.TpkInput}}
       {{yield
         (hash
           validateAndSubmit=this.validateAndSubmit
           TpkInput=(component
-            TpkValidationInputComponent changeset=@changeset disabled=@disabled
+            this.tpkForm.TpkInput changeset=@changeset disabled=@disabled
           )
           TpkTextarea=(component
-            TpkValidationTextareaComponent
+            this.tpkForm.TpkTextarea
             changeset=@changeset
             disabled=@disabled
           )
           TpkSelect=(component
-            TpkValidationSelect changeset=@changeset disabled=@disabled
+            this.tpkForm.TpkSelect changeset=@changeset disabled=@disabled
           )
           TpkCheckbox=(component
-            TpkValidationCheckboxComponent
+            this.tpkForm.TpkCheckbox
             changeset=@changeset
             disabled=@disabled
           )
           TpkRadio=(component
-            TpkValidationRadioComponent changeset=@changeset disabled=@disabled
+            this.tpkForm.TpkRadio changeset=@changeset disabled=@disabled
           )
           TpkFile=(component
-            TpkValidationFileComponent changeset=@changeset disabled=@disabled
+            this.tpkForm.TpkFile changeset=@changeset disabled=@disabled
           )
           TpkDatePicker=(component
-            TpkValidationDatepickerComponent
+            this.tpkForm.TpkDatePicker
             changeset=@changeset
             disabled=@disabled
+          )
+          TpkSubmitButton=(component
+            TpkButtonComponent
+            @onClick=this.submit
           )
           changesetGet=this.changesetGet
         )

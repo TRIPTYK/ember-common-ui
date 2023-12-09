@@ -18,6 +18,9 @@ module.exports = function (defaults) {
     'ember-fetch': {
       nativePromise: true,
     },
+    'ember-cli-babel': {
+      enableTypeScriptTransform: true,
+    },
     postcssOptions: {
       compile: {
         enabled: true,

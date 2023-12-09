@@ -1,6 +1,7 @@
 import type { ComponentLike } from '@glint/template';
 import TableGenericHeaderCellComponent from './header/cell.gts';
-import type { TOC } from '@ember/component/template-only';import { hash } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';
+import { hash } from '@ember/helper';
 
 export interface TableGenericHeaderComponentSignature {
   Args: {
@@ -18,6 +19,7 @@ export interface TableGenericHeaderComponentSignature {
   };
 }
 
+// eslint-disable-next-line prettier/prettier
 const TableGenericHeaderComponent: TOC<TableGenericHeaderComponentSignature> =
   <template>
     <@table.header class='tpk-table-header' as |header|>

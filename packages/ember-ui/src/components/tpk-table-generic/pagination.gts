@@ -89,7 +89,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
             data-test-pagination-previous
           >
             <img
-              src='/assets/icons/chevron-left.svg'
+              src='/ember-ui/icons/chevron-left.svg'
               alt={{t 'global.previous'}}
             />
             <span class='sr-only'>
@@ -109,7 +109,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
               {{t 'global.next'}}
             </span>
             <img
-              src='/assets/icons/chevron-right.svg'
+              src='/ember-ui/icons/chevron-right.svg'
               alt={{t 'global.next'}}
             />
           </button>
