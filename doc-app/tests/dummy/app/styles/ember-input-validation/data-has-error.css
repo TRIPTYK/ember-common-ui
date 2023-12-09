@@ -1,11 +1,3 @@
-.tpk-checkbox-input {
-  @apply w-5 h-5 rounded border-2 border-gray-300 cursor-pointer;
-}
-
-.tpk-checkbox-label {
-  @apply text-gray-600 text-xl;
-}
-
 [data-has-error="false"] div {
   @apply hidden;
 }
@@ -25,7 +17,7 @@
 }
 
 [data-has-error="true"] div {
-  @apply visible text-red-700 absolute pl-4 min-h-[30px] w-auto flex text-sm z-40;
+  @apply visible text-red-700 absolute pl-4 pt-2 min-h-[30px] w-auto flex text-sm z-40;
 }
 
 [data-has-error="true"] div span {
