@@ -1,26 +1,28 @@
 {
-    "[glimmer-js]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[glimmer-ts]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "editor.formatOnSave": true,
-    "eslint.format.enable": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "eslint.workingDirectories": [{
-        "pattern": "packages/ember-*"
-    }],
-    "[handlebars]": {
-        "editor.suggest.insertMode": "replace"
-    },
-    "css.validate": false,
-    "editor.quickSuggestions": {
-        "strings": true
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  "[glimmer-js]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[glimmer-ts]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.workingDirectories": [
+    {
+      "pattern": "packages/ember-*"
     }
+  ],
+  "[handlebars]": {
+    "editor.suggest.insertMode": "replace"
+  },
+  "css.validate": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
 }

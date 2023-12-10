@@ -40,6 +40,7 @@ Router.map(function () {
       this.route('radio');
       this.route('select');
       this.route('textarea');
+      this.route('tpk-form');
     });
   });
 });
