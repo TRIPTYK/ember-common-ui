@@ -41,10 +41,6 @@ export interface ChangesetFormComponentSignature {
   Blocks: {
     default: [
       {
-        validateAndSubmit: TaskForAsyncTaskFunction<
-          ChangesetFormComponent,
-          () => Promise<void>
-        >;
         TpkInput: WithBoundArgs<
           typeof TpkValidationInputComponent,
           'changeset' | 'disabled'
@@ -161,22 +157,17 @@ export default class ChangesetFormComponent extends Component<ChangesetFormCompo
       {{log this.tpkForm.TpkInput}}
       {{yield
         (hash
-          validateAndSubmit=this.validateAndSubmit
           TpkInput=(component
             this.tpkForm.TpkInput changeset=@changeset disabled=@disabled
           )
           TpkTextarea=(component
-            this.tpkForm.TpkTextarea
-            changeset=@changeset
-            disabled=@disabled
+            this.tpkForm.TpkTextarea changeset=@changeset disabled=@disabled
           )
           TpkSelect=(component
             this.tpkForm.TpkSelect changeset=@changeset disabled=@disabled
           )
           TpkCheckbox=(component
-            this.tpkForm.TpkCheckbox
-            changeset=@changeset
-            disabled=@disabled
+            this.tpkForm.TpkCheckbox changeset=@changeset disabled=@disabled
           )
           TpkRadio=(component
             this.tpkForm.TpkRadio changeset=@changeset disabled=@disabled
@@ -185,13 +176,7 @@ export default class ChangesetFormComponent extends Component<ChangesetFormCompo
             this.tpkForm.TpkFile changeset=@changeset disabled=@disabled
           )
           TpkDatePicker=(component
-            this.tpkForm.TpkDatePicker
-            changeset=@changeset
-            disabled=@disabled
-          )
-          TpkSubmitButton=(component
-            TpkButtonComponent
-            @onClick=this.submit
+            this.tpkForm.TpkDatePicker changeset=@changeset disabled=@disabled
           )
           changesetGet=this.changesetGet
         )
