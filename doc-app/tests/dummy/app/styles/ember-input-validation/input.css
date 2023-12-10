@@ -5,3 +5,7 @@
 .tpk-input-label {
   @apply relative block mb-1 text-gray-600;
 }
+
+.tpk-input[data-has-error="true"] > input {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}

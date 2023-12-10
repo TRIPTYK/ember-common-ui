@@ -24,7 +24,6 @@ import TpkValidationRadioComponent from '../components/tpk-validation-radio.gts'
 import TpkValidationCheckboxComponent from '../components/tpk-validation-checkbox.gts';
 import TpkValidationDatepickerComponent from '../components/tpk-validation-datepicker.gts';
 import TpkFormService from '../services/tpk-form.ts';
-import TpkButtonComponent from '@triptyk/ember-input/components/tpk-button';
 
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
@@ -154,7 +153,6 @@ export default class ChangesetFormComponent extends Component<ChangesetFormCompo
 
   <template>
     <form {{on 'submit' (perform this.submit)}} ...attributes>
-      {{log this.tpkForm.TpkInput}}
       {{yield
         (hash
           TpkInput=(component
