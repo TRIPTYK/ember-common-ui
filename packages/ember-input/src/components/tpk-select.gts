@@ -22,6 +22,7 @@ export interface TpkSelectSignature {
     onChange: (
       newSelected: unknown | string,
       alreadySelected: boolean,
+      event?: Event,
     ) => unknown;
   };
   Blocks: {
@@ -56,8 +57,12 @@ export interface TpkSelectSignature {
         isOpen: boolean;
         selected: unknown;
         guid: string;
-        onChange: (newSelected: unknown, alreadySelected: boolean) => unknown;
-        onSelectButtonClick: () => void;
+        onChange: (
+          newSelected: unknown,
+          alreadySelected: boolean,
+          event: Event,
+        ) => unknown;
+        onSelectButtonClick: (event: Event) => void;
         hasSelection: boolean;
       },
     ];
@@ -323,14 +328,15 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   }
 
   @action
-  onSelectButtonClick() {
+  onSelectButtonClick(event: Event) {
+    event.stopPropagation();
     this.isOpen = !this.isOpen;
   }
 
   @action
-  onChange(e: unknown, alreadySelected: boolean) {
+  onChange(e: unknown, alreadySelected: boolean, event?: Event) {
     this.close();
-    this.args.onChange(e, alreadySelected);
+    this.args.onChange(e, alreadySelected, event);
   }
 
   get hasSelection() {

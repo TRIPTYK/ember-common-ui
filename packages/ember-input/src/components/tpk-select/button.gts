@@ -10,7 +10,7 @@ export interface TpkSelectButtonSignature {
     selected: unknown | unknown[];
     labelId: string;
     activeChild?: HTMLElement;
-    onSelectButtonClick: () => void;
+    onSelectButtonClick: (event: Event) => void;
     classless?: boolean;
     registerControllerDiv: (element: HTMLDivElement) => void;
   };
