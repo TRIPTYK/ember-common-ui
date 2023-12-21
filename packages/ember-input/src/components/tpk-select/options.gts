@@ -13,6 +13,7 @@ export interface TpkSelectOptionSignature {
     onChange: (
       newSelected: unknown | string,
       alreadySelected: boolean,
+      event: Event,
     ) => unknown;
     labelId?: string;
     selected: unknown;
