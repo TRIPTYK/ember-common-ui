@@ -24,6 +24,7 @@ export interface TableGenericComponentSignature {
   Blocks: {
     default: [
       {
+        onSearch: (value: string) => void;
         SearchBar: WithBoundArgs<
           typeof TableGenericSearchBarComponent,
           'onSearch' | 'label' | 'placeholder'
@@ -58,6 +59,7 @@ export default class TableGenericComponent extends Component<TableGenericCompone
   <template>
     {{yield
       (hash
+        onSearch= this.onSearch
         SearchBar=(component
           TableGenericSearchBarComponent
           onSearch=this.onSearch

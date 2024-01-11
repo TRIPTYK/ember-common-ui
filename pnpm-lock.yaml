@@ -753,8 +753,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       ember-yeti-table:
-        specifier: git+https://github.com/bgantzler/ember-yeti-table#total-rows
-        version: github.com/bgantzler/ember-yeti-table/34765537b62d23ce7e594a6dbf97f94f87d57c4a(@babel/core@7.23.5)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)(webpack@5.89.0)
+        specifier: 2.0.0
+        version: 2.0.0(@babel/core@7.23.5)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)(webpack@5.89.0)
       focus-trap:
         specifier: ~7.5.4
         version: 7.5.4
@@ -10860,6 +10860,32 @@ packages:
       - supports-color
     dev: true
 
+  /ember-yeti-table@2.0.0(@babel/core@7.23.5)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-4pizKbVQx+Zr9dvRn/mz3T1N6QQ/O7rUzumHZhkY2UGwdAxBB7YBcQSAWd1SPoKtieK6GlQcRcLwrQcqLhfosg==}
+    engines: {node: 16.* || >= 18}
+    peerDependencies:
+      ember-source: ' ^3.26.0 || ^4.0.0 || ^5.0.0'
+    dependencies:
+      deepmerge: 4.3.1
+      ember-auto-import: 2.7.0(@glint/template@1.2.1)(webpack@5.89.0)
+      ember-cli-babel: 7.26.11
+      ember-cli-htmlbars: 6.3.0
+      ember-modifier: 4.1.0(ember-source@5.4.0)
+      ember-resources: 6.4.2(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)
+      ember-source: 5.4.0(@babel/core@7.23.5)(@glimmer/component@1.1.2)(@glint/template@1.2.1)(rsvp@4.8.5)(webpack@5.89.0)
+      ember-template-imports: 3.4.2
+      tracked-toolbox: 2.0.0(@babel/core@7.23.5)(ember-source@5.4.0)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@ember/test-waiters'
+      - '@glimmer/component'
+      - '@glimmer/tracking'
+      - '@glint/template'
+      - ember-concurrency
+      - supports-color
+      - webpack
+    dev: false
+
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: true
@@ -19812,33 +19838,3 @@ packages:
       tiny-case: 1.0.3
       toposort: 2.0.2
       type-fest: 2.19.0
-
-  github.com/bgantzler/ember-yeti-table/34765537b62d23ce7e594a6dbf97f94f87d57c4a(@babel/core@7.23.5)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)(webpack@5.89.0):
-    resolution: {tarball: https://codeload.github.com/bgantzler/ember-yeti-table/tar.gz/34765537b62d23ce7e594a6dbf97f94f87d57c4a}
-    id: github.com/bgantzler/ember-yeti-table/34765537b62d23ce7e594a6dbf97f94f87d57c4a
-    name: ember-yeti-table
-    version: 2.0.0
-    engines: {node: 16.* || >= 18}
-    peerDependencies:
-      ember-source: ' ^3.26.0 || ^4.0.0 || ^5.0.0'
-    dependencies:
-      deepmerge: 4.3.1
-      ember-async-data: 1.0.3(ember-source@5.4.0)
-      ember-auto-import: 2.7.0(@glint/template@1.2.1)(webpack@5.89.0)
-      ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 6.3.0
-      ember-modifier: 4.1.0(ember-source@5.4.0)
-      ember-resources: 6.4.2(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)
-      ember-source: 5.4.0(@babel/core@7.23.5)(@glimmer/component@1.1.2)(@glint/template@1.2.1)(rsvp@4.8.5)(webpack@5.89.0)
-      ember-template-imports: 3.4.2
-      tracked-toolbox: 2.0.0(@babel/core@7.23.5)(ember-source@5.4.0)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@ember/test-waiters'
-      - '@glimmer/component'
-      - '@glimmer/tracking'
-      - '@glint/template'
-      - ember-concurrency
-      - supports-color
-      - webpack
-    dev: false

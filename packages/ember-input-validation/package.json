@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-input-validation",
-  "version": "2.0.0-alpha.18",
+  "version": "2.0.0-alpha.19",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon"
