@@ -42,7 +42,7 @@ the function receive the value and the event as args.
 
 **T.Input**: The component representing the checkbox.
 
-**aside**: represents the HTML element where the error will be displayed.
+**div**: represents the HTML element where the error will be displayed.
 
 ### CSS
 

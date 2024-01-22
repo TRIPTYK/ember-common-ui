@@ -1,12 +1,16 @@
 import { action } from '@ember/object';
-import { BaseValidationComponent, type BaseValidationSignature } from './base.ts';
+import {
+  BaseValidationComponent,
+  type BaseValidationSignature,
+} from './base.ts';
 import type { ComponentLike } from '@glint/template';
 import TpkFile from '@triptyk/ember-input/components/tpk-file';
-import TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
-import TpkFileLabelComponent from '@triptyk/ember-input/components/tpk-file/label';
+import type TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
+import type TpkFileLabelComponent from '@triptyk/ember-input/components/tpk-file/label';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationFileComponentSignature extends BaseValidationSignature {
+export interface TpkValidationFileComponentSignature
+  extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;
