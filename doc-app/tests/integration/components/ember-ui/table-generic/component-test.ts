@@ -108,7 +108,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It renders search input and table', async function (assert) {
     await renderTableGeneric.call(this);
-    await this.pauseTest();
     assert.dom('input[type="search"]').exists();
     assert.dom('.tpk-table-generic').exists();
 
