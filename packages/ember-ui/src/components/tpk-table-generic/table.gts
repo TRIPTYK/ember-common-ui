@@ -157,9 +157,9 @@ export default class TableGenericTableComponent<
     additionalFilters: Record<string, unknown>,
     filterData: FilterData | undefined,
     paginationData: PaginationData,
-    sortString: string,
-  ): Record<string, unknown> {
-    let options = {
+    sortString?: string,
+  ) {
+    return {
       include: relationships,
       filter: {
         search: filterData?.filter,
@@ -169,13 +169,8 @@ export default class TableGenericTableComponent<
         size: paginationData.pageSize,
         number: paginationData.pageNumber,
       },
+      sort: sortString || this.args.initializedSortString,
     };
-
-    if (sortString || this.args.initializedSortString) {
-      (options as any).sort = sortString || this.args.initializedSortString;
-    }
-    console.log(options);
-    return options;
   }
 
   <template>
