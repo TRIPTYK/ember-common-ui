@@ -16,7 +16,7 @@ export interface TableGenericComponentSignature {
     pageSizes?: number[];
     filterText?: string;
     pageSize?: number;
-    initializedSortString?: string;
+    defaultSortColumn?: string;
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
     rowClick?: (...elements: unknown[]) => void;
@@ -39,7 +39,7 @@ export interface TableGenericComponentSignature {
           | 'entity'
           | 'pageSizes'
           | 'additionalFilters'
-          | 'initializedSortString'
+          | 'defaultSortColumn'
         >;
       },
     ];
@@ -78,7 +78,7 @@ export default class TableGenericComponent extends Component<TableGenericCompone
           pageSizes=@pageSizes
           pageSize=@pageSize
           additionalFilters=@additionalFilters
-          initializedSortString=@initializedSortString
+          defaultSortColumn=@defaultSortColumn
         )
       )
     }}

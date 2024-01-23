@@ -31,7 +31,7 @@ module('Integration | Component | table-generic', function (hooks) {
       @rowClick={{this.rowClick}}
       @pageSize={{this.pageSize}}
       @pageSizes={{this.pageSizes}}
-      @initializedSortString="-firstName"
+      @defaultSortColumn="-firstName"
       @entity="user"
     as | TG |>
       <TG.SearchBar />

@@ -59,7 +59,7 @@ interface TableGenericTableArgs {
   registerApi?: (api: TableApi) => unknown;
   rowClick: () => void;
   additionalFilters: Record<string, unknown>;
-  initializedSortString?: string;
+  defaultSortColumn?: string;
 }
 
 export interface TableGenericTableSignature {
@@ -169,7 +169,7 @@ export default class TableGenericTableComponent<
         size: paginationData.pageSize,
         number: paginationData.pageNumber,
       },
-      sort: sortString || this.args.initializedSortString,
+      sort: sortString || this.args.defaultSortColumn,
     };
   }
 
