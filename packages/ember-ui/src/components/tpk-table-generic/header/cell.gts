@@ -5,6 +5,7 @@ export interface TableGenericHeaderCellComponentSignature {
     header: any;
     sortable?: boolean;
     prop?: string;
+    sort?: string;
   };
   Element: HTMLDivElement;
   Blocks: {
@@ -14,7 +15,7 @@ export interface TableGenericHeaderCellComponentSignature {
 
 const TableGenericHeaderCellComponent: TOC<TableGenericHeaderCellComponentSignature> =
   <template>
-    <@header.column @sortable={{@sortable}} @prop={{@prop}} ...attributes>
+    <@header.column @sortable={{@sortable}} @prop={{@prop}} @sort={{@sort}} ...attributes>
       {{yield}}
     </@header.column>
   </template>;

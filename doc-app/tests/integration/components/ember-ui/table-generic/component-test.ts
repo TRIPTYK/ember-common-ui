@@ -31,6 +31,7 @@ module('Integration | Component | table-generic', function (hooks) {
       @rowClick={{this.rowClick}}
       @pageSize={{this.pageSize}}
       @pageSizes={{this.pageSizes}}
+      @defaultSortColumn="-firstName"
       @entity="user"
     as | TG |>
       <TG.SearchBar />
@@ -107,7 +108,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It renders search input and table', async function (assert) {
     await renderTableGeneric.call(this);
-
     assert.dom('input[type="search"]').exists();
     assert.dom('.tpk-table-generic').exists();
 
@@ -124,7 +124,6 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('It can sort firstName & lastName and cannot sort email', async function (assert) {
     await renderTableGeneric.call(this);
-
     assert.dom('thead th[data-test-table="firstName"]').hasAttribute('role');
     assert.dom('thead th[data-test-table="lastName"]').hasAttribute('role');
     assert

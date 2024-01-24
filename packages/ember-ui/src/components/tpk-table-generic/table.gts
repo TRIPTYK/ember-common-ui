@@ -44,6 +44,7 @@ export interface TableLoadDataApi {
     filter: string;
   };
 }
+
 export interface TableApi {
   reloadData: () => void;
 }
@@ -58,6 +59,7 @@ interface TableGenericTableArgs {
   registerApi?: (api: TableApi) => unknown;
   rowClick: () => void;
   additionalFilters: Record<string, unknown>;
+  defaultSortColumn?: string;
 }
 
 export interface TableGenericTableSignature {
@@ -155,8 +157,8 @@ export default class TableGenericTableComponent<
     additionalFilters: Record<string, unknown>,
     filterData: FilterData | undefined,
     paginationData: PaginationData,
-    sortString: string,
-  ): Record<string, unknown> {
+    sortString?: string,
+  ) {
     return {
       include: relationships,
       filter: {
@@ -167,7 +169,7 @@ export default class TableGenericTableComponent<
         size: paginationData.pageSize,
         number: paginationData.pageNumber,
       },
-      sort: sortString || '-updatedAt',
+      sort: sortString || this.args.defaultSortColumn || '-updatedAt',
     };
   }
 
