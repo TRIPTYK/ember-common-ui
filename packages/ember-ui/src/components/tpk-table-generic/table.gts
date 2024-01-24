@@ -169,7 +169,7 @@ export default class TableGenericTableComponent<
         size: paginationData.pageSize,
         number: paginationData.pageNumber,
       },
-      sort: sortString || this.args.defaultSortColumn,
+      sort: sortString || this.args.defaultSortColumn || '-updatedAt',
     };
   }
 
