@@ -7,11 +7,6 @@ settings:
 overrides:
   content-tag: 1.1.2
 
-patchedDependencies:
-  ember-flatpickr@6.0.0:
-    hash: mo2cu5rlgl4nzbtu5s3543xvsi
-    path: patches/ember-flatpickr@6.0.0.patch
-
 importers:
 
   .:
@@ -219,8 +214,8 @@ importers:
         specifier: ~5.3.0
         version: 5.3.0(@babel/core@7.23.7)(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-source@5.6.0)
       ember-flatpickr:
-        specifier: ~6.0.0
-        version: 6.0.0(patch_hash=mo2cu5rlgl4nzbtu5s3543xvsi)(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0)(flatpickr@4.6.13)
+        specifier: ^4.0.0
+        version: 4.0.0(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0)
       ember-immer-changeset:
         specifier: ~1.0.2
         version: 1.0.2(@babel/core@7.23.7)(ember-source@5.6.0)
@@ -472,8 +467,8 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
       ember-flatpickr:
-        specifier: ~6.0.0
-        version: 6.0.0(patch_hash=mo2cu5rlgl4nzbtu5s3543xvsi)(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0)(flatpickr@4.6.13)
+        specifier: ^4.0.0
+        version: 4.0.0(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0)
       ember-source:
         specifier: ~5.6.0
         version: 5.6.0(@babel/core@7.23.7)(@glimmer/component@1.1.2)(@glint/template@1.2.2)(rsvp@4.8.5)(webpack@5.89.0)
@@ -2949,21 +2944,6 @@ packages:
       ember-cli-babel: 7.26.11
     transitivePeerDependencies:
       - supports-color
-
-  /@ember/test-helpers@2.7.0(@babel/core@7.23.7):
-    resolution: {integrity: sha512-eWFtw5+sbci1Fw+E+HoyaMxY126LvK7jul6i8tad48zlWoxrOalbhJhz1mKqIo4daHbqIZWuFgQhOib4QfTKCQ==}
-    engines: {node: 10.* || 12.* || 14.* || 15.* || >= 16.*}
-    dependencies:
-      '@ember/test-waiters': 3.1.0
-      broccoli-debug: 0.6.5
-      broccoli-funnel: 3.0.8
-      ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 5.7.2
-      ember-destroyable-polyfill: 2.0.3(@babel/core@7.23.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-    dev: true
 
   /@ember/test-helpers@3.2.1(ember-source@5.6.0)(webpack@5.89.0):
     resolution: {integrity: sha512-DvJSihJPV4xshwEgBrFN4aUVc9m/Y/hVzwcslfSVq/h3dMWCyAj4+agkkdJPQrwBaE+H4IyGNzr555S7bTErEA==}
@@ -10723,16 +10703,21 @@ packages:
       - supports-color
     dev: true
 
-  /ember-flatpickr@6.0.0(patch_hash=mo2cu5rlgl4nzbtu5s3543xvsi)(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0)(flatpickr@4.6.13):
-    resolution: {integrity: sha512-SUqDygzaXfy9B5YYYmUhZjMN4fL7kT4eW2GkPgjFhARDfhCV/P+eAGOsNOtTpgg+db/S6pNKoP17U+7TQsB8WA==}
-    engines: {node: 18.* || >= 20, pnpm: ^8.14.1}
+  /ember-flatpickr@4.0.0(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0):
+    resolution: {integrity: sha512-NWCGFZENEcJ5GgtkuAtlAad3uyik4E0wD+/k40tNrlNd+XcGdMVQ4t90ku3GwfTrH9gNR5iq5LajL0dzA5Uhrw==}
+    engines: {node: 14.* || 16.* || >= 18}
     peerDependencies:
-      ember-source: ^4.0.0 || ^5.0.0
-      flatpickr: ^4.0.0
+      ember-source: ^3.28.0 || ^4.0.0
     dependencies:
       '@ember/render-modifiers': 2.1.0(@babel/core@7.23.7)(@glint/template@1.2.2)(ember-source@5.6.0)
-      '@ember/test-helpers': 2.7.0(@babel/core@7.23.7)
-      '@embroider/addon-shim': 1.8.7
+      '@glimmer/component': 1.1.2(@babel/core@7.23.7)
+      '@glimmer/tracking': 1.1.2
+      broccoli-funnel: 3.0.8
+      broccoli-merge-trees: 4.2.0
+      broccoli-stew: 3.0.0
+      ember-cli-babel: 7.26.11
+      ember-cli-htmlbars: 6.3.0
+      ember-cli-typescript: 5.2.1
       ember-source: 5.6.0(@babel/core@7.23.7)(@glimmer/component@1.1.2)(@glint/template@1.2.2)(rsvp@4.8.5)(webpack@5.89.0)
       flatpickr: 4.6.13
     transitivePeerDependencies:
@@ -10740,7 +10725,6 @@ packages:
       - '@glint/template'
       - supports-color
     dev: true
-    patched: true
 
   /ember-functions-as-helper-polyfill@2.1.2(ember-source@5.6.0):
     resolution: {integrity: sha512-yvW6xykvZEIYzzwlrC/g9yu6LtLkkj5F+ho6U+BDxN1uREMgoMOZnji7sSILn5ITVpaJ055DPcO+utEFD7IZOA==}
