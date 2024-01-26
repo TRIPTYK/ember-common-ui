@@ -32,6 +32,7 @@
     "ember-cli-babel": "~7.26.11",
     "ember-cli-htmlbars": "~6.2.0",
     "ember-cli-typescript": "~5.2.1",
+    "ember-froala-editor": "^4.0.19",
     "ember-test-selectors": "~6.0.0"
   },
   "peerDependencies": {

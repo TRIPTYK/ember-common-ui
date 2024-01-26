@@ -1,0 +1,30 @@
+<div
+  class={{if @classless 'tpk-validation-froala-error-container'}}
+  data-has-error='{{this.hasError}}'
+  ...attributes
+>
+  <label
+    for={{this.guid}}
+    class={{unless @classless 'tpk-froala-label'}}
+    data-test-tpk-froala-label
+  >
+    {{@label}}
+  </label>
+  <FroalaEditor
+    @content={{this.content}}
+    @update={{this.updateContent}}
+    aria-invalid={{this.hasError}}
+    id={{this.guid}}
+  />
+  <div class={{if @classless 'tpk-validation-froala-error-container'}}>
+    {{#if this.hasError}}
+      {{#if (has-block 'errors')}}
+        {{yield this.errors to='errors'}}
+      {{else}}
+        <span class={{unless @classless 'tpk-validation-froala-error'}}>
+          {{this.firstError}}
+        </span>
+      {{/if}}
+    {{/if}}
+  </div>
+</div>
