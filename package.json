@@ -13,14 +13,8 @@
   "repository": {
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"
   },
-  "//": "Override content-tag to fix https://github.com/embroider-build/addon-blueprint/issues/195",
-  "pnpm": {
-    "overrides": {
-      "content-tag": "1.1.2"
-    }
-  },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "lerna": "^8.0.2"
+    "lerna": "^8.1.2"
   }
 }

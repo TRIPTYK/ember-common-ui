@@ -12,7 +12,6 @@ import {
   validateOneAndMapErrors,
 } from '../utils/validate-and-map.ts';
 import { on } from '@ember/modifier';
-// @ts-expect-error - ember-concurrency does not have types for perform
 import perform from 'ember-concurrency/helpers/perform';
 import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';

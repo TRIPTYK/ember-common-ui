@@ -3,7 +3,6 @@ import Component from '@glimmer/component';
 import type { BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import { on } from '@ember/modifier';
-// @ts-expect-error no types
 import perform from 'ember-concurrency/helpers/perform';
 import { task } from 'ember-concurrency';
 
