@@ -1,13 +1,10 @@
 {
-  "name": "@triptyk/ember-input",
-  "version": "2.0.0",
+  "name": "@triptyk/ember-input-validation",
+  "version": "2.0.1",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon"
   ],
-  "repository": {
-    "url": "git@github.com:TRIPTYK/ember-common-ui.git"
-  },
   "license": "MIT",
   "author": "Triptyk",
   "exports": {
@@ -51,20 +48,17 @@
     "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
   },
   "dependencies": {
-    "@ember/render-modifiers": "~2.1.0",
+    "@babel/core": "^7.23.9",
     "@embroider/addon-shim": "^1.0.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "ember-click-outside": "^6.1.0",
-    "ember-concurrency": "^4.0.0",
+    "ember-concurrency": "~4.0.0",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "~6.0.0",
-    "focus-trap": "^7.5.4",
-    "imask": "~7.4.0",
-    "tracked-built-ins": "~3.3.0"
+    "yup": "~1.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-decorators": "^7.23.9",
     "@babel/plugin-transform-class-static-block": "^7.23.4",
@@ -77,6 +71,7 @@
     "@glint/template": "^1.3.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@triptyk/ember-input": "workspace:*",
     "@tsconfig/ember": "^3.0.3",
     "@types/ember": "^4.0.11",
     "@types/ember__application": "^4.0.11",
@@ -102,7 +97,7 @@
     "@typescript-eslint/parser": "^6.21.0",
     "babel-plugin-ember-template-compilation": "^2.2.0",
     "concurrently": "^8.2.2",
-    "ember-flatpickr": "~7.0.0",
+    "ember-immer-changeset": "~1.0.2",
     "ember-source": "~5.6.0",
     "ember-template-imports": "^4.1.0",
     "ember-template-lint": "^5.13.0",
@@ -111,7 +106,6 @@
     "eslint-plugin-ember": "^12.0.0",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-prettier": "^5.1.3",
-    "flatpickr": "^4.6.13",
     "prettier": "^3.2.5",
     "prettier-plugin-ember-template-tag": "^2.0.0",
     "rollup": "^4.10.0",
@@ -135,41 +129,21 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
-      "./components/tpk-button.js": "./dist/_app_/components/tpk-button.js",
-      "./components/tpk-checkbox.js": "./dist/_app_/components/tpk-checkbox.js",
-      "./components/tpk-checkbox/input.js": "./dist/_app_/components/tpk-checkbox/input.js",
-      "./components/tpk-checkbox/label.js": "./dist/_app_/components/tpk-checkbox/label.js",
-      "./components/tpk-datepicker.js": "./dist/_app_/components/tpk-datepicker.js",
-      "./components/tpk-datepicker/input.js": "./dist/_app_/components/tpk-datepicker/input.js",
-      "./components/tpk-datepicker/label.js": "./dist/_app_/components/tpk-datepicker/label.js",
-      "./components/tpk-file.js": "./dist/_app_/components/tpk-file.js",
-      "./components/tpk-file/input.js": "./dist/_app_/components/tpk-file/input.js",
-      "./components/tpk-file/label.js": "./dist/_app_/components/tpk-file/label.js",
-      "./components/tpk-input.js": "./dist/_app_/components/tpk-input.js",
-      "./components/tpk-input/input.js": "./dist/_app_/components/tpk-input/input.js",
-      "./components/tpk-input/label.js": "./dist/_app_/components/tpk-input/label.js",
-      "./components/tpk-radio.js": "./dist/_app_/components/tpk-radio.js",
-      "./components/tpk-radio/input.js": "./dist/_app_/components/tpk-radio/input.js",
-      "./components/tpk-radio/label.js": "./dist/_app_/components/tpk-radio/label.js",
-      "./components/tpk-select-search.js": "./dist/_app_/components/tpk-select-search.js",
-      "./components/tpk-select-search/button.js": "./dist/_app_/components/tpk-select-search/button.js",
-      "./components/tpk-select-search/input.js": "./dist/_app_/components/tpk-select-search/input.js",
-      "./components/tpk-select-search/label.js": "./dist/_app_/components/tpk-select-search/label.js",
-      "./components/tpk-select-search/options.js": "./dist/_app_/components/tpk-select-search/options.js",
-      "./components/tpk-select-search/options/option.js": "./dist/_app_/components/tpk-select-search/options/option.js",
-      "./components/tpk-select.js": "./dist/_app_/components/tpk-select.js",
-      "./components/tpk-select/button.js": "./dist/_app_/components/tpk-select/button.js",
-      "./components/tpk-select/label.js": "./dist/_app_/components/tpk-select/label.js",
-      "./components/tpk-select/options.js": "./dist/_app_/components/tpk-select/options.js",
-      "./components/tpk-select/options/option.js": "./dist/_app_/components/tpk-select/options/option.js",
-      "./components/tpk-textarea.js": "./dist/_app_/components/tpk-textarea.js",
-      "./components/tpk-textarea/input.js": "./dist/_app_/components/tpk-textarea/input.js",
-      "./components/tpk-textarea/label.js": "./dist/_app_/components/tpk-textarea/label.js",
-      "./modifiers/focus-trap.js": "./dist/_app_/modifiers/focus-trap.js"
+      "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
+      "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
+      "./components/tpk-validation-datepicker.js": "./dist/_app_/components/tpk-validation-datepicker.js",
+      "./components/tpk-validation-file.js": "./dist/_app_/components/tpk-validation-file.js",
+      "./components/tpk-validation-input.js": "./dist/_app_/components/tpk-validation-input.js",
+      "./components/tpk-validation-radio-group.js": "./dist/_app_/components/tpk-validation-radio-group.js",
+      "./components/tpk-validation-radio.js": "./dist/_app_/components/tpk-validation-radio.js",
+      "./components/tpk-validation-select.js": "./dist/_app_/components/tpk-validation-select.js",
+      "./components/tpk-validation-textarea.js": "./dist/_app_/components/tpk-validation-textarea.js",
+      "./services/tpk-form.js": "./dist/_app_/services/tpk-form.js"
     }
   },
   "peerDependencies": {
-    "ember-flatpickr": ">=6.0.0",
+    "@triptyk/ember-input": "workspace:*",
+    "ember-immer-changeset": "^1.0.0",
     "ember-source": ">=4.8.0"
   }
 }
