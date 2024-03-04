@@ -12,6 +12,7 @@ export interface TpkStackListComponentSignature {
     classless?: boolean;
     onRemove: (item: unknown) => void;
     data: unknown[];
+    key?: string;
     onAdd: () => void;
     titleForAdd: string;
     readOnly: boolean;
@@ -37,7 +38,7 @@ export interface TpkStackListComponentSignature {
 }
 
 const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
-  {{#each @data as |item index|}}
+  {{#each @data key=@key as |item index|}}
     <TpkStackListItem @zIndex={{index}} @index={{index}} as |I|>
       <div class='tpk-stack-head'>
         {{yield
@@ -75,10 +76,10 @@ const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
       data-test-add-stackList-item
       {{on 'click' @onAdd}}
     >
-    <img src='/assets/icons/plus.svg' alt='add' class='w-5 h-5' />
+      <img src='/assets/icons/plus.svg' alt='add' class='w-5 h-5' />
       <span>
         {{@titleForAdd}}
-      </span> 
+      </span>
     </button>
   {{/unless}}
 </template>;
