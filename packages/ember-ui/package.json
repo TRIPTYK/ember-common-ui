@@ -62,7 +62,7 @@
     "ember-intl": "~6.4.0",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "6.0.0",
-    "ember-yeti-table": "2.0.0",
+    "ember-yeti-table": "~2.0.0",
     "focus-trap": "~7.5.4",
     "tracked-built-ins": "3.3.0"
   },
