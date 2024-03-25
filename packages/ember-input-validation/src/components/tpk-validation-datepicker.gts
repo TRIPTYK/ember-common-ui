@@ -17,6 +17,7 @@ export interface TpkValidationDatepickerComponentSignature
     classless?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
+    mask?: string;
   } & FlatpickerArgs;
   Blocks: {
     default: [
@@ -105,6 +106,7 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
       @wrap={{@wrap}}
       @monthSelectorType={{@monthSelectorType}}
       @mode={{@mode}}
+      @mask={{@mask}}
       ...attributes
       data-has-error='{{this.hasError}}'
       as |D|

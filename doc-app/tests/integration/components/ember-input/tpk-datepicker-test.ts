@@ -2,7 +2,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { findAll, render } from '@ember/test-helpers';
+import { findAll, fillIn, render, blur } from '@ember/test-helpers';
 // @ts-expect-error
 import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
@@ -55,6 +55,19 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
       .dom('[data-test-tpk-datepicker-label]')
       .hasAttribute('for', { any: true });
     assert.verifySteps(['step']);
+  });
+
+  test('datepicker allow input without separator', async function (assert) {
+    this.set('setDate', function () {});
+    await render(
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="label" @value="" @allowInput={{true}} @mask="d/m/Y" as |D|>
+            <D.Input />
+            <D.Label />
+          </TpkDatepicker>`,
+    );
+    await fillIn('.tpk-datepicker-input', '01012022');
+    await blur('.tpk-datepicker-input');
+    assert.dom('.tpk-datepicker-input').hasValue('01/01/2022');
   });
 
   test('Accessibility', async function (assert) {
