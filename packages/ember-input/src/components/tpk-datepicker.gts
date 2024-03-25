@@ -8,6 +8,9 @@ import TpkDatepickerInputComponent, {
 } from './tpk-datepicker/input.gts';
 import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
 import { hash } from '@ember/helper';
+import IMask, { type FactoryArg, InputMask } from 'imask';
+import { action } from '@ember/object';
+import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 
 type DatepickerOptionKey =
   | 'onChange'
@@ -65,6 +68,7 @@ export type TpkDatepickerSignature = {
       value: Date[] | Date | string | string[] | null | number;
       onChange?: (value: Date[], e: Event) => void;
       disabled?: boolean;
+      mask?: string;
     } & FlatpickerArgs
   >;
   Blocks: {
@@ -96,9 +100,45 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
     return this.args.onClose ? this.args.onClose : this.args.onChange;
   }
 
+  @action
+  setMask(element: HTMLElement) {
+    if (!this.args.mask) return;
+
+    const inputElement = element.querySelector(
+      `input#${this.guid}`,
+    ) as HTMLElement;
+
+    IMask(inputElement, {
+      mask: this.args.mask,
+      blocks: {
+        d: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 31,
+          maxLength: 2,
+        },
+        m: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+          maxLength: 2,
+        },
+        Y: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 9999,
+        }
+      },
+      lazy: true,
+      overwrite: true,
+      autofix: true,
+    });
+  }
+
   <template>
     <div
       class={{unless @classless 'tpk-datepicker'}}
+      {{didInsert this.setMask}}
       ...attributes
       data-test-tpk-datepicker
     >
