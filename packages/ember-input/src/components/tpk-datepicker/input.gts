@@ -73,101 +73,60 @@ const EmberFlatpickr1 = EmberFlatpickr as any;
 
 // Lot of @glint-expect-error. I do not want to loose all the type safety.
 // waiting on ember-flatpickr to be updated to a type safe version.
-const TpkDatepickerInputComponent: TOC<TpkDatepickerInputComponentSignature> = <template>
-  <EmberFlatpickr1
-    data-test-tpk-datepicker-content
-
-    @altFormat={{@altFormat}}
-
-    @altInput={{@altInput}}
-
-    @altInputClass={{@altInputClass}}
-
-    @allowInput={{@allowInput}}
-
-    @allowInvalidPreload={{@allowInvalidPreload}}
-
-    @appendTo={{@appendTo}}
-
-    @ariaDateFormat={{@ariaDateFormat}}
-
-    @conjunction={{@conjunction}}
-
-    @clickOpens={{@clickOpens}}
-    @date={{@value}}
-
-    @dateFormat={{@dateFormat}}
-
-    @defaultDate={{@defaultDate}}
-
-    @defaultHour={{@defaultHour}}
-
-    @defaultMinute={{@defaultMinute}}
-
-    @disable={{@disabledDates}}
-
-    @disableMobile={{@disableMobile}}
-
-    @enable={{@enable}}
-
-    @enableTime={{@enableTime}}
-
-    @enableSeconds={{@enableSeconds}}
-
-    @formatDate={{@formatDate}}
-
-    @hourIncrement={{@hourIncrement}}
-
-    @inline={{@inline}}
-
-    @maxDate={{@maxDate}}
-
-    @minDate={{@minDate}}
-
-    @locale={{@locale}}
-
-    @minuteIncrement={{@minuteIncrement}}
-
-    @mode={{@mode}}
-
-    @nextArrow={{@nextArrow}}
-
-    @noCalendar={{@noCalendar}}
-
-    @onChange={{@onChange}}
-
-    @onClose={{@onClose}}
-
-    @onOpen={{@onOpen}}
-
-    @onReady={{@onReady}}
-
-    @parseDate={{@parseDate}}
-
-    @position={{@position}}
-
-    @positionElement={{@positionElement}}
-
-    @prevArrow={{@prevArrow}}
-
-    @shorthandCurrentMonth={{@shorthandCurrentMonth}}
-    @showMonths={{@showMonths}}
-
-    @time_24hr={{@time_24hr}}
-
-    @weekNumbers={{@weekNumbers}}
-
-    @wrap={{@wrap}}
-
-    @monthSelectorType={{@monthSelectorType}}
-    @static={{true}}
-    placeholder={{@placeholder}}
-    id={{@guid}}
-    disabled={{@disabled}}
-    class={{unless @classless 'tpk-datepicker-input'}}
-
-    ...attributes
-  />
-</template>
+const TpkDatepickerInputComponent: TOC<TpkDatepickerInputComponentSignature> =
+  <template>
+    <EmberFlatpickr1
+      data-test-tpk-datepicker-content
+      @altFormat={{@altFormat}}
+      @altInput={{@altInput}}
+      @altInputClass={{@altInputClass}}
+      @allowInput={{@allowInput}}
+      @allowInvalidPreload={{@allowInvalidPreload}}
+      @appendTo={{@appendTo}}
+      @ariaDateFormat={{@ariaDateFormat}}
+      @conjunction={{@conjunction}}
+      @clickOpens={{@clickOpens}}
+      @date={{@value}}
+      @dateFormat={{@dateFormat}}
+      @defaultDate={{@defaultDate}}
+      @defaultHour={{@defaultHour}}
+      @defaultMinute={{@defaultMinute}}
+      @disable={{@disabledDates}}
+      @disableMobile={{@disableMobile}}
+      @enable={{@enable}}
+      @enableTime={{@enableTime}}
+      @enableSeconds={{@enableSeconds}}
+      @formatDate={{@formatDate}}
+      @hourIncrement={{@hourIncrement}}
+      @inline={{@inline}}
+      @maxDate={{@maxDate}}
+      @minDate={{@minDate}}
+      @locale={{@locale}}
+      @minuteIncrement={{@minuteIncrement}}
+      @mode={{@mode}}
+      @nextArrow={{@nextArrow}}
+      @noCalendar={{@noCalendar}}
+      @onChange={{@onChange}}
+      @onClose={{@onClose}}
+      @onOpen={{@onOpen}}
+      @onReady={{@onReady}}
+      @parseDate={{@parseDate}}
+      @position={{@position}}
+      @positionElement={{@positionElement}}
+      @prevArrow={{@prevArrow}}
+      @shorthandCurrentMonth={{@shorthandCurrentMonth}}
+      @showMonths={{@showMonths}}
+      @time_24hr={{@time_24hr}}
+      @weekNumbers={{@weekNumbers}}
+      @wrap={{@wrap}}
+      @monthSelectorType={{@monthSelectorType}}
+      @static={{true}}
+      @disabled={{@disabled}}
+      placeholder={{@placeholder}}
+      id={{@guid}}
+      class={{unless @classless 'tpk-datepicker-input'}}
+      ...attributes
+    />
+  </template>;
 
 export default TpkDatepickerInputComponent;
