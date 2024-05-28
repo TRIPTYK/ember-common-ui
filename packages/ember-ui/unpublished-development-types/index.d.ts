@@ -2,8 +2,10 @@
 // Add any types here that you need for local development only.
 // These will *not* be published as part of your addon, so be careful that your published code does not rely on them!
 
+import 'ember-source/types';
 import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import type RenderModifiersRegistry from '@ember/render-modifiers/template-registry';
 import type EmberIntlRegistry from 'ember-intl/template-registry';
 import type EmberInputRegistry from '@triptyk/ember-input/template-registry';
