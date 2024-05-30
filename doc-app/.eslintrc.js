@@ -1,58 +1,75 @@
 'use strict';
 
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: [
-        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
-      ],
-    },
-  },
-  plugins: ['ember'],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended',
-    'plugin:prettier/recommended',
-  ],
-  env: {
-    browser: true,
-  },
-  rules: {
-    'no-unused-vars': 'off',
-  },
   overrides: [
+    {
+      files: ['**/*.{js,ts}'],
+      plugins: ['ember'],
+      parser: '@typescript-eslint/parser',
+      extends: ['eslint:recommended', 'plugin:ember/recommended'],
+      rules: {
+        'no-unused-vars': 'off',
+        'no-undef': 'off',
+      }
+    },
+    {
+      files: ['**/*.gts'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:ember/recommended-gts'],
+      rules: {
+        'no-unused-vars': 'off',
+        'no-undef': 'off',
+      }
+    },
+    {
+      files: ['**/*.gjs'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:ember/recommended-gjs'],
+      rules: {
+        'no-unused-vars': 'off',
+        'no-undef': 'off',
+      }
+    },
+    // test files
+    {
+      files: ['tests/**/*-test.{js,ts}'],
+      plugins: ['ember'],
+      parser: '@typescript-eslint/parser',
+      extends: ['eslint:recommended', 'plugin:qunit/recommended'],
+      rules: {
+        'no-unused-vars': 'off',
+        'no-undef': 'off',
+      }
+    },
+    {
+      files: ['tests/**/*-test.{gjs,gts}'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:ember/recommended-gts'],
+    },
     // node files
     {
       files: [
-        './.eslintrc.js',
-        './.prettierrc.js',
-        './.stylelintrc.js',
-        './.template-lintrc.js',
+        './.eslintrc.{js,cjs}',
+        './.prettierrc.{js,cjs}',
+        './.stylelintrc.{js,cjs}',
+        './.template-lintrc.{js,cjs}',
         './ember-cli-build.js',
-        './index.js',
+        './playwright.config.ts',
         './testem.js',
+        './tailwind.config.js',
         './blueprints/*/index.js',
         './config/**/*.js',
-        './tests/dummy/config/**/*.js',
+        './lib/*/index.js',
+        './server/**/*.js',
       ],
-      parserOptions: {
-        sourceType: 'script',
-      },
       env: {
         browser: false,
         node: true,
       },
       extends: ['plugin:n/recommended'],
-    },
-    {
-      // test files
-      files: ['tests/**/*-test.{js,ts}'],
-      extends: ['plugin:qunit/recommended'],
     },
   ],
 };

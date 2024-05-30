@@ -4,9 +4,8 @@ import { hbs } from 'ember-cli-htmlbars';
 import {
   click,
   fillIn,
-  pauseTest,
   render,
-  type TestContext,
+  type TestContext
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { object, string } from 'yup';
@@ -15,7 +14,7 @@ import DummyInput from 'dummy/components/dummy-input';
 
 interface ComponentTestContext extends TestContext {
   changeset: ImmerChangeset;
-  onSubmit: () => void;
+  onSubmit?: (...args: unknown[]) => void;
   validationSchema: any;
   reactive: boolean;
   removeErrorsOnSubmit: boolean;
@@ -40,12 +39,14 @@ module('Integration | Component | tpk-form', function (hooks) {
     this.set('reactive', params?.reactive);
     this.set('removeErrorsOnSubmit', params?.removeErrorsOnSubmit);
 
-    await render(
+    await render<ComponentTestContext>(
       hbs`<TpkForm
-          @changeset={{this.changeset}} @validationSchema={{this.validationSchema}} @onSubmit={{this.onSubmit}}
+          @changeset={{this.changeset}}
+          @validationSchema={{this.validationSchema}}
+          @onSubmit={{this.onSubmit}}
           @reactive={{this.reactive}}
           @removeErrorsOnSubmit={{this.removeErrorsOnSubmit}}
-          @executeOnValid={{this.executeOnValid}}
+          @executeOnValid={{true}}
         as |F|>
           <F.TpkInput @validationField="name" />
           <F.TpkInput @type="email" @validationField="email" as |I|>
@@ -59,8 +60,8 @@ module('Integration | Component | tpk-form', function (hooks) {
 
   test('TpkForm can invoke custom registered inputs from service', async function () {
     let tpkFormService = this.owner.lookup(
-      'service:tpk-form',
-    ) as TpkFormService;
+    'service:tpk-form'
+    ) as unknown as TpkFormService;
 
     tpkFormService.TpkInput = DummyInput;
 

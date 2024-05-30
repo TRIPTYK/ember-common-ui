@@ -3,9 +3,9 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { Promisable } from 'type-fest';
 import { assert } from '@ember/debug';
-import { task, type TaskForAsyncTaskFunction } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
-import { Schema } from 'yup';
+import { Schema, type InferType } from 'yup';
 import { isFieldError } from '../utils/is-field-error.ts';
 import {
   validateAndMapErrors,
@@ -24,18 +24,18 @@ import TpkValidationCheckboxComponent from '../components/tpk-validation-checkbo
 import TpkValidationDatepickerComponent from '../components/tpk-validation-datepicker.gts';
 import TpkFormService from '../services/tpk-form.ts';
 
-interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
+interface ChangesetFormComponentArgs<T extends ImmerChangeset, S extends Schema> {
   changeset: T;
-  onSubmit: (changeset: T) => Promisable<unknown>;
-  validationSchema: Schema;
+  onSubmit: (changeset: T, data: InferType<S>) => Promisable<unknown>;
+  validationSchema: S;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
   disabled?: boolean;
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature {
-  Args: ChangesetFormComponentArgs<ImmerChangeset>;
+export interface ChangesetFormComponentSignature<T extends ImmerChangeset, S extends Schema> {
+  Args: ChangesetFormComponentArgs<T, S>;
   Blocks: {
     default: [
       {
@@ -74,12 +74,12 @@ export interface ChangesetFormComponentSignature {
   Element: HTMLFormElement;
 }
 
-export default class ChangesetFormComponent extends Component<ChangesetFormComponentSignature> {
+export default class ChangesetFormComponent<T extends ImmerChangeset, S extends Schema> extends Component<ChangesetFormComponentSignature<T, S>> {
   @service declare tpkForm: TpkFormService;
 
   public constructor(
     owner: Owner,
-    args: ChangesetFormComponentArgs<ImmerChangeset>,
+    args: ChangesetFormComponentArgs<T, S>,
   ) {
     super(owner, args);
     assert(
@@ -138,7 +138,7 @@ export default class ChangesetFormComponent extends Component<ChangesetFormCompo
       this.args.changeset.execute();
     }
 
-    await this.args.onSubmit(this.args.changeset);
+    await this.args.onSubmit(this.args.changeset, this.args.changeset.data);
   });
 
   submit = task(this, async (e: Event) => {

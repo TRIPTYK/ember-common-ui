@@ -1,0 +1,17 @@
+import '@glint/environment-ember-loose';
+import '@glint/environment-ember-template-imports';
+import type RenderModifiersRegistry from '@ember/render-modifiers/template-registry';
+import type EmberIntlRegistry from 'ember-intl/template-registry';
+import type EmberInputRegistry from '@triptyk/ember-input/template-registry';
+import type EmberInputValidationRegistry from '@triptyk/ember-input-validation/template-registry';
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry
+    extends RenderModifiersRegistry,
+      EmberInputRegistry,
+      EmberIntlRegistry,
+      EmberInputValidationRegistry {
+    'on-click-outside': any;
+    YetiTable: any;
+  }
+}

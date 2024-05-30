@@ -1,28 +1,32 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { hbs } from 'ember-cli-htmlbars';
 import { type TestContext, click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
+import TpkValidationCheckbox from '@triptyk/ember-input-validation/components/tpk-validation-checkbox';
+
+interface TpkCheckboxValidationTestContext extends TestContext {
+  changeset: ImmerChangeset;
+}
 
 module('Integration | Component | tpk-validation-checkbox', function (hooks) {
   setupRenderingTest(hooks);
 
-  async function setupComponent(this: TestContext) {
+  async function setupComponent(this: TpkCheckboxValidationTestContext) {
     const changeset = new ImmerChangeset({
       checked: true,
     });
-    this.set('changeset', changeset);
-
-    await render(
-      hbs`<TpkValidationCheckbox @label="label" @changeset={{this.changeset}} @validationField="checked" as |T|>
+    await render<TpkCheckboxValidationTestContext>(
+      <template>
+        <TpkValidationCheckbox @label="label" @changeset={{changeset}} @validationField="checked" as |T|>
           <T.Input />
           <T.Label />
-        </TpkValidationCheckbox>`,
+        </TpkValidationCheckbox>
+      </template>
     );
     return changeset;
   }
 
-  test('It changes data-has-error attribue on error', async function (assert) {
+  test<TpkCheckboxValidationTestContext>('It changes data-has-error attribue on error', async function (assert) {
     const changeset = await setupComponent.call(this);
     assert.dom('[data-test-tpk-checkbox]').exists();
     assert.dom('[data-test-tpk-checkbox-label]').containsText('label');
