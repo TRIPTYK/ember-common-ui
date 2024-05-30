@@ -24,7 +24,7 @@ import TpkValidationCheckboxComponent from '../components/tpk-validation-checkbo
 import TpkValidationDatepickerComponent from '../components/tpk-validation-datepicker.gts';
 import TpkFormService from '../services/tpk-form.ts';
 
-interface ChangesetFormComponentArgs<T extends ImmerChangeset, S extends Schema> {
+interface TpkFormArgs<T extends ImmerChangeset, S extends Schema> {
   changeset: T;
   onSubmit: (changeset: T, data: InferType<S>) => Promisable<unknown>;
   validationSchema: S;
@@ -34,8 +34,8 @@ interface ChangesetFormComponentArgs<T extends ImmerChangeset, S extends Schema>
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature<T extends ImmerChangeset, S extends Schema> {
-  Args: ChangesetFormComponentArgs<T, S>;
+export interface TpkFormSignature<T extends ImmerChangeset, S extends Schema> {
+  Args: TpkFormArgs<T, S>;
   Blocks: {
     default: [
       {
@@ -74,12 +74,12 @@ export interface ChangesetFormComponentSignature<T extends ImmerChangeset, S ext
   Element: HTMLFormElement;
 }
 
-export default class ChangesetFormComponent<T extends ImmerChangeset, S extends Schema> extends Component<ChangesetFormComponentSignature<T, S>> {
+export default class TpkForm<T extends ImmerChangeset, S extends Schema> extends Component<TpkFormSignature<T, S>> {
   @service declare tpkForm: TpkFormService;
 
   public constructor(
     owner: Owner,
-    args: ChangesetFormComponentArgs<T, S>,
+    args: TpkFormArgs<T, S>,
   ) {
     super(owner, args);
     assert(
