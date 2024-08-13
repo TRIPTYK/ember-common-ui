@@ -35,7 +35,12 @@ export interface TpkValidationDatepickerComponentSignature
 
 export default class TpkValidationDatepickerComponent extends BaseValidationComponent<TpkValidationDatepickerComponentSignature> {
   @action onChange(dates: Date[]) {
-    if (dates.length === 0) return;
+    if (dates.length === 0)
+      return this.args.changeset.set(
+        this.args.validationField,
+        this.args.mode === 'multiple' || this.args.mode === 'range' ? [] : null,
+      );
+
     const date =
       this.args.mode === 'multiple' || this.args.mode === 'range'
         ? dates

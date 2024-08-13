@@ -31,7 +31,7 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
     assert.dom('[data-test-tpk-datepicker]').exists();
     assert.dom('[data-test-tpk-datepicker-label]').containsText('label');
 
-    await setFlatpickrDate('[data-test-tpk-datepicker-content]', '');
+    setFlatpickrDate('[data-test-tpk-datepicker-content]', '');
     await settled();
 
     assert.dom('[data-test-tpk-datepicker-content]').hasNoText();
@@ -48,6 +48,8 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
     });
 
     await settled();
+
+    assert.equal(changeset.get('date'), null);
 
     assert
       .dom('[data-test-tpk-datepicker]')
