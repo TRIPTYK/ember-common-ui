@@ -37,7 +37,7 @@ jobs:
           node-version: 20
       - uses: pnpm/action-setup@v2.2.1
         with:
-          version: 8
+          version: 9
           run_install: true
       - name: Build packages before
         run: pnpm build
