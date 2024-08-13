@@ -49,7 +49,7 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
 
     await settled();
 
-    assert.equal(changeset.get('date'), null);
+    assert.strictEqual(changeset.get('date'), null);
 
     assert
       .dom('[data-test-tpk-datepicker]')
