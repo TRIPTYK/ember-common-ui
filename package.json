@@ -10,11 +10,16 @@
     "start:ui": "pnpm --filter @triptyk/ember-ui start",
     "start:test-app": "pnpm --filter doc-app start"
   },
+  "pnpm": {
+    "overrides": {
+      "ember-concurrency": "4.0.2"
+    }
+  },
   "repository": {
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "lerna": "^8.1.2"
+    "lerna": "^8.1.8"
   }
 }
