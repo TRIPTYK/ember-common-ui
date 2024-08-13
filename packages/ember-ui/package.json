@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-ui",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.10",
   "description": "User interface components for Ember.js applications",
   "keywords": [
     "ember-addon",
@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "@babel/core": "7.21.8",
-    "ember-flatpickr": "~4.0.0",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-proposal-decorators": "^7.23.0",
     "@ember/optional-features": "2.0.0",
@@ -107,6 +106,7 @@
     "ember-cli-terser": "4.0.2",
     "ember-click-outside": "^6.0.1",
     "ember-data": "~5.3.0",
+    "ember-flatpickr": "~4.0.0",
     "ember-load-initializers": "2.1.2",
     "ember-page-title": "8.0.0",
     "ember-qunit": "8.0.1",
