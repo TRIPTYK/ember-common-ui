@@ -24,6 +24,7 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
+    timeout-minutes: 5
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -35,7 +36,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v3
         with:
           version: 9
           run_install: true
