@@ -5,6 +5,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import {
   type TestContext,
   fillIn,
+  click,
   findAll,
   render,
   settled,
@@ -16,22 +17,31 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
-        <I.Label>
-          label
-        </I.Label>
-        <I.Input/>
-      </TpkValidationInput>`,
+      hbs`<TpkValidationInput @showToggleButton={{this.showToggleButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" />`,
+    );
+  }
+
+  async function renderYieldedComponent() {
+    await render(
+      hbs`<TpkValidationInput @showToggleButton={{this.showToggleButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="yieldedLabel" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I| >
+      <I.Label/>
+      <I.Input/>
+      </TpkValidationInput>
+      `,
     );
   }
 
   function setupChangeset(this: TestContext) {
     const changeset = new ImmerChangeset({
-      name: 'a',
+      name: 'value',
     });
 
     this.set('changeset', changeset);
     return changeset;
+  }
+
+  function setType(this: TestContext, type: string) {
+    this.set('type', type);
   }
 
   test('It changes data-has-error attribue on error', async function (assert) {
@@ -40,7 +50,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     await renderComponent();
     assert.dom('[data-test-tpk-input]').exists();
     assert.dom('[data-test-tpk-input-label]').containsText('label');
-    assert.dom('[data-test-tpk-input-input]').hasValue('a');
+    assert.dom('[data-test-tpk-input-input]').hasValue('value');
 
     await fillIn('[data-test-tpk-input-input]', '');
     assert.strictEqual(changeset.get('name'), '');
@@ -48,7 +58,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     changeset.addError({
       message: 'required',
       value: '',
-      originalValue: 'a',
+      originalValue: 'value',
       key: 'name',
     });
 
@@ -65,21 +75,70 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       assert.strictEqual(value, 'blah');
       assert.strictEqual(
         changeset.get('name'),
-        'a',
+        'value',
         'Value not changed in the changeset',
       );
     });
 
     await renderComponent();
-
     await fillIn('[data-test-validation-input] input', 'blah');
     assert.verifySteps(['change']);
   });
 
+  test('renders generic input validation', async function (assert) {
+    const changeset = setupChangeset.call(this);
+
+    await renderComponent();
+    assert.dom('[data-test-input-not-yielded]').exists();
+    assert.dom('[data-test-label-not-yielded]').exists();
+    assert.dom('[data-test-label-not-yielded]').containsText('label');
+    assert.dom('[data-test-input-not-yielded]').hasValue('value');
+
+    assert.strictEqual(changeset.get('name'), 'value');
+  });
+
+  test('it overrides generic input by yielded one', async function (assert) {
+    const changeset = setupChangeset.call(this);
+
+    await renderYieldedComponent();
+    assert.dom('[data-test-input-not-yielded]').doesNotExist();
+    assert.dom('[data-test-label-not-yielded]').doesNotExist();
+    assert.dom('[data-test-tpk-input]').exists();
+    assert.dom('[data-test-tpk-input-label]').containsText('yieldedLabel');
+    await fillIn('[data-test-tpk-input-input]', 'yieldedValue');
+    assert.dom('[data-test-tpk-input-input]').hasValue('yieldedValue');
+  });
+
+  test('it passes showToggleButton to show or hide Toggle button', async function (assert) {
+    setType.call(this, 'password');
+    setupChangeset.call(this);
+    this.set('classless', false);
+    await renderComponent();
+    assert.dom('[data-test-toggle-button]').doesNotExist();
+    this.set('showToggleButton', true);
+    assert.dom('[data-test-toggle-button]').exists();
+    assert
+      .dom('[data-test-validation-input] input')
+      .hasAttribute('type', 'password');
+  });
+
+  test('it changes type when click on toggleButton ', async function (assert) {
+    setType.call(this, 'password');
+    setupChangeset.call(this);
+    this.set('classless', false);
+    this.set('showToggleButton', true);
+    await renderComponent();
+    assert
+      .dom('[data-test-validation-input] input')
+      .hasAttribute('type', 'password');
+    await click('[data-test-toggle-button]');
+    assert.dom('[data-test-validation-input] input').hasAttribute('type', '');
+  });
+
   test('Classless removes all the classes', async function (assert) {
     this.set('classless', false);
+    this.set('showToggleButton', true);
     setupChangeset.call(this);
-
     await renderComponent();
 
     findAll('*')
@@ -89,7 +148,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       });
 
     this.set('classless', true);
-
     findAll('*').forEach((e) => {
       assert.dom(e).hasNoClass(/tpk-.*/);
     });
@@ -100,10 +158,10 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
     this.set('onChange', (value: string) => {
       assert.step('change');
-      assert.strictEqual(value, 'blah');
+      assert.strictEqual(value, 'valueChanged');
       assert.strictEqual(
         changeset.get('name'),
-        'a',
+        'value',
         'Value not changed in the changeset',
       );
     });
@@ -115,16 +173,11 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       @onChange={{this.onChange}}
       @changeset={{this.changeset}}
       @validationField="name"
-      data-test-input="name" as |TI|
-    >
-      <TI.Label>
-        Mot de passe
-      </TI.Label>
-      <TI.Input/>
-    </TpkValidationInput>`,
+      data-test-input="name" 
+    />`,
     );
 
-    await fillIn('[data-test-input="name"] input', 'blah');
+    await fillIn('[data-test-input="name"] input', 'valueChanged');
     assert.verifySteps(['change']);
   });
 
@@ -146,7 +199,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     </TpkValidationInput>`,
     );
 
-    await fillIn('[data-test-input="name"] input', 'blah');
-    assert.strictEqual(changeset.get('name'), 'blah');
+    await fillIn('[data-test-input="name"] input', 'valueChanged');
+    assert.strictEqual(changeset.get('name'), 'valueChanged');
   });
 });

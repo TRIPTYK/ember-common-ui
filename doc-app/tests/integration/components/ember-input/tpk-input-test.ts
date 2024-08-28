@@ -14,12 +14,29 @@ module('Integration | Component | tpk-input', function (hooks) {
   test('class/less by default', async function (assert) {
     this.set('classless', false);
     await render(
-      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" as |I|>
-      <I.Input />
-      <I.Label />
-</TpkInput>`,
+      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" />`,
     );
 
+    assert.dom('.tpk-input-label').exists().containsText('label');
+    assert.dom('.tpk-input-input').exists().hasValue('value');
+    assert.dom('.tpk-input').exists();
+
+    this.set('classless', true);
+
+    findAll('*')
+      .filter((e) => e.id !== 'modal-overlays')
+      .forEach((e) => {
+        assert.dom(e).hasNoClass(/tpk-.*/);
+      });
+  });
+
+  test('class/has block element yield', async function (assert) {
+    await render(
+      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" as |I|>
+        <I.Input />
+        <I.Label />
+      </TpkInput>`,
+    );
     assert.dom('.tpk-input-label').exists().containsText('label');
     assert.dom('.tpk-input-input').exists().hasValue('value');
     assert.dom('.tpk-input').exists();
