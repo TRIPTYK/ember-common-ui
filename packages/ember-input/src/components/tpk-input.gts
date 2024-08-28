@@ -13,6 +13,7 @@ import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+import { on } from '@ember/modifier';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -110,29 +111,48 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
       ...attributes
       data-test-tpk-input
     >
-      {{yield
-        (hash
-          Input=(component
-            TpkInputInputComponent
-            onChange=this.onChange
-            type=@type
+
+      {{#if (has-block)}}
+        {{yield
+          (hash
+            Input=(component
+              TpkInputInputComponent
+              onChange=this.onChange
+              type=@type
+              changeEvent=this.changeEvent
+              value=@value
+              disabled=@disabled
+              guid=this.guid
+              classless=@classless
+            )
+            Label=(component
+              TpkInputLabelComponent
+              label=@label
+              guid=this.guid
+              classless=@classless
+            )
             changeEvent=this.changeEvent
-            value=@value
-            disabled=@disabled
             guid=this.guid
-            classless=@classless
+            onChange=this.onChange
           )
-          Label=(component
-            TpkInputLabelComponent
-            label=@label
-            guid=this.guid
-            classless=@classless
-          )
-          changeEvent=this.changeEvent
-          guid=this.guid
-          onChange=this.onChange
-        )
-      }}
+        }}
+      {{else}}
+        <TpkInputLabelComponent
+          @label={{@label}}
+          @guid={{this.guid}}
+          @classless={{@classless}}
+        />
+        <TpkInputInputComponent
+          @onChange={{this.onChange}}
+          @type={{@type}}
+          @changeEvent={{this.changeEvent}}
+          @value={{@value}}
+          @disabled={{@disabled}}
+          @guid={{this.guid}}
+          @classless={{@classless}}
+        />
+      {{/if}}
+
     </div>
   </template>
 }
