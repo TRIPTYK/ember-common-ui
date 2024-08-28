@@ -23,17 +23,15 @@ export interface TpkValidationInputComponentSignature
     showToggleButton?: boolean;
     step?: number;
     min?: number;
-    inputClass?: string;
     maxlength?: number;
     mandatory?: boolean;
-    labelClass?: string;
     placeholder?: string;
   };
   Blocks: {
     default: [
       {
-        Input: TpkInputSignature['Blocks']['default'][0]['Input'];
-        Label: TpkInputSignature['Blocks']['default'][0]['Label'];
+        Input?: TpkInputSignature['Blocks']['default'][0]['Input'];
+        Label?: TpkInputSignature['Blocks']['default'][0]['Label'];
         errors: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];
@@ -94,7 +92,10 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           )
         }}
       {{else}}
-        <I.Label class={{@labelClass}} data-test-label-not-yielded>
+        <I.Label
+          class={{unless @classless 'tpk-input-validation-label'}}
+          data-test-label-not-yielded
+        >
           {{@label}}
           {{#if @mandatory}}
             <span>
@@ -107,18 +108,23 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           min={{@min}}
           disabled={{@disabled}}
           placeholder={{@placeholder}}
-          class={{@inputClass}}
+          class={{unless @classless 'tpk-input-validation-input'}}
           aria-autocomplete='none'
           autocomplete='off'
           autofill='off'
           maxlength={{@maxlength}}
           data-test-input-not-yielded
         />
+        {{yield
+          (hash
+            errors=this.errors hasError=this.hasError firstError=this.firstError
+          )
+        }}
       {{/if}}
       {{#if @showToggleButton}}
         <button
           type='button'
-          class={{unless @classless 'tpk-button-eyes'}}
+          class={{unless @classless 'tpk-input-validation-toggle'}}
           title={{if this.showPassword 'show' 'hide'}}
           {{on 'click' this.togglePassword}}
           data-test-toggle-button
