@@ -31,6 +31,9 @@ Router.map(function () {
       this.route('textarea');
     });
     this.route('ember-input-validation', function () {
+      this.route('prefabs', function () {
+        this.route('password');
+      });
       this.route('installation');
       this.route('checkbox');
       this.route('datepicker');

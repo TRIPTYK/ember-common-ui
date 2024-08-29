@@ -3,7 +3,7 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { Promisable } from 'type-fest';
 import { assert } from '@ember/debug';
-import { task, type TaskForAsyncTaskFunction } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
 import { Schema } from 'yup';
 import { isFieldError } from '../utils/is-field-error.ts';
