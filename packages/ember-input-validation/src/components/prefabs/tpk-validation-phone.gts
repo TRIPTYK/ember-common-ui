@@ -6,7 +6,6 @@ import {
 } from '../base.ts';
 import type { TpkValidationInputComponentSignature } from '../tpk-validation-input.gts';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
-import TpkValidationInputComponent from '../tpk-validation-input.gts';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 
 export interface TpkValidationPhonePrefabSignature
@@ -37,7 +36,7 @@ export default class TpkValidationPhonePrefab extends BaseValidationComponent<Tp
     this.selectedPrefixe = this.getPrefix();
   }
 
-  get value() {
+  get valueForPhoneNumber() {
     return this.getValue();
   }
 
@@ -53,7 +52,7 @@ export default class TpkValidationPhonePrefab extends BaseValidationComponent<Tp
   }
 
   getPrefix(): string {
-    const value = this.args.changeset.get(this.args.validationField);
+    const value = this.value;
     if (typeof value === 'string') {
       const matchedPrefix =
         this.prefixes.find((prefix) => value.startsWith(prefix)) || '+32';
@@ -63,9 +62,7 @@ export default class TpkValidationPhonePrefab extends BaseValidationComponent<Tp
   }
 
   getValue(): string {
-    const fullValue = this.args.changeset.get(
-      this.args.validationField,
-    ) as string;
+    const fullValue = this.value as string;
     if (typeof fullValue === 'string') {
       const matchedPrefix = this.prefixes.find((prefix) =>
         fullValue.startsWith(prefix),
@@ -96,7 +93,7 @@ export default class TpkValidationPhonePrefab extends BaseValidationComponent<Tp
 
   <template>
     <TpkInputComponent
-      @value={{this.value}}
+      @value={{this.valueForPhoneNumber}}
       @label={{@label}}
       @onChange={{this.onChangeValuePhone}}
       @classless={{@classless}}

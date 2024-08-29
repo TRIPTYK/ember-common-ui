@@ -27,13 +27,14 @@ module(
 
     async function renderComponent() {
       await render(
-        hbs`<Prefabs::TpkValidationPhone @changeset={{this.changeset}} @validationField="phone" />`,
+        hbs`<Prefabs::TpkValidationPhone @changeset={{this.changeset}} @validationField="phone" @label="Numéro de téléphone" />`,
       );
     }
 
-    test('Should split country prefixe and phone number', async function (assert) {
+    test('Should split country prefixe and phone number and show label', async function (assert) {
       await setChangeset.call(this);
       await renderComponent.call(this);
+      assert.dom('.tpk-input-label').containsText('Numéro de téléphone');
       assert.dom('.tpk-select-button').containsText('+33');
       assert.dom('.tpk-input-input').hasValue('7 12 34 56 78');
     });
@@ -64,7 +65,6 @@ module(
     test('When change value for prefixe and phone number, changeset value should combine values', async function (assert) {
       await setChangeset.call(this, '');
       await renderComponent.call(this);
-      await this.pauseTest();
       await tpkSelect.button.click();
       await tpkSelect.listbox.options[4].click();
       await fillIn('.tpk-input-input', '123456789');

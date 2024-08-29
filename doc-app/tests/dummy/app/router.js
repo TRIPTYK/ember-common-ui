@@ -33,6 +33,7 @@ Router.map(function () {
     this.route('ember-input-validation', function () {
       this.route('prefabs', function () {
         this.route('password');
+        this.route('phone');
       });
       this.route('installation');
       this.route('checkbox');
