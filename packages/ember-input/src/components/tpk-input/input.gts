@@ -6,6 +6,7 @@ export interface TpkInputInputComponentSignature {
     guid: string;
     type?: string;
     classless?: boolean;
+    placeholder?: string;
     disabled?: boolean;
     value?: string | number | boolean | null | undefined;
     changeEvent: 'input' | 'change';
@@ -24,6 +25,7 @@ const TpkInputInputComponent: TOC<TpkInputInputComponentSignature> = <template>
     type={{@type}}
     value={{@value}}
     disabled={{@disabled}}
+    placeholder={{@placeholder}}
     {{on @changeEvent @onChange}}
     ...attributes
     data-test-tpk-input-input

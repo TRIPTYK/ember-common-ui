@@ -22,6 +22,7 @@ export type TpkInputSignature = {
       value?: string | number | boolean | null | undefined;
       type?: HTMLInputElement['type'];
       mask?: unknown;
+      placeholder?: string;
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
       unmaskValue?: boolean;
@@ -119,6 +120,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
               TpkInputInputComponent
               onChange=this.onChange
               type=@type
+              placeholder=@placeholder
               changeEvent=this.changeEvent
               value=@value
               disabled=@disabled
