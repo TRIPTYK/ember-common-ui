@@ -13,3 +13,7 @@
 .tpk-input-validation-toggle-button {
   @apply absolute top-11 right-4 w-12 flex justify-center;
 }
+
+.tpk-input-phone {
+  @apply flex space-x-3;
+}
