@@ -13,7 +13,6 @@ import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import { on } from '@ember/modifier';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -22,6 +21,7 @@ export type TpkInputSignature = {
       value?: string | number | boolean | null | undefined;
       type?: HTMLInputElement['type'];
       mask?: unknown;
+      placeholder?: string;
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
       unmaskValue?: boolean;
@@ -119,6 +119,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
               TpkInputInputComponent
               onChange=this.onChange
               type=@type
+              placeholder=@placeholder
               changeEvent=this.changeEvent
               value=@value
               disabled=@disabled

@@ -8,7 +8,7 @@ import TpkDatepickerInputComponent, {
 } from './tpk-datepicker/input.gts';
 import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
 import { hash } from '@ember/helper';
-import IMask, { type FactoryArg, InputMask } from 'imask';
+import IMask from 'imask';
 import { action } from '@ember/object';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 

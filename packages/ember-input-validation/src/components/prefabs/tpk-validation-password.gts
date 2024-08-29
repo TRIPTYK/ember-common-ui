@@ -32,6 +32,8 @@ export default class TpkValidationPasswordPrefab extends Component<TpkValidation
       @type={{this.type}}
       @onChange={{@onChange}}
       @classless={{@classless}}
+      @mandatory={{@mandatory}}
+      @placeholder={{@placeholder}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -39,27 +41,29 @@ export default class TpkValidationPasswordPrefab extends Component<TpkValidation
       ...attributes
     as |V|>
       <V.Label />
-      <V.Input />
-      <button
-        type='button'
-        class={{unless @classless 'tpk-input-validation-toggle-button'}}
-        title={{if this.showPassword 'show' 'hide'}}
-        {{on 'click' this.togglePassword}}
-        data-test-toggle-button
-      >
-        <img
-          src={{if
-            this.showPassword
-            '/assets/icons/eye-shut.svg'
-            '/assets/icons/eye.svg'
-          }}
-          alt='eye'
-          class={{unless
-            @classless
-            'tpk-input-validation-toggle-button-image'
-          }}
-        />
-      </button>
+      <div>
+        <V.Input placeholder={{@placeholder}} />
+        <button
+          type='button'
+          class={{unless @classless 'tpk-input-validation-toggle-button'}}
+          title={{if this.showPassword 'show' 'hide'}}
+          {{on 'click' this.togglePassword}}
+          data-test-toggle-button
+        >
+          <img
+            src={{if
+              this.showPassword
+              '/assets/icons/eye-shut.svg'
+              '/assets/icons/eye.svg'
+            }}
+            alt='eye'
+            class={{unless
+              @classless
+              'tpk-input-validation-toggle-button-image'
+            }}
+          />
+        </button>
+      </div>
     </TpkValidationInputComponent>
   </template>
 }
