@@ -1,35 +1,20 @@
 import Component from "@glimmer/component";
-import TpkValidationInputComponent from "../tpk-validation-input.gts";
+import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
 import type { BaseValidationSignature } from "../base";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { on } from "@ember/modifier";
 
-export interface TpkValidationInputComponentSignature
+export interface TpkValidationPasswordPrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
-    label: string;
-    type?: string;
-    classless?: boolean;
-    mask?: string;
-    maskOptions?: Record<string, unknown>;
-    unmaskValue?: boolean;
-    disabled?: boolean;
-    changeEvent?: 'input' | 'change';
-    showTogglePasswordButton?: boolean;
-    step?: number;
-    min?: number;
-    maxlength?: number;
-    mandatory?: boolean;
-    placeholder?: string;
-  };
+  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mask'>;
   Blocks: {
     default: [];
   };
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationPasswordPrefab extends Component<TpkValidationInputComponentSignature> {
+export default class TpkValidationPasswordPrefab extends Component<TpkValidationPasswordPrefabSignature> {
   @tracked showPassword = false;
 
   @action
@@ -42,14 +27,16 @@ export default class TpkValidationPasswordPrefab extends Component<TpkValidation
   }
 
   <template>
-      <TpkValidationInputComponent
-        @label={{@label}}
-        @type={{this.type}}
-        @onChange={{@onChange}}
-        @classless={{@classless}}
-        @changeEvent={{@changeEvent}}
-        @changeset={{@changeset}}
-        @validationField={{@validationField}}
+    <TpkValidationInputComponent
+      @label={{@label}}
+      @type={{this.type}}
+      @onChange={{@onChange}}
+      @classless={{@classless}}
+      @disabled={{@disabled}}
+      @changeEvent={{@changeEvent}}
+      @changeset={{@changeset}}
+      @validationField={{@validationField}}
+      ...attributes
     as |V|>
       <V.Label />
       <V.Input />

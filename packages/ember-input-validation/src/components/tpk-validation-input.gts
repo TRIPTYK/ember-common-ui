@@ -20,7 +20,6 @@ export interface TpkValidationInputComponentSignature
     unmaskValue?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
-    showTogglePasswordButton?: boolean;
     step?: number;
     min?: number;
     maxlength?: number;

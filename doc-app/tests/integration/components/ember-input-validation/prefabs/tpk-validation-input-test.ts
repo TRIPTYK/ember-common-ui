@@ -25,7 +25,7 @@ module(
       this.set('changeset', changeset);
 
       await render(
-        hbs`<Prefabs::TpkValidationPassword @changeset={{this.changeset}} @validationField="name" />`,
+        hbs`<Prefabs::TpkValidationPassword class="custom-class"  @changeset={{this.changeset}} @validationField="name" />`,
       );
     }
 
@@ -74,6 +74,11 @@ module(
       await click('[data-test-toggle-button]');
 
       assert.dom('input').hasAttribute('type', 'password');
+    });
+
+    test('Attributes should be passed to the input', async function (assert) {
+      await renderComponent.call(this);
+      assert.dom('.tpk-input').hasClass('custom-class');
     });
   },
 );
