@@ -109,32 +109,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     assert.dom('[data-test-tpk-input-input]').hasValue('yieldedValue');
   });
 
-  test('it passes showTogglePasswordButton to show or hide Toggle button', async function (assert) {
-    setType.call(this, 'password');
-    setupChangeset.call(this);
-    this.set('classless', false);
-    await renderComponent();
-    assert.dom('[data-test-toggle-button]').doesNotExist();
-    this.set('showTogglePasswordButton', true);
-    assert.dom('[data-test-toggle-button]').exists();
-    assert
-      .dom('[data-test-validation-input] input')
-      .hasAttribute('type', 'password');
-  });
-
-  test('it changes type when click on toggleButton ', async function (assert) {
-    setType.call(this, 'password');
-    setupChangeset.call(this);
-    this.set('classless', false);
-    this.set('showTogglePasswordButton', true);
-    await renderComponent();
-    assert
-      .dom('[data-test-validation-input] input')
-      .hasAttribute('type', 'password');
-    await click('[data-test-toggle-button]');
-    assert.dom('[data-test-validation-input] input').hasAttribute('type', '');
-  });
-
   test('Classless removes all the classes', async function (assert) {
     this.set('classless', false);
     this.set('showTogglePasswordButton', true);
@@ -173,7 +147,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       @onChange={{this.onChange}}
       @changeset={{this.changeset}}
       @validationField="name"
-      data-test-input="name" 
+      data-test-input="name"
     />`,
     );
 

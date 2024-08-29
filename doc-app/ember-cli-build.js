@@ -1,20 +1,14 @@
 'use strict';
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+const sideWatch = require('@embroider/broccoli-side-watch');
 
-module.exports = function (defaults) {
+module.exports = async function (defaults) {
   process.on('uncaughtException', (err) => {
     // eslint-disable-next-line no-console
     console.error(err.stack);
   });
   let app = new EmberAddon(defaults, {
-    autoImport: {
-      watchDependencies: [
-        '@triptyk/ember-ui',
-        '@triptyk/ember-input',
-        '@triptyk/ember-input-validation',
-      ],
-    },
     'ember-fetch': {
       nativePromise: true,
     },
@@ -39,21 +33,7 @@ module.exports = function (defaults) {
     },
   });
 
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
-    extraPublicTrees: [],
-    staticAddonTrees: true,
-    staticAddonTestSupportTrees: true,
-    staticHelpers: true,
-    staticModifiers: true,
-    staticComponents: true,
-    splitControllers: true,
-    splitRouteClasses: true,
-    packagerOptions: {
-      webpackConfig: {
-        // Highest fidelity
-        devtool: 'source-map',
-      },
-    },
-  });
+  const { maybeEmbroider } = require('@embroider/test-setup');
+
+  return maybeEmbroider(app);
 };
