@@ -13,7 +13,6 @@ import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import { on } from '@ember/modifier';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
