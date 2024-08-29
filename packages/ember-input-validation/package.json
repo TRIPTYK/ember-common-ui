@@ -78,7 +78,7 @@
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "concurrently": "^8.2.2",
     "ember-immer-changeset": "~1.0.2",
-    "ember-source": "~5.7.0",
+    "ember-source": "~5.11.0",
     "ember-template-imports": "^4.1.1",
     "ember-template-lint": "^5.13.0",
     "eslint": "^8.57.0",
@@ -109,6 +109,7 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
+      "./components/prefabs/tpk-validation-password.js": "./dist/_app_/components/prefabs/tpk-validation-password.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
       "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
       "./components/tpk-validation-datepicker.js": "./dist/_app_/components/tpk-validation-datepicker.js",
@@ -124,6 +125,6 @@
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
     "ember-immer-changeset": "^1.0.0",
-    "ember-source": ">=4.8.0"
+    "ember-source": ">=5.0.0"
   }
 }

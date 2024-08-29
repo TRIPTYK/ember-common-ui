@@ -20,7 +20,6 @@ export interface TpkValidationInputComponentSignature
     unmaskValue?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
-    showTogglePasswordButton?: boolean;
     step?: number;
     min?: number;
     maxlength?: number;
@@ -50,18 +49,6 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
     return this.args.changeset.set(this.args.validationField, value);
   }
 
-  get type() {
-    if (this.showPassword) {
-      return '';
-    }
-    return this.args.type;
-  }
-
-  @action
-  togglePassword() {
-    this.showPassword = !this.showPassword;
-  }
-
   get value() {
     return super.value as string;
   }
@@ -70,7 +57,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
     <TpkInput
       @value={{this.value}}
       @label={{@label}}
-      @type={{this.type}}
+      @type={{@type}}
       @onChange={{this.onChange}}
       @classless={{@classless}}
       @changeEvent={{@changeEvent}}
@@ -120,28 +107,6 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
             errors=this.errors hasError=this.hasError firstError=this.firstError
           )
         }}
-      {{/if}}
-      {{#if @showTogglePasswordButton}}
-        <button
-          type='button'
-          class={{unless @classless 'tpk-input-validation-toggle-button'}}
-          title={{if this.showPassword 'show' 'hide'}}
-          {{on 'click' this.togglePassword}}
-          data-test-toggle-button
-        >
-          <img
-            src={{if
-              this.showPassword
-              '/assets/icons/eye-shut.svg'
-              '/assets/icons/eye.svg'
-            }}
-            alt='eye'
-            class={{unless
-              @classless
-              'tpk-input-validation-toggle-button-image'
-            }}
-          />
-        </button>
       {{/if}}
     </TpkInput>
   </template>
