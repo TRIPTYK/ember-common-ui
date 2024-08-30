@@ -7,8 +7,6 @@ import {
 import type { TpkInputSignature } from '@triptyk/ember-input/components/tpk-input';
 import TpkInput from '@triptyk/ember-input/components/tpk-input';
 import { hash } from '@ember/helper';
-import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import type { TpkValidationErrorsComponentSignature } from './tpk-validation-errors.gts';
 
 export interface TpkValidationInputComponentSignature
   extends BaseValidationSignature {
@@ -32,7 +30,7 @@ export interface TpkValidationInputComponentSignature
       {
         Input?: TpkInputSignature['Blocks']['default'][0]['Input'];
         Label?: TpkInputSignature['Blocks']['default'][0]['Label'];
-        errors?: TpkValidationInputComponent['errors'];
+        errors: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];
       },
@@ -103,8 +101,11 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           maxlength={{@maxlength}}
           data-test-input-not-yielded
         />
-        <TpkValidationErrorsComponent @errors={{this.errors}} />
-        {{yield (hash hasError=this.hasError firstError=this.firstError)}}
+        {{yield
+          (hash
+            errors=this.errors hasError=this.hasError firstError=this.firstError
+          )
+        }}
       {{/if}}
     </TpkInput>
   </template>
