@@ -60,7 +60,7 @@
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "~6.0.0",
     "focus-trap": "^7.5.4",
-    "imask": "~7.5.0",
+    "imask": "~7.6.1",
     "tracked-built-ins": "~3.3.0"
   },
   "devDependencies": {

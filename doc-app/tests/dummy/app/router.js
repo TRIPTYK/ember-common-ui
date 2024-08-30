@@ -34,6 +34,7 @@ Router.map(function () {
       this.route('prefabs', function () {
         this.route('password');
         this.route('iban');
+        this.route('currency');
       });
       this.route('installation');
       this.route('checkbox');
