@@ -57,6 +57,7 @@ export default class TpkValidationIBANPrefab extends Component<TpkValidationIBAN
       @type="text"
       @onChange={{@onChange}}
       @classless={{@classless}}
+      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}

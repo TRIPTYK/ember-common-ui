@@ -60,6 +60,7 @@ export default class TpkValidationVATPrefab extends Component<TpkValidationVATPr
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
+      @mandatory={{@mandatory}}
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
       ...attributes
