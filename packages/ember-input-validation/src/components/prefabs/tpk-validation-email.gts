@@ -7,7 +7,7 @@ import {
   type BaseValidationSignature,
   BaseValidationComponent,
 } from '../base.ts';
-import TpkValidationErrorsComponent from '../tpk-validation-errors.gts';
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationEmailComponentSignature
   extends BaseValidationSignature {
@@ -36,10 +36,11 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
-      @placeholder='email@email.email'
+      @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
+      ...attributes
       data-test-input='email'
       as |V|
     >
@@ -47,8 +48,8 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
+        @classless={{@classless}}
       />
-
     </TpkValidationInputComponent>
   </template>
 }
