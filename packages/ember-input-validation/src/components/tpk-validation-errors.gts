@@ -6,6 +6,7 @@ import { t } from 'ember-intl';
 export interface TpkValidationErrorsComponentSignature {
   Args: {
     errors: any;
+    classless?: boolean;
   };
   Blocks: {
     default: [];
@@ -20,7 +21,7 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
 
   <template>
     {{log @errors}}
-    <aside>
+    <aside class={{unless @classless "tpk-validation-errors"}}>
       {{#each @errors as |error|}}
         <span>
           {{#if error.message}}

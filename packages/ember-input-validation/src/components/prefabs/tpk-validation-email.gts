@@ -47,8 +47,8 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
+        @classless={{@classless}}
       />
-
     </TpkValidationInputComponent>
   </template>
 }
