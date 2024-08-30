@@ -25,3 +25,10 @@
 .tpk-input-phone {
   @apply flex space-x-3;
 }
+
+.tpk-input .flag {
+  @apply flex items-center justify-center space-x-1;
+}
+.tpk-input-mobile {
+  @apply flex space-x-1;
+}

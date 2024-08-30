@@ -32,7 +32,7 @@
 }
 
 .tpk-select .tpk-select-options-option {
-  @apply pl-4 cursor-pointer py-2 mb-0 relative;
+  @apply cursor-pointer py-2 mb-0 relative;
 }
 
 .tpk-select .tpk-select-options-option:hover {

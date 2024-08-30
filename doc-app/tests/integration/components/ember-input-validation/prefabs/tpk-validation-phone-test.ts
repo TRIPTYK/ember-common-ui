@@ -14,7 +14,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import tpkSelect from 'dummy/tests/pages/tpk-select';
 
 module(
-  'Integration | Component | Prefabs | tpk-validation-phone',
+  'Integration | Component | Prefabs | tpk-validation-mobile',
   function (hooks) {
     setupRenderingTest(hooks);
 
@@ -27,7 +27,7 @@ module(
 
     async function renderComponent() {
       await render(
-        hbs`<Prefabs::TpkValidationPhone @changeset={{this.changeset}} @validationField="phone" @label="Numéro de téléphone" />`,
+        hbs`<Prefabs::TpkValidationMobile @changeset={{this.changeset}} @validationField="phone" @label="Numéro de téléphone" />`,
       );
     }
 
@@ -71,6 +71,7 @@ module(
       await click(document.body); // click outside to trigger update of mask only for test
       assert.dom('.tpk-select-button').containsText('+352');
       assert.dom('.tpk-input-input').hasValue('123 456 789');
+      console.log(this.changeset.get('phone'));
       assert.strictEqual(this.changeset.get('phone'), '+352123456789');
     });
   },
