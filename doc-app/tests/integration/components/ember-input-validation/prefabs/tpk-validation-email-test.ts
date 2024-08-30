@@ -39,8 +39,6 @@ module(
       setupChangeset.call(this, 'email');
 
       await renderComponent();
-
-      await this.pauseTest();
       assert.dom('input').hasAttribute('type', 'email');
     });
 
