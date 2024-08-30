@@ -29,6 +29,7 @@
 .tpk-input .flag {
   @apply flex items-center justify-center space-x-1;
 }
-.tpk-input-mobile {
+
+.tpk-input-validation-mobile {
   @apply flex space-x-1;
 }

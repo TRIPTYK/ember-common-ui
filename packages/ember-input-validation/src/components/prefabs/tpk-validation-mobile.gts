@@ -29,15 +29,23 @@ export interface TpkValidationMobilePrefabSignature
   Element: HTMLDivElement;
 }
 
-interface Prefixe {
+interface Prefix {
   flag: string;
   code: string;
 }
 
+const masks = {
+  '+31': '00 0000 0000', // Netherlands
+  '+32': '000 00 00 00', // Belgium
+  '+33': '0 00 00 00 00', // France
+  '+49': '0000 0000000', // Germany
+  '+352': '000 000 000', // Luxembourg
+};
+
 export default class TpkValidationMobilePrefab extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
   defaultPrefix = { flag: '/BE.svg', code: '+32' };
-  @tracked selectedPrefixe = this.defaultPrefix;
-  @tracked prefixes: Prefixe[] = [
+  @tracked selectedPrefix = this.defaultPrefix;
+  @tracked prefixes: Prefix[] = [
     { flag: '/NL.svg', code: '+31' },
     { flag: '/BE.svg', code: '+32' },
     { flag: '/FR.svg', code: '+33' },
@@ -50,7 +58,7 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
     args: TpkValidationMobilePrefabSignature['Args'],
   ) {
     super(owner, args);
-    this.selectedPrefixe = this.getPrefix();
+    this.selectedPrefix = this.getPrefix();
   }
 
   get valueForMobileNumber() {
@@ -58,19 +66,12 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
   }
 
   get mask() {
-    const masks = {
-      '+31': '00 0000 0000', // Netherlands
-      '+32': '000 00 00 00', // Belgium
-      '+33': '0 00 00 00 00', // France
-      '+49': '0000 0000000', // Germany
-      '+352': '000 000 000', // Luxembourg
-    };
     return (
-      masks[this.selectedPrefixe.code as keyof typeof masks] || '000 00 00 00'
+      masks[this.selectedPrefix.code as keyof typeof masks] || '000 00 00 00'
     );
   }
 
-  getPrefix(): Prefixe {
+  getPrefix(): Prefix {
     const value = this.value;
     if (typeof value === 'string') {
       const matchedPrefix =
@@ -99,21 +100,21 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
     if (!value) return;
     this.args.changeset.set(
       this.args.validationField,
-      `${this.selectedPrefixe.code}${value}`,
+      `${this.selectedPrefix.code}${value}`,
     );
   }
 
   @action
   onChangeValuePrefix(value: unknown) {
     if (!value) return;
-    const code = (value as Prefixe).code;
-    this.selectedPrefixe =
+    const code = (value as Prefix).code;
+    this.selectedPrefix =
       this.prefixes.find((prefix) => prefix.code === code) ||
       this.defaultPrefix;
   }
 
-  getValueFromOption = (option: unknown, key: keyof Prefixe) =>
-    (option as Prefixe)[key] as string;
+  getValueFromOption = (option: unknown, key: keyof Prefix) =>
+    (option as Prefix)[key] as string;
 
   <template>
     <TpkInputComponent
@@ -140,16 +141,15 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
         {{/if}}
       </I.Label>
       <div
-        class={{unless @classless 'tpk-input-mobile'}}
+        class={{unless @classless 'tpk-input-validation-mobile'}}
         data-test-mobile-validation
       >
         <TpkSelectComponent
           @label=''
           @options={{this.prefixes}}
-          @selected={{this.selectedPrefixe}}
+          @selected={{this.selectedPrefix}}
           @onChange={{this.onChangeValuePrefix}}
           @classless={{@classless}}
-          data-has-error='{{this.hasError}}'
           ...attributes
           as |T|
         >
