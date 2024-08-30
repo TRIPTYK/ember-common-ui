@@ -111,10 +111,10 @@
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
+      "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
       "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
       "./components/tpk-validation-datepicker.js": "./dist/_app_/components/tpk-validation-datepicker.js",
-      "./components/tpk-validation-errors.js": "./dist/_app_/components/tpk-validation-errors.js",
       "./components/tpk-validation-file.js": "./dist/_app_/components/tpk-validation-file.js",
       "./components/tpk-validation-input.js": "./dist/_app_/components/tpk-validation-input.js",
       "./components/tpk-validation-radio-group.js": "./dist/_app_/components/tpk-validation-radio-group.js",
