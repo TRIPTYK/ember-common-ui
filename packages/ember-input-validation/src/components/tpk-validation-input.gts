@@ -19,7 +19,7 @@ export interface TpkValidationInputComponentSignature
     unmaskValue?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
-    step?: number;
+    step?: number | 'any';
     min?: number;
     maxlength?: number;
     mandatory?: boolean;
