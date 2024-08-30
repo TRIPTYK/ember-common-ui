@@ -36,10 +36,11 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
-      @placeholder='email@email.email'
+      @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
+      ...attributes
       data-test-input='email'
       as |V|
     >
