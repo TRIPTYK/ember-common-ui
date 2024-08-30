@@ -121,6 +121,7 @@
       "./components/prefabs/tpk-validation-iban.js": "./dist/_app_/components/prefabs/tpk-validation-iban.js",
       "./components/prefabs/tpk-validation-mobile.js": "./dist/_app_/components/prefabs/tpk-validation-mobile.js",
       "./components/prefabs/tpk-validation-password.js": "./dist/_app_/components/prefabs/tpk-validation-password.js",
+      "./components/prefabs/tpk-validation-select-search.js": "./dist/_app_/components/prefabs/tpk-validation-select-search.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
       "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
       "./components/tpk-validation-datepicker.js": "./dist/_app_/components/tpk-validation-datepicker.js",

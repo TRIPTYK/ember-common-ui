@@ -2,11 +2,13 @@
   @apply mb-5;
 }
 
-.tpk-select {
+.tpk-select,
+.tpk-select-search {
   @apply relative;
 }
 
-.tpk-select-options {
+.tpk-select-options,
+.tpk-select-search-options {
   @apply w-full bg-white z-[60] absolute hidden shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm mt-1.5;
 }
 
@@ -14,11 +16,14 @@
   @apply font-semibold text-gray-700 mb-3;
 }
 
-.tpk-select[data-is-open="true"] .tpk-select-options {
-  @apply block  z-[60];
+.tpk-select[data-is-open="true"] .tpk-select-options,
+.tpk-select-search[data-is-open="true"] .tpk-select-search-options {
+  @apply block z-[60];
 }
 
-.tpk-select .tpk-select-options-option[aria-selected="true"]::after {
+.tpk-select .tpk-select-options-option[aria-selected="true"]::after,
+.tpk-select-search
+  .tpk-select-search-options-option[aria-selected="true"]::after {
   content: url("/assets/icons/check-solid.svg");
   position: absolute;
   right: 10px;
@@ -27,15 +32,23 @@
   top: 10px;
 }
 
-.tpk-select .tpk-select-options-option[aria-selected="true"] {
+.tpk-select .tpk-select-options-option[aria-selected="true"],
+.tpk-select-search .tpk-select-search-options-option[aria-selected="true"] {
   @apply bg-blue-100;
 }
 
-.tpk-select .tpk-select-options-option {
-  @apply cursor-pointer py-2 mb-0 relative;
+.tpk-select .tpk-select-options-option,
+.tpk-select-search .tpk-select-search-options-option {
+  @apply cursor-pointer py-2 mb-0 relative px-3;
 }
 
-.tpk-select .tpk-select-options-option:hover {
+.tpk-select .tpk-select-options-option[data-has-focus="true"],
+.tpk-select-search .tpk-select-search-options-option[data-has-focus="true"] {
+  @apply bg-gray-50;
+}
+
+.tpk-select .tpk-select-options-option:hover,
+.tpk-select-search .tpk-select-search-options-option:hover {
   @apply bg-blue-200;
 }
 
