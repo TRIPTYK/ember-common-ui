@@ -1,5 +1,3 @@
-import type { TpkInputSignature } from '@triptyk/ember-input/components/tpk-input';
-import { hash } from '@ember/helper';
 import TpkValidationInputComponent, {
   type TpkValidationInputComponentSignature,
 } from '../tpk-validation-input.gts';
@@ -40,11 +38,23 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
+      data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='email'
+      
       as |V|
     >
-      <V.Label />
+      <V.Label
+        class={{unless @classless 'tpk-input-validation-label'}}
+        data-test-label-not-yielded
+      >
+        {{@label}}
+        {{#if @mandatory}}
+          <span>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
