@@ -3,7 +3,8 @@ import TpkValidationInputComponent, { type TpkValidationInputComponentSignature 
 import type { BaseValidationSignature } from "../base";
 import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../utils/mask-utils.ts";
 
-export interface TpkValidationIBANPrefabSignature 
+
+export interface TpkValidationVATPrefabSignature 
   extends BaseValidationSignature {
   Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'>;
   Blocks: {
@@ -12,38 +13,37 @@ export interface TpkValidationIBANPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationIBANPrefab extends Component<TpkValidationIBANPrefabSignature> {
+export default class TpkValidationVATPrefab extends Component<TpkValidationVATPrefabSignature> {
   ibanMaskByCountry = [{
-    mask: 'BE&& &&&& &&&& &&&&',
+    mask: 'BE&&&&&&&&&&',
     startsWith: 'BE',
     definitions: maskSpecialCharDefinition,
     lazy: false,
   },{
-    mask: 'FR&& &&&& &&&& &&$$ $$$$ $$$$ $&&',
+    mask: 'FR$$&&&&&&&&&',
     startsWith: 'FR',
     lazy: false,
     definitions: maskSpecialCharDefinition,
   },{
-    mask: 'LU&& &&&$ $$$$ $$$$ $$$$',
+    mask: 'LU&&&&&&&&',
     startsWith: 'LU',
     definitions: maskSpecialCharDefinition,
     lazy: false,
   },{
-    mask: 'NL&& #### &&&& &&&& &&',
+    mask: 'NL&&&&&&&&&B&&',
     startsWith: 'NL',
     definitions: maskSpecialCharDefinition,
     lazy: false,
   },{
-    mask: 'DE&& &&&& &&&& &&&& &&&& &&',
+    mask: 'DE&&&&&&&&&',
     definitions: maskSpecialCharDefinition,
     startsWith: 'DE',
     lazy: false,
-  }, {
+  },{
     mask: '##',
     startsWith: '',
     default: true,
     definitions: maskSpecialCharDefinition,
-    lazy: false,
   }];
 
   maskOptions =  {

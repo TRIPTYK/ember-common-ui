@@ -36,6 +36,7 @@ Router.map(function () {
         this.route('mobile');
         this.route('iban');
         this.route('currency');
+        this.route('vat');
       });
       this.route('installation');
       this.route('checkbox');
