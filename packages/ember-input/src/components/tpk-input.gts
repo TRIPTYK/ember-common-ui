@@ -82,14 +82,14 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
     this.mask = IMask(inputElement, {
       mask: this.args.mask,
       ...this.args.maskOptions,
-    } as never);
+    } as Record<string, unknown>);
   }
 
   @action onChange(e: Event): void {
     e.preventDefault();
     let value = this.inputValue(e.target as HTMLInputElement);
     if (this.mask) {
-      value = this.args.unmaskValue ? this.mask.unmaskedValue : this.mask.value;
+      value = this.args.unmaskValue ? this.mask.typedValue : this.mask.value;
     }
     this.args.onChange?.(value, e);
   }

@@ -14,12 +14,12 @@ export interface TpkValidationInputComponentSignature
     label: string;
     type?: string;
     classless?: boolean;
-    mask?: string;
+    mask?: unknown;
     maskOptions?: Record<string, unknown>;
     unmaskValue?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
-    step?: number;
+    step?: number | 'any';
     min?: number;
     maxlength?: number;
     mandatory?: boolean;
