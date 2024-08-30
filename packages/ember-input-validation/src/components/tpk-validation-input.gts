@@ -30,7 +30,7 @@ export interface TpkValidationInputComponentSignature
       {
         Input?: TpkInputSignature['Blocks']['default'][0]['Input'];
         Label?: TpkInputSignature['Blocks']['default'][0]['Label'];
-        errors: TpkValidationInputComponent['errors'];
+        errors?: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];
       },
@@ -101,11 +101,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           maxlength={{@maxlength}}
           data-test-input-not-yielded
         />
-        {{yield
-          (hash
-            errors=this.errors hasError=this.hasError firstError=this.firstError
-          )
-        }}
+        {{yield (hash errors=this.errors hasError=this.hasError firstError=this.firstError)}}
       {{/if}}
     </TpkInput>
   </template>

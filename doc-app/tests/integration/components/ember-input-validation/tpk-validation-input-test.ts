@@ -11,9 +11,11 @@ import {
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | tpk-validation-input', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, 'fr-fr');
 
   async function renderComponent() {
     await render(
