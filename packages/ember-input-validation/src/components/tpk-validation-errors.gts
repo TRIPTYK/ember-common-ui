@@ -20,7 +20,6 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
   });
 
   <template>
-    {{log @errors}}
     <aside class={{unless @classless "tpk-validation-errors"}}>
       {{#each @errors as |error|}}
         <span>

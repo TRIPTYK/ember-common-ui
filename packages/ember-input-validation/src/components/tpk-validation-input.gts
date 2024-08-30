@@ -103,8 +103,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           maxlength={{@maxlength}}
           data-test-input-not-yielded
         />
-        <TpkValidationErrorsComponent @errors={{this.errors}} @classless={{@classless}} />
-        {{yield (hash hasError=this.hasError firstError=this.firstError)}}
+        {{yield (hash errors=this.errors hasError=this.hasError firstError=this.firstError)}}
       {{/if}}
     </TpkInput>
   </template>
