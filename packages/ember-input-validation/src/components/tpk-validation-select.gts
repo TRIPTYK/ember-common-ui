@@ -4,7 +4,7 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
-import TpkSelect from '@triptyk/ember-input/components/tpk-select';
+import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationSelectComponentSignature
@@ -46,7 +46,7 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
   }
 
   <template>
-    <TpkSelect
+    <TpkSelectComponent
       @label={{@label}}
       @options={{@options}}
       @multiple={{@multiple}}
@@ -69,6 +69,6 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
           firstError=this.firstError
         )
       }}
-    </TpkSelect>
+    </TpkSelectComponent>
   </template>
 }

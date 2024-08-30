@@ -13,6 +13,8 @@ import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+import didUpdate from '@ember/render-modifiers/modifiers/did-update';
+import { on } from '@ember/modifier';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -108,6 +110,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
     <div
       class={{unless @classless 'tpk-input'}}
       {{didInsert this.setMask}}
+      {{didUpdate this.setMask @mask}}
       ...attributes
       data-test-tpk-input
     >
