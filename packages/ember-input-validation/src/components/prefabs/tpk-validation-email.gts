@@ -7,7 +7,7 @@ import {
   type BaseValidationSignature,
   BaseValidationComponent,
 } from '../base.ts';
-import TpkValidationErrorsComponent from '../tpk-validation-errors.gts';
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationEmailComponentSignature
   extends BaseValidationSignature {
