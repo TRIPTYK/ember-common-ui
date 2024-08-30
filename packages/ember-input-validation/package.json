@@ -124,6 +124,7 @@
       "./components/prefabs/tpk-validation-mobile.js": "./dist/_app_/components/prefabs/tpk-validation-mobile.js",
       "./components/prefabs/tpk-validation-password.js": "./dist/_app_/components/prefabs/tpk-validation-password.js",
       "./components/prefabs/tpk-validation-vat.js": "./dist/_app_/components/prefabs/tpk-validation-vat.js",
+      "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
       "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
       "./components/tpk-validation-datepicker.js": "./dist/_app_/components/tpk-validation-datepicker.js",
