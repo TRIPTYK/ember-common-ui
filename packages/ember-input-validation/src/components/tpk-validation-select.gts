@@ -6,6 +6,8 @@ import {
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
+import type { WithBoundArgs } from '@glint/template';
+import type TpkSelectResetButtonComponent from '@triptyk/ember-input/components/tpk-select/reset-button';
 
 export interface TpkValidationSelectComponentSignature
   extends BaseValidationSignature {
@@ -25,6 +27,7 @@ export interface TpkValidationSelectComponentSignature
         Label: TpkSelectSignature['Blocks']['default'][0]['Label'];
         Options: TpkSelectSignature['Blocks']['default'][0]['Options'];
         Button: TpkSelectSignature['Blocks']['default'][0]['Button'];
+        ResetButton: WithBoundArgs<typeof TpkSelectResetButtonComponent, 'onReset'>;
         label?: string;
         selected?: unknown | unknown[];
         hasSelection: boolean;
@@ -61,6 +64,7 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
         (hash
           Label=I.Label
           Options=I.Options
+          ResetButton=I.ResetButton
           Button=I.Button
           selected=@selected
           hasSelection=I.hasSelection
