@@ -17,16 +17,21 @@ module(
   function (hooks) {
     setupRenderingTest(hooks);
 
-    async function renderComponent(this: TestContext, options: string[] = []) {
+    async function renderComponent(
+      this: TestContext,
+      options: string[] = [],
+      canReset?: boolean,
+    ) {
       const changeset = new ImmerChangeset({
         names: undefined,
       });
 
       this.set('changeset', changeset);
       this.set('options', options);
+      this.set('canReset', canReset);
 
       await render(
-        hbs`<Prefabs::TpkValidationSelect @placeholder="Entrez un nom" @label="Names" @options={{this.options}} class="custom-class"  @changeset={{this.changeset}} @validationField="names" />`,
+        hbs`<Prefabs::TpkValidationSelect @placeholder="Entrez un nom" @label="Names" @options={{this.options}} @canReset={{this.canReset}} class="custom-class"  @changeset={{this.changeset}} @validationField="names" />`,
       );
     }
 
@@ -36,11 +41,13 @@ module(
     });
 
     test('Applies the toString() method for displaying options', async function (assert) {
-      await renderComponent.call(this, [{
-        toString() {
-          return 'toString() method';
-        }
-      }]);
+      await renderComponent.call(this, [
+        {
+          toString() {
+            return 'toString() method';
+          },
+        },
+      ]);
 
       assert.dom('.tpk-select-options-option').hasText('toString() method');
     });
@@ -49,7 +56,7 @@ module(
       let obj = {
         toString() {
           return 'toString() method';
-        }
+        },
       };
       await renderComponent.call(this, [obj]);
 
@@ -62,6 +69,27 @@ module(
     test('Attributes should be passed to the input', async function (assert) {
       await renderComponent.call(this);
       assert.dom('.tpk-select').hasClass('custom-class');
+    });
+
+    test('Should not have a reset button if @canReset is false', async function (assert) {
+      await renderComponent.call(this, ['a'], false);
+      this.changeset.set('names', 'a');
+      await settled();
+      assert.dom('.tpk-select-reset-button').doesNotExist();
+    });
+
+    test('Should have a reset button if @canReset is true', async function (assert) {
+      await renderComponent.call(this, ['a'], true);
+      this.changeset.set('names', 'a');
+      await settled();
+      assert.dom('.tpk-select-reset-button').exists();
+    });
+
+    test('Should have a reset button by default', async function (assert) {
+      await renderComponent.call(this, ['a'], undefined);
+      this.changeset.set('names', 'a');
+      await settled();
+      assert.dom('.tpk-select-reset-button').exists();
     });
   },
 );

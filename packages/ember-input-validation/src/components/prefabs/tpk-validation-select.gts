@@ -7,6 +7,7 @@ import { assert } from "@ember/debug";
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<TpkValidationSelectComponentSignature['Args'], 'classless' | 'selected'> & {
     placeholder?: string;
+    canReset?: boolean;
   };
   Blocks: {
     default: [];
@@ -32,6 +33,10 @@ export default class TpkValidationSelectPrefab extends Component<TpkValidationSe
     return this.args.changeset.get(this.args.validationField);
   }
 
+  get canReset() {
+    return this.args.canReset ?? true;
+  }
+
   toString = (v: unknown) => {
     return String(v).toString();
   };
@@ -51,9 +56,11 @@ export default class TpkValidationSelectPrefab extends Component<TpkValidationSe
         <S.Button>
           {{#if this.selected}}
             {{this.selectedAsText}}
-            <S.ResetButton>
-              x
-            </S.ResetButton>
+            {{#if this.canReset}}
+              <S.ResetButton>
+                x
+              </S.ResetButton>
+            {{/if}}
           {{else}}
             {{@placeholder}}
           {{/if}}

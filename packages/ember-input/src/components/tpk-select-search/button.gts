@@ -28,6 +28,7 @@ export default class TpkSelectSearchButtonComponent extends Component<TpkSelectS
       aria-expanded='{{@isOpen}}'
       aria-labelledby={{@labelId}}
       aria-haspopup='listbox'
+      role='combobox'
       tabindex='-1'
       id={{this.guid}}
       {{on 'click' @onSelectButtonClick}}
