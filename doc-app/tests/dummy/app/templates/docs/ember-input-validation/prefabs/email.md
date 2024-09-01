@@ -10,6 +10,7 @@ This is an input with type Email
         @changeset={{this.changeset}} 
         @validationField="email"
         @changeEvent="change"
+        @onChange={{this.onChange}}
         @disabled={{false}}
         @mandatory={{true}}
       />    

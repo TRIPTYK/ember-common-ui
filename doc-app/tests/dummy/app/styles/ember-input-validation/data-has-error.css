@@ -15,7 +15,7 @@
 
 [data-has-error="true"] div,
 [data-has-error="true"] .tpk-validation-errors {
-  @apply visible text-red-700 absolute pl-4 pt-2 min-h-[30px] w-auto flex text-sm z-40;
+  @apply visible text-red-700 pl-4 pt-2 min-h-[20px] w-auto flex text-sm z-40;
 }
 
 [data-has-error="true"] div span,

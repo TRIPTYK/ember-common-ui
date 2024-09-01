@@ -34,6 +34,7 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
+      @onChange={{@onChange}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
@@ -60,6 +61,7 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
         @errors={{V.errors}}
         @classless={{@classless}}
       />
+
     </TpkValidationInputComponent>
   </template>
 }
