@@ -11,18 +11,22 @@ import {
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
+import { setupIntl } from 'ember-intl/test-support';
 import tpkSelect from 'dummy/tests/pages/tpk-select';
 
 module(
   'Integration | Component | Prefabs | tpk-validation-mobile',
   function (hooks) {
     setupRenderingTest(hooks);
+    setupIntl(hooks, 'fr-fr');
 
     async function setChangeset(
       this: TestContext,
       phoneValue: string = '+33712345678',
     ) {
-      this.set('changeset', new ImmerChangeset({ phone: phoneValue }));
+      const changeset = new ImmerChangeset({ phone: phoneValue });
+      this.set('changeset', changeset);
+      return changeset;
     }
 
     async function renderComponent() {
@@ -73,6 +77,20 @@ module(
       assert.dom('.tpk-input-input').hasValue('123 456 789');
       console.log(this.changeset.get('phone'));
       assert.strictEqual(this.changeset.get('phone'), '+352123456789');
+    });
+
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = await setChangeset.call(this, '');
+      await renderComponent.call(this);
+      changeset.addError({
+        message: 'required',
+        value: '',
+        originalValue: 'a',
+        key: 'phone',
+      });
+      assert.dom('.tpk-validation-errors').exists();
+      await settled();
+      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
     });
   },
 );

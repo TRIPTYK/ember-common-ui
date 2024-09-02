@@ -11,11 +11,13 @@ import {
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
+import { setupIntl } from 'ember-intl/test-support';
 
 module(
   'Integration | Component | Prefabs | tpk-validation-select',
   function (hooks) {
     setupRenderingTest(hooks);
+    setupIntl(hooks, 'fr-fr');
 
     async function renderComponent(
       this: TestContext,
@@ -33,6 +35,8 @@ module(
       await render(
         hbs`<Prefabs::TpkValidationSelect @placeholder="Entrez un nom" @label="Names" @options={{this.options}} @canReset={{this.canReset}} class="custom-class"  @changeset={{this.changeset}} @validationField="names" />`,
       );
+
+      return changeset;
     }
 
     test('Applies placeholder if nothing is selected', async function (assert) {
@@ -90,6 +94,19 @@ module(
       this.changeset.set('names', 'a');
       await settled();
       assert.dom('.tpk-select-reset-button').exists();
+    });
+
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = await renderComponent.call(this);
+      changeset.addError({
+        message: 'required',
+        value: '',
+        originalValue: 'a',
+        key: 'names',
+      });
+      assert.dom('.tpk-validation-errors').exists();
+      await settled();
+      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
     });
   },
 );

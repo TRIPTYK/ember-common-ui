@@ -3,6 +3,7 @@ import Component from "@glimmer/component";
 import TpkValidationSelectComponent, { type TpkValidationSelectComponentSignature } from "../../components/tpk-validation-select.gts";
 import { tracked } from "@glimmer/tracking";
 import { assert } from "@ember/debug";
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<TpkValidationSelectComponentSignature['Args'], 'classless' | 'selected'> & {
@@ -71,6 +72,9 @@ export default class TpkValidationSelectPrefab extends Component<TpkValidationSe
           {{this.toString v.option}}
         </Option>
       </S.Options>
+      <TpkValidationErrorsComponent
+        @errors={{S.errors}}
+      />
     </TpkValidationSelectComponent>
   </template>
 }

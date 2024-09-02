@@ -7,6 +7,7 @@ import {
 import type { TpkValidationInputComponentSignature } from '../tpk-validation-input.gts';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationMobilePrefabSignature
   extends BaseValidationSignature {
@@ -180,6 +181,10 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
         </TpkSelectComponent>
         <I.Input inputmode='tel' />
       </div>
+      <TpkValidationErrorsComponent
+        @errors={{this.errors}}
+        @classless={{@classless}}
+      />
     </TpkInputComponent>
   </template>
 }

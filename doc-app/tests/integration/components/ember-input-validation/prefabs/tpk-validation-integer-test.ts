@@ -1,5 +1,11 @@
 import { module, test } from 'qunit';
-import { fillIn, find, render, type TestContext } from '@ember/test-helpers';
+import {
+  fillIn,
+  find,
+  render,
+  type TestContext,
+  settled,
+} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
@@ -78,6 +84,20 @@ module(
       input?.stepDown();
       input?.stepDown();
       assert.dom('input').hasValue('0');
+    });
+
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = await setupChangeset.call(this);
+      await renderComponentUnsigned();
+      changeset.addError({
+        message: 'required',
+        value: '',
+        originalValue: 'a',
+        key: 'integer',
+      });
+      assert.dom('.tpk-validation-errors').exists();
+      await settled();
+      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
     });
   },
 );
