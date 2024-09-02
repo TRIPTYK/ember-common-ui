@@ -39,10 +39,12 @@ preventNonNumericInput(event: KeyboardEvent) {
       @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
+      @onChange={{@onChange}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
+      data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='integer'
       {{on 'keydown' this.preventNonNumericInput}}

@@ -34,20 +34,34 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
+      @onChange={{@onChange}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
+      data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='email'
+      
       as |V|
     >
-      <V.Label />
+      <V.Label
+        class={{unless @classless 'tpk-input-validation-label'}}
+        data-test-label-not-yielded
+      >
+        {{@label}}
+        {{#if @mandatory}}
+          <span>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
         @classless={{@classless}}
       />
+
     </TpkValidationInputComponent>
   </template>
 }
