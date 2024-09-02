@@ -17,31 +17,45 @@ module(
         @changeset={{this.changeset}}
         @validationField="integer"
         @label="Integer validation field"
+        class="custom-integer-class"
       />
     `);
     }
-    function setupChangeset(this: TestContext, integer: number) {
+    function setupChangeset(this: TestContext) {
       const changeset = new ImmerChangeset({
-        integer,
+        integer: 0,
       });
 
       this.set('changeset', changeset);
       return changeset;
     }
 
-    test('the type of the input is number', async function (assert) {
-      setupChangeset.call(this, 2);
+    test('Input type must be a number', async function (assert) {
+      setupChangeset.call(this);
       await renderComponent();
-
+      await fillIn('input', '2');
       assert.dom('input').hasAttribute('type', 'number');
+      assert.ok(this.changeset.get('integer'));
+      await fillIn('input', 'jacques');
+      assert.notOk(this.changeset.get('integer'));
     });
 
-    test('the input is invalid when the value is not an integer', async function (assert) {
-      const changeset = setupChangeset.call(this, 0);
+    test('Input does not allow dot and comma', async function (assert) {
+      setupChangeset.call(this);
       await renderComponent();
-      await fillIn('input', '2.5');
-      await this.pauseTest();
-      assert.ok(changeset.get('integer') === 2.5);
+      await fillIn('input', ',');
+      assert.notOk(this.changeset.get('integer'));
+      await fillIn('input', '.');
+      assert.notOk(this.changeset.get('integer'));
+      await fillIn('input', '2');
+      assert.ok(this.changeset.get('integer'));
+
+    });
+
+    test('Attributes should be passed to the input', async function (assert) {
+      setupChangeset.call(this);
+      await renderComponent();
+      assert.dom('.tpk-input').hasClass('custom-integer-class');
     });
   },
 );

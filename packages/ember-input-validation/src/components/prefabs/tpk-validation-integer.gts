@@ -6,16 +6,15 @@ import {
   BaseValidationComponent,
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import { on } from '@ember/modifier';
 
 export interface TpkValidationIntegerComponentSignature
   extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     | 'step'
-    | 'mask'
     | 'unmaskValue'
     | 'maskOptions'
-    | 'mask'
   >;
   Blocks: {
     default: [];
@@ -24,6 +23,13 @@ export interface TpkValidationIntegerComponentSignature
 }
 
 export default class TpkValidationIntegerComponent extends BaseValidationComponent<TpkValidationIntegerComponentSignature> {
+
+preventNonNumericInput(event: KeyboardEvent) {
+  if(event.key ==="." || event.key === ","){
+    event.preventDefault(); 
+  }
+}
+
   <template>
     <TpkValidationInputComponent
       @type='number'
@@ -39,6 +45,7 @@ export default class TpkValidationIntegerComponent extends BaseValidationCompone
       @mandatory={{@mandatory}}
       ...attributes
       data-test-input='integer'
+      {{on 'keydown' this.preventNonNumericInput}}
       as |I|
     >
       <I.Label />
