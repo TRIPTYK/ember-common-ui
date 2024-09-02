@@ -1,5 +1,3 @@
-import type { TpkInputSignature } from '@triptyk/ember-input/components/tpk-input';
-import { hash } from '@ember/helper';
 import TpkValidationInputComponent, {
   type TpkValidationInputComponentSignature,
 } from '../tpk-validation-input.gts';
