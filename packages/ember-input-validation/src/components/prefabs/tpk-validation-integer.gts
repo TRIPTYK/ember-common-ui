@@ -7,6 +7,7 @@ import {
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { on } from '@ember/modifier';
+import { action } from '@ember/object';
 
 export interface TpkValidationIntegerComponentSignature
   extends BaseValidationSignature {
@@ -23,7 +24,8 @@ export interface TpkValidationIntegerComponentSignature
 }
 
 export default class TpkValidationIntegerComponent extends BaseValidationComponent<TpkValidationIntegerComponentSignature> {
-
+  
+@action
 preventNonNumericInput(event: KeyboardEvent) {
   if(event.key ==="." || event.key === ","){
     event.preventDefault(); 
