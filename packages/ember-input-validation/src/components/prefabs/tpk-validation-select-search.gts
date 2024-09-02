@@ -82,9 +82,7 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
           @selectedText={{this.selected}}
         />
         {{#if this.isNotIdle}}
-          <div class='tpk-validation-select-search-spinner'>
-            <TpkLoadingSpinner />
-          </div>
+          <TpkLoadingSpinner />
         {{/if}}
       </div>
       {{#if @options}}
@@ -105,5 +103,5 @@ export interface TpkLoadingSpinnerComponentSignature {
 }
 
 const TpkLoadingSpinner: TOC<TpkLoadingSpinnerComponentSignature> = <template>
-  <span class='loader'></span>
+  <span class='tpk-validation-select-search-spinner loader'></span>
 </template>;
