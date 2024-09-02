@@ -19,9 +19,9 @@ export interface TpkValidationInputComponentSignature
     unmaskValue?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
-    step?: number | 'any';
+    step?: number;
     min?: number;
-    maxlength?: number;
+    max?: number;
     mandatory?: boolean;
     placeholder?: string;
   };
@@ -57,6 +57,9 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
       @value={{this.value}}
       @label={{@label}}
       @type={{@type}}
+      @step={{@step}}
+      @min={{@min}}
+      @max={{@max}}
       @onChange={{this.onChange}}
       @classless={{@classless}}
       @changeEvent={{@changeEvent}}
@@ -90,15 +93,12 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           {{/if}}
         </I.Label>
         <I.Input
-          step={{@step}}
-          min={{@min}}
           disabled={{@disabled}}
           placeholder={{@placeholder}}
           class={{unless @classless 'tpk-input-validation-input'}}
           aria-autocomplete='none'
           autocomplete='off'
           autofill='off'
-          maxlength={{@maxlength}}
           data-test-input-not-yielded
         />
         {{yield (hash errors=this.errors hasError=this.hasError firstError=this.firstError)}}

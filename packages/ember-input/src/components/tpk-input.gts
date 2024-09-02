@@ -22,6 +22,9 @@ export type TpkInputSignature = {
       value?: string | number | boolean | null | undefined;
       type?: HTMLInputElement['type'];
       mask?: unknown;
+      min?: number;
+      step?: number;
+      max?: number;
       placeholder?: string;
       disabled?: boolean;
       maskOptions?: Record<string, unknown>;
@@ -41,6 +44,9 @@ export type TpkInputSignature = {
           | 'disabled'
           | 'guid'
           | 'classless'
+          | 'min'
+          | 'step'
+          | 'max'
         >;
         Label: WithBoundArgs<
           typeof TpkInputLabelComponent,
@@ -113,7 +119,6 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
       ...attributes
       data-test-tpk-input
     >
-
       {{#if (has-block)}}
         {{yield
           (hash
@@ -123,6 +128,9 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
               type=@type
               placeholder=@placeholder
               changeEvent=this.changeEvent
+              min=@min
+              step=@step
+              max=@max
               value=@value
               disabled=@disabled
               guid=this.guid
@@ -140,6 +148,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
           )
         }}
       {{else}}
+      
         <TpkInputLabelComponent
           @label={{@label}}
           @guid={{this.guid}}
@@ -150,12 +159,14 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
           @type={{@type}}
           @changeEvent={{this.changeEvent}}
           @value={{@value}}
+          @min={{@min}}
+          @step={{@step}}
+          @max={{@max}}
           @disabled={{@disabled}}
           @guid={{this.guid}}
           @classless={{@classless}}
         />
       {{/if}}
-
     </div>
   </template>
 }
