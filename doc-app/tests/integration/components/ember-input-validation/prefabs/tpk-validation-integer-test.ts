@@ -35,7 +35,7 @@ module(
       await renderComponent();
       await fillIn('input', '2');
       assert.dom('input').hasAttribute('type', 'number');
-      assert.ok(this.changeset.get('integer'));
+      assert.strictEqual(this.changeset.get('integer'), 2);
       await fillIn('input', 'jacques');
       assert.notOk(this.changeset.get('integer'));
     });
@@ -48,7 +48,7 @@ module(
       await fillIn('input', '.');
       assert.notOk(this.changeset.get('integer'));
       await fillIn('input', '2');
-      assert.ok(this.changeset.get('integer'));
+      assert.strictEqual(this.changeset.get('integer'), 2);
 
     });
 
