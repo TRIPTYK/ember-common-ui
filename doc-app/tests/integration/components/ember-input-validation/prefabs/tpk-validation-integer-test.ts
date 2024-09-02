@@ -49,7 +49,6 @@ module(
       assert.notOk(this.changeset.get('integer'));
       await fillIn('input', '2');
       assert.strictEqual(this.changeset.get('integer'), 2);
-
     });
 
     test('Attributes should be passed to the input', async function (assert) {
