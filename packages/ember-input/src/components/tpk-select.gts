@@ -11,6 +11,7 @@ import TpkSelectButtonComponent from './tpk-select/button.gts';
 import onClickOutside from 'ember-click-outside/modifiers/on-click-outside';
 import { on } from '@ember/modifier';
 import { hash } from '@ember/helper';
+import TpkSelectResetButtonComponent from './tpk-select/reset-button.gts';
 
 export interface TpkSelectSignature {
   Args: {
@@ -31,6 +32,10 @@ export interface TpkSelectSignature {
         Label: WithBoundArgs<
           typeof TpkSelectLabelComponent,
           'guid' | 'classless' | 'label' | 'registerLabel'
+        >;
+        ResetButton: WithBoundArgs<
+          typeof TpkSelectResetButtonComponent,
+          'onReset'
         >;
         Options: WithBoundArgs<
           typeof TpkSelectOptionsComponent,
@@ -339,6 +344,12 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     this.args.onChange(e, alreadySelected, event);
   }
 
+  @action
+  onReset(e: Event) {
+    e.stopImmediatePropagation();
+    this.onChange(null, false, e);
+  }
+
   get hasSelection() {
     return this.args.multiple === true
       ? (this.args.selected as unknown[]).length > 0
@@ -377,6 +388,10 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
             onChange=this.onChange
             options=@options
             guid=this.controller.id
+          )
+          ResetButton=(component
+            TpkSelectResetButtonComponent
+            onReset=this.onReset
           )
           Button=(component
             TpkSelectButtonComponent

@@ -39,6 +39,7 @@ Router.map(function () {
         this.route('select-search');
         this.route('vat');
         this.route('national-number');
+        this.route('select');
       });
       this.route('installation');
       this.route('checkbox');

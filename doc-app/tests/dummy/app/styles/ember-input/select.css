@@ -56,7 +56,12 @@
   @apply relative w-full flex rounded shadow-sm px-6 pr-8 py-2 text-left  focus:outline-none focus:ring-2 -mb-2 bg-white border-solid border-[1.5px] cursor-pointer text-sm;
 }
 
+.tpk-select-reset-button {
+  @apply absolute right-6 top-0 h-full px-4;
+}
+
 .tpk-select-button::after {
+  /* arrow down */
   content: "▾";
 
   @apply absolute right-[5px];

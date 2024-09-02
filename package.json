@@ -8,6 +8,7 @@
     "build": "pnpm --filter @triptyk/ember-input run build && pnpm --filter @triptyk/ember-input-validation run build && pnpm --filter @triptyk/ember-ui run build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "lint:fix": "pnpm recursive run lint:fix",
+    "lint": "pnpm recursive run lint",
     "start:ui": "pnpm --filter @triptyk/ember-ui start",
     "start:input-validations": "pnpm --filter @triptyk/ember-input-validation start",
     "start:input": "pnpm --filter @triptyk/ember-input start",
