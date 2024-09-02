@@ -63,6 +63,9 @@ importers:
       '@embroider/webpack':
         specifier: ^4.0.4
         version: 4.0.4(@embroider/core@3.4.14(@glint/template@1.4.0))(webpack@5.94.0)
+      '@eonasdan/tempus-dominus':
+        specifier: ^6.9.10
+        version: 6.9.10(@popperjs/core@2.11.8)
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.25.2)
@@ -258,12 +261,18 @@ importers:
       '@embroider/addon-shim':
         specifier: ^1.8.9
         version: 1.8.9
+      '@eonasdan/tempus-dominus':
+        specifier: ^6.9.10
+        version: 6.9.10(@popperjs/core@2.11.8)
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.25.2)
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
+      '@popperjs/core':
+        specifier: ^2.11.8
+        version: 2.11.8
       ember-click-outside:
         specifier: ^6.1.0
         version: 6.1.0(ember-source@5.11.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.94.0))
@@ -279,6 +288,9 @@ importers:
       focus-trap:
         specifier: ^7.5.4
         version: 7.5.4
+      font-awesome:
+        specifier: ^4.7.0
+        version: 4.7.0
       imask:
         specifier: ~7.6.1
         version: 7.6.1
@@ -2206,6 +2218,15 @@ packages:
       '@embroider/core': ^3.4.14
       webpack: ^5.0.0
 
+  '@eonasdan/tempus-dominus@6.9.10':
+    resolution: {integrity: sha512-RUAPAVhtnVtF7Ttbr3PJopMPNeZy1ao3oBvDEZsMJEK6QHWMr5iNK6dLCTdEgE9caRZlL26O+EX1lOix2u9Thw==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.6
+      '@popperjs/core"': '*'
+    peerDependenciesMeta:
+      '@popperjs/core"':
+        optional: true
+
   '@eslint-community/eslint-utils@4.4.0':
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -2737,6 +2758,9 @@ packages:
   '@pnpm/find-workspace-dir@6.0.2':
     resolution: {integrity: sha512-JSrpQUFCs4vY1D5tOmj7qBb+oE2j/lO6341giEdUpvYf3FijY8CY13l8rPjfHV2y3m//utzl0An+q+qx14S6Nw==}
     engines: {node: '>=16.14'}
+
+  '@popperjs/core@2.11.8':
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
   '@ro0gr/ceibo@2.2.0':
     resolution: {integrity: sha512-4gSXPwwr99zUWxnTllN5L4QlfgFDloYKOsenoPvx46LE75x3wvLgGUhxUxhIMxJbqOZ0w9pzrugjQR7St0/PQg==}
@@ -6324,6 +6348,10 @@ packages:
       debug:
         optional: true
 
+  font-awesome@4.7.0:
+    resolution: {integrity: sha512-U6kGnykA/6bFmg1M/oT9EkFeIYv7JlX3bozwQJWiiLz6L0w3F5vBVPxHlwyX/vtNq1ckcpRKOB9f2Qal/VtFpg==}
+    engines: {node: '>=0.10.3'}
+
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
 
@@ -7655,10 +7683,6 @@ packages:
     resolution: {integrity: sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==}
     engines: {node: '>=8'}
 
-  lru-cache@10.1.0:
-    resolution: {integrity: sha512-/1clY/ui8CzjKFyjdvwPWJUYKiFVXG2I2cY0ssG7h4+hwk+XOIX7ZSG9Q7TW8TW3Kp3BUSqgFWBLgL4PJ+Blag==}
-    engines: {node: 14 || >=16.14}
-
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
@@ -7897,10 +7921,6 @@ packages:
 
   minimatch@8.0.4:
     resolution: {integrity: sha512-W0Wvr9HyFXZRGIDgCicunpQ299OKXs9RgZfaukz4qAW/pJhcpUfupc9c+OObPOFueNy8VSrZgEmDtk6Kh4WzDA==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
-  minimatch@9.0.3:
-    resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
 
   minimatch@9.0.5:
@@ -13616,6 +13636,10 @@ snapshots:
       - canvas
       - utf-8-validate
 
+  '@eonasdan/tempus-dominus@6.9.10(@popperjs/core@2.11.8)':
+    dependencies:
+      '@popperjs/core': 2.11.8
+
   '@eslint-community/eslint-utils@4.4.0(eslint@8.57.0)':
     dependencies:
       eslint: 8.57.0
@@ -14442,6 +14466,8 @@ snapshots:
     dependencies:
       '@pnpm/error': 5.0.2
       find-up: 5.0.0
+
+  '@popperjs/core@2.11.8': {}
 
   '@ro0gr/ceibo@2.2.0': {}
 
@@ -19825,6 +19851,8 @@ snapshots:
 
   follow-redirects@1.15.5: {}
 
+  font-awesome@4.7.0: {}
+
   for-each@0.3.3:
     dependencies:
       is-callable: 1.2.7
@@ -20105,7 +20133,7 @@ snapshots:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
-      minimatch: 9.0.3
+      minimatch: 9.0.5
       minipass: 7.0.4
       path-scurry: 1.10.1
 
@@ -21393,13 +21421,11 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   lowercase-keys@1.0.1: {}
 
   lowercase-keys@2.0.0: {}
-
-  lru-cache@10.1.0: {}
 
   lru-cache@10.4.3: {}
 
@@ -21668,10 +21694,6 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.1
 
-  minimatch@9.0.3:
-    dependencies:
-      brace-expansion: 2.0.1
-
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
@@ -21839,7 +21861,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   node-emoji@1.11.0:
     dependencies:
@@ -22402,7 +22424,7 @@ snapshots:
 
   path-scurry@1.10.1:
     dependencies:
-      lru-cache: 10.1.0
+      lru-cache: 10.4.3
       minipass: 7.0.4
 
   path-to-regexp@0.1.7: {}
