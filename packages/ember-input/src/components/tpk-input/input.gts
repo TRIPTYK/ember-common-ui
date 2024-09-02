@@ -8,6 +8,9 @@ export interface TpkInputInputComponentSignature {
     classless?: boolean;
     placeholder?: string;
     disabled?: boolean;
+    min?: number;
+    step?: number;
+    max?: number;
     value?: string | number | boolean | null | undefined;
     changeEvent: 'input' | 'change';
     onChange: (event: Event) => void;
@@ -22,6 +25,9 @@ const TpkInputInputComponent: TOC<TpkInputInputComponentSignature> = <template>
   <input
     class={{unless @classless 'tpk-input-input'}}
     id={{@guid}}
+    min={{@min}}
+    step={{@step}}
+    max={{@max}}
     type={{@type}}
     value={{@value}}
     disabled={{@disabled}}
