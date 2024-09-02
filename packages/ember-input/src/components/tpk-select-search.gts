@@ -4,7 +4,7 @@ import TpkSelectComponent, {
   moveOperations,
   SelectActions,
 } from './tpk-select.gts';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import TpkSelectSearchLabelComponent from './tpk-select-search/label.gts';
 import TpkSelectSearchOptionsComponent from './tpk-select-search/options.gts';
 import TpkSelectSearchButtonComponent from './tpk-select-search/button.gts';
@@ -34,10 +34,44 @@ export interface TpkSelectSearchSignature {
   Blocks: {
     default: [
       {
-        Label: ComponentLike<TpkSelectSearchLabelComponent>;
-        Options: ComponentLike<TpkSelectSearchOptionsComponent>;
-        Input: ComponentLike<TpkSelectSearchInputComponent>;
-        Button: ComponentLike<TpkSelectSearchButtonComponent>;
+        Label: WithBoundArgs<
+          typeof TpkSelectSearchLabelComponent,
+          'classless' | 'label' | 'registerLabel'
+        >;
+        Options: WithBoundArgs<
+          typeof TpkSelectSearchOptionsComponent,
+          | 'labelId'
+          | 'selected'
+          | 'multiple'
+          | 'activeChild'
+          | 'refreshChildren'
+          | 'onChange'
+          | 'options'
+          | 'guid'
+        >;
+        Input: WithBoundArgs<
+          typeof TpkSelectSearchInputComponent,
+          | 'classless'
+          | 'registerControllerDiv'
+          | 'onClick'
+          | 'onInput'
+          | 'isOpen'
+          | 'activeChild'
+          | 'optionListId'
+          | 'selectedText'
+        >;
+        Button: WithBoundArgs<
+          typeof TpkSelectSearchButtonComponent,
+          | 'guid'
+          | 'optionListId'
+          | 'activeChild'
+          | 'isOpen'
+          | 'labelId'
+          | 'selected'
+          | 'classless'
+          | 'isOpen'
+          | 'onSelectButtonClick'
+        >;
         isOpen: boolean;
         selected: unknown;
         guid: string;
@@ -307,7 +341,7 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
       {{yield
         (hash
           Label=(component
-           TpkSelectSearchLabelComponent
+            TpkSelectSearchLabelComponent
             guid=this.guid
             classless=@classless
             label=@label
@@ -328,9 +362,9 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
           )
           Button=(component
             TpkSelectSearchButtonComponent
+            guid=this.controller.id
             labelId=this.labelId
             optionListId=this.optionListId
-            multiple=@multiple
             activeChild=this.activeChild
             onSelectButtonClick=this.onSelectButtonClick
             selected=@selected
