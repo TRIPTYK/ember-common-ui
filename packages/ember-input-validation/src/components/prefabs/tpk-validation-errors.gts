@@ -11,7 +11,7 @@ export interface TpkValidationErrorsComponentSignature {
   Blocks: {
     default: [];
   };
-  Element: HTMLElement;
+  Element: HTMLDivElement;
 }
 
 export default class TpkValidationErrorsComponent extends Component<TpkValidationErrorsComponentSignature> {

@@ -12,8 +12,6 @@ If the country is not supported, the input value will be blocked after 2 upperca
         @placeholder="Enter vat"
         @changeset={{this.changeset}} 
         @validationField="vat"
-        @changeEvent="change"
-        @disabled={{false}}
       />
   </demo.example>
   <demo.snippet @name="tpk-vat.hbs"/>

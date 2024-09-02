@@ -14,7 +14,6 @@ import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
-import { on } from '@ember/modifier';
 
 export type TpkInputSignature = {
   Args: MergeDeep<

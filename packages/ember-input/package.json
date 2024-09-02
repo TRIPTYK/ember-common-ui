@@ -142,6 +142,7 @@
       "./components/tpk-select/label.js": "./dist/_app_/components/tpk-select/label.js",
       "./components/tpk-select/options.js": "./dist/_app_/components/tpk-select/options.js",
       "./components/tpk-select/options/option.js": "./dist/_app_/components/tpk-select/options/option.js",
+      "./components/tpk-select/reset-button.js": "./dist/_app_/components/tpk-select/reset-button.js",
       "./components/tpk-textarea.js": "./dist/_app_/components/tpk-textarea.js",
       "./components/tpk-textarea/input.js": "./dist/_app_/components/tpk-textarea/input.js",
       "./components/tpk-textarea/label.js": "./dist/_app_/components/tpk-textarea/label.js",
