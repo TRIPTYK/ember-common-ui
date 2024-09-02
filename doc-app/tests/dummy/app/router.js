@@ -35,6 +35,7 @@ Router.map(function () {
         this.route('password');
         this.route('mobile');
         this.route('iban');
+        this.route('bic');
         this.route('currency');
         this.route('select-search');
         this.route('vat');

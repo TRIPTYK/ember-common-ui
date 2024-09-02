@@ -118,6 +118,7 @@
     },
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
+      "./components/prefabs/tpk-validation-bic.js": "./dist/_app_/components/prefabs/tpk-validation-bic.js",
       "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
       "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
