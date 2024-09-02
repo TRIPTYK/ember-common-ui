@@ -20,7 +20,8 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
   });
 
   <template>
-    <aside class={{unless @classless "tpk-validation-errors"}}>
+    <div class={{ unless @classless "tpk-validation-errors" }}
+    ...attributes>
       {{#each @errors as |error|}}
         <span>
           {{#if error.message}}
@@ -30,6 +31,6 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
           {{/if}}
         </span>
       {{/each}}
-    </aside>
+    </div>
   </template>
 }
