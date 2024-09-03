@@ -29,7 +29,7 @@ module(
         @validationField="integer"
         @label="Integer validation field"
         class="custom-integer-class"
-        @unsignedInteger={{true}}
+        @unsigned={{true}}
       />
     `);
     }

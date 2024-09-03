@@ -4,6 +4,8 @@ the integer validation input prefab allows is used when we need an integer input
 
 it prevents decimal numbers by not allowing the comma and period.
 
+the integer validation input can be blocked at a minimum of 0 or be a negative number
+
 <DocsDemo as |demo|>
   <demo.example @name="tpk-integer.hbs">
       <Prefabs::TpkValidationInteger
@@ -15,7 +17,7 @@ it prevents decimal numbers by not allowing the comma and period.
         @onChange={{this.onChangeUInteger}}
         @disabled={{false}}
         @mandatory={{true}}
-        @unsignedInteger={{true}}
+        @unsigned={{true}}
       />
 
       <Prefabs::TpkValidationInteger
