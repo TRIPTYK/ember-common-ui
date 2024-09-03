@@ -6,10 +6,11 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 export default class DocsEmberInputValidationPrefabsIntegerController extends Controller {
   @tracked changeset = new ImmerChangeset({
     integer: 0,
+    uInteger: 0,
   });
 
   @action
-  onChange(value) {
+  onChangeInteger(value) {
     this.changeset.set('integer', value);
     this.changeset.save();
     if (!this.changeset.get('integer')) {
@@ -21,6 +22,21 @@ export default class DocsEmberInputValidationPrefabsIntegerController extends Co
       });
     } else {
       this.changeset.removeError('integer');
+    }
+  }
+
+  onChangeUInteger(value) {
+    this.changeset.set('uInteger', value);
+    this.changeset.save();
+    if (!this.changeset.get('uInteger')) {
+      this.changeset.addError({
+        message: "You didn't say the magic word?",
+        value: '',
+        originalValue: '',
+        key: 'uInteger',
+      });
+    } else {
+      this.changeset.removeError('uInteger');
     }
   }
 }

@@ -16,7 +16,9 @@ export interface TpkValidationIntegerComponentSignature
     | 'step'
     | 'unmaskValue'
     | 'maskOptions'
-  >;
+  > & {
+    unsignedInteger?: boolean;
+  };
   Blocks: {
     default: [];
   };
@@ -24,6 +26,10 @@ export interface TpkValidationIntegerComponentSignature
 }
 
 export default class TpkValidationIntegerComponent extends BaseValidationComponent<TpkValidationIntegerComponentSignature> {
+
+get unsignedInteger() {
+  return this.args.unsignedInteger? 0 : undefined;
+}
   
 @action
 preventNonNumericInput(event: KeyboardEvent) {
@@ -36,7 +42,7 @@ preventNonNumericInput(event: KeyboardEvent) {
     <TpkValidationInputComponent
       @type='number'
       @label={{@label}}
-      @min={{0}}
+      @min={{this.unsignedInteger}}
       @step={{1}}
       @classless={{@classless}}
       @disabled={{@disabled}}
