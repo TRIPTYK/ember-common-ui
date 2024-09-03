@@ -16,6 +16,7 @@ export interface TpkValidationIntegerComponentSignature
     | 'step'
     | 'unmaskValue'
     | 'maskOptions'
+
   > & {
     unsigned?: boolean;
   };
@@ -28,7 +29,7 @@ export interface TpkValidationIntegerComponentSignature
 export default class TpkValidationIntegerComponent extends BaseValidationComponent<TpkValidationIntegerComponentSignature> {
 
 get min() {
-  return this.args.unsigned ? 0 : undefined;
+  return this.args.unsigned ? 0 : this.args.min;
 }
   
 @action

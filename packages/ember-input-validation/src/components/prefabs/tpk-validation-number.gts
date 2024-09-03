@@ -25,7 +25,7 @@ export interface TpkValidationNumberComponentSignature
 export default class TpkValidationNumberComponent extends BaseValidationComponent<TpkValidationNumberComponentSignature> {
 
 get min() {
-  return this.args.unsigned ? 0 : undefined;
+  return this.args.unsigned ? 0 : this.args.min;
 }
 
   <template>
