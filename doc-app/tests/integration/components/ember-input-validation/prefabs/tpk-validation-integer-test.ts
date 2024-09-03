@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { fillIn, render, type TestContext } from '@ember/test-helpers';
+import { fillIn, find, render, type TestContext } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
@@ -21,6 +21,18 @@ module(
       />
     `);
     }
+    async function renderComponentUnsigned() {
+      await render(hbs`
+      <Prefabs::TpkValidationInteger
+        @changeset={{this.changeset}}
+        @validationField="integer"
+        @label="Integer validation field"
+        class="custom-integer-class"
+        @unsigned={{true}}
+      />
+    `);
+    }
+
     function setupChangeset(this: TestContext) {
       const changeset = new ImmerChangeset({
         integer: 0,
@@ -55,6 +67,17 @@ module(
       setupChangeset.call(this);
       await renderComponent();
       assert.dom('.tpk-input').hasClass('custom-integer-class');
+    });
+
+    test('it passes unsigned integer', async function (assert) {
+      setupChangeset.call(this);
+      await renderComponentUnsigned();
+      await fillIn('input', '1');
+      let input = find('input');
+      assert.strictEqual(this.changeset.get('integer'), 1);
+      input?.stepDown();
+      input?.stepDown();
+      assert.dom('input').hasValue('0');
     });
   },
 );
