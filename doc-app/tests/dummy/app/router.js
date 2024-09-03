@@ -43,6 +43,7 @@ Router.map(function () {
         this.route('national-number');
         this.route('select');
         this.route('integer');
+        this.route('number');
       });
       this.route('installation');
       this.route('checkbox');

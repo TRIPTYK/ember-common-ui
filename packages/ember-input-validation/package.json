@@ -126,6 +126,7 @@
       "./components/prefabs/tpk-validation-integer.js": "./dist/_app_/components/prefabs/tpk-validation-integer.js",
       "./components/prefabs/tpk-validation-mobile.js": "./dist/_app_/components/prefabs/tpk-validation-mobile.js",
       "./components/prefabs/tpk-validation-national-number.js": "./dist/_app_/components/prefabs/tpk-validation-national-number.js",
+      "./components/prefabs/tpk-validation-number.js": "./dist/_app_/components/prefabs/tpk-validation-number.js",
       "./components/prefabs/tpk-validation-password.js": "./dist/_app_/components/prefabs/tpk-validation-password.js",
       "./components/prefabs/tpk-validation-select-search.js": "./dist/_app_/components/prefabs/tpk-validation-select-search.js",
       "./components/prefabs/tpk-validation-select.js": "./dist/_app_/components/prefabs/tpk-validation-select.js",
