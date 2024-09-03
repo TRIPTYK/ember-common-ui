@@ -1,10 +1,9 @@
 import { module, test } from 'qunit';
-import { fillIn, find, render, settled, triggerEvent, triggerKeyEvent, waitFor, type TestContext } from '@ember/test-helpers';
+import { fillIn, find, render, type TestContext } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { waitForEvent } from 'ember-concurrency';
 
 module(
   'Integration | Component | Prefabs | tpk-validation-integer',

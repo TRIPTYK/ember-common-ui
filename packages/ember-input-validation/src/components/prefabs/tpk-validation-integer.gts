@@ -27,7 +27,7 @@ export interface TpkValidationIntegerComponentSignature
 
 export default class TpkValidationIntegerComponent extends BaseValidationComponent<TpkValidationIntegerComponentSignature> {
 
-get unsigned() {
+get min() {
   return this.args.unsigned ? 0 : undefined;
 }
   
@@ -42,7 +42,7 @@ preventNonNumericInput(event: KeyboardEvent) {
     <TpkValidationInputComponent
       @type='number'
       @label={{@label}}
-      @min={{this.unsigned}}
+      @min={{this.min}}
       @step={{1}}
       @classless={{@classless}}
       @disabled={{@disabled}}
