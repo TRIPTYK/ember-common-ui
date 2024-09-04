@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
 import type { BaseValidationSignature } from "../base";
 import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../utils/mask-utils.ts";
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 
 export interface TpkValidationVATPrefabSignature 
@@ -67,6 +68,10 @@ export default class TpkValidationVATPrefab extends Component<TpkValidationVATPr
     as |V|>
       <V.Label />
       <V.Input />
+      <TpkValidationErrorsComponent
+        @errors={{V.errors}}
+        @classless={{@classless}}
+      />
     </TpkValidationInputComponent>
   </template>
 }

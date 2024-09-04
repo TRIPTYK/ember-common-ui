@@ -1,6 +1,7 @@
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
 import type { BaseValidationSignature } from "../base";
 import Component from "@glimmer/component";
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationCurrencyPrefabSignature
   extends BaseValidationSignature {
@@ -57,6 +58,10 @@ export default class TpkValidationCurrencyPrefab extends Component<TpkValidation
     as |V|>
       <V.Label />
       <V.Input placeholder={{@placeholder}} />
+      <TpkValidationErrorsComponent
+        @errors={{V.errors}}
+        @classless={{@classless}}
+      />
     </TpkValidationInputComponent>
   </template>
 }

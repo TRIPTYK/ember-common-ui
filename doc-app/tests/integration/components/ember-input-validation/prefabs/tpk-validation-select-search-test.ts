@@ -13,6 +13,7 @@ import {
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { waitFor } from '@ember/test-helpers';
 import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
+import { setupIntl } from 'ember-intl/test-support';
 
 interface Option {
   label: string;
@@ -47,12 +48,15 @@ module(
   'Integration | Component | Prefabs | tpk-validation-select-search',
   function (hooks) {
     setupRenderingTest(hooks);
+    setupIntl(hooks, 'fr-fr');
 
     async function setChangeset(
       this: TestContext,
       fastfoodValue: string = 'McDonald',
     ) {
-      this.set('changeset', new ImmerChangeset({ fastfood: fastfoodValue }));
+      const changeset = new ImmerChangeset({ fastfood: fastfoodValue });
+      this.set('changeset', changeset);
+      return changeset;
     }
 
     async function setOptions(this: TestContext) {
@@ -114,6 +118,22 @@ module(
       tpkSelectSearch.input.fillIn('Tournai');
       await waitFor('.loader');
       assert.dom('.loader').exists();
+    });
+
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = await setChangeset.call(this);
+      await setOptions.call(this);
+      await setSearchFunction.call(this, 1000);
+      await renderComponent.call(this);
+      changeset.addError({
+        message: 'required',
+        value: '',
+        originalValue: 'a',
+        key: 'fastfood',
+      });
+      assert.dom('.tpk-validation-errors').exists();
+      await settled();
+      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
     });
   },
 );

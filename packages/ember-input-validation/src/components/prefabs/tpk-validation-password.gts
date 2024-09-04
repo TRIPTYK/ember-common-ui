@@ -4,6 +4,7 @@ import type { BaseValidationSignature } from "../base";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { on } from "@ember/modifier";
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationPasswordPrefabSignature
   extends BaseValidationSignature {
@@ -64,6 +65,10 @@ export default class TpkValidationPasswordPrefab extends Component<TpkValidation
           />
         </button>
       </div>
+      <TpkValidationErrorsComponent
+        @errors={{V.errors}}
+        @classless={{@classless}}
+      />
     </TpkValidationInputComponent>
   </template>
 }

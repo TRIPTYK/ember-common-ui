@@ -5,6 +5,7 @@ import {
 } from '../base.ts';
 import TpkSelectSearchComponent from '@triptyk/ember-input/components/tpk-select-search';
 import perform from 'ember-concurrency/helpers/perform';
+import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {
@@ -85,6 +86,10 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
           <TpkLoadingSpinner />
         {{/if}}
       </div>
+      <TpkValidationErrorsComponent
+        @errors={{this.errors}}
+        @classless={{@classless}}
+      />
       {{#if @options}}
         <S.Options as |Opts|>
           <Opts as |O|>

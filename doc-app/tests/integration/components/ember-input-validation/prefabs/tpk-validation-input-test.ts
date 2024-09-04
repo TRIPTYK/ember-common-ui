@@ -11,11 +11,13 @@ import {
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
+import { setupIntl } from 'ember-intl/test-support';
 
 module(
   'Integration | Component | Prefabs | tpk-validation-password',
   function (hooks) {
     setupRenderingTest(hooks);
+    setupIntl(hooks, 'fr-fr');
 
     async function renderComponent(this: TestContext) {
       const changeset = new ImmerChangeset({
@@ -27,6 +29,8 @@ module(
       await render(
         hbs`<Prefabs::TpkValidationPassword class="custom-class"  @changeset={{this.changeset}} @validationField="name" />`,
       );
+
+      return changeset;
     }
 
     test('Should have a toggle button', async function (assert) {
@@ -79,6 +83,19 @@ module(
     test('Attributes should be passed to the input', async function (assert) {
       await renderComponent.call(this);
       assert.dom('.tpk-input').hasClass('custom-class');
+    });
+
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = await renderComponent.call(this);
+      changeset.addError({
+        message: 'required',
+        value: '',
+        originalValue: 'a',
+        key: 'name',
+      });
+      assert.dom('.tpk-validation-errors').exists();
+      await settled();
+      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
     });
   },
 );
