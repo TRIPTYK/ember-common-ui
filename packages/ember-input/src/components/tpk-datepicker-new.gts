@@ -3,8 +3,10 @@ import { guidFor } from '@ember/object/internals';
 import type { BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
-import TpkDatepickerNewInputComponent from './tpk-datepicker-new/input.gts';
-import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
+import TpkDatepickerNewInputComponent, {
+  type TpkDatepickerNewInput,
+} from './tpk-datepicker-new/input.gts';
+import TpkDatepickerLabelComponent from './tpk-datepicker-new/label.gts';
 import { hash } from '@ember/helper';
 import IMask from 'imask';
 import { action } from '@ember/object';
@@ -13,16 +15,14 @@ import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 export type TpkDatepickerSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
-    {
-      value: Date[] | Date | string | string[] | null | number;
-      onChange?: (value: Date[], e: Event) => void;
-      disabled?: boolean;
+    TpkDatepickerNewInput & {
       mask?: string;
     }
   >;
   Blocks: {
     default: [
       {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Input: any;
         Label: WithBoundArgs<
           typeof TpkDatepickerLabelComponent,
@@ -84,10 +84,35 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
         (hash
           Input=(component
             TpkDatepickerNewInputComponent
-            onChange=@onChange
-            value=@value
             guid=this.guid
             disabled=@disabled
+            value=@value
+            useCurrent=@useCurrent
+            multipleDates=@multipleDates
+            multipleDatesSeparator=@multipleDatesSeparator
+            range=@range
+            stepping=@stepping
+            promptTimeOnDateChange=@promptTimeOnDateChange
+            allowInputToggle=@allowInputToggle
+            todayButton=@todayButton
+            clearButton=@clearButton
+            closeButton=@closeButton
+            showTime=@showTime
+            showCalendar=@showCalendar
+            showSecond=@showSecond
+            keepOpen=@keepOpen
+            locale=@locale
+            format=@format
+            minDate=@minDate
+            maxDate=@maxDate
+            daysOfWeekDisabled=@daysOfWeekDisabled
+            disabledTimeIntervals=@disabledTimeIntervals
+            disabledDates=@disabledDates
+            enabledDates=@enabledDates
+            disabledHours=@disabledHours
+            enabledHours=@enabledHours
+            viewMode=@viewMode
+            onChange=@onChange
           )
           Label=(component
             TpkDatepickerLabelComponent
