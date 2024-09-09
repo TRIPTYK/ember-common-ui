@@ -86,7 +86,6 @@
     "@typescript-eslint/parser": "^7.18.0",
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "concurrently": "^8.2.2",
-    "ember-flatpickr": "~7.1.0",
     "ember-source": "~5.11.0",
     "ember-template-imports": "^4.1.1",
     "ember-template-lint": "^5.13.0",
@@ -95,7 +94,6 @@
     "eslint-plugin-ember": "^12.1.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-prettier": "^5.2.1",
-    "flatpickr": "^4.6.13",
     "prettier": "^3.3.3",
     "prettier-plugin-ember-template-tag": "^2.0.2",
     "rollup": "^4.20.0",
@@ -153,7 +151,6 @@
     }
   },
   "peerDependencies": {
-    "ember-flatpickr": ">=6.0.0",
     "ember-source": ">=5.0.0"
   }
 }

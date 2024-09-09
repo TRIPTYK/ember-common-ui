@@ -93,7 +93,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     this.set('setDate', function () {});
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Range" @range={{true}} @multipleDatesSeparator=" jusqu'au " as |D|>
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Range" @mode="range" @multipleDatesSeparator=" jusqu'au " as |D|>
             <D.Label />
             <D.Input />
           </TpkDatepicker>`,
@@ -115,7 +115,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     });
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Range" @range={{true}} @multipleDatesSeparator=" jusqu'au " as |D|>
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Range" @mode="range" @multipleDatesSeparator=" jusqu'au " as |D|>
             <D.Label />
             <D.Input />
           </TpkDatepicker>`,
@@ -133,7 +133,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     this.set('setDate', function () {});
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Range" @multipleDatesSeparator=" jusqu'au " @range={{true}} @value={{this.value}} as |D|>
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Range" @multipleDatesSeparator=" jusqu'au " @mode="range" @value={{this.value}} as |D|>
             <D.Label />
             <D.Input />
           </TpkDatepicker>`,
@@ -171,7 +171,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     this.set('setDate', function () {});
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @value={{this.date}} @enableTime={{true}} @label="Time" @enableCalendar={{false}} @format="HH:mm" as |D|>
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @value={{this.date}} @enableTime={{true}} @label="Time" @noCalendar={{true}} @dateFormat="HH:mm" as |D|>
             <D.Label />
             <D.Input />
           </TpkDatepicker>`,
@@ -216,7 +216,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     this.set('setDate', function () {});
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Mask/Format" @format="dd/MM-yyyy" @mask="d/m-Y" as |D|>
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Mask/Format" @dateFormat="dd/MM-yyyy" @mask="d/m-Y" as |D|>
             <D.Label />
             <D.Input />
           </TpkDatepicker>`,
@@ -230,7 +230,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     this.set('setDate', function () {});
 
     await render(
-      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Time format" @format="dd/MM/yyyy | HH:mm" @enableTime={{true}}  as |D|>
+      hbs`<TpkDatepicker @onChange={{this.setDate}} @label="Time format" @dateFormat="dd/MM/yyyy | HH:mm" @enableTime={{true}}  as |D|>
             <D.Label />
             <D.Input />
           </TpkDatepicker>`,

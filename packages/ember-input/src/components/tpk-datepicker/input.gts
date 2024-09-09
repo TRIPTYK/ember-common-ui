@@ -6,26 +6,24 @@ import { on } from '@ember/modifier';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 
 export interface TpkDatepickerInput {
-  guid: string;
   classless?: boolean;
   disabled?: boolean;
   placeholder?: string;
   value?: Date | string;
   stepping?: number;
-  multipleDates?: boolean;
+  mode?: 'multiple' | 'range';
   multipleDatesSeparator?: string;
-  range?: boolean;
   useCurrent?: boolean;
   promptTimeOnDateChange?: boolean;
   todayButton?: boolean;
   clearButton?: boolean;
   closeButton?: boolean;
   enableTime?: boolean;
-  enableCalendar?: boolean;
+  noCalendar?: boolean;
   enableSecond?: boolean;
   keepOpen?: boolean;
   locale?: string;
-  format?: string;
+  dateFormat?: string;
   minDate?: Date;
   maxDate?: Date;
   daysOfWeekDisabled?: number[];
@@ -35,12 +33,12 @@ export interface TpkDatepickerInput {
   disabledHours?: number[];
   enabledHours?: number[];
   viewMode?: 'clock' | 'calendar' | 'months' | 'years' | 'decades';
-  onChange: (value: Date | Date[] | undefined) => void;
+  onChange: (value: Date[]) => void;
   onClose: () => void;
 }
 
 export interface TpkDatepickerInputComponentSignature {
-  Args: TpkDatepickerInput;
+  Args: TpkDatepickerInput & { guid: string };
   Element: HTMLInputElement;
 }
 
@@ -59,8 +57,8 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
       defaultDate: this.args.value as DateTime | undefined,
       useCurrent: this.args.useCurrent === true ? true : false,
       allowInputToggle: false,
-      dateRange: this.args.range,
-      multipleDates: this.args.multipleDates,
+      dateRange: this.args.mode === 'range' ? true : false,
+      multipleDates: this.args.mode === 'multiple' ? true : false,
       multipleDatesSeparator: this.args.multipleDatesSeparator,
       promptTimeOnDateChange: this.args.promptTimeOnDateChange,
       stepping: this.args.stepping ?? 5,
@@ -84,11 +82,11 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
           close: this.args.closeButton === false ? false : true,
         },
         components: {
-          calendar: this.args.enableCalendar === false ? false : true,
-          date: this.args.enableCalendar === false ? false : true,
-          month: this.args.enableCalendar === false ? false : true,
-          year: this.args.enableCalendar === false ? false : true,
-          decades: this.args.enableCalendar === false ? false : true,
+          calendar: this.args.noCalendar === true ? false : true,
+          date: this.args.noCalendar === true ? false : true,
+          month: this.args.noCalendar === true ? false : true,
+          year: this.args.noCalendar === true ? false : true,
+          decades: this.args.noCalendar === true ? false : true,
           clock: this.args.enableTime,
           hours: this.args.enableTime,
           minutes: this.args.enableTime,
@@ -97,7 +95,7 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
       },
       localization: {
         locale: this.args.locale ?? 'fr',
-        format: this.args.format ?? 'dd/MM/yyyy',
+        format: this.args.dateFormat ?? 'dd/MM/yyyy',
       },
       restrictions: {
         minDate: this.args.minDate as DateTime | undefined,
@@ -120,7 +118,7 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
 
     if (this.args.onChange) {
       this.datepicker.subscribe(Namespace.events.change, () => {
-        if (this.args.multipleDates || this.args.range) {
+        if (this.args.mode === 'multiple' || this.args.mode === 'range') {
           // Workaround to trigger change event after at least 2 dates are picked
           if (this.datepicker.dates.picked.length > 1) {
             return this.args.onChange(this.datepicker.dates.picked);
@@ -160,6 +158,7 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
         autocomplete='off'
         autofill='off'
         {{on 'keydown' this.closeDatepicker}}
+        data-test-tpk-datepicker-content
         ...attributes
       />
     </div>

@@ -51,11 +51,15 @@ export function closeTempusDominus(selector: string | HTMLElement) {
  */
 export function setTempusDominusDate(
   selector: string | HTMLElement,
-  date: Date,
+  date: Date | string | undefined,
   index?: number,
 ) {
   const tdInput = _getTempusDominusElement(selector, 'setTempusDominusDate');
   if (!tdInput) return;
+  if (!date) {
+    tdInput._tempusDominus.dates.setValue(undefined, index);
+    return;
+  }
   tdInput._tempusDominus.dates.setValue(new DateTime(date), index);
 }
 

@@ -46,8 +46,6 @@ An Ember component for date selection with extensive customization options. This
 
 - **placeholder**: Placeholder text displayed when the date field is empty.
 
-- **format**: The format for displaying the selected date. Defaults to 'dd/MM/yyyy'.
-
 - **onClose**: A function called when the date picker is closed.
 
 - **label**: The title or label displayed with the date picker.
@@ -56,8 +54,16 @@ An Ember component for date selection with extensive customization options. This
 
 - **stepping**: The number of minutes to step up/down in the time picker. Defaults to 5.
 
-- **multipleDates**: Allow the selection of multiple dates. Defaults to `false`. Returns values after two dates are picked at least
+- **mode**: 
+  
+  __Multiple__
 
+  Allow the selection of multiple dates. Returns values after two dates are picked at least
+
+  __Range__
+
+  Enable date range selection. Returns values after two dates are picked
+  
 - **multipleDatesSeparator**: The separator to use when multiple dates are selected.
 
 - **range**: Enable date range selection. Defaults to `false`. Returns values after two dates are picked
@@ -74,7 +80,7 @@ An Ember component for date selection with extensive customization options. This
 
 - **enableTime**: Enable time selection. Defaults to `false`.
 
-- **enableCalendar**: Enable calendar selection. Defaults to `true`.
+- **noCalendar**: Disable calendar selection. Defaults to `true`.
 
 - **enableSecond**: Enable seconds selection in time picker. Defaults to `false`.
 
@@ -82,7 +88,7 @@ An Ember component for date selection with extensive customization options. This
 
 - **locale**: Locale used for the labels in the datepicker. Defaults to `fr`.
 
-- **format**: The format for displaying the selected date. Defaults to 'dd/MM/yyyy'.
+- **dateFormat**: The format for displaying the selected date. Defaults to 'dd/MM/yyyy'.
 
 - **minDate**: The minimum selectable date.
 
@@ -132,8 +138,8 @@ An Ember component for date selection with extensive customization options. This
         @value={{this.selectedDate}}
         @onChange={{this.onChange}}
         @enableTime={{true}}
-        @enableCalendar={{false}}
-        @format="HH:mm"
+        @noCalendar={{true}}
+        @dateFormat="HH:mm"
         @mask="H:M"
         class="tpk-input"
       as |D|>
@@ -191,7 +197,7 @@ An Ember component for date selection with extensive customization options. This
         @onChange={{this.onChange}}
         @enableTime={{true}}
         @promptTimeOnDateChange={{true}}
-        @format="dd/MM/yyyy | HH:mm"
+        @dateFormat="dd/MM/yyyy | HH:mm"
         class="tpk-input"
       as |D|>
         <D.Label />

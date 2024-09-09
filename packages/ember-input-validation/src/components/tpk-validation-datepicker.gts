@@ -4,7 +4,7 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import { assert } from '@ember/debug';
-import { type FlatpickerArgs } from '@triptyk/ember-input/components/tpk-datepicker/input';
+import { type TpkDatepickerInput } from '@triptyk/ember-input/components/tpk-datepicker/input';
 import { hash } from '@ember/helper';
 import TpkDatepicker, {
   type TpkDatepickerSignature,
@@ -16,9 +16,8 @@ export interface TpkValidationDatepickerComponentSignature
     label: string;
     classless?: boolean;
     disabled?: boolean;
-    changeEvent?: 'input' | 'change';
     mask?: string;
-  } & FlatpickerArgs;
+  } & TpkDatepickerInput;
   Blocks: {
     default: [
       {
@@ -53,11 +52,10 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
 
   get value() {
     assert(
-      `@value must be a string, number, date or null for @${this.args.validationField}`,
+      `@value must be a string, date or undefined for @${this.args.validationField}`,
       typeof super.value === 'string' ||
-        typeof super.value === 'number' ||
         super.value instanceof Date ||
-        super.value === null,
+        super.value === undefined,
     );
     return super.value;
   }
@@ -70,48 +68,30 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
       @onClose={{@onClose}}
       @disabled={{@disabled}}
       @placeholder={{@placeholder}}
-      @altFormat={{@altFormat}}
-      @altInput={{@altInput}}
-      @altInputClass={{@altInputClass}}
-      @allowInput={{@allowInput}}
-      @allowInvalidPreload={{@allowInvalidPreload}}
-      @appendTo={{@appendTo}}
-      @ariaDateFormat={{@ariaDateFormat}}
-      @conjunction={{@conjunction}}
-      @clickOpens={{@clickOpens}}
-      @dateFormat={{@dateFormat}}
-      @defaultDate={{@defaultDate}}
-      @defaultHour={{@defaultHour}}
-      @defaultMinute={{@defaultMinute}}
-      @disabledDates={{@disabledDates}}
-      @disableMobile={{@disableMobile}}
-      @enable={{@enable}}
-      @enableTime={{@enableTime}}
-      @classless={{@classless}}
-      @enableSeconds={{@enableSeconds}}
-      @formatDate={{@formatDate}}
-      @hourIncrement={{@hourIncrement}}
-      @inline={{@inline}}
-      @maxDate={{@maxDate}}
-      @minDate={{@minDate}}
-      @locale={{@locale}}
-      @minuteIncrement={{@minuteIncrement}}
-      @nextArrow={{@nextArrow}}
-      @noCalendar={{@noCalendar}}
-      @onOpen={{@onOpen}}
-      @onReady={{@onReady}}
-      @parseDate={{@parseDate}}
-      @position={{@position}}
-      @positionElement={{@positionElement}}
-      @prevArrow={{@prevArrow}}
-      @shorthandCurrentMonth={{@shorthandCurrentMonth}}
-      @showMonths={{@showMonths}}
-      @time_24hr={{@time_24hr}}
-      @weekNumbers={{@weekNumbers}}
-      @wrap={{@wrap}}
-      @monthSelectorType={{@monthSelectorType}}
-      @mode={{@mode}}
       @mask={{@mask}}
+      @useCurrent={{@useCurrent}}
+      @mode={{@mode}}
+      @multipleDatesSeparator={{@multipleDatesSeparator}}
+      @stepping={{@stepping}}
+      @promptTimeOnDateChange={{@promptTimeOnDateChange}}
+      @todayButton={{@todayButton}}
+      @clearButton={{@clearButton}}
+      @closeButton={{@closeButton}}
+      @enableTime={{@enableTime}}
+      @noCalendar={{@noCalendar}}
+      @enableSecond={{@enableSecond}}
+      @keepOpen={{@keepOpen}}
+      @locale={{@locale}}
+      @dateFormat={{@dateFormat}}
+      @minDate={{@minDate}}
+      @maxDate={{@maxDate}}
+      @daysOfWeekDisabled={{@daysOfWeekDisabled}}
+      @disabledTimeIntervals={{@disabledTimeIntervals}}
+      @disabledDates={{@disabledDates}}
+      @enabledDates={{@enabledDates}}
+      @disabledHours={{@disabledHours}}
+      @enabledHours={{@enabledHours}}
+      @viewMode={{@viewMode}}
       ...attributes
       data-has-error='{{this.hasError}}'
       as |D|
