@@ -2,8 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { type TestContext, render, settled } from '@ember/test-helpers';
-// @ts-expect-error
-import { setFlatpickrDate } from 'ember-flatpickr/test-support/helpers';
+import { setTempusDominusDate } from '@triptyk/ember-input/test-support/datepicker-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-datepicker', function (hooks) {
@@ -31,7 +30,7 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
     assert.dom('[data-test-tpk-datepicker]').exists();
     assert.dom('[data-test-tpk-datepicker-label]').containsText('label');
 
-    setFlatpickrDate('[data-test-tpk-datepicker-content]', '');
+    setTempusDominusDate('[data-test-tpk-datepicker-content]', '');
     await settled();
 
     assert.dom('[data-test-tpk-datepicker-content]').hasNoText();

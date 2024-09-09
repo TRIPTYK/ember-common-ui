@@ -3,17 +3,19 @@ import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 
 export default class DocsTpkDatepickerController extends Controller {
-  @tracked selectedDate = null;
-  @tracked isDisabled = false;
-  @tracked dateMask = 'd-m/Y';
-  @tracked placeholderText = 'Enter a date';
-  @tracked dateFormat = 'd/m/Y';
-  @tracked dateLabel = 'Select a date:';
-  @tracked allowInput = true;
-  @tracked enableTime = true;
+  @tracked selectedDate = undefined;
+  @tracked selectedDates = undefined;
+  @tracked date = new Date(2022, 10, 15);
+  @tracked minDate = new Date(2022, 10, 13);
+  @tracked maxDate = new Date(2022, 10, 16);
 
   @action
-  onChange(newDate, event) {
-    this.selectedDate = newDate;
+  onChange(dates) {
+    this.selectedDate = dates[0];
+  }
+
+  @action
+  onChangeRange(dates) {
+    this.selectedDates = dates;
   }
 }
