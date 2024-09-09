@@ -1,132 +1,167 @@
-import type { TOC } from '@ember/component/template-only';
-import EmberFlatpickr from 'ember-flatpickr/components/ember-flatpickr';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { TempusDominus, Namespace, DateTime } from '@eonasdan/tempus-dominus';
+import { action } from '@ember/object';
+import { on } from '@ember/modifier';
+import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 
-export interface FlatpickerArgs {
-  altFormat?: string;
-  altInput?: boolean;
-  altInputClass?: string;
-  allowInput?: boolean;
-  allowInvalidPreload?: boolean;
-  appendTo?: HTMLElement | string;
-  ariaDateFormat?: string;
-  conjunction?: string;
-  clickOpens?: boolean;
-  dateFormat?: string | Array<string>;
-  defaultDate?: string | Date | null;
-  defaultHour?: number;
-  defaultMinute?: number;
-  disable?:
-    | Array<string>
-    | Array<{ from: string; to: string }>
-    | ((date: Date) => boolean);
-  disabledDates?: Date[] | ((date: Date) => boolean);
-  disableMobile?: boolean;
-  enable?: Array<string> | ((date: Date) => boolean);
-  enableTime?: boolean;
-  enableSeconds?: boolean;
-  formatDate?: (date: Date, format: string, locale?: string) => string;
-  hourIncrement?: number;
-  inline?: boolean;
-  maxDate?: string | Date;
-  minDate?: string | Date;
-  locale?: string;
-  minuteIncrement?: number;
-  mode?: 'single' | 'multiple' | 'range';
-  nextArrow?: string;
-  noCalendar?: boolean;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  onClose?: Function;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  onOpen?: Function;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  onReady?: Function;
-  parseDate?: (date: string, format: string) => Date | void;
-  position?: 'auto' | 'top' | 'right' | 'bottom' | 'left';
-  positionElement?: HTMLElement;
-  prevArrow?: string;
-  shorthandCurrentMonth?: boolean;
-  showMonths?: number;
-  time_24hr?: boolean;
-  weekNumbers?: boolean;
-  wrap?: boolean;
-  monthSelectorType?: 'dropdown' | 'static';
-  static?: boolean;
+export interface TpkDatepickerInput {
+  guid: string;
+  classless?: boolean;
+  disabled?: boolean;
   placeholder?: string;
-  id?: string;
+  value?: Date | string;
+  stepping?: number;
+  multipleDates?: boolean;
+  multipleDatesSeparator?: string;
+  range?: boolean;
+  useCurrent?: boolean;
+  promptTimeOnDateChange?: boolean;
+  todayButton?: boolean;
+  clearButton?: boolean;
+  closeButton?: boolean;
+  enableTime?: boolean;
+  enableCalendar?: boolean;
+  enableSecond?: boolean;
+  keepOpen?: boolean;
+  locale?: string;
+  format?: string;
+  minDate?: Date;
+  maxDate?: Date;
+  daysOfWeekDisabled?: number[];
+  disabledTimeIntervals?: { from: Date; to: Date }[];
+  disabledDates?: Date[];
+  enabledDates?: Date[];
+  disabledHours?: number[];
+  enabledHours?: number[];
+  viewMode?: 'clock' | 'calendar' | 'months' | 'years' | 'decades';
+  onChange: (value: Date | Date[] | undefined) => void;
+  onClose: () => void;
 }
 
 export interface TpkDatepickerInputComponentSignature {
-  Args: {
-    guid: string;
-    classless?: boolean;
-    disabled?: boolean;
-    disabledDates?: Date[] | ((date: Date) => boolean);
-    value: Date[] | Date | string | string[] | null | number;
-    onChange: (value: Date[], e: Event) => void;
-  } & FlatpickerArgs;
+  Args: TpkDatepickerInput;
   Element: HTMLInputElement;
 }
 
-// https://github.com/typed-ember/glint/issues/599 cast to any to prevent using glint directives
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const EmberFlatpickr1 = EmberFlatpickr as any;
+export class HTMLInputTDElement extends HTMLInputElement {
+  declare _tempusDominus: TempusDominus;
+}
 
-// Lot of @glint-expect-error. I do not want to loose all the type safety.
-// waiting on ember-flatpickr to be updated to a type safe version.
-const TpkDatepickerInputComponent: TOC<TpkDatepickerInputComponentSignature> =
+export default class TpkDatepickerNewInputComponent extends Component<TpkDatepickerInputComponentSignature> {
+  @tracked declare datepicker: TempusDominus;
+
+  @action
+  setTempusDominus(element: HTMLDivElement) {
+    const input = element.querySelector(`#${this.args.guid}`) as HTMLElement;
+    this.datepicker = new TempusDominus(input, {
+      container: element,
+      defaultDate: this.args.value as DateTime | undefined,
+      useCurrent: this.args.useCurrent === true ? true : false,
+      allowInputToggle: false,
+      dateRange: this.args.range,
+      multipleDates: this.args.multipleDates,
+      multipleDatesSeparator: this.args.multipleDatesSeparator,
+      promptTimeOnDateChange: this.args.promptTimeOnDateChange,
+      stepping: this.args.stepping ?? 5,
+      display: {
+        viewMode: this.args.viewMode,
+        keepOpen: this.args.keepOpen === true ? true : false,
+        icons: {
+          date: 'icon icon-calendar',
+          time: 'icon icon-time',
+          up: 'icon icon-up',
+          down: 'icon icon-down',
+          next: 'icon icon-next',
+          previous: 'icon icon-previous',
+          today: 'icon icon-today',
+          clear: 'icon icon-clear',
+          close: 'icon icon-close',
+        },
+        buttons: {
+          today: this.args.todayButton,
+          clear: this.args.clearButton === false ? false : true,
+          close: this.args.closeButton === false ? false : true,
+        },
+        components: {
+          calendar: this.args.enableCalendar === false ? false : true,
+          date: this.args.enableCalendar === false ? false : true,
+          month: this.args.enableCalendar === false ? false : true,
+          year: this.args.enableCalendar === false ? false : true,
+          decades: this.args.enableCalendar === false ? false : true,
+          clock: this.args.enableTime,
+          hours: this.args.enableTime,
+          minutes: this.args.enableTime,
+          seconds: this.args.enableSecond,
+        },
+      },
+      localization: {
+        locale: this.args.locale ?? 'fr',
+        format: this.args.format ?? 'dd/MM/yyyy',
+      },
+      restrictions: {
+        minDate: this.args.minDate as DateTime | undefined,
+        maxDate: this.args.maxDate as DateTime | undefined,
+        daysOfWeekDisabled: this.args.daysOfWeekDisabled,
+        disabledTimeIntervals:
+          (this.args.disabledTimeIntervals as
+            | { from: DateTime; to: DateTime }[]
+            | undefined) ?? [],
+        disabledDates:
+          (this.args.disabledDates as DateTime[] | undefined) ?? [],
+        enabledDates: (this.args.enabledDates as DateTime[] | undefined) ?? [],
+        disabledHours: this.args.disabledHours ?? [],
+        enabledHours: this.args.enabledHours ?? [],
+      },
+    });
+
+    // Set the datepicker instance on the input element in order to use it in testing
+    (input as HTMLInputTDElement)._tempusDominus = this.datepicker;
+
+    if (this.args.onChange) {
+      this.datepicker.subscribe(Namespace.events.change, () => {
+        if (this.args.multipleDates || this.args.range) {
+          // Workaround to trigger change event after at least 2 dates are picked
+          if (this.datepicker.dates.picked.length > 1) {
+            return this.args.onChange(this.datepicker.dates.picked);
+          }
+          return;
+        }
+        this.args.onChange(this.datepicker.dates.picked);
+      });
+    }
+    if (this.args.onClose) {
+      this.datepicker.subscribe(Namespace.events.hide, () => {
+        this.args.onClose();
+      });
+    }
+  }
+
+  @action
+  closeDatepicker(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.datepicker.hide();
+    }
+    if (event.key === 'Tab') {
+      this.datepicker.hide();
+    }
+  }
   <template>
-    <EmberFlatpickr1
-      data-test-tpk-datepicker-content
-      @altFormat={{@altFormat}}
-      @altInput={{@altInput}}
-      @altInputClass={{@altInputClass}}
-      @allowInput={{@allowInput}}
-      @allowInvalidPreload={{@allowInvalidPreload}}
-      @appendTo={{@appendTo}}
-      @ariaDateFormat={{@ariaDateFormat}}
-      @conjunction={{@conjunction}}
-      @clickOpens={{@clickOpens}}
-      @date={{@value}}
-      @dateFormat={{@dateFormat}}
-      @defaultDate={{@defaultDate}}
-      @defaultHour={{@defaultHour}}
-      @defaultMinute={{@defaultMinute}}
-      @disable={{@disabledDates}}
-      @disableMobile={{@disableMobile}}
-      @enable={{@enable}}
-      @enableTime={{@enableTime}}
-      @enableSeconds={{@enableSeconds}}
-      @formatDate={{@formatDate}}
-      @hourIncrement={{@hourIncrement}}
-      @inline={{@inline}}
-      @maxDate={{@maxDate}}
-      @minDate={{@minDate}}
-      @locale={{@locale}}
-      @minuteIncrement={{@minuteIncrement}}
-      @mode={{@mode}}
-      @nextArrow={{@nextArrow}}
-      @noCalendar={{@noCalendar}}
-      @onChange={{@onChange}}
-      @onClose={{@onClose}}
-      @onOpen={{@onOpen}}
-      @onReady={{@onReady}}
-      @parseDate={{@parseDate}}
-      @position={{@position}}
-      @positionElement={{@positionElement}}
-      @prevArrow={{@prevArrow}}
-      @shorthandCurrentMonth={{@shorthandCurrentMonth}}
-      @showMonths={{@showMonths}}
-      @time_24hr={{@time_24hr}}
-      @weekNumbers={{@weekNumbers}}
-      @wrap={{@wrap}}
-      @monthSelectorType={{@monthSelectorType}}
-      @static={{true}}
-      @disabled={{@disabled}}
-      placeholder={{@placeholder}}
-      id={{@guid}}
-      class={{unless @classless 'tpk-datepicker-input'}}
-      ...attributes
-    />
-  </template>;
-
-export default TpkDatepickerInputComponent;
+    <div
+      class={{unless @classless 'tpk-datepicker-input-input-container'}}
+      {{didInsert this.setTempusDominus}}
+    >
+      <input
+        disabled={{@disabled}}
+        class={{unless @classless 'tpk-datepicker-input-input'}}
+        placeholder={{@placeholder}}
+        id={{@guid}}
+        aria-autocomplete='none'
+        autocomplete='off'
+        autofill='off'
+        {{on 'keydown' this.closeDatepicker}}
+        ...attributes
+      />
+    </div>
+  </template>
+}

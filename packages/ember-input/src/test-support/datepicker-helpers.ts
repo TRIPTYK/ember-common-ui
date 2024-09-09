@@ -1,4 +1,4 @@
-import type { HTMLInputTDElement } from '../components/tpk-datepicker-new/input';
+import type { HTMLInputTDElement } from '../components/tpk-datepicker/input';
 import { find } from '@ember/test-helpers';
 import { DateTime } from '@eonasdan/tempus-dominus';
 

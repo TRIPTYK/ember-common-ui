@@ -3,8 +3,9 @@ import { guidFor } from '@ember/object/internals';
 import type { BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
-import TpkDatepickerInputComponent, {
-  type FlatpickerArgs,
+import TpkDatepickerNewInputComponent, {
+  type TpkDatepickerInput,
+  type TpkDatepickerInputComponentSignature,
 } from './tpk-datepicker/input.gts';
 import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
 import { hash } from '@ember/helper';
@@ -12,71 +13,20 @@ import IMask from 'imask';
 import { action } from '@ember/object';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 
-type DatepickerOptionKey =
-  | 'onChange'
-  | 'onClose'
-  | 'value'
-  | 'guid'
-  | 'disabled'
-  | 'placeholder'
-  | 'altFormat'
-  | 'altInput'
-  | 'altInputClass'
-  | 'allowInput'
-  | 'allowInvalidPreload'
-  | 'appendTo'
-  | 'ariaDateFormat'
-  | 'conjunction'
-  | 'clickOpens'
-  | 'defaultDate'
-  | 'defaultHour'
-  | 'defaultMinute'
-  | 'disabledDates'
-  | 'disableMobile'
-  | 'enable'
-  | 'enableTime'
-  | 'classless'
-  | 'dateFormat'
-  | 'enableSeconds'
-  | 'formatDate'
-  | 'hourIncrement'
-  | 'inline'
-  | 'maxDate'
-  | 'minDate'
-  | 'locale'
-  | 'minuteIncrement'
-  | 'mode'
-  | 'nextArrow'
-  | 'noCalendar'
-  | 'onOpen'
-  | 'onReady'
-  | 'parseDate'
-  | 'position'
-  | 'positionElement'
-  | 'prevArrow'
-  | 'shorthandCurrentMonth'
-  | 'showMonths'
-  | 'time_24hr'
-  | 'weekNumbers'
-  | 'wrap'
-  | 'monthSelectorType';
-
 export type TpkDatepickerSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
-    {
-      value: Date[] | Date | string | string[] | null | number;
-      onChange?: (value: Date[], e: Event) => void;
-      disabled?: boolean;
+    TpkDatepickerInput & {
       mask?: string;
-    } & FlatpickerArgs
+    }
   >;
   Blocks: {
     default: [
       {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Input: WithBoundArgs<
-          typeof TpkDatepickerInputComponent,
-          DatepickerOptionKey
+          typeof TpkDatepickerNewInputComponent,
+          keyof TpkDatepickerInputComponentSignature['Args']
         >;
         Label: WithBoundArgs<
           typeof TpkDatepickerLabelComponent,
@@ -91,14 +41,6 @@ export type TpkDatepickerSignature = {
 
 export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
   guid = guidFor(this);
-
-  get dateFormat() {
-    return this.args.dateFormat ? this.args.dateFormat : 'd/m/Y';
-  }
-
-  get onClose() {
-    return this.args.onClose ? this.args.onClose : this.args.onChange;
-  }
 
   @action
   setMask(element: HTMLElement) {
@@ -127,7 +69,25 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
           mask: IMask.MaskedRange,
           from: 1900,
           to: 9999,
-        }
+        },
+        H: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 23,
+          maxLength: 2,
+        },
+        M: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 59,
+          maxLength: 2,
+        },
+        S: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 59,
+          maxLength: 2,
+        },
       },
       lazy: true,
       overwrite: true,
@@ -145,54 +105,37 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
       {{yield
         (hash
           Input=(component
-            TpkDatepickerInputComponent
-            onChange=@onChange
-            onClose=this.onClose
-            value=@value
+            TpkDatepickerNewInputComponent
             guid=this.guid
             disabled=@disabled
+            value=@value
             placeholder=@placeholder
-            altFormat=@altFormat
-            altInput=@altInput
-            altInputClass=@altInputClass
-            allowInput=@allowInput
-            allowInvalidPreload=@allowInvalidPreload
-            appendTo=@appendTo
-            ariaDateFormat=@ariaDateFormat
-            conjunction=@conjunction
-            clickOpens=@clickOpens
-            defaultDate=@defaultDate
-            defaultHour=@defaultHour
-            defaultMinute=@defaultMinute
-            disabledDates=@disabledDates
-            disableMobile=@disableMobile
-            enable=@enable
+            useCurrent=@useCurrent
+            multipleDates=@multipleDates
+            multipleDatesSeparator=@multipleDatesSeparator
+            range=@range
+            stepping=@stepping
+            promptTimeOnDateChange=@promptTimeOnDateChange
+            todayButton=@todayButton
+            clearButton=@clearButton
+            closeButton=@closeButton
             enableTime=@enableTime
-            classless=@classless
-            dateFormat=this.dateFormat
-            enableSeconds=@enableSeconds
-            formatDate=@formatDate
-            hourIncrement=@hourIncrement
-            inline=@inline
-            maxDate=@maxDate
-            minDate=@minDate
+            enableCalendar=@enableCalendar
+            enableSecond=@enableSecond
+            keepOpen=@keepOpen
             locale=@locale
-            minuteIncrement=@minuteIncrement
-            mode=@mode
-            nextArrow=@nextArrow
-            noCalendar=@noCalendar
-            onOpen=@onOpen
-            onReady=@onReady
-            parseDate=@parseDate
-            position=@position
-            positionElement=@positionElement
-            prevArrow=@prevArrow
-            shorthandCurrentMonth=@shorthandCurrentMonth
-            showMonths=@showMonths
-            time_24hr=@time_24hr
-            weekNumbers=@weekNumbers
-            wrap=@wrap
-            monthSelectorType=@monthSelectorType
+            format=@format
+            minDate=@minDate
+            maxDate=@maxDate
+            daysOfWeekDisabled=@daysOfWeekDisabled
+            disabledTimeIntervals=@disabledTimeIntervals
+            disabledDates=@disabledDates
+            enabledDates=@enabledDates
+            disabledHours=@disabledHours
+            enabledHours=@enabledHours
+            viewMode=@viewMode
+            onChange=@onChange
+            onClose=@onClose
           )
           Label=(component
             TpkDatepickerLabelComponent

@@ -5,19 +5,9 @@ An Ember component for date selection with extensive customization options. This
 <DocsDemo as |demo|>
   <demo.example @name="tpk-datepicker.hbs">
       <TpkDatepicker
+        @label="Date picker"
         @value={{this.selectedDate}}
         @onChange={{this.onChange}}
-        @disabled={{this.isDisabled}}
-        @mask={{this.dateMask}}
-        @allowInput={{this.allowInput}}
-        @placeholder={{this.placeholderText}}
-        @dateFormat={{this.dateFormat}}
-        @onClose={{this.onClose}}
-        @label={{this.dateLabel}}
-        @classless={{this.classless}}
-        @defaultDate={{this.defaultDate}}
-        @enableTime={{this.enableTime}}
-        @locale={{this.locale}}
         class="tpk-input"
       as |D|>
         <D.Label />
@@ -29,18 +19,18 @@ An Ember component for date selection with extensive customization options. This
 
 ## Mandatory Arguments
 
-- **value**: The initial date or dates to display in the date picker. Can be a single `Date`, a `string`, an array of `Date` or `string`, or `null`.
+- **value**: The initial date or dates to display in the date picker. Can be a single `Date`, a `string`, or `undefined`.
 
     ```typescript
-    @tracked selectedDate: Date | string | (Date | string)[] | null = new Date();
+    @tracked selectedDate: Date | string | undefined = new Date();
     ```
 
-- **onChange**: A function called when the date is changed. Receives the new value and the event as arguments.
+- **onChange**: A function called when the date is changed. Receives the new values as argument.
 
     ```typescript
     @action
-    onChange(newDate: Date[], event: Event): void {
-      this.selectedDate = newDate;
+    onChange(dates: Date[]): void {
+      this.selectedDate = dates[0];
     }
     ```
 
@@ -48,192 +38,165 @@ An Ember component for date selection with extensive customization options. This
 
 - **disabled**: A boolean indicating whether the date picker should be disabled.
 
-    ```typescript
-    @tracked isDisabled: boolean = false;
-    ```
-
 - **mask**: An input mask for formatting the date input when writing, using the IMask library.
 
     ```typescript
     @tracked dateMask: string = 'd-m/Y';
     ```
 
-
-- **allowInput**: If `true`, allows manual input.
-
 - **placeholder**: Placeholder text displayed when the date field is empty.
 
-    ```typescript
-    @tracked placeholderText: string = 'Enter a date';
-    ```
+- **format**: The format for displaying the selected date. Defaults to 'dd/MM/yyyy'.
 
-- **dateFormat**: The format for displaying the selected date. Defaults to 'd/m/Y'.
-
-    ```typescript
-    @tracked dateFormat: string = 'd/m/Y';
-    ```
-
-- **onClose**: A function called when the date picker is closed. Falls back to `onChange` if not defined.
-
-    ```typescript
-    @action
-    onClose(): void {
-      // Custom logic when date picker closes
-    }
-    ```
+- **onClose**: A function called when the date picker is closed.
 
 - **label**: The title or label displayed with the date picker.
 
-    ```typescript
-    @tracked dateLabel: string = 'Select a date:';
-    ```
+- **classless**: If `true`, the component is rendered without the default 'tpk-datepicker' CSS class. Defaults to `false`
 
-- **classless**: If `true`, the component is rendered without the default 'tpk-datepicker' CSS class.
+- **stepping**: The number of minutes to step up/down in the time picker. Defaults to 5.
 
-    ```typescript
-    @tracked isClassless: boolean = false;
-    ```
+- **multipleDates**: Allow the selection of multiple dates. Defaults to `false`. Returns values after two dates are picked at least
 
-- **defaultDate**: The default date to display when the field is empty.
+- **multipleDatesSeparator**: The separator to use when multiple dates are selected.
 
-    ```typescript
-    @tracked defaultDate: Date = new Date();
-    ```
+- **range**: Enable date range selection. Defaults to `false`. Returns values after two dates are picked
 
-- **enableTime**: Enables time selection in addition to date selection.
+- **useCurrent**: Use the current date/time as the initial value. Defaults to `false`.
 
-    ```typescript
-    @tracked enableTime: boolean = false;
-    ```
+- **promptTimeOnDateChange**: Show the time picker when a date is selected. Defaults to `false`.
 
-- **locale**: Locale used for date and time formatting.
+- **todayButton**: Show a "Today" button in the date picker. Defaults to `false`.
 
-    ```typescript
-    @tracked locale: string = 'en';
-    ```
+- **clearButton**: Show a "Clear" button in the date picker. Defaults to `true`.
 
-### Flatpicker Arguments
+- **closeButton**: Show a "Close" button in the date picker. Defaults to `true`.
 
-The `TpkDatepicker` component accepts several arguments from the `FlatpickerArgs` interface for additional configuration:
+- **enableTime**: Enable time selection. Defaults to `false`.
+
+- **enableCalendar**: Enable calendar selection. Defaults to `true`.
+
+- **enableSecond**: Enable seconds selection in time picker. Defaults to `false`.
+
+- **keepOpen**: Keep the date picker open after selection. Defaults to `false`.
+
+- **locale**: Locale used for the labels in the datepicker. Defaults to `fr`.
+
+- **format**: The format for displaying the selected date. Defaults to 'dd/MM/yyyy'.
+
+- **minDate**: The minimum selectable date.
+
+- **maxDate**: The maximum selectable date.
+
+- **daysOfWeekDisabled**: An array of day numbers to disable (0-6, where 0 is Sunday).
+
+- **disabledTimeIntervals**: An array of time intervals to disable.
+
+- **disabledDates**: An array of dates to disable.
+
+- **enabledDates**: An array of dates to enable (all other dates will be disabled).
+
+- **disabledHours**: An array of hours to disable.
+
+- **enabledHours**: An array of hours to enable (all other hours will be disabled).
+
+- **viewMode**: The initial view mode of the date picker. Can be 'clock', 'calendar', 'months', 'years', or 'decades'.
+
+## Examples
+
+### Date picker range
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker-advanced.hbs">
+  <demo.example @name="tpk-datepicker-range.hbs">
       <TpkDatepicker
-        @value={{this.selectedDate}}
-        @onChange={{this.onChange}}
-        @disabled={{this.isDisabled}}
-        @mask={{this.dateMask}}
-        @allowInput={{this.allowInput}}
-        @placeholder={{this.placeholderText}}
-        @dateFormat={{this.dateFormat}}
-        @onClose={{this.onClose}}
-        @label={{this.dateLabel}}
-        @classless={{this.isClassless}}
-        @defaultDate={{this.defaultDate}}
-        @enableTime={{this.enableTime}}
-        @locale={{this.locale}}
-        @inline={{this.isInline}}
-        @maxDate={{this.maxDate}}
-        @minDate={{this.minDate}}
-        @showMonths={{this.showMonths}}
-        @weekNumbers={{this.weekNumbers}}
+        @label="Date picker range"
+        @value={{this.selectedDates}}
+        @onChange={{this.onChangeRange}}
+        @range={{true}}
+        @multipleDatesSeparator=" jusqu'au "
+        class="tpk-input"
       as |D|>
         <D.Label />
         <D.Input />
       </TpkDatepicker>
   </demo.example>
-  <demo.snippet @name="tpk-datepicker-advanced.hbs"/>
+  <demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>
 
-- **altFormat**: Alternate date format to display in the input.
+### Time picker with mask
 
-- **altInput**: If `true`, an alternative input is used.
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-datepicker-time.hbs">
+      <TpkDatepicker
+        @label="Time picker"
+        @value={{this.selectedDate}}
+        @onChange={{this.onChange}}
+        @enableTime={{true}}
+        @enableCalendar={{false}}
+        @format="HH:mm"
+        @mask="H:M"
+        class="tpk-input"
+      as |D|>
+        <D.Label />
+        <D.Input />
+      </TpkDatepicker>
+  </demo.example>
+  <demo.snippet @name="tpk-datepicker.hbs"/>
+</DocsDemo>
 
-- **altInputClass**: CSS class for the alternate input.
+### Date picker with minDate, maxDate and a default value
 
-- **allowInvalidPreload**: If `true`, allows invalid preloading of the date.
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-datepicker-min-max.hbs">
+      <TpkDatepicker
+        @label="Datepicker"
+        @value={{this.date}}
+        @onChange={{this.onChange}}
+        @minDate={{this.minDate}}
+        @maxDate={{this.maxDate}}
+        class="tpk-input"
+      as |D|>
+        <D.Label />
+        <D.Input />
+      </TpkDatepicker>
+  </demo.example>
+  <demo.snippet @name="tpk-datepicker.hbs"/>
+</DocsDemo>
 
-- **appendTo**: Element or selector to append the calendar to.
+### Date picker shows month selector first
 
-- **ariaDateFormat**: ARIA date format for accessibility.
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-datepicker-min-max.hbs">
+      <TpkDatepicker
+        @label="Datepicker"
+        @value={{this.selectedDate}}
+        @onChange={{this.onChange}}
+        @viewMode="months"
+        class="tpk-input"
+      as |D|>
+        <D.Label />
+        <D.Input />
+      </TpkDatepicker>
+  </demo.example>
+  <demo.snippet @name="tpk-datepicker.hbs"/>
+</DocsDemo>
 
-- **conjunction**: Conjunction for range mode.
+### Show picker after select a date
 
-- **clickOpens**: If `true`, opens the date picker on click.
-
-- **dateFormat**: Date format(s) for the picker.
-
-- **defaultDate**: Default date when the field is empty.
-
-- **defaultHour**: Default hour for time picker.
-
-- **defaultMinute**: Default minute for time picker.
-
-- **disable**: Dates or ranges to disable.
-
-- **disabledDates**: Dates to disable in the picker.
-
-- **disableMobile**: If `true`, disables mobile view.
-
-- **enable**: Dates or ranges to enable.
-
-- **enableTime**: If `true`, enables time selection.
-
-- **enableSeconds**: If `true`, enables seconds in time selection.
-
-- **formatDate**: Function to format the date.
-
-- **hourIncrement**: Increment for hour selection.
-
-- **inline**: If `true`, displays the picker inline.
-
-- **maxDate**: Maximum selectable date.
-
-- **minDate**: Minimum selectable date.
-
-- **minuteIncrement**: Increment for minute selection.
-
-- **mode**: Mode of the picker ('single', 'multiple', or 'range').
-
-- **nextArrow**: HTML for the next month arrow.
-
-- **noCalendar**: If `true`, disables the calendar view.
-
-- **onClose**: Callback function when the picker is closed.
-
-- **onOpen**: Callback function when the picker is opened.
-
-- **onReady**: Callback function when the picker is ready.
-
-- **parseDate**: Function to parse date strings.
-
-- **position**: Position of the picker ('auto', 'top', 'right', 'bottom', 'left').
-
-- **positionElement**: Element to position the picker relative to.
-
-- **prevArrow**: HTML for the previous month arrow.
-
-- **shorthandCurrentMonth**: If `true`, uses shorthand for the current month.
-
-- **showMonths**: Number of months to show.
-
-- **time_24hr**: If `true`, uses 24-hour time format.
-
-- **weekNumbers**: If `true`, shows week numbers.
-
-- **wrap**: If `true`, wraps the date picker.
-
-- **monthSelectorType**: Type of month selector ('dropdown' or 'static').
-
-- **static**: If `true`, uses static positioning.
-
-- **placeholder**: Placeholder text for the input.
-
-- **id**: ID for the input element.
-
-
-- **inline**: If `true`, html is add near of the element.
-
-    ```typescript
-    @tracked isInline: boolean = false;
-    ```
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-datepicker-min-max.hbs">
+      <TpkDatepicker
+        @label="Datepicker & Timepicker"
+        @value={{this.selectedDate}}
+        @onChange={{this.onChange}}
+        @enableTime={{true}}
+        @promptTimeOnDateChange={{true}}
+        @format="dd/MM/yyyy | HH:mm"
+        class="tpk-input"
+      as |D|>
+        <D.Label />
+        <D.Input />
+      </TpkDatepicker>
+  </demo.example>
+  <demo.snippet @name="tpk-datepicker.hbs"/>
+</DocsDemo>

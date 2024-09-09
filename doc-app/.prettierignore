@@ -1,6 +1,9 @@
 # unconventional js
 /blueprints/*/files/
 
+# Ignore markdown and avoid weird formatting
+*.md
+
 # compiled output
 /dist/
 
