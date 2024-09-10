@@ -108,6 +108,11 @@ An Ember component for date selection with extensive customization options. This
 
 - **viewMode**: The initial view mode of the date picker. Can be 'clock', 'calendar', 'months', 'years', or 'decades'.
 
+
+## Limitation
+
+Currently, the datepicker cannot have a __default value__ for modes [`range`] and [`multiple`]. For more details, see [this issue](https://github.com/Eonasdan/tempus-dominus/issues/2830)
+
 ## Examples
 
 ### Date picker range

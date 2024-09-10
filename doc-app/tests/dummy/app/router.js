@@ -45,6 +45,7 @@ Router.map(function () {
         this.route('integer');
         this.route('number');
         this.route('timepicker');
+        this.route('datepicker-range');
       });
       this.route('installation');
       this.route('checkbox');
