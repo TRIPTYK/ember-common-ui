@@ -16,7 +16,9 @@ export interface TpkValidationDatepickerComponentSignature
     label: string;
     classless?: boolean;
     disabled?: boolean;
+    mandatory?: boolean;
     mask?: string;
+
   } & TpkDatepickerInput;
   Blocks: {
     default: [

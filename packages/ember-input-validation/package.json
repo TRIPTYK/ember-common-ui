@@ -130,6 +130,7 @@
       "./components/prefabs/tpk-validation-password.js": "./dist/_app_/components/prefabs/tpk-validation-password.js",
       "./components/prefabs/tpk-validation-select-search.js": "./dist/_app_/components/prefabs/tpk-validation-select-search.js",
       "./components/prefabs/tpk-validation-select.js": "./dist/_app_/components/prefabs/tpk-validation-select.js",
+      "./components/prefabs/tpk-validation-timepicker.js": "./dist/_app_/components/prefabs/tpk-validation-timepicker.js",
       "./components/prefabs/tpk-validation-vat.js": "./dist/_app_/components/prefabs/tpk-validation-vat.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
       "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
