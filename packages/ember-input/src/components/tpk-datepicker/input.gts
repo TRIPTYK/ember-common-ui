@@ -34,7 +34,7 @@ export interface TpkDatepickerInput {
   enabledHours?: number[];
   viewMode?: 'clock' | 'calendar' | 'months' | 'years' | 'decades';
   onChange: (value: Date[]) => void;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export interface TpkDatepickerInputComponentSignature {
@@ -130,7 +130,7 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
     }
     if (this.args.onClose) {
       this.datepicker.subscribe(Namespace.events.hide, () => {
-        this.args.onClose();
+        this.args.onClose?.();
       });
     }
   }
