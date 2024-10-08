@@ -74,7 +74,6 @@ module(
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await renderComponent.call(this);
-      await this.pauseTest();
       changeset.addError({
         message: 'required',
         value: '',

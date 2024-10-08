@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { click, fillIn, findAll, pauseTest, render } from '@ember/test-helpers';
+import { click, fillIn, findAll, render } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupMock, type ServiceWorkerTestContext } from 'dummy/tests/worker';
