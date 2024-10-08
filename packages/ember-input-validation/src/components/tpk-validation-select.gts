@@ -6,38 +6,20 @@ import {
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
-import type { WithBoundArgs } from '@glint/template';
-import type TpkSelectResetButtonComponent from '@triptyk/ember-input/components/tpk-select/reset-button';
 
-export interface TpkValidationSelectComponentSignature
-  extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
-    label: string;
-    name?: string;
-    options: unknown[];
-    classless?: boolean;
-    changeEvent?: 'input' | 'change';
-    disabled?: boolean;
-    multiple?: boolean;
-    selected?: unknown | unknown[];
-  };
+export interface TpkValidationSelectComponentSignature {
+  Args: BaseValidationSignature['Args'] & TpkSelectSignature['Args'];
   Blocks: {
     default: [
       {
-        Label: TpkSelectSignature['Blocks']['default'][0]['Label'];
-        Options: TpkSelectSignature['Blocks']['default'][0]['Options'];
-        Button: TpkSelectSignature['Blocks']['default'][0]['Button'];
-        ResetButton: WithBoundArgs<typeof TpkSelectResetButtonComponent, 'onReset'>;
-        label?: string;
-        selected?: unknown | unknown[];
-        hasSelection: boolean;
+        Option: TpkSelectSignature['Blocks']['default'][0]['Option'];
         errors: TpkValidationSelect['errors'];
         hasError: TpkValidationSelect['hasError'];
         firstError: TpkValidationSelect['firstError'];
       },
     ];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationSelect extends BaseValidationComponent<TpkValidationSelectComponentSignature> {
@@ -50,24 +32,34 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
 
   <template>
     <TpkSelectComponent
+      @onChange={{this.onChange}}
       @label={{@label}}
       @options={{@options}}
-      @multiple={{@multiple}}
-      @selected={{@selected}}
-      @onChange={{this.onChange}}
+      @selected={{this.value}}
+      @allowClear={{@allowClear}}
       @classless={{@classless}}
+      @renderInPlace={{@renderInPlace}}
+      @labelComponent={{@labelComponent}}
+      @selectedItemComponent={{@selectedItemComponent}}
+      @placeholder={{@placeholder}}
+      @placeholderComponent={{@placeholderComponent}}
+      @searchEnabled={{@searchEnabled}}
+      @searchField={{@searchField}}
+      @searchPlaceholder={{@searchPlaceholder}}
+      @searchMessage={{@searchMessage}}
+      @search={{@search}}
+      @onKeyDown={{@onKeyDown}}
+      @disabled={{@disabled}}
+      @initiallyOpened={{@initiallyOpened}}
+      @loadingMessage={{@loadingMessage}}
+      @noMatchesMessage={{@noMatchesMessage}}
       ...attributes
       data-has-error='{{this.hasError}}'
       as |I|
     >
       {{yield
         (hash
-          Label=I.Label
-          Options=I.Options
-          ResetButton=I.ResetButton
-          Button=I.Button
-          selected=@selected
-          hasSelection=I.hasSelection
+          Option=I.Option
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError

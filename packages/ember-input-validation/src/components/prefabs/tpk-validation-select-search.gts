@@ -3,9 +3,10 @@ import {
   type BaseValidationSignature,
   BaseValidationComponent,
 } from '../base.ts';
-import TpkSelectSearchComponent from '@triptyk/ember-input/components/tpk-select-search';
+import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import perform from 'ember-concurrency/helpers/perform';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import { assert } from '@ember/debug';
 
 export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {
@@ -17,13 +18,18 @@ export interface TpkValidationSelectSearchPrefabSignature
     options: unknown[];
     classless?: boolean;
     disabled?: boolean;
+    multiple?: boolean;
+    searchPlaceholder?: string;
+    searchMessage?: string;
+    noMatchesMessage?: string;
+    loadingMessage?: string;
     onChange: (value: string) => void;
     onSearch: (value: string) => Promise<void>;
   };
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationSelectSearchPrefab extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
@@ -32,81 +38,50 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
     args: TpkValidationSelectSearchPrefabSignature['Args'],
   ) {
     super(owner, args);
+    assert(
+      'Please provide an @onSearch function',
+      typeof args.onSearch === 'function',
+    );
   }
 
   search = restartableTask(async (value: string) => {
     await this.args.onSearch?.(value);
   });
 
-  get isNotIdle() {
-    return this.search.isIdle !== true;
-  }
-
-  get selected() {
-    return this.value as string;
-  }
-
   toString = (v: unknown) => {
     return String(v).toString();
   };
 
   <template>
-    <TpkSelectSearchComponent
-      @label={{@label}}
-      @options={{@options}}
-      @onChange={{@onChange}}
-      @selected={{this.selected}}
-      @onInput={{perform this.search}}
-      anchorScrollUp={{@validationField}}
-      @generatedClassPrefix=''
-      disabled={{@disabled}}
-      class='{{if @disabled "disabled"}} tpk-validation-select-search'
+    <div
+      class="{{if @disabled "disabled"}} tpk-validation-select-search"
       data-has-error='{{this.hasError}}'
-      ...attributes
-      as |S|
     >
-      <S.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
-      </S.Label>
-
-      <div class='tpk-validation-select-search-container'>
-        <S.Button />
-        <S.Input
-          class='tpk-validation-select-search-input'
-          placeholder={{@placeholder}}
-          type='search'
-          @selectedText={{this.selected}}
-        />
-        {{#if this.isNotIdle}}
-          <TpkLoadingSpinner />
-        {{/if}}
-      </div>
+      <TpkSelectComponent
+        @multiple={{@multiple}}
+        @label={{@label}}
+        @options={{@options}}
+        @onChange={{@onChange}}
+        @selected={{this.value}}
+        @search={{perform this.search}}
+        @searchEnabled={{true}}
+        @searchPlaceholder={{@searchPlaceholder}}
+        @searchMessage={{@searchMessage}}
+        @loadingMessage={{@loadingMessage}}
+        @noMatchesMessage={{@noMatchesMessage}}
+        anchorScrollUp={{@validationField}}
+        disabled={{@disabled}}
+        ...attributes
+        as |S|
+      >
+        <S.Option as |O|>
+          {{this.toString O.option}}
+        </S.Option>
+      </TpkSelectComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
         @classless={{@classless}}
       />
-      {{#if @options}}
-        <S.Options as |Opts|>
-          <Opts as |O|>
-            {{this.toString O.option}}
-          </Opts>
-        </S.Options>
-      {{/if}}
-    </TpkSelectSearchComponent>
+    </div>
   </template>
 }
-
-import type { TOC } from '@ember/component/template-only';
-
-export interface TpkLoadingSpinnerComponentSignature {
-  Element: HTMLSpanElement;
-}
-
-const TpkLoadingSpinner: TOC<TpkLoadingSpinnerComponentSignature> = <template>
-  <span class='tpk-validation-select-search-spinner loader'></span>
-</template>;

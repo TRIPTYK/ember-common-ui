@@ -9,6 +9,7 @@ import {
   findAll,
   render,
   settled,
+  find,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { waitFor } from '@ember/test-helpers';
@@ -52,7 +53,7 @@ module(
 
     async function setChangeset(
       this: TestContext,
-      fastfoodValue: string = 'McDonald',
+      fastfoodValue: string = options[0],
     ) {
       const changeset = new ImmerChangeset({ fastfood: fastfoodValue });
       this.set('changeset', changeset);
@@ -65,7 +66,7 @@ module(
 
     async function setOnChangeFunction(this: TestContext) {
       this.set('onChange', (value: Option) => {
-        this.changeset.set('fastfood', value.label);
+        this.changeset.set('fastfood', value);
       });
     }
 
@@ -92,37 +93,30 @@ module(
     async function renderComponent() {
       await render(
         hbs`<Prefabs::TpkValidationSelectSearch
-              @changeset={{this.changeset}}
-              @onSearch={{this.search}}
-              @onChange={{this.onChange}}
-              @options={{this.options}}
-              @validationField="fastfood"
-              @label="Select your favorite fastfood"
-            />`,
+          @changeset={{this.changeset}}
+          @onSearch={{this.search}}
+          @onChange={{this.onChange}}
+          @options={{this.options}}
+          @validationField="fastfood"
+          @label="Select your favorite fastfood"
+        />`,
       );
     }
 
     test('Should show default value and no options in starting', async function (assert) {
       await setChangeset.call(this);
+      await setOnChangeFunction.call(this);
       await setOptions.call(this);
       await setSearchFunction.call(this);
       await renderComponent.call(this);
-      assert.strictEqual(tpkSelectSearch.input.value, 'McDonald');
-      assert.strictEqual(tpkSelectSearch.listbox.options.length, 0);
-    });
-    test('Should loading spinner when searching', async function (assert) {
-      await setChangeset.call(this);
-      await setOptions.call(this);
-      await setSearchFunction.call(this, 1000);
-      await renderComponent.call(this);
-      tpkSelectSearch.input.fillIn('Tournai');
-      await waitFor('.loader');
-      assert.dom('.loader').exists();
+      const item = find('.ember-power-select-selected-item');
+      assert.strictEqual(item.textContent?.trim(), 'McDonald - Burger');
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await setChangeset.call(this);
       await setOptions.call(this);
+      await setOnChangeFunction.call(this);
       await setSearchFunction.call(this, 1000);
       await renderComponent.call(this);
       changeset.addError({

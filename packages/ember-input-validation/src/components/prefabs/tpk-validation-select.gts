@@ -1,41 +1,23 @@
-import type { BaseValidationSignature } from "../base";
-import Component from "@glimmer/component";
+import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationSelectComponent, { type TpkValidationSelectComponentSignature } from "../../components/tpk-validation-select.gts";
-import { tracked } from "@glimmer/tracking";
 import { assert } from "@ember/debug";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
-  Args: Omit<TpkValidationSelectComponentSignature['Args'], 'classless' | 'selected'> & {
-    placeholder?: string;
-    canReset?: boolean;
-  };
+  Args: Omit<
+    TpkValidationSelectComponentSignature['Args'],
+    'searchEnabled' | 'searchField' | 'searchPlaceholder' | 'searchMessage' | 'noMatchesMessage' | 'search'
+  >;
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
-export default class TpkValidationSelectPrefab extends Component<TpkValidationSelectPrefabSignature> {
-  @tracked label = "";
-
+export default class TpkValidationSelectPrefab extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
   get options() {
     assert("options must be an array of objects", Array.isArray(this.args.options));
     return this.args.options;
-  }
-
-  get selectedAsText() {
-    return this.toString(
-      this.selected
-    );
-  }
-
-  get selected() {
-    return this.args.changeset.get(this.args.validationField);
-  }
-
-  get canReset() {
-    return this.args.canReset ?? true;
   }
 
   toString = (v: unknown) => {
@@ -43,38 +25,36 @@ export default class TpkValidationSelectPrefab extends Component<TpkValidationSe
   };
 
   <template>
-    <TpkValidationSelectComponent
-      @label={{@label}}
-      @selected={{this.selected}}
-      @options={{this.options}}
-      @onChange={{@onChange}}
-      @changeset={{@changeset}}
-      @validationField={{@validationField}}
-      ...attributes
-    as |S|>
-      <S.Label />
-      <div class="tpk-validation-select-input-container">
-        <S.Button>
-          {{#if this.selected}}
-            {{this.selectedAsText}}
-            {{#if this.canReset}}
-              <S.ResetButton>
-                x
-              </S.ResetButton>
-            {{/if}}
-          {{else}}
-            {{@placeholder}}
-          {{/if}}
-        </S.Button>
-      </div>
-      <S.Options as |Option|>
-        <Option as |v|>
-          {{this.toString v.option}}
-        </Option>
-      </S.Options>
+    <div
+      class="{{if @disabled "disabled"}} tpk-validation-select"
+      data-has-error='{{this.hasError}}'
+    >
+      <TpkValidationSelectComponent
+        @label={{@label}}
+        @multiple={{@multiple}}
+        @disabled={{@disabled}}
+        @placeholder={{@placeholder}}
+        @initiallyOpened={{@initiallyOpened}}
+        @allowClear={{@allowClear}}
+        @classless={{@classless}}
+        @selected={{this.value}}
+        @options={{this.options}}
+        @onChange={{@onChange}}
+        @changeset={{@changeset}}
+        @labelComponent={{@labelComponent}}
+        @selectedItemComponent={{@selectedItemComponent}}
+        @placeholderComponent={{@placeholderComponent}}
+        @validationField={{@validationField}}
+        ...attributes
+      as |S|>
+        <S.Option as |O|>
+          {{this.toString O.option}}
+        </S.Option>
+      </TpkValidationSelectComponent>
       <TpkValidationErrorsComponent
-        @errors={{S.errors}}
+        @errors={{this.errors}}
+        @classless={{@classless}}
       />
-    </TpkValidationSelectComponent>
+    </div>
   </template>
 }

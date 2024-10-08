@@ -3,8 +3,11 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
-import PowerSelect, { type Select } from 'ember-power-select/components/power-select';
-import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
+import { type Select } from 'ember-power-select/components/power-select';
+// @ts-expect-error missing types
+import PowerSelectMultipleWithCreate from 'ember-power-select-with-create/components/power-select-multiple-with-create'
+// @ts-expect-error missing types
+import PowerSelectWithCreate from 'ember-power-select-with-create/components/power-select-with-create'
 import TpkSelectNewOption from './tpk-select/option.gts';
 
 export interface TpkSelectSignature {
@@ -13,7 +16,6 @@ export interface TpkSelectSignature {
     options: unknown[];
     selected?: unknown;
     label: string;
-    placeholder?: string;
     renderInPlace?: boolean;
     classless?: boolean;
     allowClear?: boolean;
@@ -30,7 +32,8 @@ export interface TpkSelectSignature {
     noMatchesMessage?: string;
     search?: ((term: string, select: Select) => readonly unknown[] | Promise<readonly unknown[]>) | undefined
     onChange: (selection: unknown, select: Select, event?: Event) => void;
-    onKeyDown?: ((select: Select, e: KeyboardEvent) => boolean | undefined) | undefined
+    onCreate: (selection: unknown, select: Select, event?: Event) => void;
+    onKeyDown: ((select: Select, e: KeyboardEvent) => boolean | undefined) | undefined
   };
   Blocks: {
     default: [
@@ -57,6 +60,10 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
       'Please provide an @onChange function',
       typeof args.onChange === 'function',
     );
+    assert(
+      'Please provide an @onCreate function',
+      typeof args.onChange === 'function',
+    );
   }
   get renderInPlace() {
     return this.args.renderInPlace === false ? false : true;
@@ -68,13 +75,13 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
       ...attributes
     >
       {{#if @multiple}}
-        <PowerSelectMultiple
+        <PowerSelectMultipleWithCreate
           @labelText={{@label}}
           @options={{@options}}
           @selected={{@selected}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
-          @placeholder={{@placeholder}}
+          @onCreate={{@onCreate}}
           @labelClass={{unless @classless "tpk-select-label"}}
           @renderInPlace={{this.renderInPlace}}
           @labelComponent={{@labelComponent}}
@@ -102,14 +109,15 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
               )
             )
           }}
-        </PowerSelectMultiple>
+        </PowerSelectMultipleWithCreate>
       {{else}}
-        <PowerSelect
+        <PowerSelectWithCreate
           @labelText={{@label}}
           @options={{@options}}
           @selected={{@selected}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
+          @onCreate={{@onCreate}}
           @labelClass={{unless @classless "tpk-select-label"}}
           @renderInPlace={{this.renderInPlace}}
           @labelComponent={{@labelComponent}}
@@ -137,7 +145,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
               )
             )
           }}
-        </PowerSelect>
+        </PowerSelectWithCreate>
       {{/if}}
     </div>
   </template>
