@@ -65,6 +65,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   <template>
     <div
       class={{unless @classless 'tpk-select'}}
+      ...attributes
     >
       {{#if @multiple}}
         <PowerSelectMultiple
@@ -91,7 +92,6 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
           @initiallyOpened={{@initiallyOpened}}
           @loadingMessage={{@loadingMessage}}
           @noMatchesMessage={{@noMatchesMessage}}
-          ...attributes
         as |option|>
           {{yield
             (hash
