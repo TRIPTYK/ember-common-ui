@@ -7,6 +7,7 @@ import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import perform from 'ember-concurrency/helpers/perform';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 
 export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {
@@ -44,6 +45,13 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
     );
   }
 
+  @action onChange(value: unknown) {
+    if (this.args.onChange) {
+      return this.args.onChange(value);
+    }
+    return this.args.changeset.set(this.args.validationField, value);
+  }
+
   search = restartableTask(async (value: string) => {
     await this.args.onSearch?.(value);
   });
@@ -61,7 +69,7 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
         @multiple={{@multiple}}
         @label={{@label}}
         @options={{@options}}
-        @onChange={{@onChange}}
+        @onChange={{this.onChange}}
         @selected={{this.value}}
         @search={{perform this.search}}
         @searchEnabled={{true}}

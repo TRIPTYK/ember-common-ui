@@ -5,7 +5,7 @@ import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import PowerSelect, { type Select } from 'ember-power-select/components/power-select';
 import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
-import TpkSelectNewOption from './tpk-select/option.gts';
+import TpkSelectOption from './tpk-select/option.gts';
 
 export interface TpkSelectSignature {
   Args: {
@@ -36,7 +36,7 @@ export interface TpkSelectSignature {
     default: [
       {
         Option: WithBoundArgs<
-          typeof TpkSelectNewOption,
+          typeof TpkSelectOption,
           | 'option'
         >;
       },
@@ -65,7 +65,6 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   <template>
     <div
       class={{unless @classless 'tpk-select'}}
-      ...attributes
     >
       {{#if @multiple}}
         <PowerSelectMultiple
@@ -97,7 +96,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
           {{yield
             (hash
               Option=(component
-                TpkSelectNewOption
+                TpkSelectOption
                 option=option
               )
             )
@@ -132,7 +131,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
           {{yield
             (hash
               Option=(component
-                TpkSelectNewOption
+                TpkSelectOption
                 option=option
               )
             )

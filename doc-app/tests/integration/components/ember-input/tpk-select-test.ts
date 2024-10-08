@@ -37,12 +37,20 @@ module('Integration | Component | tpk-select', function (hooks) {
     this.set('onChange', (e: string) => {
       this.set('selected', e);
     });
+    this.set('buildSuggestion', (e: string) => {
+      return `Ajouter ${e}`;
+    });
     await render(hbs`
-    <TpkSelect @label="Utilisateur" @options={{this.options}} @onChange={{this.onChange}} @selected={{this.selected}} as |S|>
+    <TpkSelectCreate @label="Utilisateur" @options={{this.options}} @onChange={{this.onChange}} @onCreate={{this.onChange}} @buildSuggestion={{this.buildSuggestion}} @selected={{this.selected}} as |S|>
       <S.Option as |o|>
         {{o.option.firstName}} {{o.option.lastName}}
       </S.Option>
-    </TpkSelect>
+    </TpkSelectCreate>
     `);
   }
+
+  test('it renders', async function (assert) {
+    await setupCombo.call(this);
+    await this.pauseTest();
+  });
 });

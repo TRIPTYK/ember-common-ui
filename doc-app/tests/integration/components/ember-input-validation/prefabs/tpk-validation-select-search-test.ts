@@ -15,6 +15,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { waitFor } from '@ember/test-helpers';
 import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
 import { setupIntl } from 'ember-intl/test-support';
+import { selectSearch } from 'ember-power-select/test-support';
 
 interface Option {
   label: string;
@@ -110,7 +111,29 @@ module(
       await setSearchFunction.call(this);
       await renderComponent.call(this);
       const item = find('.ember-power-select-selected-item');
-      assert.strictEqual(item.textContent?.trim(), 'McDonald - Burger');
+      assert.strictEqual(
+        find('.ember-power-select-selected-item').textContent?.trim(),
+        'McDonald - Burger',
+      );
+    });
+
+    test('Should use search select features by default', async function (assert) {
+      await setChangeset.call(this);
+      await setOnChangeFunction.call(this);
+      await setOptions.call(this);
+      this.set('search', () => {
+        assert.step('search');
+      });
+      await renderComponent.call(this);
+      await click('.ember-power-select-trigger');
+      assert
+        .dom('.ember-power-select-option--search-message')
+        .hasText('Type to search');
+      assert
+        .dom('.ember-power-select-selected-item')
+        .hasText('McDonald - Burger');
+      await selectSearch('.tpk-select', 'new');
+      assert.verifySteps(['search']);
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {

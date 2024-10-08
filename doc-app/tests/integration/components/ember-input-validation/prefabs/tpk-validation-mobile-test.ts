@@ -15,7 +15,6 @@ import { setupIntl } from 'ember-intl/test-support';
 import tpkSelect from 'dummy/tests/pages/tpk-select';
 import { selectChoose } from 'ember-power-select/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-mobile',
   function (hooks) {

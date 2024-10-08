@@ -1,6 +1,5 @@
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationSelectComponent, { type TpkValidationSelectComponentSignature } from "../../components/tpk-validation-select.gts";
-import { assert } from "@ember/debug";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
@@ -15,11 +14,6 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
 }
 
 export default class TpkValidationSelectPrefab extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
-  get options() {
-    assert("options must be an array of objects", Array.isArray(this.args.options));
-    return this.args.options;
-  }
-
   toString = (v: unknown) => {
     return String(v).toString();
   };
@@ -38,7 +32,7 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
         @allowClear={{@allowClear}}
         @classless={{@classless}}
         @selected={{this.value}}
-        @options={{this.options}}
+        @options={{@options}}
         @onChange={{@onChange}}
         @changeset={{@changeset}}
         @labelComponent={{@labelComponent}}

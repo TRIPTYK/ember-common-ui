@@ -156,6 +156,7 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
           <T.Option as |O|>
             <div class='flag'>
               <img
+                alt={{this.getValueFromOption O.option 'code'}}
                 src={{this.getValueFromOption O.option 'flag'}}
                 width='20'
               />
