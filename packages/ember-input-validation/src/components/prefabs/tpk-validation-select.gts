@@ -1,11 +1,12 @@
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationSelectComponent, { type TpkValidationSelectComponentSignature } from "../../components/tpk-validation-select.gts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import { assert } from "@ember/debug";
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationSelectComponentSignature['Args'],
-    'searchEnabled' | 'searchField' | 'searchPlaceholder' | 'searchMessage' | 'noMatchesMessage' | 'search'
+    'searchField' | 'searchPlaceholder' | 'searchMessage' | 'noMatchesMessage' | 'search'
   >;
   Blocks: {
     default: [];
@@ -14,6 +15,16 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
 }
 
 export default class TpkValidationSelectPrefab extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
+  constructor(
+    owner: unknown,
+    args: TpkValidationSelectPrefabSignature['Args'],
+  ) {
+    super(owner, args);
+    assert(
+      'If you want use search, please use TpkValidationSelectSearchPrefab',
+      typeof args.searchEnabled === 'undefined',
+    );
+  }
   toString = (v: unknown) => {
     return String(v).toString();
   };

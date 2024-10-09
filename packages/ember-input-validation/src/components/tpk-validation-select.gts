@@ -32,16 +32,17 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
 
   <template>
     <TpkSelectComponent
+      @multiple={{@multiple}}
       @onChange={{this.onChange}}
       @label={{@label}}
       @options={{@options}}
+      @placeholder={{@placeholder}}
       @selected={{this.value}}
       @allowClear={{@allowClear}}
       @classless={{@classless}}
       @renderInPlace={{@renderInPlace}}
       @labelComponent={{@labelComponent}}
       @selectedItemComponent={{@selectedItemComponent}}
-      @placeholder={{@placeholder}}
       @placeholderComponent={{@placeholderComponent}}
       @searchEnabled={{@searchEnabled}}
       @searchField={{@searchField}}

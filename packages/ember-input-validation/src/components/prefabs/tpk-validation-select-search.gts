@@ -1,31 +1,17 @@
-import { restartableTask } from 'ember-concurrency';
 import {
   type BaseValidationSignature,
   BaseValidationComponent,
 } from '../base.ts';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
-import perform from 'ember-concurrency/helpers/perform';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 
 export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
-    label: string;
-    mandatory?: boolean;
-    name?: string;
-    placeholder?: string;
-    options: unknown[];
-    classless?: boolean;
-    disabled?: boolean;
-    multiple?: boolean;
-    searchPlaceholder?: string;
-    searchMessage?: string;
-    noMatchesMessage?: string;
-    loadingMessage?: string;
-    onChange: (value: string) => void;
-    onSearch: (value: string) => Promise<void>;
+  Args: BaseValidationSignature['Args'] & TpkSelectSignature['Args'] & {
+    onSearch: (term: string) => unknown[];
   };
   Blocks: {
     default: [];
@@ -52,10 +38,6 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
     return this.args.changeset.set(this.args.validationField, value);
   }
 
-  search = restartableTask(async (value: string) => {
-    await this.args.onSearch?.(value);
-  });
-
   toString = (v: unknown) => {
     return String(v).toString();
   };
@@ -67,18 +49,25 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
     >
       <TpkSelectComponent
         @multiple={{@multiple}}
+        @classless={{@classless}}
+        @placeholder={{@placeholder}}
+        @initiallyOpened={{@initiallyOpened}}
+        @allowClear={{@allowClear}}
+        @labelComponent={{@labelComponent}}
+        @selectedItemComponent={{@selectedItemComponent}}
+        @placeholderComponent={{@placeholderComponent}}
         @label={{@label}}
         @options={{@options}}
         @onChange={{this.onChange}}
         @selected={{this.value}}
-        @search={{perform this.search}}
+        @search={{@onSearch}}
         @searchEnabled={{true}}
         @searchPlaceholder={{@searchPlaceholder}}
         @searchMessage={{@searchMessage}}
         @loadingMessage={{@loadingMessage}}
         @noMatchesMessage={{@noMatchesMessage}}
+        @disabled={{@disabled}}
         anchorScrollUp={{@validationField}}
-        disabled={{@disabled}}
         ...attributes
         as |S|
       >

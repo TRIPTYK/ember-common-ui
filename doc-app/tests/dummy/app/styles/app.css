@@ -36,6 +36,13 @@
   mask-size: contain;
 }
 
+.ember-power-select-options,
+.ember-power-select-options li,
+.ember-power-select-multiple-options,
+.ember-power-select-multiple-options li {
+  margin-bottom: 0 !important;
+}
+
 .tempus-dominus-widget.dark .icon {
   background-color: white;
 }

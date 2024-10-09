@@ -107,6 +107,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
           @labelText={{@label}}
           @options={{@options}}
           @selected={{@selected}}
+          @placeholder={{@placeholder}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
           @labelClass={{unless @classless "tpk-select-label"}}

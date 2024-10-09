@@ -2,50 +2,31 @@ import Controller from '@ember/controller';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-
-const options = [
-  {
-    value: 'pizza',
-    label: 'Pizza',
-    toString() {
-      return `${this.label}`;
-    },
-  },
-  {
-    value: 'burger',
-    label: 'Burger',
-    toString() {
-      return `${this.label}`;
-    },
-  },
-  {
-    value: 'surimi',
-    label: 'Surimi',
-    toString() {
-      return `${this.label}`;
-    },
-  },
-  {
-    value: 'sushi',
-    label: 'Sushi',
-    toString() {
-      return `${this.label}`;
-    },
-  },
-];
+import { restartableTask, timeout } from 'ember-concurrency';
 
 export default class DocsEmberInputValidationPrefabsSelectSearchController extends Controller {
   @tracked changeset = new ImmerChangeset({
-    fastfood: '',
+    repository: undefined,
   });
-  @tracked options = options;
+  @tracked options = [];
+
+  @restartableTask
+  *onSearch(value) {
+    yield timeout(300);
+    const response = yield fetch(
+      `https://api.github.com/search/repositories?q=${value}`,
+    );
+    const json = yield response.json();
+    this.options = json.items.map((item) => ({
+      name: item.full_name,
+      toString() {
+        return this.name;
+      },
+    }));
+  }
 
   @action
   onChange(value) {
-    this.changeset.set('fastfood', value);
-  }
-  @action
-  search(v) {
-    this.options = options.filter((o) => o.value.includes(v.toLowerCase()));
+    this.changeset.set('repository', value);
   }
 }

@@ -42,6 +42,7 @@ Router.map(function () {
         this.route('email');
         this.route('national-number');
         this.route('select');
+        this.route('select-create');
         this.route('integer');
         this.route('number');
         this.route('timepicker');
