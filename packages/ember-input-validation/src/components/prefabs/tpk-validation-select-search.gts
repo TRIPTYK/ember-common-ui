@@ -16,7 +16,7 @@ export interface TpkValidationSelectSearchPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLElement;
+  Element: HTMLDivElement;
 }
 
 export default class TpkValidationSelectSearchPrefab extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {

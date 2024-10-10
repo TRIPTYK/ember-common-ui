@@ -49,7 +49,7 @@ export interface TpkSelectCreateSignature {
       },
     ];
   };
-  Element: HTMLElement;
+  Element: HTMLDivElement;
 }
 
 export default class TpkSelectCreateComponent extends Component<TpkSelectCreateSignature> {
@@ -145,7 +145,6 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
           @loadingMessage={{@loadingMessage}}
           @noMatchesMessage={{@noMatchesMessage}}
           @triggerId={{this.guid}}
-          ...attributes
         as |option|>
           {{yield
             (hash

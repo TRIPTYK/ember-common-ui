@@ -19,7 +19,7 @@ export interface TpkValidationSelectComponentSignature {
       },
     ];
   };
-  Element: HTMLElement;
+  Element: HTMLDivElement;
 }
 
 export default class TpkValidationSelect extends BaseValidationComponent<TpkValidationSelectComponentSignature> {

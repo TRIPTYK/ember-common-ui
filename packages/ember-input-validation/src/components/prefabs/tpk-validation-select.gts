@@ -11,7 +11,7 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
   Blocks: {
     default: [];
   };
-  Element: HTMLElement;
+  Element: HTMLDivElement;
 }
 
 export default class TpkValidationSelectPrefab extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
