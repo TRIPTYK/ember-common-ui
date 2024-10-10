@@ -80,7 +80,7 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
       class={{unless @classless 'tpk-select-create'}}
       ...attributes
     >
-      <label class="ember-power-select-label tpk-select-create-label" for={{this.guid}}>
+      <label class="tpk-select-create-label" for={{this.guid}}>
         {{@label}}
       </label>
       {{#if @multiple}}
