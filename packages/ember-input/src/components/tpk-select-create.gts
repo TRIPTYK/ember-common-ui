@@ -3,12 +3,17 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
-import PowerSelect, { type Select } from 'ember-power-select/components/power-select';
-import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
+import { type Select } from 'ember-power-select/components/power-select';
+// @ts-expect-error missing types
+import PowerSelectMultipleWithCreate from 'ember-power-select-with-create/components/power-select-multiple-with-create'
+// @ts-expect-error missing types
+import PowerSelectWithCreate from 'ember-power-select-with-create/components/power-select-with-create'
 import TpkSelectOption from './tpk-select/option.gts';
+import type { TpkSelectSignature } from './tpk-select';
+import { guidFor } from '@ember/object/internals';
 
-export interface TpkSelectSignature {
-  Args: {
+export interface TpkSelectCreateSignature {
+  Args: TpkSelectSignature['Args'] & {
     multiple?: boolean;
     options: unknown[];
     selected?: unknown;
@@ -20,7 +25,6 @@ export interface TpkSelectSignature {
     disabled?: boolean;
     initiallyOpened?: boolean;
     loadingMessage?: string;
-    labelComponent?: string | ComponentLike<unknown>;
     selectedItemComponent?: string | ComponentLike<unknown>;
     placeholderComponent?: string | ComponentLike<unknown>;
     searchEnabled?: boolean;
@@ -30,6 +34,9 @@ export interface TpkSelectSignature {
     noMatchesMessage?: string;
     search?: ((term: string, select: Select) => readonly unknown[] | Promise<readonly unknown[]>) | undefined
     onChange: (selection: unknown, select: Select, event?: Event) => void;
+    onCreate: (selection: unknown, select: Select, event?: Event) => void;
+    buildSuggestion?: (term: string) => string;
+    showCreateWhen?: (term: string) => boolean;
     onKeyDown?: ((select: Select, e: KeyboardEvent) => boolean | undefined) | undefined
   };
   Blocks: {
@@ -45,8 +52,10 @@ export interface TpkSelectSignature {
   Element: HTMLDivElement;
 }
 
-export default class TpkSelectComponent extends Component<TpkSelectSignature> {
-  constructor(owner: unknown, args: TpkSelectSignature['Args']) {
+export default class TpkSelectCreateComponent extends Component<TpkSelectCreateSignature> {
+  guid = guidFor(this);
+
+  constructor(owner: unknown, args: TpkSelectCreateSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -57,6 +66,10 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
       'Please provide an @onChange function',
       typeof args.onChange === 'function',
     );
+    assert(
+      'Please provide an @onCreate function',
+      typeof args.onCreate === 'function',
+    );
   }
   get renderInPlace() {
     return this.args.renderInPlace === false ? false : true;
@@ -64,20 +77,21 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
 
   <template>
     <div
-      class={{unless @classless 'tpk-select'}}
+      class={{unless @classless 'tpk-select-create'}}
       ...attributes
     >
+      <label class="tpk-select-create-label" for={{this.guid}}>
+        {{@label}}
+      </label>
       {{#if @multiple}}
-        <PowerSelectMultiple
-          @labelText={{@label}}
+        <PowerSelectMultipleWithCreate
+          @placeholder={{@placeholder}}
           @options={{@options}}
           @selected={{@selected}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
-          @placeholder={{@placeholder}}
-          @labelClass={{unless @classless "tpk-select-label"}}
+          @onCreate={{@onCreate}}
           @renderInPlace={{this.renderInPlace}}
-          @labelComponent={{@labelComponent}}
           @selectedItemComponent={{@selectedItemComponent}}
           @placeholderComponent={{@placeholderComponent}}
           @searchEnabled={{@searchEnabled}}
@@ -87,11 +101,14 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
           @search={{@search}}
           @onKeydown={{@onKeyDown}}
           @disabled={{@disabled}}
-          @dropdownClass={{unless @classless 'tpk-select-dropdown'}}
-          @triggerClass={{unless @classless 'tpk-select-trigger'}}
+          @dropdownClass={{unless @classless 'tpk-select-create-dropdown'}}
+          @triggerClass={{unless @classless 'tpk-select-create-trigger'}}
+          @buildSuggestion={{@buildSuggestion}}
+          @showCreateWhen={{@showCreateWhen}}
           @initiallyOpened={{@initiallyOpened}}
           @loadingMessage={{@loadingMessage}}
           @noMatchesMessage={{@noMatchesMessage}}
+          @triggerId={{this.guid}}
         as |option|>
           {{yield
             (hash
@@ -101,18 +118,16 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
               )
             )
           }}
-        </PowerSelectMultiple>
+        </PowerSelectMultipleWithCreate>
       {{else}}
-        <PowerSelect
-          @labelText={{@label}}
+        <PowerSelectWithCreate
+          @placeholder={{@placeholder}}
           @options={{@options}}
           @selected={{@selected}}
-          @placeholder={{@placeholder}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
-          @labelClass={{unless @classless "tpk-select-label"}}
+          @onCreate={{@onCreate}}
           @renderInPlace={{this.renderInPlace}}
-          @labelComponent={{@labelComponent}}
           @selectedItemComponent={{@selectedItemComponent}}
           @placeholderComponent={{@placeholderComponent}}
           @searchEnabled={{@searchEnabled}}
@@ -122,11 +137,14 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
           @search={{@search}}
           @onKeydown={{@onKeyDown}}
           @disabled={{@disabled}}
-          @dropdownClass={{unless @classless 'tpk-select-dropdown'}}
-          @triggerClass={{unless @classless 'tpk-select-trigger'}}
+          @dropdownClass={{unless @classless 'tpk-select-create-dropdown'}}
+          @triggerClass={{unless @classless 'tpk-select-create-trigger'}}
+          @buildSuggestion={{@buildSuggestion}}
+          @showCreateWhen={{@showCreateWhen}}
           @initiallyOpened={{@initiallyOpened}}
           @loadingMessage={{@loadingMessage}}
           @noMatchesMessage={{@noMatchesMessage}}
+          @triggerId={{this.guid}}
         as |option|>
           {{yield
             (hash
@@ -136,7 +154,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
               )
             )
           }}
-        </PowerSelect>
+        </PowerSelectWithCreate>
       {{/if}}
     </div>
   </template>

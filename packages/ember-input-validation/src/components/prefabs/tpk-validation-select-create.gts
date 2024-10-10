@@ -2,33 +2,25 @@ import {
   type BaseValidationSignature,
   BaseValidationComponent,
 } from '../base.ts';
-import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
+import TpkSelectCreateComponent, { type TpkSelectCreateSignature } from '@triptyk/ember-input/components/tpk-select-create';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 
-export interface TpkValidationSelectSearchPrefabSignature
+export interface TpkValidationSelectCreatePrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkSelectSignature['Args'] & {
-    onSearch: (term: string) => unknown[];
-  };
+  Args: BaseValidationSignature['Args'] & TpkSelectCreateSignature['Args'];
   Blocks: {
     default: [];
   };
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectSearchPrefab extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
+export default class TpkValidationSelectCreatePrefab extends BaseValidationComponent<TpkValidationSelectCreatePrefabSignature> {
   constructor(
     owner: unknown,
-    args: TpkValidationSelectSearchPrefabSignature['Args'],
+    args: TpkValidationSelectCreatePrefabSignature['Args'],
   ) {
     super(owner, args);
-    assert(
-      'Please provide an @onSearch function',
-      typeof args.onSearch === 'function',
-    );
   }
 
   @action onChange(value: unknown) {
@@ -47,34 +39,37 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
       class="{{if @disabled "disabled"}} tpk-validation-select-search"
       data-has-error='{{this.hasError}}'
     >
-      <TpkSelectComponent
+      <TpkSelectCreateComponent
+        @label={{@label}}
         @multiple={{@multiple}}
-        @classless={{@classless}}
+        @disabled={{@disabled}}
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
+        @classless={{@classless}}
+        @selected={{this.value}}
+        @options={{@options}}
+        @onChange={{this.onChange}}
+        @onCreate={{@onCreate}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-        @label={{@label}}
-        @options={{@options}}
-        @onChange={{this.onChange}}
-        @selected={{this.value}}
-        @search={{@onSearch}}
-        @searchEnabled={{true}}
-        @searchPlaceholder={{@searchPlaceholder}}
-        @searchMessage={{@searchMessage}}
+        @buildSuggestion={{@buildSuggestion}}
+        @showCreateWhen={{@showCreateWhen}}
         @loadingMessage={{@loadingMessage}}
         @noMatchesMessage={{@noMatchesMessage}}
-        @disabled={{@disabled}}
-        anchorScrollUp={{@validationField}}
+        @searchEnabled={{@searchEnabled}}
+        @searchField={{@searchField}}
+        @searchPlaceholder={{@searchPlaceholder}}
+        @searchMessage={{@searchMessage}}
+        @search={{@search}}
         ...attributes
         as |S|
       >
         <S.Option as |O|>
           {{this.toString O.option}}
         </S.Option>
-      </TpkSelectComponent>
+      </TpkSelectCreateComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
         @classless={{@classless}}

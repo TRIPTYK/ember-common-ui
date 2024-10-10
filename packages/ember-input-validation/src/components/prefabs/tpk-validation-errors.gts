@@ -5,6 +5,7 @@ import { t } from 'ember-intl';
 
 export interface TpkValidationErrorsComponentSignature {
   Args: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     errors: any;
     classless?: boolean;
   };

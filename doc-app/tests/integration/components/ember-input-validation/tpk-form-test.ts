@@ -1,13 +1,7 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import {
-  click,
-  fillIn,
-  pauseTest,
-  render,
-  type TestContext,
-} from '@ember/test-helpers';
+import { click, fillIn, render, type TestContext } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { object, string } from 'yup';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';

@@ -151,33 +151,20 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
           @selected={{this.selectedPrefix}}
           @onChange={{this.onChangeValuePrefix}}
           @classless={{@classless}}
-          ...attributes
           as |T|
         >
-          <T.Options as |Opts|>
-            <Opts as |O|>
-              <div class='flag'>
-                <img
-                  src={{this.getValueFromOption O.option 'flag'}}
-                  width='20'
-                />
-                <div>
-                  {{this.getValueFromOption O.option 'code'}}
-                </div>
-              </div>
-            </Opts>
-          </T.Options>
-          <T.Button>
+          <T.Option as |O|>
             <div class='flag'>
               <img
-                src={{this.getValueFromOption T.selected 'flag'}}
+                alt={{this.getValueFromOption O.option 'code'}}
+                src={{this.getValueFromOption O.option 'flag'}}
                 width='20'
               />
               <div>
-                {{this.getValueFromOption T.selected 'code'}}
+                {{this.getValueFromOption O.option 'code'}}
               </div>
             </div>
-          </T.Button>
+          </T.Option>
         </TpkSelectComponent>
         <I.Input inputmode='tel' />
       </div>

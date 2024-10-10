@@ -1,6 +1,6 @@
-# Select Search
+# Select Create
 
-This component provides a powerfull select with search and has built-in validation. It uses [ember-power-select](https://ember-power-select.com/).
+This component provides a powerfull select with ability to create a new value and has built-in validation. It uses [ember-power-select](https://ember-power-select.com/) and [ember-power-select-with-create](https://github.com/cibernox/ember-power-select-with-create).
 
 It uses also toString() in order to display the options and the selected element.
 
@@ -13,17 +13,17 @@ In example:
 ```
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-search-prefab.hbs">
-      <Prefabs::TpkValidationSelectSearch
-        @label="Try to find out the best repository on Github"
+  <demo.example @name="tpk-select-create-prefab.hbs">
+      <Prefabs::TpkValidationSelectCreate
+        @label="Select or add your CEO"
         @options={{this.options}}
-        @onSearch={{perform this.onSearch}}
         @changeset={{this.changeset}} 
-        @validationField="repository"
+        @validationField="ceo"
+        @onCreate={{this.onCreate}}
         @disabled={{false}}
       />
   </demo.example>
-  <demo.snippet @name="tpk-select-prefab.hbs"/>
+  <demo.snippet @name="tpk-select-create-prefab.hbs"/>
 </DocsDemo>
 
 ## Mandatory properties
@@ -31,7 +31,7 @@ In example:
 - `@validationField`: The field name in the changeset for validation.
 - `@changeset`: The changeset object for form validation.
 - `@options`: The options to display in the select dropdown.
-- `@onSearch`: The action to be called when user's typing in the input.
+- `@onCreate`: The action to be called when user creates a new value.
 
 ## Optional properties
 
@@ -46,50 +46,50 @@ In example:
 - `@labelComponent`: The custom component to use for the label.
 - `@selectedItemComponent`: The custom component to use for the selected item.
 - `@placeholderComponent`: The custom component to use for the placeholder
+- `@onSearch`: The action to be called when user's typing in the input.
 - `@searchPlaceholder`: The placeholder text for the search input.
 - `@searchMessage`: Message shown in options list when no search has been entered and there are no options.
 - `@loadingMessage`: Message shown in options list when loading options.
 - `@noMatchesMessage`: Message shown in options list when no matches are found.
+- `@showCreateWhen`: The action to be called to determine if the create option should be shown.
+- `@buildSuggestion`: The action to be called to build the suggestion label.
 
 ## Examples
 
-### Select Search multiple with allowClear
+### Select create multiple
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-search-prefab-multiple.hbs">
-      <Prefabs::TpkValidationSelectSearch
-        @label="Try to find out all the best repositories on Github"
+  <demo.example @name="tpk-select-create-prefab-multiple.hbs">
+      <Prefabs::TpkValidationSelectCreate
+        @label="Select multiple CEO"
         @placeholder="Do the best choice"
         @multiple={{true}}
-        @onSearch={{perform this.onSearch}}
+        @onCreate={{this.onCreateBis}}
         @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="repository"
+        @changeset={{this.changesetBis}} 
+        @validationField="ceo"
         @allowClear={{true}}
         @disabled={{false}}
       />
   </demo.example>
-  <demo.snippet @name="tpk-select-search-prefab-multiple.hbs"/>
+  <demo.snippet @name="tpk-select-create-prefab-multiple.hbs"/>
 </DocsDemo>
 
-### Select Search with all label translate and initially opened
+### Select create with specific label and hide create option when value already exist
+To test it, write Romain in input
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-search-prefab-multiple.hbs">
-      <Prefabs::TpkValidationSelectSearch
-        @label="Essaie de trouver le meilleur dépôt sur Github"
-        @placeholder="Fais le bon choix"
-        @initiallyOpened={{true}}
-        @onSearch={{perform this.onSearch}}
+  <demo.example @name="tpk-select-create-prefab-build-show.hbs">
+      <Prefabs::TpkValidationSelectCreate
+        @label="Select or create CEO"
+        @onCreate={{this.onCreate}}
         @options={{this.options}}
         @changeset={{this.changeset}} 
-        @validationField="repository"
-        @searchPlaceholder="Recherche un dépôt"
-        @searchMessage="Aucun dépôt trouvé pour le moment"
-        @loadingMessage="Chargement des dépôts..."
-        @noMatchesMessage="Aucun dépôt trouvé"
+        @validationField="ceo"
+        @showCreateWhen={{this.showCreateWhen}}
+        @buildSuggestion={{this.buildSuggestion}}
         @disabled={{false}}
       />
   </demo.example>
-  <demo.snippet @name="tpk-select-search-prefab-multiple.hbs"/>
+  <demo.snippet @name="tpk-select-create-prefab-build-show.hbs"/>
 </DocsDemo>

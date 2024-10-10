@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
+import { selectChoose } from 'ember-power-select/test-support';
 
 module('Integration | Component | tpk-validation-select', function (hooks) {
   setupRenderingTest(hooks);
@@ -11,11 +12,9 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
     await render(
       hbs`
         <TpkValidationSelect @onChange={{this.onChange}} @label="label" @changeset={{this.changeset}} @validationField="name" @options={{this.options}} @selected={{this.selected}} as |T|>
-          <T.Options as |Option|>
-              <Option />
-          </T.Options>
-          <T.Label />
-          <T.Button />
+          <T.Option as |O|>
+              {{O.option}}
+          </T.Option>
         </TpkValidationSelect>`,
     );
   }
@@ -35,8 +34,7 @@ module('Integration | Component | tpk-validation-select', function (hooks) {
 
     await renderComponent();
 
-    await click('.tpk-select-button');
-    await click('[data-test-option="1"]');
+    await selectChoose('.tpk-select', 'a');
 
     assert.verifySteps(['change']);
 
