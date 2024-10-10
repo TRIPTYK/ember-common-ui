@@ -31,11 +31,11 @@ export default class TpkValidationIntegerComponent extends BaseValidationCompone
 get min() {
   return this.args.unsigned ? 0 : this.args.min;
 }
-  
+
 @action
 preventNonNumericInput(event: KeyboardEvent) {
   if(event.key ==="." || event.key === ","){
-    event.preventDefault(); 
+    event.preventDefault();
   }
 }
 
@@ -52,14 +52,19 @@ preventNonNumericInput(event: KeyboardEvent) {
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      @mandatory={{@mandatory}}
-      data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='integer'
       {{on 'keydown' this.preventNonNumericInput}}
       as |I|
     >
-      <I.Label />
+      <I.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span>
+            *
+          </span>
+        {{/if}}
+      </I.Label>
       <I.Input />
       <TpkValidationErrorsComponent
         @errors={{I.errors}}

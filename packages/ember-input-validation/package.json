@@ -124,6 +124,7 @@
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
       "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
       "./components/prefabs/tpk-validation-iban.js": "./dist/_app_/components/prefabs/tpk-validation-iban.js",
+      "./components/prefabs/tpk-validation-input.js": "./dist/_app_/components/prefabs/tpk-validation-input.js",
       "./components/prefabs/tpk-validation-integer.js": "./dist/_app_/components/prefabs/tpk-validation-integer.js",
       "./components/prefabs/tpk-validation-mobile.js": "./dist/_app_/components/prefabs/tpk-validation-mobile.js",
       "./components/prefabs/tpk-validation-national-number.js": "./dist/_app_/components/prefabs/tpk-validation-national-number.js",

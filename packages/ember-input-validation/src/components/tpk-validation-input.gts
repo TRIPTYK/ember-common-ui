@@ -70,39 +70,15 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
       data-has-error='{{this.hasError}}'
       as |I|
     >
-      {{#if (has-block)}}
-        {{yield
-          (hash
-            Input=I.Input
-            Label=I.Label
-            errors=this.errors
-            hasError=this.hasError
-            firstError=this.firstError
-          )
-        }}
-      {{else}}
-        <I.Label
-          class={{unless @classless 'tpk-input-validation-label'}}
-          data-test-label-not-yielded
-        >
-          {{@label}}
-          {{#if @mandatory}}
-            <span>
-              *
-            </span>
-          {{/if}}
-        </I.Label>
-        <I.Input
-          disabled={{@disabled}}
-          placeholder={{@placeholder}}
-          class={{unless @classless 'tpk-input-validation-input'}}
-          aria-autocomplete='none'
-          autocomplete='off'
-          autofill='off'
-          data-test-input-not-yielded
-        />
-        {{yield (hash errors=this.errors hasError=this.hasError firstError=this.firstError)}}
-      {{/if}}
+      {{yield
+        (hash
+          Input=I.Input
+          Label=I.Label
+          errors=this.errors
+          hasError=this.hasError
+          firstError=this.firstError
+        )
+      }}
     </TpkInput>
   </template>
 }
