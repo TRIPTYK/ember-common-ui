@@ -31,7 +31,7 @@ module(
       assert.dom('[data-test-tpk-textarea-label]').exists();
       assert.dom('[data-test-tpk-textarea-input]').exists();
       assert.dom('[data-test-tpk-textarea-label]').containsText('label *');
-      assert.dom('[data-test-tpk-textarea-input]').isChecked();
+      assert.dom('[data-test-tpk-textarea-input]').hasValue('Hellooo');
     });
   },
 );

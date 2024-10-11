@@ -19,7 +19,8 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" />`,
+      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
+      <I.Label /><I.Input/></TpkValidationInput>`,
     );
   }
 
@@ -116,7 +117,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       @changeset={{this.changeset}}
       @validationField="name"
       data-test-input="name"
-    />`,
+    as |I|><I.Label /><I.Input/></TpkValidationInput>`,
     );
 
     await fillIn('[data-test-input="name"] input', 'valueChanged');
