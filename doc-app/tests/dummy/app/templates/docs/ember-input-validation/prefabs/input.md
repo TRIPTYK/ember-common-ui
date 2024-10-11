@@ -27,6 +27,7 @@ The `TpkValidationInput` component is used for a simple input. If you want use a
 - `@label`: The label for the input field.
 - `@placeholder`: The placeholder text for the input field.
 - `@type`: The type of the input field. Defaults to 'text'.
+- `@mandatory`: Whether the textarea field is mandatory.
 - `@mask`: The mask to apply to the input field.
 - `@maskOptions`: The options to apply to the mask.
 - `@unmaskValue`: Whether to unmask the value before setting it in the changeset.

@@ -22,6 +22,7 @@ This component provides an textarea.
 
 - `@label`: The label for the textarea field.
 - `@placeholder`: The placeholder text for the textarea field.
+- `@mandatory`: Whether the textarea field is mandatory.
 - `@disabled`: Whether the input field is disabled.
 - `@classless`: Whether to apply default classes to the component.
 - `@onChange`: The action to be called when the selection changes. 

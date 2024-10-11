@@ -40,6 +40,7 @@ In example:
 - `@disabled`: Whether the input field is disabled.
 - `@multiple`: Whether multiple selections are allowed.
 - `@initiallyOpened`: Whether the select dropdown is initially opened.
+- `@mandatory`: Whether the textarea field is mandatory.
 - `@allowClear`: Whether to show a button to clear the selection.
 - `@classless`: Whether to apply default classes to the component.
 - `@onChange`: The action to be called when the selection changes. 

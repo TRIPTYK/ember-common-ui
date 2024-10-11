@@ -22,6 +22,7 @@ This component provides a checkbox.
 
 - `@label`: The label for the input field.
 - `@disabled`: Whether the input field is disabled.
+- `@mandatory`: Whether the textarea field is mandatory.
 - `@classless`: Whether to apply default classes to the component.
 - `@onChange`: The action to be called when the selection changes. 
 - `@changeEvent`: The event to trigger the onChange action.
