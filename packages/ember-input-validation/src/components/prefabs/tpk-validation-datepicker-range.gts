@@ -30,7 +30,6 @@ export default class TpkValidationDatepickerRangePrefab extends BaseValidationCo
       @onClose={{@onClose}}
       @disabled={{@disabled}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @placeholder={{@placeholder}}

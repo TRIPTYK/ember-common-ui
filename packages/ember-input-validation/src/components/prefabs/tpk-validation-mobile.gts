@@ -136,7 +136,7 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
       >
         {{@label}}
         {{#if @mandatory}}
-          <span>
+          <span class='mandatory'>
             *
           </span>
         {{/if}}

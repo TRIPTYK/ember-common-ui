@@ -33,7 +33,6 @@ export default class TpkValidationPasswordPrefab extends Component<TpkValidation
       @type={{this.type}}
       @onChange={{@onChange}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @placeholder={{@placeholder}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
@@ -41,7 +40,14 @@ export default class TpkValidationPasswordPrefab extends Component<TpkValidation
       @validationField={{@validationField}}
       ...attributes
     as |V|>
-      <V.Label />
+      <V.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span class='mandatory'>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <div>
         <V.Input placeholder={{@placeholder}} />
         <button

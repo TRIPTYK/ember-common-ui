@@ -8,12 +8,7 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationTextareaComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
-    label: string;
-    classless?: boolean;
-    disabled?: boolean;
-    changeEvent?: 'input' | 'change';
-  };
+  Args: BaseValidationSignature['Args'] & TpkTextareaSignature['Args'];
   Blocks: {
     default: [
       {
@@ -22,6 +17,7 @@ export interface TpkValidationTextareaComponentSignature
         errors: TpkValidationTextareaComponent['errors'];
         hasError: TpkValidationTextareaComponent['hasError'];
         firstError: TpkValidationTextareaComponent['firstError'];
+        charCount: number;
       },
     ];
   };
@@ -45,6 +41,8 @@ export default class TpkValidationTextareaComponent extends BaseValidationCompon
       @value={{this.value}}
       @label={{@label}}
       @classless={{@classless}}
+      @disabled={{@disabled}}
+      @maxLength={{@maxLength}}
       @changeEvent={{@changeEvent}}
       @onChange={{this.onChange}}
       ...attributes
@@ -55,6 +53,7 @@ export default class TpkValidationTextareaComponent extends BaseValidationCompon
         (hash
           Input=I.Input
           Label=I.Label
+          charCount=I.charCount
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError

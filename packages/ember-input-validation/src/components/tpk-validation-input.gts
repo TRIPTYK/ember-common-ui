@@ -10,21 +10,7 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationInputComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
-    label: string;
-    type?: string;
-    classless?: boolean;
-    mask?: unknown;
-    maskOptions?: Record<string, unknown>;
-    unmaskValue?: boolean;
-    disabled?: boolean;
-    changeEvent?: 'input' | 'change';
-    step?: number;
-    min?: number;
-    max?: number;
-    mandatory?: boolean;
-    placeholder?: string;
-  };
+  Args: BaseValidationSignature['Args'] & TpkInputSignature['Args'];
   Blocks: {
     default: [
       {

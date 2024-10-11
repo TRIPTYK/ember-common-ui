@@ -119,6 +119,7 @@
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
       "./components/prefabs/tpk-validation-bic.js": "./dist/_app_/components/prefabs/tpk-validation-bic.js",
+      "./components/prefabs/tpk-validation-checkbox.js": "./dist/_app_/components/prefabs/tpk-validation-checkbox.js",
       "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",
       "./components/prefabs/tpk-validation-datepicker-range.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker-range.js",
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
@@ -133,6 +134,7 @@
       "./components/prefabs/tpk-validation-select-create.js": "./dist/_app_/components/prefabs/tpk-validation-select-create.js",
       "./components/prefabs/tpk-validation-select-search.js": "./dist/_app_/components/prefabs/tpk-validation-select-search.js",
       "./components/prefabs/tpk-validation-select.js": "./dist/_app_/components/prefabs/tpk-validation-select.js",
+      "./components/prefabs/tpk-validation-textarea.js": "./dist/_app_/components/prefabs/tpk-validation-textarea.js",
       "./components/prefabs/tpk-validation-timepicker.js": "./dist/_app_/components/prefabs/tpk-validation-timepicker.js",
       "./components/prefabs/tpk-validation-vat.js": "./dist/_app_/components/prefabs/tpk-validation-vat.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",

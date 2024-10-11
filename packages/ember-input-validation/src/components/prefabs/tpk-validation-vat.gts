@@ -5,9 +5,11 @@ import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../util
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
 
-export interface TpkValidationVATPrefabSignature 
+export interface TpkValidationVATPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'>;
+  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'> & {
+    mandatory: boolean;
+  };
   Blocks: {
     default: [];
   };
@@ -50,7 +52,7 @@ export default class TpkValidationVATPrefab extends Component<TpkValidationVATPr
   maskOptions =  {
     dispatch: getMaskForPrefixOrDefault,
   };
-  
+
 
   <template>
     <TpkValidationInputComponent
@@ -61,12 +63,18 @@ export default class TpkValidationVATPrefab extends Component<TpkValidationVATPr
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
-      @mandatory={{@mandatory}}
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
       ...attributes
     as |V|>
-      <V.Label />
+      <V.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}

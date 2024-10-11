@@ -60,7 +60,7 @@ preventNonNumericInput(event: KeyboardEvent) {
       <I.Label>
         {{@label}}
         {{#if @mandatory}}
-          <span>
+          <span class='mandatory'>
             *
           </span>
         {{/if}}

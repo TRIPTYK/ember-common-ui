@@ -3,7 +3,7 @@ import TpkValidationInputComponent, { type TpkValidationInputComponentSignature 
 import type { BaseValidationSignature } from "../base";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
-export interface TpkValidationNationalNumberPrefabSignature 
+export interface TpkValidationNationalNumberPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'>;
   Blocks: {
@@ -21,14 +21,20 @@ export default class TpkValidationNationalNumberPrefab extends Component<TpkVali
       @type="text"
       @onChange={{@onChange}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
       @mask={{this.mask}}
       ...attributes
     as |V|>
-      <V.Label />
+      <V.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span class='mandatory'>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}

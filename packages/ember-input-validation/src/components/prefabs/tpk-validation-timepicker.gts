@@ -32,7 +32,6 @@ export default class TpkValidationTimepickerPrefab extends BaseValidationCompone
       @onClose={{@onClose}}
       @disabled={{@disabled}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @enableSecond={{@enableSecond}}

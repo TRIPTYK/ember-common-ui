@@ -25,6 +25,11 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
       typeof args.searchEnabled === 'undefined',
     );
   }
+
+  get label() {
+    return this.args.mandatory ? `${this.args.label} *` : this.args.label;
+  }
+
   toString = (v: unknown) => {
     return String(v).toString();
   };
@@ -35,7 +40,7 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
       data-has-error='{{this.hasError}}'
     >
       <TpkValidationSelectComponent
-        @label={{@label}}
+        @label={{this.label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
         @placeholder={{@placeholder}}

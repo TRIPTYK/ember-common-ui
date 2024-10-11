@@ -4,9 +4,11 @@ import type { BaseValidationSignature } from "../base";
 import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../utils/mask-utils.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
-export interface TpkValidationIBANPrefabSignature 
+export interface TpkValidationIBANPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'>;
+  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'> & {
+    mandatory: boolean;
+  };
   Blocks: {
     default: [];
   };
@@ -50,7 +52,7 @@ export default class TpkValidationIBANPrefab extends Component<TpkValidationIBAN
   maskOptions =  {
     dispatch: getMaskForPrefixOrDefault,
   };
-  
+
 
   <template>
     <TpkValidationInputComponent
@@ -58,7 +60,6 @@ export default class TpkValidationIBANPrefab extends Component<TpkValidationIBAN
       @type="text"
       @onChange={{@onChange}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -66,7 +67,14 @@ export default class TpkValidationIBANPrefab extends Component<TpkValidationIBAN
       @maskOptions={{this.maskOptions}}
       ...attributes
     as |V|>
-      <V.Label />
+      <V.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span class='mandatory'>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}

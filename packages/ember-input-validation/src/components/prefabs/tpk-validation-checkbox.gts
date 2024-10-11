@@ -1,11 +1,10 @@
-import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
+import TpkValidationCheckboxComponent, { type TpkValidationCheckboxComponentSignature } from "../tpk-validation-checkbox.gts";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import { assert } from "@ember/debug";
 
 export interface TpkValidationInputPrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkValidationInputComponentSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkValidationCheckboxComponentSignature['Args'];
   Blocks: {
     default: [];
   };
@@ -13,27 +12,15 @@ export interface TpkValidationInputPrefabSignature
 }
 
 export default class TpkValidationInputPrefab extends BaseValidationComponent<TpkValidationInputPrefabSignature> {
-  constructor(owner: unknown, args: TpkValidationInputPrefabSignature['Args']) {
-    super(owner, args);
-    assert(
-      'If you want use integer args, use TpkValidationInputIntegerPrefab',
-      typeof args.min === 'undefined' || typeof args.max === 'undefined' || typeof args.step === 'undefined',
-    );
-  }
   <template>
-    <TpkValidationInputComponent
-      @type={{@type}}
+    <TpkValidationCheckboxComponent
       @label={{@label}}
       @classless={{@classless}}
-      @disabled={{@disabled}}
-      @changeEvent={{@changeEvent}}
-      @onChange={{@onChange}}
-      @placeholder={{@placeholder}}
-      @validationField={{@validationField}}
-      @mask={{@mask}}
-      @maskOptions={{@maskOptions}}
-      @unmaskValue={{@unmaskValue}}
       @changeset={{@changeset}}
+      @validationField={{@validationField}}
+      @changeEvent={{@changeEvent}}
+      @disabled={{@disabled}}
+      @onChange={{@onChange}}
       ...attributes
     as |V|>
       <V.Label>
@@ -49,6 +36,6 @@ export default class TpkValidationInputPrefab extends BaseValidationComponent<Tp
         @errors={{V.errors}}
         @classless={{@classless}}
       />
-    </TpkValidationInputComponent>
+    </TpkValidationCheckboxComponent>
   </template>
 }

@@ -45,7 +45,6 @@ export default class TpkValidationCurrencyPrefab extends Component<TpkValidation
       @type="text"
       @onChange={{@onChange}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @placeholder={{@placeholder}}
       @mask={{this.mask.mask}}
       @maskOptions={{this.mask}}
@@ -56,7 +55,14 @@ export default class TpkValidationCurrencyPrefab extends Component<TpkValidation
       @validationField={{@validationField}}
       ...attributes
     as |V|>
-      <V.Label />
+      <V.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span class='mandatory'>
+            *
+          </span>
+        {{/if}}
+      </V.Label>
       <V.Input placeholder={{@placeholder}} />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}

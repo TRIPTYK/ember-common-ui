@@ -41,13 +41,19 @@ get min() {
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      @mandatory={{@mandatory}}
       data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='number'
       as |I|
     >
-      <I.Label />
+      <I.Label>
+        {{@label}}
+        {{#if @mandatory}}
+          <span class='mandatory'>
+            *
+          </span>
+        {{/if}}
+      </I.Label>
       <I.Input />
       <TpkValidationErrorsComponent
         @errors={{I.errors}}

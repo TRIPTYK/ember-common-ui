@@ -23,6 +23,10 @@ export default class TpkValidationSelectCreatePrefab extends BaseValidationCompo
     super(owner, args);
   }
 
+  get label() {
+    return this.args.mandatory ? `${this.args.label} *` : this.args.label;
+  }
+
   @action onChange(value: unknown) {
     if (this.args.onChange) {
       return this.args.onChange(value);
@@ -40,7 +44,7 @@ export default class TpkValidationSelectCreatePrefab extends BaseValidationCompo
       data-has-error='{{this.hasError}}'
     >
       <TpkSelectCreateComponent
-        @label={{@label}}
+        @label={{this.label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
         @placeholder={{@placeholder}}

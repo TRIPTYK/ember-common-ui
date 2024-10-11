@@ -31,6 +31,10 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
     );
   }
 
+  get label() {
+    return this.args.mandatory ? `${this.args.label} *` : this.args.label;
+  }
+
   @action onChange(value: unknown) {
     if (this.args.onChange) {
       return this.args.onChange(value);
@@ -56,7 +60,7 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-        @label={{@label}}
+        @label={{this.label}}
         @options={{@options}}
         @onChange={{this.onChange}}
         @selected={{this.value}}

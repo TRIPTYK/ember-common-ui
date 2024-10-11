@@ -38,11 +38,10 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      @mandatory={{@mandatory}}
       data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='email'
-      
+
       as |V|
     >
       <V.Label
@@ -51,7 +50,7 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       >
         {{@label}}
         {{#if @mandatory}}
-          <span>
+          <span class='mandatory'>
             *
           </span>
         {{/if}}

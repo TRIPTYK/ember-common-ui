@@ -7,6 +7,7 @@ export interface BaseValidationSignature {
   Args: {
     changeset: Changeset;
     validationField: string;
+    mandatory?: boolean;
     // eslint-disable-next-line no-unused-vars
     onChange?: (value: unknown) => unknown;
   };
