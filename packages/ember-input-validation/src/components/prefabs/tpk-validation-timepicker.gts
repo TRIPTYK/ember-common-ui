@@ -2,6 +2,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponentSignature } from "../tpk-validation-datepicker.gts";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import { tracked } from "@glimmer/tracking";
+import MandatoryLabelComponent from './mandatory-label.gts';
 
 export interface TpkValidationTimepickerPrefabSignature
   extends BaseValidationSignature {
@@ -13,7 +14,7 @@ export interface TpkValidationTimepickerPrefabSignature
 
 }
 
-export default class TpkValidationTimepickerPrefab extends BaseValidationComponent<TpkValidationTimepickerPrefabSignature> {
+export default class TpkValidationTimepickerPrefabComponent extends BaseValidationComponent<TpkValidationTimepickerPrefabSignature> {
   @tracked mask = 'H:M';
   @tracked dateFormat = 'HH:mm';
 
@@ -46,10 +47,7 @@ export default class TpkValidationTimepickerPrefab extends BaseValidationCompone
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>*</span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

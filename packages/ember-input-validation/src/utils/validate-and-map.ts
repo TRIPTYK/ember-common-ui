@@ -48,10 +48,10 @@ function applyErrors(e: unknown) {
   return [];
 }
 
-function jsonPathToDottedPath(e: string) {
+export function jsonPathToDottedPath(e: string) {
   return e.replaceAll('"', '').replace(/(\w+)\[(\d+)\]/g, '$1.$2');
 }
 
-function dottedPathToJsonPath(e: string) {
+export function dottedPathToJsonPath(e: string) {
   return e.replaceAll('"', '').replace(/(\w+)\.(\d+)/g, '$1[$2]');
 }

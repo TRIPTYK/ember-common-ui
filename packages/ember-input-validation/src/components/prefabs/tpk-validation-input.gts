@@ -2,6 +2,7 @@ import TpkValidationInputComponent, { type TpkValidationInputComponentSignature 
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from "@ember/debug";
+import MandatoryLabelComponent from "./mandatory-label.gts";
 
 export interface TpkValidationInputPrefabSignature
   extends BaseValidationSignature {
@@ -12,7 +13,7 @@ export interface TpkValidationInputPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationInputPrefab extends BaseValidationComponent<TpkValidationInputPrefabSignature> {
+export default class TpkValidationInputPrefabComponent extends BaseValidationComponent<TpkValidationInputPrefabSignature> {
   constructor(owner: unknown, args: TpkValidationInputPrefabSignature['Args']) {
     super(owner, args);
     assert(
@@ -37,12 +38,7 @@ export default class TpkValidationInputPrefab extends BaseValidationComponent<Tp
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

@@ -1,7 +1,7 @@
-import Component from "@glimmer/component";
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import type { BaseValidationSignature } from "../base";
+import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from "./mandatory-label.gts";
 
 export interface TpkValidationNationalNumberPrefabSignature
   extends BaseValidationSignature {
@@ -12,7 +12,7 @@ export interface TpkValidationNationalNumberPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationNationalNumberPrefab extends Component<TpkValidationNationalNumberPrefabSignature> {
+export default class TpkValidationNationalNumberPrefabComponent extends BaseValidationComponent<TpkValidationNationalNumberPrefabSignature> {
   mask = "00.00.00-000.00";
 
   <template>
@@ -28,12 +28,7 @@ export default class TpkValidationNationalNumberPrefab extends Component<TpkVali
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

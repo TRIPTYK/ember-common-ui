@@ -19,7 +19,7 @@ export interface TpkValidationSelectSearchPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectSearchPrefab extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
+export default class TpkValidationSelectSearchPrefabComponent extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
   constructor(
     owner: unknown,
     args: TpkValidationSelectSearchPrefabSignature['Args'],
@@ -32,7 +32,7 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
   }
 
   get label() {
-    return this.args.mandatory ? `${this.args.label} *` : this.args.label;
+    return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
   @action onChange(value: unknown) {

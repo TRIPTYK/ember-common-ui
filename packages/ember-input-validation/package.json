@@ -118,6 +118,7 @@
     },
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
+      "./components/prefabs/mandatory-label.js": "./dist/_app_/components/prefabs/mandatory-label.js",
       "./components/prefabs/tpk-validation-bic.js": "./dist/_app_/components/prefabs/tpk-validation-bic.js",
       "./components/prefabs/tpk-validation-checkbox.js": "./dist/_app_/components/prefabs/tpk-validation-checkbox.js",
       "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",
@@ -151,7 +152,7 @@
   },
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
-    "ember-immer-changeset": "^1.0.0",
+    "ember-immer-changeset": "^1.0.2",
     "ember-source": ">=5.0.0"
   }
 }

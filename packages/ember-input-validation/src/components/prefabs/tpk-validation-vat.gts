@@ -1,8 +1,8 @@
-import Component from "@glimmer/component";
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import type { BaseValidationSignature } from "../base";
+import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../utils/mask-utils.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from "./mandatory-label.gts";
 
 
 export interface TpkValidationVATPrefabSignature
@@ -16,7 +16,7 @@ export interface TpkValidationVATPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationVATPrefab extends Component<TpkValidationVATPrefabSignature> {
+export default class TpkValidationVATPrefabComponent extends BaseValidationComponent<TpkValidationVATPrefabSignature> {
   ibanMaskByCountry = [{
     mask: 'BE&&&&&&&&&&',
     startsWith: 'BE',
@@ -68,12 +68,7 @@ export default class TpkValidationVATPrefab extends Component<TpkValidationVATPr
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

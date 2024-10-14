@@ -6,6 +6,7 @@ import {
   BaseValidationComponent,
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from './mandatory-label.gts';
 
 export interface TpkValidationNumberComponentSignature
   extends BaseValidationSignature {
@@ -22,7 +23,7 @@ export interface TpkValidationNumberComponentSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationNumberComponent extends BaseValidationComponent<TpkValidationNumberComponentSignature> {
+export default class TpkValidationNumberPrefabComponent extends BaseValidationComponent<TpkValidationNumberComponentSignature> {
 
 get min() {
   return this.args.unsigned ? 0 : this.args.min;
@@ -47,12 +48,7 @@ get min() {
       as |I|
     >
       <I.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </I.Label>
       <I.Input />
       <TpkValidationErrorsComponent

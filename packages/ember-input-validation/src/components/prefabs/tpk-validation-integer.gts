@@ -8,6 +8,7 @@ import {
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
+import MandatoryLabelComponent from './mandatory-label.gts';
 
 export interface TpkValidationIntegerComponentSignature
   extends BaseValidationSignature {
@@ -58,12 +59,7 @@ preventNonNumericInput(event: KeyboardEvent) {
       as |I|
     >
       <I.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </I.Label>
       <I.Input />
       <TpkValidationErrorsComponent

@@ -1,8 +1,9 @@
 import TpkValidationCheckboxComponent, { type TpkValidationCheckboxComponentSignature } from "../tpk-validation-checkbox.gts";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from "./mandatory-label.gts";
 
-export interface TpkValidationInputPrefabSignature
+export interface TpkValidationCheckboxPrefabSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & TpkValidationCheckboxComponentSignature['Args'];
   Blocks: {
@@ -11,7 +12,7 @@ export interface TpkValidationInputPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationInputPrefab extends BaseValidationComponent<TpkValidationInputPrefabSignature> {
+export default class TpkValidationCheckboxPrefabComponent extends BaseValidationComponent<TpkValidationCheckboxPrefabSignature> {
   <template>
     <TpkValidationCheckboxComponent
       @label={{@label}}
@@ -24,12 +25,7 @@ export default class TpkValidationInputPrefab extends BaseValidationComponent<Tp
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

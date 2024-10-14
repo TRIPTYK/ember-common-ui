@@ -6,6 +6,7 @@ import {
   BaseValidationComponent,
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from './mandatory-label.gts';
 
 export interface TpkValidationEmailComponentSignature
   extends BaseValidationSignature {
@@ -26,7 +27,7 @@ export interface TpkValidationEmailComponentSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationEmailComponent extends BaseValidationComponent<TpkValidationEmailComponentSignature> {
+export default class TpkValidationEmailPrefabComponent extends BaseValidationComponent<TpkValidationEmailComponentSignature> {
   <template>
     <TpkValidationInputComponent
       @type='email'
@@ -48,12 +49,7 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
         class={{unless @classless 'tpk-input-validation-label'}}
         data-test-label-not-yielded
       >
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

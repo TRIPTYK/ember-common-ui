@@ -1,6 +1,7 @@
 import TpkValidationTextareaComponent, { type TpkValidationTextareaComponentSignature } from "../tpk-validation-textarea.gts";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from "./mandatory-label.gts";
 
 export interface TpkValidationTextareaPrefabSignature
   extends BaseValidationSignature {
@@ -11,7 +12,7 @@ export interface TpkValidationTextareaPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationTextareaPrefab extends BaseValidationComponent<TpkValidationTextareaPrefabSignature> {
+export default class TpkValidationTextareaPrefabComponent extends BaseValidationComponent<TpkValidationTextareaPrefabSignature> {
   <template>
     <TpkValidationTextareaComponent
       @label={{@label}}
@@ -26,12 +27,7 @@ export default class TpkValidationTextareaPrefab extends BaseValidationComponent
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </V.Label>
       <V.Input />
       {{#if @maxLength}}

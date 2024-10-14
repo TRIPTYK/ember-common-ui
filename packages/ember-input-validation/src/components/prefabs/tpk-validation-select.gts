@@ -14,7 +14,7 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectPrefab extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
+export default class TpkValidationSelectPrefabComponent extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
   constructor(
     owner: unknown,
     args: TpkValidationSelectPrefabSignature['Args'],
@@ -27,7 +27,7 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
   }
 
   get label() {
-    return this.args.mandatory ? `${this.args.label} *` : this.args.label;
+    return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
   toString = (v: unknown) => {

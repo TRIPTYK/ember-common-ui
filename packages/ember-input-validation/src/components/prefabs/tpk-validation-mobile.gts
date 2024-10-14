@@ -8,6 +8,7 @@ import type { TpkValidationInputComponentSignature } from '../tpk-validation-inp
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from './mandatory-label.gts';
 
 export interface TpkValidationMobilePrefabSignature
   extends BaseValidationSignature {
@@ -43,7 +44,7 @@ const masks = {
   '+352': '000 000 000', // Luxembourg
 };
 
-export default class TpkValidationMobilePrefab extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
+export default class TpkValidationMobilePrefabComponent extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
   defaultPrefix = { flag: '/BE.svg', code: '+32' };
   @tracked selectedPrefix = this.defaultPrefix;
   @tracked prefixes: Prefix[] = [
@@ -134,12 +135,7 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
         class={{unless @classless 'tpk-input-validation-label'}}
         data-test-label-not-yielded
       >
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </I.Label>
       <div
         class={{unless @classless 'tpk-input-validation-mobile'}}
