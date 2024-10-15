@@ -46,6 +46,7 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
       @noCalendar={{true}}
       @mask={{this.mask}}
       @dateFormat={{this.dateFormat}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

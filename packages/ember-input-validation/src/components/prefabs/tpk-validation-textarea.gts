@@ -25,6 +25,7 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @maxLength={{@maxLength}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

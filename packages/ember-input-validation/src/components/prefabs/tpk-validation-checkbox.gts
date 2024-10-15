@@ -23,6 +23,7 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
       @mandatory={{@mandatory}}
       @disabled={{@disabled}}
       @onChange={{@onChange}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

@@ -4,6 +4,7 @@ import { jsonPathToDottedPath } from "./validate-and-map.ts";
 
 export function getRequiredFields(validationSchema: Schema, data: Record<string, unknown>): string[] | undefined {
   const clearedObject = clearObjectValues(data);
+
   try {
     validationSchema.validateSync(clearedObject, { abortEarly: false });
   } catch(e) {

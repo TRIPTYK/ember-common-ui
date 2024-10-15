@@ -54,6 +54,7 @@ preventNonNumericInput(event: KeyboardEvent) {
       @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
+      @requiredFields={{@requiredFields}}
       ...attributes
       data-test-input='integer'
       {{on 'keydown' this.preventNonNumericInput}}

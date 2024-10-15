@@ -67,6 +67,7 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
       @mandatory={{@mandatory}}
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

@@ -116,7 +116,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.verifySteps(['onSubmit']);
   });
 
-  test<ComponentTestContext>('Should display an asterisk in the label upon initialization and when adding an element', async function (assert) {
+  test<ComponentTestContext>('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
     this.set(
       'changeset',
       new ImmerChangeset({

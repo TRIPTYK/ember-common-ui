@@ -39,6 +39,7 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
+      @requiredFields={{@requiredFields}}
       ...attributes
       data-test-input='email'
 

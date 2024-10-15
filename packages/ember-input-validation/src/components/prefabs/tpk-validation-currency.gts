@@ -55,6 +55,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
       @validationField={{@validationField}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

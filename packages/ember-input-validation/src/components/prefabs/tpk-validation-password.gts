@@ -40,6 +40,7 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
       @validationField={{@validationField}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

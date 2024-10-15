@@ -32,6 +32,7 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
       @changeset={{@changeset}}
       @mask={{this.mask}}
       @maskOptions={{this.maskOptions}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>

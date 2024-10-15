@@ -44,6 +44,7 @@ get min() {
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
+      @requiredFields={{@requiredFields}}
       data-test-input='number'
       ...attributes
       as |I|

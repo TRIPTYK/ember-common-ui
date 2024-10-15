@@ -48,6 +48,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @locale={{@locale}}
       @dateFormat={{@dateFormat}}
       @multipleDatesSeparator={{this.multipleDatesSeparator}}
+      @requiredFields={{@requiredFields}}
       @mode="range"
       ...attributes
     as |V|>
