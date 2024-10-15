@@ -1,11 +1,12 @@
+import { action } from "@ember/object";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
-import TpkValidationSelectComponent, { type TpkValidationSelectComponentSignature } from "../../components/tpk-validation-select.gts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from "@ember/debug";
+import TpkSelectComponent, { type TpkSelectSignature } from "@triptyk/ember-input/components/tpk-select";
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationSelectComponentSignature['Args'],
+    BaseValidationSignature['Args'] & TpkSelectSignature['Args'],
     'searchField' | 'searchPlaceholder' | 'searchMessage' | 'noMatchesMessage' | 'search'
   >;
   Blocks: {
@@ -14,7 +15,7 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectPrefab extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
+export default class TpkValidationSelectPrefabComponent extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
   constructor(
     owner: unknown,
     args: TpkValidationSelectPrefabSignature['Args'],
@@ -25,6 +26,19 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
       typeof args.searchEnabled === 'undefined',
     );
   }
+
+  @action
+  onChange(value: unknown) {
+    if (this.args.onChange) {
+      return this.args.onChange(value);
+    }
+    return this.args.changeset.set(this.args.validationField, value);
+  }
+
+  get label() {
+    return this.mandatory ? `${this.args.label} *` : this.args.label;
+  }
+
   toString = (v: unknown) => {
     return String(v).toString();
   };
@@ -34,7 +48,7 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
       class="{{if @disabled "disabled"}} tpk-validation-select"
       data-has-error='{{this.hasError}}'
     >
-      <TpkValidationSelectComponent
+      <TpkSelectComponent
         @label={{@label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
@@ -42,20 +56,18 @@ export default class TpkValidationSelectPrefab extends BaseValidationComponent<T
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
         @classless={{@classless}}
-        @selected={{this.value}}
         @options={{@options}}
-        @onChange={{@onChange}}
-        @changeset={{@changeset}}
+        @onChange={{this.onChange}}
+        @selected={{this.value}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-        @validationField={{@validationField}}
         ...attributes
       as |S|>
         <S.Option as |O|>
           {{this.toString O.option}}
         </S.Option>
-      </TpkValidationSelectComponent>
+      </TpkSelectComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
         @classless={{@classless}}

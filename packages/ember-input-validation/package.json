@@ -118,12 +118,15 @@
     },
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
+      "./components/prefabs/mandatory-label.js": "./dist/_app_/components/prefabs/mandatory-label.js",
       "./components/prefabs/tpk-validation-bic.js": "./dist/_app_/components/prefabs/tpk-validation-bic.js",
+      "./components/prefabs/tpk-validation-checkbox.js": "./dist/_app_/components/prefabs/tpk-validation-checkbox.js",
       "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",
       "./components/prefabs/tpk-validation-datepicker-range.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker-range.js",
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
       "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
       "./components/prefabs/tpk-validation-iban.js": "./dist/_app_/components/prefabs/tpk-validation-iban.js",
+      "./components/prefabs/tpk-validation-input.js": "./dist/_app_/components/prefabs/tpk-validation-input.js",
       "./components/prefabs/tpk-validation-integer.js": "./dist/_app_/components/prefabs/tpk-validation-integer.js",
       "./components/prefabs/tpk-validation-mobile.js": "./dist/_app_/components/prefabs/tpk-validation-mobile.js",
       "./components/prefabs/tpk-validation-national-number.js": "./dist/_app_/components/prefabs/tpk-validation-national-number.js",
@@ -132,6 +135,7 @@
       "./components/prefabs/tpk-validation-select-create.js": "./dist/_app_/components/prefabs/tpk-validation-select-create.js",
       "./components/prefabs/tpk-validation-select-search.js": "./dist/_app_/components/prefabs/tpk-validation-select-search.js",
       "./components/prefabs/tpk-validation-select.js": "./dist/_app_/components/prefabs/tpk-validation-select.js",
+      "./components/prefabs/tpk-validation-textarea.js": "./dist/_app_/components/prefabs/tpk-validation-textarea.js",
       "./components/prefabs/tpk-validation-timepicker.js": "./dist/_app_/components/prefabs/tpk-validation-timepicker.js",
       "./components/prefabs/tpk-validation-vat.js": "./dist/_app_/components/prefabs/tpk-validation-vat.js",
       "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
@@ -148,7 +152,7 @@
   },
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
-    "ember-immer-changeset": "^1.0.0",
+    "ember-immer-changeset": "^1.0.2",
     "ember-source": ">=5.0.0"
   }
 }

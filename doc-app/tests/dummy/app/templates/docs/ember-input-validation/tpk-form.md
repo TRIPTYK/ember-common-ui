@@ -5,7 +5,11 @@ The `TpkForm` component is a form component that uses the `ember-immer-changeset
 By default, the changeset is [executed](https://triptyk.github.io/ember-immer-changeset/classes/ImmerChangeset.html#execute) if the form submitted is valid.
 <DocsDemo as |demo|>
     <demo.example @name="tpk-form.hbs">
-       <TpkForm @changeset={{this.changeset}} @onSubmit={{this.success}} @validationSchema={{this.validationSchema}} as |F|>
+       <TpkForm
+          @changeset={{this.changeset}}
+          @onSubmit={{this.success}}
+          @validationSchema={{this.validationSchema}} 
+        as |F|>
           <F.TpkInput @label="First Name" @validationField="firstName" as |I|>
             <I.Label/>
             <I.Input />
@@ -15,14 +19,16 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
               {{/each}}
             {{/if}}
           </F.TpkInput>
+          <F.TpkInputPrefab @label="Last Name" @validationField="lastName" />
+          <F.TpkSelect @label="languages" @validationField="languages" @options={{this.options}} />
           <br/>
           <input class="mt-12" type="submit" value="Submit">
        </TpkForm>
     </demo.example>
     <demo.snippet @name="tpk-form.hbs"/>
+    <demo.snippet @name="tpk-form-controller.js" />
 </DocsDemo>
 
-<DocsSnippet @name="tpk-form-controller.js" />
 
 ## Arguments
 
@@ -42,8 +48,14 @@ The `TpkForm` component yields the following components:
 <DocsLink @route="docs.ember-input-validation.input">
 - TpkValidationInput yielded as TpkInput
 </DocsLink>
+<DocsLink @route="docs.ember-input-validation.prefabs.input">
+- TpkValidationInputPrefab yielded as TpkInputPrefab
+</DocsLink>
 <DocsLink @route="docs.ember-input-validation.checkbox">
 - TpkValidationCheckbox yielded as TpkCheckbox
+</DocsLink>
+<DocsLink @route="docs.ember-input-validation.prefabs.checkbox">
+- TpkValidationCheckboxPrefab yielded as TpkCheckboxPrefab
 </DocsLink>
 <DocsLink @route="docs.ember-input-validation.datepicker">
 - TpkValidationDatePicker yielded as TpkDatePicker
@@ -59,6 +71,9 @@ The `TpkForm` component yields the following components:
 </DocsLink>
 <DocsLink @route="docs.ember-input-validation.textarea">
 - TpkValidationTextarea yielded as TpkTextarea
+</DocsLink>
+<DocsLink @route="docs.ember-input-validation.textarea">
+- TpkValidationTextareaPrefab yielded as TpkTextarea
 </DocsLink>
 
 ## Yielded values

@@ -16,6 +16,7 @@ export interface TpkValidationSelectComponentSignature {
         errors: TpkValidationSelect['errors'];
         hasError: TpkValidationSelect['hasError'];
         firstError: TpkValidationSelect['firstError'];
+        mandatory: TpkValidationSelect['mandatory'];
       },
     ];
   };
@@ -30,42 +31,51 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
     return this.args.changeset.set(this.args.validationField, value);
   }
 
+  get label() {
+    return this.mandatory ? `${this.args.label} *` : this.args.label;
+  }
+
   <template>
-    <TpkSelectComponent
-      @multiple={{@multiple}}
-      @onChange={{this.onChange}}
-      @label={{@label}}
-      @options={{@options}}
-      @placeholder={{@placeholder}}
-      @selected={{this.value}}
-      @allowClear={{@allowClear}}
-      @classless={{@classless}}
-      @renderInPlace={{@renderInPlace}}
-      @labelComponent={{@labelComponent}}
-      @selectedItemComponent={{@selectedItemComponent}}
-      @placeholderComponent={{@placeholderComponent}}
-      @searchEnabled={{@searchEnabled}}
-      @searchField={{@searchField}}
-      @searchPlaceholder={{@searchPlaceholder}}
-      @searchMessage={{@searchMessage}}
-      @search={{@search}}
-      @onKeyDown={{@onKeyDown}}
-      @disabled={{@disabled}}
-      @initiallyOpened={{@initiallyOpened}}
-      @loadingMessage={{@loadingMessage}}
-      @noMatchesMessage={{@noMatchesMessage}}
-      ...attributes
+    <div
+      class="{{if @disabled "disabled"}} tpk-validation-select"
       data-has-error='{{this.hasError}}'
-      as |I|
     >
-      {{yield
-        (hash
-          Option=I.Option
-          errors=this.errors
-          hasError=this.hasError
-          firstError=this.firstError
-        )
-      }}
-    </TpkSelectComponent>
+      <TpkSelectComponent
+        @multiple={{@multiple}}
+        @onChange={{this.onChange}}
+        @label={{this.label}}
+        @options={{@options}}
+        @placeholder={{@placeholder}}
+        @selected={{this.value}}
+        @allowClear={{@allowClear}}
+        @classless={{@classless}}
+        @renderInPlace={{@renderInPlace}}
+        @labelComponent={{@labelComponent}}
+        @selectedItemComponent={{@selectedItemComponent}}
+        @placeholderComponent={{@placeholderComponent}}
+        @searchEnabled={{@searchEnabled}}
+        @searchField={{@searchField}}
+        @searchPlaceholder={{@searchPlaceholder}}
+        @searchMessage={{@searchMessage}}
+        @search={{@search}}
+        @onKeyDown={{@onKeyDown}}
+        @disabled={{@disabled}}
+        @initiallyOpened={{@initiallyOpened}}
+        @loadingMessage={{@loadingMessage}}
+        @noMatchesMessage={{@noMatchesMessage}}
+        ...attributes
+        as |I|
+      >
+        {{yield
+          (hash
+            Option=I.Option
+            errors=this.errors
+            hasError=this.hasError
+            firstError=this.firstError
+            mandatory=this.mandatory
+          )
+        }}
+      </TpkSelectComponent>
+    </div>
   </template>
 }

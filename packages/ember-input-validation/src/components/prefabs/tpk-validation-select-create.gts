@@ -15,12 +15,16 @@ export interface TpkValidationSelectCreatePrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectCreatePrefab extends BaseValidationComponent<TpkValidationSelectCreatePrefabSignature> {
+export default class TpkValidationSelectCreatePrefabComponent extends BaseValidationComponent<TpkValidationSelectCreatePrefabSignature> {
   constructor(
     owner: unknown,
     args: TpkValidationSelectCreatePrefabSignature['Args'],
   ) {
     super(owner, args);
+  }
+
+  get label() {
+    return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
   @action onChange(value: unknown) {
@@ -40,7 +44,7 @@ export default class TpkValidationSelectCreatePrefab extends BaseValidationCompo
       data-has-error='{{this.hasError}}'
     >
       <TpkSelectCreateComponent
-        @label={{@label}}
+        @label={{this.label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
         @placeholder={{@placeholder}}

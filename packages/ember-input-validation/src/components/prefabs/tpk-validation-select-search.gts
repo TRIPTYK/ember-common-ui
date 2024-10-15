@@ -19,7 +19,7 @@ export interface TpkValidationSelectSearchPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectSearchPrefab extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
+export default class TpkValidationSelectSearchPrefabComponent extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
   constructor(
     owner: unknown,
     args: TpkValidationSelectSearchPrefabSignature['Args'],
@@ -29,6 +29,10 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
       'Please provide an @onSearch function',
       typeof args.onSearch === 'function',
     );
+  }
+
+  get label() {
+    return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
   @action onChange(value: unknown) {
@@ -56,7 +60,7 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidationCompo
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-        @label={{@label}}
+        @label={{this.label}}
         @options={{@options}}
         @onChange={{this.onChange}}
         @selected={{this.value}}

@@ -32,6 +32,9 @@ Router.map(function () {
     });
     this.route('ember-input-validation', function () {
       this.route('prefabs', function () {
+        this.route('input');
+        this.route('textarea');
+        this.route('checkbox');
         this.route('password');
         this.route('mobile');
         this.route('iban');

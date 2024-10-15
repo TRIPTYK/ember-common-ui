@@ -37,6 +37,7 @@ In example:
 - `@placeholder`: The placeholder text for the input field.
 - `@disabled`: Whether the input field is disabled.
 - `@multiple`: Whether multiple selections are allowed.
+- `@mandatory`: Whether the textarea field is mandatory.
 - `@initiallyOpened`: Whether the select dropdown is initially opened.
 - `@allowClear`: Whether to show a button to clear the selection.
 - `@classless`: Whether to apply default classes to the component.

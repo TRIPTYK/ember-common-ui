@@ -1,7 +1,9 @@
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponentSignature } from "../tpk-validation-datepicker.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import { tracked } from "@glimmer/tracking";
+import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
 
 export interface TpkValidationTimepickerPrefabSignature
   extends BaseValidationSignature {
@@ -13,7 +15,7 @@ export interface TpkValidationTimepickerPrefabSignature
 
 }
 
-export default class TpkValidationTimepickerPrefab extends BaseValidationComponent<TpkValidationTimepickerPrefabSignature> {
+export default class TpkValidationTimepickerPrefabComponent extends Component<TpkValidationTimepickerPrefabSignature> {
   @tracked mask = 'H:M';
   @tracked dateFormat = 'HH:mm';
 
@@ -32,10 +34,10 @@ export default class TpkValidationTimepickerPrefab extends BaseValidationCompone
       @onClose={{@onClose}}
       @disabled={{@disabled}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @enableSecond={{@enableSecond}}
+      @mandatory={{@mandatory}}
       @stepping={{@stepping}}
       @placeholder={{@placeholder}}
       @clearButton={{@clearButton}}
@@ -44,17 +46,15 @@ export default class TpkValidationTimepickerPrefab extends BaseValidationCompone
       @noCalendar={{true}}
       @mask={{this.mask}}
       @dateFormat={{this.dateFormat}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
       <V.Label>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>*</span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
-        @errors={{this.errors}}
+        @errors={{V.errors}}
         @classless={{@classless}}
       />
     </TpkValidationDatepickerComponent>

@@ -84,5 +84,25 @@ module(
       await settled();
       assert.dom('.tpk-validation-errors span').hasText('t:required:()');
     });
+
+    test('It changes data-has-error attribue on error', async function (assert) {
+      const changeset = await renderComponent.call(this);
+      assert
+        .dom('.tpk-validation-select')
+        .hasAttribute('data-has-error', 'false');
+
+      changeset.addError({
+        message: 'required',
+        value: '',
+        originalValue: 'a',
+        key: 'names',
+      });
+
+      await settled();
+
+      assert
+        .dom('.tpk-validation-select')
+        .hasAttribute('data-has-error', 'true');
+    });
   },
 );
