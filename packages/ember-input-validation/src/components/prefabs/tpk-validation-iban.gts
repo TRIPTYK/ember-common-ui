@@ -1,8 +1,9 @@
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../utils/mask-utils.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from "./mandatory-label.gts";
+import Component from "@glimmer/component";
 
 export interface TpkValidationIBANPrefabSignature
   extends BaseValidationSignature {
@@ -15,7 +16,7 @@ export interface TpkValidationIBANPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationIBANPrefabComponent extends BaseValidationComponent<TpkValidationIBANPrefabSignature> {
+export default class TpkValidationIBANPrefabComponent extends Component<TpkValidationIBANPrefabSignature> {
   ibanMaskByCountry = [{
     mask: 'BE&& &&&& &&&& &&&&',
     startsWith: 'BE',
@@ -63,12 +64,13 @@ export default class TpkValidationIBANPrefabComponent extends BaseValidationComp
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
+      @mandatory={{@mandatory}}
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
       ...attributes
     as |V|>
       <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent

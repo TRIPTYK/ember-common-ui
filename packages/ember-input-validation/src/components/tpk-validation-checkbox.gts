@@ -19,6 +19,7 @@ export interface TpkValidationCheckboxComponentSignature
         errors: TpkValidationCheckboxComponent['errors'];
         hasError: TpkValidationCheckboxComponent['hasError'];
         firstError: TpkValidationCheckboxComponent['firstError'];
+        mandatory: TpkValidationCheckboxComponent['mandatory'];
       },
     ];
   };
@@ -64,6 +65,7 @@ export default class TpkValidationCheckboxComponent extends BaseValidationCompon
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError
+          mandatory=this.mandatory
         )
       }}
     </TpkCheckbox>

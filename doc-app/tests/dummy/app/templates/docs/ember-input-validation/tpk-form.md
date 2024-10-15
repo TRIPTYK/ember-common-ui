@@ -20,9 +20,9 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
        </TpkForm>
     </demo.example>
     <demo.snippet @name="tpk-form.hbs"/>
+    <demo.snippet @name="tpk-form-controller.js" />
 </DocsDemo>
 
-<DocsSnippet @name="tpk-form-controller.js" />
 
 ## Arguments
 

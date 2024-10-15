@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { clearObject } from '@triptyk/ember-input-validation/utils/clear-object';
+import { clearObjectValues } from '@triptyk/ember-input-validation/utils/clear-object';
 import { setupTest } from 'ember-qunit';
 
 module('Unit | Utils | clear-object', function (hooks) {
@@ -12,7 +12,7 @@ module('Unit | Utils | clear-object', function (hooks) {
       hobbies: ['coding', 'reading', 'walking'],
       isDeveloper: true,
     };
-    assert.deepEqual(clearObject(objToClear), {
+    assert.deepEqual(clearObjectValues(objToClear), {
       name: '',
       age: '',
       hobbies: [],
@@ -56,7 +56,7 @@ module('Unit | Utils | clear-object', function (hooks) {
         ],
       },
     };
-    assert.deepEqual(clearObject(objToClear), {
+    assert.deepEqual(clearObjectValues(objToClear), {
       name: '',
       age: '',
       isDeveloper: false,
@@ -108,7 +108,7 @@ module('Unit | Utils | clear-object', function (hooks) {
         },
       },
     };
-    assert.deepEqual(clearObject(objToClear), {
+    assert.deepEqual(clearObjectValues(objToClear), {
       key_1: '',
       key_2: {
         key_2_1: '',

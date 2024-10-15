@@ -17,6 +17,7 @@ export interface TpkValidationTextareaComponentSignature
         errors: TpkValidationTextareaComponent['errors'];
         hasError: TpkValidationTextareaComponent['hasError'];
         firstError: TpkValidationTextareaComponent['firstError'];
+        mandatory: TpkValidationTextareaComponent['mandatory'];
         charCount: number;
       },
     ];
@@ -57,6 +58,7 @@ export default class TpkValidationTextareaComponent extends BaseValidationCompon
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError
+          mandatory=this.mandatory
         )
       }}
     </TpkTextarea>

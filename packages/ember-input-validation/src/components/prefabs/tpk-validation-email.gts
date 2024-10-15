@@ -2,11 +2,11 @@ import TpkValidationInputComponent, {
   type TpkValidationInputComponentSignature,
 } from '../tpk-validation-input.gts';
 import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
+  type BaseValidationSignature
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
+import { type TOC } from '@ember/component/template-only';
 
 export interface TpkValidationEmailComponentSignature
   extends BaseValidationSignature {
@@ -27,8 +27,7 @@ export interface TpkValidationEmailComponentSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationEmailPrefabComponent extends BaseValidationComponent<TpkValidationEmailComponentSignature> {
-  <template>
+const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignature> = <template>
     <TpkValidationInputComponent
       @type='email'
       @label={{@label}}
@@ -36,20 +35,17 @@ export default class TpkValidationEmailPrefabComponent extends BaseValidationCom
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
+      @mandatory={{@mandatory}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      data-has-error='{{this.hasError}}'
       ...attributes
       data-test-input='email'
 
       as |V|
     >
-      <V.Label
-        class={{unless @classless 'tpk-input-validation-label'}}
-        data-test-label-not-yielded
-      >
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+      <V.Label>
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
@@ -58,5 +54,6 @@ export default class TpkValidationEmailPrefabComponent extends BaseValidationCom
       />
 
     </TpkValidationInputComponent>
-  </template>
-}
+  </template>;
+
+export default TpkValidationEmailPrefabComponent;

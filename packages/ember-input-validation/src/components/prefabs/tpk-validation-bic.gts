@@ -1,7 +1,9 @@
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import { maskSpecialCharDefinition } from "../../utils/mask-utils.ts";
 import MandatoryLabelComponent from "./mandatory-label.gts";
+import Component from "@glimmer/component";
+import TpkValidationErrorsComponent from "./tpk-validation-errors.gts";
 
 export interface TpkValidationBicPrefabSignature
   extends BaseValidationSignature {
@@ -12,7 +14,7 @@ export interface TpkValidationBicPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationBicPrefabComponent extends BaseValidationComponent<TpkValidationBicPrefabSignature> {
+export default class TpkValidationBicPrefabComponent extends Component<TpkValidationBicPrefabSignature> {
   mask = '########[$$$]';
   maskOptions = {
     definitions: maskSpecialCharDefinition,
@@ -33,9 +35,13 @@ export default class TpkValidationBicPrefabComponent extends BaseValidationCompo
       ...attributes
     as |V|>
       <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
+      <TpkValidationErrorsComponent
+        @errors={{V.errors}}
+        @classless={{@classless}}
+      />
     </TpkValidationInputComponent>
   </template>
 }

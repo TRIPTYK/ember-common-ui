@@ -1,10 +1,11 @@
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { on } from "@ember/modifier";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from "./mandatory-label.gts";
+import Component from "@glimmer/component";
 
 export interface TpkValidationPasswordPrefabSignature
   extends BaseValidationSignature {
@@ -15,7 +16,7 @@ export interface TpkValidationPasswordPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationPasswordPrefabComponent extends BaseValidationComponent<TpkValidationPasswordPrefabSignature> {
+export default class TpkValidationPasswordPrefabComponent extends Component<TpkValidationPasswordPrefabSignature> {
   @tracked showPassword = false;
 
   @action
@@ -34,6 +35,7 @@ export default class TpkValidationPasswordPrefabComponent extends BaseValidation
       @onChange={{@onChange}}
       @classless={{@classless}}
       @placeholder={{@placeholder}}
+      @mandatory={{@mandatory}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -41,7 +43,7 @@ export default class TpkValidationPasswordPrefabComponent extends BaseValidation
       ...attributes
     as |V|>
       <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <div>
         <V.Input placeholder={{@placeholder}} />

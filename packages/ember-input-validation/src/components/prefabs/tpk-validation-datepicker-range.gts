@@ -3,6 +3,7 @@ import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponent
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import { tracked } from "@glimmer/tracking";
 import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
 
 export interface TpkValidationDatepickerRangePrefabSignature
   extends BaseValidationSignature {
@@ -14,7 +15,7 @@ export interface TpkValidationDatepickerRangePrefabSignature
 
 }
 
-export default class TpkValidationDatepickerRangePrefabComponent extends BaseValidationComponent<TpkValidationDatepickerRangePrefabSignature> {
+export default class TpkValidationDatepickerRangePrefabComponent extends Component<TpkValidationDatepickerRangePrefabSignature> {
   @tracked multipleDatesSeparator = ' - ';
 
   constructor(owner: unknown, args: TpkValidationDatepickerRangePrefabSignature['Args']) {
@@ -31,6 +32,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends BaseVal
       @onClose={{@onClose}}
       @disabled={{@disabled}}
       @classless={{@classless}}
+      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @placeholder={{@placeholder}}
@@ -50,11 +52,11 @@ export default class TpkValidationDatepickerRangePrefabComponent extends BaseVal
       ...attributes
     as |V|>
       <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
-        @errors={{this.errors}}
+        @errors={{V.errors}}
         @classless={{@classless}}
       />
     </TpkValidationDatepickerComponent>

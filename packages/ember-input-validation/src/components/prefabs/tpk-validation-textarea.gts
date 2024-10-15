@@ -1,7 +1,8 @@
 import TpkValidationTextareaComponent, { type TpkValidationTextareaComponentSignature } from "../tpk-validation-textarea.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from "./mandatory-label.gts";
+import { type TOC } from '@ember/component/template-only';
 
 export interface TpkValidationTextareaPrefabSignature
   extends BaseValidationSignature {
@@ -12,14 +13,14 @@ export interface TpkValidationTextareaPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationTextareaPrefabComponent extends BaseValidationComponent<TpkValidationTextareaPrefabSignature> {
-  <template>
+const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSignature> = <template>
     <TpkValidationTextareaComponent
       @label={{@label}}
       @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
+      @mandatory={{@mandatory}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
@@ -27,7 +28,7 @@ export default class TpkValidationTextareaPrefabComponent extends BaseValidation
       ...attributes
     as |V|>
       <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       {{#if @maxLength}}
@@ -40,5 +41,6 @@ export default class TpkValidationTextareaPrefabComponent extends BaseValidation
         @classless={{@classless}}
       />
     </TpkValidationTextareaComponent>
-  </template>
-}
+  </template>;
+
+export default TpkValidationTextareaPrefabComponent;

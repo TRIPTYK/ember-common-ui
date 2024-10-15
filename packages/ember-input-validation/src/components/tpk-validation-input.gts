@@ -19,6 +19,7 @@ export interface TpkValidationInputComponentSignature
         errors?: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];
+        mandatory: TpkValidationInputComponent['mandatory'];
       },
     ];
   };
@@ -63,6 +64,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError
+          mandatory=this.mandatory
         )
       }}
     </TpkInput>

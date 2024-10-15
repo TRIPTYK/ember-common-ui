@@ -1,4 +1,4 @@
-export function clearObject(obj: Record<string, any>): Record<string, any> {
+export function clearObjectValues(obj: Record<string, any>): Record<string, any> {
   const newObj: Record<string, any> = {};
 
   for (const key in obj) {
@@ -7,13 +7,13 @@ export function clearObject(obj: Record<string, any>): Record<string, any> {
         if (Array.isArray(obj[key])) {
           newObj[key] = obj[key].map((item: any) => {
             if (typeof item === 'object' && item !== null) {
-              return clearObject(item);
+              return clearObjectValues(item);
             } else {
               return null;
             }
           }).filter(item => item !== null);
         } else {
-          newObj[key] = clearObject(obj[key]);
+          newObj[key] = clearObjectValues(obj[key]);
         }
       } else if (typeof obj[key] === 'boolean') {
         newObj[key] = false;

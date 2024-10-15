@@ -1,7 +1,8 @@
 import TpkValidationCheckboxComponent, { type TpkValidationCheckboxComponentSignature } from "../tpk-validation-checkbox.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from "./mandatory-label.gts";
+import { type TOC } from '@ember/component/template-only';
 
 export interface TpkValidationCheckboxPrefabSignature
   extends BaseValidationSignature {
@@ -12,20 +13,20 @@ export interface TpkValidationCheckboxPrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationCheckboxPrefabComponent extends BaseValidationComponent<TpkValidationCheckboxPrefabSignature> {
-  <template>
+const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSignature> = <template>
     <TpkValidationCheckboxComponent
       @label={{@label}}
       @classless={{@classless}}
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
+      @mandatory={{@mandatory}}
       @disabled={{@disabled}}
       @onChange={{@onChange}}
       ...attributes
     as |V|>
       <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
@@ -33,5 +34,6 @@ export default class TpkValidationCheckboxPrefabComponent extends BaseValidation
         @classless={{@classless}}
       />
     </TpkValidationCheckboxComponent>
-  </template>
-}
+  </template>;
+
+export default TpkValidationCheckboxPrefabComponent;

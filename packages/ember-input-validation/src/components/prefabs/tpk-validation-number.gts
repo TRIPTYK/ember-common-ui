@@ -7,6 +7,7 @@ import {
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
 
 export interface TpkValidationNumberComponentSignature
   extends BaseValidationSignature {
@@ -23,7 +24,7 @@ export interface TpkValidationNumberComponentSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationNumberPrefabComponent extends BaseValidationComponent<TpkValidationNumberComponentSignature> {
+export default class TpkValidationNumberPrefabComponent extends Component<TpkValidationNumberComponentSignature> {
 
 get min() {
   return this.args.unsigned ? 0 : this.args.min;
@@ -37,18 +38,18 @@ get min() {
       @step={{@step}}
       @classless={{@classless}}
       @disabled={{@disabled}}
+      @mandatory={{@mandatory}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      data-has-error='{{this.hasError}}'
-      ...attributes
       data-test-input='number'
+      ...attributes
       as |I|
     >
       <I.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
       </I.Label>
       <I.Input />
       <TpkValidationErrorsComponent
