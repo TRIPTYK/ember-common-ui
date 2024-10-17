@@ -15,6 +15,11 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
               {{/each}}
             {{/if}}
           </F.TpkInput>
+<<<<<<< Updated upstream
+=======
+          <F.TpkInputPrefab @label="Last Name" @validationField="lastName" />
+          <F.TpkSelectPrefab @label="languages" @validationField="languages" @multiple={{true}} @options={{this.options}} />
+>>>>>>> Stashed changes
           <br/>
           <input class="mt-12" type="submit" value="Submit">
        </TpkForm>
