@@ -16,9 +16,7 @@ export interface TpkValidationDatepickerComponentSignature
     label: string;
     classless?: boolean;
     disabled?: boolean;
-    mandatory?: boolean;
     mask?: string;
-
   } & TpkDatepickerInput;
   Blocks: {
     default: [
@@ -28,6 +26,7 @@ export interface TpkValidationDatepickerComponentSignature
         errors: TpkValidationDatepickerComponent['errors'];
         hasError: TpkValidationDatepickerComponent['hasError'];
         firstError: TpkValidationDatepickerComponent['firstError'];
+        mandatory: TpkValidationDatepickerComponent['mandatory'];
       },
     ];
   };
@@ -105,6 +104,7 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError
+          mandatory=this.mandatory
         )
       }}
     </TpkDatepicker>

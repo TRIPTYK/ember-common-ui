@@ -16,6 +16,7 @@ export type TpkTextareaSignature = {
     BaseUIComponentArgs['Args'],
     {
       value?: string;
+      placeholder?: string;
       disabled?: boolean;
       onChange?: (value: string, e: Event) => unknown;
       maxLength?: number;
@@ -32,6 +33,7 @@ export type TpkTextareaSignature = {
           | 'changeEvent'
           | 'disabled'
           | 'onChange'
+          | 'placeholder'
           | 'updateCharacterCount'
           | 'setupCharacterCount'
           | 'maxLength'
@@ -93,6 +95,7 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
             setupCharacterCount=this.setupCharacterCount
             maxLength=@maxLength
             changeEvent=this.changeEvent
+            placeholder=@placeholder
             classless=@classless
             disabled=@disabled
             onChange=this.onChange

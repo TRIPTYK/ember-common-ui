@@ -10,6 +10,7 @@ export interface TpkTextareaInputComponentSignature {
     value?: string;
     disabled?: boolean;
     maxLength?: number;
+    placeholder?: string;
     updateCharacterCount: (event: Event) => void;
     setupCharacterCount: (element: HTMLTextAreaElement) => void;
     changeEvent: 'input' | 'change';
@@ -21,6 +22,7 @@ export interface TpkTextareaInputComponentSignature {
 const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <template>
     <textarea
       class={{unless @classless 'tpk-textarea-input'}}
+      placeholder={{@placeholder}}
       id={{@guid}}
       value={{@value}}
       maxLength={{@maxLength}}

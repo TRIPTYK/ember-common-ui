@@ -19,17 +19,8 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" />`,
-    );
-  }
-
-  async function renderYieldedComponent() {
-    await render(
-      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="yieldedLabel" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I| >
-      <I.Label/>
-      <I.Input/>
-      </TpkValidationInput>
-      `,
+      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
+      <I.Label /><I.Input/></TpkValidationInput>`,
     );
   }
 
@@ -87,30 +78,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     assert.verifySteps(['change']);
   });
 
-  test('renders generic input validation', async function (assert) {
-    const changeset = setupChangeset.call(this);
-
-    await renderComponent();
-    assert.dom('[data-test-input-not-yielded]').exists();
-    assert.dom('[data-test-label-not-yielded]').exists();
-    assert.dom('[data-test-label-not-yielded]').containsText('label');
-    assert.dom('[data-test-input-not-yielded]').hasValue('value');
-
-    assert.strictEqual(changeset.get('name'), 'value');
-  });
-
-  test('it overrides generic input by yielded one', async function (assert) {
-    const changeset = setupChangeset.call(this);
-
-    await renderYieldedComponent();
-    assert.dom('[data-test-input-not-yielded]').doesNotExist();
-    assert.dom('[data-test-label-not-yielded]').doesNotExist();
-    assert.dom('[data-test-tpk-input]').exists();
-    assert.dom('[data-test-tpk-input-label]').containsText('yieldedLabel');
-    await fillIn('[data-test-tpk-input-input]', 'yieldedValue');
-    assert.dom('[data-test-tpk-input-input]').hasValue('yieldedValue');
-  });
-
   test('Classless removes all the classes', async function (assert) {
     this.set('classless', false);
     this.set('showTogglePasswordButton', true);
@@ -150,7 +117,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       @changeset={{this.changeset}}
       @validationField="name"
       data-test-input="name"
-    />`,
+    as |I|><I.Label /><I.Input/></TpkValidationInput>`,
     );
 
     await fillIn('[data-test-input="name"] input', 'valueChanged');

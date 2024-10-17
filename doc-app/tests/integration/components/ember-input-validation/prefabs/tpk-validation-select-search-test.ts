@@ -9,11 +9,13 @@ import {
   findAll,
   render,
   settled,
+  find,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { waitFor } from '@ember/test-helpers';
 import tpkSelectSearch from 'dummy/tests/pages/tpk-select-search';
 import { setupIntl } from 'ember-intl/test-support';
+import { selectSearch } from 'ember-power-select/test-support';
 
 interface Option {
   label: string;
@@ -52,7 +54,7 @@ module(
 
     async function setChangeset(
       this: TestContext,
-      fastfoodValue: string = 'McDonald',
+      fastfoodValue: string = options[0],
     ) {
       const changeset = new ImmerChangeset({ fastfood: fastfoodValue });
       this.set('changeset', changeset);
@@ -65,7 +67,7 @@ module(
 
     async function setOnChangeFunction(this: TestContext) {
       this.set('onChange', (value: Option) => {
-        this.changeset.set('fastfood', value.label);
+        this.changeset.set('fastfood', value);
       });
     }
 
@@ -92,37 +94,52 @@ module(
     async function renderComponent() {
       await render(
         hbs`<Prefabs::TpkValidationSelectSearch
-              @changeset={{this.changeset}}
-              @onSearch={{this.search}}
-              @onChange={{this.onChange}}
-              @options={{this.options}}
-              @validationField="fastfood"
-              @label="Select your favorite fastfood"
-            />`,
+          @changeset={{this.changeset}}
+          @onSearch={{this.search}}
+          @onChange={{this.onChange}}
+          @options={{this.options}}
+          @validationField="fastfood"
+          @label="Select your favorite fastfood"
+        />`,
       );
     }
 
     test('Should show default value and no options in starting', async function (assert) {
       await setChangeset.call(this);
+      await setOnChangeFunction.call(this);
       await setOptions.call(this);
       await setSearchFunction.call(this);
       await renderComponent.call(this);
-      assert.strictEqual(tpkSelectSearch.input.value, 'McDonald');
-      assert.strictEqual(tpkSelectSearch.listbox.options.length, 0);
+      const item = find('.ember-power-select-selected-item');
+      assert.strictEqual(
+        find('.ember-power-select-selected-item').textContent?.trim(),
+        'McDonald - Burger',
+      );
     });
-    test('Should loading spinner when searching', async function (assert) {
+
+    test('Should use search select features by default', async function (assert) {
       await setChangeset.call(this);
+      await setOnChangeFunction.call(this);
       await setOptions.call(this);
-      await setSearchFunction.call(this, 1000);
+      this.set('search', () => {
+        assert.step('search');
+      });
       await renderComponent.call(this);
-      tpkSelectSearch.input.fillIn('Tournai');
-      await waitFor('.loader');
-      assert.dom('.loader').exists();
+      await click('.ember-power-select-trigger');
+      assert
+        .dom('.ember-power-select-option--search-message')
+        .hasText('Type to search');
+      assert
+        .dom('.ember-power-select-selected-item')
+        .hasText('McDonald - Burger');
+      await selectSearch('.tpk-select', 'new');
+      assert.verifySteps(['search']);
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await setChangeset.call(this);
       await setOptions.call(this);
+      await setOnChangeFunction.call(this);
       await setSearchFunction.call(this, 1000);
       await renderComponent.call(this);
       changeset.addError({

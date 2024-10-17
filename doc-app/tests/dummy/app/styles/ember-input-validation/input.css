@@ -28,9 +28,13 @@
 }
 
 .tpk-input .flag {
-  @apply flex items-center justify-center space-x-1;
+  @apply flex h-auto items-center justify-center space-x-1;
 }
 
 .tpk-input-validation-mobile {
   @apply flex space-x-1;
+}
+
+.tpk-validation-select-search {
+  @apply relative;
 }

@@ -7,6 +7,8 @@ export interface BaseValidationSignature {
   Args: {
     changeset: Changeset;
     validationField: string;
+    mandatory?: boolean;
+    requiredFields?: string[];
     // eslint-disable-next-line no-unused-vars
     onChange?: (value: unknown) => unknown;
   };
@@ -34,6 +36,18 @@ export abstract class BaseValidationComponent<
 
   get firstError(): Record<string, unknown> | undefined {
     return this.errors[0];
+  }
+
+  get mandatory(): boolean {
+    if (this.args.mandatory !== undefined) {
+      return this.args.mandatory;
+    }
+
+    const requiredFields = this.args.requiredFields;
+    if (!requiredFields) {
+      return false;
+    }
+    return requiredFields.includes(this.args.validationField);
   }
 
   // dotted path only

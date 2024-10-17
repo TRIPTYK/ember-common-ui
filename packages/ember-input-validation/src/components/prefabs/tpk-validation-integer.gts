@@ -3,11 +3,12 @@ import TpkValidationInputComponent, {
 } from '../tpk-validation-input.gts';
 import {
   type BaseValidationSignature,
-  BaseValidationComponent,
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
+import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
 
 export interface TpkValidationIntegerComponentSignature
   extends BaseValidationSignature {
@@ -26,16 +27,16 @@ export interface TpkValidationIntegerComponentSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationIntegerComponent extends BaseValidationComponent<TpkValidationIntegerComponentSignature> {
+export default class TpkValidationIntegerComponent extends Component<TpkValidationIntegerComponentSignature> {
 
 get min() {
   return this.args.unsigned ? 0 : this.args.min;
 }
-  
+
 @action
 preventNonNumericInput(event: KeyboardEvent) {
   if(event.key ==="." || event.key === ","){
-    event.preventDefault(); 
+    event.preventDefault();
   }
 }
 
@@ -50,16 +51,18 @@ preventNonNumericInput(event: KeyboardEvent) {
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
       @placeholder={{@placeholder}}
+      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      @mandatory={{@mandatory}}
-      data-has-error='{{this.hasError}}'
+      @requiredFields={{@requiredFields}}
       ...attributes
       data-test-input='integer'
       {{on 'keydown' this.preventNonNumericInput}}
       as |I|
     >
-      <I.Label />
+      <I.Label>
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
+      </I.Label>
       <I.Input />
       <TpkValidationErrorsComponent
         @errors={{I.errors}}

@@ -1,19 +1,22 @@
-import Component from "@glimmer/component";
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import type { BaseValidationSignature } from "../base";
+import { type BaseValidationSignature } from "../base.ts";
 import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../utils/mask-utils.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from "./mandatory-label.gts";
+import Component from "@glimmer/component";
 
-export interface TpkValidationIBANPrefabSignature 
+export interface TpkValidationIBANPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'>;
+  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'> & {
+    mandatory: boolean;
+  };
   Blocks: {
     default: [];
   };
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationIBANPrefab extends Component<TpkValidationIBANPrefabSignature> {
+export default class TpkValidationIBANPrefabComponent extends Component<TpkValidationIBANPrefabSignature> {
   ibanMaskByCountry = [{
     mask: 'BE&& &&&& &&&& &&&&',
     startsWith: 'BE',
@@ -50,7 +53,7 @@ export default class TpkValidationIBANPrefab extends Component<TpkValidationIBAN
   maskOptions =  {
     dispatch: getMaskForPrefixOrDefault,
   };
-  
+
 
   <template>
     <TpkValidationInputComponent
@@ -58,15 +61,18 @@ export default class TpkValidationIBANPrefab extends Component<TpkValidationIBAN
       @type="text"
       @onChange={{@onChange}}
       @classless={{@classless}}
-      @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
+      @mandatory={{@mandatory}}
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
+      @requiredFields={{@requiredFields}}
       ...attributes
     as |V|>
-      <V.Label />
+      <V.Label>
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+      </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}

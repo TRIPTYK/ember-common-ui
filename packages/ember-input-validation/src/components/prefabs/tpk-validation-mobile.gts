@@ -8,6 +8,7 @@ import type { TpkValidationInputComponentSignature } from '../tpk-validation-inp
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from './mandatory-label.gts';
 
 export interface TpkValidationMobilePrefabSignature
   extends BaseValidationSignature {
@@ -43,7 +44,7 @@ const masks = {
   '+352': '000 000 000', // Luxembourg
 };
 
-export default class TpkValidationMobilePrefab extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
+export default class TpkValidationMobilePrefabComponent extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
   defaultPrefix = { flag: '/BE.svg', code: '+32' };
   @tracked selectedPrefix = this.defaultPrefix;
   @tracked prefixes: Prefix[] = [
@@ -134,12 +135,7 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
         class={{unless @classless 'tpk-input-validation-label'}}
         data-test-label-not-yielded
       >
-        {{@label}}
-        {{#if @mandatory}}
-          <span>
-            *
-          </span>
-        {{/if}}
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </I.Label>
       <div
         class={{unless @classless 'tpk-input-validation-mobile'}}
@@ -151,33 +147,20 @@ export default class TpkValidationMobilePrefab extends BaseValidationComponent<T
           @selected={{this.selectedPrefix}}
           @onChange={{this.onChangeValuePrefix}}
           @classless={{@classless}}
-          ...attributes
           as |T|
         >
-          <T.Options as |Opts|>
-            <Opts as |O|>
-              <div class='flag'>
-                <img
-                  src={{this.getValueFromOption O.option 'flag'}}
-                  width='20'
-                />
-                <div>
-                  {{this.getValueFromOption O.option 'code'}}
-                </div>
-              </div>
-            </Opts>
-          </T.Options>
-          <T.Button>
+          <T.Option as |O|>
             <div class='flag'>
               <img
-                src={{this.getValueFromOption T.selected 'flag'}}
+                alt={{this.getValueFromOption O.option 'code'}}
+                src={{this.getValueFromOption O.option 'flag'}}
                 width='20'
               />
               <div>
-                {{this.getValueFromOption T.selected 'code'}}
+                {{this.getValueFromOption O.option 'code'}}
               </div>
             </div>
-          </T.Button>
+          </T.Option>
         </TpkSelectComponent>
         <I.Input inputmode='tel' />
       </div>

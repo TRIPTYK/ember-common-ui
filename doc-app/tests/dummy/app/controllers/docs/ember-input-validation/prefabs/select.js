@@ -11,14 +11,27 @@ function configureDisplay(obj, format) {
   };
 }
 
-export default class DocsEmberInputValidationPrefabsPasswordController extends Controller {
+export default class DocsEmberInputValidationPrefabsSelectController extends Controller {
   @tracked changeset = new ImmerChangeset({
-    value: '',
+    ceo: configureDisplay(
+      { firstname: 'Patrick', lastname: 'Pagnoulle' },
+      (option) => `${option.firstname} ${option.lastname}`,
+    ),
+  });
+
+  @tracked changesetBis = new ImmerChangeset({
+    ceo: undefined,
+  });
+
+  @tracked changesetTris = new ImmerChangeset({
+    ceo: [],
   });
 
   @tracked options = [
-    { label: 'Option 1', value: 'option-1' },
-    { label: 'Option 2', value: 'option-2' },
-    { label: 'Option 3', value: 'option-3' },
-  ].map((o) => configureDisplay(o, (option) => option.label));
+    { firstname: 'Patrick', lastname: 'Pagnoulle' },
+    { firstname: 'Romain', lastname: 'Verliefden' },
+    { firstname: 'Gilles', lastname: 'Bertrand' },
+  ].map((o) =>
+    configureDisplay(o, (option) => `${option.firstname} ${option.lastname}`),
+  );
 }

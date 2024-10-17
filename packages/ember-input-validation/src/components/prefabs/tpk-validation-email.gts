@@ -2,10 +2,11 @@ import TpkValidationInputComponent, {
   type TpkValidationInputComponentSignature,
 } from '../tpk-validation-input.gts';
 import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
+  type BaseValidationSignature
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
+import MandatoryLabelComponent from './mandatory-label.gts';
+import { type TOC } from '@ember/component/template-only';
 
 export interface TpkValidationEmailComponentSignature
   extends BaseValidationSignature {
@@ -26,8 +27,7 @@ export interface TpkValidationEmailComponentSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationEmailComponent extends BaseValidationComponent<TpkValidationEmailComponentSignature> {
-  <template>
+const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignature> = <template>
     <TpkValidationInputComponent
       @type='email'
       @label={{@label}}
@@ -35,26 +35,18 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
+      @mandatory={{@mandatory}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
-      @mandatory={{@mandatory}}
-      data-has-error='{{this.hasError}}'
+      @requiredFields={{@requiredFields}}
       ...attributes
       data-test-input='email'
-      
+
       as |V|
     >
-      <V.Label
-        class={{unless @classless 'tpk-input-validation-label'}}
-        data-test-label-not-yielded
-      >
-        {{@label}}
-        {{#if @mandatory}}
-          <span>
-            *
-          </span>
-        {{/if}}
+      <V.Label>
+        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
@@ -63,5 +55,6 @@ export default class TpkValidationEmailComponent extends BaseValidationComponent
       />
 
     </TpkValidationInputComponent>
-  </template>
-}
+  </template>;
+
+export default TpkValidationEmailPrefabComponent;

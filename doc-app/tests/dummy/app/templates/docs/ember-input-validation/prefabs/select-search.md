@@ -1,70 +1,96 @@
-# Select Search Component
+# Select Search
 
-This component provides a dropdown input field with a search capability and built-in validation. It allows users to select their favorite fast food from a list of options.
+This component provides a powerfull select with search and has built-in validation. It uses [ember-power-select](https://ember-power-select.com/).
 
-<DocsDemo as |demo|>
-<demo.example @name="tpk-select-search.hbs">
-<Prefabs::TpkValidationSelectSearch
-@label="Select your favorite fastfood"
-@changeset={{this.changeset}}
-@onSearch={{this.search}}
-@onChange={{this.onChange}}
-@options={{this.options}}
-@mandatory={{true}}
-@disabled={{false}}
-@validationField="fastfood"
-/>
-</demo.example>
+It uses also toString() in order to display the options and the selected element.
 
-<demo.snippet @name="tpk-select-search.hbs" />
-</DocsDemo>
-
-## Usage
-
-The `TpkValidationSelectSearch` component is designed to integrate seamlessly into your forms, providing a searchable dropdown for selecting options with validation support.
-
-### Properties
-
-- `@label`: The label for the dropdown field (default: "Select your favorite fastfood")
-- `@disabled`: Whether the input field is disabled (default: false)
-- `@mandatory`: To indicate if input is mandatory (default: false)
-- `@changeset`: The changeset object used for form validation.
-- `@options`: The list of options available in the dropdown. Each options should have a toString() method
+In example: 
 
 ```ts
-@tracked options = [
-  {
-    label: 'McDonald',
-    value: 'Burger',
-    other: 'Magie magie',
-    toString() {
-      return `${this.label} + ${this.other}`
-    }
-  }
-]
+  options = [
+    { label: 'Option 1', value: 'option-1', toString() { return `${this.label}`; } }
+  ];
 ```
 
-- `@validationField`: The field name in the changeset for validation (default: "fastfood").
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-select-search-prefab.hbs">
+      <Prefabs::TpkValidationSelectSearch
+        @label="Try to find out the best repository on Github"
+        @options={{this.options}}
+        @onSearch={{perform this.onSearch}}
+        @changeset={{this.changeset}} 
+        @validationField="repository"
+        @disabled={{false}}
+      />
+  </demo.example>
+  <demo.snippet @name="tpk-select-prefab.hbs"/>
+</DocsDemo>
 
-### Methods
+## Mandatory properties
 
-- `@onChange`: A function that updates the changeset when a user selects an option.
+- `@validationField`: The field name in the changeset for validation.
+- `@changeset`: The changeset object for form validation.
+- `@options`: The options to display in the select dropdown.
+- `@onSearch`: The action to be called when user's typing in the input.
 
-```typescript
-    @action
-    onChange(v: { label: string, value: string }): void {
-      this.changeset.set('fastfood', v.value);
-    }
-```
+## Optional properties
 
-- `@onSearch`: A function that handles the search logic. It filters the list of options based on the user input.
+- `@label`: The label for the input field.
+- `@placeholder`: The placeholder text for the input field.
+- `@disabled`: Whether the input field is disabled.
+- `@multiple`: Whether multiple selections are allowed.
+- `@initiallyOpened`: Whether the select dropdown is initially opened.
+- `@mandatory`: Whether the textarea field is mandatory.
+- `@allowClear`: Whether to show a button to clear the selection.
+- `@classless`: Whether to apply default classes to the component.
+- `@onChange`: The action to be called when the selection changes. 
+- `@labelComponent`: The custom component to use for the label.
+- `@selectedItemComponent`: The custom component to use for the selected item.
+- `@placeholderComponent`: The custom component to use for the placeholder
+- `@searchPlaceholder`: The placeholder text for the search input.
+- `@searchMessage`: Message shown in options list when no search has been entered and there are no options.
+- `@loadingMessage`: Message shown in options list when loading options.
+- `@noMatchesMessage`: Message shown in options list when no matches are found.
 
-```typescript
-    @action
-    onSearch(v: string): void {
-      this.set(
-        'options',
-        this.options.filter((o) => o.label.includes(v)),
-      );
-    }
-```
+## Examples
+
+### Select Search multiple with allowClear
+
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-select-search-prefab-multiple.hbs">
+      <Prefabs::TpkValidationSelectSearch
+        @label="Try to find out all the best repositories on Github"
+        @placeholder="Do the best choice"
+        @multiple={{true}}
+        @onSearch={{perform this.onSearch}}
+        @options={{this.options}}
+        @changeset={{this.changeset}} 
+        @validationField="repository"
+        @allowClear={{true}}
+        @disabled={{false}}
+      />
+  </demo.example>
+  <demo.snippet @name="tpk-select-search-prefab-multiple.hbs"/>
+</DocsDemo>
+
+### Select Search with all label translate and initially opened
+
+<DocsDemo as |demo|>
+  <demo.example @name="tpk-select-search-prefab-multiple.hbs">
+      <Prefabs::TpkValidationSelectSearch
+        @label="Essaie de trouver le meilleur dépôt sur Github"
+        @placeholder="Fais le bon choix"
+        @initiallyOpened={{true}}
+        @onSearch={{perform this.onSearch}}
+        @options={{this.options}}
+        @changeset={{this.changeset}} 
+        @validationField="repository"
+        @searchPlaceholder="Recherche un dépôt"
+        @searchMessage="Aucun dépôt trouvé pour le moment"
+        @loadingMessage="Chargement des dépôts..."
+        @noMatchesMessage="Aucun dépôt trouvé"
+        @disabled={{false}}
+      />
+  </demo.example>
+  <demo.snippet @name="tpk-select-search-prefab-multiple.hbs"/>
+</DocsDemo>

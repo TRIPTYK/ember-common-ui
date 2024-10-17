@@ -10,21 +10,7 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationInputComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
-    label: string;
-    type?: string;
-    classless?: boolean;
-    mask?: unknown;
-    maskOptions?: Record<string, unknown>;
-    unmaskValue?: boolean;
-    disabled?: boolean;
-    changeEvent?: 'input' | 'change';
-    step?: number;
-    min?: number;
-    max?: number;
-    mandatory?: boolean;
-    placeholder?: string;
-  };
+  Args: BaseValidationSignature['Args'] & TpkInputSignature['Args'];
   Blocks: {
     default: [
       {
@@ -33,6 +19,7 @@ export interface TpkValidationInputComponentSignature
         errors?: TpkValidationInputComponent['errors'];
         hasError: TpkValidationInputComponent['hasError'];
         firstError: TpkValidationInputComponent['firstError'];
+        mandatory: TpkValidationInputComponent['mandatory'];
       },
     ];
   };
@@ -70,39 +57,16 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
       data-has-error='{{this.hasError}}'
       as |I|
     >
-      {{#if (has-block)}}
-        {{yield
-          (hash
-            Input=I.Input
-            Label=I.Label
-            errors=this.errors
-            hasError=this.hasError
-            firstError=this.firstError
-          )
-        }}
-      {{else}}
-        <I.Label
-          class={{unless @classless 'tpk-input-validation-label'}}
-          data-test-label-not-yielded
-        >
-          {{@label}}
-          {{#if @mandatory}}
-            <span>
-              *
-            </span>
-          {{/if}}
-        </I.Label>
-        <I.Input
-          disabled={{@disabled}}
-          placeholder={{@placeholder}}
-          class={{unless @classless 'tpk-input-validation-input'}}
-          aria-autocomplete='none'
-          autocomplete='off'
-          autofill='off'
-          data-test-input-not-yielded
-        />
-        {{yield (hash errors=this.errors hasError=this.hasError firstError=this.firstError)}}
-      {{/if}}
+      {{yield
+        (hash
+          Input=I.Input
+          Label=I.Label
+          errors=this.errors
+          hasError=this.hasError
+          firstError=this.firstError
+          mandatory=this.mandatory
+        )
+      }}
     </TpkInput>
   </template>
 }

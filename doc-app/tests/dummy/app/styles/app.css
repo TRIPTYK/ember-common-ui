@@ -2,6 +2,7 @@
 @import url("ember-input/index.css");
 @import url("ember-input-validation/index.css");
 @import url("@eonasdan/tempus-dominus/dist/css/tempus-dominus.css");
+@import url("ember-power-select/vendor/ember-power-select.css");
 
 .button {
   display: inline-block;
@@ -33,6 +34,13 @@
   width: 1em;
   height: 1em;
   mask-size: contain;
+}
+
+.ember-power-select-options,
+.ember-power-select-options li,
+.ember-power-select-multiple-options,
+.ember-power-select-multiple-options li {
+  margin-bottom: 0 !important;
 }
 
 .tempus-dominus-widget.dark .icon {

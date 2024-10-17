@@ -32,6 +32,9 @@ Router.map(function () {
     });
     this.route('ember-input-validation', function () {
       this.route('prefabs', function () {
+        this.route('input');
+        this.route('textarea');
+        this.route('checkbox');
         this.route('password');
         this.route('mobile');
         this.route('iban');
@@ -42,6 +45,7 @@ Router.map(function () {
         this.route('email');
         this.route('national-number');
         this.route('select');
+        this.route('select-create');
         this.route('integer');
         this.route('number');
         this.route('timepicker');
