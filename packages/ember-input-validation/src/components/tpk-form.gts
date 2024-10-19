@@ -54,8 +54,8 @@ interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature {
-  Args: ChangesetFormComponentArgs<ImmerChangeset>;
+export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
+  Args: ChangesetFormComponentArgs<T>;
   Blocks: {
     default: [
       {
@@ -167,14 +167,13 @@ export interface ChangesetFormComponentSignature {
   Element: HTMLFormElement;
 }
 
-export default class ChangesetFormComponent extends Component<ChangesetFormComponentSignature> {
+export default class ChangesetFormComponent<T extends ImmerChangeset> extends Component<ChangesetFormComponentSignature<T>> {
   @tracked declare requiredFields: string[]
   @service declare tpkForm: TpkFormService;
 
-
   public constructor(
     owner: Owner,
-    args: ChangesetFormComponentArgs<ImmerChangeset>,
+    args: ChangesetFormComponentArgs<T>,
   ) {
     super(owner, args);
     assert(

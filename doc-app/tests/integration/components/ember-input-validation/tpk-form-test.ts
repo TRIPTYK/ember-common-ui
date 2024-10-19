@@ -38,7 +38,9 @@ module('Integration | Component | tpk-form', function (hooks) {
 
     await render(
       hbs`<TpkForm
-          @changeset={{this.changeset}} @validationSchema={{this.validationSchema}} @onSubmit={{this.onSubmit}}
+          @changeset={{this.changeset}}
+          @validationSchema={{this.validationSchema}}
+          @onSubmit={{this.onSubmit}}
           @reactive={{this.reactive}}
           @removeErrorsOnSubmit={{this.removeErrorsOnSubmit}}
           @executeOnValid={{this.executeOnValid}}
