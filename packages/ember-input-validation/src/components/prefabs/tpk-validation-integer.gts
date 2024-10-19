@@ -55,6 +55,7 @@ preventNonNumericInput(event: KeyboardEvent) {
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
       data-test-input='integer'
       {{on 'keydown' this.preventNonNumericInput}}

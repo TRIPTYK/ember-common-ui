@@ -38,6 +38,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       @unmaskValue={{@unmaskValue}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>

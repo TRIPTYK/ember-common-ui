@@ -50,6 +50,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @multipleDatesSeparator={{this.multipleDatesSeparator}}
       @requiredFields={{@requiredFields}}
       @mode="range"
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>

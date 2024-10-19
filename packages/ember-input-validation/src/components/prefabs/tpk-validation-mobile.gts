@@ -127,6 +127,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       @disabled={{@disabled}}
       @mask={{this.mask}}
       @unmaskValue={{true}}
+      anchorScrollUp={{@validationField}}
       ...attributes
       data-has-error='{{this.hasError}}'
       as |I|

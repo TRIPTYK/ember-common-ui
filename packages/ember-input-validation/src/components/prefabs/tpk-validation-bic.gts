@@ -33,6 +33,7 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
       @mask={{this.mask}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>

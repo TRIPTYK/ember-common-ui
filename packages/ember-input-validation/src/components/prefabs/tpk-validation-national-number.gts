@@ -28,6 +28,7 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
       @changeset={{@changeset}}
       @mask={{this.mask}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>

@@ -7,13 +7,11 @@ import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
 import { Schema } from 'yup';
 import { isFieldError } from '../utils/is-field-error.ts';
+import perform from 'ember-concurrency/helpers/perform';
 import {
   validateAndMapErrors,
   validateOneAndMapErrors,
 } from '../utils/validate-and-map.ts';
-import { on } from '@ember/modifier';
-import perform from 'ember-concurrency/helpers/perform';
-import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';
 import TpkValidationInputComponent from '../components/tpk-validation-input.gts';
 import TpkValidationTextareaComponent from '../components/tpk-validation-textarea.gts';
@@ -43,6 +41,9 @@ import type TpkValidationNationalNumberPrefabComponent from './prefabs/tpk-valid
 import type TpkValidationVATPrefabComponent from './prefabs/tpk-validation-vat.gts';
 import { getRequiredFields } from '../utils/get-required-fields.ts';
 import { tracked } from '@glimmer/tracking';
+import scrollOnError from '../modifiers/scroll-on-error.ts';
+import { on } from '@ember/modifier';
+import { hash } from '@ember/helper';
 
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
@@ -50,6 +51,7 @@ interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   validationSchema: Schema;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
+  autoScrollOnError?: boolean;
   disabled?: boolean;
   executeOnValid?: boolean;
 }
@@ -251,8 +253,12 @@ export default class ChangesetFormComponent<T extends ImmerChangeset> extends Co
     return this.args.changeset.get(path);
   };
 
+  get errorsForScroll() {
+    return (this.args.autoScrollOnError ?? true) ? this.args.changeset.errors : [];
+  }
+
   <template>
-    <form {{on 'submit' (perform this.submit)}} ...attributes>
+    <form {{on 'submit' (perform this.submit)}} {{scrollOnError this.errorsForScroll}} ...attributes>
       {{yield
         (hash
           TpkInput=(component

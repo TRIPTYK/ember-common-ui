@@ -7,6 +7,7 @@ import { object, string, array } from 'yup';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';
 import DummyInput from 'dummy/components/dummy-input';
 import { setupIntl } from 'ember-intl/test-support';
+import { timeout } from 'ember-concurrency';
 
 interface ComponentTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -28,6 +29,7 @@ module('Integration | Component | tpk-form', function (hooks) {
       validationSchema?: any;
       reactive?: boolean;
       removeErrorsOnSubmit?: boolean;
+      autoScrollOnError?: boolean;
     },
   ) {
     this.set('changeset', params?.changeset ?? new ImmerChangeset({}));
@@ -35,6 +37,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     this.set('validationSchema', params?.validationSchema ?? object());
     this.set('reactive', params?.reactive);
     this.set('removeErrorsOnSubmit', params?.removeErrorsOnSubmit);
+    this.set('autoScrollOnError', params?.autoScrollOnError);
 
     await render(
       hbs`<TpkForm
@@ -42,11 +45,12 @@ module('Integration | Component | tpk-form', function (hooks) {
           @validationSchema={{this.validationSchema}}
           @onSubmit={{this.onSubmit}}
           @reactive={{this.reactive}}
+          @autoScrollOnError={{this.autoScrollOnError}}
           @removeErrorsOnSubmit={{this.removeErrorsOnSubmit}}
           @executeOnValid={{this.executeOnValid}}
         as |F|>
-          <F.TpkInput @validationField="name" />
-          <F.TpkInput @type="email" @validationField="email" as |I|>
+          <F.TpkInputPrefab @validationField="name" />
+          <F.TpkInput anchorScrollUp="email" @type="email" @validationField="email" as |I|>
             <I.Label />
             <I.Input />
           </F.TpkInput>
@@ -64,7 +68,62 @@ module('Integration | Component | tpk-form', function (hooks) {
 
     await setupComponent.call(this);
 
-    assert.dom(`[data-test-dummy-input="name"]`).exists();
+    assert.dom(`[data-test-dummy-input="email"]`).exists();
+  });
+
+  module('Autoscroll on error', function (hooks) {
+    let originalScrollTo: any;
+    let callCount = 0;
+
+    hooks.beforeEach(function () {
+      originalScrollTo = window.scrollTo;
+      window.scrollTo = () => {
+        callCount++;
+      };
+    });
+
+    hooks.afterEach(function () {
+      window.scrollTo = originalScrollTo;
+      callCount = 0;
+    });
+
+    test<ComponentTestContext>('when autoScrollOnError is true, it scrolls the page to the first error', async function (assert) {
+      await setupComponent.call(this, {
+        validationSchema: object().shape({
+          email: string().email().required(),
+        }),
+        autoScrollOnError: true,
+      });
+
+      this.changeset.addError({
+        message: 'required',
+        value: false,
+        originalValue: true,
+        key: 'email',
+      });
+
+      await timeout(50);
+      assert.strictEqual(callCount, 1);
+    });
+
+    test<ComponentTestContext>('when autoScrollOnError is false, it does not scrolls the page to the first error', async function (assert) {
+      await setupComponent.call(this, {
+        validationSchema: object().shape({
+          email: string().email().required(),
+        }),
+        autoScrollOnError: false,
+      });
+
+      this.changeset.addError({
+        message: 'required',
+        value: false,
+        originalValue: true,
+        key: 'email',
+      });
+
+      await timeout(50);
+      assert.strictEqual(callCount, 0);
+    });
   });
 
   test<ComponentTestContext>('it validates the changeset when a field is set if reactive is true', async function (assert) {

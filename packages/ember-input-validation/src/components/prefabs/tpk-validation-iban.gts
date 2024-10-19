@@ -68,6 +68,7 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>

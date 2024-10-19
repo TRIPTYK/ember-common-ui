@@ -62,6 +62,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
+        anchorScrollUp={{@validationField}}
         ...attributes
       as |S|>
         <S.Option as |O|>
