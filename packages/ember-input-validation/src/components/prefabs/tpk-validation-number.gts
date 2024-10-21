@@ -46,6 +46,7 @@ get min() {
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
       data-test-input='number'
+      anchorScrollUp={{@validationField}}
       ...attributes
       as |I|
     >

@@ -54,6 +54,7 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "ember-concurrency": "~4.0.2",
+    "ember-lifeline": "^7.0.0",
     "ember-intl": "~6.5.5",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "~6.0.0",
@@ -147,6 +148,7 @@
       "./components/tpk-validation-radio.js": "./dist/_app_/components/tpk-validation-radio.js",
       "./components/tpk-validation-select.js": "./dist/_app_/components/tpk-validation-select.js",
       "./components/tpk-validation-textarea.js": "./dist/_app_/components/tpk-validation-textarea.js",
+      "./modifiers/scroll-on-error.js": "./dist/_app_/modifiers/scroll-on-error.js",
       "./services/tpk-form.js": "./dist/_app_/services/tpk-form.js"
     }
   },

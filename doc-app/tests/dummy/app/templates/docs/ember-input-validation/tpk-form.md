@@ -41,6 +41,7 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
 | executeOnValid | Boolean | true | Whether or not the changeset should be executed if the form is valid |
 | disabled | Boolean | false | Whether or not the form and the inputs should be disabled |
 | removeErrorsOnSubmit | Boolean | true | Whether or not the errors should be removed when the form is submitted |
+| autoScrollOnError | Boolean | true | Whether or not the form should scroll to the first error when the form is submitted |
 
 ## Yielded Components
 
