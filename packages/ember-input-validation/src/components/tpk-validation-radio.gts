@@ -21,7 +21,6 @@ export interface TpkValidationRadioComponentSignature
         errors: TpkValidationRadioComponent['errors'];
         hasError: TpkValidationRadioComponent['hasError'];
         firstError: TpkValidationRadioComponent['firstError'];
-        mandatory: TpkValidationRadioComponent['mandatory'];
       },
     ];
   };
@@ -73,7 +72,6 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError
-          mandatory=this.mandatory
         )
       }}
     </TpkRadio>

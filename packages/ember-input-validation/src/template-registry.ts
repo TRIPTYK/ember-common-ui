@@ -1,4 +1,4 @@
-import type TpkValidationRadioGroupComponent from '../declarations/components/tpk-validation-radio-group';
+import TpkValidationRadioGroupComponent from './components/tpk-validation-radio-group.gts';
 import TpkValidationCheckboxComponent from './components/tpk-validation-checkbox.gts';
 import TpkValidationDatepicker from './components/tpk-validation-datepicker.gts';
 import TpkValidationFileComponent from './components/tpk-validation-file.gts';

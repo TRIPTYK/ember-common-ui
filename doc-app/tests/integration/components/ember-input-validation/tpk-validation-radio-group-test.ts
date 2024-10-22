@@ -17,7 +17,7 @@ module(
       this.set('changeset', changeset);
 
       await render(hbs`
-      <TpkValidationRadioGroup @groupLabel="groupLabel" @changeset={{this.changeset}} @validationField="radio" as |R|>
+      <TpkValidationRadioGroup @mandatory={{true}} @groupLabel="groupLabel" @changeset={{this.changeset}} @validationField="radio" as |R|>
         <R.Radio @value={{'good'}} @label={{'good'}} data-test-radio="good" as |T| >
           <T.Input />
           <T.Label />

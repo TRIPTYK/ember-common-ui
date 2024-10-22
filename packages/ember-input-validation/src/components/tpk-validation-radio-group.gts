@@ -1,9 +1,10 @@
 import { action } from '@ember/object';
 import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
-import TpkRadio, { type TpkRadioSignature } from '@triptyk/ember-input/components/tpk-radio';
+import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';
 import { assert } from '@ember/debug';
+import MandatoryLabelComponent from './prefabs/mandatory-label.ts';
 
 export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {
@@ -11,18 +12,21 @@ export interface TpkValidationRadioGroupComponentSignature
     classless?: boolean;
     groupLabel?: string;
     disabled?: boolean;
-  } & TpkRadioSignature['Args'];
+    mandatory?: boolean;
+
+  };
   Blocks: {
     default: [
       {
         Radio: WithBoundArgs<
           typeof TpkRadio,
-          'classless' | 'selected' | 'disabled' | 'name' | 'value' | 'changeEvent' | 'onChange' | 'checked'>; 
+          'classless' | 'selected' | 'disabled' | 'name'  |'value' | 'onChange'>; 
         onChange: TpkValidationRadioGroupComponent['onChange'];
         errors: TpkValidationRadioGroupComponent['errors'];
         hasError: TpkValidationRadioGroupComponent['hasError'];
         firstError: TpkValidationRadioGroupComponent['firstError'];
         mandatory: TpkValidationRadioGroupComponent['mandatory'];
+        selected?: string;
       },      
     ]
   }
@@ -53,19 +57,20 @@ export default class TpkValidationRadioGroupComponent extends BaseValidationComp
       data-has-error='{{this.hasError}}'
       ...attributes
     >
-      <div class={{unless @classless 'tpk-validation-radio-group-label'}}>
-        {{@groupLabel}}
+      <div class={{unless @classless 'tpk-validation-radio-group-label'}} data-test-tpk-radio-group-label>
+        <MandatoryLabelComponent @label={{@groupLabel}} @mandatory={{@mandatory}} />
       </div>
-      
-      {{yield (hash 
+      <div class={{unless @classless 'tpk-validation-radio-group-group'}} >
+      {{yield (hash
           Radio=(component 
             TpkRadio
             classless=@classless
             disabled=@disabled
             name=@validationField
-            onChange=this.onChange
             selected=this.selected
+            onChange=this.onChange
           )
+          selected=this.selected
           onChange=this.onChange
           errors=this.errors
           hasError=this.hasError
@@ -73,6 +78,7 @@ export default class TpkValidationRadioGroupComponent extends BaseValidationComp
           mandatory=this.mandatory
         )
       }}
+      </div>
     </div>
   </template>
 }

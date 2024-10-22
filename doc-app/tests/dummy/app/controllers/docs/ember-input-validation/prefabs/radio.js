@@ -5,9 +5,8 @@ import { action } from '@ember/object';
 
 export default class DocsEmberInputValidationPrefabsRadioController extends Controller {
   @tracked changeset = new ImmerChangeset({
-    familly: '',
+    radio: '',
   });
-  @tracked famillyOptions = ['Daddy', 'Mommy', 'Baby'];
 
   @action
   onChange(changeset) {

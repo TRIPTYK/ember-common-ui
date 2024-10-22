@@ -3,11 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
-export default class DocsRadioValidationController extends Controller {
-  first = 'Ho yes!';
-  second = 'It the good choice!';
-  third = 'You don t regret it!';
-
+export default class DocsRadioGroupValidationController extends Controller {
   @tracked changeset = new ImmerChangeset({
     radio: undefined,
   });

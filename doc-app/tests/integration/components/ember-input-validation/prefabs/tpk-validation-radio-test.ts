@@ -34,7 +34,7 @@ module(
       assert.dom('[data-test-tpk-radio-input]').exists();
     });
 
-    test('test', async function (assert) {
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = new ImmerChangeset({
         radio: undefined,
       });

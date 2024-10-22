@@ -22,9 +22,10 @@ module(
         @validationField="radio" 
         @groupLabel="groupLabel"
         @mandatory={{true}}
-        as |V|>
-        <V.Radio @value="applati" @label="applati" />
-        <V.Radio @value="creux" @label="creux" />
+        
+        as |Radio|>
+        <Radio @value="applati" @label="applati" @selected="applati" />
+        <Radio @value="creux" @label="creux" />
       </Prefabs::TpkValidationRadioGroup>
       `,
       );
@@ -35,10 +36,26 @@ module(
         radio: '',
       });
       await renderComponent.call(this, changeset);
-      await this.pauseTest()
       assert.dom('[data-test-tpk-radio-group-label]').exists();
-      assert.dom('[data-test-tpk-radio-group]').exists();
-      assert.dom('[data-test-tpk-radio-group-input]').exists();
+      assert.dom('[data-test-tpk-radio]').exists();
+      assert.dom('[data-test-tpk-radio-input]').exists();
+    });
+
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = new ImmerChangeset({
+        radio: undefined,
+      });
+      changeset.addError({
+        message: 'required',
+        value: undefined,
+        originalValue: undefined,
+        key: 'radio',
+      });
+      await renderComponent.call(this, changeset);
+      this.set('changeset', changeset);
+      assert
+        .dom('[data-test-prefab-radio-group]')
+        .hasAttribute('data-has-error', 'true');
     });
   },
 );
