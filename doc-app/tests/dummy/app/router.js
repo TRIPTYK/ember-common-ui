@@ -35,6 +35,7 @@ Router.map(function () {
         this.route('input');
         this.route('textarea');
         this.route('checkbox');
+        this.route('radio');
         this.route('password');
         this.route('mobile');
         this.route('iban');

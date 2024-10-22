@@ -7,11 +7,11 @@ export interface TpkValidationRadioComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
-    name?: string;
     classless?: boolean;
     changeEvent?: 'input' | 'change';
-    value: string;
+    value?: string;
     disabled?: boolean;
+    selected?: string;
   };
   Blocks: {
     default: [
@@ -21,6 +21,7 @@ export interface TpkValidationRadioComponentSignature
         errors: TpkValidationRadioComponent['errors'];
         hasError: TpkValidationRadioComponent['hasError'];
         firstError: TpkValidationRadioComponent['firstError'];
+        mandatory: TpkValidationRadioComponent['mandatory'];
       },
     ];
   };
@@ -28,27 +29,40 @@ export interface TpkValidationRadioComponentSignature
 }
 
 export default class TpkValidationRadioComponent extends BaseValidationComponent<TpkValidationRadioComponentSignature> {
-  @action onChange(value: string) {
+  @action onChange(value: string) {  
     if (this.args.onChange) {
       return this.args.onChange(value);
     }
-    return this.args.changeset.set(this.args.validationField, value);
+    const changeset = this.args.changeset.set(this.args.validationField, value)
+    return changeset;
   }
 
   get value() {
-    return super.value?.toString();
+    return this.args.value
+  }
+
+  get label() {
+    if(!this.args.label && !this.args.value) {
+      throw new Error('label is required');
+    }
+    return this.args.label ?? this.args.value;
+  }
+
+  get name() {
+    return this.args.validationField;
   }
 
   <template>
     <TpkRadio
-      @selected={{this.value}}
+      @selected={{@selected}}
       @value={{@value}}
-      @name={{if @name @name @validationField}}
-      @label={{@label}}
+      @name={{this.name}}
+      @label={{this.label}}
       @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}
+      data-has-error='{{this.hasError}}'
       ...attributes
       as |I|
     >
@@ -59,6 +73,7 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
           errors=this.errors
           hasError=this.hasError
           firstError=this.firstError
+          mandatory=this.mandatory
         )
       }}
     </TpkRadio>

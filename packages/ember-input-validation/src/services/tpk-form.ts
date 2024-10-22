@@ -52,4 +52,5 @@ export default class TpkFormService extends Service {
   @tracked TpkIntegerPrefab = TpkValidationIntegerComponent;
   @tracked TpkNumberPrefab = TpkValidationNumberPrefabComponent;
   @tracked TpkMobilePrefab = TpkValidationMobilePrefabComponent;
+  @tracked TpkRadioGroup = TpkValidationRadioComponent;
 }
