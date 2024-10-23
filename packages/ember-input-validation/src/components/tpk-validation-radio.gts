@@ -7,11 +7,11 @@ export interface TpkValidationRadioComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
-    name?: string;
     classless?: boolean;
     changeEvent?: 'input' | 'change';
     value: string;
     disabled?: boolean;
+    selected?: string;
   };
   Blocks: {
     default: [
@@ -28,27 +28,33 @@ export interface TpkValidationRadioComponentSignature
 }
 
 export default class TpkValidationRadioComponent extends BaseValidationComponent<TpkValidationRadioComponentSignature> {
-  @action onChange(value: string) {
+  @action onChange(value: string) {  
     if (this.args.onChange) {
       return this.args.onChange(value);
     }
-    return this.args.changeset.set(this.args.validationField, value);
+    const changeset = this.args.changeset.set(this.args.validationField, value)
+    return changeset;
   }
 
   get value() {
-    return super.value?.toString();
+    return this.args.value
+  }
+
+  get name() {
+    return this.args.validationField;
   }
 
   <template>
     <TpkRadio
-      @selected={{this.value}}
+      @selected={{@selected}}
       @value={{@value}}
-      @name={{if @name @name @validationField}}
+      @name={{this.name}}
       @label={{@label}}
       @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}
+      data-has-error='{{this.hasError}}'
       ...attributes
       as |I|
     >
