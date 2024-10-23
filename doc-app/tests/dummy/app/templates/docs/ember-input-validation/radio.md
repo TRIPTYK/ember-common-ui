@@ -20,7 +20,7 @@ Ember validation radio
     <TpkValidationRadio 
       @changeset={{this.changeset}}
       @validationField="radio"
-      @label={{'No, click on me!'}}
+      @label='No, click on me!'
       @value={{this.second}} 
       as |T|>
       <T.Input />
@@ -30,7 +30,7 @@ Ember validation radio
     <TpkValidationRadio 
       @changeset={{this.changeset}}
       @validationField="radio"
-      @label={{'I am jalous if you do not click on me'}}
+      @label='I am jalous if you do not click on me'
       @value={{this.third}}
       @classless={{true}}
       as |T|>

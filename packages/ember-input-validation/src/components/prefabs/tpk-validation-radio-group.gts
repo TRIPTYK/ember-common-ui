@@ -43,7 +43,6 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
         classless=@classless
         disabled=@disabled
         mandatory=@mandatory
-        hasOnGroup=true
       )}}
      <TpkValidationErrorsComponent
       @errors={{V.errors}}

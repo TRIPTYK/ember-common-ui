@@ -4,7 +4,7 @@ import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';
 import { assert } from '@ember/debug';
-import MandatoryLabelComponent from './prefabs/mandatory-label.ts';
+import MandatoryLabelComponent from './prefabs/mandatory-label.gts';
 
 export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {

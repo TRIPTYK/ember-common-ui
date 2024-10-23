@@ -9,7 +9,7 @@ export interface TpkValidationRadioComponentSignature
     label: string;
     classless?: boolean;
     changeEvent?: 'input' | 'change';
-    value?: string;
+    value: string;
     disabled?: boolean;
     selected?: string;
   };
@@ -40,13 +40,6 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
     return this.args.value
   }
 
-  get label() {
-    if(!this.args.label && !this.args.value) {
-      throw new Error('label is required');
-    }
-    return this.args.label ?? this.args.value;
-  }
-
   get name() {
     return this.args.validationField;
   }
@@ -56,7 +49,7 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
       @selected={{@selected}}
       @value={{@value}}
       @name={{this.name}}
-      @label={{this.label}}
+      @label={{@label}}
       @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}

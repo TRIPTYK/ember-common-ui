@@ -6,11 +6,11 @@ Ember input validation/radio group content
 <DocsDemo as |demo|>
   <demo.example @name="radio-group-validation-src.hbs">
   <TpkValidationRadioGroup @mandatory={{true}} @groupLabel="This is my favority label" @changeset={{this.changeset}} @validationField="radio" as |R|>
-    <R.Radio @value={{'maybe'}} @label={{"it's me"}} data-test-radio="good" as |I| >
+    <R.Radio @value='maybe' @label="it's me" data-test-radio="good" as |I| >
       <I.Input />
       <I.Label />
     </R.Radio>
-    <R.Radio  @value={{'or not'}} @label="no it's me" data-test-radio="bad" as |I| >
+    <R.Radio  @value='or not' @label="no it's me" data-test-radio="bad" as |I| >
       <I.Input />
       <I.Label />
     </R.Radio>
