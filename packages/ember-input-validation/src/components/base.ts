@@ -9,8 +9,6 @@ export interface BaseValidationSignature {
     validationField: string;
     mandatory?: boolean;
     requiredFields?: string[];
-    // eslint-disable-next-line no-unused-vars
-    onChange?: (value: unknown) => unknown;
   };
   Element: HTMLDivElement;
   Blocks: {

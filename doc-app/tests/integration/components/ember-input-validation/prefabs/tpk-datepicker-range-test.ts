@@ -18,7 +18,7 @@ module(
 
     async function renderComponentAndReturnChangeset(this: TestContext) {
       const immerChangeset = new ImmerChangeset({
-        range: undefined,
+        range: null,
       });
       this.set('changeset', immerChangeset);
 

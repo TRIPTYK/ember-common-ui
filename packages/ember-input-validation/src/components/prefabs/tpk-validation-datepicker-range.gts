@@ -1,13 +1,13 @@
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponentSignature } from "../tpk-validation-datepicker.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import { tracked } from "@glimmer/tracking";
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
 export interface TpkValidationDatepickerRangePrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationDatepickerComponentSignature['Args'], 'mask' | 'promptTimeOnDateChange' | 'useCurrent' | 'noCalendar' | 'enableTime' | 'stepping' | 'enableSecond' | 'disabledTimeIntervals' | 'disabledHours' | 'enabledHours'>;
+  Args: Omit<TpkValidationDatepickerComponentSignature['Args'], 'value' | 'promptTimeOnDateChange' | 'useCurrent' | 'noCalendar' | 'enableTime' | 'stepping' | 'enableSecond' | 'disabledTimeIntervals' | 'disabledHours' | 'enabledHours'>;
   Blocks: {
     default: [];
   };

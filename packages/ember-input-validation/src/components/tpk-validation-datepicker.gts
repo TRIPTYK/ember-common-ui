@@ -10,14 +10,12 @@ import TpkDatepicker, {
   type TpkDatepickerSignature,
 } from '@triptyk/ember-input/components/tpk-datepicker';
 
-export interface TpkValidationDatepickerComponentSignature
-  extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & {
+export interface TpkValidationDatepickerComponentSignature extends BaseValidationSignature {
+  Args: Omit<BaseValidationSignature['Args'] & TpkDatepickerInput & {
     label: string;
-    classless?: boolean;
-    disabled?: boolean;
     mask?: string;
-  } & TpkDatepickerInput;
+    onChange?: (value: Date[]) => void;
+  }, 'value'>;
   Blocks: {
     default: [
       {
@@ -46,17 +44,17 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
         ? dates
         : dates[0];
     if (this.args.onChange) {
-      return this.args.onChange(date);
+      return this.args.onChange(dates);
     }
     return this.args.changeset.set(this.args.validationField, date);
   }
 
   get value() {
     assert(
-      `@value must be a string, date or undefined for @${this.args.validationField}`,
+      `@value must be a string, date or null for @${this.args.validationField}`,
       typeof super.value === 'string' ||
         super.value instanceof Date ||
-        super.value === undefined,
+        super.value === null,
     );
     return super.value;
   }

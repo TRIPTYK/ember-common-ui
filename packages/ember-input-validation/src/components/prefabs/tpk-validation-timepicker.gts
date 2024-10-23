@@ -7,7 +7,7 @@ import Component from '@glimmer/component';
 
 export interface TpkValidationTimepickerPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationDatepickerComponentSignature['Args'], 'mask' | 'noCalendar' | 'enableTime' | 'mode' | 'multipleDatesSeparator' | 'promptTimeOnDateChange' | 'useCurrent' | 'todayButton' | 'closeButton' | 'keepOpen' | 'minDate' | 'maxDate' | 'daysOfWeekDisabled' | 'disabledDates' | 'viewMode'>;
+  Args: Omit<TpkValidationDatepickerComponentSignature['Args'], 'value' | 'noCalendar' | 'enableTime' | 'mode' | 'multipleDatesSeparator' | 'promptTimeOnDateChange' | 'useCurrent' | 'todayButton' | 'closeButton' | 'keepOpen' | 'minDate' | 'maxDate' | 'daysOfWeekDisabled' | 'disabledDates' | 'viewMode'>;
   Blocks: {
     default: [];
   };

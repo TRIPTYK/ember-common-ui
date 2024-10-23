@@ -10,7 +10,9 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationInputComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkInputSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkInputSignature['Args'] & {
+    onChange?: (value: string | number | Date | null, e: Event) => void;
+  };
   Blocks: {
     default: [
       {
@@ -28,9 +30,9 @@ export interface TpkValidationInputComponentSignature
 
 export default class TpkValidationInputComponent extends BaseValidationComponent<TpkValidationInputComponentSignature> {
   @tracked showPassword = false;
-  @action onChange(value: string | number | Date | null) {
+  @action onChange(value: string | number | Date | null, e: Event) {
     if (this.args.onChange) {
-      return this.args.onChange(value);
+      return this.args.onChange(value, e);
     }
     return this.args.changeset.set(this.args.validationField, value);
   }

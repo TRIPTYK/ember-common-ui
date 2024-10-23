@@ -12,6 +12,7 @@ export interface TpkValidationRadioComponentSignature
     changeEvent?: 'input' | 'change';
     value: string;
     disabled?: boolean;
+    onChange?: (value: string) => void;
   };
   Blocks: {
     default: [

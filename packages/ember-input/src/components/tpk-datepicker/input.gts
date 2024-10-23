@@ -9,7 +9,7 @@ export interface TpkDatepickerInput {
   classless?: boolean;
   disabled?: boolean;
   placeholder?: string;
-  value?: Date | string;
+  value: Date | string | null;
   stepping?: number;
   mode?: 'multiple' | 'range';
   multipleDatesSeparator?: string;
@@ -49,12 +49,16 @@ export class HTMLInputTDElement extends HTMLInputElement {
 export default class TpkDatepickerNewInputComponent extends Component<TpkDatepickerInputComponentSignature> {
   @tracked declare datepicker: TempusDominus;
 
+  get value() {
+    return this.args.value === null ? undefined : this.args.value;
+  }
+
   @action
   setTempusDominus(element: HTMLDivElement) {
     const input = element.querySelector(`#${this.args.guid}`) as HTMLElement;
     this.datepicker = new TempusDominus(input, {
       container: element,
-      defaultDate: this.args.value as DateTime | undefined,
+      defaultDate: this.value as DateTime | undefined,
       useCurrent: this.args.useCurrent === true ? true : false,
       allowInputToggle: false,
       dateRange: this.args.mode === 'range' ? true : false,

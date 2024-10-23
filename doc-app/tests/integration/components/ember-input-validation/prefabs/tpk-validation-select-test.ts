@@ -57,6 +57,18 @@ module(
       assert.dom('.ember-power-select-option').hasText('toString() method');
     });
 
+    test('Applies the direct values from array for displaying options', async function (assert) {
+      await renderComponent.call(this, [
+        'Beatport',
+        'Spotify',
+        'Apple Music',
+        'Deezer',
+        'Soundcloud',
+      ]);
+      await click('.ember-power-select-trigger');
+      assert.dom('.ember-power-select-option').hasText('Beatport');
+    });
+
     test('Applies the toString() method for displaying selected element', async function (assert) {
       let obj = {
         toString() {
