@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "git-conventional-commits": "^2.6.7",
+    "lefthook": "^1.8.2",
     "lerna": "^8.1.8"
   },
   "packageManager": "pnpm@9.12.2",
