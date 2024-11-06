@@ -14,6 +14,12 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
+      git-conventional-commits:
+        specifier: ^2.6.7
+        version: 2.6.7
+      lefthook:
+        specifier: ^1.8.2
+        version: 1.8.2
       lerna:
         specifier: ^8.1.8
         version: 8.1.8(encoding@0.1.13)
@@ -6615,6 +6621,10 @@ packages:
     resolution: {integrity: sha512-qc8h1KIQbJpp+241id3GuAtkdyJ+IK+LIVtkiFTRKRrmddDzs3SI9CvP1QYmWBFvm1I/PWRwj//of8bgAc0ltA==}
     engines: {node: '>=4'}
 
+  git-conventional-commits@2.6.7:
+    resolution: {integrity: sha512-n6QJJpP6s10GJUTXZp0Mce/W8aL8RK1J2/EDNjZYQRSe7vA2h20Ria2sd1LUISS2oPzKr0218/iVdrnGakUVtQ==}
+    hasBin: true
+
   git-hooks-list@1.0.3:
     resolution: {integrity: sha512-Y7wLWcrLUXwk2noSka166byGCvhMtDRpgHdzCno1UQv/n/Hegp++a2xBWJL1lJarnKD3SWaljD+0z1ztqxuKyQ==}
 
@@ -7573,6 +7583,60 @@ packages:
   lcid@3.1.1:
     resolution: {integrity: sha512-M6T051+5QCGLBQb8id3hdvIW8+zeFV2FyBGFS9IEK5H9Wt4MueD4bW1eWikpHgZp+5xR3l5c8pZUkQsIA0BFZg==}
     engines: {node: '>=8'}
+
+  lefthook-darwin-arm64@1.8.2:
+    resolution: {integrity: sha512-g41SoFUv8SzHpG1NOPkHUEPhC1tJM5FF3Vo+HESmLmL9cDfd7JncHFPy59rVnC9Q8nOS0rvoik5HTq+3/wcfww==}
+    cpu: [arm64]
+    os: [darwin]
+
+  lefthook-darwin-x64@1.8.2:
+    resolution: {integrity: sha512-IlCm4PrA/aAZ1MChiExYTbladC87GaxmYHOMHCeChLecqn+lypAuiYLgf7w5r2s3MjH5rbXImfU925NRKi6RXQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  lefthook-freebsd-arm64@1.8.2:
+    resolution: {integrity: sha512-f7AIvuIEXUUR1ZutIFxjYKFDAVUBrdsLm+cbwOCjdfpJh7j2Fjg6nKXbDcglPXlX9Ix+nw9pHbJE2DAgzkI1Vw==}
+    cpu: [arm64]
+    os: [freebsd]
+
+  lefthook-freebsd-x64@1.8.2:
+    resolution: {integrity: sha512-DSDL64fRLSNSWOa1y2bGXwXPiwU1fbAXpj63j6jeQ0jkgu6k+3XL/PBXKh80cI6MvCKz/KQKCtIencXZZ2Ua4Q==}
+    cpu: [x64]
+    os: [freebsd]
+
+  lefthook-linux-arm64@1.8.2:
+    resolution: {integrity: sha512-sJ95X+ZH8ayIE7ApiGEq5ZF9KGA+eKiocJU+536bLbAIHw5WjGmv2x3llFqUxH/zAmLe3k542oZ4d84wEO0EGQ==}
+    cpu: [arm64]
+    os: [linux]
+
+  lefthook-linux-x64@1.8.2:
+    resolution: {integrity: sha512-2eirc61M0WjlbSHamAgGf9iWsQTYz4IT6PAPm66vUaeG34+5D66xFicIV6pK2niRGUOPtNs8Kt4lboKtW+ba5g==}
+    cpu: [x64]
+    os: [linux]
+
+  lefthook-openbsd-arm64@1.8.2:
+    resolution: {integrity: sha512-ZMop7htaSwP3MiL06WHUV36EX05N33o0WzNzC8NO5KEubn8Z74vbXcaq6qYezmgi+erkG6dtTnlbcZy5PFvFIA==}
+    cpu: [arm64]
+    os: [openbsd]
+
+  lefthook-openbsd-x64@1.8.2:
+    resolution: {integrity: sha512-jXFoxmpYXO6ZafgQJVvk3MYlRgOBJD3n7H8A1Bj1E2yrLzOhKevUKlTNwZTxQdxlnvoo33yD6SjVSujZavEGpw==}
+    cpu: [x64]
+    os: [openbsd]
+
+  lefthook-windows-arm64@1.8.2:
+    resolution: {integrity: sha512-hsQUSk6kmB8E0UMD3Mk6ROoa7qv6XmigfPsn9tFjmbZ2aO+kpBfWitZ5v+gcjNp44yaECs3YTMIfv3QFwXlRCw==}
+    cpu: [arm64]
+    os: [win32]
+
+  lefthook-windows-x64@1.8.2:
+    resolution: {integrity: sha512-YypbMhvgAtkL7y+O3OlF81vwua7X4jloBz5hO3fILAuzaGAiPE1VbeuqRweV8VuKK4L/ZVVKqmpesygBUNDp9w==}
+    cpu: [x64]
+    os: [win32]
+
+  lefthook@1.8.2:
+    resolution: {integrity: sha512-lMXbcFHNDr+gzy/7ghuJDVB/Yyycj+ZL/7pN3Gm/s5Xqrc9+5sj3IrDAPylcEJ1cKCbUnXbwESrhhqpcYv4d4g==}
+    hasBin: true
 
   lerna@8.1.8:
     resolution: {integrity: sha512-Rmo5ShMx73xM2CUcRixjmpZIXB7ZFlWEul1YvJyx/rH4onAwDHtUGD7Rx4NZYL8QSRiQHroglM2Oyq+WqA4BYg==}
@@ -14168,6 +14232,26 @@ snapshots:
       '@types/ember__utils': 3.16.8
       '@types/rsvp': 4.0.9
 
+  '@types/ember@4.0.11':
+    dependencies:
+      '@types/ember__application': 4.0.11(@babel/core@7.25.2)
+      '@types/ember__array': 4.0.10(@babel/core@7.25.2)
+      '@types/ember__component': 4.0.22(@babel/core@7.25.2)
+      '@types/ember__controller': 4.0.12(@babel/core@7.25.2)
+      '@types/ember__debug': 4.0.8
+      '@types/ember__engine': 4.0.11
+      '@types/ember__error': 4.0.6
+      '@types/ember__object': 4.0.12(@babel/core@7.25.2)
+      '@types/ember__polyfills': 4.0.6
+      '@types/ember__routing': 4.0.22(@babel/core@7.25.2)
+      '@types/ember__runloop': 4.0.10
+      '@types/ember__service': 4.0.9
+      '@types/ember__string': 3.0.15
+      '@types/ember__template': 4.0.7
+      '@types/ember__test': 4.0.6(@babel/core@7.25.2)
+      '@types/ember__utils': 4.0.7
+      '@types/rsvp': 4.0.9
+
   '@types/ember@4.0.11(@babel/core@7.25.2)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.25.2)
@@ -14200,7 +14284,7 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.25.2)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.25.2)
-      '@types/ember': 4.0.11(@babel/core@7.25.2)
+      '@types/ember': 4.0.11
       '@types/ember__engine': 4.0.11
       '@types/ember__object': 4.0.12(@babel/core@7.25.2)
       '@types/ember__owner': 4.0.9
@@ -14305,6 +14389,10 @@ snapshots:
 
   '@types/ember__runloop@3.16.10': {}
 
+  '@types/ember__runloop@4.0.10':
+    dependencies:
+      '@types/ember': 4.0.11
+
   '@types/ember__runloop@4.0.10(@babel/core@7.25.2)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.2)
@@ -14342,6 +14430,10 @@ snapshots:
       - supports-color
 
   '@types/ember__utils@3.16.8': {}
+
+  '@types/ember__utils@4.0.7':
+    dependencies:
+      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.25.2)':
     dependencies:
@@ -15715,7 +15807,7 @@ snapshots:
       broccoli-asset-rewrite: 2.0.0
       broccoli-filter: 1.3.0
       broccoli-persistent-filter: 1.4.6
-      json-stable-stringify: 1.1.0
+      json-stable-stringify: 1.0.2
       minimatch: 3.1.2
       rsvp: 3.6.2
     transitivePeerDependencies:
@@ -17679,7 +17771,7 @@ snapshots:
       fs-tree-diff: 2.0.1
       hash-for-dep: 1.5.1
       heimdalljs-logger: 0.1.10
-      json-stable-stringify: 1.1.0
+      json-stable-stringify: 1.1.1
       semver: 7.6.3
       silent-error: 1.1.1
       strip-bom: 4.0.0
@@ -19680,6 +19772,11 @@ snapshots:
 
   git-config-path@2.0.0: {}
 
+  git-conventional-commits@2.6.7:
+    dependencies:
+      yaml: 2.3.4
+      yargs: 17.7.2
+
   git-hooks-list@1.0.3: {}
 
   git-raw-commits@3.0.0:
@@ -20750,6 +20847,49 @@ snapshots:
   lcid@3.1.1:
     dependencies:
       invert-kv: 3.0.1
+
+  lefthook-darwin-arm64@1.8.2:
+    optional: true
+
+  lefthook-darwin-x64@1.8.2:
+    optional: true
+
+  lefthook-freebsd-arm64@1.8.2:
+    optional: true
+
+  lefthook-freebsd-x64@1.8.2:
+    optional: true
+
+  lefthook-linux-arm64@1.8.2:
+    optional: true
+
+  lefthook-linux-x64@1.8.2:
+    optional: true
+
+  lefthook-openbsd-arm64@1.8.2:
+    optional: true
+
+  lefthook-openbsd-x64@1.8.2:
+    optional: true
+
+  lefthook-windows-arm64@1.8.2:
+    optional: true
+
+  lefthook-windows-x64@1.8.2:
+    optional: true
+
+  lefthook@1.8.2:
+    optionalDependencies:
+      lefthook-darwin-arm64: 1.8.2
+      lefthook-darwin-x64: 1.8.2
+      lefthook-freebsd-arm64: 1.8.2
+      lefthook-freebsd-x64: 1.8.2
+      lefthook-linux-arm64: 1.8.2
+      lefthook-linux-x64: 1.8.2
+      lefthook-openbsd-arm64: 1.8.2
+      lefthook-openbsd-x64: 1.8.2
+      lefthook-windows-arm64: 1.8.2
+      lefthook-windows-x64: 1.8.2
 
   lerna@8.1.8(encoding@0.1.13):
     dependencies:
