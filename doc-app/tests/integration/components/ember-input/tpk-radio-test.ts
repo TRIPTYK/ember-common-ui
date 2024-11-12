@@ -7,7 +7,7 @@ import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-import CatchState from 'dummy/tests/dummy/app/services/catch-state';
+import CatchState from 'doc-app/services/catch-state';
 
 module('Integration | Component | ui/radio', function (hooks) {
   setupRenderingTest(hooks);
@@ -16,7 +16,7 @@ module('Integration | Component | ui/radio', function (hooks) {
     this.set('setRadio', () => {});
 
     await render(hbs`
-      <TpkRadio 
+      <TpkRadio
         data-test-radio
         @label='Label'
         @classless={{this.classless}}
@@ -82,6 +82,7 @@ module('Integration | Component | ui/radio', function (hooks) {
       </TpkRadio>`,
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { state }: { state: any } = (
       getOwner(this) as ApplicationInstance
     ).lookup('service:catch-state') as CatchState;

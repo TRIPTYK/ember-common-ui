@@ -1,15 +1,9 @@
-/* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { findAll, render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
-import { getOwner } from '@ember/application';
-import ApplicationInstance from '@ember/application/instance';
-import { a11yAudit } from 'ember-a11y-testing/test-support';
 import { hbs } from 'ember-cli-htmlbars';
-import CatchState from 'dummy/tests/dummy/app/services/catch-state';
 import { timeout } from 'ember-concurrency';
-import { settled } from '@ember/test-helpers';
 
 module('Integration | Component | tpk-button', function (hooks) {
   setupRenderingTest(hooks);

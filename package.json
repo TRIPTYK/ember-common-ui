@@ -1,9 +1,6 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "build": "pnpm --filter @triptyk/ember-input run build && pnpm --filter @triptyk/ember-input-validation run build && pnpm --filter @triptyk/ember-ui run build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
@@ -23,14 +20,14 @@
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "git-conventional-commits": "^2.6.7",
-    "lefthook": "^1.8.2",
-    "lerna": "^8.1.8"
+    "concurrently": "catalog:",
+    "git-conventional-commits": "catalog:",
+    "lefthook": "catalog:",
+    "lerna": "catalog:"
   },
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.12.3",
   "volta": {
     "node": "20.18.0",
-    "pnpm": "9.12.2"
+    "pnpm": "9.12.3"
   }
 }

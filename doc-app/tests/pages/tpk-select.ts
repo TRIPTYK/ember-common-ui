@@ -22,7 +22,7 @@ export default create({
   button: create({
     scope: '.tpk-select-button',
     click: clickable(),
-    hasFocus: getter(function (this: any) {
+    hasFocus: getter(function () {
       return document.activeElement === findOne(this);
     }),
     isExpanded: attribute('aria-expanded'),

@@ -2,16 +2,13 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import {
-  type TestContext,
-  fillIn,
-  click,
-  findAll,
-  render,
-  settled,
-} from '@ember/test-helpers';
+import { type TestContext, fillIn, render, settled } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { ImmerChangeset } from 'ember-immer-changeset';
+
+interface ThisTestContext extends TestContext {
+  changeset: ImmerChangeset;
+}
 
 module(
   'Integration | Component | Prefabs | tpk-validation-currency',
@@ -48,12 +45,12 @@ module(
       assert.dom('input').hasAttribute('type', 'text');
     });
 
-    test('Should set value as number', async function (assert) {
+    test('Should set value as number', async function (this: ThisTestContext, assert) {
       await renderComponentAndReturnChangeset.call(this);
       assert.strictEqual(this.changeset.get('value'), 123.56);
     });
 
-    test('Should set value as number when value change', async function (assert) {
+    test('Should set value as number when value change', async function (this: ThisTestContext, assert) {
       await renderComponentAndReturnChangeset.call(this);
       await fillIn('input', '123.45');
       assert.strictEqual(this.changeset.get('value'), 123.45);

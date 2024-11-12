@@ -60,6 +60,7 @@ export default class TpkActionsMenuComponent extends Component<TpkActionsMenuEle
     <div
       class={{this.actionsMenuClass}}
       data-test-actions-menu
+      {{!-- @glint-ignore --}}
       {{onClickOutside this.closeMenu}}
       {{on 'keyup' this.handleKeyUp}}
       ...attributes
