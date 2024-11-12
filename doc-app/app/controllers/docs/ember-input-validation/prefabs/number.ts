@@ -3,40 +3,40 @@ import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
-export default class DocsEmberInputValidationPrefabsIntegerController extends Controller {
+export default class DocsEmberInputValidationPrefabsNumberController extends Controller {
   @tracked changeset = new ImmerChangeset({
-    integer: 0,
-    uInteger: 0,
+    number: 0,
+    uNumber: 0,
   });
 
   @action
-  onChangeInteger(value) {
-    this.changeset.set('integer', value);
+  onChangeNumber(value: number) {
+    this.changeset.set('number', value);
     this.changeset.save();
-    if (!this.changeset.get('integer')) {
+    if (!this.changeset.get('number')) {
       this.changeset.addError({
         message: "You didn't say the magic word?",
         value: '',
         originalValue: '',
-        key: 'integer',
+        key: 'number',
       });
     } else {
-      this.changeset.removeError('integer');
+      this.changeset.removeError('number');
     }
   }
 
-  onChangeUInteger(value) {
-    this.changeset.set('uInteger', value);
+  onChangeUNumber(value: number) {
+    this.changeset.set('uNumber', value);
     this.changeset.save();
-    if (!this.changeset.get('uInteger')) {
+    if (!this.changeset.get('uNumber')) {
       this.changeset.addError({
         message: "You didn't say the magic word?",
         value: '',
         originalValue: '',
-        key: 'uInteger',
+        key: 'uNumber',
       });
     } else {
-      this.changeset.removeError('uInteger');
+      this.changeset.removeError('uNumber');
     }
   }
 }

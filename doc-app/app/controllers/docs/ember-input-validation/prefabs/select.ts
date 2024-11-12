@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 
-function configureDisplay(obj, format) {
+function configureDisplay<T>(obj: T, format: (obj: T) => string) {
   return {
     ...obj,
     toString() {

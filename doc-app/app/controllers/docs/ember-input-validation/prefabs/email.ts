@@ -10,7 +10,7 @@ export default class DocsEmberInputValidationPrefabsEmailController extends Cont
   });
 
   @action
-  onChange(value) {
+  onChange(value: string) {
     this.changeset.set('email', value);
     this.changeset.save();
     if (this.changeset.get('email') === '') {

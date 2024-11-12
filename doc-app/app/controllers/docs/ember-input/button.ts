@@ -10,9 +10,4 @@ export default class DocsTpkButtonController extends Controller {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     this.counter++;
   }
-
-  @action
-  onClose() {
-    this.isOpen = false;
-  }
 }

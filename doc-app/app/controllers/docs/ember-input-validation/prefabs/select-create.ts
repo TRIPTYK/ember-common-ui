@@ -3,7 +3,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-function configureDisplay(obj, format) {
+function configureDisplay<T>(obj: T, format: (obj: T) => string) {
   return {
     ...obj,
     toString() {
@@ -12,11 +12,20 @@ function configureDisplay(obj, format) {
   };
 }
 
+interface ChangesetType {
+  ceo?: { firstname: string };
+}
+
+interface ChangesetBisType {
+  ceo: { firstname: string }[];
+}
+
 export default class DocsEmberInputValidationPrefabsSelectCreateController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  @tracked changeset = new ImmerChangeset<ChangesetType>({
     ceo: undefined,
   });
-  @tracked changesetBis = new ImmerChangeset({
+
+  @tracked changesetBis = new ImmerChangeset<ChangesetBisType>({
     ceo: [],
   });
 
@@ -27,7 +36,7 @@ export default class DocsEmberInputValidationPrefabsSelectCreateController exten
   ].map((o) => configureDisplay(o, (option) => option.firstname));
 
   @action
-  onCreate(value) {
+  onCreate(value: string) {
     const newValue = configureDisplay(
       { firstname: value },
       (option) => option.firstname,
@@ -37,7 +46,7 @@ export default class DocsEmberInputValidationPrefabsSelectCreateController exten
   }
 
   @action
-  onCreateBis(value) {
+  onCreateBis(value: string) {
     console.log(value);
     const newValue = configureDisplay(
       { firstname: value },
@@ -48,13 +57,13 @@ export default class DocsEmberInputValidationPrefabsSelectCreateController exten
   }
 
   @action
-  buildSuggestion(term) {
+  buildSuggestion(term: string) {
     return `Créer "${term}"...`;
   }
 
   @action
-  showCreateWhen(term) {
-    let existingOption = this.options.find((name) => name.firstname === term);
+  showCreateWhen(term: string) {
+    const existingOption = this.options.find((name) => name.firstname === term);
     return !existingOption;
   }
 }

@@ -10,7 +10,7 @@ export default class DocsCheckboxValidationController extends Controller {
   });
 
   @action
-  onChange(value) {
+  onChange(value: boolean) {
     this.changeset.set('checked', value);
     this.changeset.save();
     if (!this.changeset.get('checked')) {
