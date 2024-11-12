@@ -3,11 +3,10 @@ import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 
 export default class DocsTpkCheckboxController extends Controller {
-  @tracked value =
-    `Tomster was the first of many friendly faces of the Ember project and community... Read more at https://emberjs.com/mascots/`;
+  @tracked checked = false;
 
   @action
-  onChange(value) {
-    this.value = value;
+  onChange(checked: boolean) {
+    this.checked = checked;
   }
 }

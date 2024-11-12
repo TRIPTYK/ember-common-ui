@@ -6,7 +6,7 @@ export default class DocsTpkInputController extends Controller {
   @tracked value = '';
 
   @action
-  setRadio(value) {
+  setRadio(value: string) {
     this.value = value;
   }
 }

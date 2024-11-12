@@ -4,19 +4,29 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { restartableTask, timeout } from 'ember-concurrency';
 
+interface Option {
+  name: string;
+  toString(): string;
+}
+
+interface Changeset {
+  repository: Option | undefined;
+}
+
 export default class DocsEmberInputValidationPrefabsSelectSearchController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  @tracked changeset = new ImmerChangeset<Changeset>({
     repository: undefined,
   });
-  @tracked options = [];
+  @tracked options: Option[] = [];
 
   @restartableTask
-  *onSearch(value) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  *onSearch(value: string): any {
     yield timeout(300);
     const response = yield fetch(
       `https://api.github.com/search/repositories?q=${value}`,
     );
-    const json = yield response.json();
+    const json: { items: { full_name: string }[] } = yield response.json();
     this.options = json.items.map((item) => ({
       name: item.full_name,
       toString() {
@@ -26,7 +36,7 @@ export default class DocsEmberInputValidationPrefabsSelectSearchController exten
   }
 
   @action
-  onChange(value) {
+  onChange(value: Option) {
     this.changeset.set('repository', value);
   }
 }

@@ -10,7 +10,7 @@ export default class DocsInputValidationController extends Controller {
   });
 
   @action
-  onChange(value) {
+  onChange(value: string) {
     this.changeset.set('delete_text', value);
     this.changeset.save();
     if (this.changeset.get('delete_text') === '') {

@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 
 export default class DocsStackListController extends Controller {
-  @tracked data = [];
+  @tracked data: string[] = [];
   titleForAdd = 'add element to list';
   contentData = 'element added';
 
@@ -14,7 +14,7 @@ export default class DocsStackListController extends Controller {
   }
 
   @action
-  onRemoveData(index) {
+  onRemoveData(index: number) {
     const newData = [...this.data];
     newData.splice(index, 1);
     this.data = newData;
