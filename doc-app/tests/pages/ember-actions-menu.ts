@@ -18,6 +18,6 @@ export const actionMenuObject = create({
     create({
       trigger: clickable('button'),
       isIconRendered: isPresent('img'),
-    })
+    }),
   ),
 });

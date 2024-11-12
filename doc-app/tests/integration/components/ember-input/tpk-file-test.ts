@@ -6,7 +6,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-import CatchState from 'dummy/tests/dummy/app/services/catch-state';
+import CatchState from 'doc-app/services/catch-state';
 
 module('Integration | Component | tpk-file', function (hooks) {
   setupRenderingTest(hooks);
@@ -39,6 +39,7 @@ module('Integration | Component | tpk-file', function (hooks) {
       </TpkFile>`,
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { state }: { state: any } = (
       getOwner(this) as ApplicationInstance
     ).lookup('service:catch-state') as CatchState;

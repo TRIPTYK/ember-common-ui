@@ -2,14 +2,14 @@ import { module, test } from 'qunit';
 import { click, fillIn, findAll, render } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { hbs } from 'ember-cli-htmlbars';
-import { setupMock, type ServiceWorkerTestContext } from 'dummy/tests/worker';
-import { TableGenericUserWorker } from 'dummy/tests/workers/table-generic';
+import { setupMock, type ServiceWorkerTestContext } from 'doc-app/tests/worker';
+import { TableGenericUserWorker } from 'doc-app/tests/workers/table-generic';
 import { setupRenderingTest } from 'ember-qunit';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
   setupMock(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'fr-fr');
 
   const pageSize = 5;
   const pageSizes: number[] = [5, 10, 25];
@@ -172,7 +172,7 @@ module('Integration | Component | table-generic', function (hooks) {
   test<ServiceWorkerTestContext>('It can change page', async function (assert) {
     await renderTableGeneric.call(this);
 
-    let rows = document.querySelectorAll('[data-test-row]');
+    const rows = document.querySelectorAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
 
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');

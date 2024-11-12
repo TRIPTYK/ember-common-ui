@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { render, type TestContext } from '@ember/test-helpers';
-import { confirmModalObject } from 'dummy/tests/pages/ember-confirm-modal';
+import { confirmModalObject } from 'doc-app/tests/pages/ember-confirm-modal';
 
 interface ConfirmModalTestContext extends TestContext {
   onClose: () => unknown;

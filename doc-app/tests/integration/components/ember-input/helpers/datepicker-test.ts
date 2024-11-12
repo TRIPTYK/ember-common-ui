@@ -7,7 +7,7 @@ import {
   isTempusDominusOpen,
 } from '@triptyk/ember-input/test-support/datepicker-helpers';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import type { TestContext } from '@ember/test-helpers';
 

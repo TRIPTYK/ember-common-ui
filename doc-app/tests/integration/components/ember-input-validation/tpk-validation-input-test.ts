@@ -5,7 +5,6 @@ import { hbs } from 'ember-cli-htmlbars';
 import {
   type TestContext,
   fillIn,
-  click,
   findAll,
   render,
   settled,
@@ -31,10 +30,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
     this.set('changeset', changeset);
     return changeset;
-  }
-
-  function setType(this: TestContext, type: string) {
-    this.set('type', type);
   }
 
   test('It changes data-has-error attribue on error', async function (assert) {

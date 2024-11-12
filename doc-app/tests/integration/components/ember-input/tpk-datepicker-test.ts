@@ -3,10 +3,8 @@
 import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {
-  findAll,
   fillIn,
   render,
-  blur,
   click,
   waitFor,
   triggerKeyEvent,
@@ -16,8 +14,6 @@ import {
   openTempusDominus,
   closeTempusDominus,
 } from '@triptyk/ember-input/test-support/datepicker-helpers';
-import { a11yAudit } from 'ember-a11y-testing/test-support';
-import { find } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | tpk-datepicker', function (hooks) {
@@ -27,7 +23,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date(2022, 10, 12);
     this.set('setDate', function (dates: Date[]) {
       assert.step('step');
-      assert.strictEqual(dates[0].toDateString(), date.toDateString());
+      assert.strictEqual(dates[0]?.toDateString(), date.toDateString());
     });
 
     await render(

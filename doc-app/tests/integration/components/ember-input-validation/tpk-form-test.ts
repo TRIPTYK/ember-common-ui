@@ -3,16 +3,16 @@ import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { click, fillIn, render, type TestContext } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, array } from 'yup';
+import { object, string, array, Schema } from 'yup';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';
-import DummyInput from 'dummy/components/dummy-input';
+import DummyInput from 'doc-app/components/dummy-input';
 import { setupIntl } from 'ember-intl/test-support';
 import { timeout } from 'ember-concurrency';
 
 interface ComponentTestContext extends TestContext {
   changeset: ImmerChangeset;
   onSubmit: () => void;
-  validationSchema: any;
+  validationSchema: Schema;
   reactive: boolean;
   removeErrorsOnSubmit: boolean;
 }
@@ -26,7 +26,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     params?: {
       changeset?: ImmerChangeset;
       onSubmit?: (...args: unknown[]) => void;
-      validationSchema?: any;
+      validationSchema?: Schema;
       reactive?: boolean;
       removeErrorsOnSubmit?: boolean;
       autoScrollOnError?: boolean;
@@ -60,9 +60,9 @@ module('Integration | Component | tpk-form', function (hooks) {
   }
 
   test('TpkForm can invoke custom registered inputs from service', async function () {
-    let tpkFormService = this.owner.lookup(
+    const tpkFormService = this.owner.lookup(
       'service:tpk-form',
-    ) as TpkFormService;
+    ) as unknown as TpkFormService;
 
     tpkFormService.TpkInput = DummyInput;
 
@@ -72,7 +72,7 @@ module('Integration | Component | tpk-form', function (hooks) {
   });
 
   module('Autoscroll on error', function (hooks) {
-    let originalScrollTo: any;
+    let originalScrollTo: () => void;
     let callCount = 0;
 
     hooks.beforeEach(function () {

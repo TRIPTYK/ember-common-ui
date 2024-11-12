@@ -19,6 +19,10 @@
         "path": "doc-app"
       },
       {
+        "name": "old-doc",
+        "path": "doc-app-old"
+      },
+      {
         "name": "ember-input",
         "path": "packages/ember-input"
       },

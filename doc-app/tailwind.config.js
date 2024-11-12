@@ -1,10 +1,8 @@
-/* eslint-disable */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/**/*.{hbs,js,ts,html,md}',
-    './tests/**/*.{hbs,js,ts,html,md}',
-    './addon/**/*.{hbs,js,ts,html,md}',
-  ],
-  corePlugins: {},
+  content: ['./app/**/*.{gjs,gts,hbs,html,js,ts}'],
+  theme: {
+    extend: {},
+  },
   plugins: [],
 };
