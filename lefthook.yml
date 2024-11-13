@@ -12,6 +12,11 @@
 #       tags: backend security
 #       run: bundle audit
 #
+pre-push:
+  commands:
+    lint:
+      run: pnpm lint
+
 commit-msg:
   commands:
     git-conventional-commits:
