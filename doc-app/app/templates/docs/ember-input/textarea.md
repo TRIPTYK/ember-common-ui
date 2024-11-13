@@ -8,7 +8,6 @@ A composable textarea input element.
         @value={{this.value}}
         @onChange={{this.onChange}}
         @maxLength={{150}}
-        @classless={{false}}
         @changeEvent='change'
         @label="History of Tomster and Zoey"
       as |C|>
@@ -39,8 +38,6 @@ the function receive the value and the event as args.
 **@changeEvent**: A string parameter. It should be either 'input' or 'change'.
 
 **@label**: A string parameter. It is the label displayed above the textarea.
-
-**@classless**: A boolean paramater. Remove all the classes actually in the component.
 
 ### Yields
 

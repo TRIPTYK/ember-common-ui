@@ -33,7 +33,7 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
       @onChange={{@onChange}}
       @onClose={{@onClose}}
       @disabled={{@disabled}}
-      @classless={{@classless}}
+
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @enableSecond={{@enableSecond}}
@@ -56,7 +56,7 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationDatepickerComponent>
   </template>

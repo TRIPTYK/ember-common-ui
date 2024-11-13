@@ -29,7 +29,6 @@ The `TpkValidationTimepicker` component is designed for easy integration into yo
 - `@onChange`: The action to be called when the date changes.
 - `@onClose`: The action to be called when the datepicker closes.
 - `@disabled`: Whether the input field is disabled.
-- `@classless`: Whether to apply default classes to the component.
 - `@mandatory`: To indicate if input is mandatory.
 - `@enableSecond`: Whether to enable seconds in the timepicker.
 - `@stepping`: The step interval for minutes and seconds.

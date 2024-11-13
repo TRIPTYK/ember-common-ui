@@ -60,7 +60,7 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-      @classless={{@classless}}
+
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -77,7 +77,7 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationInputComponent>
   </template>

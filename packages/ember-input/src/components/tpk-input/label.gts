@@ -4,7 +4,7 @@ export interface TpkInputLabelComponentSignature {
   Args: {
     guid: string;
     label: string;
-    classless?: boolean;
+
   };
   Element: HTMLLabelElement;
   Blocks: {
@@ -14,7 +14,7 @@ export interface TpkInputLabelComponentSignature {
 
 const TpkInputLabelComponent: TOC<TpkInputLabelComponentSignature> = <template>
   <label
-    class={{unless @classless 'tpk-input-label'}}
+    class='tpk-input-label'
     for={{@guid}}
     ...attributes
     data-test-tpk-input-label

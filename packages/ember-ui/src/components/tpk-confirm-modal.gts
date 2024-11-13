@@ -12,7 +12,7 @@ export interface TpkConfirmModalSignature {
     confirmQuestion: string;
     isOpen: boolean;
     outsideClickHandler: ((e: MouseEvent | TouchEvent) => unknown) | undefined;
-    classless?: boolean;
+
     title: string;
   };
   Element: HTMLDivElement;
@@ -39,7 +39,7 @@ const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
       @isOpen={{@isOpen}}
       @outsideClickHandler={{@outsideClickHandler}}
       @onClose={{@onClose}}
-      @classless={{@classless}}
+
       ...attributes
       as |Modal|
     >

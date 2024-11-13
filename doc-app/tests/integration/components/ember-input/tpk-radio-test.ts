@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { findAll, render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
@@ -11,36 +11,6 @@ import CatchState from 'doc-app/services/catch-state';
 
 module('Integration | Component | ui/radio', function (hooks) {
   setupRenderingTest(hooks);
-
-  test('class/less by default', async function (assert) {
-    this.set('setRadio', () => {});
-
-    await render(hbs`
-      <TpkRadio
-        data-test-radio
-        @label='Label'
-        @classless={{this.classless}}
-        @selected="luc"
-        @value="jean"
-        @name="cule"
-        @onChange={{this.setRadio}}
-      />
-    `);
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasClass(/tpk-.*/);
-      });
-
-    this.set('classless', true);
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasNoClass(/tpk-.*/);
-      });
-  });
 
   test('it renders complex', async function (assert) {
     this.set('setRadio', (selected: string, e: Event) => {

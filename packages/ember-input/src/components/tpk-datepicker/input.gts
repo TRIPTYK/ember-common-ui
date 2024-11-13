@@ -6,7 +6,7 @@ import { on } from '@ember/modifier';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 
 export interface TpkDatepickerInput {
-  classless?: boolean;
+
   disabled?: boolean;
   placeholder?: string;
   value?: Date | string;
@@ -146,12 +146,12 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
   }
   <template>
     <div
-      class={{unless @classless 'tpk-datepicker-input-input-container'}}
+      class='tpk-datepicker-input-input-container'
       {{didInsert this.setTempusDominus}}
     >
       <input
         disabled={{@disabled}}
-        class={{unless @classless 'tpk-datepicker-input-input'}}
+        class='tpk-datepicker-input-input'
         placeholder={{@placeholder}}
         id={{@guid}}
         aria-autocomplete='none'

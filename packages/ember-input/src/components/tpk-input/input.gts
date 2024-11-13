@@ -5,7 +5,7 @@ export interface TpkInputInputComponentSignature {
   Args: {
     guid: string;
     type?: string;
-    classless?: boolean;
+
     placeholder?: string;
     disabled?: boolean;
     min?: number;
@@ -23,7 +23,7 @@ export interface TpkInputInputComponentSignature {
 
 const TpkInputInputComponent: TOC<TpkInputInputComponentSignature> = <template>
   <input
-    class={{unless @classless 'tpk-input-input'}}
+    class='tpk-input-input'
     id={{@guid}}
     min={{@min}}
     step={{@step}}

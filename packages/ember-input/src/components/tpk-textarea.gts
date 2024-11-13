@@ -27,7 +27,7 @@ export type TpkTextareaSignature = {
       {
         Input: WithBoundArgs<
           typeof TpkTextareaInputComponent,
-          | 'classless'
+
           | 'guid'
           | 'value'
           | 'changeEvent'
@@ -40,7 +40,7 @@ export type TpkTextareaSignature = {
         >;
         Label: WithBoundArgs<
           typeof TpkTextareaLabelComponent,
-          'classless' | 'guid' | 'label'
+          'guid' | 'label'
         >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
@@ -75,7 +75,7 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
 
   <template>
     <div
-      class={{unless @classless 'tpk-textarea'}}
+      class='tpk-textarea'
       ...attributes
       data-test-tpk-textarea
     >
@@ -83,7 +83,6 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
         (hash
           Label=(component
             TpkTextareaLabelComponent
-            classless=@classless
             guid=this.guid
             label=@label
           )
@@ -96,7 +95,6 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
             maxLength=@maxLength
             changeEvent=this.changeEvent
             placeholder=@placeholder
-            classless=@classless
             disabled=@disabled
             onChange=this.onChange
           )

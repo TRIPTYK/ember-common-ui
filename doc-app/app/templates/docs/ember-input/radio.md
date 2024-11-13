@@ -8,7 +8,6 @@ Ember input/radio content
     <h3>Choose your gender</h3>
         <TpkRadio 
             @label='Female'
-            @classless={{true}}
             @selected="Female"
             @value="Female"
             @name="gender-radio"
@@ -20,7 +19,6 @@ Ember input/radio content
         </TpkRadio>
         <TpkRadio 
             @label='Male'
-            @classless={{true}}
             @value="Male"
             @name="gender-radio"
             @onChange={{this.setRadio}}
@@ -31,7 +29,6 @@ Ember input/radio content
         </TpkRadio>
         <TpkRadio 
             @label='Not shure'
-            @classless={{true}}
             @value="Not shure"
             @name="gender-radio"
             @onChange={{this.setRadio}}
@@ -53,9 +50,6 @@ Ember input/radio content
 - **@label**:
   > **description**: set the label value  
   > **value**: a string type
-* **@classless**:
-  > **description**: removes the default CSS classes to adapt the CSS style to your layout  
-  > **value**: a boolean written in hbs ```{{true}}```
 - **@selected**:
   > **description**: indicates which value is selected in your radios; it's not mandatory to have it on each radio, but at least one is needed to initiate the selection in your group.  
   > **value**: a string type that must be identical to the value argument.

@@ -5,7 +5,7 @@ interface TpkStepperStepArgs {
     guid: string;
     registerStep: Function;
     unregisterStep: Function;
-    classless?: boolean;
+
 }
 export default class TpkStepperStep extends Component<TpkStepperStepArgs> {
     get isActive(): boolean;

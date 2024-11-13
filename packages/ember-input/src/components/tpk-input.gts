@@ -43,14 +43,14 @@ export type TpkInputSignature = {
           | 'changeEvent'
           | 'disabled'
           | 'guid'
-          | 'classless'
+
           | 'min'
           | 'step'
           | 'max'
         >;
         Label: WithBoundArgs<
           typeof TpkInputLabelComponent,
-          'label' | 'guid' | 'classless'
+          'label' | 'guid'
         >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
@@ -113,7 +113,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
 
   <template>
     <div
-      class={{unless @classless 'tpk-input'}}
+      class='tpk-input'
       {{didInsert this.setMask}}
       {{didUpdate this.setMask @mask}}
       ...attributes
@@ -134,13 +134,11 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
               value=@value
               disabled=@disabled
               guid=this.guid
-              classless=@classless
             )
             Label=(component
               TpkInputLabelComponent
               label=@label
               guid=this.guid
-              classless=@classless
             )
             changeEvent=this.changeEvent
             guid=this.guid
@@ -148,11 +146,10 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
           )
         }}
       {{else}}
-      
+
         <TpkInputLabelComponent
           @label={{@label}}
           @guid={{this.guid}}
-          @classless={{@classless}}
         />
         <TpkInputInputComponent
           @onChange={{this.onChange}}
@@ -164,7 +161,6 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
           @max={{@max}}
           @disabled={{@disabled}}
           @guid={{this.guid}}
-          @classless={{@classless}}
         />
       {{/if}}
     </div>

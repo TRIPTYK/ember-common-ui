@@ -32,7 +32,6 @@ The `TpkValidationInput` component is used for a simple input. If you want use a
 - `@maskOptions`: The options to apply to the mask.
 - `@unmaskValue`: Whether to unmask the value before setting it in the changeset.
 - `@disabled`: Whether the input field is disabled.
-- `@classless`: Whether to apply default classes to the component.
 - `@onChange`: The action to be called when the selection changes. 
 - `@changeEvent`: The event to trigger the onChange action.
 

@@ -21,11 +21,11 @@ export type TpkCheckboxSignature = {
       {
         Label: WithBoundArgs<
           typeof TpkCheckboxLabelComponent,
-          'guid' | 'label' | 'classless'
+          'guid' | 'label'
         >;
         Input: WithBoundArgs<
           typeof TpkCheckboxInputComponent,
-          'changeEvent' | 'onChange' | 'guid' | 'checked' | 'classless'
+          'changeEvent' | 'onChange' | 'guid' | 'checked'
         >;
         onChange: TpkCheckboxComponent['onChange'];
         changeEvent: 'input' | 'change';
@@ -52,7 +52,7 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
 
   <template>
     <div
-      class={{unless @classless 'tpk-checkbox'}}
+      class='tpk-checkbox'
       ...attributes
       data-test-tpk-checkbox
     >
@@ -63,7 +63,6 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
             guid=this.guid
             checked=@checked
             label=@label
-            classless=@classless
           )
           Input=(component
             TpkCheckboxInputComponent
@@ -72,7 +71,6 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
             disabled=@disabled
             changeEvent=this.changeEvent
             onChange=this.onChange
-            classless=@classless
           )
           onChange=this.onChange
           changeEvent=this.changeEvent

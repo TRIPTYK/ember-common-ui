@@ -7,7 +7,7 @@ import { on } from '@ember/modifier';
 import onClickOutside from 'ember-click-outside/modifiers/on-click-outside';
 
 interface TpkActionsMenuComponentArgs {
-  classless?: boolean;
+
 }
 
 export interface TpkActionsMenuElementComponentSignature {
@@ -24,9 +24,6 @@ export default class TpkActionsMenuComponent extends Component<TpkActionsMenuEle
   @tracked isOpen = false;
 
   get actionsMenuClass() {
-    if (this.args.classless) {
-      return '';
-    }
     return this.isOpen ? 'actions aopened' : 'actions';
   }
 
@@ -67,7 +64,7 @@ export default class TpkActionsMenuComponent extends Component<TpkActionsMenuEle
     >
       <button
         type='button'
-        class={{unless @classless 'open_actions'}}
+        class='open_actions'
         {{on 'click' this.toggle}}
         title='actions'
         data-test-actions-open-action

@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn, findAll } from '@ember/test-helpers';
+import { render, fillIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
@@ -10,45 +10,6 @@ import CatchState from 'doc-app/services/catch-state';
 
 module('Integration | Component | tpk-input', function (hooks) {
   setupRenderingTest(hooks);
-
-  test('class/less by default', async function (assert) {
-    this.set('classless', false);
-    await render(
-      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" />`,
-    );
-
-    assert.dom('.tpk-input-label').exists().containsText('label');
-    assert.dom('.tpk-input-input').exists().hasValue('value');
-    assert.dom('.tpk-input').exists();
-
-    this.set('classless', true);
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasNoClass(/tpk-.*/);
-      });
-  });
-
-  test('class/has block element yield', async function (assert) {
-    await render(
-      hbs`<TpkInput @classless={{this.classless}} @label="label" @value="value" as |I|>
-        <I.Input />
-        <I.Label />
-      </TpkInput>`,
-    );
-    assert.dom('.tpk-input-label').exists().containsText('label');
-    assert.dom('.tpk-input-input').exists().hasValue('value');
-    assert.dom('.tpk-input').exists();
-
-    this.set('classless', true);
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasNoClass(/tpk-.*/);
-      });
-  });
 
   test('input yield only', async function (assert) {
     await render(

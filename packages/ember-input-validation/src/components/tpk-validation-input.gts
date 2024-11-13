@@ -48,7 +48,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
       @min={{@min}}
       @max={{@max}}
       @onChange={{this.onChange}}
-      @classless={{@classless}}
+
       @changeEvent={{@changeEvent}}
       @mask={{@mask}}
       @maskOptions={{@maskOptions}}

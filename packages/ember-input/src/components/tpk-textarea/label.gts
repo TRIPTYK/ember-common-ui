@@ -4,7 +4,7 @@ export interface TpkTextareaLabelComponentSignature {
   Args: {
     guid: string;
     label: string;
-    classless?: boolean;
+
   };
   Element: HTMLLabelElement;
   Blocks: {
@@ -15,7 +15,7 @@ export interface TpkTextareaLabelComponentSignature {
 const TpkTextareaLabelComponent: TOC<TpkTextareaLabelComponentSignature> = <template>
     <label
       for={{@guid}}
-      class={{unless @classless 'tpk-textarea-label'}}
+      class='tpk-textarea-label'
       ...attributes
       data-test-tpk-textarea-label
     >

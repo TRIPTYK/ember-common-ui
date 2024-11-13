@@ -2,13 +2,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import {
-  type TestContext,
-  fillIn,
-  findAll,
-  render,
-  settled,
-} from '@ember/test-helpers';
+import { type TestContext, fillIn, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 
@@ -18,7 +12,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
+      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
       <I.Label /><I.Input/></TpkValidationInput>`,
     );
   }
@@ -71,24 +65,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     await renderComponent();
     await fillIn('[data-test-validation-input] input', 'blah');
     assert.verifySteps(['change']);
-  });
-
-  test('Classless removes all the classes', async function (assert) {
-    this.set('classless', false);
-    this.set('showTogglePasswordButton', true);
-    setupChangeset.call(this);
-    await renderComponent();
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasClass(/tpk-.*/);
-      });
-
-    this.set('classless', true);
-    findAll('*').forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
   });
 
   test('COMPLEX | override change function', async function (assert) {

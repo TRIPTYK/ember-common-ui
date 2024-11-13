@@ -4,7 +4,7 @@ export interface TpkCheckboxLabelComponentSignature {
   Args: {
     guid: string;
     label: string;
-    classless?: boolean;
+
   };
   Element: HTMLLabelElement;
   Blocks: {
@@ -14,7 +14,7 @@ export interface TpkCheckboxLabelComponentSignature {
 
 const TpkCheckboxLabelComponent: TOC<TpkCheckboxLabelComponentSignature> = <template>
     <label
-      class={{unless @classless 'tpk-checkbox-label'}}
+      class='tpk-checkbox-label'
       for={{@guid}}
       ...attributes
       data-test-tpk-checkbox-label

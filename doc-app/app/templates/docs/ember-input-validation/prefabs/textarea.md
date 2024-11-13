@@ -24,7 +24,6 @@ This component provides an textarea.
 - `@placeholder`: The placeholder text for the textarea field.
 - `@mandatory`: Whether the textarea field is mandatory.
 - `@disabled`: Whether the input field is disabled.
-- `@classless`: Whether to apply default classes to the component.
 - `@onChange`: The action to be called when the selection changes. 
 - `@changeEvent`: The event to trigger the onChange action.
 - `@maxLength`: The maximum length of the textarea field.

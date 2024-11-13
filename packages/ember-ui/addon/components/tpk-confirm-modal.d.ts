@@ -4,7 +4,7 @@ export interface ModalConfirmArgs {
     onConfirm: (e: Event) => unknown;
     confirmQuestion: string;
     isOpen?: boolean;
-    classless?: boolean;
+
 }
 export default class ModalConfirm extends Component<ModalConfirmArgs> {
 }

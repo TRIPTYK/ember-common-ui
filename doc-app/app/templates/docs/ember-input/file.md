@@ -9,7 +9,6 @@ The **TpkFileInputComponent** is designed to handle file input in a web applicat
         @label="Add your profile image"
         @accept="image/*"
         @disabled={{false}}
-        @classless={{false}}
         @changeEvent="change"
         @onChange={{this.onChange}}
       as |I|>
@@ -38,8 +37,6 @@ The **TpkFileInputComponent** is designed to handle file input in a web applicat
 
 ## Arguments description
 
-- **classless?: boolean**
-    - This argument is optional and is a boolean. If it is supplied and evaluates to true, the CSS class tpk-file-input will not be added to the file field. Otherwise, the class will be added.
 - **accept?: string**
     - This argument is optional and expects a string. It specifies the file types the user can select. For example, "image/*" will accept all image types.
 - **disabled?: boolean**

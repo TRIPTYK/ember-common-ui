@@ -26,7 +26,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
     <TpkValidationInputComponent
       @type={{@type}}
       @label={{@label}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -47,7 +47,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationInputComponent>
   </template>

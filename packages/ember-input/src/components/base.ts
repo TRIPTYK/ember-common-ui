@@ -3,7 +3,6 @@ import { guidFor } from '@ember/object/internals';
 
 export interface BaseUIComponentArgs {
   Args: {
-    classless?: boolean;
     label: string;
     changeEvent?: 'input' | 'change';
   };

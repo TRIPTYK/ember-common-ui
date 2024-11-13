@@ -16,7 +16,7 @@ export interface TpkValidationTextareaPrefabSignature
 const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSignature> = <template>
     <TpkValidationTextareaComponent
       @label={{@label}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -40,7 +40,7 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
       {{/if}}
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationTextareaComponent>
   </template>;

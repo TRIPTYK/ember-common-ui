@@ -30,7 +30,7 @@ export type TpkDatepickerSignature = {
         >;
         Label: WithBoundArgs<
           typeof TpkDatepickerLabelComponent,
-          'guid' | 'classless' | 'label'
+          'guid'  | 'label'
         >;
         guid: string;
       },
@@ -97,7 +97,7 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
 
   <template>
     <div
-      class={{unless @classless 'tpk-datepicker'}}
+      class='tpk-datepicker'
       {{didInsert this.setMask}}
       ...attributes
       data-test-tpk-datepicker
@@ -139,7 +139,6 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
           Label=(component
             TpkDatepickerLabelComponent
             guid=this.guid
-            classless=@classless
             label=@label
           )
           guid=this.guid
