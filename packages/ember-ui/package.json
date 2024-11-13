@@ -36,6 +36,7 @@
   ],
   "scripts": {
     "build": "concurrently 'npm:build:*'",
+    "build:clean": "rm -rf dist",
     "build:js": "rollup --config",
     "build:types": "glint --declaration",
     "start:types": "glint --declaration --watch",
