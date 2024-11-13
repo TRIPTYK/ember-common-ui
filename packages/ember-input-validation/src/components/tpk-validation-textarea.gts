@@ -41,7 +41,7 @@ export default class TpkValidationTextareaComponent extends BaseValidationCompon
     <TpkTextarea
       @value={{this.value}}
       @label={{@label}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @maxLength={{@maxLength}}
       @changeEvent={{@changeEvent}}

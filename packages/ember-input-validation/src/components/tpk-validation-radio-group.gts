@@ -4,7 +4,7 @@ export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
-    classless?: boolean;
+
     unmaskValue?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
@@ -23,7 +23,7 @@ export default class TpkValidationRadioGroupComponent extends BaseValidationComp
 
   <template>
     <div
-      class={{unless @classless 'tpk-validation-radio-container'}}
+      class='tpk-validation-radio-container'
       data-has-error='{{this.hasError}}'
       ...attributes
     >
@@ -33,7 +33,7 @@ export default class TpkValidationRadioGroupComponent extends BaseValidationComp
         {{#if (has-block 'errors')}}
           {{yield this.errors to='errors'}}
         {{else}}
-          <span class={{unless @classless 'tpk-validation-radio-error'}}>
+          <span class='tpk-validation-radio-error'>
             {{this.firstErrorFormatted}}
           </span>
         {{/if}}

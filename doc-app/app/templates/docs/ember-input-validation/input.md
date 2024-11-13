@@ -5,7 +5,6 @@ Ember input validation/input content
 <DocsDemo as |demo|>
     <demo.example @name="input-validation-src.hbs">
         <TpkValidationInput 
-        @classless={{this.classless}} 
         @label={{this.label}} 
         @onChange={{this.onChange}}
         @changeset={{this.changeset}}
@@ -34,8 +33,6 @@ Ember input validation/input content
 the function receive the value and the event as args.
 
 **@changeset**: Is a way to manage and validate data modifications before applying them to a model.
-
-**@classless** : The argument allows overriding the CSS class of the input.
 
 ### Yields
 

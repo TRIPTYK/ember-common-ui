@@ -1,20 +1,16 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, findAll, render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | tpk-stepper', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    this.set('classless', true);
     this.set('startStep', undefined);
 
     await render(hbs`
-    <TpkStepper @startStep={{this.startStep}} @classless={{this.classless}} as |Stepper|>
+    <TpkStepper @startStep={{this.startStep}} as |Stepper|>
         <Stepper.Stepper />
         <Stepper.Step as |S|>
           <S.Header>
@@ -35,12 +31,6 @@ module('Integration | Component | tpk-stepper', function (hooks) {
     </TpkStepper>
     `);
 
-    findAll('*').forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
-
-    this.set('classless', false);
-
     assert.dom('.tpk-stepper').exists();
     assert.dom('.tpk-stepper-step').exists();
     assert.dom('.tpk-stepper-stepper').exists();
@@ -52,7 +42,7 @@ module('Integration | Component | tpk-stepper', function (hooks) {
     this.set('startStep', 2);
 
     await render(hbs`
-    <TpkStepper @startStep={{this.startStep}} @classless={{this.classless}} as |Stepper|>
+    <TpkStepper @startStep={{this.startStep}} as |Stepper|>
         <Stepper.Stepper />
         <Stepper.Step as |S|>
           <S.Header>
@@ -77,14 +67,10 @@ module('Integration | Component | tpk-stepper', function (hooks) {
   });
 
   test('it steps', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    this.set('classless', true);
     this.set('startStep', undefined);
 
     await render(hbs`
-    <TpkStepper @startStep={{this.startStep}} @classless={{this.classless}} as |Stepper|>
+    <TpkStepper @startStep={{this.startStep}} as |Stepper|>
         <Stepper.Stepper />
         <Stepper.Step data-test-step="1" as |S|>
           <S.Header>

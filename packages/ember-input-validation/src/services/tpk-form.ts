@@ -53,9 +53,3 @@ export default class TpkFormService extends Service {
   @tracked TpkNumberPrefab = TpkValidationNumberPrefabComponent;
   @tracked TpkMobilePrefab = TpkValidationMobilePrefabComponent;
 }
-
-declare module '@ember/service' {
-  interface Registry {
-    'tpk-form': TpkFormService;
-  }
-}

@@ -7,7 +7,7 @@ export interface TpkValidationErrorsComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     errors: any;
-    classless?: boolean;
+
   };
   Blocks: {
     default: [];
@@ -21,7 +21,7 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
   });
 
   <template>
-    <div class={{ unless @classless "tpk-validation-errors" }}
+    <div class="tpk-validation-errors"
     ...attributes>
       {{#each @errors as |error|}}
         <span>

@@ -24,7 +24,7 @@ export type TpkRadioSignature = {
       {
         Label: WithBoundArgs<
           typeof TpkRadioLabelComponent,
-          'guid' | 'label' | 'classless'
+          'guid' | 'label'
         >;
         Input: WithBoundArgs<
           typeof TpkRadioInputComponent,
@@ -35,7 +35,7 @@ export type TpkRadioSignature = {
           | 'value'
           | 'changeEvent'
           | 'onChange'
-          | 'classless'
+
         >;
         onChange: TpkRadioComponent['onChange'];
         changeEvent: 'input' | 'change';
@@ -63,7 +63,7 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
 
   <template>
     <div
-      class={{unless @classless 'tpk-radio'}}
+      class='tpk-radio'
       ...attributes
       data-test-tpk-radio
     >
@@ -73,7 +73,6 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
             TpkRadioLabelComponent
             guid=this.guid
             label=@label
-            classless=@classless
           )
           Input=(component
             TpkRadioInputComponent
@@ -84,7 +83,6 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
             value=@value
             changeEvent=this.changeEvent
             onChange=this.onChange
-            classless=@classless
           )
           onChange=this.onChange
           changeEvent=this.changeEvent

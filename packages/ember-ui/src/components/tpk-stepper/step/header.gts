@@ -3,7 +3,7 @@ import { assert } from '@ember/debug';
 
 interface TpkStepperStepHeaderArgs {
   guid: string;
-  classless?: boolean;
+
   isActive: boolean;
 }
 
@@ -27,7 +27,7 @@ export default class TpkStepperStepHeaderComponent extends Component<TpkStepperS
       <li
         role='tab'
         aria-selected='{{@isActive}}'
-        class={{unless @classless 'tpk-stepper-step-header'}}
+        class='tpk-stepper-step-header'
         ...attributes
       >
         {{yield}}

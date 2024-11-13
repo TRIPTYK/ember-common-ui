@@ -50,8 +50,6 @@ An Ember component for date selection with extensive customization options. This
 
 - **label**: The title or label displayed with the date picker.
 
-- **classless**: If `true`, the component is rendered without the default 'tpk-datepicker' CSS class. Defaults to `false`
-
 - **stepping**: The number of minutes to step up/down in the time picker. Defaults to 5.
 
 - **mode**: 

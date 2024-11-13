@@ -1,7 +1,7 @@
 /* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { findAll, render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
@@ -11,35 +11,6 @@ import CatchState from 'doc-app/services/catch-state';
 
 module('Integration | Component | ui/checkbox', function (hooks) {
   setupRenderingTest(hooks);
-
-  test('class/less by default', async function (assert) {
-    this.set('setChecked', () => {});
-
-    await render(hbs`
-      <TpkCheckbox
-        data-test-checkbox
-        @label='Label'
-        @classless={{this.classless}}
-        @checked={{false}}
-        @onChange={{this.setChecked}}
-      as |C|>
-        <C.Label />
-        <C.Input />
-      </TpkCheckbox>
-    `);
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasClass(/tpk-.*/);
-      });
-
-    this.set('classless', true);
-
-    findAll('*').forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
-  });
 
   test('it renders complex', async function (assert) {
     this.set('setChecked', (checked: boolean, value: string, e: Event) => {

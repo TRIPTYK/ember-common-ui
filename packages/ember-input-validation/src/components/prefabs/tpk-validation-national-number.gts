@@ -21,7 +21,7 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-      @classless={{@classless}}
+
       @validationField={{@validationField}}
       @mandatory={{@mandatory}}
       @changeEvent={{@changeEvent}}
@@ -37,7 +37,7 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationInputComponent>
   </template>

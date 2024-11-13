@@ -10,7 +10,7 @@ import t from 'ember-intl/helpers/t';
 
 export interface TableGenericBodyComponentSignature {
   Args: {
-    classless?: boolean;
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;
     rowClick: (...args: unknown[]) => void;
@@ -35,9 +35,6 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
   @tracked isExpanded = false;
 
   get bodyClass() {
-    if (this.args.classless) {
-      return '';
-    }
     return this.isExpanded ? 'body expanded' : 'body';
   }
 

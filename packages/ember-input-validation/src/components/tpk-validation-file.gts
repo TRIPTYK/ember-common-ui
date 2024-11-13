@@ -14,7 +14,7 @@ export interface TpkValidationFileComponentSignature
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;
-    classless?: boolean;
+
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
   };
@@ -53,7 +53,7 @@ export default class TpkValidationFileComponent extends BaseValidationComponent<
       @label={{@label}}
       @onChange={{this.onChange}}
       @changeEvent={{@changeEvent}}
-      @classless={{@classless}}
+
       @multiple={{@multiple}}
       ...attributes
       data-has-error='{{this.hasError}}'

@@ -53,7 +53,7 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
     >
       <TpkSelectComponent
         @multiple={{@multiple}}
-        @classless={{@classless}}
+
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
@@ -81,7 +81,7 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
       </TpkSelectComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
-        @classless={{@classless}}
+
       />
     </div>
   </template>

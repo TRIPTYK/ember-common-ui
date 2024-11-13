@@ -8,7 +8,7 @@ export interface TpkValidationRadioComponentSignature
   Args: BaseValidationSignature['Args'] & {
     label: string;
     name?: string;
-    classless?: boolean;
+
     changeEvent?: 'input' | 'change';
     value: string;
     disabled?: boolean;
@@ -45,7 +45,7 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
       @value={{@value}}
       @name={{if @name @name @validationField}}
       @label={{@label}}
-      @classless={{@classless}}
+
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}

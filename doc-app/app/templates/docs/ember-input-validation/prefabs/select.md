@@ -40,7 +40,6 @@ In example:
 - `@mandatory`: Whether the textarea field is mandatory.
 - `@initiallyOpened`: Whether the select dropdown is initially opened.
 - `@allowClear`: Whether to show a button to clear the selection.
-- `@classless`: Whether to apply default classes to the component.
 - `@onChange`: The action to be called when the selection changes. 
 - `@labelComponent`: The custom component to use for the label.
 - `@selectedItemComponent`: The custom component to use for the selected item.

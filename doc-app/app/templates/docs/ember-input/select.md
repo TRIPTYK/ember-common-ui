@@ -62,7 +62,6 @@ Keeping the same process as explained before the values will be displayed as but
         @options={{this.carOptions}}
         @selected={{this.valueCar}}
         @multiple={{this.multiple}}
-        @classless={{this.classless}}
         @onChange={{this.onChangeCar}}
         @label="Select your favorite(s) car brand: "
       as |S|>

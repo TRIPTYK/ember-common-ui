@@ -123,7 +123,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       @value={{this.valueForMobileNumber}}
       @label={{@label}}
       @onChange={{this.onChangeValueMobile}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @mask={{this.mask}}
       @unmaskValue={{true}}
@@ -133,13 +133,13 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       as |I|
     >
       <I.Label
-        class={{unless @classless 'tpk-input-validation-label'}}
+        class='tpk-input-validation-label'
         data-test-label-not-yielded
       >
         <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
       </I.Label>
       <div
-        class={{unless @classless 'tpk-input-validation-mobile'}}
+        class='tpk-input-validation-mobile'
         data-test-mobile-validation
       >
         <TpkSelectComponent
@@ -147,7 +147,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
           @options={{this.prefixes}}
           @selected={{this.selectedPrefix}}
           @onChange={{this.onChangeValuePrefix}}
-          @classless={{@classless}}
+
           as |T|
         >
           <T.Option as |O|>
@@ -167,7 +167,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       </div>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
-        @classless={{@classless}}
+
       />
     </TpkInputComponent>
   </template>

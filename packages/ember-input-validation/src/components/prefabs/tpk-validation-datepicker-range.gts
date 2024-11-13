@@ -1,6 +1,6 @@
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponentSignature } from "../tpk-validation-datepicker.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import { tracked } from "@glimmer/tracking";
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
@@ -31,7 +31,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @onChange={{@onChange}}
       @onClose={{@onClose}}
       @disabled={{@disabled}}
-      @classless={{@classless}}
+
       @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
@@ -59,7 +59,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationDatepickerComponent>
   </template>

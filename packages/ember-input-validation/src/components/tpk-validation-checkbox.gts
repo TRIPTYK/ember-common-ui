@@ -50,7 +50,6 @@ export default class TpkValidationCheckboxComponent extends BaseValidationCompon
     <TpkCheckbox
       @checked={{this.value}}
       @label={{@label}}
-      @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}

@@ -30,7 +30,6 @@ The `TpkValidationDatepickerRange` component is designed for easy integration in
 - `@onChange`: The action to be called when the date changes.
 - `@onClose`: The action to be called when the datepicker closes.
 - `@disabled`: Whether the input field is disabled.
-- `@classless`: Whether to apply default classes to the component.
 - `@mandatory`: To indicate if input is mandatory.
 - `@placeholder`: The placeholder text for the input field.
 - `@clearButton`: Whether to show a button to clear the input field.

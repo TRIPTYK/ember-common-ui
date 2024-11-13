@@ -2,8 +2,7 @@ import TpkValidationInputComponent, {
   type TpkValidationInputComponentSignature,
 } from '../tpk-validation-input.gts';
 import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
+  type BaseValidationSignature
 } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
@@ -36,7 +35,7 @@ get min() {
       @label={{@label}}
       @min={{this.min}}
       @step={{@step}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @mandatory={{@mandatory}}
       @changeEvent={{@changeEvent}}
@@ -56,7 +55,7 @@ get min() {
       <I.Input />
       <TpkValidationErrorsComponent
         @errors={{I.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationInputComponent>
   </template>

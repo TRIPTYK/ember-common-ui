@@ -4,7 +4,7 @@ export interface TpkInputLabelComponentSignature {
   Args: {
     guid: string;
     label: string;
-    classless?: boolean;
+
   };
   Element: HTMLLabelElement;
   Blocks: {
@@ -14,7 +14,7 @@ export interface TpkInputLabelComponentSignature {
 
 const TpkDatepickerLabelComponent: TOC<TpkInputLabelComponentSignature> = <template>
     <label
-      class={{unless @classless 'tpk-datepicker-label'}}
+      class='tpk-datepicker-label'
       for={{@guid}}
       ...attributes
       data-test-tpk-datepicker-label

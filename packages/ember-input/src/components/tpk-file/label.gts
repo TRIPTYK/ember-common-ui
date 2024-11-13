@@ -4,7 +4,7 @@ export interface TpkFileLabelComponentSignature {
   Args: {
     guid: string;
     label: string;
-    classless?: boolean;
+
   };
   Element: HTMLLabelElement;
   Blocks: {
@@ -14,7 +14,7 @@ export interface TpkFileLabelComponentSignature {
 
 const TpkFileLabelComponent: TOC<TpkFileLabelComponentSignature> = <template>
   <label
-    class={{unless @classless 'tpk-file-label'}}
+    class='tpk-file-label'
     for={{@guid}}
     ...attributes
     data-test-tpk-file-label

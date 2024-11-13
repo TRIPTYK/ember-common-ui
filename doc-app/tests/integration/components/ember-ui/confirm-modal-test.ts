@@ -10,7 +10,6 @@ interface ConfirmModalTestContext extends TestContext {
   onConfirm: () => unknown;
   confirmQuestion: string;
   isOpen?: boolean;
-  classless?: boolean;
 }
 
 module('Integration | Component | Confirm Modal', function (hooks) {
@@ -28,7 +27,6 @@ module('Integration | Component | Confirm Modal', function (hooks) {
       assert.step('onConfirm');
     };
     this.confirmQuestion = 'Do you confirm ? :smirk:';
-    this.classless = false;
     this.set('isOpen', true);
   }
 
@@ -45,7 +43,6 @@ module('Integration | Component | Confirm Modal', function (hooks) {
 				@isOpen={{this.isOpen}}
 				@onConfirm={{this.onConfirm}}
 				@onClose={{this.onClose}}
-				@classless={{this.classless}}
 				as |confirmModal|
 			>
 				<confirmModal.Confirm>
