@@ -27,9 +27,9 @@ module(
 
     test('renders input with default structure and with mandatory', async function (assert) {
       await renderComponent.call(this);
-      assert.dom('[data-test-tpk-input-label]').exists();
+      assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-input-input]').exists();
-      assert.dom('[data-test-tpk-input-label]').containsText('label *');
+      assert.dom('[data-test-tpk-label]').containsText('label *');
       assert.dom('[data-test-tpk-input-input]').hasValue('value');
     });
   },

@@ -31,7 +31,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
     await renderComponent();
     assert.dom('[data-test-tpk-input]').exists();
-    assert.dom('[data-test-tpk-input-label]').containsText('label');
+    assert.dom('[data-test-tpk-label]').containsText('label');
     assert.dom('[data-test-tpk-input-input]').hasValue('value');
 
     await fillIn('[data-test-tpk-input-input]', '');

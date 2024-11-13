@@ -2,10 +2,10 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import TpkCheckboxLabelComponent from './tpk-checkbox/label.gts';
 import TpkCheckboxInputComponent from './tpk-checkbox/input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkCheckboxSignature = {
   Args: MergeDeep<
@@ -20,7 +20,7 @@ export type TpkCheckboxSignature = {
     default: [
       {
         Label: WithBoundArgs<
-          typeof TpkCheckboxLabelComponent,
+          typeof TpkLabel,
           'guid' | 'label'
         >;
         Input: WithBoundArgs<
@@ -59,7 +59,7 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
       {{yield
         (hash
           Label=(component
-            TpkCheckboxLabelComponent
+            TpkLabel
             guid=this.guid
             checked=@checked
             label=@label

@@ -6,10 +6,10 @@ import {
 } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
-import TpkTextareaLabelComponent from './tpk-textarea/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import { tracked } from 'tracked-built-ins';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
@@ -39,7 +39,7 @@ export type TpkTextareaSignature = {
           | 'maxLength'
         >;
         Label: WithBoundArgs<
-          typeof TpkTextareaLabelComponent,
+          typeof TpkLabel,
           'guid' | 'label'
         >;
         changeEvent: 'input' | 'change';
@@ -82,7 +82,7 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
       {{yield
         (hash
           Label=(component
-            TpkTextareaLabelComponent
+            TpkLabel
             guid=this.guid
             label=@label
           )

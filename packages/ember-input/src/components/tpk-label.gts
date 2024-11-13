@@ -1,6 +1,6 @@
 import { type TOC } from '@ember/component/template-only';
 
-export interface TpkFileLabelComponentSignature {
+export interface TpkLabelSignature {
   Args: {
     guid: string;
     label: string;
@@ -8,16 +8,16 @@ export interface TpkFileLabelComponentSignature {
   };
   Element: HTMLLabelElement;
   Blocks: {
-    default: [];
+    default: [string] | [];
   };
 }
 
-const TpkFileLabelComponent: TOC<TpkFileLabelComponentSignature> = <template>
+const TpkLabel: TOC<TpkLabelSignature> = <template>
   <label
-    class='tpk-file-label'
+    class='tpk-label'
     for={{@guid}}
     ...attributes
-    data-test-tpk-file-label
+    data-test-tpk-label
   >
     {{#if (has-block)}}
       {{yield}}
@@ -27,4 +27,4 @@ const TpkFileLabelComponent: TOC<TpkFileLabelComponentSignature> = <template>
   </label>
 </template>;
 
-export default TpkFileLabelComponent;
+export default TpkLabel;

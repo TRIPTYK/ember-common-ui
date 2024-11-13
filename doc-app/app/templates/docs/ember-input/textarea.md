@@ -53,7 +53,7 @@ the function receive the value and the event as args.
 
 **.tpk-textarea**: the class added by default to the div wrapping the textarea and the label. 
 
-**.tpk-textarea-label**: the class added by default to the label.
+**.tpk-label**: the class added by default to the label.
 
 **.tpk-textarea-input**: the class added by default to the textarea.
 

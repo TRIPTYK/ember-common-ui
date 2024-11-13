@@ -4,8 +4,8 @@ import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
 import TpkFileInputComponent from './tpk-file/input.gts';
-import TpkFileLabelComponent from './tpk-file/label.gts';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkFileSignature = {
   Args: MergeDeep<
@@ -25,7 +25,7 @@ export type TpkFileSignature = {
           'onChange' | 'accept' | 'disabled' | 'changeEvent' | 'guid'
         >;
         Label: WithBoundArgs<
-          typeof TpkFileLabelComponent,
+          typeof TpkLabel,
           'label' | 'guid'
         >;
         guid: string;
@@ -67,7 +67,7 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
             guid=this.guid
           )
           Label=(component
-            TpkFileLabelComponent
+            TpkLabel
             label=@label
             onChange=this.onChange
             guid=this.guid

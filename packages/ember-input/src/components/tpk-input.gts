@@ -9,11 +9,11 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import type { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input.gts';
-import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -49,7 +49,7 @@ export type TpkInputSignature = {
           | 'max'
         >;
         Label: WithBoundArgs<
-          typeof TpkInputLabelComponent,
+          typeof TpkLabel,
           'label' | 'guid'
         >;
         changeEvent: 'input' | 'change';
@@ -136,7 +136,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
               guid=this.guid
             )
             Label=(component
-              TpkInputLabelComponent
+              TpkLabel
               label=@label
               guid=this.guid
             )
@@ -146,8 +146,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
           )
         }}
       {{else}}
-
-        <TpkInputLabelComponent
+        <TpkLabel
           @label={{@label}}
           @guid={{this.guid}}
         />

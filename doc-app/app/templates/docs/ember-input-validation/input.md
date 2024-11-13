@@ -48,7 +48,7 @@ the function receive the value and the event as args.
 
 **.tpk-input input** :  CSS class for styling the targeted input.
 
-**.tpk-input-label** : CSS class for styling the label of the input.
+**.tpk-label** : CSS class for styling the label of the input.
 
 **[data-has-error="false"]** : CSS element when there is no error.
 

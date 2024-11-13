@@ -7,11 +7,11 @@ import TpkDatepickerNewInputComponent, {
   type TpkDatepickerInput,
   type TpkDatepickerInputComponentSignature,
 } from './tpk-datepicker/input.gts';
-import TpkDatepickerLabelComponent from './tpk-datepicker/label.gts';
 import { hash } from '@ember/helper';
 import IMask from 'imask';
 import { action } from '@ember/object';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkDatepickerSignature = {
   Args: MergeDeep<
@@ -29,7 +29,7 @@ export type TpkDatepickerSignature = {
           keyof TpkDatepickerInputComponentSignature['Args']
         >;
         Label: WithBoundArgs<
-          typeof TpkDatepickerLabelComponent,
+          typeof TpkLabel,
           'guid'  | 'label'
         >;
         guid: string;
@@ -137,7 +137,7 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
             onClose=@onClose
           )
           Label=(component
-            TpkDatepickerLabelComponent
+            TpkLabel
             guid=this.guid
             label=@label
           )

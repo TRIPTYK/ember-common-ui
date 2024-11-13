@@ -11,7 +11,7 @@
   @apply h-full relative;
 }
 
-.tpk-input-label {
+.tpk-input > label {
   @apply relative block mb-1 text-gray-600;
 }
 

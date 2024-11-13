@@ -21,7 +21,7 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
       </TpkValidationTextarea>`,
     );
     assert.dom('[data-test-tpk-textarea]').exists();
-    assert.dom('[data-test-tpk-textarea-label]').containsText('label');
+    assert.dom('[data-test-tpk-label]').containsText('label');
     assert.dom('[data-test-tpk-textarea-input]').hasValue('a');
 
     await fillIn('[data-test-tpk-textarea-input]', '');

@@ -24,7 +24,7 @@ module('Integration | Component | tpk-validation-file', function (hooks) {
       `,
     );
     assert.dom('[data-test-tpk-file]').exists();
-    assert.dom('[data-test-tpk-file-label]').containsText('label');
+    assert.dom('[data-test-tpk-label]').containsText('label');
 
     changeset.addError({
       message: 'required',
