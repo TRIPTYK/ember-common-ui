@@ -2,7 +2,7 @@
   @apply flex flex-col;
 }
 
-.tpk-textarea-label {
+.tpk-textarea > label {
   @apply text-gray-500 pb-1 pl-2;
 }
 

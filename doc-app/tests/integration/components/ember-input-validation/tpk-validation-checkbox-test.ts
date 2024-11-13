@@ -25,7 +25,7 @@ module('Integration | Component | tpk-validation-checkbox', function (hooks) {
   test('It changes data-has-error attribue on error', async function (assert) {
     const changeset = await setupComponent.call(this);
     assert.dom('[data-test-tpk-checkbox]').exists();
-    assert.dom('[data-test-tpk-checkbox-label]').containsText('label');
+    assert.dom('[data-test-tpk-label]').containsText('label');
     assert.dom('[data-test-tpk-checkbox-input]').isChecked();
 
     assert.dom('.tpk-checkbox[data-has-error="false"]').exists();

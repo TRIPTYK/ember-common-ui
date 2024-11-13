@@ -28,7 +28,7 @@ module('Integration | Component | tpk-validation-datepicker', function (hooks) {
   test('It changes data-has-error attribue on error', async function (assert) {
     const changeset = await setupComponent.call(this);
     assert.dom('[data-test-tpk-datepicker]').exists();
-    assert.dom('[data-test-tpk-datepicker-label]').containsText('label');
+    assert.dom('[data-test-tpk-label]').containsText('label');
 
     setTempusDominusDate('[data-test-tpk-datepicker-content]', '');
     await settled();

@@ -3,9 +3,9 @@ import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { WithBoundArgs } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input.gts';
-import TpkRadioLabelComponent from './tpk-radio/label.gts';
 import type { MergeDeep } from 'type-fest';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkRadioSignature = {
   Args: MergeDeep<
@@ -23,7 +23,7 @@ export type TpkRadioSignature = {
     default: [
       {
         Label: WithBoundArgs<
-          typeof TpkRadioLabelComponent,
+          typeof TpkLabel,
           'guid' | 'label'
         >;
         Input: WithBoundArgs<
@@ -70,7 +70,7 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
       {{yield
         (hash
           Label=(component
-            TpkRadioLabelComponent
+            TpkLabel
             guid=this.guid
             label=@label
           )

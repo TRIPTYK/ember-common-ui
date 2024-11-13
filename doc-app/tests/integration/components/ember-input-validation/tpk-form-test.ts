@@ -243,21 +243,19 @@ module('Integration | Component | tpk-form', function (hooks) {
           <button type="submit">Submit</button>
         </TpkForm>`,
     );
-    assert.dom('[data-test-email] .tpk-input-label').includesText('*');
-    assert.dom('[data-test-address-street] .tpk-input-label').includesText('*');
+    assert.dom('[data-test-email] .tpk-label').includesText('*');
+    assert.dom('[data-test-address-street] .tpk-label').includesText('*');
+    assert.dom('[data-test-address-city] .tpk-label').doesNotIncludeText('*');
+    assert.dom('[data-test-level-name="0"] .tpk-label').includesText('*');
     assert
-      .dom('[data-test-address-city] .tpk-input-label')
-      .doesNotIncludeText('*');
-    assert.dom('[data-test-level-name="0"] .tpk-input-label').includesText('*');
-    assert
-      .dom('[data-test-level-grade="0"] .tpk-input-label')
+      .dom('[data-test-level-grade="0"] .tpk-label')
       .doesNotIncludeText('*');
     assert.dom('[data-test-level-name]').exists({ count: 1 });
     await click('[data-test-add-level]');
     assert.dom('[data-test-level-grade]').exists({ count: 2 });
-    assert.dom('[data-test-level-name="1"] .tpk-input-label').includesText('*');
+    assert.dom('[data-test-level-name="1"] .tpk-label').includesText('*');
     assert
-      .dom('[data-test-level-grade="1"] .tpk-input-label')
+      .dom('[data-test-level-grade="1"] .tpk-label')
       .doesNotIncludeText('*');
   });
 });

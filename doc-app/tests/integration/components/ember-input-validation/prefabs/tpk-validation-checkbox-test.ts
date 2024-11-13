@@ -28,9 +28,9 @@ module(
 
     test('renders checkbox with default structure and with mandatory', async function (assert) {
       await renderComponent.call(this);
-      assert.dom('[data-test-tpk-checkbox-label]').exists();
+      assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-checkbox-input]').exists();
-      assert.dom('[data-test-tpk-checkbox-label]').containsText('label *');
+      assert.dom('[data-test-tpk-label]').containsText('label *');
       assert.dom('[data-test-tpk-checkbox-input]').isChecked();
     });
   },
