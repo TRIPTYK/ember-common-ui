@@ -22,7 +22,6 @@ export interface TpkStackListHeadComponentSignature {
   };
 }
 
-// eslint-disable-next-line prettier/prettier
 const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
   <template>
     <div class='flex items-center space-x-2'>

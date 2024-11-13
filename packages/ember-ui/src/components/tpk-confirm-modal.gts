@@ -30,7 +30,6 @@ export interface TpkConfirmModalSignature {
   };
 }
 
-// eslint-disable-next-line prettier/prettier
 const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
   <template>
     <TpkModal

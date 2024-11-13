@@ -26,9 +26,3 @@ export default class DialogLayerService extends Service {
     this.dialogs.splice(ix, 1);
   }
 }
-
-declare module '@ember/service' {
-  interface Registry {
-    'dialog-layer': DialogLayerService;
-  }
-}

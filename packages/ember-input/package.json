@@ -133,7 +133,6 @@
       "./components/tpk-input.js": "./dist/_app_/components/tpk-input.js",
       "./components/tpk-input/input.js": "./dist/_app_/components/tpk-input/input.js",
       "./components/tpk-input/label.js": "./dist/_app_/components/tpk-input/label.js",
-      "./components/tpk-label.js": "./dist/_app_/components/tpk-label.js",
       "./components/tpk-radio.js": "./dist/_app_/components/tpk-radio.js",
       "./components/tpk-radio/input.js": "./dist/_app_/components/tpk-radio/input.js",
       "./components/tpk-radio/label.js": "./dist/_app_/components/tpk-radio/label.js",

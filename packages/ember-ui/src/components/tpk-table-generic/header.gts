@@ -19,7 +19,6 @@ export interface TableGenericHeaderComponentSignature {
   };
 }
 
-// eslint-disable-next-line prettier/prettier
 const TableGenericHeaderComponent: TOC<TableGenericHeaderComponentSignature> =
   <template>
     <@table.header class='tpk-table-header' as |header|>
