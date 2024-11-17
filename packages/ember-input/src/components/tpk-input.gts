@@ -119,49 +119,31 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
       ...attributes
       data-test-tpk-input
     >
-      {{#if (has-block)}}
-        {{yield
-          (hash
-            Input=(component
-              TpkInputInputComponent
-              onChange=this.onChange
-              type=@type
-              placeholder=@placeholder
-              changeEvent=this.changeEvent
-              min=@min
-              step=@step
-              max=@max
-              value=@value
-              disabled=@disabled
-              guid=this.guid
-            )
-            Label=(component
-              TpkLabel
-              label=@label
-              guid=this.guid
-            )
-            changeEvent=this.changeEvent
-            guid=this.guid
+      {{yield
+        (hash
+          Input=(component
+            TpkInputInputComponent
             onChange=this.onChange
+            type=@type
+            placeholder=@placeholder
+            changeEvent=this.changeEvent
+            min=@min
+            step=@step
+            max=@max
+            value=@value
+            disabled=@disabled
+            guid=this.guid
           )
-        }}
-      {{else}}
-        <TpkLabel
-          @label={{@label}}
-          @guid={{this.guid}}
-        />
-        <TpkInputInputComponent
-          @onChange={{this.onChange}}
-          @type={{@type}}
-          @changeEvent={{this.changeEvent}}
-          @value={{@value}}
-          @min={{@min}}
-          @step={{@step}}
-          @max={{@max}}
-          @disabled={{@disabled}}
-          @guid={{this.guid}}
-        />
-      {{/if}}
+          Label=(component
+            TpkLabel
+            label=@label
+            guid=this.guid
+          )
+          changeEvent=this.changeEvent
+          guid=this.guid
+          onChange=this.onChange
+        )
+      }}
     </div>
   </template>
 }
