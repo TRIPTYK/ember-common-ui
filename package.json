@@ -6,7 +6,7 @@
     "lint:fix": "pnpm turbo lint:fix",
     "lint": "pnpm turbo lint",
     "test": "pnpm turbo test",
-    "dev": "pnpm turbo dev",
+    "dev": "pnpm turbo start",
     "start": "pnpm dev"
   },
   "pnpm": {
@@ -22,7 +22,7 @@
     "git-conventional-commits": "catalog:",
     "lefthook": "catalog:",
     "lerna": "catalog:",
-    "turbo": "^2.2.3"
+    "turbo": "^2.3.0"
   },
   "packageManager": "pnpm@9.12.3",
   "volta": {

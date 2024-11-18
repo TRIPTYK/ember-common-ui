@@ -35,7 +35,7 @@
     "static"
   ],
   "scripts": {
-    "build": "concurrently 'npm:build:*'",
+    "build": "concurrently 'npm:build:js' 'npm:build:types'",
     "build:clean": "rm -rf dist",
     "build:js": "rollup --config",
     "build:types": "glint --declaration",

@@ -1,9 +1,19 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const sideWatch = require('@embroider/broccoli-side-watch');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
+    trees: {
+      app: sideWatch('app', {
+        watching: [
+          '@triptyk/ember-input',
+          '@triptyk/ember-ui',
+          '@triptyk/ember-input-validation',
+        ],
+      }),
+    },
     'ember-cli-babel': { enableTypeScriptTransform: true },
     'ember-cli-addon-docs': {
       documentingAddonAt: '../packages/ember-input',
