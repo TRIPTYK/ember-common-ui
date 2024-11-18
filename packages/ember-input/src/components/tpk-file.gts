@@ -35,7 +35,6 @@ export type TpkFileSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> {
@@ -50,34 +49,28 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
   }
 
   <template>
-    <div
-      class='tpk-file'
-      ...attributes
-      data-test-tpk-file
-    >
-      {{yield
-        (hash
-          Input=(component
-            TpkFileInputComponent
-            onChange=this.onChange
-            accept=@accept
-            disabled=@disabled
-            multiple=@multiple
-            changeEvent=this.changeEvent
-            guid=this.guid
-          )
-          Label=(component
-            TpkLabel
-            label=@label
-            onChange=this.onChange
-            guid=this.guid
-          )
+    {{yield
+      (hash
+        Input=(component
+          TpkFileInputComponent
+          onChange=this.onChange
+          accept=@accept
+          disabled=@disabled
+          multiple=@multiple
           changeEvent=this.changeEvent
+          guid=this.guid
+        )
+        Label=(component
+          TpkLabel
+          label=@label
           onChange=this.onChange
           guid=this.guid
-          files=this.files
         )
-      }}
-    </div>
+        changeEvent=this.changeEvent
+        onChange=this.onChange
+        guid=this.guid
+        files=this.files
+      )
+    }}
   </template>
 }
