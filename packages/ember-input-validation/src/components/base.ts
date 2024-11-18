@@ -12,7 +12,6 @@ export interface BaseValidationSignature {
     // eslint-disable-next-line no-unused-vars
     onChange?: (value: unknown) => unknown;
   };
-  Element: HTMLElement;
   Blocks: {
     default: unknown[];
   };

@@ -29,7 +29,6 @@ export interface TpkValidationFileComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationFileComponent extends BaseValidationComponent<TpkValidationFileComponentSignature> {
@@ -44,19 +43,12 @@ export default class TpkValidationFileComponent extends BaseValidationComponent<
     );
   }
 
-  get value() {
-    return super.value;
-  }
-
   <template>
     <TpkFile
       @label={{@label}}
       @onChange={{this.onChange}}
       @changeEvent={{@changeEvent}}
-
       @multiple={{@multiple}}
-      ...attributes
-      data-has-error='{{this.hasError}}'
       as |I|
     >
       {{yield
