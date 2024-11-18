@@ -2,7 +2,9 @@
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
       "build": {
-        "dependsOn": ["build:clean","^build"]
+        "dependsOn": ["build:clean","^build"],
+        "inputs": ["src/**"],
+        "outputs": ["dist/**"]
       },
       "build:clean": {
         "cache": false

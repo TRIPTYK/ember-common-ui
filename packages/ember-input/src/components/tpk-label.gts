@@ -8,7 +8,7 @@ export interface TpkLabelSignature {
   };
   Element: HTMLLabelElement;
   Blocks: {
-    default: [string] | [];
+    default: [];
   };
 }
 

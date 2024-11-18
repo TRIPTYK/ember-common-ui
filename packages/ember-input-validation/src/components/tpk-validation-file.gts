@@ -3,7 +3,7 @@ import {
   BaseValidationComponent,
   type BaseValidationSignature,
 } from './base.ts';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import TpkFile from '@triptyk/ember-input/components/tpk-file';
 import type TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
 import { hash } from '@ember/helper';
@@ -22,7 +22,7 @@ export interface TpkValidationFileComponentSignature
     default: [
       {
         Input: ComponentLike<typeof TpkFileInputComponent>;
-        Label: ComponentLike<typeof TpkLabel>;
+        Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
         errors: TpkValidationFileComponent['errors'];
         hasError: TpkValidationFileComponent['hasError'];
         firstError: TpkValidationFileComponent['firstError'];
