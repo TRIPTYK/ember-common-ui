@@ -24,7 +24,6 @@ export interface TpkValidationRadioComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationRadioComponent extends BaseValidationComponent<TpkValidationRadioComponentSignature> {
@@ -49,7 +48,6 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}
-      ...attributes
       as |I|
     >
       {{yield

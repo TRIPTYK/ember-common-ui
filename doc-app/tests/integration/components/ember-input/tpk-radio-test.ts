@@ -36,11 +36,11 @@ module('Integration | Component | ui/radio', function (hooks) {
         </TpkRadio>
     `);
 
-    await click('[data-test-radio] > label');
-    assert.dom('[data-test-radio] > input.text-yellow-300').exists();
-    assert.dom('[data-test-radio] > label.text-blue-300').exists();
+    await click('label');
+    assert.dom('input.text-yellow-300').exists();
+    assert.dom('label.text-blue-300').exists();
 
-    assert.dom('[data-test-radio] > label').containsText('Label');
+    assert.dom('label').containsText('Label');
 
     assert.verifySteps(['check']);
   });
