@@ -1,8 +1,8 @@
 import type TpkButtonComponent from './components/tpk-button';
 import type TpkCheckboxComponent from './components/tpk-checkbox';
-import type TpkCheckboxInputComponent from './components/tpk-checkbox/input';
+import type TpkCheckboxInputComponent from './components/tpk-checkbox-input';
 import type TpkDatepicker from './components/tpk-datepicker';
-import type TpkDatepickerInputComponent from './components/tpk-datepicker/input';
+import type TpkDatepickerInputComponent from './components/tpk-datepicker-input';
 import type TpkFileComponent from './components/tpk-file';
 import type TpkFileInputComponent from './components/tpk-file/input';
 import type TpkInputComponent from './components/tpk-input';

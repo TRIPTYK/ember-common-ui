@@ -6,7 +6,7 @@ import type { WithBoundArgs } from '@glint/template';
 import TpkDatepickerNewInputComponent, {
   type TpkDatepickerInput,
   type TpkDatepickerInputComponentSignature,
-} from './tpk-datepicker/input.gts';
+} from './tpk-datepicker-input.gts';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
 
