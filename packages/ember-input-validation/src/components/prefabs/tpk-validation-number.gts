@@ -49,7 +49,7 @@ get min() {
       <I.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
       </I.Label>
-      <I.Input />
+      <I.Input ...attributes />
       <TpkValidationErrorsComponent
         @errors={{I.errors}}
 
