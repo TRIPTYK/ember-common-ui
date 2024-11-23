@@ -51,7 +51,6 @@ export type TpkInputSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature> {
@@ -68,38 +67,32 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
   }
 
   <template>
-    <div
-      class='tpk-input'
-      ...attributes
-      data-test-tpk-input
-    >
-      {{yield
-        (hash
-          Input=(component
-            TpkInputInputComponent
-            onChange=@onChange
-            type=@type
-            mask=@mask
-            maskOptions=@maskOptions
-            unmaskValue=@unmaskValue
-            placeholder=@placeholder
-            changeEvent=this.changeEvent
-            min=@min
-            step=@step
-            max=@max
-            value=@value
-            disabled=@disabled
-            guid=this.guid
-          )
-          Label=(component
-            TpkLabel
-            label=@label
-            guid=this.guid
-          )
+    {{yield
+      (hash
+        Input=(component
+          TpkInputInputComponent
+          onChange=@onChange
+          type=@type
+          mask=@mask
+          maskOptions=@maskOptions
+          unmaskValue=@unmaskValue
+          placeholder=@placeholder
           changeEvent=this.changeEvent
+          min=@min
+          step=@step
+          max=@max
+          value=@value
+          disabled=@disabled
           guid=this.guid
         )
-      }}
-    </div>
+        Label=(component
+          TpkLabel
+          label=@label
+          guid=this.guid
+        )
+        changeEvent=this.changeEvent
+        guid=this.guid
+      )
+    }}
   </template>
 }

@@ -33,7 +33,6 @@ export type TpkCheckboxSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSignature> {
@@ -51,32 +50,26 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
   }
 
   <template>
-    <div
-      class='tpk-checkbox'
-      ...attributes
-      data-test-tpk-checkbox
-    >
-      {{yield
-        (hash
-          Label=(component
-            TpkLabel
-            guid=this.guid
-            checked=@checked
-            label=@label
-          )
-          Input=(component
-            TpkCheckboxInputComponent
-            guid=this.guid
-            checked=@checked
-            disabled=@disabled
-            changeEvent=this.changeEvent
-            onChange=this.onChange
-          )
-          onChange=this.onChange
-          changeEvent=this.changeEvent
+    {{yield
+      (hash
+        Label=(component
+          TpkLabel
           guid=this.guid
+          checked=@checked
+          label=@label
         )
-      }}
-    </div>
+        Input=(component
+          TpkCheckboxInputComponent
+          guid=this.guid
+          checked=@checked
+          disabled=@disabled
+          changeEvent=this.changeEvent
+          onChange=this.onChange
+        )
+        onChange=this.onChange
+        changeEvent=this.changeEvent
+        guid=this.guid
+      )
+    }}
   </template>
 }

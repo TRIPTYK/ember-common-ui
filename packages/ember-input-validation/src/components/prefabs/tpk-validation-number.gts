@@ -46,17 +46,18 @@ get min() {
       @requiredFields={{@requiredFields}}
       data-test-input='number'
       anchorScrollUp={{@validationField}}
-      ...attributes
       as |I|
     >
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{I.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
       <I.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
       </I.Label>
-      <I.Input />
+      <I.Input ...attributes />
       <TpkValidationErrorsComponent
         @errors={{I.errors}}
 
       />
+      </div>
     </TpkValidationInputComponent>
   </template>
 }

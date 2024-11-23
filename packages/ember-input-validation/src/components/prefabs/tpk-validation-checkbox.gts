@@ -16,7 +16,6 @@ export interface TpkValidationCheckboxPrefabSignature
 const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSignature> = <template>
     <TpkValidationCheckboxComponent
       @label={{@label}}
-
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
@@ -24,9 +23,13 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
       @disabled={{@disabled}}
       @onChange={{@onChange}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
     as |V|>
+      <div
+          class='tpk-checkbox'
+          anchorScrollUp={{@validationField}}
+          ...attributes
+          data-test-tpk-checkbox
+        >
       <V.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
@@ -35,6 +38,7 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
         @errors={{V.errors}}
 
       />
+      </div>
     </TpkValidationCheckboxComponent>
   </template>;
 

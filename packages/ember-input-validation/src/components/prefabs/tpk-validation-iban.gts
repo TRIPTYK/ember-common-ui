@@ -69,16 +69,18 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
       anchorScrollUp={{@validationField}}
-      ...attributes
-    as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
 
-      />
+    as |V|>
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <V.Label>
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        </V.Label>
+        <V.Input ...attributes />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
+
+        />
+      </div>
     </TpkValidationInputComponent>
   </template>
 }

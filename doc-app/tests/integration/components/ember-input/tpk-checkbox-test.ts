@@ -27,7 +27,6 @@ module('Integration | Component | ui/checkbox', function (hooks) {
           @label='Label'
           @checked={{false}}
           @onChange={{this.setChecked}}
-          data-test-checkbox
           as |C|
         >
           <C.Input class='text-yellow-300' />
@@ -35,11 +34,11 @@ module('Integration | Component | ui/checkbox', function (hooks) {
         </TpkCheckbox>
     `);
 
-    await click('[data-test-checkbox] > label');
-    assert.dom('[data-test-checkbox] > input.text-yellow-300').exists();
-    assert.dom('[data-test-checkbox] > label.text-blue-300').exists();
+    await click('label');
+    assert.dom('input.text-yellow-300').exists();
+    assert.dom('label.text-blue-300').exists();
 
-    assert.dom('[data-test-checkbox] > label').containsText('Label');
+    assert.dom('label').containsText('Label');
 
     assert.verifySteps(['check']);
   });

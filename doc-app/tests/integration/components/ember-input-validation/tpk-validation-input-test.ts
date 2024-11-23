@@ -26,28 +26,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     return changeset;
   }
 
-  test('It changes data-has-error attribue on error', async function (assert) {
-    const changeset = setupChangeset.call(this);
-
-    await renderComponent();
-    assert.dom('[data-test-tpk-input]').exists();
-    assert.dom('[data-test-tpk-label]').containsText('label');
-    assert.dom('[data-test-tpk-input-input]').hasValue('value');
-
-    await fillIn('[data-test-tpk-input-input]', '');
-    assert.strictEqual(changeset.get('name'), '');
-
-    changeset.addError({
-      message: 'required',
-      value: '',
-      originalValue: 'value',
-      key: 'name',
-    });
-
-    await settled();
-    assert.dom('[data-test-tpk-input-input]').hasNoText();
-    assert.dom('[data-test-tpk-input]').hasAttribute('data-has-error', 'true');
-  });
 
   test('It overrides change function', async function (assert) {
     const changeset = setupChangeset.call(this);
@@ -63,11 +41,11 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     });
 
     await renderComponent();
-    await fillIn('[data-test-validation-input] input', 'blah');
+    await fillIn('input', 'blah');
     assert.verifySteps(['change']);
   });
 
-  test('COMPLEX | override change function', async function (assert) {
+  test('override change function', async function (assert) {
     const changeset = setupChangeset.call(this);
 
     this.set('onChange', (value: string) => {
@@ -87,15 +65,14 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       @onChange={{this.onChange}}
       @changeset={{this.changeset}}
       @validationField="name"
-      data-test-input="name"
     as |I|><I.Label /><I.Input/></TpkValidationInput>`,
     );
 
-    await fillIn('[data-test-input="name"] input', 'valueChanged');
+    await fillIn('input', 'valueChanged');
     assert.verifySteps(['change']);
   });
 
-  test('COMPLEX | changeset change when element is modified', async function (assert) {
+  test('changeset change when element is modified', async function (assert) {
     const changeset = setupChangeset.call(this);
 
     await render(
@@ -113,7 +90,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     </TpkValidationInput>`,
     );
 
-    await fillIn('[data-test-input="name"] input', 'valueChanged');
+    await fillIn('input', 'valueChanged');
     assert.strictEqual(changeset.get('name'), 'valueChanged');
   });
 });
