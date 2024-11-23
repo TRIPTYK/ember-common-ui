@@ -12,7 +12,6 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationSelectPrefabComponent extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
@@ -45,8 +44,10 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
 
   <template>
     <div
-      class="{{if @disabled "disabled"}} tpk-validation-select"
+      class="{{if @disabled "disabled"}} tpk-select tpk-validation-select"
+      anchorScrollUp={{@validationField}}
       data-has-error='{{this.hasError}}'
+      ...attributes
     >
       <TpkSelectComponent
         @label={{@label}}
@@ -55,15 +56,12 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
-
         @options={{@options}}
         @onChange={{this.onChange}}
         @selected={{this.value}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-        anchorScrollUp={{@validationField}}
-        ...attributes
       as |S|>
         <S.Option as |O|>
           {{this.toString O.option}}
@@ -71,7 +69,6 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
       </TpkSelectComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
-
       />
     </div>
   </template>
