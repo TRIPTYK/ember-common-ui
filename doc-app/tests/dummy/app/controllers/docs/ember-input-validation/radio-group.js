@@ -12,15 +12,6 @@ export default class DocsRadioGroupValidationController extends Controller {
   onChange(value) {
     this.changeset.set('radio', value);
     this.changeset.save();
-    if (!this.changeset.get('radio')) {
-      this.changeset.addError({
-        message: 'Select a radio',
-        value: true,
-        originalValue: true,
-        key: 'radio',
-      });
-    } else {
-      this.changeset.removeError('radio');
-    }
+
   }
 }
