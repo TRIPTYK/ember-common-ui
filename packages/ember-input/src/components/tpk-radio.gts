@@ -54,7 +54,7 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
   }
 
   @action
-  public onChange(e: Event) {
+  public onChange(e: Event) {   
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     this.args.onChange?.(target.value, e);

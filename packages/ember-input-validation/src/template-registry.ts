@@ -1,3 +1,4 @@
+import TpkValidationRadioGroupComponent from './components/tpk-validation-radio-group.gts';
 import TpkValidationCheckboxComponent from './components/tpk-validation-checkbox.gts';
 import TpkValidationDatepicker from './components/tpk-validation-datepicker.gts';
 import TpkValidationFileComponent from './components/tpk-validation-file.gts';
@@ -15,6 +16,8 @@ export default interface Registry {
   TpkValidationFile: typeof TpkValidationFileComponent;
   'tpk-validation-input': typeof TpkValidationInputComponent;
   TpkValidationInput: typeof TpkValidationInputComponent;
+  'tpk-validation-radio-group': typeof TpkValidationRadioGroupComponent;
+  TpkValidationRadioGroup: typeof TpkValidationRadioGroupComponent;
   'tpk-validation-radio': typeof TpkValidationRadioComponent;
   TpkValidationRadio: typeof TpkValidationRadioComponent;
   'tpk-validation-select': typeof TpkValidationSelectComponent;
