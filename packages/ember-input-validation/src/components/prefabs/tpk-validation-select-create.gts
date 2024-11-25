@@ -8,7 +8,9 @@ import { action } from '@ember/object';
 
 export interface TpkValidationSelectCreatePrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkSelectCreateSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkSelectCreateSignature['Args'] & {
+    onChange?: TpkSelectCreateSignature['Args']['onChange'];
+  }
   Blocks: {
     default: [];
   };

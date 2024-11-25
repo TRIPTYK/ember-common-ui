@@ -6,7 +6,7 @@ import { on } from '@ember/modifier';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import IMask from 'imask';
 
-export interface TpkDatepickerInput {
+export interface TpkDatepickerInputArgs {
   mask?: string;
   maskOptions?: Record<string, unknown>;
   unmaskValue?: boolean;
@@ -41,16 +41,16 @@ export interface TpkDatepickerInput {
 }
 
 export interface TpkDatepickerInputComponentSignature {
-  Args: TpkDatepickerInput & { guid: string };
+  Args: TpkDatepickerInputArgs & { guid: string };
   Element: HTMLInputElement;
 }
 
-export class HTMLInputTDElement extends HTMLInputElement {
-  declare _tempusDominus: TempusDominus;
+export interface HTMLInputTDElement extends HTMLInputElement {
+  _tempusDominus: TempusDominus;
 }
 
 export default class TpkDatepickerNewInputComponent extends Component<TpkDatepickerInputComponentSignature> {
-  @tracked declare datepicker: TempusDominus;
+  @tracked datepicker?: TempusDominus;
 
   @action
   setMask(element: HTMLElement) {
@@ -172,12 +172,12 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
       this.datepicker.subscribe(Namespace.events.change, () => {
         if (this.args.mode === 'multiple' || this.args.mode === 'range') {
           // Workaround to trigger change event after at least 2 dates are picked
-          if (this.datepicker.dates.picked.length > 1) {
-            return this.args.onChange(this.datepicker.dates.picked);
+          if (this.datepicker!.dates.picked.length > 1) {
+            return this.args.onChange(this.datepicker!.dates.picked);
           }
           return;
         }
-        this.args.onChange(this.datepicker.dates.picked);
+        this.args.onChange(this.datepicker!.dates.picked);
       });
     }
     if (this.args.onClose) {
@@ -190,10 +190,10 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
   @action
   closeDatepicker(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      this.datepicker.hide();
+      this.datepicker?.hide();
     }
     if (event.key === 'Tab') {
-      this.datepicker.hide();
+      this.datepicker?.hide();
     }
   }
   <template>

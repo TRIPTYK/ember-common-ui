@@ -50,15 +50,15 @@ export interface TableApi {
 }
 
 interface TableGenericTableArgs {
-  entity: keyof ModelRegistry;
-  relationships: string;
+  entity: string;
+  relationships?: string;
   pageSizes?: number[];
   pageSize?: number;
   filterText?: string;
   // eslint-disable-next-line no-unused-vars
   registerApi?: (api: TableApi) => unknown;
   rowClick: () => void;
-  additionalFilters: Record<string, unknown>;
+  additionalFilters?: Record<string, unknown>;
   defaultSortColumn?: string;
 }
 
@@ -89,15 +89,10 @@ export default class TableGenericTableComponent<
   K extends keyof ModelRegistry,
 > extends Component<TableGenericTableSignature> {
   @service declare store: Store;
-
   @tracked totalRows?: number;
 
   public get pageSize(): number {
     return this.args.pageSize || 30;
-  }
-
-  public get entityName() {
-    return this.args.entity;
   }
 
   public get relationships(): string | undefined {
@@ -126,7 +121,7 @@ export default class TableGenericTableComponent<
       sortString,
     );
 
-    const array = await this.store.query(this.entityName, queryOptions);
+    const array = await this.store.query(this.args.entity as never, queryOptions);
 
     this.totalRows = (
       array as unknown as ArrayProxy<K> & {
