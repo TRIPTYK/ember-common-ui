@@ -4,9 +4,12 @@ import { TempusDominus, Namespace, DateTime } from '@eonasdan/tempus-dominus';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+import IMask from 'imask';
 
 export interface TpkDatepickerInput {
-
+  mask?: string;
+  maskOptions?: Record<string, unknown>;
+  unmaskValue?: boolean;
   disabled?: boolean;
   placeholder?: string;
   value?: Date | string;
@@ -50,10 +53,58 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
   @tracked declare datepicker: TempusDominus;
 
   @action
-  setTempusDominus(element: HTMLDivElement) {
-    const input = element.querySelector(`#${this.args.guid}`) as HTMLElement;
-    this.datepicker = new TempusDominus(input, {
-      container: element,
+  setMask(element: HTMLElement) {
+    if (!this.args.mask) return;
+
+    IMask(element, {
+      mask: this.args.mask,
+      blocks: {
+        d: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 31,
+          maxLength: 2,
+        },
+        m: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+          maxLength: 2,
+        },
+        Y: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 9999,
+        },
+        H: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 23,
+          maxLength: 2,
+        },
+        M: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 59,
+          maxLength: 2,
+        },
+        S: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 59,
+          maxLength: 2,
+        },
+      },
+      lazy: true,
+      overwrite: true,
+      autofix: true,
+    });
+  }
+
+  @action
+  setTempusDominus(element: HTMLInputElement) {
+    this.datepicker = new TempusDominus(element, {
+      container: element.parentElement as HTMLElement,
       defaultDate: this.args.value as DateTime | undefined,
       useCurrent: this.args.useCurrent === true ? true : false,
       allowInputToggle: false,
@@ -114,7 +165,8 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
     });
 
     // Set the datepicker instance on the input element in order to use it in testing
-    (input as HTMLInputTDElement)._tempusDominus = this.datepicker;
+    // @ts-expect-error _tempusDominus is not a standard property
+    element._tempusDominus = this.datepicker;
 
     if (this.args.onChange) {
       this.datepicker.subscribe(Namespace.events.change, () => {
@@ -147,9 +199,10 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
   <template>
     <div
       class='tpk-datepicker-input-input-container'
-      {{didInsert this.setTempusDominus}}
     >
       <input
+        {{didInsert this.setTempusDominus}}
+        {{didInsert this.setMask}}
         disabled={{@disabled}}
         class='tpk-datepicker-input-input'
         placeholder={{@placeholder}}

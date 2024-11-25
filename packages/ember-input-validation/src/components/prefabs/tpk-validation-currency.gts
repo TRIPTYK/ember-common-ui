@@ -45,7 +45,6 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-
       @placeholder={{@placeholder}}
       @mask={{this.mask.mask}}
       @maskOptions={{this.mask}}
@@ -56,17 +55,17 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
     as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <V.Input placeholder={{@placeholder}} />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <V.Label>
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        </V.Label>
+        <V.Input placeholder={{@placeholder}} />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
 
-      />
+        />
+      </div>
     </TpkValidationInputComponent>
   </template>
 }

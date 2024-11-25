@@ -50,9 +50,9 @@ module('Integration | Component | tpk-form', function (hooks) {
           @executeOnValid={{this.executeOnValid}}
         as |F|>
           <F.TpkInputPrefab @validationField="name" />
-          <F.TpkInput anchorScrollUp="email" @type="email" @validationField="email" as |I|>
+          <F.TpkInput @type="email" @validationField="email" as |I|>
             <I.Label />
-            <I.Input />
+            <I.Input anchorScrollUp="email" />
           </F.TpkInput>
           <button type="submit">Submit</button>
         </TpkForm>`,

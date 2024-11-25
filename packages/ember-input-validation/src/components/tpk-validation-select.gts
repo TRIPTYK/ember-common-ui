@@ -39,6 +39,8 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
     <div
       class="{{if @disabled "disabled"}} tpk-validation-select"
       data-has-error='{{this.hasError}}'
+      anchorScrollUp={{@validationField}}
+      ...attributes
     >
       <TpkSelectComponent
         @multiple={{@multiple}}
@@ -63,7 +65,6 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
         @initiallyOpened={{@initiallyOpened}}
         @loadingMessage={{@loadingMessage}}
         @noMatchesMessage={{@noMatchesMessage}}
-        ...attributes
         as |I|
       >
         {{yield

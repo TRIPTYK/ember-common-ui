@@ -4,7 +4,7 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import { assert } from '@ember/debug';
-import { type TpkDatepickerInput } from '@triptyk/ember-input/components/tpk-datepicker/input';
+import { type TpkDatepickerInput } from '@triptyk/ember-input/components/tpk-datepicker-input';
 import { hash } from '@ember/helper';
 import TpkDatepicker, {
   type TpkDatepickerSignature,

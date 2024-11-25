@@ -22,7 +22,6 @@ export interface TpkValidationTextareaComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationTextareaComponent extends BaseValidationComponent<TpkValidationTextareaComponentSignature> {
@@ -41,13 +40,10 @@ export default class TpkValidationTextareaComponent extends BaseValidationCompon
     <TpkTextarea
       @value={{this.value}}
       @label={{@label}}
-
       @disabled={{@disabled}}
       @maxLength={{@maxLength}}
       @changeEvent={{@changeEvent}}
       @onChange={{this.onChange}}
-      ...attributes
-      data-has-error='{{this.hasError}}'
       as |I|
     >
       {{yield
