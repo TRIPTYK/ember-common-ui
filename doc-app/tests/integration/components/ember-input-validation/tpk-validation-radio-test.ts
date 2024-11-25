@@ -18,11 +18,11 @@ module('Integration | Component | tpk-validation-radio', function (hooks) {
 
     await render(
       hbs`
-      <TpkValidationRadio @changeset={{this.changeset}} @validationField={{'radio'}} @value={{this.good}} @label='good' data-test-radio="good" as |T| >
+      <TpkValidationRadio @changeset={{this.changeset}} @validationField='radio' @value={{this.good}} @label='good' data-test-radio="good" as |T| >
           <T.Input />
           <T.Label />
       </TpkValidationRadio>
-      <TpkValidationRadio @changeset={{this.changeset}} @validationField={{'radio'}} @value={{this.bad}} @label='bad' data-test-radio="bad" as |T| >
+      <TpkValidationRadio @changeset={{this.changeset}} @validationField='radio' @value={{this.bad}} @label='bad' data-test-radio="bad" as |T| >
           <T.Input />
           <T.Label />
       </TpkValidationRadio>
