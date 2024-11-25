@@ -41,7 +41,6 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
         disabled=@disabled
         mandatory=@mandatory    
       )}}
-      {{log V.errors}}
      <TpkValidationErrorsComponent
       @errors={{V.errors}}
     />
