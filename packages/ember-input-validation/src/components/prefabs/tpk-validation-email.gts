@@ -46,7 +46,7 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
         <V.Label>
           <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
         </V.Label>
-        <V.Input  ...attributes />
+        <V.Input />
         <TpkValidationErrorsComponent
           @errors={{V.errors}}
 

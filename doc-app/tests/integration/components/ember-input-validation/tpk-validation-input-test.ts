@@ -1,8 +1,7 @@
-/* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { type TestContext, fillIn, render, settled } from '@ember/test-helpers';
+import { type TestContext, fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 
@@ -25,7 +24,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     this.set('changeset', changeset);
     return changeset;
   }
-
 
   test('It overrides change function', async function (assert) {
     const changeset = setupChangeset.call(this);

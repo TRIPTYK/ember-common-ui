@@ -60,7 +60,7 @@ preventNonNumericInput(event: KeyboardEvent) {
         <I.Label>
           <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
         </I.Label>
-        <I.Input {{on 'keydown' this.preventNonNumericInput}} ...attributes />
+        <I.Input {{on 'keydown' this.preventNonNumericInput}} />
         <TpkValidationErrorsComponent
           @errors={{I.errors}}
 
