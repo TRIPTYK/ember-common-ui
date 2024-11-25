@@ -30,7 +30,7 @@ module(
       `);
       return this.changeset;
     }
-    test('render radio with default structure', async function (assert) {
+    test<TestContext>('render radio with default structure', async function (assert) {
       await setupComponent.call(this, undefined);
       assert.strictEqual(this.changeset.get('radio'), undefined);
       await click("[data-test-radio='bad'] [data-test-tpk-radio-input]");
@@ -48,14 +48,14 @@ module(
       assert.strictEqual(this.changeset.get('radio'), 'good');
     });
 
-    test('changeset set value selected the good radio', async function (assert) {
+    test<TestContext>('changeset set value selected the good radio', async function (assert) {
       await setupComponent.call(this, 'good');
       assert
         .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
         .isChecked();
     });
 
-    test('must set wrong value type to selected', async function (assert) {
+    test<TestContext>('must set wrong value type to selected', async function (assert) {
       await setupOnerror(function (err) {
         console.log(err);
 
