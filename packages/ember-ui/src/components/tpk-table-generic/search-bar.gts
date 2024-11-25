@@ -52,8 +52,6 @@ export default class TableGenericSearchBarComponent extends Component<TableGener
       @value={{this.searchValue}}
       @onChange={{this.updateSearchValue}}
       @type='search'
-      class='tpk-table-search'
-      ...attributes
       as |TI|
     >
       <form {{on 'submit' this.onSearch}}>

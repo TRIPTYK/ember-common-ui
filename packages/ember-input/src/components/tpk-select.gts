@@ -42,7 +42,6 @@ export interface TpkSelectSignature {
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkSelectComponent extends Component<TpkSelectSignature> {
@@ -63,81 +62,76 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   }
 
   <template>
-    <div
-      class='tpk-select'
-      ...attributes
-    >
-      {{#if @multiple}}
-        <PowerSelectMultiple
-          @labelText={{@label}}
-          @options={{@options}}
-          @selected={{@selected}}
-          @allowClear={{@allowClear}}
-          @onChange={{@onChange}}
-          @placeholder={{@placeholder}}
-          @labelClass="tpk-select-label"
-          @renderInPlace={{this.renderInPlace}}
-          @labelComponent={{@labelComponent}}
-          @selectedItemComponent={{@selectedItemComponent}}
-          @placeholderComponent={{@placeholderComponent}}
-          @searchEnabled={{@searchEnabled}}
-          @searchField={{@searchField}}
-          @searchPlaceholder={{@searchPlaceholder}}
-          @searchMessage={{@searchMessage}}
-          @search={{@search}}
-          @onKeydown={{@onKeyDown}}
-          @disabled={{@disabled}}
-          @dropdownClass='tpk-select-dropdown'
-          @triggerClass='tpk-select-trigger'
-          @initiallyOpened={{@initiallyOpened}}
-          @loadingMessage={{@loadingMessage}}
-          @noMatchesMessage={{@noMatchesMessage}}
-        as |option|>
-          {{yield
-            (hash
-              Option=(component
-                TpkSelectOption
-                option=option
-              )
+    {{#if @multiple}}
+      <PowerSelectMultiple
+        @labelText={{@label}}
+        @options={{@options}}
+        @selected={{@selected}}
+        @allowClear={{@allowClear}}
+        @onChange={{@onChange}}
+        @placeholder={{@placeholder}}
+        @labelClass="tpk-select-label"
+        @renderInPlace={{this.renderInPlace}}
+        @labelComponent={{@labelComponent}}
+        @selectedItemComponent={{@selectedItemComponent}}
+        @placeholderComponent={{@placeholderComponent}}
+        @searchEnabled={{@searchEnabled}}
+        @searchField={{@searchField}}
+        @searchPlaceholder={{@searchPlaceholder}}
+        @searchMessage={{@searchMessage}}
+        @search={{@search}}
+        @onKeydown={{@onKeyDown}}
+        @disabled={{@disabled}}
+        @dropdownClass='tpk-select-dropdown'
+        @triggerClass='tpk-select-trigger'
+        @initiallyOpened={{@initiallyOpened}}
+        @loadingMessage={{@loadingMessage}}
+        @noMatchesMessage={{@noMatchesMessage}}
+      as |option|>
+        {{yield
+          (hash
+            Option=(component
+              TpkSelectOption
+              option=option
             )
-          }}
-        </PowerSelectMultiple>
-      {{else}}
-        <PowerSelect
-          @labelText={{@label}}
-          @options={{@options}}
-          @selected={{@selected}}
-          @placeholder={{@placeholder}}
-          @allowClear={{@allowClear}}
-          @onChange={{@onChange}}
-          @labelClass="tpk-select-label"
-          @renderInPlace={{this.renderInPlace}}
-          @labelComponent={{@labelComponent}}
-          @selectedItemComponent={{@selectedItemComponent}}
-          @placeholderComponent={{@placeholderComponent}}
-          @searchEnabled={{@searchEnabled}}
-          @searchField={{@searchField}}
-          @searchPlaceholder={{@searchPlaceholder}}
-          @searchMessage={{@searchMessage}}
-          @search={{@search}}
-          @onKeydown={{@onKeyDown}}
-          @disabled={{@disabled}}
-          @dropdownClass='tpk-select-dropdown'
-          @triggerClass='tpk-select-trigger'
-          @initiallyOpened={{@initiallyOpened}}
-          @loadingMessage={{@loadingMessage}}
-          @noMatchesMessage={{@noMatchesMessage}}
-        as |option|>
-          {{yield
-            (hash
-              Option=(component
-                TpkSelectOption
-                option=option
-              )
+          )
+        }}
+      </PowerSelectMultiple>
+    {{else}}
+      <PowerSelect
+        @labelText={{@label}}
+        @options={{@options}}
+        @selected={{@selected}}
+        @placeholder={{@placeholder}}
+        @allowClear={{@allowClear}}
+        @onChange={{@onChange}}
+        @labelClass="tpk-select-label"
+        @renderInPlace={{this.renderInPlace}}
+        @labelComponent={{@labelComponent}}
+        @selectedItemComponent={{@selectedItemComponent}}
+        @placeholderComponent={{@placeholderComponent}}
+        @searchEnabled={{@searchEnabled}}
+        @searchField={{@searchField}}
+        @searchPlaceholder={{@searchPlaceholder}}
+        @searchMessage={{@searchMessage}}
+        @search={{@search}}
+        @onKeydown={{@onKeyDown}}
+        @disabled={{@disabled}}
+        @dropdownClass='tpk-select-dropdown'
+        @triggerClass='tpk-select-trigger'
+        @initiallyOpened={{@initiallyOpened}}
+        @loadingMessage={{@loadingMessage}}
+        @noMatchesMessage={{@noMatchesMessage}}
+      as |option|>
+        {{yield
+          (hash
+            Option=(component
+              TpkSelectOption
+              option=option
             )
-          }}
-        </PowerSelect>
-      {{/if}}
-    </div>
+          )
+        }}
+      </PowerSelect>
+    {{/if}}
   </template>
 }

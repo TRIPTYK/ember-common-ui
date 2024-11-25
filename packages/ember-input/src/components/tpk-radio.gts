@@ -43,7 +43,6 @@ export type TpkRadioSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature> {
@@ -62,33 +61,27 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
   }
 
   <template>
-    <div
-      class='tpk-radio'
-      ...attributes
-      data-test-tpk-radio
-    >
-      {{yield
-        (hash
-          Label=(component
-            TpkLabel
-            guid=this.guid
-            label=@label
-          )
-          Input=(component
-            TpkRadioInputComponent
-            guid=this.guid
-            selected=@selected
-            disabled=@disabled
-            name=@name
-            value=@value
-            changeEvent=this.changeEvent
-            onChange=this.onChange
-          )
-          onChange=this.onChange
-          changeEvent=this.changeEvent
+    {{yield
+      (hash
+        Label=(component
+          TpkLabel
           guid=this.guid
+          label=@label
         )
-      }}
-    </div>
+        Input=(component
+          TpkRadioInputComponent
+          guid=this.guid
+          selected=@selected
+          disabled=@disabled
+          name=@name
+          value=@value
+          changeEvent=this.changeEvent
+          onChange=this.onChange
+        )
+        onChange=this.onChange
+        changeEvent=this.changeEvent
+        guid=this.guid
+      )
+    }}
   </template>
 }

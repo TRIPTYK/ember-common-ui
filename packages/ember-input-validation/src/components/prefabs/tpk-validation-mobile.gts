@@ -123,15 +123,12 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       @value={{this.valueForMobileNumber}}
       @label={{@label}}
       @onChange={{this.onChangeValueMobile}}
-
       @disabled={{@disabled}}
       @mask={{this.mask}}
       @unmaskValue={{true}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
-      data-has-error='{{this.hasError}}'
       as |I|
     >
+      <div class="tpk-input" anchorScrollUp={{@validationField}} data-test-tpk-input data-has-error='{{this.hasError}}' ...attributes>
       <I.Label
         class='tpk-input-validation-label'
         data-test-label-not-yielded
@@ -169,6 +166,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
         @errors={{this.errors}}
 
       />
+          </div>
     </TpkInputComponent>
   </template>
 }

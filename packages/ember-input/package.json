@@ -122,10 +122,10 @@
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
       "./components/tpk-button.js": "./dist/_app_/components/tpk-button.js",
+      "./components/tpk-checkbox-input.js": "./dist/_app_/components/tpk-checkbox-input.js",
       "./components/tpk-checkbox.js": "./dist/_app_/components/tpk-checkbox.js",
-      "./components/tpk-checkbox/input.js": "./dist/_app_/components/tpk-checkbox/input.js",
+      "./components/tpk-datepicker-input.js": "./dist/_app_/components/tpk-datepicker-input.js",
       "./components/tpk-datepicker.js": "./dist/_app_/components/tpk-datepicker.js",
-      "./components/tpk-datepicker/input.js": "./dist/_app_/components/tpk-datepicker/input.js",
       "./components/tpk-file.js": "./dist/_app_/components/tpk-file.js",
       "./components/tpk-file/input.js": "./dist/_app_/components/tpk-file/input.js",
       "./components/tpk-input.js": "./dist/_app_/components/tpk-input.js",

@@ -24,7 +24,6 @@ module('Integration | Component | tpk-input', function (hooks) {
     ).lookup('service:catch-state') as CatchState;
 
     assert.strictEqual(typeof state.Input, 'object', 'Input');
-    assert.strictEqual(typeof state.onChange, 'function', 'onChange');
     assert.strictEqual(typeof state.changeEvent, 'string', 'changeEvent');
     assert.strictEqual(typeof state.Label, 'object', 'Label');
     assert.strictEqual(typeof state.guid, 'string', 'guid');

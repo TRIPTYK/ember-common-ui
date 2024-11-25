@@ -21,24 +21,22 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-
       @validationField={{@validationField}}
       @mandatory={{@mandatory}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
       @mask={{this.mask}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
     as |V|>
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
       <V.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-
       />
+      </div>
     </TpkValidationInputComponent>
   </template>
 }

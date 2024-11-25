@@ -25,7 +25,6 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-
       @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
@@ -33,17 +32,16 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
       @mask={{this.mask}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
     as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-
-      />
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <V.Label>
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        </V.Label>
+        <V.Input />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
+        />
+      </div>
     </TpkValidationInputComponent>
   </template>
 }

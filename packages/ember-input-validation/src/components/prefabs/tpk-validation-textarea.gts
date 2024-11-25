@@ -26,9 +26,13 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
       @changeset={{@changeset}}
       @maxLength={{@maxLength}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
     as |V|>
+      <div
+        class='tpk-textarea'
+        anchorScrollUp={{@validationField}}
+        ...attributes
+        data-test-tpk-textarea
+      >
       <V.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
@@ -42,6 +46,7 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
         @errors={{V.errors}}
 
       />
+      </div>
     </TpkValidationTextareaComponent>
   </template>;
 

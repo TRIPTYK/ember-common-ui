@@ -2,7 +2,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import TpkCheckboxInputComponent from './tpk-checkbox/input.gts';
+import TpkCheckboxInputComponent from './tpk-checkbox-input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
@@ -33,7 +33,6 @@ export type TpkCheckboxSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSignature> {
@@ -51,32 +50,26 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
   }
 
   <template>
-    <div
-      class='tpk-checkbox'
-      ...attributes
-      data-test-tpk-checkbox
-    >
-      {{yield
-        (hash
-          Label=(component
-            TpkLabel
-            guid=this.guid
-            checked=@checked
-            label=@label
-          )
-          Input=(component
-            TpkCheckboxInputComponent
-            guid=this.guid
-            checked=@checked
-            disabled=@disabled
-            changeEvent=this.changeEvent
-            onChange=this.onChange
-          )
-          onChange=this.onChange
-          changeEvent=this.changeEvent
+    {{yield
+      (hash
+        Label=(component
+          TpkLabel
           guid=this.guid
+          checked=@checked
+          label=@label
         )
-      }}
-    </div>
+        Input=(component
+          TpkCheckboxInputComponent
+          guid=this.guid
+          checked=@checked
+          disabled=@disabled
+          changeEvent=this.changeEvent
+          onChange=this.onChange
+        )
+        onChange=this.onChange
+        changeEvent=this.changeEvent
+        guid=this.guid
+      )
+    }}
   </template>
 }

@@ -46,7 +46,6 @@ preventNonNumericInput(event: KeyboardEvent) {
       @label={{@label}}
       @min={{this.min}}
       @step={{1}}
-
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -55,20 +54,18 @@ preventNonNumericInput(event: KeyboardEvent) {
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
-      data-test-input='integer'
-      {{on 'keydown' this.preventNonNumericInput}}
       as |I|
     >
-      <I.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
-      </I.Label>
-      <I.Input />
-      <TpkValidationErrorsComponent
-        @errors={{I.errors}}
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{I.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <I.Label>
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
+        </I.Label>
+        <I.Input {{on 'keydown' this.preventNonNumericInput}} />
+        <TpkValidationErrorsComponent
+          @errors={{I.errors}}
 
-      />
+        />
+    </div>
     </TpkValidationInputComponent>
   </template>
 }

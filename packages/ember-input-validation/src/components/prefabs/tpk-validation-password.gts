@@ -33,7 +33,6 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
       @label={{@label}}
       @type={{this.type}}
       @onChange={{@onChange}}
-
       @placeholder={{@placeholder}}
       @mandatory={{@mandatory}}
       @disabled={{@disabled}}
@@ -41,36 +40,36 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
     as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <div>
-        <V.Input placeholder={{@placeholder}} />
-        <button
-          type='button'
-          class='tpk-input-validation-toggle-button'
-          title={{if this.showPassword 'show' 'hide'}}
-          {{on 'click' this.togglePassword}}
-          data-test-toggle-button
-        >
-          <img
-            src={{if
-              this.showPassword
-              '/assets/icons/eye-shut.svg'
-              '/assets/icons/eye.svg'
-            }}
-            alt='eye'
-            class='tpk-input-validation-toggle-button-image'
-          />
-        </button>
-      </div>
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <V.Label>
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        </V.Label>
+        <div>
+          <V.Input  placeholder={{@placeholder}} />
+          <button
+            type='button'
+            class='tpk-input-validation-toggle-button'
+            title={{if this.showPassword 'show' 'hide'}}
+            {{on 'click' this.togglePassword}}
+            data-test-toggle-button
+          >
+            <img
+              src={{if
+                this.showPassword
+                '/assets/icons/eye-shut.svg'
+                '/assets/icons/eye.svg'
+              }}
+              alt='eye'
+              class='tpk-input-validation-toggle-button-image'
+            />
+          </button>
+        </div>
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
 
-      />
+        />
+      </div>
     </TpkValidationInputComponent>
   </template>
 }
