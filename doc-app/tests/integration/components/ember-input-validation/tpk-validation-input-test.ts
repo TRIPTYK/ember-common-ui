@@ -2,14 +2,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import {
-  type TestContext,
-  fillIn,
-  click,
-  findAll,
-  render,
-  settled,
-} from '@ember/test-helpers';
+import { type TestContext, fillIn, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 
@@ -19,7 +12,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @classless={{this.classless}} @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
+      hbs`<TpkValidationInput @showTogglePasswordButton={{this.showTogglePasswordButton}} @type={{this.type}} data-test-validation-input @label="label" @onChange={{this.onChange}} @changeset={{this.changeset}} @validationField="name" as |I|>
       <I.Label /><I.Input/></TpkValidationInput>`,
     );
   }
@@ -33,16 +26,12 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     return changeset;
   }
 
-  function setType(this: TestContext, type: string) {
-    this.set('type', type);
-  }
-
   test('It changes data-has-error attribue on error', async function (assert) {
     const changeset = setupChangeset.call(this);
 
     await renderComponent();
     assert.dom('[data-test-tpk-input]').exists();
-    assert.dom('[data-test-tpk-input-label]').containsText('label');
+    assert.dom('[data-test-tpk-label]').containsText('label');
     assert.dom('[data-test-tpk-input-input]').hasValue('value');
 
     await fillIn('[data-test-tpk-input-input]', '');
@@ -76,24 +65,6 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     await renderComponent();
     await fillIn('[data-test-validation-input] input', 'blah');
     assert.verifySteps(['change']);
-  });
-
-  test('Classless removes all the classes', async function (assert) {
-    this.set('classless', false);
-    this.set('showTogglePasswordButton', true);
-    setupChangeset.call(this);
-    await renderComponent();
-
-    findAll('*')
-      .filter((e) => e.id !== 'modal-overlays')
-      .forEach((e) => {
-        assert.dom(e).hasClass(/tpk-.*/);
-      });
-
-    this.set('classless', true);
-    findAll('*').forEach((e) => {
-      assert.dom(e).hasNoClass(/tpk-.*/);
-    });
   });
 
   test('COMPLEX | override change function', async function (assert) {

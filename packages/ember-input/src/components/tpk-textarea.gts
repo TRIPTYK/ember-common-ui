@@ -6,10 +6,10 @@ import {
 } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
-import TpkTextareaLabelComponent from './tpk-textarea/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import { tracked } from 'tracked-built-ins';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
@@ -27,7 +27,7 @@ export type TpkTextareaSignature = {
       {
         Input: WithBoundArgs<
           typeof TpkTextareaInputComponent,
-          | 'classless'
+
           | 'guid'
           | 'value'
           | 'changeEvent'
@@ -39,8 +39,8 @@ export type TpkTextareaSignature = {
           | 'maxLength'
         >;
         Label: WithBoundArgs<
-          typeof TpkTextareaLabelComponent,
-          'classless' | 'guid' | 'label'
+          typeof TpkLabel,
+          'guid' | 'label'
         >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
@@ -75,15 +75,14 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
 
   <template>
     <div
-      class={{unless @classless 'tpk-textarea'}}
+      class='tpk-textarea'
       ...attributes
       data-test-tpk-textarea
     >
       {{yield
         (hash
           Label=(component
-            TpkTextareaLabelComponent
-            classless=@classless
+            TpkLabel
             guid=this.guid
             label=@label
           )
@@ -96,7 +95,6 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
             maxLength=@maxLength
             changeEvent=this.changeEvent
             placeholder=@placeholder
-            classless=@classless
             disabled=@disabled
             onChange=this.onChange
           )

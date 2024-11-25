@@ -1,0 +1,27 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "tasks": {
+      "build": {
+        "dependsOn": ["build:clean","^build"],
+        "inputs": ["src/**"],
+        "outputs": ["dist/**"]
+      },
+      "build:clean": {
+        "cache": false
+      },
+      "lint": {
+        "dependsOn": ["^build"]
+      },
+      "lint:fix": {
+        "dependsOn": ["^build"]
+      },
+      "test": {
+        "dependsOn": ["^build"]
+      },
+      "start": {
+        "dependsOn": ["^build"],
+        "persistent": true,
+        "cache": false
+      }
+    }
+  }

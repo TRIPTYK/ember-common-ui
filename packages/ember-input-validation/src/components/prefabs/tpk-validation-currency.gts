@@ -1,5 +1,5 @@
 import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from "./mandatory-label.gts";
 import Component from "@glimmer/component";
@@ -45,7 +45,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-      @classless={{@classless}}
+
       @placeholder={{@placeholder}}
       @mask={{this.mask.mask}}
       @maskOptions={{this.mask}}
@@ -56,6 +56,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>
@@ -64,7 +65,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       <V.Input placeholder={{@placeholder}} />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationInputComponent>
   </template>

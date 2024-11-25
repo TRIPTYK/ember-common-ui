@@ -16,7 +16,7 @@ export interface TpkValidationCheckboxPrefabSignature
 const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSignature> = <template>
     <TpkValidationCheckboxComponent
       @label={{@label}}
-      @classless={{@classless}}
+
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
@@ -24,6 +24,7 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
       @disabled={{@disabled}}
       @onChange={{@onChange}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>
@@ -32,7 +33,7 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationCheckboxComponent>
   </template>;

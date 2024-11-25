@@ -1,6 +1,11 @@
 import { action } from '@ember/object';
-import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
-import TpkRadio, { type TpkRadioSignature } from '@triptyk/ember-input/components/tpk-radio';
+import {
+  type BaseValidationSignature,
+  BaseValidationComponent,
+} from './base.ts';
+import TpkRadio, {
+  type TpkRadioSignature,
+} from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationRadioComponentSignature
@@ -8,6 +13,7 @@ export interface TpkValidationRadioComponentSignature
   Args: BaseValidationSignature['Args'] & {
     label: string;
     classless?: boolean;
+    name?: string;
     changeEvent?: 'input' | 'change';
     value: string;
     disabled?: boolean;
@@ -28,16 +34,16 @@ export interface TpkValidationRadioComponentSignature
 }
 
 export default class TpkValidationRadioComponent extends BaseValidationComponent<TpkValidationRadioComponentSignature> {
-  @action onChange(value: string) {  
+  @action onChange(value: string) {
     if (this.args.onChange) {
       return this.args.onChange(value);
     }
-    const changeset = this.args.changeset.set(this.args.validationField, value)
+    const changeset = this.args.changeset.set(this.args.validationField, value);
     return changeset;
   }
 
   get value() {
-    return this.args.value
+    return this.args.value;
   }
 
   get name() {
@@ -50,7 +56,6 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
       @value={{@value}}
       @name={{this.name}}
       @label={{@label}}
-      @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}

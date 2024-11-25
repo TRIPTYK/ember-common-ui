@@ -2,14 +2,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import {
-  type TestContext,
-  fillIn,
-  click,
-  findAll,
-  render,
-  settled,
-} from '@ember/test-helpers';
+import { type TestContext, click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 
@@ -19,11 +12,7 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(
-      this: TestContext,
-      options: string[] = [],
-      canReset?: boolean,
-    ) {
+    async function renderComponent(this: TestContext, options: unknown[] = []) {
       const changeset = new ImmerChangeset({
         names: undefined,
       });
@@ -58,14 +47,14 @@ module(
     });
 
     test('Applies the toString() method for displaying selected element', async function (assert) {
-      let obj = {
+      const obj = {
         toString() {
           return 'toString() method';
         },
       };
       await renderComponent.call(this, [obj]);
       // eslint-disable-next-line ember/no-get
-      this.get<ImmerChangeset>('changeset').set('names', obj);
+      (this.get('changeset') as ImmerChangeset).set('names', obj);
       await settled();
       assert
         .dom('.ember-power-select-selected-item')

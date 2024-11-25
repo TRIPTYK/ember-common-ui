@@ -4,7 +4,7 @@ import { on } from '@ember/modifier';
 export interface TpkFileInputComponentSignature {
   Args: {
     guid: string;
-    classless?: boolean;
+
     accept?: string;
     disabled?: boolean;
     multiple?: boolean;
@@ -16,7 +16,7 @@ export interface TpkFileInputComponentSignature {
 
 const TpkFileInputComponent: TOC<TpkFileInputComponentSignature> = <template>
   <input
-    class={{unless @classless 'tpk-file-input'}}
+    class='tpk-file-input'
     id={{@guid}}
     multiple={{@multiple}}
     {{on @changeEvent @onChange}}

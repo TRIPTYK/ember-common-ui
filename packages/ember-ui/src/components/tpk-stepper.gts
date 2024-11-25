@@ -9,7 +9,7 @@ import { hash } from '@ember/helper';
 
 interface TpkStepperComponentArgs {
   startStep?: number;
-  classless?: boolean;
+
 }
 
 export interface TpkStepperComponentSignature {
@@ -19,13 +19,13 @@ export interface TpkStepperComponentSignature {
       {
         Stepper: WithBoundArgs<
           typeof TpkStepperStepperComponent,
-          'classless' | 'guid'
+          'guid'
         >;
         Step: WithBoundArgs<
           typeof TpkStepperStepComponent,
           | 'active'
           | 'steps'
-          | 'classless'
+
           | 'unregisterStep'
           | 'registerStep'
           | 'guid'
@@ -114,17 +114,17 @@ export default class TpkStepperComponent extends Component<TpkStepperComponentSi
   }
 
   <template>
-    <div class={{unless @classless 'tpk-stepper'}} role='tablist' ...attributes>
+    <div class='tpk-stepper' role='tablist' ...attributes>
       {{yield
         (hash
           Stepper=(component
-            TpkStepperStepperComponent classless=@classless guid=this.guid
+            TpkStepperStepperComponent  guid=this.guid
           )
           Step=(component
             TpkStepperStepComponent
             active=this.active
             steps=this.steps
-            classless=@classless
+
             unregisterStep=this.unregisterStep
             registerStep=this.registerStep
             guid=this.guid

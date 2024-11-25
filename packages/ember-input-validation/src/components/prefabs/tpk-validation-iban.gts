@@ -60,7 +60,7 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-      @classless={{@classless}}
+
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -68,6 +68,7 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>
@@ -76,7 +77,7 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationInputComponent>
   </template>

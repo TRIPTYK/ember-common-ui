@@ -24,15 +24,14 @@ export interface TpkValidationRadioGroupPrefabComponentSignature
 
 const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabComponentSignature> = <template>
   <TpkValidationRadioGroupComponent
-    @classless={{@classless}}
     @validationField={{@validationField}}
+    @label={{@label}}
     @changeset={{@changeset}}
     @onChange={{@onChange}}
     @mandatory={{@mandatory}}
     @groupLabel={{@groupLabel}}
     @requiredFields={{@requiredFields}}
     data-test-prefab-radio-group
-    ...attributes
     as  |V|>
 
      {{yield (component 
@@ -40,13 +39,11 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
         selected=V.selected
         validationField=@validationField
         changeset=@changeset
-        classless=@classless
         disabled=@disabled
         mandatory=@mandatory
       )}}
      <TpkValidationErrorsComponent
       @errors={{V.errors}}
-      @classless={{@classless}}
     />
   </TpkValidationRadioGroupComponent>
 </template>

@@ -12,7 +12,7 @@ export interface TpkConfirmModalSignature {
     confirmQuestion: string;
     isOpen: boolean;
     outsideClickHandler: ((e: MouseEvent | TouchEvent) => unknown) | undefined;
-    classless?: boolean;
+
     title: string;
   };
   Element: HTMLDivElement;
@@ -30,7 +30,6 @@ export interface TpkConfirmModalSignature {
   };
 }
 
-// eslint-disable-next-line prettier/prettier
 const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
   <template>
     <TpkModal
@@ -39,7 +38,7 @@ const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
       @isOpen={{@isOpen}}
       @outsideClickHandler={{@outsideClickHandler}}
       @onClose={{@onClose}}
-      @classless={{@classless}}
+
       ...attributes
       as |Modal|
     >

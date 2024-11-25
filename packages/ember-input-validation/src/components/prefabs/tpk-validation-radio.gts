@@ -24,7 +24,6 @@ const TpkValidationRadioPrefabComponent: TOC<TpkValidationRadioPrefabComponentSi
       @disabled={{@disabled}}
       @onChange={{@onChange}}
       @requiredFields={{@requiredFields}}
-    ...attributes
   as |V|>
   
     <V.Label @label={{@label}}/>

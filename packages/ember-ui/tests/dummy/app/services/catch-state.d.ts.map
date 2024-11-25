@@ -1,1 +1,0 @@
-{"version":3,"file":"catch-state.d.ts","sourceRoot":"","sources":["catch-state.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,gBAAgB,CAAC;AAGrC,MAAM,CAAC,OAAO,OAAO,UAAW,SAAQ,OAAO;IACpC,KAAK,EAAE,OAAO,CAAC;CACzB;AAGD,OAAO,QAAQ,gBAAgB,CAAC;IAE9B,UAAU,QAAQ;QAChB,aAAa,EAAE,UAAU,CAAC;KAC3B;CACF"}

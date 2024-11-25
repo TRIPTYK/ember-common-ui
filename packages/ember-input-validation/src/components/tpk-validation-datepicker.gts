@@ -14,7 +14,7 @@ export interface TpkValidationDatepickerComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
-    classless?: boolean;
+
     disabled?: boolean;
     mask?: string;
   } & TpkDatepickerInput;

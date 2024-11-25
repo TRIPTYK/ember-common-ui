@@ -3,12 +3,11 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { render, type TestContext } from '@ember/test-helpers';
-import { actionMenuObject } from 'dummy/tests/pages/ember-actions-menu';
+import { actionMenuObject } from 'doc-app/tests/pages/ember-actions-menu';
 
 interface ActionMenuTestContext extends TestContext {
   action: () => unknown;
   iconSrc?: string;
-  classless?: boolean;
 }
 
 module('Integration | Component | Action Menu', function (hooks) {
@@ -28,7 +27,7 @@ module('Integration | Component | Action Menu', function (hooks) {
   async function renderActionMenu(this: ActionMenuTestContext, assert: Assert) {
     setActionMenuProperties.call(this, assert);
     return render(hbs`
-        <TpkActionsMenu @classless={{this.classless}} as |Action|>
+        <TpkActionsMenu as |Action|>
           <Action
             @icon={{this.iconSrc}}
             @action={{this.action}}
@@ -74,25 +73,12 @@ module('Integration | Component | Action Menu', function (hooks) {
     assert.false(actionMenuObject.areActionsVisible);
   });
 
-  // eslint-disable-next-line no-undef
-  function assertBaseClassesNoPresence(assert: Assert) {
-    assert.dom('.actions').doesNotExist();
-    assert.dom('.open_actions').doesNotExist();
-  }
-
-  test<ActionMenuTestContext>('when classless true, remove all base classes', async function (assert) {
-    this.set('classless', true);
-    await renderAndOpenActionsMenu.call(this, assert);
-    assertBaseClassesNoPresence(assert);
-  });
-
-  // eslint-disable-next-line no-undef
   function assertBaseClassesPresence(assert: Assert) {
     assert.dom('.actions').exists();
     assert.dom('.open_actions').exists();
   }
 
-  test<ActionMenuTestContext>('when classless false, all base classes are present', async function (assert) {
+  test<ActionMenuTestContext>('All base classes are present', async function (assert) {
     await renderAndOpenActionsMenu.call(this, assert);
     assertBaseClassesPresence(assert);
   });

@@ -6,7 +6,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-import CatchState from 'dummy/tests/dummy/app/services/catch-state';
+import CatchState from 'doc-app/services/catch-state';
 import { fillIn } from '@ember/test-helpers';
 
 module('Integration | Component | tpk-area', function (hooks) {
@@ -24,9 +24,12 @@ module('Integration | Component | tpk-area', function (hooks) {
   test('input yield only', async function (assert) {
     await renderComponent();
 
-    const { state }: { state: any } = (
-      getOwner(this) as ApplicationInstance
-    ).lookup('service:catch-state') as CatchState;
+    const service = (getOwner(this) as ApplicationInstance).lookup(
+      'service:catch-state',
+    ) as CatchState;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const state = service.state as any;
 
     assert.strictEqual(typeof state.Input, 'object');
     assert.strictEqual(typeof state.onChange, 'function');

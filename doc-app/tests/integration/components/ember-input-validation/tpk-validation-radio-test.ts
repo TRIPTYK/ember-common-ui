@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { type TestContext, click, render, settled } from '@ember/test-helpers';
+import { type TestContext, click, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
 module('Integration | Component | tpk-validation-radio', function (hooks) {
@@ -33,7 +33,7 @@ module('Integration | Component | tpk-validation-radio', function (hooks) {
 
   test('render radio with default structure', async function (assert) {
     await setupComponent.call(this);
-    assert.dom('[data-test-tpk-radio-label]').exists();
+    assert.dom('[data-test-tpk-label]').exists();
     assert.dom('[data-test-tpk-radio]').exists();
     assert.dom('[data-test-tpk-radio-input]').exists();
   });

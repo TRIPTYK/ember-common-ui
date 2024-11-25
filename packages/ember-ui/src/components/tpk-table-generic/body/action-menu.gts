@@ -8,7 +8,7 @@ export interface TableGenericBodyActionMenuComponentSignature {
   Args: {
     item: unknown;
     index: number;
-    classless?: boolean;
+
     isExpanded: boolean;
     action: (...args: unknown[]) => void;
     registerActionMenu: (element: HTMLTableCellElement, args: []) => unknown;
@@ -28,7 +28,7 @@ const TableGenericBodyActionMenuComponent: TOC<TableGenericBodyActionMenuCompone
         data-test-action-menu-cell
         ...attributes
       >
-        <TpkActionsMenu @classless={{@classless}} as |Action|>
+        <TpkActionsMenu  as |Action|>
           {{yield (component TableGenericBodyActionComponent Action=Action)}}
         </TpkActionsMenu>
       </td>

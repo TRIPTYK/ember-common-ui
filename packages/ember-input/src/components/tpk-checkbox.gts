@@ -2,10 +2,10 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
-import TpkCheckboxLabelComponent from './tpk-checkbox/label.gts';
 import TpkCheckboxInputComponent from './tpk-checkbox/input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkCheckboxSignature = {
   Args: MergeDeep<
@@ -20,12 +20,12 @@ export type TpkCheckboxSignature = {
     default: [
       {
         Label: WithBoundArgs<
-          typeof TpkCheckboxLabelComponent,
-          'guid' | 'label' | 'classless'
+          typeof TpkLabel,
+          'guid' | 'label'
         >;
         Input: WithBoundArgs<
           typeof TpkCheckboxInputComponent,
-          'changeEvent' | 'onChange' | 'guid' | 'checked' | 'classless'
+          'changeEvent' | 'onChange' | 'guid' | 'checked'
         >;
         onChange: TpkCheckboxComponent['onChange'];
         changeEvent: 'input' | 'change';
@@ -52,18 +52,17 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
 
   <template>
     <div
-      class={{unless @classless 'tpk-checkbox'}}
+      class='tpk-checkbox'
       ...attributes
       data-test-tpk-checkbox
     >
       {{yield
         (hash
           Label=(component
-            TpkCheckboxLabelComponent
+            TpkLabel
             guid=this.guid
             checked=@checked
             label=@label
-            classless=@classless
           )
           Input=(component
             TpkCheckboxInputComponent
@@ -72,7 +71,6 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
             disabled=@disabled
             changeEvent=this.changeEvent
             onChange=this.onChange
-            classless=@classless
           )
           onChange=this.onChange
           changeEvent=this.changeEvent

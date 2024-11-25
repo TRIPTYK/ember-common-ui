@@ -20,7 +20,7 @@ export interface TpkSelectCreateSignature {
     label: string;
     placeholder?: string;
     renderInPlace?: boolean;
-    classless?: boolean;
+
     allowClear?: boolean;
     disabled?: boolean;
     initiallyOpened?: boolean;
@@ -77,7 +77,7 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
 
   <template>
     <div
-      class={{unless @classless 'tpk-select-create'}}
+      class='tpk-select-create'
       ...attributes
     >
       <label class="tpk-select-create-label" for={{this.guid}}>
@@ -101,8 +101,8 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
           @search={{@search}}
           @onKeydown={{@onKeyDown}}
           @disabled={{@disabled}}
-          @dropdownClass={{unless @classless 'tpk-select-create-dropdown'}}
-          @triggerClass={{unless @classless 'tpk-select-create-trigger'}}
+          @dropdownClass='tpk-select-create-dropdown'
+          @triggerClass='tpk-select-create-trigger'
           @buildSuggestion={{@buildSuggestion}}
           @showCreateWhen={{@showCreateWhen}}
           @initiallyOpened={{@initiallyOpened}}
@@ -137,8 +137,8 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
           @search={{@search}}
           @onKeydown={{@onKeyDown}}
           @disabled={{@disabled}}
-          @dropdownClass={{unless @classless 'tpk-select-create-dropdown'}}
-          @triggerClass={{unless @classless 'tpk-select-create-trigger'}}
+          @dropdownClass='tpk-select-create-dropdown'
+          @triggerClass='tpk-select-create-trigger'
           @buildSuggestion={{@buildSuggestion}}
           @showCreateWhen={{@showCreateWhen}}
           @initiallyOpened={{@initiallyOpened}}

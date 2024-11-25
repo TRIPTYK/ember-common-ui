@@ -11,6 +11,10 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 
+interface ThisTestContext extends TestContext {
+  changeset: ImmerChangeset;
+}
+
 module(
   'Integration | Component | Prefabs | tpk-validation-number',
   function (hooks) {
@@ -50,7 +54,7 @@ module(
       return changeset;
     }
 
-    test('Input type must be a number', async function (assert) {
+    test('Input type must be a number', async function (this: ThisTestContext, assert) {
       setupChangeset.call(this);
       await renderComponent();
       await fillIn('input', '2.1');
@@ -66,11 +70,11 @@ module(
       assert.dom('.tpk-input').hasClass('custom-number-class');
     });
 
-    test('it passes unsigned number', async function (assert) {
+    test('it passes unsigned number', async function (this: ThisTestContext, assert) {
       setupChangeset.call(this);
       await renderComponentUnsigned();
       await fillIn('input', '0.1');
-      let input = find('input');
+      const input = find('input');
       assert.strictEqual(this.changeset.get('number'), 0.1);
       input?.stepDown();
       input?.stepDown();

@@ -3,9 +3,9 @@ import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { WithBoundArgs } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input.gts';
-import TpkRadioLabelComponent from './tpk-radio/label.gts';
 import type { MergeDeep } from 'type-fest';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkRadioSignature = {
   Args: MergeDeep<
@@ -23,8 +23,8 @@ export type TpkRadioSignature = {
     default: [
       {
         Label: WithBoundArgs<
-          typeof TpkRadioLabelComponent,
-          'guid' | 'label' | 'classless'
+          typeof TpkLabel,
+          'guid' | 'label'
         >;
         Input: WithBoundArgs<
           typeof TpkRadioInputComponent,
@@ -35,7 +35,7 @@ export type TpkRadioSignature = {
           | 'value'
           | 'changeEvent'
           | 'onChange'
-          | 'classless'
+
         >;
         onChange: TpkRadioComponent['onChange'];
         changeEvent: 'input' | 'change';
@@ -63,17 +63,16 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
 
   <template>
     <div
-      class={{unless @classless 'tpk-radio'}}
+      class='tpk-radio'
       ...attributes
       data-test-tpk-radio
     >
       {{yield
         (hash
           Label=(component
-            TpkRadioLabelComponent
+            TpkLabel
             guid=this.guid
             label=@label
-            classless=@classless
           )
           Input=(component
             TpkRadioInputComponent
@@ -84,7 +83,6 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
             value=@value
             changeEvent=this.changeEvent
             onChange=this.onChange
-            classless=@classless
           )
           onChange=this.onChange
           changeEvent=this.changeEvent

@@ -9,11 +9,11 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import type { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input.gts';
-import TpkInputLabelComponent from './tpk-input/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -43,14 +43,14 @@ export type TpkInputSignature = {
           | 'changeEvent'
           | 'disabled'
           | 'guid'
-          | 'classless'
+
           | 'min'
           | 'step'
           | 'max'
         >;
         Label: WithBoundArgs<
-          typeof TpkInputLabelComponent,
-          'label' | 'guid' | 'classless'
+          typeof TpkLabel,
+          'label' | 'guid'
         >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
@@ -113,60 +113,37 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
 
   <template>
     <div
-      class={{unless @classless 'tpk-input'}}
+      class='tpk-input'
       {{didInsert this.setMask}}
       {{didUpdate this.setMask @mask}}
       ...attributes
       data-test-tpk-input
     >
-      {{#if (has-block)}}
-        {{yield
-          (hash
-            Input=(component
-              TpkInputInputComponent
-              onChange=this.onChange
-              type=@type
-              placeholder=@placeholder
-              changeEvent=this.changeEvent
-              min=@min
-              step=@step
-              max=@max
-              value=@value
-              disabled=@disabled
-              guid=this.guid
-              classless=@classless
-            )
-            Label=(component
-              TpkInputLabelComponent
-              label=@label
-              guid=this.guid
-              classless=@classless
-            )
-            changeEvent=this.changeEvent
-            guid=this.guid
+      {{yield
+        (hash
+          Input=(component
+            TpkInputInputComponent
             onChange=this.onChange
+            type=@type
+            placeholder=@placeholder
+            changeEvent=this.changeEvent
+            min=@min
+            step=@step
+            max=@max
+            value=@value
+            disabled=@disabled
+            guid=this.guid
           )
-        }}
-      {{else}}
-      
-        <TpkInputLabelComponent
-          @label={{@label}}
-          @guid={{this.guid}}
-          @classless={{@classless}}
-        />
-        <TpkInputInputComponent
-          @onChange={{this.onChange}}
-          @type={{@type}}
-          @changeEvent={{this.changeEvent}}
-          @value={{@value}}
-          @min={{@min}}
-          @step={{@step}}
-          @max={{@max}}
-          @disabled={{@disabled}}
-          @guid={{this.guid}}
-          @classless={{@classless}}
-        />
-      {{/if}}
+          Label=(component
+            TpkLabel
+            label=@label
+            guid=this.guid
+          )
+          changeEvent=this.changeEvent
+          guid=this.guid
+          onChange=this.onChange
+        )
+      }}
     </div>
   </template>
 }

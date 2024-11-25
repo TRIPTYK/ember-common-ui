@@ -55,13 +55,14 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
-        @classless={{@classless}}
+
         @options={{@options}}
         @onChange={{this.onChange}}
         @selected={{this.value}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
+        anchorScrollUp={{@validationField}}
         ...attributes
       as |S|>
         <S.Option as |O|>
@@ -70,7 +71,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
       </TpkSelectComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
-        @classless={{@classless}}
+
       />
     </div>
   </template>

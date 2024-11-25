@@ -6,14 +6,16 @@ import {
   type TestContext,
   fillIn,
   click,
-  findAll,
   render,
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
-import tpkSelect from 'dummy/tests/pages/tpk-select';
 import { selectChoose } from 'ember-power-select/test-support';
+
+interface ThisTestContext extends TestContext {
+  changeset: ImmerChangeset;
+}
 
 module(
   'Integration | Component | Prefabs | tpk-validation-mobile',
@@ -65,7 +67,7 @@ module(
       assert.dom('.tpk-input-input').hasValue('003 45 33 34');
     });
 
-    test('When change value for prefixe and phone number, changeset value should combine values', async function (assert) {
+    test('When change value for prefixe and phone number, changeset value should combine values', async function (this: ThisTestContext, assert) {
       await setChangeset.call(this, '');
       await renderComponent.call(this);
       await selectChoose('.ember-power-select-trigger', '+352');
