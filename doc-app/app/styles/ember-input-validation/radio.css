@@ -2,16 +2,16 @@
   padding-right: 20px;
   margin: 10px;
   width: 23%;
-  border-bottom: 1px solid rgba(196, 137, 252, 1);
+  border-bottom: 1px solid rgb(196 137 252 / 100%);
 }
 
 .tpk-radio-label {
-  color: rgba(78, 0, 151,1);
+  color: rgb(78 0 151 /100%);
 }
 
 .tpk-validation-radio-group-label {
   font-size: 20px;
-  color: rgba(151, 73, 0, 1);
+  color: rgb(151 73 0 / 100%);
 }
 
 .tpk-validation-radio-group-group .tpk-radio {
@@ -19,5 +19,5 @@
   margin: 5px;
   padding-left: 5px;
   border-bottom: none;
-  border-left: 1px solid rgba(196, 137, 252, 1);
+  border-left: 1px solid rgb(196 137 252 / 100%);
 }
