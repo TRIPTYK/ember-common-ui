@@ -2,15 +2,28 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { type TestContext, click, render } from '@ember/test-helpers';
+import { TestContext as BaseTestContext } from 'ember-test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupOnerror } from '@ember/test-helpers';
+
+interface TestContext extends BaseTestContext {
+  changeset: ImmerChangeset;
+}
 
 module(
   'Integration | Component | tpk-validation-radio-group',
   function (hooks) {
     setupRenderingTest(hooks);
 
+    hooks.beforeEach(function (this: TestContext) {
+      this.changeset = new ImmerChangeset({
+        radio: undefined,
+      });
+    });
+
     async function setupComponent(this: TestContext, value: string) {
+      console.log('value', value);
+
       const changeset = new ImmerChangeset({
         radio: value,
       });
@@ -18,7 +31,7 @@ module(
 
       await render(hbs`
       <TpkValidationRadioGroup @mandatory={{true}} @groupLabel="groupLabel" @changeset={{this.changeset}} @validationField="radio" as |R|>
-        <R.Radio @value='good'}@label='good' data-test-radio="good" as |T| >
+        <R.Radio @value='good' @label='good' data-test-radio="good" as |T| >
           <T.Input />
           <T.Label />
         </R.Radio>
@@ -30,7 +43,7 @@ module(
       `);
       return this.changeset;
     }
-    test<TestContext>('render radio with default structure', async function (this: TestContext, assert) {
+    test('render radio with default structure', async function (this: TestContext, assert) {
       await setupComponent.call(this, undefined);
       assert.strictEqual(this.changeset.get('radio'), undefined);
       await click("[data-test-radio='bad'] [data-test-tpk-radio-input]");
@@ -48,14 +61,14 @@ module(
       assert.strictEqual(this.changeset.get('radio'), 'good');
     });
 
-    test<TestContext>('changeset set value selected the good radio', async function (this: TestContext, assert) {
+    test('changeset set value selected the good radio', async function (this: TestContext, assert) {
       await setupComponent.call(this, 'good');
       assert
         .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
         .isChecked();
     });
 
-    test<TestContext>('must set wrong value type to selected', async function (this: TestContext, assert) {
+    test('must set wrong value type to selected', async function (this: TestContext, assert) {
       await setupOnerror(function (err) {
         console.log(err);
 
