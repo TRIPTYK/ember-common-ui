@@ -20,9 +20,10 @@ module(
       });
     });
 
-    async function setupComponent(this: CurrentTestContext, value?: string) {
-      console.log('value', value);
-
+    async function setupComponent(
+      this: CurrentTestContext,
+      value?: string | boolean,
+    ) {
       const changeset = new ImmerChangeset({
         radio: value,
       });
@@ -66,6 +67,16 @@ module(
       assert
         .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
         .isChecked();
+    });
+
+    test('must set wrong value type to selected', async function (this: CurrentTestContext, assert) {
+      setupOnerror(function (err) {
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: The changeset value must be a string',
+        );
+      });
+      await setupComponent.call(this, true);
     });
   },
 );
