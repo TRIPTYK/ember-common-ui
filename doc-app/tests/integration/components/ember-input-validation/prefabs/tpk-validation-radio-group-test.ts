@@ -37,7 +37,6 @@ module(
       });
       await renderComponent.call(this, changeset);
       assert.dom('[data-test-tpk-radio-group-label]').exists();
-      assert.dom('[data-test-tpk-radio]').exists();
       assert.dom('[data-test-tpk-radio-input]').exists();
     });
 

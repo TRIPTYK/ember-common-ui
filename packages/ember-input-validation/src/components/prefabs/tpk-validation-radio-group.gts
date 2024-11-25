@@ -32,16 +32,16 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
     @groupLabel={{@groupLabel}}
     @requiredFields={{@requiredFields}}
     data-test-prefab-radio-group
-    as  |V|>
-
+    as |V|>
      {{yield (component 
       TpkValidationRadioPrefabComponent
         selected=V.selected
         validationField=@validationField
         changeset=@changeset
         disabled=@disabled
-        mandatory=@mandatory
+        mandatory=@mandatory    
       )}}
+      {{log V.errors}}
      <TpkValidationErrorsComponent
       @errors={{V.errors}}
     />

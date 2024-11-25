@@ -31,12 +31,12 @@ module(
 
       await render(hbs`
       <TpkValidationRadioGroup @mandatory={{true}} @groupLabel="groupLabel" @changeset={{this.changeset}} @validationField="radio" as |R|>
-        <R.Radio @value='good' @label='good' data-test-radio="good" as |T| >
-          <T.Input />
+        <R.Radio @value='good' @label='good' as |T| >
+          <T.Input data-test-radio="good"/>
           <T.Label />
         </R.Radio>
-        <R.Radio  @value='bad' @label='bad' data-test-radio="bad" as |T| >
-          <T.Input />
+        <R.Radio  @value='bad' @label='bad' as |T| >
+          <T.Input data-test-radio="bad"/>
           <T.Label />
         </R.Radio>
       </TpkValidationRadioGroup>
@@ -47,26 +47,19 @@ module(
     test('render radio with default structure', async function (this: CurrentTestContext, assert) {
       await setupComponent.call(this, undefined);
       assert.strictEqual(this.changeset.get('radio'), undefined);
-      await click("[data-test-radio='bad'] [data-test-tpk-radio-input]");
-      assert
-        .dom("[data-test-radio='bad'] [data-test-tpk-radio-input]")
-        .isChecked();
+      await click("[data-test-radio='bad']");
+
+      assert.dom("[data-test-radio='bad']").isChecked();
       assert.strictEqual(this.changeset.get('radio'), 'bad');
-      await click("[data-test-radio='good'] [data-test-tpk-radio-input]");
-      assert
-        .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
-        .isChecked();
-      assert
-        .dom("[data-test-radio='bad'] [data-test-tpk-radio-input]")
-        .isNotChecked();
+      await click("[data-test-radio='good']");
+      assert.dom("[data-test-radio='good']").isChecked();
+      assert.dom("[data-test-radio='bad']").isNotChecked();
       assert.strictEqual(this.changeset.get('radio'), 'good');
     });
 
     test('changeset set value selected the good radio', async function (this: CurrentTestContext, assert) {
       await setupComponent.call(this, 'good');
-      assert
-        .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
-        .isChecked();
+      assert.dom("[data-test-radio='good']").isChecked();
     });
 
     test('must set wrong value type to selected', async function (this: CurrentTestContext, assert) {

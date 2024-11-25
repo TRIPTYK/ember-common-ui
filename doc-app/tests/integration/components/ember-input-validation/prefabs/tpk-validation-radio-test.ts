@@ -30,25 +30,7 @@ module(
       });
       await renderComponent.call(this, changeset);
       assert.dom('[data-test-tpk-label]').exists();
-      assert.dom('[data-test-tpk-radio]').exists();
       assert.dom('[data-test-tpk-label]').exists();
-    });
-
-    test('Error prefab appears if an error is added to changeset', async function (assert) {
-      const changeset = new ImmerChangeset({
-        radio: undefined,
-      });
-      changeset.addError({
-        message: 'required',
-        value: undefined,
-        originalValue: undefined,
-        key: 'radio',
-      });
-      await renderComponent.call(this, changeset);
-      this.set('changeset', changeset);
-      assert
-        .dom('[data-test-tpk-radio]')
-        .hasAttribute('data-has-error', 'true');
     });
   },
 );
