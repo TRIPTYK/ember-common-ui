@@ -25,7 +25,6 @@ export default class TpkRadioInputComponent extends Component<TpkRadioInputCompo
 
   <template>
     <input
-      class='tpk-radio-input'
       id={{@guid}}
       name={{@name}}
       value={{@value}}

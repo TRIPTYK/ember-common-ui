@@ -42,39 +42,39 @@ module(
       await setChangeset.call(this);
       await renderComponent.call(this);
       assert.dom('.ember-power-select-selected-item').containsText('+33');
-      assert.dom('.tpk-input-input').hasValue('7 12 34 56 78');
+      assert.dom('input').hasValue('7 12 34 56 78');
     });
 
     test('When change country prefixe should adapt mask', async function (assert) {
       await setChangeset.call(this);
       await renderComponent.call(this);
-      assert.dom('.tpk-input-input').hasValue('7 12 34 56 78');
+      assert.dom('input').hasValue('7 12 34 56 78');
       await selectChoose('.ember-power-select-trigger', '+32');
-      assert.dom('.tpk-input-input').hasValue('712 34 56 78');
+      assert.dom('input').hasValue('712 34 56 78');
     });
 
     test('Show default prefixe when phone number is empty', async function (assert) {
       await setChangeset.call(this, '');
       await renderComponent.call(this);
       assert.dom('.ember-power-select-selected-item').containsText('+32');
-      assert.dom('.tpk-input-input').hasValue('');
+      assert.dom('input').hasValue('');
     });
 
     test('Show default prefixe when phone number is not well formatted and show first number of phone number in input', async function (assert) {
       await setChangeset.call(this, '00345333443434');
       await renderComponent.call(this);
       assert.dom('.ember-power-select-selected-item').containsText('+32');
-      assert.dom('.tpk-input-input').hasValue('003 45 33 34');
+      assert.dom('input').hasValue('003 45 33 34');
     });
 
     test('When change value for prefixe and phone number, changeset value should combine values', async function (this: ThisTestContext, assert) {
       await setChangeset.call(this, '');
       await renderComponent.call(this);
       await selectChoose('.ember-power-select-trigger', '+352');
-      await fillIn('.tpk-input-input', '123456789');
+      await fillIn('input', '123456789');
       await click(document.body); // click outside to trigger update of mask only for test
       assert.dom('.ember-power-select-selected-item').containsText('+352');
-      assert.dom('.tpk-input-input').hasValue('123 456 789');
+      assert.dom('input').hasValue('123 456 789');
       console.log(this.changeset.get('phone'));
       assert.strictEqual(this.changeset.get('phone'), '+352123456789');
     });
@@ -90,7 +90,7 @@ module(
       });
       assert.dom('.tpk-validation-errors').exists();
       await settled();
-      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
+      assert.dom('.tpk-validation-errors span').hasText('required');
     });
   },
 );

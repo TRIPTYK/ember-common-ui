@@ -20,9 +20,9 @@ module(
 
       await render(
         hbs`
-         <Prefabs::TpkValidationVat 
+         <Prefabs::TpkValidationVat
             @label="label"
-            @changeset={{this.changeset}} 
+            @changeset={{this.changeset}}
             @validationField="vat"
             class="custom-vat-class"
          />
@@ -82,7 +82,7 @@ module(
       });
       assert.dom('.tpk-validation-errors').exists();
       await settled();
-      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
+      assert.dom('.tpk-validation-errors span').hasText('required');
     });
   },
 );

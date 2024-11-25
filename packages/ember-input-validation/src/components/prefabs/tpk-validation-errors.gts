@@ -1,7 +1,8 @@
 import { helper } from '@ember/component/helper';
 import Component from '@glimmer/component';
 import { htmlSafe as HS } from '@ember/template';
-import { t } from 'ember-intl';
+import { t, type IntlService } from 'ember-intl';
+import { service } from '@ember/service';
 
 export interface TpkValidationErrorsComponentSignature {
   Args: {
@@ -16,14 +17,26 @@ export interface TpkValidationErrorsComponentSignature {
 }
 
 export default class TpkValidationErrorsComponent extends Component<TpkValidationErrorsComponentSignature> {
+  @service declare intl: IntlService;
+
   htmlSafe = helper(function htmlSafe(params: [string]) {
     return HS(params.join());
   });
 
+  get errorMessages() {
+    return this.args.errors.map((error: { message: string; params: string[] }) => {
+      if (error.message) {
+        const translationExists = this.intl.exists(error.message);
+        return HS(translationExists ? this.intl.t(error.message) : error.message);
+      }
+      return error;
+    });
+  }
+
   <template>
     <div class="tpk-validation-errors"
     ...attributes>
-      {{#each @errors as |error|}}
+      {{#each this.errorMessages as |error|}}
         <span>
           {{#if error.message}}
             {{this.htmlSafe (t error.message error.params)}}

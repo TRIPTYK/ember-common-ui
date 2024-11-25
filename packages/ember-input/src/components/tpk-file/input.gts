@@ -16,7 +16,6 @@ export interface TpkFileInputComponentSignature {
 
 const TpkFileInputComponent: TOC<TpkFileInputComponentSignature> = <template>
   <input
-    class='tpk-file-input'
     id={{@guid}}
     multiple={{@multiple}}
     {{on @changeEvent @onChange}}

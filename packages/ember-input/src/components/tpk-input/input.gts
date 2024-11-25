@@ -66,7 +66,6 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
 
   <template>
     <input
-      class='tpk-input-input'
       id={{@guid}}
       min={{@min}}
       step={{@step}}

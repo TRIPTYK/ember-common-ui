@@ -14,7 +14,6 @@ export interface TpkLabelSignature {
 
 const TpkLabel: TOC<TpkLabelSignature> = <template>
   <label
-    class='tpk-label'
     for={{@guid}}
     ...attributes
     data-test-tpk-label
