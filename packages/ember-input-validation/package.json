@@ -16,6 +16,7 @@
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
     },
+    "./app.css": "./dist/styles/app.css",
     "./addon-main.js": "./addon-main.cjs"
   },
   "typesVersions": {
@@ -55,8 +56,8 @@
     "@glimmer/component": "catalog:",
     "@glimmer/tracking": "catalog:",
     "ember-concurrency": "~4.0.2",
-    "ember-lifeline": "catalog:",
     "ember-intl": "catalog:",
+    "ember-lifeline": "catalog:",
     "ember-modifier": "~4.1.0",
     "ember-test-selectors": "~6.0.0",
     "yup": "catalog:"
@@ -95,6 +96,8 @@
     "rollup": "catalog:",
     "rollup-plugin-copy": "catalog:",
     "rollup-plugin-glimmer-template-tag": "catalog:",
+    "rollup-plugin-import-css": "^3.5.7",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-ts": "catalog:",
     "rsvp": "catalog:",
     "type-fest": "catalog:",

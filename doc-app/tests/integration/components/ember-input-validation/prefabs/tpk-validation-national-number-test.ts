@@ -20,9 +20,9 @@ module(
 
       await render(
         hbs`
-         <Prefabs::TpkValidationNationalNumber 
+         <Prefabs::TpkValidationNationalNumber
             @label="label"
-            @changeset={{this.changeset}} 
+            @changeset={{this.changeset}}
             @validationField="nationalNumber"
             class="custom-national-number-class"
          />
@@ -58,7 +58,7 @@ module(
       });
       assert.dom('.tpk-validation-errors').exists();
       await settled();
-      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
+      assert.dom('.tpk-validation-errors span').hasText('required');
     });
   },
 );

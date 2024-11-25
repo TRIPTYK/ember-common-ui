@@ -4,7 +4,6 @@ import type { TOC } from '@ember/component/template-only';
 export interface TpkCheckboxInputComponentSignature {
   Args: {
     guid: string;
-
     value?: string;
     checked?: boolean;
     disabled?: boolean;
@@ -16,7 +15,6 @@ export interface TpkCheckboxInputComponentSignature {
 
 const TpkCheckboxInputComponent: TOC<TpkCheckboxInputComponentSignature> = <template>
   <input
-    class='tpk-checkbox-input'
     id={{@guid}}
     checked={{@checked}}
     disabled={{@disabled}}

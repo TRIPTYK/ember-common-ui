@@ -21,7 +21,7 @@ module.exports = function (defaults) {
     postcssOptions: {
       compile: {
         enabled: true,
-        cacheInclude: [/.*\.(css|hbs|html|ts)$/, /config\.js/],
+        cacheInclude: [/.*\.(css|hbs|html|ts|gts|gjs)$/, /config\.js/],
         includePaths: ['app', 'tests'],
         plugins: [
           {
@@ -30,7 +30,6 @@ module.exports = function (defaults) {
               path: ['node_modules'],
             },
           },
-          // { module: require('postcss-import') }, // If you installed postcss-import
           require('tailwindcss')('tailwind.config.js'), // If you have a Tailwind config file.
         ],
       },

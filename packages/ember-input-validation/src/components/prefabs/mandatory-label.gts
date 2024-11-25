@@ -9,12 +9,14 @@ export interface MandatoryLabelComponentSignature {
 }
 
 const MandatoryLabelComponent: TOC<MandatoryLabelComponentSignature> = <template>
-  {{@label}}
-  {{#if @mandatory}}
-    <span class="mandatory" ...attributes>
-      *
-    </span>
-  {{/if}}
+    <div ...attributes>
+      <span>
+          {{@label}}
+          {{#if @mandatory}}
+            <span class="mandatory">*</span>
+          {{/if}}
+      </span>
+    </div>
 </template>;
 
 export default MandatoryLabelComponent;

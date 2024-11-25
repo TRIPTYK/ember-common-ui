@@ -76,7 +76,7 @@ module(
       });
       assert.dom('.tpk-validation-errors').exists();
       await settled();
-      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
+      assert.dom('.tpk-validation-errors span').hasText('required');
     });
   },
 );

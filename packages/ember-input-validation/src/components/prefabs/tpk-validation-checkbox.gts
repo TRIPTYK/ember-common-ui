@@ -32,12 +32,11 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
         >
       <V.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        <V.Input />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
+        />
       </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-
-      />
       </div>
     </TpkValidationCheckboxComponent>
   </template>;

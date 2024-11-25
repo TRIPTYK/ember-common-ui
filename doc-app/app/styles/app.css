@@ -1,29 +1,9 @@
 @import url("tailwindcss/base");
 @import url("tailwindcss/components");
 @import url("tailwindcss/utilities");
-@import url("ember-ui/index.css");
-@import url("ember-input/index.css");
-@import url("ember-input-validation/index.css");
 @import url("@eonasdan/tempus-dominus/dist/css/tempus-dominus.css");
 @import url("ember-power-select/vendor/ember-power-select.css");
-
-.button {
-  display: inline-block;
-  padding: 5px 10px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
+@import url("@triptyk/ember-input-validation/dist/app.css");
 
 .next,
 .previous {

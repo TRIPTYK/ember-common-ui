@@ -20,9 +20,9 @@ module(
 
       await render(
         hbs`
-         <Prefabs::TpkValidationIban 
+         <Prefabs::TpkValidationIban
             @label="label"
-            @changeset={{this.changeset}} 
+            @changeset={{this.changeset}}
             @validationField="iban"
             class="custom-iban-class"
          />
@@ -88,7 +88,7 @@ module(
       });
       assert.dom('.tpk-validation-errors').exists();
       await settled();
-      assert.dom('.tpk-validation-errors span').hasText('t:required:()');
+      assert.dom('.tpk-validation-errors span').hasText('required');
     });
   },
 );

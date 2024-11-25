@@ -21,7 +21,6 @@ export interface TpkTextareaInputComponentSignature {
 
 const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <template>
     <textarea
-      class='tpk-textarea-input'
       placeholder={{@placeholder}}
       id={{@guid}}
       value={{@value}}

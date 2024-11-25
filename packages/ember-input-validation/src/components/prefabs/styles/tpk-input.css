@@ -1,0 +1,19 @@
+.tpk-input-container {
+  @apply form-control;
+}
+
+.tpk-input-container > input {
+  @apply input input-bordered;
+}
+
+.tpk-input-container > .tpk-input-label {
+  @apply label;
+}
+
+.tpk-input-container[data-has-error~="true"] > input {
+  @apply input-error;
+}
+
+.tpk-input-container[data-has-error~="true"] .tpk-validation-errors {
+  @apply text-error label justify-self-end;
+}
