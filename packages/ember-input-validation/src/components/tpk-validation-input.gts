@@ -51,6 +51,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
       @mask={{@mask}}
       @maskOptions={{@maskOptions}}
       @unmaskValue={{@unmaskValue}}
+      @placeholder={{@placeholder}}
       as |I|
     >
       {{yield
