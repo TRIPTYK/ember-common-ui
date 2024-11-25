@@ -4,10 +4,14 @@ import { hbs } from 'ember-cli-htmlbars';
 import { type TestContext, click, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
+interface CurrentTestContext extends TestContext {
+  changeset: ImmerChangeset;
+}
+
 module('Integration | Component | tpk-validation-radio', function (hooks) {
   setupRenderingTest(hooks);
 
-  async function setupComponent(this: TestContext) {
+  async function setupComponent(this: CurrentTestContext) {
     const values = ['good', 'bad', 'ugly'];
     const changeset = new ImmerChangeset({
       radio: undefined,
@@ -31,14 +35,14 @@ module('Integration | Component | tpk-validation-radio', function (hooks) {
     return changeset;
   }
 
-  test('render radio with default structure', async function (assert) {
+  test('render radio with default structure', async function (this: CurrentTestContext, assert) {
     await setupComponent.call(this);
     assert.dom('[data-test-tpk-label]').exists();
     assert.dom('[data-test-tpk-radio]').exists();
     assert.dom('[data-test-tpk-radio-input]').exists();
   });
 
-  test('It changes data on click radio', async function (assert) {
+  test('It changes data on click radio', async function (this: CurrentTestContext, assert) {
     await setupComponent.call(this);
     assert.strictEqual(this.changeset.get('radio'), undefined);
     assert

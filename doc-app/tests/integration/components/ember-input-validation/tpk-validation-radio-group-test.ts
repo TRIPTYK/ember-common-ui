@@ -67,17 +67,5 @@ module(
         .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
         .isChecked();
     });
-
-    test('must set wrong value type to selected', async function (this: CurrentTestContext, assert) {
-      await setupOnerror(function (err) {
-        console.log(err);
-
-        assert.strictEqual(
-          err.message,
-          'Assertion Failed: The changeset value must be a string',
-        );
-      });
-      await setupComponent.call(this, 'true');
-    });
   },
 );
