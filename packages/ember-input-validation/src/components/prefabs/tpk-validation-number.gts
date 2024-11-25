@@ -35,7 +35,6 @@ get min() {
       @label={{@label}}
       @min={{this.min}}
       @step={{@step}}
-
       @disabled={{@disabled}}
       @mandatory={{@mandatory}}
       @changeEvent={{@changeEvent}}
@@ -44,8 +43,6 @@ get min() {
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-      data-test-input='number'
-      anchorScrollUp={{@validationField}}
       as |I|
     >
       <div class="tpk-input" data-test-tpk-input data-has-error='{{I.hasError}}' anchorScrollUp={{@validationField}} ...attributes>

@@ -32,7 +32,6 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
       @mask={{this.mask}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
     as |V|>
       <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
         <V.Label>

@@ -60,7 +60,6 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
       @label={{@label}}
       @type="text"
       @onChange={{@onChange}}
-
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -68,7 +67,6 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
       @mask={{this.ibanMaskByCountry}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
     as |V|>
       <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
       <V.Label>
