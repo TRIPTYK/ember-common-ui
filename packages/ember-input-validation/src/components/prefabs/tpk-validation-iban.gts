@@ -8,7 +8,7 @@ import Component from "@glimmer/component";
 export interface TpkValidationIBANPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'> & {
-    mandatory: boolean;
+    mandatory?: boolean;
   };
   Blocks: {
     default: [];
