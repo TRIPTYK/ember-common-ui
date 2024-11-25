@@ -2,11 +2,10 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { type TestContext, click, render } from '@ember/test-helpers';
-import { TestContext as BaseTestContext } from 'ember-test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupOnerror } from '@ember/test-helpers';
 
-interface TestContext extends BaseTestContext {
+interface CurrentTestContext extends TestContext {
   changeset: ImmerChangeset;
 }
 
@@ -15,13 +14,13 @@ module(
   function (hooks) {
     setupRenderingTest(hooks);
 
-    hooks.beforeEach(function (this: TestContext) {
+    hooks.beforeEach(function (this: CurrentTestContext) {
       this.changeset = new ImmerChangeset({
         radio: undefined,
       });
     });
 
-    async function setupComponent(this: TestContext, value: string) {
+    async function setupComponent(this: CurrentTestContext, value?: string) {
       console.log('value', value);
 
       const changeset = new ImmerChangeset({
@@ -43,7 +42,8 @@ module(
       `);
       return this.changeset;
     }
-    test('render radio with default structure', async function (this: TestContext, assert) {
+
+    test('render radio with default structure', async function (this: CurrentTestContext, assert) {
       await setupComponent.call(this, undefined);
       assert.strictEqual(this.changeset.get('radio'), undefined);
       await click("[data-test-radio='bad'] [data-test-tpk-radio-input]");
@@ -61,14 +61,14 @@ module(
       assert.strictEqual(this.changeset.get('radio'), 'good');
     });
 
-    test('changeset set value selected the good radio', async function (this: TestContext, assert) {
+    test('changeset set value selected the good radio', async function (this: CurrentTestContext, assert) {
       await setupComponent.call(this, 'good');
       assert
         .dom("[data-test-radio='good'] [data-test-tpk-radio-input]")
         .isChecked();
     });
 
-    test('must set wrong value type to selected', async function (this: TestContext, assert) {
+    test('must set wrong value type to selected', async function (this: CurrentTestContext, assert) {
       await setupOnerror(function (err) {
         console.log(err);
 
@@ -77,7 +77,7 @@ module(
           'Assertion Failed: The changeset value must be a string',
         );
       });
-      await setupComponent.call(this, true);
+      await setupComponent.call(this, 'true');
     });
   },
 );
