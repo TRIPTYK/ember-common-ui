@@ -18,11 +18,11 @@ module(
 
       await render(hbs`
       <TpkValidationRadioGroup @mandatory={{true}} @groupLabel="groupLabel" @changeset={{this.changeset}} @validationField="radio" as |R|>
-        <R.Radio @value={{'good'}} @label={{'good'}} data-test-radio="good" as |T| >
+        <R.Radio @value='good'}@label='good' data-test-radio="good" as |T| >
           <T.Input />
           <T.Label />
         </R.Radio>
-        <R.Radio  @value={{'bad'}} @label='bad' data-test-radio="bad" as |T| >
+        <R.Radio  @value='bad' @label='bad' data-test-radio="bad" as |T| >
           <T.Input />
           <T.Label />
         </R.Radio>
