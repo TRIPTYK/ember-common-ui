@@ -6,10 +6,11 @@ import type { Owner } from '@ember/test-helpers/build-owner';
 export default class DocsEmberInputValidationPrefabsIBANController extends Controller {
   @tracked changeset = new ImmerChangeset({
     bic: '',
+    disabled: 'UKIO0000',
   });
 
   @tracked changesetWithErrors = new ImmerChangeset({
-    bic: '',
+    bic: 'UKIO0000',
   });
 
   constructor(owner: Owner) {

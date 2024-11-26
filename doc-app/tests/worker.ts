@@ -31,7 +31,6 @@ export function setupMock(hooks: NestedHooks) {
         return req.passthrough();
       }),
     );
-    this.set('worker', worker);
   });
 
   hooks.afterEach(function () {

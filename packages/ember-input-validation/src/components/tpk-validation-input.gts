@@ -41,6 +41,7 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
   <template>
     <TpkInput
       @value={{this.value}}
+      @disabled={{@disabled}}
       @label={{@label}}
       @type={{@type}}
       @step={{@step}}

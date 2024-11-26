@@ -2,18 +2,19 @@
   @apply form-control;
 }
 
-.tpk-bic-container > input {
+.tpk-bic-container .tpk-text-input {
   @apply input input-bordered;
 }
 
-.tpk-bic-container > .tpk-input-label {
+.tpk-bic-container .tpk-label {
   @apply label;
 }
 
-.tpk-bic-container[data-has-error~="true"] > input {
-  @apply input-error;
+.tpk-bic-container[data-has-error~="true"] .tpk-text-input {
+  @apply input-error text-error;
 }
 
-.tpk-bic-container[data-has-error~="true"] .tpk-validation-errors {
-  @apply text-error label justify-self-end;
+.tpk-bic-container[data-has-error~="true"] .tpk-validation-errors,
+.tpk-bic-container[data-has-error~="true"] .tpk-label {
+  @apply text-error label;
 }

@@ -1,21 +1,29 @@
-# Input iban
+# Input bic
 
 This is an input with a built-in mask for BIC.
-The mask should be compatible for any BIC.
+The mask should be compatible for any BIC and text can only be in capital letters.
 
 
 <DocsDemo as |demo|>
   <demo.example @name="tpk-bic.hbs">
       <Prefabs::TpkValidationBic 
-        @label="BIC 1"
-        @mandatory={{true}}
+        @label="BIC"
+        @mandatory=true
         @placeholder="Enter bic"
         @changeset={{this.changeset}} 
         @validationField="bic"
       />
-       <Prefabs::TpkValidationInput
-        @label="BIC 2"
-        @mandatory={{true}}
+      <Prefabs::TpkValidationBic
+        @label="disabled BIC"
+        @mandatory=true
+        @disabled=true
+        @placeholder="Enter bic"
+        @changeset={{this.changeset}} 
+        @validationField="disabled"
+      />
+       <Prefabs::TpkValidationBic
+        @label="Error BIC"
+        @mandatory=true
         @placeholder="Enter bic"
         @changeset={{this.changesetWithErrors}} 
         @validationField="bic"
