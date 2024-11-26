@@ -24,19 +24,21 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
       @onChange={{@onChange}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      <div
-          class='tpk-checkbox'
-          anchorScrollUp={{@validationField}}
-          ...attributes
-          data-test-tpk-checkbox
-        >
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-        <V.Input />
-        <TpkValidationErrorsComponent
-          @errors={{V.errors}}
-        />
-      </V.Label>
+      <div class="tpk-checkbox-container"
+      data-has-error='{{V.hasError}}'
+      anchorScrollUp={{@validationField}}
+        ...attributes data-test-tpk-checkbox>
+        <V.Label>
+          <MandatoryLabelComponent
+          class="tpk-label" 
+          @label={{@label}} 
+          @mandatory={{V.mandatory}} />
+          <V.Input class="tpk-checkbox-input"/>
+          <TpkValidationErrorsComponent
+            class="tpk-validation-errors"
+            @errors={{V.errors}}
+          />
+        </V.Label>
       </div>
     </TpkValidationCheckboxComponent>
   </template>;
