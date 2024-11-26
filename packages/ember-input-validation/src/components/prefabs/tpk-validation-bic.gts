@@ -11,7 +11,7 @@ export interface TpkValidationBicPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationBicPrefabComponent extends Component<TpkValidationBicPrefabSignature> {
@@ -23,9 +23,11 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
   <template>
     <TpkValidationInputComponent
       @label={{@label}}
+      @disabled={{@disabled}}
       @type="text"
       @onChange={{@onChange}}
       @mandatory={{@mandatory}}
+      @placeholder={{@placeholder}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -33,15 +35,14 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-        <V.Label>
-          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        <V.Label class="tpk-bic-container" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+          <MandatoryLabelComponent  class="tpk-label" @label={{@label}} @mandatory={{V.mandatory}}/>
+          <V.Input class="tpk-text-input" data-has-error='{{V.hasError}}'/>
+          <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+            @errors={{V.errors}}
+          />
         </V.Label>
-        <V.Input />
-        <TpkValidationErrorsComponent
-          @errors={{V.errors}}
-        />
-      </div>
     </TpkValidationInputComponent>
   </template>
 }

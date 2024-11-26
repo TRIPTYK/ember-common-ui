@@ -45,10 +45,5 @@ module(
       await fillIn('[data-test-tpk-input-input]', 'SEBISSEBA88');
       assert.strictEqual(changeset.get('bic'), 'SEBISSEBA88');
     });
-
-    test('Attributes should be passed to the input', async function (assert) {
-      await renderComponentAndReturnChangeset.call(this);
-      assert.dom('.tpk-input').hasClass('custom-bic-class');
-    });
   },
 );

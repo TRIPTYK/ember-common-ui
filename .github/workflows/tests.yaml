@@ -11,14 +11,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
-        with: 
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
       - uses: wyvox/action-setup-pnpm@v3
+      - name: Build
+        run: pnpm turbo build
       - name: Run tests
         run: pnpm turbo lint test
   deploy:
