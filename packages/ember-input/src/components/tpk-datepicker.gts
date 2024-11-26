@@ -1,28 +1,25 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
 import type { BaseUIComponentArgs } from './base.ts';
-import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
 import TpkDatepickerNewInputComponent, {
-  type TpkDatepickerInput,
-  type TpkDatepickerInputComponentSignature,
+  type TpkDatepickerInputArgs
 } from './tpk-datepicker-input.gts';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
 
 export type TpkDatepickerSignature = {
-  Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
-    TpkDatepickerInput & {
+  Args: BaseUIComponentArgs['Args'] &
+    TpkDatepickerInputArgs & {
       mask?: string;
     }
-  >;
+  ;
   Blocks: {
     default: [
       {
         Input: WithBoundArgs<
           typeof TpkDatepickerNewInputComponent,
-          keyof TpkDatepickerInputComponentSignature['Args']
+          'guid' | 'disabled' | 'value' | 'placeholder' | 'useCurrent' | 'mode' | 'multipleDatesSeparator' | 'stepping' | 'promptTimeOnDateChange' | 'todayButton' | 'clearButton' | 'closeButton' | 'enableTime' | 'noCalendar' | 'enableSecond' | 'keepOpen' | 'locale' | 'dateFormat' | 'minDate' | 'maxDate' | 'daysOfWeekDisabled' | 'disabledTimeIntervals' | 'disabledDates' | 'enabledDates' | 'disabledHours' | 'enabledHours' | 'viewMode' | 'onChange' | 'onClose'
         >;
         Label: WithBoundArgs<
           typeof TpkLabel,

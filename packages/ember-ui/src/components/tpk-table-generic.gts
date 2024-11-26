@@ -11,8 +11,8 @@ import t from 'ember-intl/helpers/t';
 
 export interface TableGenericComponentSignature {
   Args: {
-    entity: never;
-    relationships: string;
+    entity: string;
+    relationships?: string;
     pageSizes?: number[];
     filterText?: string;
     pageSize?: number;
@@ -20,7 +20,7 @@ export interface TableGenericComponentSignature {
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
     rowClick?: (...elements: unknown[]) => void;
-    additionalFilters: Record<string, unknown>;
+    additionalFilters?: Record<string, unknown>;
   };
   Blocks: {
     default: [

@@ -1,4 +1,4 @@
-'use strict';
+
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const sideWatch = require('@embroider/broccoli-side-watch');
