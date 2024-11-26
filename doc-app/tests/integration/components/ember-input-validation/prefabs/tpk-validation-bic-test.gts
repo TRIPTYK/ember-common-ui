@@ -38,7 +38,6 @@ module(
       assert.strictEqual(changeset.get('bic'), '');
       await fillIn('[data-test-tpk-input-input]', 'SEBISSEB');
       assert.strictEqual(changeset.get('bic'), 'SEBISSEB');
-      await this.pauseTest()
     });
 
     test('3 optional  character after first 8 accept accept uppercase letters and numbers', async function (assert) {
