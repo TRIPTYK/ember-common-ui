@@ -5,16 +5,24 @@ This component provides an input.
 <DocsDemo as |demo|>
   <demo.example @name="tpk-input-prefab.hbs">
       <Prefabs::TpkValidationInput
-        @label="Input 1"
+        @label="Input"
         @changeset={{this.changeset}} 
         @validationField="something"
       />
       <Prefabs::TpkValidationInput
-        @label="Input 2"
+        @label="Disabled"
+        @mandatory={{true}}
+        @disabled={{true}}
+        @changeset={{this.changeset}} 
+        @validationField="disabled"
+      />
+      <Prefabs::TpkValidationInput
+        @label="Error Input"
         @mandatory={{true}}
         @changeset={{this.changesetWithErrors}} 
         @validationField="something"
       />
+
   </demo.example>
   <demo.snippet @name="tpk-input-prefab.hbs"/>
 </DocsDemo>

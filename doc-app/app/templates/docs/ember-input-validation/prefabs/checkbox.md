@@ -5,9 +5,25 @@ This component provides a checkbox.
 <DocsDemo as |demo|>
   <demo.example @name="tpk-checkbox-prefab.hbs">
       <Prefabs::TpkValidationCheckbox
-        @label="Should I delete this?"
+        @label="Unchecked"
+        @changeset={{this.changeset}}
+        @validationField="unchecked"
+      />
+      <Prefabs::TpkValidationCheckbox
+        @label="Checked"
         @changeset={{this.changeset}} 
-        @validationField="deleteThis"
+        @validationField="checked"
+      />
+      <Prefabs::TpkValidationCheckbox
+        @label="Disabled"
+        @changeset={{this.changeset}}
+        @disabled={{true}}
+        @validationField="disabled"
+      />
+      <Prefabs::TpkValidationCheckbox
+        @label="Error"
+        @changeset={{this.changeset}}
+        @validationField="error"
       />
   </demo.example>
   <demo.snippet @name="tpk-checkbox-prefab.hbs"/>

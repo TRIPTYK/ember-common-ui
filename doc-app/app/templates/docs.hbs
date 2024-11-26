@@ -3,41 +3,53 @@
   <viewer.nav as |nav|>
     <nav.item @label="Index" @route="docs.index" />
     <nav.section @label="Ember UI" />
+
     <nav.item @label="Install" @route="docs.ember-ui.installation" />
-    <nav.item @label="Lazy image" @route="docs.ember-ui.lazy-image" />
     <nav.item @label="Actions menu" @route="docs.ember-ui.actions-menu" />
-    <nav.item @label="Modal" @route="docs.ember-ui.modal" />
-    <nav.item @label="Table generic" @route="docs.ember-ui.table-generic" />
     <nav.item @label="File list" @route="docs.ember-ui.file-list" />
+    <nav.item @label="Lazy image" @route="docs.ember-ui.lazy-image" />
+    <nav.item @label="Modal" @route="docs.ember-ui.modal" />
     <nav.item @label="Stack list" @route="docs.ember-ui.stack-list" />
     <nav.item @label="Stepper" @route="docs.ember-ui.stepper" />
-    <nav.section @label="Ember Input" />
-    <nav.item @label="Install" @route="docs.ember-input.installation" />
-    <nav.item @label="Input" @route="docs.ember-input.input" />
-    <nav.item @label="Button" @route="docs.ember-input.button" />
-    <nav.item @label="Checkbox" @route="docs.ember-input.checkbox" />
-    <nav.item @label="Datepicker" @route="docs.ember-input.datepicker" />
-    <nav.item @label="File" @route="docs.ember-input.file" />
-    <nav.item @label="Radio" @route="docs.ember-input.radio" />
-    <nav.item @label="Select" @route="docs.ember-input.select" />
-    <nav.item @label="Select search" @route="docs.ember-input.select-search" />
-    <nav.item @label="Textarea" @route="docs.ember-input.textarea" />
-
+    <nav.item @label="Table generic" @route="docs.ember-ui.table-generic" />
+    
+    {{!-- prefab section --}}
     <nav.section @label="Ember Input Validation Prefabs" />
+    <nav.item @label="Bic" @route="docs.ember-input-validation.prefabs.bic" />
+    <nav.item
+      @label="Checkbox"
+      @route="docs.ember-input-validation.prefabs.checkbox"
+    />
+    <nav.item
+      @label="Currency"
+      @route="docs.ember-input-validation.prefabs.currency"
+    />
+    <nav.item
+      @label="Datepicker Range"
+      @route="docs.ember-input-validation.prefabs.datepicker-range"
+    />
+    <nav.item
+      @label="Email"
+      @route="docs.ember-input-validation.prefabs.email"
+    />
+    <nav.item @label="Iban" @route="docs.ember-input-validation.prefabs.iban" />
     <nav.item
       @label="Input"
       @route="docs.ember-input-validation.prefabs.input"
     />
+    <nav.item @label="Integer" @route="docs.ember-input-validation.prefabs.integer" />
+    <nav.item
+      @label="Mobile"
+      @route="docs.ember-input-validation.prefabs.mobile"
+    />
+    <nav.item
+      @label="National Number"
+      @route="docs.ember-input-validation.prefabs.national-number"
+    />
+    <nav.item @label="Number" @route="docs.ember-input-validation.prefabs.number" />
     <nav.item
       @label="Password"
       @route="docs.ember-input-validation.prefabs.password"
-    />
-    <nav.item @label="Integer" @route="docs.ember-input-validation.prefabs.integer" />
-    <nav.item @label="Number" @route="docs.ember-input-validation.prefabs.number" />
-    <nav.item @label="Textarea" @route="docs.ember-input-validation.prefabs.textarea" />
-    <nav.item
-      @label="Checkbox"
-      @route="docs.ember-input-validation.prefabs.checkbox"
     />
     <nav.item
       @label="Radio group"
@@ -47,42 +59,23 @@
       @label="Select"
       @route="docs.ember-input-validation.prefabs.select"
     />
-    <nav.item
-      @label="Select search"
-      @route="docs.ember-input-validation.prefabs.select-search"
-    />
+   
     <nav.item
       @label="Select create"
       @route="docs.ember-input-validation.prefabs.select-create"
     />
-    <nav.item
-      @label="Mobile"
-      @route="docs.ember-input-validation.prefabs.mobile"
+     <nav.item
+      @label="Select search"
+      @route="docs.ember-input-validation.prefabs.select-search"
     />
-    <nav.item @label="Iban" @route="docs.ember-input-validation.prefabs.iban" />
-    <nav.item @label="Vat" @route="docs.ember-input-validation.prefabs.vat" />
-    <nav.item @label="Bic" @route="docs.ember-input-validation.prefabs.bic" />
-
-    <nav.item
-      @label="Email"
-      @route="docs.ember-input-validation.prefabs.email"
-    />
-    <nav.item
-      @label="Currency"
-      @route="docs.ember-input-validation.prefabs.currency"
-    />
-    <nav.item
-      @label="National Number"
-      @route="docs.ember-input-validation.prefabs.national-number"
-    />
+    <nav.item @label="Textarea" @route="docs.ember-input-validation.prefabs.textarea" />
     <nav.item
       @label="Time picker"
       @route="docs.ember-input-validation.prefabs.timepicker"
     />
-    <nav.item
-      @label="Datepicker Range"
-      @route="docs.ember-input-validation.prefabs.datepicker-range"
-    />
+    <nav.item @label="Vat" @route="docs.ember-input-validation.prefabs.vat" />
+ 
+    {{!-- validation section --}}
     <nav.section @label="Ember Input Validation" />
     <nav.item
       @label="Install"
@@ -101,7 +94,23 @@
     />
     <nav.item @label="Select" @route="docs.ember-input-validation.select" />
     <nav.item @label="Textarea" @route="docs.ember-input-validation.textarea" />
+    
+     {{!-- form section --}}
+    <nav.section @label="Ember Form" />
     <nav.item @label="TpkForm" @route="docs.ember-input-validation.tpk-form" />
+
+    {{!-- input section --}}
+     <nav.section @label="Ember Input" />
+    <nav.item @label="Install" @route="docs.ember-input.installation" />   
+    <nav.item @label="Button" @route="docs.ember-input.button" />
+    <nav.item @label="Checkbox" @route="docs.ember-input.checkbox" />
+    <nav.item @label="Datepicker" @route="docs.ember-input.datepicker" />
+    <nav.item @label="File" @route="docs.ember-input.file" />
+    <nav.item @label="Input" @route="docs.ember-input.input" />
+    <nav.item @label="Radio" @route="docs.ember-input.radio" />
+    <nav.item @label="Select" @route="docs.ember-input.select" />
+    <nav.item @label="Select search" @route="docs.ember-input.select-search" />
+    <nav.item @label="Textarea" @route="docs.ember-input.textarea" />
   </viewer.nav>
   <viewer.main>
     {{outlet}}

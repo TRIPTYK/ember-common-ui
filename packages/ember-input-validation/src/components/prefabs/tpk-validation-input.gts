@@ -39,10 +39,10 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       @requiredFields={{@requiredFields}}
     as |V|>
       <V.Label class="tpk-input-container" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-        <MandatoryLabelComponent class="tpk-input-label" @label={{@label}} @mandatory={{V.mandatory}} />
-        <V.Input class="tpk-input-input" />
+        <MandatoryLabelComponent class="tpk-label" @label={{@label}} @mandatory={{V.mandatory}} />
+        <V.Input class="tpk-text-input" />
         <TpkValidationErrorsComponent
-          class="tpk-input-errors"
+          class="tpk-validation-errors"
           @errors={{V.errors}}
         />
       </V.Label>
