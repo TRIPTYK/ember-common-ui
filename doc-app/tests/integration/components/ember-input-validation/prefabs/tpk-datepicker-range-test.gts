@@ -27,7 +27,6 @@ module(
             @label="Datepicker range"
             @changeset={{immerChangeset}}
             @validationField="range"
-            class="tpk-input"
          />
         </template>,
       );

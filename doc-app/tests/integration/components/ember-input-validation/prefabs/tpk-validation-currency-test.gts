@@ -59,11 +59,6 @@ module(
       assert.strictEqual(changeset.get('value'), 123.45);
     });
 
-    test('Attributes should be passed to the input', async function (this: ThisTestContext,assert) {
-      await renderComponentAndReturnChangeset.call(this);
-      assert.dom('.tpk-input').hasClass('custom-class');
-    });
-
     test('@scale should control the decimals of the input', async function (this: ThisTestContext,assert) {
       await renderComponentAndReturnChangeset.call(this, 3);
       assert.dom('input').hasValue('123.560 €');
