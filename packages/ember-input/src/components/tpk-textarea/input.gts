@@ -6,7 +6,7 @@ import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 export interface TpkTextareaInputComponentSignature {
   Args: {
     guid: string;
-    classless?: boolean;
+
     value?: string;
     disabled?: boolean;
     maxLength?: number;
@@ -21,7 +21,6 @@ export interface TpkTextareaInputComponentSignature {
 
 const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <template>
     <textarea
-      class={{unless @classless 'tpk-textarea-input'}}
       placeholder={{@placeholder}}
       id={{@guid}}
       value={{@value}}

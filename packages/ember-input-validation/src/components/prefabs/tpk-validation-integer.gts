@@ -24,7 +24,7 @@ export interface TpkValidationIntegerComponentSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationIntegerComponent extends Component<TpkValidationIntegerComponentSignature> {
@@ -46,7 +46,6 @@ preventNonNumericInput(event: KeyboardEvent) {
       @label={{@label}}
       @min={{this.min}}
       @step={{1}}
-      @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -55,19 +54,16 @@ preventNonNumericInput(event: KeyboardEvent) {
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-      ...attributes
-      data-test-input='integer'
-      {{on 'keydown' this.preventNonNumericInput}}
-      as |I|
+      as |V|
     >
-      <I.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
-      </I.Label>
-      <I.Input />
-      <TpkValidationErrorsComponent
-        @errors={{I.errors}}
-        @classless={{@classless}}
-      />
+      <V.Label class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <MandatoryLabelComponent class="label-text" @label={{@label}} @mandatory={{V.mandatory}} />
+        <V.Input {{on 'keydown' this.preventNonNumericInput}} />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
+
+        />
+    </V.Label>
     </TpkValidationInputComponent>
   </template>
 }

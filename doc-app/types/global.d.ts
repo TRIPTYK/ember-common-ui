@@ -1,9 +1,10 @@
-import 'ember-source/types';
+import '@glint/environment-ember-loose';
+import { Registry as InputR } from '@triptyk/ember-input/template-registry';
+import { Registry as InputVR } from '@triptyk/ember-input-validation/template-registry';
+import type EmberIntlRegistry from 'ember-intl/template-registry';
 
-// Types for compiled templates
-declare module 'doc-app/templates/*' {
-  import { TemplateFactory } from 'ember-cli-htmlbars';
-
-  const tmpl: TemplateFactory;
-  export default tmpl;
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry extends EmberIntlRegistry, InputR, InputVR {
+    // local entries
+  }
 }

@@ -25,7 +25,6 @@ export interface TpkValidationCheckboxComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationCheckboxComponent extends BaseValidationComponent<TpkValidationCheckboxComponentSignature> {
@@ -51,12 +50,9 @@ export default class TpkValidationCheckboxComponent extends BaseValidationCompon
     <TpkCheckbox
       @checked={{this.value}}
       @label={{@label}}
-      @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}
-      ...attributes
-      data-has-error='{{this.hasError}}'
       as |I|
     >
       {{yield

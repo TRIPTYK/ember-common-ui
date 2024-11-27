@@ -13,7 +13,7 @@ export interface TpkValidationPasswordPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationPasswordPrefabComponent extends Component<TpkValidationPasswordPrefabSignature> {
@@ -33,7 +33,6 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
       @label={{@label}}
       @type={{this.type}}
       @onChange={{@onChange}}
-      @classless={{@classless}}
       @placeholder={{@placeholder}}
       @mandatory={{@mandatory}}
       @disabled={{@disabled}}
@@ -41,16 +40,15 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
-      ...attributes
     as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <div>
-        <V.Input placeholder={{@placeholder}} />
+     <V.Label class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <div class="label">
+          <MandatoryLabelComponent class="label-text" @label={{@label}} @mandatory={{V.mandatory}} />
+        </div>
+        <V.Input  placeholder={{@placeholder}} />
         <button
           type='button'
-          class={{unless @classless 'tpk-input-validation-toggle-button'}}
+          class='tpk-input-validation-toggle-button'
           title={{if this.showPassword 'show' 'hide'}}
           {{on 'click' this.togglePassword}}
           data-test-toggle-button
@@ -62,17 +60,14 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
               '/assets/icons/eye.svg'
             }}
             alt='eye'
-            class={{unless
-              @classless
-              'tpk-input-validation-toggle-button-image'
-            }}
+            class='tpk-input-validation-toggle-button-image'
           />
         </button>
-      </div>
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-        @classless={{@classless}}
-      />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
+
+        />
+      </V.Label>
     </TpkValidationInputComponent>
   </template>
 }

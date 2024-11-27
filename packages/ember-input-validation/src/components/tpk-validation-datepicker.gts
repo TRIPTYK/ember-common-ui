@@ -4,7 +4,7 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import { assert } from '@ember/debug';
-import { type TpkDatepickerInput } from '@triptyk/ember-input/components/tpk-datepicker/input';
+import { type TpkDatepickerInputArgs } from '@triptyk/ember-input/components/tpk-datepicker-input';
 import { hash } from '@ember/helper';
 import TpkDatepicker, {
   type TpkDatepickerSignature,
@@ -13,9 +13,11 @@ import TpkDatepicker, {
 export interface TpkValidationDatepickerComponentSignature extends BaseValidationSignature {
   Args: Omit<BaseValidationSignature['Args'] & TpkDatepickerInput & {
     label: string;
+
+    disabled?: boolean;
     mask?: string;
     onChange?: (value: Date[]) => void;
-  }, 'value'>;
+  } & TpkDatepickerInputArgs;
   Blocks: {
     default: [
       {

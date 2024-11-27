@@ -16,7 +16,7 @@ export interface TpkValidationTextareaPrefabSignature
 const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSignature> = <template>
     <TpkValidationTextareaComponent
       @label={{@label}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -26,8 +26,13 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
       @changeset={{@changeset}}
       @maxLength={{@maxLength}}
       @requiredFields={{@requiredFields}}
-      ...attributes
     as |V|>
+      <div
+        class='tpk-textarea'
+        anchorScrollUp={{@validationField}}
+        ...attributes
+        data-test-tpk-textarea
+      >
       <V.Label>
         <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
       </V.Label>
@@ -39,8 +44,9 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
       {{/if}}
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
+      </div>
     </TpkValidationTextareaComponent>
   </template>;
 

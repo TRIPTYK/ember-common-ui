@@ -3,9 +3,9 @@ import { action } from '@ember/object';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { WithBoundArgs } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input.gts';
-import TpkRadioLabelComponent from './tpk-radio/label.gts';
 import type { MergeDeep } from 'type-fest';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkRadioSignature = {
   Args: MergeDeep<
@@ -23,8 +23,8 @@ export type TpkRadioSignature = {
     default: [
       {
         Label: WithBoundArgs<
-          typeof TpkRadioLabelComponent,
-          'guid' | 'label' | 'classless'
+          typeof TpkLabel,
+          'guid' | 'label'
         >;
         Input: WithBoundArgs<
           typeof TpkRadioInputComponent,
@@ -35,7 +35,7 @@ export type TpkRadioSignature = {
           | 'value'
           | 'changeEvent'
           | 'onChange'
-          | 'classless'
+
         >;
         onChange: TpkRadioComponent['onChange'];
         changeEvent: 'input' | 'change';
@@ -43,7 +43,6 @@ export type TpkRadioSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature> {
@@ -55,42 +54,34 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
   }
 
   @action
-  public onChange(e: Event) {
+  public onChange(e: Event) {   
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     this.args.onChange?.(target.value, e);
   }
 
   <template>
-    <div
-      class={{unless @classless 'tpk-radio'}}
-      ...attributes
-      data-test-tpk-radio
-    >
-      {{yield
-        (hash
-          Label=(component
-            TpkRadioLabelComponent
-            guid=this.guid
-            label=@label
-            classless=@classless
-          )
-          Input=(component
-            TpkRadioInputComponent
-            guid=this.guid
-            selected=@selected
-            disabled=@disabled
-            name=@name
-            value=@value
-            changeEvent=this.changeEvent
-            onChange=this.onChange
-            classless=@classless
-          )
-          onChange=this.onChange
-          changeEvent=this.changeEvent
+    {{yield
+      (hash
+        Label=(component
+          TpkLabel
           guid=this.guid
+          label=@label
         )
-      }}
-    </div>
+        Input=(component
+          TpkRadioInputComponent
+          guid=this.guid
+          selected=@selected
+          disabled=@disabled
+          name=@name
+          value=@value
+          changeEvent=this.changeEvent
+          onChange=this.onChange
+        )
+        onChange=this.onChange
+        changeEvent=this.changeEvent
+        guid=this.guid
+      )
+    }}
   </template>
 }

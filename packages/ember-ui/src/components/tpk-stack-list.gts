@@ -9,7 +9,7 @@ import { on } from '@ember/modifier';
 
 export interface TpkStackListComponentSignature {
   Args: {
-    classless?: boolean;
+
     onRemove: (item: unknown) => void;
     data: unknown[];
     key?: string;

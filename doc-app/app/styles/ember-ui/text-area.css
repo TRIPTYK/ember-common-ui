@@ -1,0 +1,15 @@
+.tpk-textarea {
+  @apply flex flex-col;
+}
+
+.tpk-textarea > label {
+  @apply text-gray-500 pb-1 pl-2;
+}
+
+.tpk-textarea-input {
+  @apply border border-gray-300 rounded-md shadow-sm p-2;
+}
+
+.text-area-count {
+  @apply text-gray-500 pt-1 pr-2 pb-4 float-right;
+}

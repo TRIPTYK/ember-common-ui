@@ -9,7 +9,9 @@ import { action } from '@ember/object';
 
 export interface TpkValidationSelectCreatePrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkSelectCreateSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkSelectCreateSignature['Args'] & {
+    onChange?: TpkSelectCreateSignature['Args']['onChange'];
+  }
   Blocks: {
     default: [];
   };
@@ -51,7 +53,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
-        @classless={{@classless}}
+
         @selected={{this.value}}
         @options={{@options}}
         @onChange={{this.onChange}}
@@ -68,6 +70,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @searchPlaceholder={{@searchPlaceholder}}
         @searchMessage={{@searchMessage}}
         @search={{@search}}
+        anchorScrollUp={{@validationField}}
         ...attributes
         as |S|
       >
@@ -77,7 +80,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
       </TpkSelectCreateComponent>
       <TpkValidationErrorsComponent
         @errors={{this.errors}}
-        @classless={{@classless}}
+
       />
     </div>
   </template>

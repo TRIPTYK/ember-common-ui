@@ -29,9 +29,8 @@ export function setupMock(hooks: NestedHooks) {
       rest.post('/write-coverage', (req) => {
         // The passthrough is for ember code coverage.
         return req.passthrough();
-      })
+      }),
     );
-    this.set('worker', worker);
   });
 
   hooks.afterEach(function () {

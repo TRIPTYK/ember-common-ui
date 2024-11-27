@@ -4,8 +4,8 @@ import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
 import TpkFileInputComponent from './tpk-file/input.gts';
-import TpkFileLabelComponent from './tpk-file/label.gts';
 import { hash } from '@ember/helper';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkFileSignature = {
   Args: MergeDeep<
@@ -25,8 +25,8 @@ export type TpkFileSignature = {
           'onChange' | 'accept' | 'disabled' | 'changeEvent' | 'guid'
         >;
         Label: WithBoundArgs<
-          typeof TpkFileLabelComponent,
-          'label' | 'guid' | 'classless'
+          typeof TpkLabel,
+          'label' | 'guid'
         >;
         guid: string;
         changeEvent: 'input' | 'change';
@@ -35,7 +35,6 @@ export type TpkFileSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 
 export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> {
@@ -50,36 +49,28 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
   }
 
   <template>
-    <div
-      class={{unless @classless 'tpk-file'}}
-      ...attributes
-      data-test-tpk-file
-    >
-      {{yield
-        (hash
-          Input=(component
-            TpkFileInputComponent
-            onChange=this.onChange
-            accept=@accept
-            disabled=@disabled
-            multiple=@multiple
-            changeEvent=this.changeEvent
-            guid=this.guid
-            classless=@classless
-          )
-          Label=(component
-            TpkFileLabelComponent
-            label=@label
-            onChange=this.onChange
-            guid=this.guid
-            classless=@classless
-          )
+    {{yield
+      (hash
+        Input=(component
+          TpkFileInputComponent
+          onChange=this.onChange
+          accept=@accept
+          disabled=@disabled
+          multiple=@multiple
           changeEvent=this.changeEvent
+          guid=this.guid
+        )
+        Label=(component
+          TpkLabel
+          label=@label
           onChange=this.onChange
           guid=this.guid
-          files=this.files
         )
-      }}
-    </div>
+        changeEvent=this.changeEvent
+        onChange=this.onChange
+        guid=this.guid
+        files=this.files
+      )
+    }}
   </template>
 }

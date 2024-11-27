@@ -31,7 +31,7 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
     <TpkValidationInputComponent
       @type='email'
       @label={{@label}}
-      @classless={{@classless}}
+
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -40,20 +40,18 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-      ...attributes
-      data-test-input='email'
-
       as |V|
     >
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-        @classless={{@classless}}
-      />
+      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <V.Label>
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        </V.Label>
+        <V.Input />
+        <TpkValidationErrorsComponent
+          @errors={{V.errors}}
 
+        />
+      </div>
     </TpkValidationInputComponent>
   </template>;
 

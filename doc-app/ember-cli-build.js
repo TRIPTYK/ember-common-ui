@@ -1,24 +1,28 @@
-'use strict';
 
-const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const sideWatch = require('@embroider/broccoli-side-watch');
 
-module.exports = async function (defaults) {
-  process.on('uncaughtException', (err) => {
-    // eslint-disable-next-line no-console
-    console.error(err.stack);
-  });
-  let app = new EmberAddon(defaults, {
-    'ember-fetch': {
-      nativePromise: true,
+module.exports = function (defaults) {
+  const app = new EmberApp(defaults, {
+    trees: {
+      app: sideWatch('app', {
+        watching: [
+          '@triptyk/ember-input',
+          '@triptyk/ember-ui',
+          '@triptyk/ember-input-validation',
+        ],
+      }),
     },
-    'ember-cli-babel': {
-      enableTypeScriptTransform: true,
+    'ember-cli-babel': { enableTypeScriptTransform: true },
+    'ember-cli-addon-docs': {
+      documentingAddonAt: '../packages/ember-input',
     },
     postcssOptions: {
       compile: {
         enabled: true,
-        includePaths: ['app', 'addon', 'tests'],
+        cacheInclude: [/.*\.(css|hbs|html|ts|gts|gjs)$/, /config\.js/],
+        includePaths: ['app', 'tests'],
         plugins: [
           {
             module: require('postcss-import'),
@@ -26,14 +30,38 @@ module.exports = async function (defaults) {
               path: ['node_modules'],
             },
           },
-          require('tailwindcss')('./tailwind.config.js'),
+          require('tailwindcss')('tailwind.config.js'), // If you have a Tailwind config file.
         ],
-        cacheInclude: [/.*\.(css|hbs|html|ts)$/, /config\.js/],
       },
     },
+    // Add options here
   });
 
-  const { maybeEmbroider } = require('@embroider/test-setup');
-
-  return maybeEmbroider(app);
+  const { Webpack } = require('@embroider/webpack');
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    staticAddonTestSupportTrees: true,
+    // https://github.com/ember-cli/ember-fetch/issues/622#issuecomment-860399885,
+    packagerOptions: {
+      webpackConfig: {
+        module: {
+          rules: [
+            {
+              test: /\.(gif|svg|jpg|png)$/,
+              loader: 'file-loader',
+            },
+          ],
+        },
+      },
+    },
+    staticAddonTrees: false,
+    staticHelpers: true,
+    staticModifiers: true,
+    staticComponents: true,
+    staticEmberSource: true,
+    skipBabel: [
+      {
+        package: 'qunit',
+      },
+    ],
+  });
 };

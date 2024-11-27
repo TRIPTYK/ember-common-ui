@@ -25,7 +25,6 @@ export interface TpkValidationInputComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationInputComponent extends BaseValidationComponent<TpkValidationInputComponentSignature> {
@@ -44,19 +43,18 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
   <template>
     <TpkInput
       @value={{this.value}}
+      @disabled={{@disabled}}
       @label={{@label}}
       @type={{@type}}
       @step={{@step}}
       @min={{@min}}
       @max={{@max}}
       @onChange={{this.onChange}}
-      @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @mask={{@mask}}
       @maskOptions={{@maskOptions}}
       @unmaskValue={{@unmaskValue}}
-      ...attributes
-      data-has-error='{{this.hasError}}'
+      @placeholder={{@placeholder}}
       as |I|
     >
       {{yield

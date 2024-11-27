@@ -5,3 +5,4 @@ global:
   results: "Results"
   results_by_page: "Results by page"
   on: "on"
+  error: "Error"

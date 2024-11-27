@@ -1,7 +1,7 @@
 import type { TOC } from '@ember/component/template-only';
 export interface TpkStepperStepperComponentSignature {
   Args: {
-    classless?: boolean;
+
     guid: string;
   };
   Element: HTMLOListElement;
@@ -10,11 +10,10 @@ export interface TpkStepperStepperComponentSignature {
   };
 }
 
-// eslint-disable-next-line prettier/prettier
 const TpkStepperStepperComponent: TOC<TpkStepperStepperComponentSignature> =
   <template>
     <ol
-      class={{unless @classless 'tpk-stepper-stepper'}}
+      class='tpk-stepper-stepper'
       id={{@guid}}
       ...attributes
     >{{yield}}</ol>

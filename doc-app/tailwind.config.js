@@ -1,10 +1,19 @@
-/* eslint-disable */
+const path = require('path');
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{hbs,js,ts,html,md}',
-    './tests/**/*.{hbs,js,ts,html,md}',
-    './addon/**/*.{hbs,js,ts,html,md}',
+    './app/**/*.{gjs,gts,hbs,html,js,ts}',
+    path.join(
+      path.dirname(require.resolve('@triptyk/ember-input-validation')),
+      '**/*.{gts,gjs,ts,js,css}',
+    ),
   ],
-  corePlugins: {},
-  plugins: [],
+  theme: {
+    extend: {},
+  },
+  daisyui: {
+    themes: true,
+  },
+  plugins: [require('daisyui')],
 };

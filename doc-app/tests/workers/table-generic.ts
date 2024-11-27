@@ -38,9 +38,9 @@ export async function TableGenericUserWorker(worker: SetupWorker) {
         ctx.json({
           data,
           meta: { fetched: data.length, total: 10 },
-        })
+        }),
       );
-    })
+    }),
   );
   await worker.start();
 }

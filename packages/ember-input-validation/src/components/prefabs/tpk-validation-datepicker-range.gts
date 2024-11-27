@@ -31,7 +31,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @onChange={{@onChange}}
       @onClose={{@onClose}}
       @disabled={{@disabled}}
-      @classless={{@classless}}
+
       @mandatory={{@mandatory}}
       @validationField={{@validationField}}
       @changeset={{@changeset}}
@@ -50,6 +50,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @multipleDatesSeparator={{this.multipleDatesSeparator}}
       @requiredFields={{@requiredFields}}
       @mode="range"
+      anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
       <V.Label>
@@ -58,7 +59,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       <V.Input />
       <TpkValidationErrorsComponent
         @errors={{V.errors}}
-        @classless={{@classless}}
+
       />
     </TpkValidationDatepickerComponent>
   </template>

@@ -6,7 +6,7 @@ import tpkFocusTrap from '@triptyk/ember-input/modifiers/focus-trap';
 
 interface UiModalContentArgs {
   onClose: () => void;
-  classless?: boolean;
+
   outsideClickHandler: (e: MouseEvent | TouchEvent) => boolean;
   title: string;
 }
@@ -34,7 +34,7 @@ export default class TpkModalContentComponent extends Component<UiModalContentSi
   <template>
     <div
       data-test-tpk-modal
-      class={{unless @classless 'tpk-modal-content'}}
+      class='tpk-modal-content'
       role='dialog'
       aria-labelledby={{@title}}
       {{tpkFocusTrap options=(hash allowOutsideClick=@outsideClickHandler)}}

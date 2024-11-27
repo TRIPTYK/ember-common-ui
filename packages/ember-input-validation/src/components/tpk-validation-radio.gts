@@ -1,18 +1,24 @@
 import { action } from '@ember/object';
-import { type BaseValidationSignature, BaseValidationComponent } from './base.ts';
-import TpkRadio, { type TpkRadioSignature } from '@triptyk/ember-input/components/tpk-radio';
+import {
+  type BaseValidationSignature,
+  BaseValidationComponent,
+} from './base.ts';
+import TpkRadio, {
+  type TpkRadioSignature,
+} from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationRadioComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
-    name?: string;
     classless?: boolean;
+    name?: string;
     changeEvent?: 'input' | 'change';
     value: string;
     disabled?: boolean;
     onChange?: (value: string) => void;
+    selected?: string;
   };
   Blocks: {
     default: [
@@ -25,7 +31,6 @@ export interface TpkValidationRadioComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationRadioComponent extends BaseValidationComponent<TpkValidationRadioComponentSignature> {
@@ -33,24 +38,27 @@ export default class TpkValidationRadioComponent extends BaseValidationComponent
     if (this.args.onChange) {
       return this.args.onChange(value);
     }
-    return this.args.changeset.set(this.args.validationField, value);
+    const changeset = this.args.changeset.set(this.args.validationField, value);
+    return changeset;
   }
 
   get value() {
-    return super.value?.toString();
+    return this.args.value;
+  }
+
+  get name() {
+    return this.args.validationField;
   }
 
   <template>
     <TpkRadio
-      @selected={{this.value}}
+      @selected={{@selected}}
       @value={{@value}}
-      @name={{if @name @name @validationField}}
+      @name={{this.name}}
       @label={{@label}}
-      @classless={{@classless}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
       @onChange={{this.onChange}}
-      ...attributes
       as |I|
     >
       {{yield

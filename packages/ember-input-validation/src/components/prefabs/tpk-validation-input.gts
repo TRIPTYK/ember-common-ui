@@ -11,7 +11,7 @@ export interface TpkValidationInputPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationInputPrefabComponent extends Component<TpkValidationInputPrefabSignature> {
@@ -26,7 +26,6 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
     <TpkValidationInputComponent
       @type={{@type}}
       @label={{@label}}
-      @classless={{@classless}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -38,16 +37,15 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       @unmaskValue={{@unmaskValue}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-      ...attributes
     as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+      <V.Label class="tpk-input-container" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
+        <MandatoryLabelComponent class="tpk-label" @label={{@label}} @mandatory={{V.mandatory}} />
+        <V.Input class="tpk-text-input" />
+        <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+          @errors={{V.errors}}
+        />
       </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-        @classless={{@classless}}
-      />
     </TpkValidationInputComponent>
   </template>
 }

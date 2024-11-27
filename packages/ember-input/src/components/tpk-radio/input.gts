@@ -5,7 +5,7 @@ export interface TpkRadioInputComponentSignature {
   Args: {
     name: string;
     guid: string;
-    classless?: boolean;
+
     value?: string;
     selected: unknown;
     disabled?: boolean;
@@ -25,7 +25,6 @@ export default class TpkRadioInputComponent extends Component<TpkRadioInputCompo
 
   <template>
     <input
-      class={{unless @classless 'tpk-radio-input'}}
       id={{@guid}}
       name={{@name}}
       value={{@value}}

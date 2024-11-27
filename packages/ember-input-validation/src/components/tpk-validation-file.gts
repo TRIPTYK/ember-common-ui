@@ -3,18 +3,18 @@ import {
   BaseValidationComponent,
   type BaseValidationSignature,
 } from './base.ts';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import TpkFile from '@triptyk/ember-input/components/tpk-file';
 import type TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
-import type TpkFileLabelComponent from '@triptyk/ember-input/components/tpk-file/label';
 import { hash } from '@ember/helper';
+import type TpkLabel from '@triptyk/ember-input/components/tpk-label';
 
 export interface TpkValidationFileComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;
-    classless?: boolean;
+
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
     onChange?: (file: File[]) => void;
@@ -23,14 +23,13 @@ export interface TpkValidationFileComponentSignature
     default: [
       {
         Input: ComponentLike<typeof TpkFileInputComponent>;
-        Label: ComponentLike<typeof TpkFileLabelComponent>;
+        Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
         errors: TpkValidationFileComponent['errors'];
         hasError: TpkValidationFileComponent['hasError'];
         firstError: TpkValidationFileComponent['firstError'];
       },
     ];
   };
-  Element: HTMLDivElement;
 }
 
 export default class TpkValidationFileComponent extends BaseValidationComponent<TpkValidationFileComponentSignature> {
@@ -45,19 +44,12 @@ export default class TpkValidationFileComponent extends BaseValidationComponent<
     );
   }
 
-  get value() {
-    return super.value;
-  }
-
   <template>
     <TpkFile
       @label={{@label}}
       @onChange={{this.onChange}}
       @changeEvent={{@changeEvent}}
-      @classless={{@classless}}
       @multiple={{@multiple}}
-      ...attributes
-      data-has-error='{{this.hasError}}'
       as |I|
     >
       {{yield

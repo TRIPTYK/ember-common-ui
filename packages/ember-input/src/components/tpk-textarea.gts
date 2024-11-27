@@ -6,10 +6,10 @@ import {
 } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
-import TpkTextareaLabelComponent from './tpk-textarea/label.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import { tracked } from 'tracked-built-ins';
+import TpkLabel from './tpk-label.gts';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
@@ -27,7 +27,7 @@ export type TpkTextareaSignature = {
       {
         Input: WithBoundArgs<
           typeof TpkTextareaInputComponent,
-          | 'classless'
+
           | 'guid'
           | 'value'
           | 'changeEvent'
@@ -39,8 +39,8 @@ export type TpkTextareaSignature = {
           | 'maxLength'
         >;
         Label: WithBoundArgs<
-          typeof TpkTextareaLabelComponent,
-          'classless' | 'guid' | 'label'
+          typeof TpkLabel,
+          'guid' | 'label'
         >;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
@@ -50,7 +50,6 @@ export type TpkTextareaSignature = {
       },
     ];
   };
-  Element: HTMLDivElement;
 };
 export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
   @tracked charCount = 0;
@@ -74,39 +73,31 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
   }
 
   <template>
-    <div
-      class={{unless @classless 'tpk-textarea'}}
-      ...attributes
-      data-test-tpk-textarea
-    >
-      {{yield
-        (hash
-          Label=(component
-            TpkTextareaLabelComponent
-            classless=@classless
-            guid=this.guid
-            label=@label
-          )
-          Input=(component
-            TpkTextareaInputComponent
-            guid=this.guid
-            value=@value
-            updateCharacterCount=this.updateCharacterCount
-            setupCharacterCount=this.setupCharacterCount
-            maxLength=@maxLength
-            changeEvent=this.changeEvent
-            placeholder=@placeholder
-            classless=@classless
-            disabled=@disabled
-            onChange=this.onChange
-          )
-          charCount=this.charCount
+    {{yield
+      (hash
+        Label=(component
+          TpkLabel
+          guid=this.guid
+          label=@label
+        )
+        Input=(component
+          TpkTextareaInputComponent
+          guid=this.guid
+          value=@value
+          updateCharacterCount=this.updateCharacterCount
+          setupCharacterCount=this.setupCharacterCount
           maxLength=@maxLength
           changeEvent=this.changeEvent
-          guid=this.guid
+          placeholder=@placeholder
+          disabled=@disabled
           onChange=this.onChange
         )
-      }}
-    </div>
+        charCount=this.charCount
+        maxLength=@maxLength
+        changeEvent=this.changeEvent
+        guid=this.guid
+        onChange=this.onChange
+      )
+    }}
   </template>
 }

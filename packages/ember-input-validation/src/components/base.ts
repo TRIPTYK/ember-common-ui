@@ -10,7 +10,6 @@ export interface BaseValidationSignature {
     mandatory?: boolean;
     requiredFields?: string[];
   };
-  Element: HTMLDivElement;
   Blocks: {
     default: unknown[];
   };

@@ -17,7 +17,7 @@ interface TpkStepperStepArgs {
     element: HTMLDivElement,
     args: [TpkStepperStepComponent],
   ) => unknown;
-  classless?: boolean;
+
 }
 
 export interface TpkStepperStepSignature {
@@ -46,7 +46,7 @@ export default class TpkStepperStepComponent extends Component<TpkStepperStepSig
   <template>
     <div
       data-is-active='{{this.isActive}}'
-      class={{unless @classless 'tpk-stepper-step'}}
+      class='tpk-stepper-step'
       role='tabpanel'
       {{willDestroy @unregisterStep this}}
       {{didInsert @registerStep this}}
@@ -59,7 +59,7 @@ export default class TpkStepperStepComponent extends Component<TpkStepperStepSig
           Header=(component
             TpkStepperStepHeaderComponent
             guid=@guid
-            classless=@classless
+
             isActive=this.isActive
           )
         )
