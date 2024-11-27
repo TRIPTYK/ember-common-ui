@@ -1,0 +1,28 @@
+.tpk-email-container {
+  @apply form-control;
+}
+
+.tpk-email-container .tpk-label {
+  @apply label;
+}
+
+.tpk-email-input {
+  @apply input input-bordered;
+}
+
+.tpk-email-container[data-has-error~="true"] .tpk-email-input {
+  @apply input-error;
+}
+
+.tpk-email-container[data-has-error~="true"] 
+.tpk-validation-errors {
+  @apply text-error label justify-self-end;
+}
+
+.tpk-email-container[data-has-error~="true"] .tpk-label{
+  @apply label text-error;
+}
+
+.tpk-email-container[data-has-error~="true"] .tpk-email-input {
+  @apply text-error;
+}
