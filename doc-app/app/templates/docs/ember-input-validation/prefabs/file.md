@@ -1,29 +1,30 @@
-# Input Email
+# Input File
 
-This is an input with type Email
+This is an input with type File
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-email.hbs">
-      <Prefabs::TpkValidationEmail 
-        @label="EMAIL"
-        @placeholder="Enter Email"
+  <demo.example @name="prefab-tpk-file.hbs">
+      <Prefabs::TpkValidationFile 
+        @label="File"
         @changeset={{this.changeset}} 
-        @validationField="email"
+        @validationField="file"
         @mandatory=true
-      />    
-      <Prefabs::TpkValidationEmail 
+      />
+      <Prefabs::TpkValidationFile 
         @label="Disabled"
         @changeset={{this.changeset}} 
         @validationField="disabled"
+        @mandatory=true
         @disabled=true
-      />    
-      <Prefabs::TpkValidationEmail 
+      />
+      <Prefabs::TpkValidationFile 
         @label="Error"
         @changeset={{this.changeset}} 
         @validationField="error"
-      />    
+        @mandatory=true
+      />
   </demo.example>
-  <demo.snippet @name="tpk-email.hbs"/>
+  <demo.snippet @name="prefab-tpk-file.hbs"/>
 </DocsDemo>
 
 ## Mandatory properties

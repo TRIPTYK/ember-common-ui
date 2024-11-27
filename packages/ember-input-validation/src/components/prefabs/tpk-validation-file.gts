@@ -10,7 +10,7 @@ export interface TpkValidationFilePrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 const TpkValidationFilePrefabComponent: TOC<TpkValidationFilePrefabSignature> = <template>
@@ -24,15 +24,22 @@ const TpkValidationFilePrefabComponent: TOC<TpkValidationFilePrefabSignature> = 
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      <div class="tpk-file" data-has-error="{{V.hasError}}" data-test-tpk-file>
-        <V.Label>
-          <MandatoryLabelComponent @label={{@label}} />
-        </V.Label>
-        <V.Input />
-        <TpkValidationErrorsComponent
+        <V.Label 
+        class="tpk-file-container" 
+        data-has-error="{{V.hasError}}" 
+        data-test-tpk-file 
+        ...attributes>
+          <MandatoryLabelComponent 
+          @label={{@label}} 
+          class="tpk-label" />
+          <V.Input 
+          class="tpk-file-input" 
+          data-test-tpk-file-input/>
+          <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
           @errors={{V.errors}}
-        />
-      </div>
+          />
+        </V.Label>
     </TpkValidationFileComponent>
   </template>;
 
