@@ -14,7 +14,32 @@ If the country is not supported, the input value will be blocked after 2 upperca
         @changeset={{this.changeset}} 
         @validationField="iban"
       />
+      <Prefabs::TpkValidationIban 
+        @label="Disabled"
+        @placeholder="Enter iban"
+        @changeset={{this.changeset}}
+        @disabled=true 
+        @validationField="disabled"
+      />
+      <Prefabs::TpkValidationIban 
+        @label="Error"
+        @placeholder="Enter iban"
+        @changeset={{this.changeset}} 
+        @validationField="error"
+      />
   </demo.example>
   <demo.snippet @name="tpk-iban.hbs"/>
 </DocsDemo>
 
+## Mandatory properties
+
+- `@validationField`: The field name in the changeset for validation.
+- `@changeset`: The changeset object for form validation.
+
+## Optional properties
+
+- `@label`: The label for the input field.
+- `@disabled`: Whether the input field is disabled.
+- `@mandatory`: Whether the textarea field is mandatory.
+- `@onChange`: The action to be called when the selection changes. 
+- `@changeEvent`: The event to trigger the onChange action.

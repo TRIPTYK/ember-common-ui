@@ -1,13 +1,14 @@
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
-export default class DocsEmberInputValidationPrefabsIBANController extends Controller {
+export default class DocsEmberInputValidationPrefabsFileController extends Controller {
   @tracked changeset = new ImmerChangeset({
-    iban: '',
-    error: 'bad iban',
-    disabled: 'disabled',
+    file: undefined,
+    disabled: '',
+    error: '',
   });
 
   constructor(owner: Owner) {
@@ -19,4 +20,5 @@ export default class DocsEmberInputValidationPrefabsIBANController extends Contr
       key: 'error',
     });
   }
+
 }

@@ -3,18 +3,15 @@ import {
   BaseValidationComponent,
   type BaseValidationSignature,
 } from './base.ts';
-import type { ComponentLike, WithBoundArgs } from '@glint/template';
-import TpkFile from '@triptyk/ember-input/components/tpk-file';
-import type TpkFileInputComponent from '@triptyk/ember-input/components/tpk-file/input';
+import TpkFile, { type TpkFileSignature } from '@triptyk/ember-input/components/tpk-file';
+
 import { hash } from '@ember/helper';
-import type TpkLabel from '@triptyk/ember-input/components/tpk-label';
 
 export interface TpkValidationFileComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;
-
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
     onChange?: (file: File[]) => void;
@@ -22,8 +19,8 @@ export interface TpkValidationFileComponentSignature
   Blocks: {
     default: [
       {
-        Input: ComponentLike<typeof TpkFileInputComponent>;
-        Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
+        Input: TpkFileSignature['Blocks']['default'][0]['Input'];
+        Label: TpkFileSignature['Blocks']['default'][0]['Label'];
         errors: TpkValidationFileComponent['errors'];
         hasError: TpkValidationFileComponent['hasError'];
         firstError: TpkValidationFileComponent['firstError'];
@@ -46,6 +43,7 @@ export default class TpkValidationFileComponent extends BaseValidationComponent<
 
   <template>
     <TpkFile
+      @disabled={{@disabled}}
       @label={{@label}}
       @onChange={{this.onChange}}
       @changeEvent={{@changeEvent}}

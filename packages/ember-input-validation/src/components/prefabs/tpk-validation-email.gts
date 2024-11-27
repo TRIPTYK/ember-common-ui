@@ -24,14 +24,13 @@ export interface TpkValidationEmailComponentSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignature> = <template>
     <TpkValidationInputComponent
       @type='email'
       @label={{@label}}
-
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -42,16 +41,24 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
       @requiredFields={{@requiredFields}}
       as |V|
     >
-      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-        <V.Label>
-          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-        </V.Label>
-        <V.Input />
-        <TpkValidationErrorsComponent
+        <V.Label 
+        class="tpk-email-container" 
+        data-test-tpk-prefab-email-container 
+        data-has-error='{{V.hasError}}' 
+        anchorScrollUp={{@validationField}} 
+        ...attributes>
+          <MandatoryLabelComponent 
+          class="tpk-label" 
+          @label={{@label}} 
+          @mandatory={{V.mandatory}} />
+          <V.Input 
+          class="tpk-email-input" 
+          data-test-tpk-email-input />
+          <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
           @errors={{V.errors}}
-
-        />
-      </div>
+          />
+         </V.Label>
     </TpkValidationInputComponent>
   </template>;
 

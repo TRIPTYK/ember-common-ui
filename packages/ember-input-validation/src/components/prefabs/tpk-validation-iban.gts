@@ -13,7 +13,7 @@ export interface TpkValidationIBANPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationIBANPrefabComponent extends Component<TpkValidationIBANPrefabSignature> {
@@ -54,6 +54,10 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
     dispatch: getMaskForPrefixOrDefault,
   };
 
+  get hasMaskNotDisabled() {
+    return this.args.disabled? '' : this.ibanMaskByCountry;
+  }
+
 
   <template>
     <TpkValidationInputComponent
@@ -64,21 +68,30 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
-      @mask={{this.ibanMaskByCountry}}
+      @disabled={{@disabled}}
+      @mask={{this.hasMaskNotDisabled}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
-
     as |V|>
-      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-        <V.Label>
-          <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-        </V.Label>
-        <V.Input />
-        <TpkValidationErrorsComponent
+        <V.Label 
+        class="tpk-iban-container" 
+        data-test-tpk-prefab-iban-container
+        data-has-error='{{V.hasError}}' 
+        anchorScrollUp={{@validationField}} 
+        ...attributes>
+          <MandatoryLabelComponent 
+          class="tpk-label" 
+          @label={{@label}} 
+          @mandatory={{V.mandatory}} />   
+          <V.Input 
+          class="tpk-iban-input"
+          data-test-tpk-iban-input
+          />
+          <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
           @errors={{V.errors}}
-
-        />
-      </div>
+          />
+        </V.Label>
     </TpkValidationInputComponent>
   </template>
 }

@@ -49,10 +49,23 @@ module(
         key: 'email',
       });
       await settled();
-      assert.dom('[data-test-tpk-input-input]').hasNoText();
+      assert.dom('[data-test-tpk-email-input]').hasNoText();
       assert
-        .dom('[data-test-tpk-input]')
+        .dom('[data-test-tpk-prefab-email-container]')
         .hasAttribute('data-has-error', 'true');
+    });
+
+      test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
+       const changeset = setupChangeset.call(this, 'email');
+      await renderComponent(changeset);
+      assert.dom('.tpk-email-container').exists().hasAttribute('data-test-tpk-prefab-email-container');
+      assert.dom('.tpk-email-container .tpk-email-input').exists()
+      assert.dom('.tpk-email-container .tpk-validation-errors').exists()
+      assert.dom('.tpk-email-container .tpk-label').exists()
+      assert.dom('label').hasClass('tpk-email-container');
+      assert.dom('input').hasClass('tpk-email-input');
+      assert.dom('label > div:first-of-type').hasClass('tpk-label', 'The first div inside label has the class tpk-label.');
+      assert.dom('label > div:nth-of-type(2)').hasClass('tpk-validation-errors', 'The second div inside label has the class tpk-validation-errors.');
     });
   },
 );
