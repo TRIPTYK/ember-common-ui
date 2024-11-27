@@ -27,7 +27,7 @@ module(
     async function setChangeset(
       this: TestContext,
       phoneValue: string = '+33712345678',
-      overrides?: Record<string, unknown> = {},
+      overrides: Record<string, unknown> = {},
     ) {
       return new ImmerChangeset({ phone: phoneValue, ...overrides });
     }
