@@ -58,14 +58,14 @@ module(
       await settled();
       assert.dom('[data-test-tpk-bic-input]').hasNoText();
       assert
-        .dom('[data-test-tpk-bic]')
+        .dom('[data-test-tpk-prefab-bic-container]')
         .hasAttribute('data-has-error', 'true');
     });
 
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       await renderComponentAndReturnChangeset.call(this);
-      assert.dom('.tpk-bic-container').exists().hasAttribute('data-test-tpk-bic');
+      assert.dom('.tpk-bic-container').exists().hasAttribute('data-test-tpk-prefab-bic-container');
       assert.dom('.tpk-bic-container .tpk-bic-input').exists()
       assert.dom('.tpk-bic-container .tpk-validation-errors').exists()
       assert.dom('.tpk-bic-container .tpk-label').exists()

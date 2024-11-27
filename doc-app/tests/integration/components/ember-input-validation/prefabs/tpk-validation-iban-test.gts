@@ -88,13 +88,13 @@ module(
       await settled();
       assert.dom('.tpk-validation-errors span').hasText('required');
        assert
-        .dom('[data-test-tpk-iban]')
+        .dom('[data-test-tpk-prefab-iban-container]')
         .hasAttribute('data-has-error', 'true');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       await renderComponentAndReturnChangeset.call(this);
-      assert.dom('.tpk-iban-container').exists().hasAttribute('data-test-tpk-iban');
+      assert.dom('.tpk-iban-container').exists().hasAttribute('data-test-tpk-prefab-iban-container');
       assert.dom('.tpk-iban-container .tpk-iban-input').exists()
       assert.dom('.tpk-iban-container .tpk-validation-errors').exists()
       assert.dom('.tpk-iban-container .tpk-label').exists()

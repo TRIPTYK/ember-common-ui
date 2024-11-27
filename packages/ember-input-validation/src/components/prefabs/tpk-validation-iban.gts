@@ -54,6 +54,10 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
     dispatch: getMaskForPrefixOrDefault,
   };
 
+  get hasMaskNotDisabled() {
+    return this.args.disabled? '' : this.ibanMaskByCountry;
+  }
+
 
   <template>
     <TpkValidationInputComponent
@@ -65,14 +69,13 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
       @changeset={{@changeset}}
       @mandatory={{@mandatory}}
       @disabled={{@disabled}}
-      @mask={{this.ibanMaskByCountry}}
+      @mask={{this.hasMaskNotDisabled}}
       @maskOptions={{this.maskOptions}}
       @requiredFields={{@requiredFields}}
-
     as |V|>
         <V.Label 
         class="tpk-iban-container" 
-        data-test-tpk-iban
+        data-test-tpk-prefab-iban-container
         data-has-error='{{V.hasError}}' 
         anchorScrollUp={{@validationField}} 
         ...attributes>

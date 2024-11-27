@@ -24,11 +24,11 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
       @onChange={{@onChange}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      
         <V.Label class="tpk-checkbox-container"
-      data-has-error='{{V.hasError}}'
-      anchorScrollUp={{@validationField}}
-        ...attributes data-test-tpk-checkbox>
+        data-has-error='{{V.hasError}}'
+        anchorScrollUp={{@validationField}}
+        ...attributes 
+        data-test-tpk-prefab-checkbox-container>
           <MandatoryLabelComponent
           class="tpk-label" 
           @label={{@label}} 

@@ -53,14 +53,14 @@ module(
       await settled();
       assert.dom('[data-test-tpk-input-input]').hasNoText();
       assert
-        .dom('[data-test-tpk-input]')
+        .dom('[data-test-tpk-prefab-input-container]')
         .hasAttribute('data-has-error', 'true');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
      const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      assert.dom('.tpk-input-container').exists().hasAttribute('data-test-tpk-input');
+      assert.dom('.tpk-input-container').exists().hasAttribute('data-test-tpk-prefab-input-container');
       assert.dom('.tpk-input-container .tpk-text-input').exists()
       assert.dom('.tpk-input-container .tpk-validation-errors').exists()
       assert.dom('.tpk-input-container .tpk-label').exists()

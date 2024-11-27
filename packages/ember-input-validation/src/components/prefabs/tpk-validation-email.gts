@@ -43,7 +43,8 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
     >
         <V.Label 
         class="tpk-email-container" 
-        data-test-tpk-email data-has-error='{{V.hasError}}' 
+        data-test-tpk-prefab-email-container 
+        data-has-error='{{V.hasError}}' 
         anchorScrollUp={{@validationField}} 
         ...attributes>
           <MandatoryLabelComponent 

@@ -56,14 +56,14 @@ module(
       await settled();
       assert.dom('[data-test-tpk-checkbox-input]').hasNoText();
       assert
-        .dom('[data-test-tpk-checkbox]')
+        .dom('[data-test-tpk-prefab-checkbox-container]')
         .hasAttribute('data-has-error', 'true');
     });
 
      test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
      const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      assert.dom('.tpk-checkbox-container').exists().hasAttribute('data-test-tpk-checkbox');
+      assert.dom('.tpk-checkbox-container').exists().hasAttribute('data-test-tpk-prefab-checkbox-container');
       assert.dom('.tpk-checkbox-container .tpk-checkbox-input').exists()
       assert.dom('.tpk-checkbox-container .tpk-validation-errors').exists()
       assert.dom('.tpk-checkbox-container .tpk-label').exists()

@@ -51,14 +51,14 @@ module(
       await settled();
       assert.dom('[data-test-tpk-email-input]').hasNoText();
       assert
-        .dom('[data-test-tpk-email]')
+        .dom('[data-test-tpk-prefab-email-container]')
         .hasAttribute('data-has-error', 'true');
     });
 
       test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
        const changeset = setupChangeset.call(this, 'email');
       await renderComponent(changeset);
-      assert.dom('.tpk-email-container').exists().hasAttribute('data-test-tpk-email');
+      assert.dom('.tpk-email-container').exists().hasAttribute('data-test-tpk-prefab-email-container');
       assert.dom('.tpk-email-container .tpk-email-input').exists()
       assert.dom('.tpk-email-container .tpk-validation-errors').exists()
       assert.dom('.tpk-email-container .tpk-label').exists()

@@ -45,7 +45,7 @@ module(
       });
       await settled();
       assert.dom('[data-test-tpk-label]').containsText('label');
-      assert.dom('[data-test-tpk-file]').hasAttribute('data-has-error', 'true');
+      assert.dom('[data-test-tpk-prefab-file-container]').hasAttribute('data-has-error', 'true');
 
       await triggerEvent('[data-test-tpk-file-input]', 'change', {
         files: [new File(['Ember Rules!'], 'file.txt')],
@@ -56,7 +56,7 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      assert.dom('.tpk-file-container').exists().hasAttribute('data-test-tpk-file');
+      assert.dom('.tpk-file-container').exists().hasAttribute('data-test-tpk-prefab-file-container');
       assert.dom('.tpk-file-container .tpk-file-input').exists()
       assert.dom('.tpk-file-container .tpk-validation-errors').exists()
       assert.dom('.tpk-file-container .tpk-label').exists()

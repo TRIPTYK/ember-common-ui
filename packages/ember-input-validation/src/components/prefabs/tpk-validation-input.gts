@@ -40,7 +40,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
     as |V|>
       <V.Label 
       class="tpk-input-container" 
-      data-test-tpk-input 
+      data-test-tpk-prefab-input-container 
       data-has-error='{{V.hasError}}' 
       anchorScrollUp={{@validationField}} 
       ...attributes>

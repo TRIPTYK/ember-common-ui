@@ -37,7 +37,7 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
     as |V|>
         <V.Label 
         class="tpk-bic-container" 
-        data-test-tpk-bic
+        data-test-tpk-prefab-bic-container
         data-has-error='{{V.hasError}}' 
         anchorScrollUp={{@validationField}} 
         ...attributes>
