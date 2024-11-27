@@ -34,7 +34,7 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
 
   get value() {
     if (this.mask) {
-      return this.mask.value;
+      return this.mask.displayValue;
     }
     return this.args.value;
   }
