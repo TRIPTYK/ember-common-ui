@@ -1,9 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, triggerEvent, type TestContext } from '@ember/test-helpers';
+import { render, triggerEvent, type TestContext } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationFile from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-file';
+import { cssClassesExist } from '../generic-test-functions/css-classes-exist';
+import { dataHasErrorAttribute } from '../generic-test-functions/data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -15,34 +17,39 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    test('It changes data-has-error attribue on error', async function (assert) {
-      const changeset = new ImmerChangeset<{
+    function setupChangeset(this: ThisTestContext) {
+      return new ImmerChangeset<{
         file: File | undefined;
       }>({
         file: undefined,
       });
+    }
 
-      await render<ThisTestContext>(
-        <template><TpkValidationFile @label="label" @changeset={{changeset}} @validationField="file" />
-      </template>,
-      );
-      assert.dom('[data-test-tpk-file]').exists();
-      assert.dom('[data-test-tpk-label]').containsText('label');
+    async function renderComponent(changeset:ImmerChangeset) {
+        await render<ThisTestContext>(
+          <template><TpkValidationFile @label="label" @changeset={{changeset}} @validationField="file" />
+        </template>,
+        );
+        
+      }
+    
 
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: 'a',
-        key: 'file',
-      });
-      await settled();
+    test('It changes data-has-error attribue on error', async function (this: ThisTestContext,assert) {
+      const changeset = setupChangeset.call(this);
+      await renderComponent(changeset);
 
-      assert.dom('[data-test-tpk-file]').hasAttribute('data-has-error', 'true');
+      await dataHasErrorAttribute(assert,changeset,'file');
 
       await triggerEvent('[data-test-tpk-file-input]', 'change', {
         files: [new File(['Ember Rules!'], 'file.txt')],
       });
       assert.true(changeset.get('file') instanceof File);
+    });
+
+    test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
+      const changeset = setupChangeset.call(this);
+      await renderComponent(changeset);
+      await cssClassesExist(assert,'file');
     });
   },
 );

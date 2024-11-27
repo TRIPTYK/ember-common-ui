@@ -56,9 +56,20 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
     as |V|>
-        <V.Label class="tpk-currency-container" data-test-tpk-currency data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-          <MandatoryLabelComponent class="tpk-label" @label={{@label}} @mandatory={{V.mandatory}} />
-          <V.Input placeholder={{@placeholder}} class="tpk-currency-input"/>
+        <V.Label 
+        class="tpk-currency-container"
+         data-test-tpk-prefab-currency-container 
+         data-has-error='{{V.hasError}}' 
+         anchorScrollUp={{@validationField}} 
+         ...attributes>
+          <MandatoryLabelComponent 
+          class="tpk-label" 
+          @label={{@label}} 
+          @mandatory={{V.mandatory}} />
+          <V.Input 
+          placeholder={{@placeholder}} 
+          data-test-tpk-currency-input
+          class="tpk-currency-input"/>
           <TpkValidationErrorsComponent
           class="tpk-validation-errors"
           @errors={{V.errors}}

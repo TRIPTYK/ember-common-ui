@@ -1,9 +1,11 @@
 import { module, test } from 'qunit';
-import { render, settled, type TestContext } from '@ember/test-helpers';
+import { render, type TestContext } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationEmail from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-email';
+import { cssClassesExist } from '../generic-test-functions/css-classes-exist';
+import { dataHasErrorAttribute } from '../generic-test-functions/data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -39,20 +41,14 @@ module(
 
     test('It changes data-has-error attribute on error', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this, '');
-
       await renderComponent(changeset);
+      await dataHasErrorAttribute(assert,changeset,'email');
+    });
 
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: '',
-        key: 'email',
-      });
-      await settled();
-      assert.dom('[data-test-tpk-input-input]').hasNoText();
-      assert
-        .dom('[data-test-tpk-input]')
-        .hasAttribute('data-has-error', 'true');
+      test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
+       const changeset = setupChangeset.call(this, 'email');
+      await renderComponent(changeset);
+      await cssClassesExist(assert,'email');
     });
   },
 );

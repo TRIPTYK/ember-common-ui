@@ -1,0 +1,32 @@
+.tpk-file-container {
+  @apply form-control w-full;
+}
+
+.tpk-file-container .tpk-label {
+  @apply label;
+}
+
+.tpk-file-input {
+  @apply file-input file-input-bordered w-full;
+}
+
+.tpk-file-container[data-has-error~="true"] .tpk-file-input {
+  @apply input-error;
+}
+
+.tpk-file-container[data-has-error~="true"] 
+.tpk-validation-errors {
+  @apply text-error label justify-self-end;
+}
+
+.tpk-file-container[data-has-error~="true"] .tpk-label{
+  @apply label text-error;
+}
+
+.tpk-file-container[data-has-error~="true"] .tpk-file-input {
+  @apply text-error;
+}
+
+.tpk-file-container[data-has-error~="true"] .tpk-file-input::file-selector-button {
+  @apply bg-red-100 border border-none text-error;
+}
