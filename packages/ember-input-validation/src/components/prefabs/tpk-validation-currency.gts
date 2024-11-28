@@ -1,12 +1,24 @@
-import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { type BaseValidationSignature } from "../base.ts";
+import TpkValidationInputComponent, {
+  type TpkValidationInputComponentSignature,
+} from '../tpk-validation-input.gts';
+import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import MandatoryLabelComponent from "./mandatory-label.gts";
-import Component from "@glimmer/component";
+import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
 
 export interface TpkValidationCurrencyPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mask' | 'mix' | 'max' | 'step'> & {
+  Args: Omit<
+    TpkValidationInputComponentSignature['Args'],
+    | 'type'
+    | 'mask'
+    | 'unmaskValue'
+    | 'maskOptions'
+    | 'mask'
+    | 'mix'
+    | 'max'
+    | 'step'
+  > & {
     scale?: number;
   };
   Blocks: {
@@ -15,35 +27,34 @@ export interface TpkValidationCurrencyPrefabSignature
   Element: HTMLElement;
 }
 
-
 export default class TpkValidationCurrencyPrefabComponent extends Component<TpkValidationCurrencyPrefabSignature> {
   get mask() {
     return {
       mask: [
-            { mask: '' },
-            {
-                mask: 'num €',
-                lazy: false,
-                blocks: {
-                    num: {
-                      expose: true,
-                      mask: Number,
-                      scale: this.args.scale ?? 2,
-                      thousandsSeparator: ' ',
-                      padFractionalZeros: true,
-                      radix: '.',
-                      mapToRadix: ['.', ','],
-                    }
-                }
-            }
-        ]
-    }
+        { mask: '' },
+        {
+          mask: 'num €',
+          lazy: false,
+          blocks: {
+            num: {
+              expose: true,
+              mask: Number,
+              scale: this.args.scale ?? 2,
+              thousandsSeparator: ' ',
+              padFractionalZeros: true,
+              radix: '.',
+              mapToRadix: ['.', ','],
+            },
+          },
+        },
+      ],
+    };
   }
 
   <template>
     <TpkValidationInputComponent
       @label={{@label}}
-      @type="text"
+      @type='text'
       @onChange={{@onChange}}
       @placeholder={{@placeholder}}
       @mask={{this.mask.mask}}
@@ -56,24 +67,24 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
     as |V|>
-        <V.Label 
+        <V.Label
         class="tpk-currency-container"
-         data-test-tpk-prefab-currency-container 
-         data-has-error='{{V.hasError}}' 
-         anchorScrollUp={{@validationField}} 
+         data-test-tpk-prefab-currency-container
+         data-has-error='{{V.hasError}}'
+         anchorScrollUp={{@validationField}}
          ...attributes>
-          <MandatoryLabelComponent 
-          class="tpk-label" 
-          @label={{@label}} 
+          <MandatoryLabelComponent
+          class="tpk-label"
+          @label={{@label}}
           @mandatory={{V.mandatory}} />
-          <V.Input 
-          placeholder={{@placeholder}} 
+          <V.Input
+          placeholder={{@placeholder}}
           data-test-tpk-currency-input
           class="tpk-currency-input"/>
           <TpkValidationErrorsComponent
           class="tpk-validation-errors"
           @errors={{V.errors}}
-          /> 
+          />
         </V.Label>
     </TpkValidationInputComponent>
   </template>

@@ -2,11 +2,13 @@ import { action } from "@ember/object";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from "@ember/debug";
-import TpkSelectComponent, { type TpkSelectSignature } from "@triptyk/ember-input/components/tpk-select";
+import TpkSelectComponent, { type TpkSelectSignature, type Select } from "@triptyk/ember-input/components/tpk-select";
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    BaseValidationSignature['Args'] & TpkSelectSignature['Args'],
+    BaseValidationSignature['Args'] & TpkSelectSignature['Args'] & {
+      onChange?: (value: unknown, select: Select, event?: Event) => void;
+    },
     'searchField' | 'searchPlaceholder' | 'searchMessage' | 'noMatchesMessage' | 'search'
   >;
   Blocks: {
@@ -28,11 +30,11 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
   }
 
   @action
-  onChange(value: unknown) {
+  onChange(selection: unknown, select: Select, event?: Event) {
     if (this.args.onChange) {
-      return this.args.onChange(value);
+      return this.args.onChange(selection, select, event);
     }
-    return this.args.changeset.set(this.args.validationField, value);
+    return this.args.changeset.set(this.args.validationField, selection);
   }
 
   get label() {

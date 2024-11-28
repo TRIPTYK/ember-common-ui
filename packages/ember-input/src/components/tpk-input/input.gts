@@ -32,6 +32,13 @@ export interface TpkInputInputComponentSignature {
 export default class TpkInputInputComponent extends Component<TpkInputInputComponentSignature> {
   @tracked mask?: InputMask<FactoryArg>;
 
+  get value() {
+    if (this.mask) {
+      return this.mask.displayValue;
+    }
+    return this.args.value;
+  }
+
   @action onChange(e: Event): void {
     e.preventDefault();
     let value = this.inputValue(e.target as HTMLInputElement);
@@ -41,7 +48,7 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     this.args.onChange?.(value, e);
   }
 
-    private inputValue(input: HTMLInputElement) {
+  private inputValue(input: HTMLInputElement) {
     if (this.args.type === 'number') {
       return input.valueAsNumber;
     }
@@ -52,7 +59,6 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
 
     return input.value;
   }
-
 
   @action
   setMask(element: HTMLInputElement) {
@@ -71,7 +77,7 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
       step={{@step}}
       max={{@max}}
       type={{@type}}
-      value={{@value}}
+      value={{this.value}}
       disabled={{@disabled}}
       placeholder={{@placeholder}}
       {{didInsert this.setMask}}

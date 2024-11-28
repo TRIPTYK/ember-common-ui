@@ -1,24 +1,40 @@
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponentSignature } from "../tpk-validation-datepicker.gts";
-import { type BaseValidationSignature } from "../base.ts";
-import { tracked } from "@glimmer/tracking";
+import TpkValidationDatepickerComponent, {
+  type TpkValidationDatepickerComponentSignature,
+} from '../tpk-validation-datepicker.gts';
+import { type BaseValidationSignature } from '../base.ts';
+import { tracked } from '@glimmer/tracking';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
 export interface TpkValidationDatepickerRangePrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationDatepickerComponentSignature['Args'], 'mask' | 'promptTimeOnDateChange' | 'useCurrent' | 'noCalendar' | 'enableTime' | 'stepping' | 'enableSecond' | 'disabledTimeIntervals' | 'disabledHours' | 'enabledHours'>;
+  Args: Omit<
+    TpkValidationDatepickerComponentSignature['Args'],
+    | 'value'
+    | 'promptTimeOnDateChange'
+    | 'useCurrent'
+    | 'noCalendar'
+    | 'enableTime'
+    | 'stepping'
+    | 'enableSecond'
+    | 'disabledTimeIntervals'
+    | 'disabledHours'
+    | 'enabledHours'
+  >;
   Blocks: {
     default: [];
   };
   Element: HTMLDivElement;
-
 }
 
 export default class TpkValidationDatepickerRangePrefabComponent extends Component<TpkValidationDatepickerRangePrefabSignature> {
   @tracked multipleDatesSeparator = ' - ';
 
-  constructor(owner: unknown, args: TpkValidationDatepickerRangePrefabSignature['Args']) {
+  constructor(
+    owner: unknown,
+    args: TpkValidationDatepickerRangePrefabSignature['Args'],
+  ) {
     super(owner, args);
     if (args.multipleDatesSeparator) {
       this.multipleDatesSeparator = args.multipleDatesSeparator;
@@ -48,19 +64,19 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @dateFormat={{@dateFormat}}
       @multipleDatesSeparator={{this.multipleDatesSeparator}}
       @requiredFields={{@requiredFields}}
-      @mode="range"
+      @mode='range'
       anchorScrollUp={{@validationField}}
       ...attributes
     as |V|>
-      <V.Label 
-      class="tpk-datepicker-range-container" 
-      data-test-tpk-prefab-datepicker-range-container 
+      <V.Label
+      class="tpk-datepicker-range-container"
+      data-test-tpk-prefab-datepicker-range-container
       data-has-error='{{V.hasError}}'>
-        <MandatoryLabelComponent 
-        class="tpk-label" 
-        @label={{@label}} 
+        <MandatoryLabelComponent
+        class="tpk-label"
+        @label={{@label}}
         @mandatory={{V.mandatory}} />
-        <V.Input 
+        <V.Input
         class="tpk-datepicker-range-input"
         data-test-tpk-datepicker-range-input />
         <TpkValidationErrorsComponent

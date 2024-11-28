@@ -14,6 +14,7 @@ export interface TpkValidationFileComponentSignature
     multiple?: boolean;
     disabled?: boolean;
     changeEvent?: 'input' | 'change';
+    onChange?: (file: File[]) => void;
   };
   Blocks: {
     default: [

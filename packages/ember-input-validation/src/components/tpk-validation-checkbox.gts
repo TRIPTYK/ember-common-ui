@@ -10,7 +10,9 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationCheckboxComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkCheckboxSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkCheckboxSignature['Args'] & {
+    onChange?: (isChecked: boolean, value: string, e: Event) => void;
+  };
   Blocks: {
     default: [
       {
@@ -27,11 +29,11 @@ export interface TpkValidationCheckboxComponentSignature
 
 export default class TpkValidationCheckboxComponent extends BaseValidationComponent<TpkValidationCheckboxComponentSignature> {
   @action
-  onChange(checked: boolean) {
+  onChange(isChecked: boolean, value: string, e: Event) {
     if (this.args.onChange) {
-      return this.args.onChange(checked);
+      return this.args.onChange(isChecked, value, e);
     }
-    return this.args.changeset.set(this.args.validationField, checked);
+    return this.args.changeset.set(this.args.validationField, isChecked);
   }
 
   get value() {

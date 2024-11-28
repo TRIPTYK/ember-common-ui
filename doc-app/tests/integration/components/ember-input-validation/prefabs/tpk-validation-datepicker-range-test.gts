@@ -20,7 +20,7 @@ module(
       disabled?: boolean;
     }) {
       const immerChangeset = new ImmerChangeset({
-        'datepicker-range': undefined,
+        'datepicker-range': null,
       });
       await render(
         <template>

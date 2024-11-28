@@ -8,7 +8,9 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationTextareaComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkTextareaSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkTextareaSignature['Args'] & {
+    onChange?: (value: string, e: Event) => void;
+  };
   Blocks: {
     default: [
       {
@@ -25,11 +27,11 @@ export interface TpkValidationTextareaComponentSignature
 }
 
 export default class TpkValidationTextareaComponent extends BaseValidationComponent<TpkValidationTextareaComponentSignature> {
-  @action onChange(e: string) {
+  @action onChange(value: string, e: Event) {
     if (this.args.onChange) {
-      return this.args.onChange(e);
+      return this.args.onChange(value, e);
     }
-    return this.args.changeset.set(this.args.validationField, e);
+    return this.args.changeset.set(this.args.validationField, value);
   }
 
   get value() {
