@@ -13,22 +13,21 @@ import {
   closeTempusDominus,
 } from '@triptyk/ember-input/test-support/datepicker-helpers';
 import TpkDatepicker from '@triptyk/ember-input/components/tpk-datepicker';
-import type { TestContext } from '@ember/test-helpers';
 
-interface ThisTestContext extends TestContext {
-}
+
+
 
 module('Integration | Component | tpk-datepicker', function (hooks) {
   setupRenderingTest(hooks);
 
-  test<ThisTestContext>('datepicker by default', async function (assert) {
+  test('datepicker by default', async function (assert) {
     const date: Date = new Date(2022, 10, 12);
     const setDate = function (dates: Date[]) {
       assert.step('step');
       assert.strictEqual(dates[0]?.toDateString(), date.toDateString());
     };
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @onChange={{setDate}} @label="Default" as |D|>
           <D.Label />
@@ -41,11 +40,11 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     assert.verifySteps(['step']);
   });
 
-  test('datepicker with default value', async function (this: ThisTestContext,assert) {
+  test('datepicker with default value', async function (assert) {
     const date: Date = new Date(2022, 10, 13);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @onChange={{setDate}} @label="Default value" @value={{date}} as |D|>
           <D.Label />
@@ -56,8 +55,8 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     assert.dom('.tpk-datepicker-input-input').hasValue('13/11/2022');
   });
 
-  test('datepicker is disabled', async function (this: ThisTestContext, assert) {
-    await render<ThisTestContext>(
+  test('datepicker is disabled', async function ( assert) {
+    await render(
       <template>
         <TpkDatepicker @disabled={{true}} @label="Disabled" as |D|>
             <D.Label />
@@ -68,11 +67,11 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     assert.dom('.tpk-datepicker-input-input').hasAttribute('disabled');
   });
 
-  test('datepicker use current date', async function (this: ThisTestContext, assert) {
+  test('datepicker use current date', async function ( assert) {
     const date: Date = new Date();
     const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @label="Current" @useCurrent={{true}} as |D|>
           <D.Label />
@@ -92,7 +91,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date2: Date = new Date(2022, 10, 16);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @onChange={{setDate}} @label="Range" @mode="range" @multipleDatesSeparator=" jusqu'au "  as |D|>
           <D.Label />
@@ -115,7 +114,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
       assert.strictEqual(dates.length, 2);
     };
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @onChange={{setDate}} @label="Range" @mode="range" @multipleDatesSeparator=" jusqu'au " as |D|>
           <D.Label />
@@ -135,7 +134,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const value = [date, date2];
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @onChange={{setDate}} @label="Range" @multipleDatesSeparator=" jusqu'au " @mode="range" @value={{value}} as |D|>
           <D.Label />
@@ -155,7 +154,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const maxDate: Date = new Date(2022, 10, 16);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkDatepicker @onChange={{setDate}} @value={{date}} @label="Min/Max" @minDate={{minDate}} @maxDate={{maxDate}} as |D|>
           <D.Label />
@@ -173,7 +172,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date(2022, 10, 15, 8, 30);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @value={{date}} @enableTime={{true}} @label="Time" @noCalendar={{true}} @dateFormat="HH:mm" as |D|>
             <D.Label />
@@ -189,7 +188,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date(2022, 10, 15);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @value={{date}} @enableTime={{true}} @label="Prompt" @promptTimeOnDateChange={{true}} as |D|>
             <D.Label />
@@ -207,7 +206,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date(2022, 10, 15);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @value={{date}} @label="View Mode" @viewMode="months" as |D|>
             <D.Label />
@@ -222,7 +221,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
   test('datepicker with a mask and a specific format', async function (assert) {
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @label="Mask/Format" @dateFormat="dd/MM-yyyy" @mask="d/m-Y" as |D|>
             <D.Label />
@@ -238,7 +237,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date(2022, 10, 15, 8, 30);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @label="Time format" @dateFormat="dd/MM/yyyy | HH:mm" @enableTime={{true}}  as |D|>
             <D.Label />
@@ -253,7 +252,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     const date: Date = new Date(2022, 9, 15);
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @label="Locale" @value={{date}} @locale="es" as |D|>
             <D.Label />
@@ -267,7 +266,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
   test('show today button', async function (assert) {
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @label="Show today" @todayButton={{true}} as |D|>
             <D.Label />
@@ -281,7 +280,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
   test('When press tab, datepicker is closed', async function (assert) {
     const setDate = function () {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkDatepicker @onChange={{setDate}} @label="Show today" @todayButton={{true}} as |D|>
             <D.Label />

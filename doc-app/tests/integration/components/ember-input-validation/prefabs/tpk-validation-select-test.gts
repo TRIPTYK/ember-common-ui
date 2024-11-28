@@ -1,13 +1,12 @@
 
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, click, render, settled } from '@ember/test-helpers';
+import {  click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationSelect from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-select';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module(
   'Integration | Component | Prefabs | tpk-validation-select',
@@ -15,7 +14,7 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(this: TestContext, options: unknown[] = []) {
+    async function renderComponent( options: unknown[] = []) {
       const changeset = new ImmerChangeset<
         {
           names?: string | object;
@@ -25,7 +24,7 @@ module(
       });
       const onChange = () => {};
 
-      await render<ThisTestContext>(
+      await render(
         <template><TpkValidationSelect
           @placeholder="Entrez un nom"
           @label="Names"
@@ -42,7 +41,7 @@ module(
     }
 
     test('Applies the toString() method for displaying options', async function (assert) {
-      await renderComponent.call(this, [
+      await renderComponent( [
         {
           toString() {
             return 'toString() method';
@@ -59,7 +58,7 @@ module(
           return 'toString() method';
         },
       };
-      const changeset = await renderComponent.call(this, [obj]);
+      const changeset = await renderComponent( [obj]);
       changeset.set('names', obj);
       await settled();
       assert
@@ -68,7 +67,7 @@ module(
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
-      const changeset = await renderComponent.call(this);
+      const changeset = await renderComponent();
       changeset.addError({
         message: 'required',
         value: '',
@@ -81,7 +80,7 @@ module(
     });
 
     test('It changes data-has-error attribue on error', async function (assert) {
-      const changeset = await renderComponent.call(this);
+      const changeset = await renderComponent();
       assert
         .dom('.tpk-validation-select')
         .hasAttribute('data-has-error', 'false');

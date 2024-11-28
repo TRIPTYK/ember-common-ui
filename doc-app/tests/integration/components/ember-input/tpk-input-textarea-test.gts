@@ -1,7 +1,7 @@
 
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, type TestContext } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import CatchState from 'doc-app/services/catch-state';
@@ -9,14 +9,13 @@ import { fillIn } from '@ember/test-helpers';
 import TpkTextarea from '@triptyk/ember-input/components/tpk-textarea';
 import catchState from 'doc-app/helpers/catch-state';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module('Integration | Component | tpk-area', function (hooks) {
   setupRenderingTest(hooks);
 
   async function renderComponent() {
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkTextarea @label="label" @value="value" as |O|>
           <O.Label />
@@ -27,7 +26,7 @@ module('Integration | Component | tpk-area', function (hooks) {
     );
   }
 
-  test<ThisTestContext>('input yield only', async function (assert) {
+  test('input yield only', async function (assert) {
     await renderComponent();
 
     const service = (getOwner(this) as ApplicationInstance).lookup(
@@ -45,7 +44,7 @@ module('Integration | Component | tpk-area', function (hooks) {
     assert.strictEqual(typeof state.maxLength, 'undefined');
   });
 
-  test<ThisTestContext>('charcount updates when input value change', async function (assert) {
+  test('charcount updates when input value change', async function (assert) {
     await renderComponent();
     const stateService = (getOwner(this) as ApplicationInstance).lookup(
       'service:catch-state',

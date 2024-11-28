@@ -1,13 +1,12 @@
 
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, click, render } from '@ember/test-helpers';
+import {  click, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationSelectCreate from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-select-create';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module(
   'Integration | Component | Prefabs | tpk-validation-select-create',
@@ -15,7 +14,7 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(this: ThisTestContext) {
+    async function renderComponent() {
       const changeset = new ImmerChangeset<
         {
           name: string | undefined;
@@ -41,7 +40,7 @@ module(
         return !existingOption;
       };
 
-      await render<ThisTestContext>(
+      await render(
         <template>
         <TpkValidationSelectCreate
           @placeholder="Entrez un nom"
@@ -60,8 +59,8 @@ module(
       return changeset;
     }
 
-    test('Applies the toString() method for displaying options', async function (this: ThisTestContext, assert) {
-      await renderComponent.call(this);
+    test('Applies the toString() method for displaying options', async function ( assert) {
+      await renderComponent();
       await click('.ember-power-select-trigger');
       assert.dom('.ember-power-select-option:first-child').hasText('Romain');
     });

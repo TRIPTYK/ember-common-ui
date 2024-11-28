@@ -1,18 +1,17 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, type TestContext } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { confirmModalObject } from 'doc-app/tests/pages/ember-confirm-modal';
 import TpkConfirmModal from '@triptyk/ember-ui/components/tpk-confirm-modal';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module('Integration | Component | Confirm Modal', function (hooks) {
   setupRenderingTest(hooks);
 
 
   async function renderConfirmModal(
-    this: ThisTestContext,
+
     // eslint-disable-next-line no-undef
     assert: Assert,
     isOpen = true,
@@ -25,7 +24,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
     };
     const confirmQuestion = 'Do you confirm ? :smirk:';
 
-    return render<ThisTestContext>(<template>
+    return render(<template>
 			<div id="tpk-modal"></div>
 			<TpkConfirmModal
 				@title={{confirmQuestion}}
@@ -44,25 +43,25 @@ module('Integration | Component | Confirm Modal', function (hooks) {
       </template>);
   }
 
-  test<ThisTestContext>('@onConfirm is called when confirm is clicked', async function (assert) {
-    await renderConfirmModal.call(this, assert);
+  test('@onConfirm is called when confirm is clicked', async function (assert) {
+    await renderConfirmModal( assert);
     await confirmModalObject.confirm.click();
     assert.verifySteps(['onConfirm']);
   });
 
-  test<ThisTestContext>('@onClose is called when cancel is clicked', async function (assert) {
-    await renderConfirmModal.call(this, assert);
+  test('@onClose is called when cancel is clicked', async function (assert) {
+    await renderConfirmModal( assert);
     await confirmModalObject.cancel.click();
     assert.verifySteps(['onClose']);
   });
 
-  test<ThisTestContext>('Modal is open if @isOpen is true', async function (assert) {
-    await renderConfirmModal.call(this, assert);
+  test('Modal is open if @isOpen is true', async function (assert) {
+    await renderConfirmModal( assert);
     assert.dom(confirmModalObject.scope).exists();
   });
 
-  test<ThisTestContext>('Modal is close if @isOpen is false', async function (assert) {
-    await renderConfirmModal.call(this, assert, false);
+  test('Modal is close if @isOpen is false', async function (assert) {
+    await renderConfirmModal( assert, false);
     assert.dom(confirmModalObject.scope).doesNotExist();
   });
 });

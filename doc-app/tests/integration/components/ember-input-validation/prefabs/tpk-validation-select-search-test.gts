@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {
-  type TestContext,
+
   click,
   render,
   settled,
@@ -12,8 +12,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import { selectSearch } from 'ember-power-select/test-support';
 import TpkValidationSelectSearch from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-select-search';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 const options = [
   {
@@ -59,7 +58,7 @@ module(
 
       const options: unknown[] = [];
 
-      await render<ThisTestContext>(
+      await render(
         <template>
           <TpkValidationSelectSearch
             @changeset={{params.changeset}}
@@ -73,7 +72,7 @@ module(
       );
     }
 
-    test('Should show default value and no options in starting', async function (this: ThisTestContext, assert) {
+    test('Should show default value and no options in starting', async function ( assert) {
      const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
         changeset
@@ -84,7 +83,7 @@ module(
       );
     });
 
-    test('Should use search select features by default', async function (this: ThisTestContext, assert) {
+    test('Should use search select features by default', async function ( assert) {
      const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
         changeset: changeset,
@@ -100,7 +99,7 @@ module(
       assert.verifySteps(['search']);
     });
 
-    test('Error prefab appears if an error is added to changeset', async function (this: ThisTestContext, assert) {
+    test('Error prefab appears if an error is added to changeset', async function ( assert) {
      const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
         changeset

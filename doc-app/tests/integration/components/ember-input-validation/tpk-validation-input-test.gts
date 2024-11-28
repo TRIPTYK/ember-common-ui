@@ -1,12 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, fillIn, render } from '@ember/test-helpers';
+import {  fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationInput from '@triptyk/ember-input-validation/components/tpk-validation-input';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module('Integration | Component | tpk-validation-input', function (hooks) {
   setupRenderingTest(hooks);
@@ -17,21 +16,21 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
     onChange: (value: unknown) => void,
     changeset: ImmerChangeset,
   ) {
-    await render<ThisTestContext>(
+    await render(
       <template><TpkValidationInput @type={{type}}  @label="label" @onChange={{onChange}} @changeset={{changeset}} @validationField="name" as |I|>
       <I.Label /><I.Input/></TpkValidationInput>
       </template>
     );
   }
 
-  function setupChangeset(this: TestContext) {
+  function setupChangeset() {
     return new ImmerChangeset({
       name: 'value',
     });
   }
 
   test('It overrides change function', async function (assert) {
-    const changeset = setupChangeset.call(this);
+    const changeset = setupChangeset();
 
     const onChange = (value: unknown) => {
       assert.step('change');
@@ -53,7 +52,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
   });
 
   test('override change function', async function (assert) {
-    const changeset = setupChangeset.call(this);
+    const changeset = setupChangeset();
 
     const onChange = (value: unknown) => {
       assert.step('change');
@@ -65,7 +64,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       );
     };
 
-    await render<ThisTestContext>(
+    await render(
       <template><TpkValidationInput
       @label="Mot de passe"
       @placeholder="mot de passe"
@@ -81,9 +80,9 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
   });
 
   test('changeset change when element is modified', async function (assert) {
-    const changeset = setupChangeset.call(this);
+    const changeset = setupChangeset();
 
-    await render<ThisTestContext>(
+    await render(
       <template><TpkValidationInput
       @label="Mot de passe"
       @placeholder="mot de passe"

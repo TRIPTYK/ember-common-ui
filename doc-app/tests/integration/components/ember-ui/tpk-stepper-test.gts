@@ -2,19 +2,17 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import TpkStepper from '@triptyk/ember-ui/components/tpk-stepper';
-import type { TestContext } from '@ember/test-helpers';
+
 import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
 
-interface ThisTestContext extends TestContext {
 
-}
 
 module('Integration | Component | tpk-stepper', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render<ThisTestContext>(<template>
+    await render(<template>
     <TpkStepper @startStep={{undefined}} as |Stepper|>
         <Stepper.Stepper />
         <Stepper.Step as |S|>
@@ -44,7 +42,7 @@ module('Integration | Component | tpk-stepper', function (hooks) {
   });
 
   test('start step', async function (assert) {
-    await render<ThisTestContext>(<template>
+    await render(<template>
     <TpkStepper @startStep={{2}} as |Stepper|>
         <Stepper.Stepper />
         <Stepper.Step as |S|>
@@ -70,7 +68,7 @@ module('Integration | Component | tpk-stepper', function (hooks) {
   });
 
   test('it steps', async function (assert) {
-    await render<ThisTestContext>(<template>
+    await render(<template>
     <TpkStepper @startStep={{undefined}} as |Stepper|>
         <Stepper.Stepper />
         <Stepper.Step data-test-step="1" as |S|>

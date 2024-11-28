@@ -1,12 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, render } from '@ember/test-helpers';
+import {  render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationRadioGroup from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-radio-group';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module(
   'Integration | Component | Prefabs | tpk-prefab-validation-radio-group',
@@ -15,10 +14,10 @@ module(
     setupIntl(hooks, 'fr-fr');
 
     async function renderComponent(
-      this: TestContext,
+
       changeset: ImmerChangeset,
     ) {
-      await render<ThisTestContext>(
+      await render(
         <template><TpkValidationRadioGroup
         @changeset={{changeset}}
         @validationField="radio"
@@ -37,7 +36,7 @@ module(
       const changeset = new ImmerChangeset({
         radio: '',
       });
-      await renderComponent.call(this, changeset);
+      await renderComponent( changeset);
       assert.dom('[data-test-tpk-radio-group-label]').exists();
       assert.dom('[data-test-tpk-radio-input]').exists();
     });
@@ -52,7 +51,7 @@ module(
         originalValue: undefined,
         key: 'radio',
       });
-      await renderComponent.call(this, changeset);
+      await renderComponent( changeset);
       assert
         .dom('[data-test-prefab-radio-group]')
         .hasAttribute('data-has-error', 'true');

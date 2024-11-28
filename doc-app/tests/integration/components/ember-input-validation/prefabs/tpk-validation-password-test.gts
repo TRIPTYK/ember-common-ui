@@ -1,12 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, click, render, settled } from '@ember/test-helpers';
+import {  click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationPassword from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-password';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module(
   'Integration | Component | Prefabs | tpk-validation-password',
@@ -14,12 +13,12 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(this: TestContext) {
+    async function renderComponent() {
       const changeset = new ImmerChangeset({
         name: 'value',
       });
 
-      await render<ThisTestContext>(
+      await render(
         <template><TpkValidationPassword class="custom-class"  @changeset={{changeset}} @validationField="name" /></template>
       );
 
@@ -27,14 +26,14 @@ module(
     }
 
     test('Should have a toggle button', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       assert
         .dom('[data-test-toggle-button]')
         .hasClass('tpk-input-validation-toggle-button');
     });
 
     test('Should have an eye image', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       assert
         .dom('[data-test-toggle-button] img')
         .hasClass('tpk-input-validation-toggle-button-image');
@@ -44,19 +43,19 @@ module(
     });
 
     test('Input type should be password', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       assert.dom('input').hasAttribute('type', 'password');
     });
 
     test('When button is clicked, input type should be text', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       await click('[data-test-toggle-button]');
 
       assert.dom('input').hasAttribute('type', 'text');
     });
 
     test('When button is clicked, eye icon should be eye-shut', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       await click('[data-test-toggle-button]');
 
       assert
@@ -65,7 +64,7 @@ module(
     });
 
     test('When button is clicked twice, input type should be password', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       await click('[data-test-toggle-button]');
 
       await click('[data-test-toggle-button]');
@@ -74,12 +73,12 @@ module(
     });
 
     test('Attributes should be passed to the input', async function (assert) {
-      await renderComponent.call(this);
+      await renderComponent();
       assert.dom('.tpk-input').hasClass('custom-class');
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
-      const changeset = await renderComponent.call(this);
+      const changeset = await renderComponent();
       changeset.addError({
         message: 'required',
         value: '',
