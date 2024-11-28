@@ -49,7 +49,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
         @label={{@label}} 
         @mandatory={{V.mandatory}} />
         <V.Input 
-        class="tpk-text-input" 
+        class="tpk-input-input" 
         data-test-tpk-input-input/>
         <TpkValidationErrorsComponent
           class="tpk-validation-errors"

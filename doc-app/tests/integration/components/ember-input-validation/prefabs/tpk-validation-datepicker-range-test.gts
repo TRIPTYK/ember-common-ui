@@ -6,6 +6,8 @@ import { type TestContext } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { setTempusDominusDate } from '@triptyk/ember-input/test-support/datepicker-helpers';
 import TpkValidationDatepickerRange from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-datepicker-range';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -19,15 +21,14 @@ module(
 
     async function renderComponentAndReturnChangeset(this: ThisTestContext) {
       const immerChangeset = new ImmerChangeset({
-        range: undefined,
+        'datepicker-range': undefined,
       });
       await render<ThisTestContext>(
         <template>
          <TpkValidationDatepickerRange
             @label="Datepicker range"
             @changeset={{immerChangeset}}
-            @validationField="range"
-            class="tpk-input"
+            @validationField="datepicker-range"
          />
         </template>,
       );
@@ -38,9 +39,19 @@ module(
       const date1 = new Date(2022, 10, 10);
       const date2 = new Date(2022, 10, 15);
       const changeset = await renderComponentAndReturnChangeset.call(this);
-      setTempusDominusDate('.tpk-datepicker-input-input', date1, 0);
-      setTempusDominusDate('.tpk-datepicker-input-input', date2, 1);
-      assert.deepEqual(changeset.get('range'), [date1, date2]);
+      setTempusDominusDate('.tpk-datepicker-range-input', date1, 0);
+      setTempusDominusDate('.tpk-datepicker-range-input', date2, 1);
+      assert.deepEqual(changeset.get('datepicker-range'), [date1, date2]);
+    });
+
+    test('It changes data-has-error attribute on error', async function (this: ThisTestContext,assert) {
+     const changeset = await renderComponentAndReturnChangeset.call(this);
+      await assertDataHasErrorAttribute(assert,changeset,'datepicker-range');
+    });
+
+    test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
+      await renderComponentAndReturnChangeset.call(this);
+      await assertTpkCssClassesExist(assert,'datepicker-range');
     });
   },
 );

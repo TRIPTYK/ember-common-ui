@@ -1,9 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, settled, render } from '@ember/test-helpers';
+import { type TestContext, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationInputPrefabComponent from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-input';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -42,32 +44,13 @@ module(
     test('It changes data-has-error attribute on error', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: '',
-        key: 'input',
-      });
-
-      await settled();
-      assert.dom('[data-test-tpk-input-input]').hasNoText();
-      assert
-        .dom('[data-test-tpk-prefab-input-container]')
-        .hasAttribute('data-has-error', 'true');
+      await assertDataHasErrorAttribute(assert,changeset,'input');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
      const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      assert.dom('.tpk-input-container').exists().hasAttribute('data-test-tpk-prefab-input-container');
-      assert.dom('.tpk-input-container .tpk-text-input').exists()
-      assert.dom('.tpk-input-container .tpk-validation-errors').exists()
-      assert.dom('.tpk-input-container .tpk-label').exists()
-      assert.dom('label').hasClass('tpk-input-container');
-      assert.dom('input').hasClass('tpk-text-input');
-      assert.dom('label > div:first-of-type').hasClass('tpk-label', 'The first div inside label has the class tpk-label.');
-      assert.dom('label > div:nth-of-type(2)').hasClass('tpk-validation-errors', 'The second div inside label has the class tpk-validation-errors.');
+      await assertTpkCssClassesExist(assert,'input');
     });
   },
 );

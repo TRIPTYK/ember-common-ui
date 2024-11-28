@@ -1,9 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, settled, render } from '@ember/test-helpers';
+import { type TestContext, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationCheckbox from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-checkbox';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -46,31 +48,13 @@ module(
     test('It changes data-has-error attribute on error', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: '',
-        key: 'checkbox',
-      });
-      await settled();
-      assert.dom('[data-test-tpk-checkbox-input]').hasNoText();
-      assert
-        .dom('[data-test-tpk-prefab-checkbox-container]')
-        .hasAttribute('data-has-error', 'true');
+      await assertDataHasErrorAttribute(assert,changeset,'checkbox');
     });
 
      test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
      const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      assert.dom('.tpk-checkbox-container').exists().hasAttribute('data-test-tpk-prefab-checkbox-container');
-      assert.dom('.tpk-checkbox-container .tpk-checkbox-input').exists()
-      assert.dom('.tpk-checkbox-container .tpk-validation-errors').exists()
-      assert.dom('.tpk-checkbox-container .tpk-label').exists()
-      assert.dom('label').hasClass('tpk-checkbox-container');
-      assert.dom('input').hasClass('tpk-checkbox-input');
-      assert.dom('label > div:first-of-type').hasClass('tpk-label', 'The first div inside label has the class tpk-label.');
-      assert.dom('label > div:nth-of-type(2)').hasClass('tpk-validation-errors', 'The second div inside label has the class tpk-validation-errors.');
+      await assertTpkCssClassesExist(assert,'checkbox');
     });
   },
 );

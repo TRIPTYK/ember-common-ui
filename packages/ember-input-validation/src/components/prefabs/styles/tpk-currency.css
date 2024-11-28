@@ -1,0 +1,28 @@
+.tpk-currency-container {
+  @apply form-control;
+}
+
+.tpk-currency-container .tpk-label {
+  @apply label;
+}
+
+.tpk-currency-input {
+  @apply input input-bordered;
+}
+
+.tpk-currency-container[data-has-error~="true"] .tpk-currency-input {
+  @apply input-error;
+}
+
+.tpk-currency-container[data-has-error~="true"] 
+.tpk-validation-errors {
+  @apply text-error label justify-self-end;
+}
+
+.tpk-currency-container[data-has-error~="true"] .tpk-label{
+  @apply label text-error;
+}
+
+.tpk-currency-container[data-has-error~="true"] .tpk-currency-input {
+  @apply text-error;
+}
