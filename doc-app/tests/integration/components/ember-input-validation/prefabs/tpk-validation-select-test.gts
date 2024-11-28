@@ -14,16 +14,18 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent( options: unknown[] = []) {
-      const changeset = new ImmerChangeset<
+    async function setChangeset(value?: string | object) {
+      return new ImmerChangeset<
         {
           names?: string | object;
         }
       >({
-        names: undefined,
+        names: value,
       });
-      const onChange = () => {};
+    }
 
+    async function renderComponent({ options = [], changeset, disabled = false }: { options: unknown[], changeset: ImmerChangeset, disabled?: boolean }) {
+      const onChange = () => {};
       await render(
         <template><TpkValidationSelect
           @placeholder="Entrez un nom"
@@ -33,33 +35,32 @@ module(
           @validationField="names"
           @onChange={{onChange}}
           class="custom-class"
-        />
-        </template>,
+        /></template>,
       );
-
-      return changeset;
     }
 
     test('Applies the toString() method for displaying options', async function (assert) {
-      await renderComponent( [
+      const changeset = await setChangeset();
+      await renderComponent( { options: [
         {
           toString() {
             return 'toString() method';
           },
         },
-      ]);
+      ], changeset});
       await click('.ember-power-select-trigger');
       assert.dom('.ember-power-select-option').hasText('toString() method');
     });
 
     test('Applies the direct values from array for displaying options', async function (assert) {
-      await renderComponent.call(this, [
+      const changeset = await setChangeset();
+      await renderComponent({ options: [
         'Beatport',
         'Spotify',
         'Apple Music',
         'Deezer',
         'Soundcloud',
-      ]);
+      ], changeset });
       await click('.ember-power-select-trigger');
       assert.dom('.ember-power-select-option').hasText('Beatport');
     });
@@ -70,8 +71,8 @@ module(
           return 'toString() method';
         },
       };
-      const changeset = await renderComponent( [obj]);
-      changeset.set('names', obj);
+      const changeset = await setChangeset(obj);
+      await renderComponent({ options: [obj], changeset});
       await settled();
       assert
         .dom('.ember-power-select-selected-item')
@@ -79,7 +80,8 @@ module(
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
-      const changeset = await renderComponent();
+      const changeset = await setChangeset();
+      await renderComponent({ options: [], changeset });
       changeset.addError({
         message: 'required',
         value: '',
@@ -92,9 +94,10 @@ module(
     });
 
     test('It changes data-has-error attribue on error', async function (assert) {
-      const changeset = await renderComponent();
+      const changeset = await setChangeset();
+      await renderComponent({ options: [], changeset });
       assert
-        .dom('.tpk-validation-select')
+        .dom('.tpk-select-container')
         .hasAttribute('data-has-error', 'false');
 
       changeset.addError({
@@ -107,8 +110,23 @@ module(
       await settled();
 
       assert
-        .dom('.tpk-validation-select')
+        .dom('.tpk-select-container')
         .hasAttribute('data-has-error', 'true');
+    });
+
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
+      const changeset = await setChangeset();
+      await renderComponent({ options: [], changeset });
+
+      assert.dom(`.tpk-select-container`).exists().hasAttribute(`data-test-tpk-prefab-select-container`);
+      assert.dom(`.tpk-select-container .tpk-validation-errors`).exists()
+      assert.dom(`.tpk-select-container .tpk-label`).exists();
+    });
+
+    test('@disabled disables the select', async function(assert) {
+      const changeset = await setChangeset();
+      await renderComponent({ options: [], changeset, disabled: true });
+      assert.dom(`.ember-basic-dropdown-trigger`).hasAttribute('aria-disabled', 'true');
     });
   },
 );

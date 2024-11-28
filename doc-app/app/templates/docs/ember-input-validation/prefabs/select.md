@@ -26,7 +26,7 @@ In example:
         @options={{this.options}}
         @changeset={{this.changeset}} 
         @validationField="disabled"
-        @disabled={{false}}
+        @disabled={{true}}
       />
       <Prefabs::TpkValidationSelect
         @label="Error"

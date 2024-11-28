@@ -17,7 +17,7 @@ export interface TpkSelectSignature {
     label: string;
     placeholder?: string;
     renderInPlace?: boolean;
-
+    labelClass?: string;
     allowClear?: boolean;
     disabled?: boolean;
     initiallyOpened?: boolean;
@@ -72,7 +72,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
         @allowClear={{@allowClear}}
         @onChange={{@onChange}}
         @placeholder={{@placeholder}}
-        @labelClass="tpk-select-label"
+        @labelClass={{@labelClass}}
         @renderInPlace={{this.renderInPlace}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
@@ -107,7 +107,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
         @placeholder={{@placeholder}}
         @allowClear={{@allowClear}}
         @onChange={{@onChange}}
-        @labelClass="tpk-select-label"
+        @labelClass={{@labelClass}}
         @renderInPlace={{this.renderInPlace}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}
