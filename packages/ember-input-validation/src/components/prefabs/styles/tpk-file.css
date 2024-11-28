@@ -1,5 +1,5 @@
 .tpk-file-container {
-  @apply form-control w-full;
+  @apply form-control relative pb-4 w-full;
 }
 
 .tpk-file-container .tpk-label {
@@ -14,9 +14,9 @@
   @apply input-error;
 }
 
-.tpk-file-container[data-has-error~="true"] 
+.tpk-file-container[data-has-error~="true"]
 .tpk-validation-errors {
-  @apply text-error label justify-self-end;
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
 .tpk-file-container[data-has-error~="true"] .tpk-label{
