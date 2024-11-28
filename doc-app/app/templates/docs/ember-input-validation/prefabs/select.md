@@ -21,6 +21,20 @@ In example:
         @validationField="ceo"
         @disabled={{false}}
       />
+      <Prefabs::TpkValidationSelect
+        @label="Disabled"
+        @options={{this.options}}
+        @changeset={{this.changeset}} 
+        @validationField="disabled"
+        @disabled={{false}}
+      />
+      <Prefabs::TpkValidationSelect
+        @label="Error"
+        @options={{this.options}}
+        @changeset={{this.changeset}} 
+        @validationField="error"
+        @disabled={{false}}
+      />
   </demo.example>
   <demo.snippet @name="tpk-select-prefab.hbs"/>
 </DocsDemo>
