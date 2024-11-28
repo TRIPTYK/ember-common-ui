@@ -37,7 +37,7 @@ module(
     }
 
     async function renderComponentWithOtherInput(changeset: ImmerChangeset) {
-      await render<ThisTestContext>(
+      await render(
         <template>
           <TpkValidationMobile @changeset={{changeset}} @validationField="phone" @label="Numéro de téléphone" />
           <TpkValidationInput class="text-element" @changeset={{changeset}} @validationField="text" @label="Texte" />
@@ -85,16 +85,16 @@ module(
       assert.strictEqual(changeset.get('phone'), '+352123456789');
     });
 
-    test('When change value for an another input, mask input for mobile is not reset', async function (this: ThisTestContext, assert) {
-      const changeset = await setChangeset.call(this, '', { text: '123' });
+    test('When change value for an another input, mask input for mobile is not reset', async function (assert) {
+      const changeset = await setChangeset('', { text: '123' });
       await renderComponentWithOtherInput(changeset);
       await selectChoose('.ember-power-select-trigger', '+352');
-      await fillIn('.tpk-input-validation-mobile input', '123456789');
+      await fillIn('.tpk-mobile-input', '123456789');
       await click(document.body); // click outside to trigger update of mask only for test
       assert.dom('.ember-power-select-selected-item').containsText('+352');
-      assert.dom('.tpk-input-validation-mobile input').hasValue('123 456 789');
+      assert.dom('.tpk-mobile-input').hasValue('123 456 789');
       await fillIn('.text-element input', '456');
-      assert.dom('.tpk-input-validation-mobile input').hasValue('123 456 789');
+      assert.dom('.tpk-mobile-input').hasValue('123 456 789');
 
       assert.strictEqual(changeset.get('phone'), '+352123456789');
     });
