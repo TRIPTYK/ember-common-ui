@@ -10,6 +10,8 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationInteger from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-integer';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 
 
@@ -70,10 +72,10 @@ module(
       assert.strictEqual(changeset.get('integer'), 2);
     });
 
-    test('Attributes should be passed to the input', async function (assert) {
+    test('Attributes should be passed to the container', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset);
-      assert.dom('.tpk-input').hasClass('custom-integer-class');
+      assert.dom('[data-test-tpk-prefab-integer-container]').hasClass('custom-integer-class');
     });
 
     test('it passes unsigned integer', async function ( assert) {
@@ -98,7 +100,14 @@ module(
       });
       assert.dom('.tpk-validation-errors').exists();
       await settled();
+      await assertDataHasErrorAttribute(assert, changeset, 'integer');
       assert.dom('.tpk-validation-errors span').hasText('required');
+    });
+
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
+      const changeset = setupChangeset();
+      await renderComponent(changeset);
+      await assertTpkCssClassesExist(assert,'integer');
     });
   },
 );
