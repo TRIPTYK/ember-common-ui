@@ -10,7 +10,7 @@ export interface TpkValidationNationalNumberPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationNationalNumberPrefabComponent extends Component<TpkValidationNationalNumberPrefabSignature> {
@@ -24,19 +24,32 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
       @validationField={{@validationField}}
       @mandatory={{@mandatory}}
       @changeEvent={{@changeEvent}}
+      @disabled={{@disabled}}
       @changeset={{@changeset}}
       @mask={{this.mask}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      <div class="tpk-input" data-test-tpk-input data-has-error='{{V.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+      <V.Label
+        class="tpk-national-number-container"
+        data-test-tpk-prefab-national-number-container
+        data-has-error='{{V.hasError}}'
+        anchorScrollUp={{@validationField}}
+        ...attributes
+      >
+          <MandatoryLabelComponent
+            class="tpk-label"
+            @label={{@label}}
+            @mandatory={{V.mandatory}}
+          />
+          <V.Input
+            class="tpk-national-number-input"
+            data-test-tpk-national-number-input
+          />
+          <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+          @errors={{V.errors}}
+          />
       </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-      />
-      </div>
     </TpkValidationInputComponent>
   </template>
 }
