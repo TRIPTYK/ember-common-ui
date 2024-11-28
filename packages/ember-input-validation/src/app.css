@@ -8,3 +8,6 @@
 @import url('./components/prefabs/styles/tpk-file.css');
 @import url('./components/prefabs/styles/tpk-iban.css');
 @import url('./components/prefabs/styles/tpk-mobile.css');
+@import url('./components/prefabs/styles/tpk-integer.css');
+@import url('./components/prefabs/styles/tpk-national-number.css');
+@import url('./components/prefabs/styles/tpk-number.css');

@@ -15,7 +15,9 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponentAndReturnChangeset() {
+    async function renderComponentAndReturnChangeset(params?: {
+      disabled?: boolean;
+    }) {
       const immerChangeset = new ImmerChangeset({
         iban: '',
       });
@@ -26,6 +28,7 @@ module(
             @label="label"
             @mandatory={{true}}
             @changeset={{immerChangeset}}
+            @disabled={{params.disabled}}
             @validationField="iban"
          />
         </template>
@@ -83,6 +86,13 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponentAndReturnChangeset();
       await assertTpkCssClassesExist(assert,'iban');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      await renderComponentAndReturnChangeset({
+        disabled: true,
+      });
+      assert.dom(`[data-test-tpk-iban-input]`).hasAttribute('disabled');
     });
   },
 );

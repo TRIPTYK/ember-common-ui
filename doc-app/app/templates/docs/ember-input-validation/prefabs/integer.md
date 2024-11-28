@@ -1,10 +1,10 @@
 # Integer
 
-the integer validation input prefab allows is used when we need an integer input.
+The integer validation input prefab is used when an integer input is required.
 
-it prevents decimal numbers by not allowing the comma and period.
+It prevents decimal numbers by disallowing the comma and period.
 
-the integer validation input can be blocked at a minimum of 0 or be a negative number
+The integer validation input can be restricted to a minimum of 0 or allow negative numbers.
 
 <DocsDemo as |demo|>
   <demo.example @name="tpk-integer.hbs">
@@ -19,11 +19,20 @@ the integer validation input can be blocked at a minimum of 0 or be a negative n
         @mandatory={{true}}
         @unsigned={{true}}
       />
-
       <Prefabs::TpkValidationInteger
-        @label="Integer"
+        @label="Disabled Integer"
         @placeholder="Enter an number"
         @changeset={{this.changeset}} 
+        @validationField="integer"
+        @changeEvent="change"
+        @onChange={{this.onChangeInteger}}
+        @disabled={{true}}
+        @mandatory={{true}}
+      />
+      <Prefabs::TpkValidationBic
+        @label="Invalid Integer"
+        @placeholder="Enter an number"
+        @changeset={{this.changesetWithErrors}} 
         @validationField="integer"
         @changeEvent="change"
         @onChange={{this.onChangeInteger}}
@@ -33,3 +42,4 @@ the integer validation input can be blocked at a minimum of 0 or be a negative n
   </demo.example>
   <demo.snippet @name="tpk-integer.hbs"/>
 </DocsDemo>
+

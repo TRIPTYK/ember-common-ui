@@ -22,18 +22,17 @@ module(
       });
     }
 
-    async function renderComponent(changeset:ImmerChangeset) {
-        await render(
-          <template><TpkValidationFile @label="label" @changeset={{changeset}} @validationField="file" />
-        </template>,
-        );
-
+    async function renderComponent(params: { changeset: ImmerChangeset; disabled?: boolean }) {
+      await render(
+        <template><TpkValidationFile @label="label" @changeset={{params.changeset}} @validationField="file" @disabled={{params.disabled}} />
+      </template>,
+      );
       }
 
 
     test('It changes data-has-error attribue on error', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
 
       await assertDataHasErrorAttribute(assert,changeset,'file');
 
@@ -45,8 +44,14 @@ module(
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       await assertTpkCssClassesExist(assert,'file');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = setupChangeset();
+      await renderComponent({ changeset , disabled: true});
+      assert.dom(`[data-test-tpk-file-input]`).hasAttribute('disabled');
     });
   },
 );

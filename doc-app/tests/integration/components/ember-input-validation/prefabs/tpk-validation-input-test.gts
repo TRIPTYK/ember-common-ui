@@ -20,18 +20,23 @@ module(
       });
     }
 
-    async function renderComponent(changeset: ImmerChangeset) {
+    async function renderComponent(params: { changeset: ImmerChangeset, disabled?: boolean }) {
       await render(
-        <template>
-        <TpkValidationInputPrefabComponent @changeset={{changeset}} @validationField="input" @label="label" @mandatory={{true}} />
-        </template>
+      <template>
+      <TpkValidationInputPrefabComponent
+        @changeset={{params.changeset}}
+        @validationField="input"
+        @label="label"
+        @mandatory={{true}}
+        @disabled={{params.disabled}}
+      />
+      </template>
       );
-
     }
 
     test('renders input with default structure and with mandatory', async function ( assert) {
      const changeset = setupChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-input-input]').exists();
       assert.dom('[data-test-tpk-label]').containsText('label *');
@@ -40,14 +45,23 @@ module(
 
     test('It changes data-has-error attribute on error', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       await assertDataHasErrorAttribute(assert,changeset,'input');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
      const changeset = setupChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       await assertTpkCssClassesExist(assert,'input');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = setupChangeset();
+      await renderComponent({
+        disabled: true,
+        changeset
+      });
+      assert.dom(`[data-test-tpk-input-input]`).hasAttribute('disabled');
     });
   },
 );

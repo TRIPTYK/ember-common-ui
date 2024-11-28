@@ -16,7 +16,9 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponentAndReturnChangeset() {
+    async function renderComponentAndReturnChangeset(params?: {
+      disabled?: boolean;
+    }) {
       const immerChangeset = new ImmerChangeset({
         'datepicker-range': undefined,
       });
@@ -24,6 +26,7 @@ module(
         <template>
          <TpkValidationDatepickerRange
             @label="Datepicker range"
+            @disabled={{params.disabled}}
             @changeset={{immerChangeset}}
             @validationField="datepicker-range"
          />
@@ -49,6 +52,13 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponentAndReturnChangeset();
       await assertTpkCssClassesExist(assert,'datepicker-range');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      await renderComponentAndReturnChangeset({
+        disabled: true,
+      });
+      assert.dom(`[data-test-tpk-datepicker-range-input]`).hasAttribute('disabled');
     });
   },
 );

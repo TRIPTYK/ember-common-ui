@@ -20,14 +20,13 @@ export interface TpkValidationNumberComponentSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationNumberPrefabComponent extends Component<TpkValidationNumberComponentSignature> {
-
-get min() {
-  return this.args.unsigned ? 0 : this.args.min;
-}
+  get min() {
+    return this.args.unsigned ? 0 : this.args.min;
+  }
 
   <template>
     <TpkValidationInputComponent
@@ -43,18 +42,27 @@ get min() {
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-      as |I|
+      as |V|
     >
-      <div class="tpk-input" data-test-tpk-input data-has-error='{{I.hasError}}' anchorScrollUp={{@validationField}} ...attributes>
-      <I.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{I.mandatory}} />
-      </I.Label>
-      <I.Input />
-      <TpkValidationErrorsComponent
-        @errors={{I.errors}}
-
-      />
-      </div>
+      <V.Label
+      class="tpk-number-container"
+      data-test-tpk-prefab-number-container
+      data-has-error='{{V.hasError}}'
+      anchorScrollUp={{@validationField}}
+      ...attributes>
+        <MandatoryLabelComponent
+        class="tpk-label"
+        @label={{@label}}
+        @mandatory={{V.mandatory}} />
+        <V.Input
+        class="tpk-number-input"
+        data-test-tpk-number-input
+        />
+        <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+          @errors={{V.errors}}
+        />
+      </V.Label>
     </TpkValidationInputComponent>
   </template>
 }

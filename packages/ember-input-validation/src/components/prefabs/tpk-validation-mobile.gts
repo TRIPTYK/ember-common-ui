@@ -164,7 +164,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
               </div>
             </T.Option>
           </TpkSelectComponent>
-          <I.Input inputmode='tel' class="tpk-mobile-input" />
+          <I.Input data-test-tpk-mobile-input inputmode='tel' class="tpk-mobile-input" />
         </div>
         <TpkValidationErrorsComponent
           class="tpk-validation-errors"
