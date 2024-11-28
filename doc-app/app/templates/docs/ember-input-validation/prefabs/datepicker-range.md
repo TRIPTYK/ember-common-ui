@@ -8,7 +8,17 @@ This component provides a datepicker with range selection and built-in validatio
       @label="Datepicker Range"
       @changeset={{this.changeset}}
       @validationField="range"
-      class="tpk-input"
+    />
+    <Prefabs::TpkValidationDatepickerRange
+      @label="Disabled"
+      @changeset={{this.changeset}}
+      @validationField="disabled"
+      @disabled=true
+    />
+    <Prefabs::TpkValidationDatepickerRange
+      @label="Error"
+      @changeset={{this.changeset}}
+      @validationField="error"
     />
   </demo.example>
   <demo.snippet @name="prefab-tpk-datepicker-range.hbs" />

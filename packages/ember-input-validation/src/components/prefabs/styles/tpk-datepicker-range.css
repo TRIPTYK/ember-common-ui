@@ -1,0 +1,28 @@
+.tpk-datepicker-range-container {
+  @apply form-control;
+}
+
+.tpk-datepicker-range-container .tpk-label {
+  @apply label;
+}
+
+.tpk-datepicker-range-input {
+  @apply input input-bordered;
+}
+
+.tpk-datepicker-range-container[data-has-error~="true"] .tpk-datepicker-range-input {
+  @apply input-error;
+}
+
+.tpk-datepicker-range-container[data-has-error~="true"] 
+.tpk-validation-errors {
+  @apply text-error label justify-self-end;
+}
+
+.tpk-datepicker-range-container[data-has-error~="true"] .tpk-label{
+  @apply label text-error;
+}
+
+.tpk-datepicker-range-container[data-has-error~="true"] .tpk-datepicker-range-input {
+  @apply text-error;
+}

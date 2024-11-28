@@ -4,7 +4,7 @@ import {
 } from '../base.ts';
 import TpkSelectCreateComponent, { type TpkSelectCreateSignature } from '@triptyk/ember-input/components/tpk-select-create';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import { type Select } from 'ember-power-select/components/power-select';
+import type { Select } from '@triptyk/ember-input/components/tpk-select';
 import { action } from '@ember/object';
 
 export interface TpkValidationSelectCreatePrefabSignature

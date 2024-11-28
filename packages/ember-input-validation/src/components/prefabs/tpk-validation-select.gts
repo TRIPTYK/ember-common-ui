@@ -2,8 +2,7 @@ import { action } from "@ember/object";
 import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from "@ember/debug";
-import { type Select } from "ember-power-select/components/power-select";
-import TpkSelectComponent, { type TpkSelectSignature } from "@triptyk/ember-input/components/tpk-select";
+import TpkSelectComponent, { type TpkSelectSignature, type Select } from "@triptyk/ember-input/components/tpk-select";
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<

@@ -5,9 +5,8 @@ import {
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
-import { type Select } from 'ember-power-select/components/power-select';
 import { action } from '@ember/object';
-import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
+import type { TpkSelectSignature, Select } from '@triptyk/ember-input/components/tpk-select';
 
 export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {

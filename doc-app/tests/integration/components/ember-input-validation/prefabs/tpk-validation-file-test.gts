@@ -1,9 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, triggerEvent, type TestContext } from '@ember/test-helpers';
+import { render, triggerEvent, type TestContext } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationFile from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-file';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -34,18 +36,9 @@ module(
 
     test('It changes data-has-error attribue on error', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this);
+      await renderComponent(changeset);
 
-     await renderComponent(changeset);
-
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: 'a',
-        key: 'file',
-      });
-      await settled();
-      assert.dom('[data-test-tpk-label]').containsText('label');
-      assert.dom('[data-test-tpk-prefab-file-container]').hasAttribute('data-has-error', 'true');
+      await assertDataHasErrorAttribute(assert,changeset,'file');
 
       await triggerEvent('[data-test-tpk-file-input]', 'change', {
         files: [new File(['Ember Rules!'], 'file.txt')],
@@ -56,14 +49,7 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      assert.dom('.tpk-file-container').exists().hasAttribute('data-test-tpk-prefab-file-container');
-      assert.dom('.tpk-file-container .tpk-file-input').exists()
-      assert.dom('.tpk-file-container .tpk-validation-errors').exists()
-      assert.dom('.tpk-file-container .tpk-label').exists()
-      assert.dom('label').hasClass('tpk-file-container');
-      assert.dom('input').hasClass('tpk-file-input');
-      assert.dom('label > div:first-of-type').hasClass('tpk-label', 'The first div inside label has the class tpk-label.');
-      assert.dom('label > div:nth-of-type(2)').hasClass('tpk-validation-errors', 'The second div inside label has the class tpk-validation-errors.');
+      await assertTpkCssClassesExist(assert,'file');
     });
   },
 );

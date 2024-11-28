@@ -1,10 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { fillIn, render, settled } from '@ember/test-helpers';
+import { fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { type TestContext } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationIban from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-iban';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -78,30 +80,12 @@ module(
 
     test<ThisTestContext>('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await renderComponentAndReturnChangeset.call(this);
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: 'a',
-        key: 'iban',
-      });
-      assert.dom('.tpk-validation-errors').exists();
-      await settled();
-      assert.dom('.tpk-validation-errors span').hasText('required');
-       assert
-        .dom('[data-test-tpk-prefab-iban-container]')
-        .hasAttribute('data-has-error', 'true');
+      await assertDataHasErrorAttribute(assert,changeset,'iban');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       await renderComponentAndReturnChangeset.call(this);
-      assert.dom('.tpk-iban-container').exists().hasAttribute('data-test-tpk-prefab-iban-container');
-      assert.dom('.tpk-iban-container .tpk-iban-input').exists()
-      assert.dom('.tpk-iban-container .tpk-validation-errors').exists()
-      assert.dom('.tpk-iban-container .tpk-label').exists()
-      assert.dom('label').hasClass('tpk-iban-container');
-      assert.dom('input').hasClass('tpk-iban-input');
-      assert.dom('label > div:first-of-type').hasClass('tpk-label', 'The first div inside label has the class tpk-label.');
-      assert.dom('label > div:nth-of-type(2)').hasClass('tpk-validation-errors', 'The second div inside label has the class tpk-validation-errors.');
+      await assertTpkCssClassesExist(assert,'iban');
     });
   },
 );

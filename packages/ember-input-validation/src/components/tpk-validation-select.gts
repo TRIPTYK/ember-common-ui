@@ -4,8 +4,7 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
-import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
-import { type Select } from 'ember-power-select/components/power-select';
+import TpkSelectComponent, { type Select } from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationSelectComponentSignature {

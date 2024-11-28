@@ -24,7 +24,7 @@ export interface TpkValidationCurrencyPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class TpkValidationCurrencyPrefabComponent extends Component<TpkValidationCurrencyPrefabSignature> {
@@ -66,24 +66,26 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
-      as |V|
-    >
-      <div
-        class='tpk-input'
-        data-test-tpk-input
-        data-has-error='{{V.hasError}}'
-        anchorScrollUp={{@validationField}}
-        ...attributes
-      >
-        <V.Label>
+    as |V|>
+        <V.Label
+        class="tpk-currency-container"
+         data-test-tpk-prefab-currency-container
+         data-has-error='{{V.hasError}}'
+         anchorScrollUp={{@validationField}}
+         ...attributes>
           <MandatoryLabelComponent
-            @label={{@label}}
-            @mandatory={{V.mandatory}}
+          class="tpk-label"
+          @label={{@label}}
+          @mandatory={{V.mandatory}} />
+          <V.Input
+          placeholder={{@placeholder}}
+          data-test-tpk-currency-input
+          class="tpk-currency-input"/>
+          <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+          @errors={{V.errors}}
           />
         </V.Label>
-        <V.Input placeholder={{@placeholder}} />
-        <TpkValidationErrorsComponent @errors={{V.errors}} />
-      </div>
     </TpkValidationInputComponent>
   </template>
 }

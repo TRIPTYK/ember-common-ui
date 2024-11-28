@@ -1,10 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { fillIn, settled,render } from '@ember/test-helpers';
+import { fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { type TestContext } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationBic from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-bic';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {}
 
@@ -49,30 +51,13 @@ module(
 
     test('It changes data-has-error attribute on error', async function (this: ThisTestContext,assert) {
      const changeset = await renderComponentAndReturnChangeset.call(this);
-      changeset.addError({
-        message: 'required',
-        value: '',
-        originalValue: '',
-        key: 'bic',
-      });
-      await settled();
-      assert.dom('[data-test-tpk-bic-input]').hasNoText();
-      assert
-        .dom('[data-test-tpk-prefab-bic-container]')
-        .hasAttribute('data-has-error', 'true');
+     await assertDataHasErrorAttribute(assert,changeset,'bic');
     });
 
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       await renderComponentAndReturnChangeset.call(this);
-      assert.dom('.tpk-bic-container').exists().hasAttribute('data-test-tpk-prefab-bic-container');
-      assert.dom('.tpk-bic-container .tpk-bic-input').exists()
-      assert.dom('.tpk-bic-container .tpk-validation-errors').exists()
-      assert.dom('.tpk-bic-container .tpk-label').exists()
-      assert.dom('label').hasClass('tpk-bic-container');
-      assert.dom('input').hasClass('tpk-bic-input');
-      assert.dom('label > div:first-of-type').hasClass('tpk-label', 'The first div inside label has the class tpk-label.');
-      assert.dom('label > div:nth-of-type(2)').hasClass('tpk-validation-errors', 'The second div inside label has the class tpk-validation-errors.');
+      await assertTpkCssClassesExist(assert,'bic');
     });
   },
 );
