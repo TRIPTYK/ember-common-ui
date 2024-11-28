@@ -10,13 +10,12 @@ export interface TpkValidationTextareaPrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSignature> = <template>
     <TpkValidationTextareaComponent
       @label={{@label}}
-
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
       @onChange={{@onChange}}
@@ -27,26 +26,32 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
       @maxLength={{@maxLength}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      <div
-        class='tpk-textarea'
+      <V.Label
+        class="tpk-textarea-container"
+        data-test-tpk-prefab-textarea-container
+        data-has-error='{{V.hasError}}'
         anchorScrollUp={{@validationField}}
         ...attributes
-        data-test-tpk-textarea
       >
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
+        <MandatoryLabelComponent
+          class="tpk-label"
+          @label={{@label}}
+          @mandatory={{V.mandatory}}
+        />
+        <V.Input
+          class="tpk-textarea-input"
+          data-test-tpk-textarea-input
+        />
+        <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+          @errors={{V.errors}}
+        />
+        {{#if @maxLength}}
+          <span class="tpk-textarea-character-count">
+            {{V.charCount}} / {{@maxLength}}
+          </span>
+        {{/if}}
       </V.Label>
-      <V.Input />
-      {{#if @maxLength}}
-        <span class="count">
-          {{V.charCount}} / {{@maxLength}}
-        </span>
-      {{/if}}
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-
-      />
-      </div>
     </TpkValidationTextareaComponent>
   </template>;
 
