@@ -56,7 +56,7 @@ preventNonNumericInput(event: KeyboardEvent) {
       @requiredFields={{@requiredFields}}
       as |V|
     >
-       <V.Label
+      <V.Label
       class="tpk-integer-container"
       data-test-tpk-prefab-integer-container
       data-has-error='{{V.hasError}}'

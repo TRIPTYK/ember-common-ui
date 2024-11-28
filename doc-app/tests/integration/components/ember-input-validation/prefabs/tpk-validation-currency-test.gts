@@ -20,10 +20,9 @@ module(
         currency: 123.56,
       });
     }
-
     async function renderComponent(
       changeset: ImmerChangeset,
-      scale: number = 2,
+      { scale = 2, disabled = false } = {},
     ) {
 
       const onChange = (value: number) => {
@@ -36,7 +35,9 @@ module(
           @changeset={{changeset}}
           @onChange={{onChange}}
           @validationField="currency"
-          @scale={{scale}} />
+          @scale={{scale}}
+          @disabled={{disabled}}
+        />
         </template>,
       );
 
@@ -70,7 +71,9 @@ module(
 
     test('@scale should control the decimals of the input', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent(changeset, 3);
+      await renderComponent(changeset, {
+        scale: 3
+      });
       assert.dom('[data-test-tpk-currency-input]').hasValue('123.560 €');
     });
 
@@ -84,6 +87,14 @@ module(
       const changeset = setupChangeset();
       await renderComponent(changeset);
       await assertTpkCssClassesExist(assert,'currency');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = setupChangeset();
+      await renderComponent(changeset, {
+        disabled: true,
+      });
+      assert.dom(`[data-test-tpk-currency-input]`).hasAttribute('disabled');
     });
   },
 );

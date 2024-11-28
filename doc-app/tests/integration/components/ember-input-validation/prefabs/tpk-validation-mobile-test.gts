@@ -28,22 +28,22 @@ module(
       return new ImmerChangeset({ phone: phoneValue });
     }
 
-    async function renderComponent(changeset: ImmerChangeset) {
+    async function renderComponent({ changeset, disabled = false }: { changeset: ImmerChangeset, disabled?: boolean }) {
       await render(
-        <template><TpkValidationMobile @changeset={{changeset}} @validationField="phone" @label="Numéro de téléphone" /></template>,
+        <template><TpkValidationMobile @changeset={{changeset}} @validationField="phone" @label="Numéro de téléphone" @disabled={{disabled}} /></template>,
       );
     }
 
     test('Should split country prefixe and phone number and show label', async function (assert) {
       const changeset = await setChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       assert.dom('.ember-power-select-selected-item').containsText('+33');
       assert.dom('input').hasValue('7 12 34 56 78');
     });
 
     test('When change country prefixe should adapt mask', async function (assert) {
       const changeset = await setChangeset();
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       assert.dom('input').hasValue('7 12 34 56 78');
       await selectChoose('.ember-power-select-trigger', '+32');
       assert.dom('input').hasValue('712 34 56 78');
@@ -51,21 +51,21 @@ module(
 
     test('Show default prefixe when phone number is empty', async function (assert) {
       const changeset = await setChangeset( '');
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       assert.dom('.ember-power-select-selected-item').containsText('+32');
       assert.dom('input').hasValue('');
     });
 
     test('Show default prefixe when phone number is not well formatted and show first number of phone number in input', async function (assert) {
       const changeset = await setChangeset( '00345333443434');
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       assert.dom('.ember-power-select-selected-item').containsText('+32');
       assert.dom('input').hasValue('003 45 33 34');
     });
 
     test('When change value for prefixe and phone number, changeset value should combine values', async function ( assert) {
       const changeset = await setChangeset( '');
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       await selectChoose('.ember-power-select-trigger', '+352');
       await fillIn('input', '123456789');
       await click(document.body); // click outside to trigger update of mask only for test
@@ -77,7 +77,7 @@ module(
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await setChangeset( '');
-      await renderComponent(changeset);
+      await renderComponent({changeset});
       changeset.addError({
         message: 'required',
         value: '',
@@ -87,6 +87,15 @@ module(
       assert.dom('.tpk-validation-errors').exists();
       await settled();
       assert.dom('.tpk-validation-errors span').hasText('required');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = await setChangeset( '');
+      await renderComponent({
+        disabled: true,
+        changeset
+      });
+      assert.dom(`[data-test-tpk-mobile-input]`).hasAttribute('disabled');
     });
   },
 );
