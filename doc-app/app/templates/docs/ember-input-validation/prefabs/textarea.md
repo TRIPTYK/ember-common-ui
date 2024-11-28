@@ -6,7 +6,20 @@ This component provides an textarea.
   <demo.example @name="tpk-textarea-prefab.hbs">
       <Prefabs::TpkValidationTextarea
         @label="Explain why you like Ember"
+        @maxLength={{100}}
         @changeset={{this.changeset}} 
+        @validationField="ember"
+      />
+      <Prefabs::TpkValidationTextarea
+        @label="Disabled textarea"
+        @changeset={{this.changeset}} 
+        @disabled={{true}}
+        @validationField="ember"
+      />
+      <Prefabs::TpkValidationTextarea
+        @label="Error textarea"
+        @maxLength={{100}}
+        @changeset={{this.changesetWithErrors}} 
         @validationField="ember"
       />
   </demo.example>

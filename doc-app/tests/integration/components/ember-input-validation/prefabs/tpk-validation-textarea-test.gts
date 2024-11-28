@@ -5,6 +5,8 @@ import {  render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationTextarea from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-textarea';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 
@@ -34,6 +36,17 @@ module(
       assert.dom('[data-test-tpk-textarea-input]').exists();
       assert.dom('[data-test-tpk-label]').containsText('label *');
       assert.dom('[data-test-tpk-textarea-input]').hasValue('Hellooo');
+    });
+
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
+      await renderComponent();
+      assertTpkCssClassesExist(assert, 'textarea', 'textarea');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      await renderComponent();
+      await a11yAudit();
     });
   },
 );
