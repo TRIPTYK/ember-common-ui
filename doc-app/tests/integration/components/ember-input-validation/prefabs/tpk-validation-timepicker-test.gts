@@ -20,7 +20,7 @@ module(
 
     async function renderComponentAndReturnChangeset() {
       const immerChangeset = new ImmerChangeset({
-        time: undefined,
+        time: null,
       });
 
       await render(

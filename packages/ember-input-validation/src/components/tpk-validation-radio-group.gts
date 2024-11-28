@@ -18,6 +18,7 @@ export interface TpkValidationRadioGroupComponentSignature
     unmaskValue?: boolean;
     disabled?: boolean;
     mandatory?: boolean;
+    onChange?: (value: string) => void;
   };
   Blocks: {
     default: [

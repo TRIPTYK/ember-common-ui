@@ -7,6 +7,8 @@ import PowerSelect, { type Select } from 'ember-power-select/components/power-se
 import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
 import TpkSelectOption from './tpk-select/option.gts';
 
+export { type Select } from 'ember-power-select/components/power-select';
+
 export interface TpkSelectSignature {
   Args: {
     multiple?: boolean;
