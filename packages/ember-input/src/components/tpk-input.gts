@@ -56,6 +56,12 @@ export type TpkInputSignature = {
 export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature> {
   constructor(owner: unknown, args: TpkInputSignature['Args']) {
     super(owner, args);
+
+    assert(
+      '@label must be a string',
+      typeof args.label === 'string',
+    );
+
     if (args.type === 'number') {
       assert(
         '@value must be a number',

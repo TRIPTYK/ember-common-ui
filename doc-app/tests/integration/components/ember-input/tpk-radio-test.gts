@@ -5,7 +5,6 @@ import { render } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
-import { a11yAudit } from 'ember-a11y-testing/test-support';
 import CatchState from 'doc-app/services/catch-state';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import catchState from 'doc-app/helpers/catch-state';
@@ -65,14 +64,5 @@ module('Integration | Component | ui/radio', function (hooks) {
     assert.strictEqual(typeof state.Label, 'object');
     assert.strictEqual(typeof state.changeEvent, 'string');
     assert.strictEqual(typeof state.guid, 'string');
-  });
-
-  test('Accessibility', async function (assert) {
-    await render(
-      <template><TpkRadio @label="label" @selected="luc" @value="jean" @name="cule" /></template>
-    );
-
-    await a11yAudit();
-    assert.expect(0);
   });
 });

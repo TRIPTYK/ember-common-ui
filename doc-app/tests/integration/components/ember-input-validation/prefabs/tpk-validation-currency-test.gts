@@ -7,6 +7,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import TpkValidationCurrency from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-currency';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 module(
@@ -32,6 +33,7 @@ module(
       await render(
         <template>
           <TpkValidationCurrency
+          @label="label"
           @changeset={{changeset}}
           @onChange={{onChange}}
           @validationField="currency"
@@ -95,6 +97,15 @@ module(
         disabled: true,
       });
       assert.dom(`[data-test-tpk-currency-input]`).hasAttribute('disabled');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      const changeset = setupChangeset();
+      await renderComponent(changeset, {
+        disabled: false,
+      });
+      await a11yAudit();
     });
   },
 );

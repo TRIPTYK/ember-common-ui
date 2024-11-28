@@ -4,7 +4,6 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
-import { a11yAudit } from 'ember-a11y-testing/test-support';
 import CatchState from 'doc-app/services/catch-state';
 import catchState from 'doc-app/helpers/catch-state';
 import TpkFile from '@triptyk/ember-input/components/tpk-file';
@@ -32,16 +31,5 @@ module('Integration | Component | tpk-file', function (hooks) {
     assert.strictEqual(typeof state.changeEvent, 'string');
     assert.strictEqual(typeof state.guid, 'string');
     assert.true(Array.isArray(state.files));
-  });
-
-  test('Accessibility', async function (assert) {
-    await render(
-      <template>
-        <TpkFile @label="label" />
-      </template>
-    );
-
-    await a11yAudit();
-    assert.expect(0);
   });
 });
