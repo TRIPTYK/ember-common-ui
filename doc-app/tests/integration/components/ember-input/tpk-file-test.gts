@@ -6,21 +6,16 @@ import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 import CatchState from 'doc-app/services/catch-state';
-import type { TestContext } from '@ember/test-helpers';
 import catchState from 'doc-app/helpers/catch-state';
 import TpkFile from '@triptyk/ember-input/components/tpk-file';
-
-interface ThisTestContext extends TestContext {
-  change: () => void;
-}
 
 module('Integration | Component | tpk-file', function (hooks) {
   setupRenderingTest(hooks);
 
   test('input yield only', async function (assert) {
-    await render<ThisTestContext>(
+    await render(
       <template>
-        <TpkFile @onChange={{this.change}} @label="label" as |O|>
+        <TpkFile @label="label" as |O|>
           {{catchState O}}
         </TpkFile>
       </template>
@@ -40,9 +35,9 @@ module('Integration | Component | tpk-file', function (hooks) {
   });
 
   test('Accessibility', async function (assert) {
-    await render<ThisTestContext>(
+    await render(
       <template>
-        <TpkFile @onChange={{this.change}} @label="label" />
+        <TpkFile @label="label" />
       </template>
     );
 

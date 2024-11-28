@@ -1,27 +1,26 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
-import type { TestContext } from '@ember/test-helpers';
+
 import TpkStackList from '@triptyk/ember-ui/components/tpk-stack-list';
 import { get } from '@ember/object';
 
 const titleForAdd = 'Ajouter une donnée';
 const contentData = 'machin';
 
-interface ThisTestContext extends TestContext {
-}
 
-module('Integration | Component | stack-list', function (this: ThisTestContext, hooks) {
+
+module('Integration | Component | stack-list', function ( hooks) {
   setupRenderingTest(hooks);
 
-  test('adding item', async function (this: ThisTestContext, assert) {
+  test('adding item', async function ( assert) {
     const data: unknown[] = [];
     const onAddData = () => {
       assert.step('onAddData');
     };
     const onRemoveData = () => {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkStackList
         @data={{data}}
@@ -44,7 +43,7 @@ module('Integration | Component | stack-list', function (this: ThisTestContext, 
     assert.verifySteps(['onAddData']);
   });
 
-  test('toggle collapse with title', async function (this: ThisTestContext, assert) {
+  test('toggle collapse with title', async function ( assert) {
     const data = [
       {
       title: contentData,
@@ -54,7 +53,7 @@ module('Integration | Component | stack-list', function (this: ThisTestContext, 
     const onAddData = () => {};
     const onRemoveData = () => {};
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkStackList
           @data={{data}}
@@ -80,7 +79,7 @@ module('Integration | Component | stack-list', function (this: ThisTestContext, 
     assert.dom('[data-test-title-stackList-item]').containsText(contentData);
   });
 
-  test('deleting item', async function (this: ThisTestContext, assert) {
+  test('deleting item', async function ( assert) {
     const data = [
       {
       title: contentData,
@@ -91,7 +90,7 @@ module('Integration | Component | stack-list', function (this: ThisTestContext, 
       assert.step('onRemoveData');
     };
 
-    await render<ThisTestContext>(
+    await render(
       <template>
         <TpkStackList
           @data={{data}}

@@ -3,7 +3,7 @@ import {
   fillIn,
   find,
   render,
-  type TestContext,
+
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
@@ -11,9 +11,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationInteger from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-integer';
 
-interface ThisTestContext extends TestContext {
 
-}
 
 module(
   'Integration | Component | Prefabs | tpk-validation-integer',
@@ -22,7 +20,7 @@ module(
     setupIntl(hooks, 'fr-fr');
 
     async function renderComponent(changeset: ImmerChangeset) {
-      await render<ThisTestContext>(<template>
+      await render(<template>
       <TpkValidationInteger
         @changeset={{changeset}}
         @validationField="integer"
@@ -32,7 +30,7 @@ module(
     </template>);
     }
     async function renderComponentUnsigned(changeset: ImmerChangeset) {
-      await render<ThisTestContext>(<template>
+      await render(<template>
       <TpkValidationInteger
         @changeset={{changeset}}
         @validationField="integer"
@@ -43,7 +41,7 @@ module(
     </template>);
     }
 
-    function setupChangeset(this: TestContext) {
+    function setupChangeset() {
       const changeset = new ImmerChangeset({
         integer: 0,
       });
@@ -51,8 +49,8 @@ module(
       return changeset;
     }
 
-    test('Input type must be a number', async function (this: ThisTestContext, assert) {
-      const changeset = setupChangeset.call(this);
+    test('Input type must be a number', async function ( assert) {
+      const changeset = setupChangeset();
       await renderComponent(changeset);
       await fillIn('input', '2');
       assert.dom('input').hasAttribute('type', 'number');
@@ -61,8 +59,8 @@ module(
       assert.notOk(changeset.get('integer'));
     });
 
-    test('Input does not allow dot and comma', async function (this: ThisTestContext, assert) {
-      const changeset =  setupChangeset.call(this);
+    test('Input does not allow dot and comma', async function ( assert) {
+      const changeset =  setupChangeset();
       await renderComponent(changeset);
       await fillIn('input', ',');
       assert.notOk(changeset.get('integer'));
@@ -73,13 +71,13 @@ module(
     });
 
     test('Attributes should be passed to the input', async function (assert) {
-      const changeset = setupChangeset.call(this);
+      const changeset = setupChangeset();
       await renderComponent(changeset);
       assert.dom('.tpk-input').hasClass('custom-integer-class');
     });
 
-    test('it passes unsigned integer', async function (this: ThisTestContext, assert) {
-      const changeset =  setupChangeset.call(this);
+    test('it passes unsigned integer', async function ( assert) {
+      const changeset =  setupChangeset();
       await renderComponentUnsigned(changeset);
       await fillIn('input', '1');
       const input = find('input');
@@ -90,7 +88,7 @@ module(
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
-      const changeset = setupChangeset.call(this);
+      const changeset = setupChangeset();
       await renderComponentUnsigned(changeset);
       changeset.addError({
         message: 'required',

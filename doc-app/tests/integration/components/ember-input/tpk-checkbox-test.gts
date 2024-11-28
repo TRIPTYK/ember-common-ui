@@ -1,7 +1,7 @@
 
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, type TestContext } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
@@ -10,8 +10,7 @@ import CatchState from 'doc-app/services/catch-state';
 import TpkCheckbox from '@triptyk/ember-input/components/tpk-checkbox';
 import catchState from 'doc-app/helpers/catch-state';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module('Integration | Component | ui/checkbox', function (hooks) {
   setupRenderingTest(hooks);
@@ -26,7 +25,7 @@ module('Integration | Component | ui/checkbox', function (hooks) {
       assert.true(checked);
     };
 
-    await render<ThisTestContext>(<template>
+    await render(<template>
         <TpkCheckbox
           @label='Label'
           @checked={{false}}
@@ -48,7 +47,7 @@ module('Integration | Component | ui/checkbox', function (hooks) {
   });
 
   test('input yield only', async function (assert) {
-    await render<ThisTestContext>(
+    await render(
       <template><TpkCheckbox @label="label" @checked={{true}} as |O|>
         {{catchState O}}
       </TpkCheckbox>
@@ -68,7 +67,7 @@ module('Integration | Component | ui/checkbox', function (hooks) {
   });
 
   test('Accessibility', async function (assert) {
-    await render<ThisTestContext>(
+    await render(
       <template><TpkCheckbox @label="label" @checked={{true}} /></template>
     );
 

@@ -1,15 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {
-  type RenderingTestContext,
   click,
   render,
   triggerKeyEvent,
 } from '@ember/test-helpers';
 import TpkModal from '@triptyk/ember-ui/components/tpk-modal';
-
-interface ThisTestContext extends RenderingTestContext {
-}
+import { find } from '@ember/test-helpers';
 
 module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);
@@ -21,7 +18,7 @@ module('Integration | Component | modal', function (hooks) {
       console.log('onClose');
     };
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <div id="tpk-modal"></div>
       <div id="other"></div>
@@ -40,12 +37,12 @@ module('Integration | Component | modal', function (hooks) {
     );
   }
 
-  test<ThisTestContext>('default modal behavior', async function (assert) {
+  test('default modal behavior', async function (assert) {
     await setupComponent(false, assert);
     assert.dom('[data-test-modal-toggle]').doesNotExist();
   });
 
-  test<ThisTestContext>('modal is open', async function (assert) {
+  test('modal is open', async function (assert) {
     await setupComponent(true, assert);
 
     assert.dom('[data-test-modal-toggle]').exists();
@@ -53,21 +50,21 @@ module('Integration | Component | modal', function (hooks) {
     assert.dom('.tpk-modal > .tpk-modal-content').exists();
   });
 
-  test<ThisTestContext>('esc calls onClose', async function (assert) {
+  test('esc calls onClose', async function (assert) {
     await setupComponent(true, assert);
-    await triggerKeyEvent(this.element, 'keyup', 'Escape');
+    await triggerKeyEvent(find('#other')!, 'keyup', 'Escape');
     assert.verifySteps(['onClose']);
   });
 
-  test<ThisTestContext>('click outside calls onClose', async function (assert) {
+  test('click outside calls onClose', async function (assert) {
     await setupComponent(true, assert);
-    await click(this.element);
+    await click(find('#other')!);
     // click calls 2 different events
     assert.verifySteps(['onClose', 'onClose']);
   });
 
 
-  test<ThisTestContext>('if defined outsideClickHandler is called if click outside', async function (assert) {
+  test('if defined outsideClickHandler is called if click outside', async function (assert) {
     const handler = () => {
       assert.step('handler');
       return true;
@@ -75,7 +72,7 @@ module('Integration | Component | modal', function (hooks) {
 
     await setupComponent(true, assert, handler);
 
-    await click(this.element);
+    await click(find('#other')!);
     assert.verifySteps(['handler', 'handler']);
   });
 });

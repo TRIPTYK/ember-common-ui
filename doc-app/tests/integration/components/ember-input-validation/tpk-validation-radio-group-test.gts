@@ -1,12 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { type TestContext, click, render } from '@ember/test-helpers';
+import {  click, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupOnerror } from '@ember/test-helpers';
 import TpkValidationRadioGroup from '@triptyk/ember-input-validation/components/tpk-validation-radio-group';
 
-interface ThisTestContext extends TestContext {
-}
+
 
 module(
   'Integration | Component | tpk-validation-radio-group',
@@ -14,14 +13,14 @@ module(
     setupRenderingTest(hooks);
 
     async function setupComponent(
-      this: ThisTestContext,
+
       value?: string | boolean,
     ) {
       const changeset = new ImmerChangeset({
         radio: value,
       });
 
-      await render<ThisTestContext>(
+      await render(
         <template>
       <TpkValidationRadioGroup
         @mandatory={{true}}
@@ -43,8 +42,8 @@ module(
       return changeset;
     }
 
-    test('render radio with default structure', async function (this: ThisTestContext, assert) {
-      const changeset = await setupComponent.call(this, undefined);
+    test('render radio with default structure', async function ( assert) {
+      const changeset = await setupComponent( undefined);
       assert.strictEqual(changeset.get('radio'), undefined);
       await click("[data-test-radio='bad']");
 
@@ -56,19 +55,19 @@ module(
       assert.strictEqual(changeset.get('radio'), 'good');
     });
 
-    test('changeset set value selected the good radio', async function (this: ThisTestContext, assert) {
-      await setupComponent.call(this, 'good');
+    test('changeset set value selected the good radio', async function ( assert) {
+      await setupComponent( 'good');
       assert.dom("[data-test-radio='good']").isChecked();
     });
 
-    test('must set wrong value type to selected', async function (this: ThisTestContext, assert) {
+    test('must set wrong value type to selected', async function ( assert) {
       setupOnerror(function (err) {
         assert.strictEqual(
           err.message,
           'Assertion Failed: The changeset value must be a string',
         );
       });
-      await setupComponent.call(this, true);
+      await setupComponent( true);
     });
   },
 );

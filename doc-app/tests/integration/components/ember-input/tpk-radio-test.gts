@@ -9,10 +9,9 @@ import { a11yAudit } from 'ember-a11y-testing/test-support';
 import CatchState from 'doc-app/services/catch-state';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import catchState from 'doc-app/helpers/catch-state';
-import type { TestContext } from '@ember/test-helpers';
 
-interface ThisTestContext extends TestContext {
-}
+
+
 
 module('Integration | Component | ui/radio', function (hooks) {
   setupRenderingTest(hooks);
@@ -26,7 +25,7 @@ module('Integration | Component | ui/radio', function (hooks) {
       assert.strictEqual(selected, 'jean');
     };
 
-    await render<ThisTestContext>(<template>
+    await render(<template>
         <TpkRadio
           @label='Label'
           @selected="luc"
@@ -50,7 +49,7 @@ module('Integration | Component | ui/radio', function (hooks) {
   });
 
   test('input yield only', async function (assert) {
-    await render<ThisTestContext>(
+    await render(
       <template><TpkRadio @label="label" @selected="luc" @value="jean" @name="cule" as |O|>
         {{catchState O}}
       </TpkRadio></template>
@@ -69,7 +68,7 @@ module('Integration | Component | ui/radio', function (hooks) {
   });
 
   test('Accessibility', async function (assert) {
-    await render<ThisTestContext>(
+    await render(
       <template><TpkRadio @label="label" @selected="luc" @value="jean" @name="cule" /></template>
     );
 

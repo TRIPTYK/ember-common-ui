@@ -2,13 +2,10 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { type TestContext } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationBic from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-bic';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
-
-interface ThisTestContext extends TestContext {}
 
 module(
   'Integration | Component | Prefabs | tpk-validation-bic',
@@ -16,12 +13,12 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponentAndReturnChangeset(this: TestContext) {
+    async function renderComponentAndReturnChangeset() {
       const immerChangeset = new ImmerChangeset({
         bic: '',
       });
 
-      await render<ThisTestContext>(
+      await render(
         <template>
          <TpkValidationBic
             @label="label"
@@ -34,7 +31,7 @@ module(
     }
 
     test('let only letters uppercase character go through for 8 first character', async function (assert) {
-      const changeset = await renderComponentAndReturnChangeset.call(this);
+      const changeset = await renderComponentAndReturnChangeset();
       await fillIn('[data-test-tpk-bic-input]', '12121212');
       assert.strictEqual(changeset.get('bic'), '');
       await fillIn('[data-test-tpk-bic-input]', 'aaaaaaaa');
@@ -44,19 +41,18 @@ module(
     });
 
     test('3 optional  character after first 8 accept accept uppercase letters and numbers', async function (assert) {
-      const changeset = await renderComponentAndReturnChangeset.call(this);
+      const changeset = await renderComponentAndReturnChangeset();
       await fillIn('[data-test-tpk-bic-input]', 'SEBISSEBA88');
       assert.strictEqual(changeset.get('bic'), 'SEBISSEBA88');
     });
 
-    test('It changes data-has-error attribute on error', async function (this: ThisTestContext,assert) {
-     const changeset = await renderComponentAndReturnChangeset.call(this);
+    test('It changes data-has-error attribute on error', async function (assert) {
+     const changeset = await renderComponentAndReturnChangeset();
      await assertDataHasErrorAttribute(assert,changeset,'bic');
     });
 
-
-    test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
-      await renderComponentAndReturnChangeset.call(this);
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
+      await renderComponentAndReturnChangeset();
       await assertTpkCssClassesExist(assert,'bic');
     });
   },

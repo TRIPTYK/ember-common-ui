@@ -1,6 +1,6 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, fillIn, render, type TestContext } from '@ember/test-helpers';
+import { click, fillIn, render } from '@ember/test-helpers';
 import { changesetGet, ImmerChangeset } from 'ember-immer-changeset';
 import { object, string, array, Schema } from 'yup';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';
@@ -11,16 +11,14 @@ import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 import { on } from '@ember/modifier';
 import { concat, array as arrayHelper } from '@ember/helper';
 
-interface ThisTestContext extends TestContext {
 
-}
 
 module('Integration | Component | tpk-form', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'fr-fr');
 
   async function setupComponent(
-    this: TestContext,
+
     params?: {
       changeset?: ImmerChangeset;
       onSubmit?: (...args: unknown[]) => void;
@@ -38,7 +36,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     const autoScrollOnError = params?.autoScrollOnError;
     const executeOnValid = true;
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkForm
           @changeset={{changeset}}
@@ -69,7 +67,7 @@ module('Integration | Component | tpk-form', function (hooks) {
 
     tpkFormService.TpkInput = DummyInput;
 
-    await setupComponent.call(this);
+    await setupComponent();
 
     assert.dom(`[data-test-dummy-input="email"]`).exists();
   });
@@ -90,8 +88,8 @@ module('Integration | Component | tpk-form', function (hooks) {
       callCount = 0;
     });
 
-    test<ThisTestContext>('when autoScrollOnError is true, it scrolls the page to the first error', async function (assert) {
-      const changeset = await setupComponent.call(this, {
+    test('when autoScrollOnError is true, it scrolls the page to the first error', async function (assert) {
+      const changeset = await setupComponent( {
         validationSchema: object().shape({
           email: string().email().required(),
         }),
@@ -109,8 +107,8 @@ module('Integration | Component | tpk-form', function (hooks) {
       assert.strictEqual(callCount, 1);
     });
 
-    test<ThisTestContext>('when autoScrollOnError is false, it does not scrolls the page to the first error', async function (assert) {
-      const changeset = await setupComponent.call(this, {
+    test('when autoScrollOnError is false, it does not scrolls the page to the first error', async function (assert) {
+      const changeset = await setupComponent( {
         validationSchema: object().shape({
           email: string().email().required(),
         }),
@@ -129,8 +127,8 @@ module('Integration | Component | tpk-form', function (hooks) {
     });
   });
 
-  test<ThisTestContext>('it validates the changeset when a field is set if reactive is true', async function (assert) {
-    const changeset = await setupComponent.call(this, {
+  test('it validates the changeset when a field is set if reactive is true', async function (assert) {
+    const changeset = await setupComponent( {
       reactive: true,
       validationSchema: object().shape({
         email: string().email().required(),
@@ -144,8 +142,8 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.true(changeset.isInvalid);
   });
 
-  test<ThisTestContext>('It executes the changeset when submit is triggered and changeset is valid', async function (assert) {
-    const changeset = await setupComponent.call(this, {
+  test('It executes the changeset when submit is triggered and changeset is valid', async function (assert) {
+    const changeset = await setupComponent( {
       validationSchema: object().shape({
         email: string().email().required(),
       }),
@@ -160,8 +158,8 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.strictEqual(changeset.get('email'), 'truc@gmail.com');
   });
 
-  test<ThisTestContext>('It triggers @onSubmit with changeset as parameter when changeset is valid', async function (assert) {
-    const changeset = await setupComponent.call(this, {
+  test('It triggers @onSubmit with changeset as parameter when changeset is valid', async function (assert) {
+    const changeset = await setupComponent( {
       validationSchema: object().shape({
         email: string().email().required(),
       }),
@@ -180,7 +178,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.verifySteps(['onSubmit']);
   });
 
-  test<ThisTestContext>('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
+  test('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
      const changeset = new ImmerChangeset({
         email: '',
         address: {
@@ -221,7 +219,7 @@ module('Integration | Component | tpk-form', function (hooks) {
       ]);
     };
 
-    await render<ThisTestContext>(
+    await render(
       <template>
       <TpkForm
           @changeset={{changeset}} @validationSchema={{validationSchema}} @onSubmit={{onSubmit}}
