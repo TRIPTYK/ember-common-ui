@@ -6,15 +6,15 @@
   @apply label;
 }
 
-.tpk-text-input {
+.tpk-input-input {
   @apply input input-bordered;
 }
 
-.tpk-input-container[data-has-error~="true"] > .tpk-text-input {
+.tpk-input-container[data-has-error~="true"] > .tpk-input-input {
   @apply input-error text-error;
 }
 
-.tpk-input-container[data-has-error~="true"] 
+.tpk-input-container[data-has-error~="true"]
 .tpk-validation-errors {
   @apply text-error label justify-self-end;
 }
