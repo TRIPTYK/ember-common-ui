@@ -6,13 +6,24 @@ You've 5 prefixes : **Luxembourg, Deutshland, Netherlands, Belgium and France.**
 
 <DocsDemo as |demo|>
 <demo.example @name="tpk-mobile.hbs">
-<Prefabs::TpkValidationMobile
-@label="Mobile Number"
-@changeset={{this.changeset}}
-@validationField="phone"
-@disabled={{false}}
-@mandatory={{true}}
-/>
+      <Prefabs::TpkValidationMobile
+        @label="Mobile Number"
+        @changeset={{this.changeset}}
+        @validationField="phone"
+        @disabled={{false}}
+        @mandatory={{true}}
+      />
+      <Prefabs::TpkValidationMobile 
+        @label="Disabled"
+        @changeset={{this.changeset}}
+        @disabled={{true}} 
+        @validationField="disabled"
+      />
+      <Prefabs::TpkValidationMobile 
+        @label="Error"
+        @changeset={{this.changeset}} 
+        @validationField="error"
+      />
 </demo.example>
 
 <demo.snippet @name="tpk-mobile.hbs" />

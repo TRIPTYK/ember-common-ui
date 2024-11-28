@@ -28,7 +28,7 @@ export interface TpkValidationMobilePrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 interface Prefix {
@@ -130,23 +130,24 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
     >
       <div
         class='tpk-mobile-container'
-        anchorScrollUp={{@validationField}}
-        data-test-tpk-input
         data-has-error='{{this.hasError}}'
-        ...attributes
+        data-test-tpk-prefab-mobile-container
       >
-        <I.Label data-test-label-not-yielded>
-          <MandatoryLabelComponent
-            class='tpk-label'
-            @label={{@label}}
-            @mandatory={{this.mandatory}}
-          />
+        <I.Label
+          anchorScrollUp={{@validationField}}
+          data-test-tpk-input
+          data-has-error='{{this.hasError}}'
+          class='tpk-mobile-label-container'
+          ...attributes
+        >
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} class="tpk-label"  />
         </I.Label>
-        <div data-test-mobile-validation>
+        <div class="tpk-mobile-content">
           <TpkSelectComponent
             @label=''
             @options={{this.prefixes}}
             @selected={{this.selectedPrefix}}
+            @disabled={{@disabled}}
             @onChange={{this.onChangeValuePrefix}}
             as |T|
           >
@@ -163,10 +164,10 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
               </div>
             </T.Option>
           </TpkSelectComponent>
-          <I.Input class='tpk-mobile-input' data-test-tpk-mobile-input inputmode='tel' />
+          <I.Input data-test-tpk-mobile-input inputmode='tel' class="tpk-mobile-input" />
         </div>
         <TpkValidationErrorsComponent
-          class='tpk-validation-errors'
+          class="tpk-validation-errors"
           @errors={{this.errors}}
         />
       </div>

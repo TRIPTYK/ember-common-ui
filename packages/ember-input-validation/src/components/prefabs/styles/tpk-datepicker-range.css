@@ -1,5 +1,5 @@
 .tpk-datepicker-range-container {
-  @apply form-control;
+  @apply form-control relative pb-4;
 }
 
 .tpk-datepicker-range-container .tpk-label {
@@ -7,16 +7,16 @@
 }
 
 .tpk-datepicker-range-input {
-  @apply input input-bordered;
+  @apply input input-bordered w-full;
 }
 
 .tpk-datepicker-range-container[data-has-error~="true"] .tpk-datepicker-range-input {
   @apply input-error;
 }
 
-.tpk-datepicker-range-container[data-has-error~="true"] 
+.tpk-datepicker-range-container[data-has-error~="true"]
 .tpk-validation-errors {
-  @apply text-error label justify-self-end;
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
 .tpk-datepicker-range-container[data-has-error~="true"] .tpk-label{

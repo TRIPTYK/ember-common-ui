@@ -1,5 +1,5 @@
 .tpk-checkbox-container {
-  @apply form-control 
+  @apply form-control relative pb-4;
 }
 
 .tpk-checkbox-container .tpk-label {
@@ -14,7 +14,10 @@
   @apply checkbox checkbox-error;
 }
 
-.tpk-checkbox-container[data-has-error~="true"] .tpk-validation-errors,
 .tpk-checkbox-container[data-has-error~="true"] .tpk-label {
   @apply text-error label;
+}
+
+.tpk-checkbox-container[data-has-error~="true"] .tpk-validation-errors {
+  @apply text-error text-sm justify-self-end absolute -bottom-1;
 }

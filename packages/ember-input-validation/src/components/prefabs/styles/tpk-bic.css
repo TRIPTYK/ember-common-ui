@@ -1,5 +1,5 @@
 .tpk-bic-container {
-  @apply form-control;
+  @apply form-control relative pb-4;
 }
 
 .tpk-bic-container .tpk-bic-input {
@@ -14,7 +14,10 @@
   @apply input-error text-error;
 }
 
-.tpk-bic-container[data-has-error~="true"] .tpk-validation-errors,
 .tpk-bic-container[data-has-error~="true"] .tpk-label {
   @apply text-error label;
+}
+
+.tpk-bic-container[data-has-error~="true"] .tpk-validation-errors {
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
