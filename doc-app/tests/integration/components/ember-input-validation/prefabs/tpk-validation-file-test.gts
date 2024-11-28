@@ -4,8 +4,8 @@ import { render, triggerEvent, type TestContext } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationFile from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-file';
-import { cssClassesExist } from '../generic-test-functions/css-classes-exist';
-import { dataHasErrorAttribute } from '../generic-test-functions/data-has-error-attribute';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -38,7 +38,7 @@ module(
       const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
 
-      await dataHasErrorAttribute(assert,changeset,'file');
+      await assertDataHasErrorAttribute(assert,changeset,'file');
 
       await triggerEvent('[data-test-tpk-file-input]', 'change', {
         files: [new File(['Ember Rules!'], 'file.txt')],
@@ -49,7 +49,7 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       const changeset = setupChangeset.call(this);
       await renderComponent(changeset);
-      await cssClassesExist(assert,'file');
+      await assertTpkCssClassesExist(assert,'file');
     });
   },
 );

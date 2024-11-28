@@ -5,8 +5,8 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { type TestContext } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationIban from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-iban';
-import { cssClassesExist } from '../generic-test-functions/css-classes-exist';
-import { dataHasErrorAttribute } from '../generic-test-functions/data-has-error-attribute';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 
 interface ThisTestContext extends TestContext {
   changeset: ImmerChangeset;
@@ -80,12 +80,12 @@ module(
 
     test<ThisTestContext>('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await renderComponentAndReturnChangeset.call(this);
-      await dataHasErrorAttribute(assert,changeset,'iban');
+      await assertDataHasErrorAttribute(assert,changeset,'iban');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (this: ThisTestContext,assert) {
       await renderComponentAndReturnChangeset.call(this);
-      await cssClassesExist(assert,'iban');
+      await assertTpkCssClassesExist(assert,'iban');
     });
   },
 );

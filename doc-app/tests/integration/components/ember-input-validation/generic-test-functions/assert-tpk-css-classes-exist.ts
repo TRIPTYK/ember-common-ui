@@ -1,4 +1,4 @@
-export async function cssClassesExist(
+export async function assertTpkCssClassesExist(
  assert: Assert,
  input: string,
 ) {

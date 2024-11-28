@@ -2,7 +2,7 @@ import { pauseTest, settled } from "@ember/test-helpers";
 import type ImmerChangeset from "ember-immer-changeset";
 import { log } from "qunit";
 
-export async function dataHasErrorAttribute(
+export async function assertDataHasErrorAttribute(
   assert: Assert,
   changeset: ImmerChangeset,
   input: string,
