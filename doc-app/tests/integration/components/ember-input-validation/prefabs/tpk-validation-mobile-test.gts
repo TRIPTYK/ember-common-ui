@@ -88,5 +88,19 @@ module(
       await settled();
       assert.dom('.tpk-validation-errors span').hasText('required');
     });
+
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
+      const changeset = await setChangeset( '');
+      await renderComponent(changeset);
+      assert.dom(`.tpk-mobile-container`).exists().hasAttribute(`data-test-tpk-prefab-mobile-container`);
+      assert.dom(`.tpk-mobile-container .tpk-mobile-content`).exists()
+      assert.dom(`.tpk-mobile-container .tpk-mobile-input`).exists()
+      assert.dom(`.tpk-mobile-container .tpk-validation-errors`).exists()
+      assert.dom(`.tpk-mobile-container .tpk-label`).exists()
+      assert.dom(`label`).hasClass(`tpk-mobile-label-container`);
+      assert.dom(`input`).hasClass(`tpk-mobile-input`);
+      assert.dom(`label > div:first-of-type`).hasClass(`tpk-label`, `The first div inside label has the class tpk-label.`);
+      assert.dom(`.tpk-mobile-container > div:last-of-type`).hasClass(`tpk-validation-errors`, `The second div inside tpk-mobile-container has the class tpk-validation-errors.`);
+    });
   },
 );

@@ -28,7 +28,7 @@ export interface TpkValidationMobilePrefabSignature
   Blocks: {
     default: [];
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 interface Prefix {
@@ -128,45 +128,49 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       @unmaskValue={{true}}
       as |I|
     >
-      <div class="tpk-input" anchorScrollUp={{@validationField}} data-test-tpk-input data-has-error='{{this.hasError}}' ...attributes>
-      <I.Label
-        class='tpk-input-validation-label'
-        data-test-label-not-yielded
-      >
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} />
-      </I.Label>
       <div
-        class='tpk-input-validation-mobile'
-        data-test-mobile-validation
+        class='tpk-mobile-container'
+        data-has-error='{{this.hasError}}'
+        data-test-tpk-prefab-mobile-container
       >
-        <TpkSelectComponent
-          @label=''
-          @options={{this.prefixes}}
-          @selected={{this.selectedPrefix}}
-          @onChange={{this.onChangeValuePrefix}}
-
-          as |T|
+        <I.Label
+          anchorScrollUp={{@validationField}}
+          data-test-tpk-input
+          data-has-error='{{this.hasError}}'
+          class='tpk-mobile-label-container'
+          ...attributes
         >
-          <T.Option as |O|>
-            <div class='flag'>
-              <img
-                alt={{this.getValueFromOption O.option 'code'}}
-                src={{this.getValueFromOption O.option 'flag'}}
-                width='20'
-              />
-              <div>
-                {{this.getValueFromOption O.option 'code'}}
+          <MandatoryLabelComponent @label={{@label}} @mandatory={{this.mandatory}} class="tpk-label"  />
+        </I.Label>
+        <div class="tpk-mobile-content">
+          <TpkSelectComponent
+            @label=''
+            @options={{this.prefixes}}
+            @selected={{this.selectedPrefix}}
+            @disabled={{@disabled}}
+            @onChange={{this.onChangeValuePrefix}}
+            as |T|
+          >
+            <T.Option as |O|>
+              <div class='flag'>
+                <img
+                  alt={{this.getValueFromOption O.option 'code'}}
+                  src={{this.getValueFromOption O.option 'flag'}}
+                  width='20'
+                />
+                <div>
+                  {{this.getValueFromOption O.option 'code'}}
+                </div>
               </div>
-            </div>
-          </T.Option>
-        </TpkSelectComponent>
-        <I.Input inputmode='tel' />
+            </T.Option>
+          </TpkSelectComponent>
+          <I.Input inputmode='tel' class="tpk-mobile-input" />
+        </div>
+        <TpkValidationErrorsComponent
+          class="tpk-validation-errors"
+          @errors={{this.errors}}
+        />
       </div>
-      <TpkValidationErrorsComponent
-        @errors={{this.errors}}
-
-      />
-          </div>
     </TpkInputComponent>
   </template>
 }
