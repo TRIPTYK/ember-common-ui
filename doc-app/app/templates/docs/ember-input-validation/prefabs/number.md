@@ -15,11 +15,31 @@ The number validation input can be blocked at a minimum of 0 or be a negative nu
         @mandatory={{true}}
         @unsigned={{true}}
       />
-
       <Prefabs::TpkValidationNumber
         @label="Number"
         @placeholder="Enter an number"
         @changeset={{this.changeset}} 
+        @validationField="number"
+        @changeEvent="change"
+        @onChange={{this.onChangeNumber}}
+        @disabled={{false}}
+        @mandatory={{true}}
+      />
+      <Prefabs::TpkValidationNumber
+        @label="Disabled number"
+        @disabled={{true}}
+        @placeholder="Enter an number"
+        @changeset={{this.changeset}} 
+        @validationField="number"
+        @changeEvent="change"
+        @onChange={{this.onChangeNumber}}
+        @disabled={{false}}
+        @mandatory={{true}}
+      />
+      <Prefabs::TpkValidationNumber
+        @label="Number with errors"
+        @placeholder="Enter an number"
+        @changeset={{this.changesetWithErrors}} 
         @validationField="number"
         @changeEvent="change"
         @onChange={{this.onChangeNumber}}
