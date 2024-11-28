@@ -3,7 +3,7 @@ import {
   fillIn,
   find,
   render,
-  type TestContext,
+
   settled,
 } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
@@ -11,9 +11,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationNumber from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-number';
 
-interface ThisTestContext extends TestContext {
 
-}
 
 module(
   'Integration | Component | Prefabs | tpk-validation-number',
@@ -22,7 +20,7 @@ module(
     setupIntl(hooks, 'fr-fr');
 
     async function renderComponent(changeset: ImmerChangeset) {
-      await render<ThisTestContext>(
+      await render(
         <template>
       <TpkValidationNumber
         @changeset={{changeset}}
@@ -34,7 +32,7 @@ module(
     </template>);
     }
     async function renderComponentUnsigned(changeset: ImmerChangeset) {
-      await render<ThisTestContext>(<template>
+      await render(<template>
       <TpkValidationNumber
         @changeset={{changeset}}
         @validationField="number"
@@ -46,14 +44,14 @@ module(
     </template>);
     }
 
-    function setupChangeset(this: TestContext) {
+    function setupChangeset() {
       return new ImmerChangeset({
         number: 0,
       });
     }
 
-    test('Input type must be a number', async function (this: ThisTestContext, assert) {
-      const changeset = setupChangeset.call(this);
+    test('Input type must be a number', async function ( assert) {
+      const changeset = setupChangeset();
       await renderComponent(changeset);
       await fillIn('input', '2.1');
       assert.dom('input').hasAttribute('type', 'number');
@@ -63,13 +61,13 @@ module(
     });
 
     test('Attributes should be passed to the input', async function (assert) {
-      const changeset = setupChangeset.call(this);
+      const changeset = setupChangeset();
       await renderComponent(changeset);
       assert.dom('.tpk-input').hasClass('custom-number-class');
     });
 
-    test('it passes unsigned number', async function (this: ThisTestContext, assert) {
-      const changeset = setupChangeset.call(this);
+    test('it passes unsigned number', async function ( assert) {
+      const changeset = setupChangeset();
       await renderComponentUnsigned(changeset);
       await fillIn('input', '0.1');
       const input = find('input');
@@ -80,7 +78,7 @@ module(
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
-      const changeset = setupChangeset.call(this);
+      const changeset = setupChangeset();
       await renderComponentUnsigned(changeset);
       changeset.addError({
         message: 'required',

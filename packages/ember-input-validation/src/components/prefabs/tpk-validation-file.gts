@@ -6,7 +6,7 @@ import TpkValidationFileComponent, { type TpkValidationFileComponentSignature } 
 
 export interface TpkValidationFilePrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkValidationFileComponentSignature['Args'] & { mandatory: boolean };
+  Args: BaseValidationSignature['Args'] & TpkValidationFileComponentSignature['Args'] & { mandatory?: boolean };
   Blocks: {
     default: [];
   };

@@ -1,14 +1,10 @@
 import { module, test } from 'qunit';
 import { click, fillIn, findAll, render } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
-import { setupMock, worker, type ServiceWorkerTestContext } from 'doc-app/tests/worker';
+import { setupMock, worker } from 'doc-app/tests/worker';
 import { TableGenericUserWorker } from 'doc-app/tests/workers/table-generic';
 import { setupRenderingTest } from 'ember-qunit';
 import TpkTableGeneric from '@triptyk/ember-ui/components/tpk-table-generic';
-
-interface ThisTestContext {
-
-}
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
@@ -18,7 +14,7 @@ module('Integration | Component | table-generic', function (hooks) {
   const pageSize = 5;
   const pageSizes: number[] = [5, 10, 25];
 
-  hooks.beforeEach<ServiceWorkerTestContext>(async function () {
+  hooks.beforeEach(async function () {
     await TableGenericUserWorker(worker);
   });
   async function renderTableGeneric(
@@ -31,7 +27,7 @@ module('Integration | Component | table-generic', function (hooks) {
       assert.step('delete function called');
     };
 
-    await render<ThisTestContext>(<template>
+    await render(<template>
     <TpkTableGeneric
       @rowClick={{rowClick}}
       @pageSize={{pageSize}}
@@ -81,7 +77,7 @@ module('Integration | Component | table-generic', function (hooks) {
       assert.step('rowClick function called');
     };
 
-    await render<ThisTestContext>(<template>
+    await render(<template>
     <TpkTableGeneric
       @rowClick={{rowClick}}
       @pageSize={{pageSize}}
@@ -117,7 +113,7 @@ module('Integration | Component | table-generic', function (hooks) {
   </template>);
   }
 
-  test<ServiceWorkerTestContext>('It renders search input and table', async function (assert) {
+  test('It renders search input and table', async function (assert) {
     await renderTableGeneric(assert);
     assert.dom('input[type="search"]').exists();
     assert.dom('.tpk-table-generic').exists();
@@ -133,7 +129,7 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.verifySteps(['rowClick function called']);
   });
 
-  test<ServiceWorkerTestContext>('It can sort firstName & lastName and cannot sort email', async function (assert) {
+  test('It can sort firstName & lastName and cannot sort email', async function (assert) {
     await renderTableGeneric(assert);
     assert.dom('thead th[data-test-table="firstName"]').hasAttribute('role');
     assert.dom('thead th[data-test-table="lastName"]').hasAttribute('role');
@@ -145,7 +141,7 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Simon');
   });
 
-  test<ServiceWorkerTestContext>('It triggers search', async function (assert) {
+  test('It triggers search', async function (assert) {
     await renderTableGeneric(assert);
 
     let rows = document.querySelectorAll('[data-test-row]');
@@ -158,7 +154,7 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
 
-  test<ServiceWorkerTestContext>('It calls deleteAction method on delete button click', async function (assert) {
+  test('It calls deleteAction method on delete button click', async function (assert) {
     await renderTableGeneric(assert);
     const deleteButton = findAll('[data-test-actions-open-action]');
     assert.strictEqual(
@@ -172,7 +168,7 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.verifySteps(['delete function called']);
   });
 
-  test<ServiceWorkerTestContext>('It renders pageSizes args', async function (assert) {
+  test('It renders pageSizes args', async function (assert) {
     await renderTableGeneric(assert);
 
     const selectPageSizes = findAll('[data-test-pagination-select] option');
@@ -180,7 +176,7 @@ module('Integration | Component | table-generic', function (hooks) {
       assert.dom(option).hasValue(`${pageSizes[index]}`);
     }
   });
-  test<ServiceWorkerTestContext>('It can change page', async function (assert) {
+  test('It can change page', async function (assert) {
     await renderTableGeneric(assert);
 
     const rows = document.querySelectorAll('[data-test-row]');
@@ -195,23 +191,23 @@ module('Integration | Component | table-generic', function (hooks) {
     await click('.yeti-table-pagination-controls-previous');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
-  test<ServiceWorkerTestContext>('Table does not create an additional column when no action is specified', async function (assert) {
+  test('Table does not create an additional column when no action is specified', async function (assert) {
     await renderTableGenericWithNoAction(assert);
     assert
       .dom('thead th:last-child')
       .doesNotHaveAttribute('data-test-action-menu-header');
   });
-  test<ServiceWorkerTestContext>('Table creates an additional column when an action menu is yielded', async function (assert) {
+  test('Table creates an additional column when an action menu is yielded', async function (assert) {
     await renderTableGeneric(assert);
     assert
       .dom('thead th:last-child')
       .hasAttribute('data-test-action-menu-header');
   });
-  test<ServiceWorkerTestContext>('Colspan of the footer is adjusted when an action menu is yielded', async function (assert) {
+  test('Colspan of the footer is adjusted when an action menu is yielded', async function (assert) {
     await renderTableGeneric(assert);
     assert.dom('tfoot td').hasAttribute('colspan', '4');
   });
-  test<ServiceWorkerTestContext>('Colspan of the footer is reduced when no action menu is yielded', async function (assert) {
+  test('Colspan of the footer is reduced when no action menu is yielded', async function (assert) {
     await renderTableGenericWithNoAction(assert);
     assert.dom('tfoot td').hasAttribute('colspan', '3');
   });
