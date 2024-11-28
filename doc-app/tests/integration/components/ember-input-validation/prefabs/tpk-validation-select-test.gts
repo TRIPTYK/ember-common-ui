@@ -33,6 +33,7 @@ module(
           @options={{options}}
           @changeset={{changeset}}
           @validationField="names"
+          @disabled={{disabled}}
           @onChange={{onChange}}
           class="custom-class"
         /></template>,
