@@ -13,6 +13,19 @@ to the one on your belgian ID.
         @changeset={{this.changeset}} 
         @validationField="nationalNumber"
       />
+      <Prefabs::TpkValidationNationalNumber 
+        @label="Disabled National number"
+        @placeholder="Enter belgian national number"
+        @disabled={{true}}
+        @changeset={{this.changeset}} 
+        @validationField="nationalNumber"
+      />
+      <Prefabs::TpkValidationNationalNumber 
+        @label="Error National number"
+        @placeholder="Enter belgian national number"
+        @changeset={{this.changesetWithErrors}} 
+        @validationField="nationalNumber"
+      />
   </demo.example>
   <demo.snippet @name="tpk-national-number.hbs"/>
 </DocsDemo>

@@ -71,7 +71,7 @@ In example:
   <demo.example @name="tpk-select-prefab-label.hbs">
       <Prefabs::TpkValidationSelect
         @label="Select multiple CEO"
-        @labelComponent="dummy-label-select"
+        @labelComponent={{component "dummy-label-select"}}
         @multiple={{true}}
         @options={{this.options}}
         @changeset={{this.changeset}} 

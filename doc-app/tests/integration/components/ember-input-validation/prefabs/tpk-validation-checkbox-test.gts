@@ -13,7 +13,9 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(changeset: ImmerChangeset) {
+    async function renderComponent(changeset: ImmerChangeset, params?: {
+      disabled?: boolean;
+    }) {
       await render(
         <template>
           <TpkValidationCheckbox
@@ -21,6 +23,7 @@ module(
           @validationField="checkbox"
           @label="label"
           @mandatory={{true}}
+          @disabled={{params.disabled}}
           />
         </template>,
       );
@@ -48,9 +51,17 @@ module(
     });
 
      test('CSS classes exist and have been attached to the correct element', async function (assert) {
-     const changeset = setupChangeset();
+      const changeset = setupChangeset();
       await renderComponent(changeset);
       await assertTpkCssClassesExist(assert,'checkbox');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = setupChangeset();
+      await renderComponent(changeset, {
+        disabled: true,
+      });
+      assert.dom(`[data-test-tpk-checkbox-input]`).hasAttribute('disabled');
     });
   },
 );

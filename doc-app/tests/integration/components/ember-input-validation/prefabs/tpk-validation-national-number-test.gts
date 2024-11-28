@@ -13,7 +13,11 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponentAndReturnChangeset() {
+    async function renderComponentAndReturnChangeset({
+      disabled = false,
+    }: {
+      disabled?: boolean;
+    } = {}) {
       const immerChangeset = new ImmerChangeset({
         nationalNumber: '',
       });
@@ -22,6 +26,7 @@ module(
         <template>
          <TpkValidationNationalNumber
             @label="label"
+            @disabled={{disabled}}
             @changeset={{immerChangeset}}
             @validationField="nationalNumber"
             class="custom-national-number-class"
@@ -43,9 +48,9 @@ module(
       assert.strictEqual(changeset.get('nationalNumber'), '99.12.12-234.53');
     });
 
-    test('Attributes should be passed to the input', async function (assert) {
+    test('Attributes should be passed to the container', async function (assert) {
       await renderComponentAndReturnChangeset();
-      assert.dom('.tpk-input').hasClass('custom-national-number-class');
+      assert.dom('[data-test-tpk-prefab-national-number-container]').hasClass('custom-national-number-class');
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
@@ -59,6 +64,13 @@ module(
       assert.dom('.tpk-validation-errors').exists();
       await settled();
       assert.dom('.tpk-validation-errors span').hasText('required');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      await renderComponentAndReturnChangeset({
+        disabled: true
+      });
+      assert.dom(`[data-test-tpk-national-number-input]`).hasAttribute('disabled');
     });
   },
 );

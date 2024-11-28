@@ -10,6 +10,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationNumber from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-number';
+import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 
 
 
@@ -60,10 +61,10 @@ module(
       assert.notOk(changeset.get('number'));
     });
 
-    test('Attributes should be passed to the input', async function (assert) {
+    test('Attributes should be passed to the container', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset);
-      assert.dom('.tpk-input').hasClass('custom-number-class');
+      assert.dom('[data-test-tpk-prefab-number-container]').hasClass('custom-number-class');
     });
 
     test('it passes unsigned number', async function ( assert) {
@@ -89,6 +90,12 @@ module(
       assert.dom('.tpk-validation-errors').exists();
       await settled();
       assert.dom('.tpk-validation-errors span').hasText('required');
+    });
+
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
+      const changeset = setupChangeset();
+      await renderComponent(changeset);
+      assertTpkCssClassesExist(assert, 'number');
     });
   },
 );
