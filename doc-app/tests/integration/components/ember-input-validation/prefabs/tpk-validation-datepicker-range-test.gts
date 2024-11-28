@@ -8,6 +8,7 @@ import { setTempusDominusDate } from '@triptyk/ember-input/test-support/datepick
 import TpkValidationDatepickerRange from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-datepicker-range';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 module(
@@ -59,6 +60,14 @@ module(
         disabled: true,
       });
       assert.dom(`[data-test-tpk-datepicker-range-input]`).hasAttribute('disabled');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      await renderComponentAndReturnChangeset({
+        disabled: false,
+      });
+      await a11yAudit();
     });
   },
 );

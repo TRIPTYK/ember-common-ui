@@ -2,7 +2,7 @@ import type { TOC } from '@ember/component/template-only';
 
 export interface MandatoryLabelComponentSignature {
   Args: {
-    label?: string;
+    label: string;
     mandatory?: boolean;
   };
   Element: HTMLSpanElement;

@@ -6,6 +6,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationBic from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-bic';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module(
   'Integration | Component | Prefabs | tpk-validation-bic',
@@ -64,6 +65,14 @@ module(
         disabled: true,
       });
       assert.dom(`[data-test-tpk-bic-input]`).hasAttribute('disabled');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      await renderComponentAndReturnChangeset({
+        disabled: false,
+      });
+      await a11yAudit();
     });
   },
 );
