@@ -5,6 +5,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationNationalNumber from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-national-number';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 module(
@@ -71,6 +72,14 @@ module(
         disabled: true
       });
       assert.dom(`[data-test-tpk-national-number-input]`).hasAttribute('disabled');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      await renderComponentAndReturnChangeset({
+        disabled: false
+      });
+      await a11yAudit();
     });
   },
 );

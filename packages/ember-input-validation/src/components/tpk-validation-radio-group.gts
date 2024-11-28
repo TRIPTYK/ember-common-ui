@@ -13,7 +13,7 @@ export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     classless?: boolean;
-    groupLabel?: string;
+    groupLabel: string;
     label: string;
     unmaskValue?: boolean;
     disabled?: boolean;

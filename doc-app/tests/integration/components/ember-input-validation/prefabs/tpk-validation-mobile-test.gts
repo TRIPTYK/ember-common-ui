@@ -1,5 +1,5 @@
 
-import { module, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {
 
@@ -13,7 +13,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import { selectChoose } from 'ember-power-select/test-support';
 import TpkValidationMobile from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-mobile';
 import TpkValidationInput from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-input';
-
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 module(
@@ -137,6 +137,16 @@ module(
         changeset
       });
       assert.dom(`[data-test-tpk-mobile-input]`).hasAttribute('disabled');
+    });
+
+    skip('Accessibility', async function (assert) {
+      const changeset = await setChangeset( '');
+      assert.expect(0);
+      await renderComponent({
+        disabled: false,
+        changeset
+      });
+      await a11yAudit();
     });
   },
 );

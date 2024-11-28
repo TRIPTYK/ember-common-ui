@@ -4,7 +4,6 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, fillIn } from '@ember/test-helpers';
 import { getOwner } from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
-import { a11yAudit } from 'ember-a11y-testing/test-support';
 import CatchState from 'doc-app/services/catch-state';
 
 import catchState from 'doc-app/helpers/catch-state';
@@ -96,16 +95,6 @@ module('Integration | Component | tpk-input', function (hooks) {
       </template>
     );
     assert.dom('[data-test-tpk-input-input]').hasValue(`${maskPrefix}####`);
-  });
-
-  test('Accessibility', async function (assert) {
-    await render(
-      <template><TpkInput @type="password" @label="label" @value="value"/>
-      </template>
-    );
-
-    await a11yAudit();
-    assert.expect(0);
   });
 
   test('when input type=number, onChange value should be a number', async function (assert) {

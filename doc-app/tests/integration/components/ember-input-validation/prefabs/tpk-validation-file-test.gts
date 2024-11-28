@@ -6,6 +6,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationFile from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-file';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 module(
@@ -52,6 +53,12 @@ module(
       const changeset = setupChangeset();
       await renderComponent({ changeset , disabled: true});
       assert.dom(`[data-test-tpk-file-input]`).hasAttribute('disabled');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      await renderComponent({changeset: setupChangeset(), disabled: false});
+      await a11yAudit();
     });
   },
 );

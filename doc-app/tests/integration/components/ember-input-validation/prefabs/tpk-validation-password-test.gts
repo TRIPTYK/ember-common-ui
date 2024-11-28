@@ -5,8 +5,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationPassword from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-password';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
-
-
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module(
   'Integration | Component | Prefabs | tpk-validation-password',
@@ -27,6 +26,7 @@ module(
         <template>
           <TpkValidationPassword
           class="custom-class"
+          @label="test"
           @disabled={{disabled}}
           @changeset={{changeset}}
           @validationField="name" />
@@ -136,6 +136,14 @@ module(
         disabled: false
       });
       assertTpkCssClassesExist(assert, 'password');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      await renderComponent({
+        disabled: false
+      });
+      await a11yAudit();
     });
   },
 );

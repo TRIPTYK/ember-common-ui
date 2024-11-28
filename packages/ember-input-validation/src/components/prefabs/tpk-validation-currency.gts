@@ -67,7 +67,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
     as |V|>
-        <V.Label
+      <V.Label
         class="tpk-currency-container"
          data-test-tpk-prefab-currency-container
          data-has-error='{{V.hasError}}'
@@ -85,7 +85,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
           class="tpk-validation-errors"
           @errors={{V.errors}}
           />
-        </V.Label>
+      </V.Label>
     </TpkValidationInputComponent>
   </template>
 }
