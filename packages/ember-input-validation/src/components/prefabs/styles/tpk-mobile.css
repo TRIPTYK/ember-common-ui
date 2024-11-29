@@ -28,7 +28,7 @@
 }
 
 .tpk-mobile-content .ember-power-select-selected-item {
-  @apply m-0 h-full flex justify-center items-center;
+  @apply m-0 h-full flex items-center;
 }
 
 .tpk-mobile-content .ember-basic-dropdown-content {
