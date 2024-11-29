@@ -10,6 +10,7 @@ import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import { tracked } from 'tracked-built-ins';
 import TpkLabel from './tpk-label.gts';
+import { assert } from '@ember/debug';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
@@ -53,6 +54,11 @@ export type TpkTextareaSignature = {
 };
 export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
   @tracked charCount = 0;
+
+  public constructor(owner: unknown, args: TpkTextareaSignature['Args']) {
+    super(owner, args);
+    assert('@label must be a string', typeof args.label === 'string');
+  }
 
   @action
   onChange(e: Event) {
