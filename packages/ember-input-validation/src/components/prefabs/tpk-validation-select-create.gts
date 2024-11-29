@@ -77,7 +77,6 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @searchMessage={{@searchMessage}}
         @search={{@search}}
         anchorScrollUp={{@validationField}}
-        ...attributes
         as |S|
       >
         <S.Option as |O|>
