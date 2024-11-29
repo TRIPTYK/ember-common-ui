@@ -3,6 +3,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { restartableTask, timeout } from 'ember-concurrency';
+import type Owner from '@ember/owner';
 
 interface Option {
   name: string;
@@ -11,11 +12,24 @@ interface Option {
 
 interface Changeset {
   repository: Option | undefined;
+  disabled: Option | undefined;
+  error: Option | undefined;
 }
 
 export default class DocsEmberInputValidationPrefabsSelectSearchController extends Controller {
+  constructor(owner: Owner) {
+    super(owner);
+    this.changeset.addError({
+      message: 'This is an error message',
+      value: '',
+      originalValue: '',
+      key: 'error',
+    });
+  }
   @tracked changeset = new ImmerChangeset<Changeset>({
     repository: undefined,
+    disabled: undefined,
+    error: undefined,
   });
   @tracked options: Option[] = [];
 
