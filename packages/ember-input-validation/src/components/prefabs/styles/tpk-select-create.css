@@ -20,6 +20,10 @@
   color: var(--fallback-bc, oklch(var(--bc) / 0.4));
 }
 
+.tpk-select-create-container .ember-power-select-placeholder {
+  @apply text-neutral-500;
+}
+
 .tpk-select-create-container .ember-power-select-selected-item {
   @apply m-0 h-full flex items-center;
 }

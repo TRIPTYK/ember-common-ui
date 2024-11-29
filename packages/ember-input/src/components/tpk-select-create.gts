@@ -90,6 +90,8 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
           @selected={{@selected}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
+          @ariaLabelledBy={{this.guid}}
+          @ariaLabel={{this.guid}}
           @onCreate={{@onCreate}}
           @renderInPlace={{this.renderInPlace}}
           @selectedItemComponent={{@selectedItemComponent}}
@@ -120,6 +122,8 @@ export default class TpkSelectCreateComponent extends Component<TpkSelectCreateS
           @selected={{@selected}}
           @allowClear={{@allowClear}}
           @onChange={{@onChange}}
+          @ariaLabelledBy={{this.guid}}
+          @ariaLabel={{this.guid}}
           @onCreate={{@onCreate}}
           @renderInPlace={{this.renderInPlace}}
           @selectedItemComponent={{@selectedItemComponent}}

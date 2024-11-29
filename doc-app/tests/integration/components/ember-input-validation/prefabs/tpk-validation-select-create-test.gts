@@ -1,5 +1,5 @@
 
-import { module, skip, test } from 'qunit';
+import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {  click, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
@@ -81,7 +81,7 @@ module(
     });
 
     //  Got an error on accessibility... but cannot change it because it depends of power-select-with-create
-    skip('Accessibility', async function (assert) {
+    test('Accessibility', async function (assert) {
       assert.expect(0);
       await renderComponent();
       await a11yAudit();
