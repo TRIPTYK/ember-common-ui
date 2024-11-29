@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 
 function configureDisplay<T>(obj: T, format: (obj: T) => string) {
   return {
@@ -14,6 +15,8 @@ function configureDisplay<T>(obj: T, format: (obj: T) => string) {
 
 interface ChangesetType {
   ceo?: { firstname: string };
+  disabled?: { firstname: string };
+  error?: { firstname: string };
 }
 
 interface ChangesetBisType {
@@ -21,8 +24,20 @@ interface ChangesetBisType {
 }
 
 export default class DocsEmberInputValidationPrefabsSelectCreateController extends Controller {
+  constructor(owner: Owner) {
+    super(owner);
+    this.changeset.addError({
+      message: 'This is an error message',
+      value: '',
+      originalValue: '',
+      key: 'error',
+    });
+  }
+
   @tracked changeset = new ImmerChangeset<ChangesetType>({
     ceo: undefined,
+    disabled: undefined,
+    error: undefined,
   });
 
   @tracked changesetBis = new ImmerChangeset<ChangesetBisType>({

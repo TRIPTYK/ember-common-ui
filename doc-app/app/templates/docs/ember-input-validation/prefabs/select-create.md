@@ -22,6 +22,22 @@ In example:
         @onCreate={{this.onCreate}}
         @disabled={{false}}
       />
+      <Prefabs::TpkValidationSelectCreate
+        @label="Disabled"
+        @options={{this.options}}
+        @changeset={{this.changeset}} 
+        @validationField="disabled"
+        @onCreate={{this.onCreate}}
+        @disabled={{true}}
+      />
+      <Prefabs::TpkValidationSelectCreate
+        @label="Error"
+        @options={{this.options}}
+        @changeset={{this.changeset}} 
+        @validationField="error"
+        @onCreate={{this.onCreate}}
+        @disabled={{false}}
+      />
   </demo.example>
   <demo.snippet @name="tpk-select-create-prefab.hbs"/>
 </DocsDemo>
