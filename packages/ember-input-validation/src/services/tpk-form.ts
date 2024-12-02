@@ -14,6 +14,7 @@ import TpkValidationSelectCreatePrefabComponent from '../components/prefabs/tpk-
 import TpkValidationSelectSearchPrefabComponent from '../components/prefabs/tpk-validation-select-search.gts';
 import TpkValidationCheckboxPrefabComponent from '../components/prefabs/tpk-validation-checkbox.gts';
 import TpkValidationDatepickerRangePrefabComponent from '../components/prefabs/tpk-validation-datepicker-range.gts';
+import TpkValidationDatepickerPrefabComponent from '../components/prefabs/tpk-validation-datepicker.gts';
 import TpkValidationTimepickerPrefabComponent from '../components/prefabs/tpk-validation-timepicker.gts';
 import TpkValidationPasswordPrefabComponent from '../components/prefabs/tpk-validation-password.gts';
 import TpkValidationCurrencyPrefabComponent from '../components/prefabs/tpk-validation-currency.gts';
@@ -25,6 +26,9 @@ import TpkValidationNumberPrefabComponent from '../components/prefabs/tpk-valida
 import TpkValidationBicPrefabComponent from '../components/prefabs/tpk-validation-bic.gts';
 import TpkValidationNationalNumberPrefabComponent from '../components/prefabs/tpk-validation-national-number.gts';
 import TpkValidationVATPrefabComponent from '../components/prefabs/tpk-validation-vat.gts';
+import TpkValidationRadioGroupComponent from '../components/tpk-validation-radio-group.gts';
+import TpkValidationRadioPrefabComponent from '../components/prefabs/tpk-validation-radio.gts';
+import TpkValidationRadioGroupPrefabComponent from '../components/prefabs/tpk-validation-radio-group.gts';
 
 export default class TpkFormService extends Service {
   @tracked TpkInput = TpkValidationInputComponent;
@@ -40,7 +44,9 @@ export default class TpkFormService extends Service {
   @tracked TpkRadio = TpkValidationRadioComponent;
   @tracked TpkFile = TpkValidationFileComponent;
   @tracked TpkDatepicker = TpkValidationDatepickerComponent;
-  @tracked TpkDatepickerRangePrefab = TpkValidationDatepickerRangePrefabComponent;
+  @tracked TpkDatepickerPrefab = TpkValidationDatepickerPrefabComponent;
+  @tracked TpkDatepickerRangePrefab =
+    TpkValidationDatepickerRangePrefabComponent;
   @tracked TpkTimepickerPrefab = TpkValidationTimepickerPrefabComponent;
   @tracked TpkPasswordPrefab = TpkValidationPasswordPrefabComponent;
   @tracked TpkEmailPrefab = TpkValidationEmailPrefabComponent;
@@ -52,5 +58,7 @@ export default class TpkFormService extends Service {
   @tracked TpkIntegerPrefab = TpkValidationIntegerComponent;
   @tracked TpkNumberPrefab = TpkValidationNumberPrefabComponent;
   @tracked TpkMobilePrefab = TpkValidationMobilePrefabComponent;
-  @tracked TpkRadioGroup = TpkValidationRadioComponent;
+  @tracked TpkRadioGroup = TpkValidationRadioGroupComponent;
+  @tracked TpkRadioPrefab = TpkValidationRadioPrefabComponent;
+  @tracked TpkRadioGroupPrefab = TpkValidationRadioGroupPrefabComponent;
 }

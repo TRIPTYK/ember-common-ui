@@ -1,5 +1,7 @@
 # TpkForm
 
+> Looking for a complete example? [Jump to the complete example](#complete-example-of-using-tpkform)
+
 The `TpkForm` component is a form component that uses the `ember-immer-changeset` and `yup` libraries to provide a simple way to create forms with validation. The form yields each component from ember-input-validation as a block component.
 
 By default, the changeset is [executed](https://triptyk.github.io/ember-immer-changeset/classes/ImmerChangeset.html#execute) if the form submitted is valid.
@@ -9,6 +11,8 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
           @changeset={{this.changeset}}
           @onSubmit={{this.success}}
           @validationSchema={{this.validationSchema}} 
+          @autoScrollOnError={{false}}
+          class="form-doc"
         as |F|>
           <F.TpkInput @label="First Name" @validationField="firstName" as |I|>
             <I.Label/>
@@ -22,7 +26,7 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
           <F.TpkInputPrefab @label="Last Name" @validationField="lastName" />
           <F.TpkSelectPrefab @label="languages" @validationField="languages" @multiple={{true}} @options={{this.options}} />
           <br/>
-          <input class="mt-12" type="submit" value="Submit">
+          <button class="button" type="submit">Submit</button>
        </TpkForm>
     </demo.example>
     <demo.snippet @name="tpk-form.hbs"/>
@@ -46,36 +50,41 @@ By default, the changeset is [executed](https://triptyk.github.io/ember-immer-ch
 ## Yielded Components
 
 The `TpkForm` component yields the following components:
-<DocsLink @route="docs.ember-input-validation.input">
-- TpkValidationInput yielded as TpkInput
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.prefabs.input">
-- TpkValidationInputPrefab yielded as TpkInputPrefab
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.checkbox">
-- TpkValidationCheckbox yielded as TpkCheckbox
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.prefabs.checkbox">
-- TpkValidationCheckboxPrefab yielded as TpkCheckboxPrefab
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.datepicker">
-- TpkValidationDatePicker yielded as TpkDatePicker
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.file">
-- TpkValidationFile yielded as TpkFile
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.radio">
-- TpkValidationRadio yielded as TpkRadio
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.select">
-- TpkValidationSelect yielded as TpkSelect
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.textarea">
-- TpkValidationTextarea yielded as TpkTextarea
-</DocsLink>
-<DocsLink @route="docs.ember-input-validation.textarea">
-- TpkValidationTextareaPrefab yielded as TpkTextarea
-</DocsLink>
+
+### Base Components
+- TpkValidationInput yielded as `TpkInput`
+- TpkValidationTextarea yielded as `TpkTextarea`
+- TpkValidationSelect yielded as `TpkSelect`
+- TpkValidationCheckbox yielded as `TpkCheckbox`
+- TpkValidationRadio yielded as `TpkRadio`
+- TpkValidationRadioGroup yielded as `TpkRadioGroup`
+- TpkValidationFile yielded as `TpkFile`
+- TpkValidationDatePicker yielded as `TpkDatepicker`
+
+### Prefab Components
+- TpkValidationInputPrefab yielded as `TpkInputPrefab`
+- TpkValidationTextareaPrefab yielded as `TpkTextareaPrefab`
+- TpkValidationSelectPrefab yielded as `TpkSelectPrefab`
+- TpkValidationSelectCreatePrefab yielded as `TpkSelectCreatePrefab`
+- TpkValidationSelectSearchPrefab yielded as `TpkSelectSearchPrefab`
+- TpkValidationCheckboxPrefab yielded as `TpkCheckboxPrefab`
+- TpkValidationRadioPrefab yielded as `TpkRadioPrefab`
+- TpkValidationRadioGroupPrefab yielded as `TpkRadioGroupPrefab`
+- TpkValidationDatepickerPrefab yielded as `TpkDatepickerPrefab`
+- TpkValidationDatepickerRangePrefab yielded as `TpkDatepickerRangePrefab`
+- TpkValidationTimepickerPrefab yielded as `TpkTimepickerPrefab`
+
+### Specialized Input Prefabs
+- TpkValidationPasswordPrefab yielded as `TpkPasswordPrefab`
+- TpkValidationEmailPrefab yielded as `TpkEmailPrefab`
+- TpkValidationIBANPrefab yielded as `TpkIbanPrefab`
+- TpkValidationBicPrefab yielded as `TpkBicPrefab`
+- TpkValidationVATPrefab yielded as `TpkVatPrefab`
+- TpkValidationNationalNumberPrefab yielded as `TpkNationalNumberPrefab`
+- TpkValidationCurrencyPrefab yielded as `TpkCurrencyPrefab`
+- TpkValidationIntegerPrefab yielded as `TpkIntegerPrefab`
+- TpkValidationNumberPrefab yielded as `TpkNumberPrefab`
+- TpkValidationMobilePrefab yielded as `TpkMobilePrefab`
 
 ## Yielded values
 
@@ -83,6 +92,7 @@ The `TpkForm` component yields the following values:
 | Value | Type | Description |
 | --- | --- | --- |
 | changesetGet | Function | The [get](https://triptyk.github.io/ember-immer-changeset/classes/ImmerChangeset.html#get) function of the changeset. It is just a shortcut to avoid repeating the @changeset argument. |
+| requiredFields | Array | An array of the required fields.
 
 ## Changing the default components
 
@@ -93,11 +103,90 @@ let tpkFormService = this.owner.lookup(
   'service:tpk-form',
 ) as TpkFormService;
 
+// Base Components
 tpkFormService.TpkInput = DummyInput;
+tpkFormService.TpkTextarea = DummyTextarea;
 tpkFormService.TpkSelect = DummySelect;
 tpkFormService.TpkCheckbox = DummyCheckbox;
 tpkFormService.TpkRadio = DummyRadio;
-tpkFormService.TpkTextarea = DummyTextarea;
-tpkFormService.TpkDatePicker = DummyDatepicker;
+tpkFormService.TpkRadioGroup = DummyRadioGroup;
 tpkFormService.TpkFile = DummyFile;
+tpkFormService.TpkDatepicker = DummyDatepicker;
+
+// Prefab Components
+tpkFormService.TpkInputPrefab = DummyInputPrefab;
+tpkFormService.TpkTextareaPrefab = DummyTextareaPrefab;
+tpkFormService.TpkSelectPrefab = DummySelectPrefab;
+tpkFormService.TpkSelectCreatePrefab = DummySelectCreatePrefab;
+tpkFormService.TpkSelectSearchPrefab = DummySelectSearchPrefab;
+tpkFormService.TpkCheckboxPrefab = DummyCheckboxPrefab;
+tpkFormService.TpkRadioPrefab = DummyRadioPrefab;
+tpkFormService.TpkRadioGroupPrefab = DummyRadioGroupPrefab;
+tpkFormService.TpkDatepickerPrefab = DummyDatepickerPrefab;
+tpkFormService.TpkDatepickerRangePrefab = DummyDatepickerRangePrefab;
+tpkFormService.TpkTimepickerPrefab = DummyTimepickerPrefab;
+
+// Specialized Input Prefabs
+tpkFormService.TpkPasswordPrefab = DummyPasswordPrefab;
+tpkFormService.TpkEmailPrefab = DummyEmailPrefab;
+tpkFormService.TpkIbanPrefab = DummyIbanPrefab;
+tpkFormService.TpkBicPrefab = DummyBicPrefab;
+tpkFormService.TpkVatPrefab = DummyVatPrefab;
+tpkFormService.TpkNationalNumberPrefab = DummyNationalNumberPrefab;
+tpkFormService.TpkCurrencyPrefab = DummyCurrencyPrefab;
+tpkFormService.TpkIntegerPrefab = DummyIntegerPrefab;
+tpkFormService.TpkNumberPrefab = DummyNumberPrefab;
+tpkFormService.TpkMobilePrefab = DummyMobilePrefab;
 ```
+
+## Validation Behavior
+
+The form handles validation in two ways:
+- On submit: The entire form is validated when submitted
+- On field change: If `@reactive={{true}}` (default), fields are validated individually when their values change
+
+When validation errors occur:
+- If `@autoScrollOnError={{true}}` (default), the form will automatically scroll to the first error
+- If `@removeErrorsOnSubmit={{true}}` (default), existing errors are cleared before new validation on submit
+
+## Complete example of using TpkForm
+
+<DocsDemo as |demo|>
+    <demo.example @name="tpk-form-complete.hbs">
+       <TpkForm
+          @changeset={{this.changeset}}
+          @onSubmit={{this.success}}
+          @validationSchema={{this.validationSchema}} 
+          class="form-doc"
+        as |F|>
+          <div class="form-content">
+            <F.TpkInputPrefab @label="First Name" @validationField="firstName" />
+            <F.TpkInputPrefab @label="Last Name" @validationField="lastName" />
+            <F.TpkEmailPrefab @label="Email" @validationField="email" />
+            <F.TpkMobilePrefab @label="Phone" @validationField="phone" />
+            <F.TpkDatepickerPrefab @label="Birthdate" @validationField="birthday" />
+            <F.TpkSelectPrefab @label="Languages" @validationField="languages" @multiple={{true}} @options={{this.options}} />
+            <F.TpkTimepickerPrefab @label="Time" @validationField="time" />
+            <F.TpkCurrencyPrefab @label="Available money ?" @validationField="availableMoney" />
+            <F.TpkVatPrefab @label="VAT" @validationField="vat" />
+            <F.TpkBicPrefab @label="BIC" @validationField="bic" />
+            <F.TpkIbanPrefab @label="IBAN" @validationField="iban" />
+            <F.TpkRadioGroupPrefab
+              @validationField="status"
+              @mandatory={{false}}
+              @groupLabel="Status"
+              @mandatory={{true}}
+            as |Radio|>
+              <Radio @value="pending" @label="Pending" @selected="pending" />
+              <Radio @value="complete" @label="Complete" />
+            </F.TpkRadioGroupPrefab>
+            <F.TpkPasswordPrefab @label="Password" @validationField="password" />
+            <F.TpkCheckboxPrefab @label="Is free ?" @validationField="isFree" />
+          </div>
+          <br/>
+          <button class="button" type="submit">Submit</button>
+       </TpkForm>
+    </demo.example>
+    <demo.snippet @name="tpk-form-complete.hbs"/>
+    <demo.snippet @name="tpk-form-controller.js" />
+</DocsDemo>

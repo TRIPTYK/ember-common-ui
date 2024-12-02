@@ -1,0 +1,15 @@
+.form-doc .button {
+  @apply btn btn-primary;
+}
+
+.form-content {
+  @apply grid grid-cols-12 gap-4;
+}
+
+.form-content > * {
+  @apply col-span-4;
+}
+
+.form-content > .tpk-mobile-container {
+  @apply col-span-8;
+}

@@ -16,14 +16,14 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent() {
+    async function renderComponent(params?: { disabled?: boolean }) {
       const changeset = new ImmerChangeset({
         name: 'Hellooo',
       });
 
       await render(
         <template>
-          <TpkValidationTextarea @changeset={{changeset}} @validationField="name" @label="label" @mandatory={{true}} />
+          <TpkValidationTextarea @changeset={{changeset}} @validationField="name" @disabled={{params.disabled}} @label="label" @mandatory={{true}} />
         </template>
       );
 
@@ -41,6 +41,11 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponent();
       assertTpkCssClassesExist(assert, 'textarea', 'textarea');
+    });
+
+    test('@disabled disables the textarea', async function(assert) {
+       await renderComponent({ disabled: true});
+      assert.dom(`[data-test-tpk-textarea-input]`).hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {

@@ -8,7 +8,7 @@ import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-export interface TpkValidationDatepickerRangePrefabSignature
+export interface TpkValidationDatepickerPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<
     TpkValidationDatepickerComponentSignature['Args'],
@@ -20,12 +20,12 @@ export interface TpkValidationDatepickerRangePrefabSignature
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationDatepickerRangePrefabComponent extends Component<TpkValidationDatepickerRangePrefabSignature> {
+export default class TpkValidationDatepickerPrefabComponent extends Component<TpkValidationDatepickerPrefabSignature> {
   @tracked multipleDatesSeparator = ' - ';
 
   constructor(
     owner: unknown,
-    args: TpkValidationDatepickerRangePrefabSignature['Args'],
+    args: TpkValidationDatepickerPrefabSignature['Args'],
   ) {
     super(owner, args);
     assert(

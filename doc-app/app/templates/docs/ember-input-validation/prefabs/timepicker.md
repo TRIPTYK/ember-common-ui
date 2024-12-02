@@ -10,6 +10,17 @@ This component provides a timepicker with built-in validation.
       @validationField="time"
       class="tpk-input"
     />
+    <Prefabs::TpkValidationTimepicker
+      @label="Disabled"
+      @changeset={{this.changeset}}
+      @validationField="disabled"
+      @disabled=true
+    />
+    <Prefabs::TpkValidationTimepicker
+      @label="Error"
+      @changeset={{this.changeset}}
+      @validationField="error"
+    />
   </demo.example>
   <demo.snippet @name="tpk-timepicker.hbs" />
 </DocsDemo>

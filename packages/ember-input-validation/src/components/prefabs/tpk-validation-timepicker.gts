@@ -1,25 +1,46 @@
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import TpkValidationDatepickerComponent, { type TpkValidationDatepickerComponentSignature } from "../tpk-validation-datepicker.gts";
-import { type BaseValidationSignature } from "../base.ts";
-import { tracked } from "@glimmer/tracking";
+import TpkValidationDatepickerComponent, {
+  type TpkValidationDatepickerComponentSignature,
+} from '../tpk-validation-datepicker.gts';
+import { type BaseValidationSignature } from '../base.ts';
+import { tracked } from '@glimmer/tracking';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
 export interface TpkValidationTimepickerPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationDatepickerComponentSignature['Args'], 'value' | 'noCalendar' | 'enableTime' | 'mode' | 'multipleDatesSeparator' | 'promptTimeOnDateChange' | 'useCurrent' | 'todayButton' | 'closeButton' | 'keepOpen' | 'minDate' | 'maxDate' | 'daysOfWeekDisabled' | 'disabledDates' | 'viewMode'>;
+  Args: Omit<
+    TpkValidationDatepickerComponentSignature['Args'],
+    | 'value'
+    | 'noCalendar'
+    | 'enableTime'
+    | 'mode'
+    | 'multipleDatesSeparator'
+    | 'promptTimeOnDateChange'
+    | 'useCurrent'
+    | 'todayButton'
+    | 'closeButton'
+    | 'keepOpen'
+    | 'minDate'
+    | 'maxDate'
+    | 'daysOfWeekDisabled'
+    | 'disabledDates'
+    | 'viewMode'
+  >;
   Blocks: {
     default: [];
   };
   Element: HTMLDivElement;
-
 }
 
 export default class TpkValidationTimepickerPrefabComponent extends Component<TpkValidationTimepickerPrefabSignature> {
   @tracked mask = 'H:M';
   @tracked dateFormat = 'HH:mm';
 
-  constructor(owner: unknown, args: TpkValidationTimepickerPrefabSignature['Args']) {
+  constructor(
+    owner: unknown,
+    args: TpkValidationTimepickerPrefabSignature['Args'],
+  ) {
     super(owner, args);
     if (args.enableSecond) {
       this.mask = 'H:M:S';
@@ -33,7 +54,6 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
       @onChange={{@onChange}}
       @onClose={{@onClose}}
       @disabled={{@disabled}}
-
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @enableSecond={{@enableSecond}}
@@ -49,15 +69,26 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
       @requiredFields={{@requiredFields}}
       anchorScrollUp={{@validationField}}
       ...attributes
-    as |V|>
-      <V.Label>
-        <MandatoryLabelComponent @label={{@label}} @mandatory={{V.mandatory}} />
-      </V.Label>
-      <V.Input />
-      <TpkValidationErrorsComponent
-        @errors={{V.errors}}
-
-      />
+      as |V|
+    >
+      <div
+        class='tpk-timepicker-container'
+        data-test-tpk-prefab-timepicker-container
+        data-has-error='{{V.hasError}}'
+      >
+        <V.Label class='tpk-timepicker-label-container'>
+          <MandatoryLabelComponent
+            class='tpk-label'
+            @label={{@label}}
+            @mandatory={{V.mandatory}}
+          />
+        </V.Label>
+        <V.Input class='tpk-timepicker-input' data-test-tpk-timepicker-input />
+        <TpkValidationErrorsComponent
+          class='tpk-validation-errors'
+          @errors={{V.errors}}
+        />
+      </div>
     </TpkValidationDatepickerComponent>
   </template>
 }

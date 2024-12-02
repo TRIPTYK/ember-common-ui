@@ -7,6 +7,7 @@
 @import url('./components/prefabs/styles/tpk-datepicker-range.css');
 @import url('./components/prefabs/styles/tpk-email.css');
 @import url('./components/prefabs/styles/tpk-file.css');
+@import url('./components/prefabs/styles/tpk-timepicker.css');
 @import url('./components/prefabs/styles/tpk-iban.css');
 @import url('./components/prefabs/styles/tpk-mobile.css');
 @import url('./components/prefabs/styles/tpk-integer.css');
@@ -16,5 +17,6 @@
 @import url('./components/prefabs/styles/tpk-select.css');
 @import url('./components/prefabs/styles/tpk-select-create.css');
 @import url('./components/prefabs/styles/tpk-select-search.css');
+@import url('./components/prefabs/styles/tpk-vat.css');
 @import url('./components/prefabs/styles/tpk-radio.css');
 @import url('./components/prefabs/styles/tpk-radio-group.css');
