@@ -3,7 +3,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { tracked } from '@glimmer/tracking';
 
 export default class DocsEmberInputValidationPrefabsVATController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     vat: '',
   });
 }

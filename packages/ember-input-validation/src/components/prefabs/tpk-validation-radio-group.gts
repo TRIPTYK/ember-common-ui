@@ -9,7 +9,7 @@ export interface TpkValidationRadioGroupPrefabComponentSignature
   extends BaseValidationSignature{
   Args: BaseValidationSignature['Args']& TpkValidationRadioGroupComponentSignature['Args'] & {
     label: string;
-    groupLabel: string; 
+    groupLabel: string;
     options: string[];
   };
   Blocks: {
@@ -31,19 +31,26 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
     @mandatory={{@mandatory}}
     @groupLabel={{@groupLabel}}
     @requiredFields={{@requiredFields}}
-    data-test-prefab-radio-group
     as |V|>
-     {{yield (component 
-      TpkValidationRadioPrefabComponent
-        selected=V.selected
-        validationField=@validationField
-        changeset=@changeset
-        disabled=@disabled
-        mandatory=@mandatory    
-      )}}
-     <TpkValidationErrorsComponent
-      @errors={{V.errors}}
-    />
+    <fieldset class="tpk-radio-group-container"
+      data-has-error='{{V.hasError}}'
+      anchorScrollUp={{@validationField}}
+      data-test-tpk-prefab-radio-group-container
+    >
+      <legend class="tpk-radio-group-label">{{@groupLabel}}*</legend>
+      {{yield (component
+        TpkValidationRadioPrefabComponent
+          selected=V.selected
+          validationField=@validationField
+          changeset=@changeset
+          disabled=@disabled
+          mandatory=@mandatory
+        )}}
+      <TpkValidationErrorsComponent
+        class="tpk-validation-errors"
+        @errors={{V.errors}}
+      />
+    </fieldset>
   </TpkValidationRadioGroupComponent>
 </template>
 

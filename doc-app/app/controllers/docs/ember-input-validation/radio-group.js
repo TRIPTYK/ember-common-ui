@@ -4,7 +4,7 @@ import { tracked } from 'tracked-built-ins';
 import { ImmerChangeset } from 'ember-immer-changeset';
 
 export default class DocsRadioGroupValidationController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     radio: undefined,
   });
 

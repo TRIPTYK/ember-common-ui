@@ -8,7 +8,7 @@ export default class DocsRadioValidationController extends Controller {
   second = 'It the good choice!';
   third = 'You don t regret it!';
 
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     radio: undefined,
   });
 

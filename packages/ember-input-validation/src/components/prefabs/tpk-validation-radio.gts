@@ -25,9 +25,15 @@ const TpkValidationRadioPrefabComponent: TOC<TpkValidationRadioPrefabComponentSi
       @onChange={{@onChange}}
       @requiredFields={{@requiredFields}}
   as |V|>
-  
-    <V.Label @label={{@label}}/>
-    <V.Input />
+    <div
+      class="tpk-radio-container"
+      data-test-tpk-prefab-tpk-radio-container
+    >
+      <V.Label class="tpk-radio-label">
+        <span>{{@label}}</span>
+        <V.Input class="tpk-radio-input" />
+      </V.Label>
+    </div>
   </TpkValidationRadioComponent>
 </template>
 

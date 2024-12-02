@@ -4,12 +4,12 @@ import { tracked } from '@glimmer/tracking';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
 export default class DocsEmberInputValidationPrefabsIBANController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     bic: '',
     disabled: 'UKIO0000',
   });
 
-  @tracked changesetWithErrors = new ImmerChangeset({
+  changesetWithErrors = new ImmerChangeset({
     bic: 'UKIO0000',
   });
 
