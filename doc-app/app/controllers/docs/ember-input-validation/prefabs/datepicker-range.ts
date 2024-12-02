@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
 export default class DocsEmberInputValidationPrefabsDatepickerRangeController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     range: null,
     disabled: null,
     error: null,
