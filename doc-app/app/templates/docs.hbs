@@ -1,4 +1,4 @@
-{{!-- @glint-ignore --}}
+{{! @glint-ignore }}
 <DocsViewer as |viewer|>
   <viewer.nav as |nav|>
     <nav.item @label="Index" @route="docs.index" />
@@ -12,8 +12,8 @@
     <nav.item @label="Stack list" @route="docs.ember-ui.stack-list" />
     <nav.item @label="Stepper" @route="docs.ember-ui.stepper" />
     <nav.item @label="Table generic" @route="docs.ember-ui.table-generic" />
-    
-    {{!-- prefab section --}}
+
+    {{! prefab section }}
     <nav.section @label="Ember Input Validation Prefabs" />
     <nav.item @label="Bic" @route="docs.ember-input-validation.prefabs.bic" />
     <nav.item
@@ -25,6 +25,10 @@
       @route="docs.ember-input-validation.prefabs.currency"
     />
     <nav.item
+      @label="Datepicker"
+      @route="docs.ember-input-validation.prefabs.datepicker"
+    />
+    <nav.item
       @label="Datepicker Range"
       @route="docs.ember-input-validation.prefabs.datepicker-range"
     />
@@ -32,16 +36,16 @@
       @label="Email"
       @route="docs.ember-input-validation.prefabs.email"
     />
-    <nav.item
-      @label="File"
-      @route="docs.ember-input-validation.prefabs.file"
-    />
+    <nav.item @label="File" @route="docs.ember-input-validation.prefabs.file" />
     <nav.item @label="Iban" @route="docs.ember-input-validation.prefabs.iban" />
     <nav.item
       @label="Input"
       @route="docs.ember-input-validation.prefabs.input"
     />
-    <nav.item @label="Integer" @route="docs.ember-input-validation.prefabs.integer" />
+    <nav.item
+      @label="Integer"
+      @route="docs.ember-input-validation.prefabs.integer"
+    />
     <nav.item
       @label="Mobile"
       @route="docs.ember-input-validation.prefabs.mobile"
@@ -50,7 +54,10 @@
       @label="National Number"
       @route="docs.ember-input-validation.prefabs.national-number"
     />
-    <nav.item @label="Number" @route="docs.ember-input-validation.prefabs.number" />
+    <nav.item
+      @label="Number"
+      @route="docs.ember-input-validation.prefabs.number"
+    />
     <nav.item
       @label="Password"
       @route="docs.ember-input-validation.prefabs.password"
@@ -63,23 +70,26 @@
       @label="Select"
       @route="docs.ember-input-validation.prefabs.select"
     />
-   
+
     <nav.item
       @label="Select create"
       @route="docs.ember-input-validation.prefabs.select-create"
     />
-     <nav.item
+    <nav.item
       @label="Select search"
       @route="docs.ember-input-validation.prefabs.select-search"
     />
-    <nav.item @label="Textarea" @route="docs.ember-input-validation.prefabs.textarea" />
+    <nav.item
+      @label="Textarea"
+      @route="docs.ember-input-validation.prefabs.textarea"
+    />
     <nav.item
       @label="Time picker"
       @route="docs.ember-input-validation.prefabs.timepicker"
     />
     <nav.item @label="Vat" @route="docs.ember-input-validation.prefabs.vat" />
- 
-    {{!-- validation section --}}
+
+    {{! validation section }}
     <nav.section @label="Ember Input Validation" />
     <nav.item
       @label="Install"
@@ -98,14 +108,14 @@
     />
     <nav.item @label="Select" @route="docs.ember-input-validation.select" />
     <nav.item @label="Textarea" @route="docs.ember-input-validation.textarea" />
-    
-     {{!-- form section --}}
+
+    {{! form section }}
     <nav.section @label="Ember Form" />
     <nav.item @label="TpkForm" @route="docs.ember-input-validation.tpk-form" />
 
-    {{!-- input section --}}
-     <nav.section @label="Ember Input" />
-    <nav.item @label="Install" @route="docs.ember-input.installation" />   
+    {{! input section }}
+    <nav.section @label="Ember Input" />
+    <nav.item @label="Install" @route="docs.ember-input.installation" />
     <nav.item @label="Button" @route="docs.ember-input.button" />
     <nav.item @label="Checkbox" @route="docs.ember-input.checkbox" />
     <nav.item @label="Datepicker" @route="docs.ember-input.datepicker" />

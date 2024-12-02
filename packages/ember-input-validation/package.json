@@ -128,6 +128,7 @@
       "./components/prefabs/tpk-validation-checkbox.js": "./dist/_app_/components/prefabs/tpk-validation-checkbox.js",
       "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",
       "./components/prefabs/tpk-validation-datepicker-range.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker-range.js",
+      "./components/prefabs/tpk-validation-datepicker.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker.js",
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
       "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
       "./components/prefabs/tpk-validation-file.js": "./dist/_app_/components/prefabs/tpk-validation-file.js",
