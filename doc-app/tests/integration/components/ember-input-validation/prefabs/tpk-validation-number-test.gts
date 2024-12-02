@@ -21,12 +21,15 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(changeset: ImmerChangeset) {
+    async function renderComponent(changeset: ImmerChangeset, params?: {
+      disabled?: boolean;
+    }) {
       await render(
         <template>
       <TpkValidationNumber
         @changeset={{changeset}}
         @validationField="number"
+        @disabled={{params.disabled}}
         @label="Number validation field"
         class="custom-number-class"
         @step={{0.1}}
@@ -97,6 +100,14 @@ module(
       const changeset = setupChangeset();
       await renderComponent(changeset);
       assertTpkCssClassesExist(assert, 'number');
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = setupChangeset();
+      await renderComponent(changeset,{
+        disabled: true
+      });
+      assert.dom(`[data-test-tpk-number-input]`).hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {

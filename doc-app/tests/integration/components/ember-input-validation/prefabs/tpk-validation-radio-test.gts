@@ -14,12 +14,15 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(
-
+    async function renderComponent({
+      changeset,
+      disabled
+    }: {
       changeset: ImmerChangeset,
-    ) {
+      disabled?: boolean,
+    }) {
       await render(
-        <template><TpkValidationRadio @changeset={{changeset}} @validationField="radio" @label="label" @mandatory={{true}} @value="radio"/>
+        <template><TpkValidationRadio @changeset={{changeset}} @validationField="radio" @label="label" @disabled={{disabled}} @mandatory={{true}} @value="radio"/>
         </template>,
       );
       return changeset;
@@ -29,9 +32,20 @@ module(
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
-      await renderComponent( changeset);
+      await renderComponent({changeset});
       assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-label]').exists();
+    });
+
+    test('@disabled disables the input', async function(assert) {
+      const changeset = new ImmerChangeset({
+        radio: 'applati',
+      });
+      await renderComponent({
+        disabled: true,
+        changeset
+      });
+      assert.dom(`[data-test-tpk-prefab-tpk-radio-container] input`).hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
@@ -39,7 +53,7 @@ module(
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
-      await renderComponent( changeset);
+      await renderComponent({changeset});
       await a11yAudit();
     });
   },
