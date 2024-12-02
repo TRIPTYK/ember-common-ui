@@ -35,6 +35,7 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
 
   <template>
     <div class="tpk-validation-errors"
+    data-test-tpk-validation-errors
     ...attributes>
       {{#each this.errorMessages as |error|}}
         <span>

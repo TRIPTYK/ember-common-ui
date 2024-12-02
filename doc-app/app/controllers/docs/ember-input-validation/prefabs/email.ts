@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
 export default class DocsEmberInputValidationPrefabsEmailController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     email: undefined,
     disabled: 'email@disabled.true',
     error: 'hyperloop.com',

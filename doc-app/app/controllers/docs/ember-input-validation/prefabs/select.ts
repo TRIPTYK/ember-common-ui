@@ -22,7 +22,7 @@ export default class DocsEmberInputValidationPrefabsSelectController extends Con
       key: 'error',
     });
   }
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     ceo: configureDisplay(
       { firstname: 'Patrick', lastname: 'Pagnoulle' },
       (option) => `${option.firstname} ${option.lastname}`,
@@ -37,11 +37,11 @@ export default class DocsEmberInputValidationPrefabsSelectController extends Con
     ),
   });
 
-  @tracked changesetBis = new ImmerChangeset({
+  changesetBis = new ImmerChangeset({
     ceo: undefined,
   });
 
-  @tracked changesetTris = new ImmerChangeset({
+  changesetTris = new ImmerChangeset({
     ceo: [],
   });
 

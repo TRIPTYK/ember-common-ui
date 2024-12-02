@@ -5,12 +5,12 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
 export default class DocsEmberInputValidationPrefabsIntegerController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     integer: 0,
     uInteger: 0,
   });
 
-  @tracked changesetWithErrors = new ImmerChangeset({
+  changesetWithErrors = new ImmerChangeset({
     integer: 0,
     uInteger: 0,
   });

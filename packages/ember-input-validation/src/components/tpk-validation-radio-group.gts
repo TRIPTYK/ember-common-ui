@@ -7,7 +7,6 @@ import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';
 import { assert } from '@ember/debug';
-import MandatoryLabelComponent from './prefabs/mandatory-label.gts';
 
 export interface TpkValidationRadioGroupComponentSignature
   extends BaseValidationSignature {
@@ -60,40 +59,23 @@ export default class TpkValidationRadioGroupComponent extends BaseValidationComp
   }
 
   <template>
-    <div
-      class='tpk-validation-radio-container'
-      data-has-error='{{this.hasError}}'
-      ...attributes
-    >
-      <div
-        class={{unless @classless 'tpk-validation-radio-group-label'}}
-        data-test-tpk-radio-group-label
-      >
-        <MandatoryLabelComponent
-          @label={{@groupLabel}}
-          @mandatory={{@mandatory}}
-        />
-      </div>
-      <div class={{unless @classless 'tpk-validation-radio-group-group'}}>
-        {{yield
-          (hash
-            Radio=(component
-              TpkRadio
-              classless=@classless
-              disabled=@disabled
-              name=@validationField
-              selected=this.selected
-              onChange=this.onChange
-            )
-            selected=this.selected
-            onChange=this.onChange
-            errors=this.errors
-            hasError=this.hasError
-            firstError=this.firstError
-            mandatory=this.mandatory
-          )
-        }}
-      </div>
-    </div>
+    {{yield
+      (hash
+        Radio=(component
+          TpkRadio
+          classless=@classless
+          disabled=@disabled
+          name=@validationField
+          selected=this.selected
+          onChange=this.onChange
+        )
+        selected=this.selected
+        onChange=this.onChange
+        errors=this.errors
+        hasError=this.hasError
+        firstError=this.firstError
+        mandatory=this.mandatory
+      )
+    }}
   </template>
 }

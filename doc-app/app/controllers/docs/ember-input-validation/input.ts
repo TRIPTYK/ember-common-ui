@@ -5,7 +5,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 
 export default class DocsInputValidationController extends Controller {
   label = 'Clear it';
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     delete_text: 'Delete my text',
   });
 

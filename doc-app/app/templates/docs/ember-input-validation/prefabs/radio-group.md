@@ -13,9 +13,25 @@ This component provides a group of radio buttons.
         as |Radio|>
         <Radio @value="applati" @label="applati" @selected="applati" />
         <Radio @value="creux" @label="creux" />
-      </Prefabs::TpkValidationRadioGroup>
-
+    </Prefabs::TpkValidationRadioGroup>
+    <p>
     selected : {{changeset-get this.changeset 'radio'}}
+    </p>
+    <hr/>
+
+    <Prefabs::TpkValidationRadioGroup 
+        @changeset={{this.changesetWithErrors}} 
+        @validationField="radio" 
+        @groupLabel="groupLabel"
+        
+        as |Radio|>
+        <Radio @value="applati" @label="applati" @selected="applati" />
+        <Radio @value="creux" @label="creux" />
+    </Prefabs::TpkValidationRadioGroup>
+
+    <p>
+    selected : {{changeset-get this.changesetWithErrors 'radio'}}
+    </p>
   </demo.example>
   <demo.snippet @name="tpk-validation-prefab-radio-group.hbs"/>
 </DocsDemo>

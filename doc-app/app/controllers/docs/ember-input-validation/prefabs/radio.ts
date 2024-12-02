@@ -1,25 +1,29 @@
 import Controller from '@ember/controller';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 import type Owner from '@ember/owner';
 
-export default class DocsEmberInputValidationPrefabsPasswordController extends Controller {
+export default class DocsEmberInputValidationPrefabsRadioController extends Controller {
   changeset = new ImmerChangeset({
-    name: '',
+    radio: '',
   });
 
   changesetWithErrors = new ImmerChangeset({
-    name: '',
+    radio: '',
   });
 
   public constructor(owner: Owner) {
     super(owner);
-
     this.changesetWithErrors.addError({
-      value: '0',
-      originalValue: 0,
-      key: 'name',
-      message: 'This is an error message',
+      key: 'radio',
+      message: 'Invalid value',
+      value: 'Invalid value',
+      originalValue : ''
     });
+  }
+
+  @action
+  onChange(e: Event) {
+    console.log('onChange', e);
   }
 }
