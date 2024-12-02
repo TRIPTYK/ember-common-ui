@@ -5,6 +5,7 @@ import {  render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationRadio from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-radio';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 module(
@@ -31,6 +32,15 @@ module(
       await renderComponent( changeset);
       assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-label]').exists();
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      const changeset = new ImmerChangeset({
+        radio: 'applati',
+      });
+      await renderComponent( changeset);
+      await a11yAudit();
     });
   },
 );
