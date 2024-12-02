@@ -35,7 +35,7 @@ module(
       return immerChangeset;
     }
 
-    test('when change value in datepicker, changeset should be update', async function (assert) {
+    test('when change value in datepicker, changeset should be updated', async function (assert) {
       const date = new Date(2022, 10, 10);
       const changeset = await renderComponentAndReturnChangeset();
       setTempusDominusDate('.tpk-datepicker-input', date);
