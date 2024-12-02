@@ -11,6 +11,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationNumber from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-number';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 
 
@@ -96,6 +97,13 @@ module(
       const changeset = setupChangeset();
       await renderComponent(changeset);
       assertTpkCssClassesExist(assert, 'number');
+    });
+
+    test('Accessibility', async function (assert) {
+      assert.expect(0);
+      const changeset = setupChangeset();
+      await renderComponent(changeset);
+      await a11yAudit();
     });
   },
 );
