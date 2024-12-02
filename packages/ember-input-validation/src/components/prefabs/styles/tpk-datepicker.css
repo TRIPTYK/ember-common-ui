@@ -1,0 +1,27 @@
+.tpk-datepicker-container {
+  @apply relative pb-4;
+}
+
+.tpk-datepicker-container .tpk-label {
+  @apply label;
+}
+
+.tpk-datepicker-container .tpk-datepicker-input {
+  @apply input input-bordered w-full;
+}
+
+.tpk-datepicker-container[data-has-error~='true'] .tpk-datepicker-input {
+  @apply input-error;
+}
+
+.tpk-datepicker-container[data-has-error~='true'] .tpk-validation-errors {
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
+}
+
+.tpk-datepicker-container[data-has-error~='true'] .tpk-label {
+  @apply label text-error;
+}
+
+.tpk-datepicker-container[data-has-error~='true'] .tpk-datepicker-range-input {
+  @apply text-error;
+}
