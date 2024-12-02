@@ -1,28 +1,29 @@
 .tpk-datepicker-range-container {
-  @apply form-control relative pb-4;
+  @apply relative pb-4;
 }
 
 .tpk-datepicker-range-container .tpk-label {
   @apply label;
 }
 
-.tpk-datepicker-range-input {
+.tpk-datepicker-range-container .tpk-datepicker-range-input {
   @apply input input-bordered w-full;
 }
 
-.tpk-datepicker-range-container[data-has-error~="true"] .tpk-datepicker-range-input {
+.tpk-datepicker-range-container[data-has-error~='true']
+  .tpk-datepicker-range-input {
   @apply input-error;
 }
 
-.tpk-datepicker-range-container[data-has-error~="true"]
-.tpk-validation-errors {
+.tpk-datepicker-range-container[data-has-error~='true'] .tpk-validation-errors {
   @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
-.tpk-datepicker-range-container[data-has-error~="true"] .tpk-label{
+.tpk-datepicker-range-container[data-has-error~='true'] .tpk-label {
   @apply label text-error;
 }
 
-.tpk-datepicker-range-container[data-has-error~="true"] .tpk-datepicker-range-input {
+.tpk-datepicker-range-container[data-has-error~='true']
+  .tpk-datepicker-range-input {
   @apply text-error;
 }
