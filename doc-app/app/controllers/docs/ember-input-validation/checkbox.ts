@@ -5,7 +5,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 
 export default class DocsCheckboxValidationController extends Controller {
   label = "I'm a beast";
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     checked: true,
   });
 

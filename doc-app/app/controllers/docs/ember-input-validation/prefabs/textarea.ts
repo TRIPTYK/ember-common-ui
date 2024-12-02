@@ -4,11 +4,11 @@ import { tracked } from '@glimmer/tracking';
 import type Owner from '@ember/owner';
 
 export default class DocsEmberInputValidationPrefabsTextareaController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     ember: '',
   });
 
-  @tracked changesetWithErrors = new ImmerChangeset({
+  changesetWithErrors = new ImmerChangeset({
     ember: '',
   });
 

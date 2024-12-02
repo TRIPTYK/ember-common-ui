@@ -26,7 +26,8 @@ export default class DocsEmberInputValidationPrefabsSelectSearchController exten
       key: 'error',
     });
   }
-  @tracked changeset = new ImmerChangeset<Changeset>({
+
+  changeset = new ImmerChangeset<Changeset>({
     repository: undefined,
     disabled: undefined,
     error: undefined,

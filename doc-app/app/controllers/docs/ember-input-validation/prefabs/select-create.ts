@@ -34,13 +34,13 @@ export default class DocsEmberInputValidationPrefabsSelectCreateController exten
     });
   }
 
-  @tracked changeset = new ImmerChangeset<ChangesetType>({
+  changeset = new ImmerChangeset<ChangesetType>({
     ceo: undefined,
     disabled: undefined,
     error: undefined,
   });
 
-  @tracked changesetBis = new ImmerChangeset<ChangesetBisType>({
+  changesetBis = new ImmerChangeset<ChangesetBisType>({
     ceo: [],
   });
 

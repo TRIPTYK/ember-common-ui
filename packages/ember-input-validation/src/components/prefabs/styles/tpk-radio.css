@@ -1,0 +1,15 @@
+.tpk-radio-container {
+  @apply form-control;
+}
+
+.tpk-radio-label {
+  @apply label cursor-pointer;
+}
+
+.tpk-radio-label > span {
+  @apply label-text;
+}
+
+.tpk-radio-input {
+  @apply radio;
+}

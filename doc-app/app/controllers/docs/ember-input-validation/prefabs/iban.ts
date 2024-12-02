@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
 export default class DocsEmberInputValidationPrefabsIBANController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     iban: '',
     error: 'bad iban',
     disabled: 'disabled',

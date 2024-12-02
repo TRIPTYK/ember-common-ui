@@ -4,11 +4,11 @@ import { tracked } from '@glimmer/tracking';
 import type Owner from '@ember/owner';
 
 export default class DocsEmberInputValidationPrefabsNationalNumberController extends Controller {
-  @tracked changeset = new ImmerChangeset({
+  changeset = new ImmerChangeset({
     nationalNumber: '',
   });
 
-  @tracked changesetWithErrors = new ImmerChangeset({
+  changesetWithErrors = new ImmerChangeset({
     nationalNumber: '',
   });
 

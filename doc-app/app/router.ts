@@ -37,6 +37,7 @@ Router.map(function (this: RouterDSL) {
         this.route('input');
         this.route('textarea');
         this.route('checkbox');
+        this.route('radio');
         this.route('radio-group');
         this.route('password');
         this.route('mobile');
