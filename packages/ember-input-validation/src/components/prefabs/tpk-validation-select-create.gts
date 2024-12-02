@@ -2,16 +2,19 @@ import {
   type BaseValidationSignature,
   BaseValidationComponent,
 } from '../base.ts';
-import TpkSelectCreateComponent, { type TpkSelectCreateSignature } from '@triptyk/ember-input/components/tpk-select-create';
+import TpkSelectCreateComponent, {
+  type TpkSelectCreateSignature,
+} from '@triptyk/ember-input/components/tpk-select-create';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import type { Select } from '@triptyk/ember-input/components/tpk-select';
 import { action } from '@ember/object';
 
 export interface TpkValidationSelectCreatePrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkSelectCreateSignature['Args'] & {
-    onChange?: TpkSelectCreateSignature['Args']['onChange'];
-  }
+  Args: BaseValidationSignature['Args'] &
+    TpkSelectCreateSignature['Args'] & {
+      onChange?: TpkSelectCreateSignature['Args']['onChange'];
+    };
   Blocks: {
     default: [];
   };
@@ -43,8 +46,11 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
 
   <template>
     <div
-      class="{{if @disabled "disabled"}} tpk-validation-select-search"
+      class='{{if @disabled "disabled"}} tpk-select-create-container'
       data-has-error='{{this.hasError}}'
+      anchorScrollUp={{@validationField}}
+      data-test-tpk-prefab-select-create-container
+      ...attributes
     >
       <TpkSelectCreateComponent
         @label={{this.label}}
@@ -53,12 +59,12 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
-
         @selected={{this.value}}
         @options={{@options}}
         @onChange={{this.onChange}}
         @onCreate={{@onCreate}}
         @labelComponent={{@labelComponent}}
+        @labelClass='tpk-label'
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
         @buildSuggestion={{@buildSuggestion}}
@@ -71,7 +77,6 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @searchMessage={{@searchMessage}}
         @search={{@search}}
         anchorScrollUp={{@validationField}}
-        ...attributes
         as |S|
       >
         <S.Option as |O|>
@@ -79,8 +84,8 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         </S.Option>
       </TpkSelectCreateComponent>
       <TpkValidationErrorsComponent
+        class='tpk-validation-errors'
         @errors={{this.errors}}
-
       />
     </div>
   </template>

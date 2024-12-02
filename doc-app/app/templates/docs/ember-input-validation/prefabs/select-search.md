@@ -22,6 +22,22 @@ In example:
         @validationField="repository"
         @disabled={{false}}
       />
+      <Prefabs::TpkValidationSelectSearch
+        @label="Disabled"
+        @options={{this.options}}
+        @onSearch={{perform this.onSearch}}
+        @changeset={{this.changeset}} 
+        @validationField="disabled"
+        @disabled={{true}}
+      />
+      <Prefabs::TpkValidationSelectSearch
+        @label="Error"
+        @options={{this.options}}
+        @onSearch={{perform this.onSearch}}
+        @changeset={{this.changeset}} 
+        @validationField="error"
+        @disabled={{false}}
+      />
   </demo.example>
   <demo.snippet @name="tpk-select-prefab.hbs"/>
 </DocsDemo>

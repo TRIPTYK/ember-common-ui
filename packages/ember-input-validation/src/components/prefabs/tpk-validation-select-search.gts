@@ -49,9 +49,10 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
 
   <template>
     <div
-      class="{{if @disabled "disabled"}} tpk-validation-select-search tpk-select"
+      class="{{if @disabled "disabled"}} tpk-select-search-container"
       data-has-error='{{this.hasError}}'
       anchorScrollUp={{@validationField}}
+      data-test-tpk-prefab-select-search-container
       ...attributes
     >
       <TpkSelectComponent
@@ -60,6 +61,7 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
         @labelComponent={{@labelComponent}}
+        @labelClass="tpk-label"
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
         @label={{this.label}}
@@ -80,8 +82,8 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
         </S.Option>
       </TpkSelectComponent>
       <TpkValidationErrorsComponent
+        class="tpk-validation-errors"
         @errors={{this.errors}}
-
       />
     </div>
   </template>
