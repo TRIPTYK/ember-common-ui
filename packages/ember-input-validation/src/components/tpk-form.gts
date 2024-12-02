@@ -27,6 +27,7 @@ import type TpkValidationSelectPrefabComponent from './prefabs/tpk-validation-se
 import type TpkValidationSelectCreatePrefabComponent from './prefabs/tpk-validation-select-create.gts';
 import type TpkValidationSelectSearchPrefabComponent from './prefabs/tpk-validation-select-search.gts';
 import type TpkValidationCheckboxPrefabComponent from './prefabs/tpk-validation-checkbox.gts';
+import type TpkValidationDatepickerPrefabComponent from './prefabs/tpk-validation-datepicker.gts';
 import type TpkValidationDatepickerRangePrefabComponent from './prefabs/tpk-validation-datepicker-range.gts';
 import type TpkValidationTimepickerPrefabComponent from './prefabs/tpk-validation-timepicker.gts';
 import type TpkValidationPasswordPrefabComponent from './prefabs/tpk-validation-password.gts';
@@ -44,6 +45,9 @@ import { tracked } from '@glimmer/tracking';
 import scrollOnError from '../modifiers/scroll-on-error.ts';
 import { on } from '@ember/modifier';
 import { hash } from '@ember/helper';
+import type TpkValidationRadioGroupComponent from './tpk-validation-radio-group.gts';
+import type TpkValidationRadioPrefabComponent from './prefabs/tpk-validation-radio.gts';
+import type TpkValidationRadioGroupPrefabComponent from './prefabs/tpk-validation-radio-group.gts';
 
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
@@ -105,12 +109,28 @@ export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
           typeof TpkValidationRadioComponent,
           'changeset' | 'disabled' | 'requiredFields'
         >;
+        TpkRadioGroup: WithBoundArgs<
+          typeof TpkValidationRadioGroupComponent,
+          'changeset' | 'disabled' | 'requiredFields'
+        >;
+        TpkRadioPrefab: WithBoundArgs<
+          typeof TpkValidationRadioPrefabComponent,
+          'changeset' | 'disabled' | 'requiredFields'
+        >;
+        TpkRadioGroupPrefab: WithBoundArgs<
+          typeof TpkValidationRadioGroupPrefabComponent,
+          'changeset' | 'disabled' | 'requiredFields'
+        >;
         TpkFile: WithBoundArgs<
           typeof TpkValidationFileComponent,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkDatepicker: WithBoundArgs<
           typeof TpkValidationDatepickerComponent,
+          'changeset' | 'disabled' | 'requiredFields'
+        >;
+        TpkDatepickerPrefab: WithBoundArgs<
+          typeof TpkValidationDatepickerPrefabComponent,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkDatepickerRangePrefab: WithBoundArgs<
@@ -347,6 +367,12 @@ export default class ChangesetFormComponent<
             disabled=@disabled
             requiredFields=this.requiredFields
           )
+          TpkDatepickerPrefab=(component
+            this.tpkForm.TpkDatepickerPrefab
+            changeset=@changeset
+            disabled=@disabled
+            requiredFields=this.requiredFields
+          )
           TpkDatepickerRangePrefab=(component
             this.tpkForm.TpkDatepickerRangePrefab
             changeset=@changeset
@@ -415,6 +441,24 @@ export default class ChangesetFormComponent<
           )
           TpkMobilePrefab=(component
             this.tpkForm.TpkMobilePrefab
+            changeset=@changeset
+            disabled=@disabled
+            requiredFields=this.requiredFields
+          )
+          TpkRadioGroup=(component
+            this.tpkForm.TpkRadioGroup
+            changeset=@changeset
+            disabled=@disabled
+            requiredFields=this.requiredFields
+          )
+          TpkRadioPrefab=(component
+            this.tpkForm.TpkRadioPrefab
+            changeset=@changeset
+            disabled=@disabled
+            requiredFields=this.requiredFields
+          )
+          TpkRadioGroupPrefab=(component
+            this.tpkForm.TpkRadioGroupPrefab
             changeset=@changeset
             disabled=@disabled
             requiredFields=this.requiredFields
