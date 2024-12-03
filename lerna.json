@@ -1,5 +1,15 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "3.0.0-alpha.2",
-  "conventionalCommits": true
+  "conventionalCommits": true,
+  "npmClient": "pnpm",
+  "changelog": true,
+  "command": {
+    "version": {
+      "conventionalCommits": true
+    },
+    "publish": {
+      "message": "chore(release): publish"
+    }
+  }
 }
