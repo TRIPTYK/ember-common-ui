@@ -6,10 +6,12 @@
   "changelog": true,
   "command": {
     "version": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "npmClient": "pnpm"
     },
     "publish": {
-      "message": "chore(release): publish"
+      "message": "chore(release): publish",
+      "npmClient": "pnpm"
     }
   }
 }
