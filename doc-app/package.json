@@ -1,6 +1,6 @@
 {
   "name": "doc-app",
-  "version": "0.0.0",
+  "version": "3.0.0-alpha.3",
   "private": true,
   "description": "Small description for doc-app goes here",
   "repository": "",
@@ -43,7 +43,6 @@
     "@glimmer/tracking": "catalog:",
     "@glint/core": "catalog:",
     "@glint/environment-ember-loose": "catalog:",
-    "ember-template-imports": "~4.2.0",
     "@glint/environment-ember-template-imports": "^1.5.0",
     "@glint/template": "catalog:",
     "@triptyk/ember-input": "workspace:*",
@@ -113,6 +112,7 @@
     "ember-qunit": "catalog:",
     "ember-resolver": "catalog:",
     "ember-source": "~5.12.0",
+    "ember-template-imports": "~4.2.0",
     "ember-template-lint": "^6.0.0",
     "ember-welcome-page": "catalog:",
     "eslint": "^8.57.1",

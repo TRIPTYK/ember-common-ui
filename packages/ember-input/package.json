@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-input",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon"
@@ -72,13 +72,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@eonasdan/tempus-dominus": "catalog:",
     "@babel/plugin-proposal-class-properties": "catalog:",
     "@babel/plugin-proposal-decorators": "catalog:",
     "@babel/plugin-transform-class-static-block": "catalog:",
     "@babel/plugin-transform-typescript": "catalog:",
     "@babel/runtime": "catalog:",
     "@embroider/addon-dev": "catalog:",
+    "@eonasdan/tempus-dominus": "catalog:",
     "@glint/core": "catalog:",
     "@glint/environment-ember-loose": "catalog:",
     "@glint/environment-ember-template-imports": "catalog:",
@@ -142,7 +142,7 @@
     }
   },
   "peerDependencies": {
-    "ember-source": ">=5.0.0",
-    "@eonasdan/tempus-dominus": "^6.9.10"
+    "@eonasdan/tempus-dominus": "^6.9.10",
+    "ember-source": ">=5.0.0"
   }
 }
