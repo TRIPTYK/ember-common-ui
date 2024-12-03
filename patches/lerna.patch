@@ -1,0 +1,56 @@
+diff --git a/dist/package-graph/package-graph.js b/dist/package-graph/package-graph.js
+index 0a3803b4d6ebf317346f975463f02fc69f783e1a..014314edaec3f72cc8622c791c6b44caffcdd290 100644
+--- a/dist/package-graph/package-graph.js
++++ b/dist/package-graph/package-graph.js
+@@ -1,3 +1,6 @@
++import fs from 'node:fs';
++import path from 'node:path';
++import { parse } from 'yaml';
+ import npa from 'npm-package-arg';
+ import { CyclicPackageGraphNode, PackageGraphNode, reportCycles } from './lib/index.js';
+ import { ValidationError } from '../validation-error.js';
+@@ -24,6 +27,7 @@ export class PackageGraph extends Map {
+                 }
+             }
+         }
++        const catalogs = this.getWorkspacesCatalogs();
+         this.forEach((currentNode, currentName) => {
+             const graphDependencies = graphType === 'dependencies'
+                 ? Object.assign({}, currentNode.pkg.optionalDependencies, currentNode.pkg.dependencies)
+@@ -34,6 +38,19 @@ export class PackageGraph extends Map {
+                 if (spec.startsWith('patch:')) {
+                     spec = spec.replace(YARN_PATCH_PROTOCOL_REG_EXP, '$2');
+                 }
++                const isCatalogSpec = /^catalog:/.test(spec);
++                if (isCatalogSpec) {
++                    spec = spec.replace(/^catalog:/, '');
++                    const catalogVersion = spec === '' || spec === 'default'
++                        ? catalogs.defaultCatalog[depName]
++                        : catalogs.namedCatalogs[spec]?.[depName];
++                
++                    if (catalogVersion) {
++                        spec = catalogVersion;
++                    } else {
++                        console.warn(`Warning: No version found in ${spec || 'default'} catalog for ${depName}`);
++                    }
++                }
+                 const isWorkspaceSpec = /^workspace:/.test(spec);
+                 let fullWorkspaceSpec;
+                 if (isWorkspaceSpec) {
+@@ -144,5 +161,16 @@ export class PackageGraph extends Map {
+             node.localDependents.delete(candidateNode.name);
+         });
+     }
++    getWorkspacesCatalogs() {
++        const workspaceConfigPath = path.join(process.cwd(), 'pnpm-workspace.yaml');
++        const workspaceConfig = fs.existsSync(workspaceConfigPath)
++            ? parse(fs.readFileSync(workspaceConfigPath, 'utf8'))
++            : {};
++    
++        return {
++            defaultCatalog: workspaceConfig.catalog ?? {},
++            namedCatalogs: workspaceConfig.catalogs ?? {},
++        };
++    }
+ }
+ //# sourceMappingURL=package-graph.js.map

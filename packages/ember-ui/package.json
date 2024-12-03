@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-ui",
-  "version": "3.0.0-alpha.3",
+  "version": "3.0.0-alpha.4",
   "description": "User interface components for Ember.js applications",
   "keywords": [
     "ember-addon"
@@ -159,5 +159,6 @@
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
     "ember-source": ">=4.8.0"
-  }
+  },
+  "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789"
 }

@@ -340,6 +340,11 @@ catalogs:
 overrides:
   ember-concurrency: 4.0.2
 
+patchedDependencies:
+  lerna:
+    hash: xzyxrp6lm3lu4jfn42g5v4khtu
+    path: patches/lerna.patch
+
 importers:
 
   .:
@@ -355,7 +360,7 @@ importers:
         version: 1.8.2
       lerna:
         specifier: 'catalog:'
-        version: 8.1.8(encoding@0.1.13)
+        version: 8.1.8(patch_hash=xzyxrp6lm3lu4jfn42g5v4khtu)(encoding@0.1.13)
       turbo:
         specifier: ^2.3.0
         version: 2.3.0
@@ -21322,7 +21327,7 @@ snapshots:
       lefthook-windows-arm64: 1.8.2
       lefthook-windows-x64: 1.8.2
 
-  lerna@8.1.8(encoding@0.1.13):
+  lerna@8.1.8(patch_hash=xzyxrp6lm3lu4jfn42g5v4khtu)(encoding@0.1.13):
     dependencies:
       '@lerna/create': 8.1.8(encoding@0.1.13)(typescript@5.6.3)
       '@npmcli/arborist': 7.5.4

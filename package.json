@@ -12,6 +12,9 @@
   "pnpm": {
     "overrides": {
       "ember-concurrency": "4.0.2"
+    },
+    "patchedDependencies": {
+      "lerna": "patches/lerna.patch"
     }
   },
   "repository": {
