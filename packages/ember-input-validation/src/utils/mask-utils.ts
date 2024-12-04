@@ -13,14 +13,14 @@ export interface DynamicMasked {
 }
 
 export const maskSpecialCharDefinition = {
-  '#': /[A-Z]/,
+  '#': /[a-zA-Z]/,
   '&': /[0-9]/,
-  '$': /[A-Z0-9]/,
+  '$': /[a-zA-Z0-9]/,
 }
 
 export function getMaskForPrefixOrDefault(_appended: string, dynamicMasked: DynamicMasked) {
   const mask =  dynamicMasked.compiledMasks.find(mask => {
-    return dynamicMasked.rawInputValue.slice(0, 2) === mask.startsWith;
+    return dynamicMasked.rawInputValue.slice(0, 2).toUpperCase() === mask.startsWith;
   })
 
   if (!mask) {
@@ -28,6 +28,5 @@ export function getMaskForPrefixOrDefault(_appended: string, dynamicMasked: Dyna
       return mask.default === true;
     })
   }
-
   return mask;
 }

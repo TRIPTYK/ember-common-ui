@@ -4,10 +4,13 @@ import { maskSpecialCharDefinition } from "../../utils/mask-utils.ts";
 import MandatoryLabelComponent from "./mandatory-label.gts";
 import Component from "@glimmer/component";
 import TpkValidationErrorsComponent from "./tpk-validation-errors.gts";
+import { action } from "@ember/object";
 
 export interface TpkValidationBicPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'>;
+  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'> & {
+    onChange?: (value: string, e: Event) => void;
+  };
   Blocks: {
     default: [];
   };
@@ -20,12 +23,21 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
     definitions: maskSpecialCharDefinition,
   };
 
+  @action
+  onChange(value: string | number | Date | null, e: Event){  
+    const valueAsString = (value as string).toUpperCase()
+    if(this.args.onChange){
+      return this.args.onChange(valueAsString, e);
+    }
+    return this.args.changeset.set(this.args.validationField, valueAsString);
+  }
+
   <template>
     <TpkValidationInputComponent
       @label={{@label}}
       @disabled={{@disabled}}
       @type="text"
-      @onChange={{@onChange}}
+      @onChange={{this.onChange}}
       @mandatory={{@mandatory}}
       @placeholder={{@placeholder}}
       @validationField={{@validationField}}
@@ -46,7 +58,7 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
           @label={{@label}} 
           @mandatory={{V.mandatory}}/>
           <V.Input 
-          class="tpk-bic-input" 
+          class="tpk-bic-input uppercase" 
           data-test-tpk-bic-input
           />
           <TpkValidationErrorsComponent

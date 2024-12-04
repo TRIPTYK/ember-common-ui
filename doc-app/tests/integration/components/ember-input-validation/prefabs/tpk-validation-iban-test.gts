@@ -2,7 +2,6 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
-
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationIban from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-iban';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
@@ -45,13 +44,13 @@ module(
 
     test('it lets you type BE IBAN and nicely format it', async function (assert) {
       const changeset = await renderComponentAndReturnChangeset();
-      await fillIn('[data-test-tpk-input-input]', 'BE68539007547034');
+      await fillIn('[data-test-tpk-input-input]', 'be68539007547034');
       assert.strictEqual(changeset.get('iban'), 'BE68 5390 0754 7034');
     });
 
     test('it lets you type LU IBAN and nicely format it', async function (assert) {
       const changeset = await renderComponentAndReturnChangeset();
-      await fillIn('[data-test-tpk-input-input]', 'LU120010001234567891');
+      await fillIn('[data-test-tpk-input-input]', 'lu120010001234567891');
       assert.strictEqual(changeset.get('iban'), 'LU12 0010 0012 3456 7891');
     });
 

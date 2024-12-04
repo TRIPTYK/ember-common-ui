@@ -4,11 +4,13 @@ import { maskSpecialCharDefinition, getMaskForPrefixOrDefault } from "../../util
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from "./mandatory-label.gts";
 import Component from "@glimmer/component";
+import { action } from "@ember/object";
 
 export interface TpkValidationIBANPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue' | 'mask'> & {
     mandatory?: boolean;
+    onChange?: (value: string, e: Event) => void;
   };
   Blocks: {
     default: [];
@@ -18,27 +20,27 @@ export interface TpkValidationIBANPrefabSignature
 
 export default class TpkValidationIBANPrefabComponent extends Component<TpkValidationIBANPrefabSignature> {
   ibanMaskByCountry = [{
-    mask: 'BE&& &&&& &&&& &&&&',
+    mask: '$$&& &&&& &&&& &&&&',
     startsWith: 'BE',
     definitions: maskSpecialCharDefinition,
     lazy: false,
   },{
-    mask: 'FR&& &&&& &&&& &&$$ $$$$ $$$$ $&&',
+    mask: '$$&& &&&& &&&& &&$$ $$$$ $$$$ $&&',
     startsWith: 'FR',
     lazy: false,
     definitions: maskSpecialCharDefinition,
   },{
-    mask: 'LU&& &&&$ $$$$ $$$$ $$$$',
+    mask: '$$&& &&&$ $$$$ $$$$ $$$$',
     startsWith: 'LU',
     definitions: maskSpecialCharDefinition,
     lazy: false,
   },{
-    mask: 'NL&& #### &&&& &&&& &&',
+    mask: '$$&& #### &&&& &&&& &&',
     startsWith: 'NL',
     definitions: maskSpecialCharDefinition,
     lazy: false,
   },{
-    mask: 'DE&& &&&& &&&& &&&& &&&& &&',
+    mask: '$$&& &&&& &&&& &&&& &&&& &&',
     definitions: maskSpecialCharDefinition,
     startsWith: 'DE',
     lazy: false,
@@ -58,12 +60,21 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
     return this.args.disabled? '' : this.ibanMaskByCountry;
   }
 
+  @action
+  onChange(value: string | number | Date | null, e: Event){  
+    const valueAsString = (value as string).toUpperCase()
+    if(this.args.onChange){
+      return this.args.onChange(valueAsString, e);
+    }
+    return this.args.changeset.set(this.args.validationField, valueAsString);
+  }
+
 
   <template>
     <TpkValidationInputComponent
       @label={{@label}}
       @type="text"
-      @onChange={{@onChange}}
+      @onChange={{this.onChange}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @changeset={{@changeset}}
@@ -84,7 +95,8 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
           @label={{@label}} 
           @mandatory={{V.mandatory}} />   
           <V.Input 
-          class="tpk-iban-input"
+          class="tpk-iban-input uppercase"
+         
           data-test-tpk-iban-input
           />
           <TpkValidationErrorsComponent
