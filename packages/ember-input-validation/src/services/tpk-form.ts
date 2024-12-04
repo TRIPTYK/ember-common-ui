@@ -29,6 +29,7 @@ import TpkValidationVATPrefabComponent from '../components/prefabs/tpk-validatio
 import TpkValidationRadioGroupComponent from '../components/tpk-validation-radio-group.gts';
 import TpkValidationRadioPrefabComponent from '../components/prefabs/tpk-validation-radio.gts';
 import TpkValidationRadioGroupPrefabComponent from '../components/prefabs/tpk-validation-radio-group.gts';
+import TpkValidationFilePrefabComponent from '../components/prefabs/tpk-validation-file.gts';
 
 export default class TpkFormService extends Service {
   @tracked TpkInput = TpkValidationInputComponent;
@@ -61,4 +62,5 @@ export default class TpkFormService extends Service {
   @tracked TpkRadioGroup = TpkValidationRadioGroupComponent;
   @tracked TpkRadioPrefab = TpkValidationRadioPrefabComponent;
   @tracked TpkRadioGroupPrefab = TpkValidationRadioGroupPrefabComponent;
+  @tracked TpkFilePrefab = TpkValidationFilePrefabComponent;
 }

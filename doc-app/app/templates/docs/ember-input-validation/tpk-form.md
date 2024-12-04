@@ -85,6 +85,7 @@ The `TpkForm` component yields the following components:
 - TpkValidationIntegerPrefab yielded as `TpkIntegerPrefab`
 - TpkValidationNumberPrefab yielded as `TpkNumberPrefab`
 - TpkValidationMobilePrefab yielded as `TpkMobilePrefab`
+- TpkValidationFilePrefab yielded as `TpkFilePrefab`
 
 ## Yielded values
 
@@ -137,6 +138,7 @@ tpkFormService.TpkCurrencyPrefab = DummyCurrencyPrefab;
 tpkFormService.TpkIntegerPrefab = DummyIntegerPrefab;
 tpkFormService.TpkNumberPrefab = DummyNumberPrefab;
 tpkFormService.TpkMobilePrefab = DummyMobilePrefab;
+tpkFormService.TpkFilePrefab = DummyFilePrefab;
 ```
 
 ## Validation Behavior

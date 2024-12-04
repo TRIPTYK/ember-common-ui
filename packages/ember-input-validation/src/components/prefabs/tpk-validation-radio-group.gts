@@ -23,7 +23,7 @@ export interface TpkValidationRadioGroupPrefabComponentSignature
       >,
     ];
   };
-  element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabComponentSignature> =
@@ -43,6 +43,7 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
         data-has-error='{{V.hasError}}'
         anchorScrollUp={{@validationField}}
         data-test-tpk-prefab-radio-group-container
+        ...attributes
       >
         <legend class='tpk-radio-group-label'>
           {{@groupLabel}}
