@@ -2,14 +2,14 @@ import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, fillIn, render } from '@ember/test-helpers';
 import { changesetGet, ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, array, Schema } from 'yup';
+import { object, string, array } from 'yup';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';
 import DummyInput from 'doc-app/components/dummy-input';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 import { on } from '@ember/modifier';
 import { concat, array as arrayHelper } from '@ember/helper';
-import { initializeParams } from './generic-test-functions/initialize-params-tpk-form';
+import { initializeParams, type TpkFormParams } from './generic-test-functions/initialize-params-tpk-form';
 
 
 
@@ -17,14 +17,7 @@ module('Integration | Component | tpk-form', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'fr-fr');
 
-  async function setupComponent(params?: {
-    changeset?: ImmerChangeset;
-    onSubmit?: (...args: unknown[]) => void;
-    validationSchema?: Schema;
-    reactive?: boolean;
-    removeErrorsOnSubmit?: boolean;
-    autoScrollOnError?: boolean;
-  }) {
+  async function setupComponent(params?: TpkFormParams) {
     const { changeset, onSubmit, validationSchema, reactive, removeErrorsOnSubmit, autoScrollOnError, executeOnValid } = initializeParams(params);
 
     await render(

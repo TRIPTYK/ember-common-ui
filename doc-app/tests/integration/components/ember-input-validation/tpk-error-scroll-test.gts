@@ -4,7 +4,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import { timeout } from 'ember-concurrency';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { object, string, date, number, boolean, Schema } from 'yup';
-import { initializeParams } from './generic-test-functions/initialize-params-tpk-form';
+import { initializeParams, type TpkFormParams } from './generic-test-functions/initialize-params-tpk-form';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 import { render } from '@ember/test-helpers';
 
@@ -77,14 +77,7 @@ module('Integration | Component | tpk-form-error-scroll', function (hooks) {
     file: '',
   });
 
-  async function setupComponent(params?: {
-    changeset?: ImmerChangeset;
-    onSubmit?: (...args: unknown[]) => void;
-    validationSchema?: Schema;
-    reactive?: boolean;
-    removeErrorsOnSubmit?: boolean;
-    autoScrollOnError?: boolean;
-  }) {
+  async function setupComponent(params?: TpkFormParams) {
     const { changeset, onSubmit, validationSchema, reactive, removeErrorsOnSubmit, autoScrollOnError, executeOnValid } = initializeParams(params);
 
     await render(
@@ -111,14 +104,7 @@ module('Integration | Component | tpk-form-error-scroll', function (hooks) {
     return changeset;
   }
 
-  async function setupCompletePrefabComponent(params?: {
-    changeset?: ImmerChangeset;
-    onSubmit?: (...args: unknown[]) => void;
-    validationSchema?: Schema;
-    reactive?: boolean;
-    removeErrorsOnSubmit?: boolean;
-    autoScrollOnError?: boolean;
-  }) {
+  async function setupCompletePrefabComponent(params?: TpkFormParams) {
     const { changeset, onSubmit, validationSchema, reactive, removeErrorsOnSubmit, autoScrollOnError, executeOnValid } = initializeParams(params);
     const selectOptions = ['option1', 'option2'];
     const onCreate = () => {};

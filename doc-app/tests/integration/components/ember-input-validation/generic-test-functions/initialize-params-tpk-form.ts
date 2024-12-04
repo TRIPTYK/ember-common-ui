@@ -1,14 +1,16 @@
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { object, type Schema } from 'yup';
 
-export function initializeParams(params?: {
+export interface TpkFormParams {
   changeset?: ImmerChangeset;
   onSubmit?: (...args: unknown[]) => void;
   validationSchema?: Schema;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
   autoScrollOnError?: boolean;
-}) {
+}
+
+export function initializeParams(params?: TpkFormParams) {
   return {
     changeset: params?.changeset ?? new ImmerChangeset({}),
     onSubmit: params?.onSubmit ?? (() => {}),
