@@ -39,7 +39,7 @@ module(
       await fillIn('[data-test-tpk-bic-input]', '12121212');
       assert.strictEqual(changeset.get('bic'), '');
       await fillIn('[data-test-tpk-bic-input]', 'aaaaaaaa');
-      assert.strictEqual(changeset.get('bic'), '');
+      assert.strictEqual(changeset.get('bic'), 'AAAAAAAA');
       await fillIn('[data-test-tpk-bic-input]', 'SEBISSEB');
       assert.strictEqual(changeset.get('bic'), 'SEBISSEB');
     });

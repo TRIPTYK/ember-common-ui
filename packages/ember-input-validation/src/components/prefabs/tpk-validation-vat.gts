@@ -9,6 +9,7 @@ import {
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 export interface TpkValidationVATPrefabSignature
   extends BaseValidationSignature {
@@ -24,6 +25,7 @@ export interface TpkValidationVATPrefabSignature
     | 'mask'
   > & {
     mandatory?: boolean;
+    onChange?: (value: string, e: Event) => void; 
   };
   Blocks: {
     default: [];
@@ -34,31 +36,31 @@ export interface TpkValidationVATPrefabSignature
 export default class TpkValidationVATPrefabComponent extends Component<TpkValidationVATPrefabSignature> {
   ibanMaskByCountry = [
     {
-      mask: 'BE&&&&&&&&&&',
+      mask: '$$&&&&&&&&&&',
       startsWith: 'BE',
       definitions: maskSpecialCharDefinition,
       lazy: false,
     },
     {
-      mask: 'FR$$&&&&&&&&&',
+      mask: '$$$$&&&&&&&&&',
       startsWith: 'FR',
       lazy: false,
       definitions: maskSpecialCharDefinition,
     },
     {
-      mask: 'LU&&&&&&&&',
+      mask: '$$&&&&&&&&',
       startsWith: 'LU',
       definitions: maskSpecialCharDefinition,
       lazy: false,
     },
     {
-      mask: 'NL&&&&&&&&&B&&',
+      mask: '$$&&&&&&&&&B&&',
       startsWith: 'NL',
       definitions: maskSpecialCharDefinition,
       lazy: false,
     },
     {
-      mask: 'DE&&&&&&&&&',
+      mask: '$$&&&&&&&&&',
       definitions: maskSpecialCharDefinition,
       startsWith: 'DE',
       lazy: false,
@@ -75,11 +77,20 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
     dispatch: getMaskForPrefixOrDefault,
   };
 
+  @action
+  onChange(value: string | number | Date | null, e: Event){  
+    const valueAsString = (value as string).toUpperCase()
+    if(this.args.onChange){
+      return this.args.onChange(valueAsString, e);
+    }
+    return this.args.changeset.set(this.args.validationField, valueAsString);
+  }
+
   <template>
     <TpkValidationInputComponent
       @label={{@label}}
       @type='text'
-      @onChange={{@onChange}}
+      @onChange={{this.onChange}}
       @validationField={{@validationField}}
       @changeEvent={{@changeEvent}}
       @disabled={{@disabled}}
@@ -102,7 +113,7 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
           @label={{@label}}
           @mandatory={{V.mandatory}}
         />
-        <V.Input class='tpk-vat-input' data-test-tpk-vat-input />
+        <V.Input class='tpk-vat-input uppercase' data-test-tpk-vat-input />
         <TpkValidationErrorsComponent
           class='tpk-validation-errors'
           @errors={{V.errors}}
