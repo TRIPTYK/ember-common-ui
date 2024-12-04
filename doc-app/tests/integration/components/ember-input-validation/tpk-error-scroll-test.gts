@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import { timeout } from 'ember-concurrency';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, date, number, boolean, Schema } from 'yup';
+import { object, string, date, number, boolean } from 'yup';
 import { initializeParams, type TpkFormParams } from './generic-test-functions/initialize-params-tpk-form';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 import { render } from '@ember/test-helpers';
