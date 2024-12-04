@@ -48,6 +48,7 @@ import { hash } from '@ember/helper';
 import type TpkValidationRadioGroupComponent from './tpk-validation-radio-group.gts';
 import type TpkValidationRadioPrefabComponent from './prefabs/tpk-validation-radio.gts';
 import type TpkValidationRadioGroupPrefabComponent from './prefabs/tpk-validation-radio-group.gts';
+import type TpkValidationFilePrefabComponent from './prefabs/tpk-validation-file.gts';
 
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
@@ -179,6 +180,10 @@ export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
         >;
         TpkMobilePrefab: WithBoundArgs<
           typeof TpkValidationMobilePrefabComponent,
+          'changeset' | 'disabled' | 'requiredFields'
+        >;
+        TpkFilePrefab: WithBoundArgs<
+          typeof TpkValidationFilePrefabComponent,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         changesetGet: (path: string) => unknown;
@@ -459,6 +464,12 @@ export default class ChangesetFormComponent<
           )
           TpkRadioGroupPrefab=(component
             this.tpkForm.TpkRadioGroupPrefab
+            changeset=@changeset
+            disabled=@disabled
+            requiredFields=this.requiredFields
+          )
+          TpkFilePrefab=(component
+            this.tpkForm.TpkFilePrefab
             changeset=@changeset
             disabled=@disabled
             requiredFields=this.requiredFields

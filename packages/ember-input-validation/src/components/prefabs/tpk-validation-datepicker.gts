@@ -72,14 +72,14 @@ export default class TpkValidationDatepickerPrefabComponent extends Component<Tp
       @multipleDatesSeparator={{this.multipleDatesSeparator}}
       @requiredFields={{@requiredFields}}
       @mode={{@mode}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
       as |V|
     >
       <div
         class='tpk-datepicker-container'
         data-test-tpk-prefab-datepicker-container
+        anchorScrollUp={{@validationField}}
         data-has-error='{{V.hasError}}'
+        ...attributes
       >
         <V.Label class='tpk-datepicker-label-container'>
           <MandatoryLabelComponent

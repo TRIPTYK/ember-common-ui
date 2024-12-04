@@ -67,14 +67,14 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
       @mask={{this.mask}}
       @dateFormat={{this.dateFormat}}
       @requiredFields={{@requiredFields}}
-      anchorScrollUp={{@validationField}}
-      ...attributes
       as |V|
     >
       <div
         class='tpk-timepicker-container'
         data-test-tpk-prefab-timepicker-container
         data-has-error='{{V.hasError}}'
+        anchorScrollUp={{@validationField}}
+        ...attributes
       >
         <V.Label class='tpk-timepicker-label-container'>
           <MandatoryLabelComponent
