@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.7](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.6...v3.0.0-alpha.7) (2024-12-05)
+
+
+### Bug Fixes
+
+* add ...attributes on the right element ([fb73825](https://github.com/TRIPTYK/ember-common-ui/commit/fb738250f90effd1220466eb6aeec6673c58638c))
+* add css for prefab password error ([54b6141](https://github.com/TRIPTYK/ember-common-ui/commit/54b61413173f81eef117ccd2183fef75ab183c5e))
+* add tabindex=-1 on button show/hide password ([897bdc9](https://github.com/TRIPTYK/ember-common-ui/commit/897bdc97cd28ff72375e4747ea8b0d2451d0294f))
+
+
+
+
+
 # [3.0.0-alpha.6](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.5...v3.0.0-alpha.6) (2024-12-05)
 
 
