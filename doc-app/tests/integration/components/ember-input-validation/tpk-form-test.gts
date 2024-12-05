@@ -9,40 +9,13 @@ import { setupIntl } from 'ember-intl/test-support';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 import { on } from '@ember/modifier';
 import { concat, array as arrayHelper } from '@ember/helper';
-import { initializeParams, type TpkFormParams } from './generic-test-functions/initialize-params-tpk-form';
+import { setupComponent } from './generic-test-functions/setup-prefab-component';
 
 
 
 module('Integration | Component | tpk-form', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'fr-fr');
-
-  async function setupComponent(params?: TpkFormParams) {
-    const { changeset, onSubmit, validationSchema, reactive, removeErrorsOnSubmit, autoScrollOnError, executeOnValid } = initializeParams(params);
-
-    await render(
-      <template>
-      <TpkForm
-          @changeset={{changeset}}
-          @validationSchema={{validationSchema}}
-          @onSubmit={{onSubmit}}
-          @reactive={{reactive}}
-          @autoScrollOnError={{autoScrollOnError}}
-          @removeErrorsOnSubmit={{removeErrorsOnSubmit}}
-          @executeOnValid={{executeOnValid}}
-        as |F|>
-          <F.TpkInputPrefab @label="test" @validationField="name" />
-          <F.TpkInput @label="test" @type="email" @validationField="email" as |I|>
-            <I.Label />
-            <I.Input anchorScrollUp="email" />
-          </F.TpkInput>
-          <button type="submit">Submit</button>
-        </TpkForm>
-      </template>
-    );
-
-    return changeset;
-  }
 
   test('TpkForm can invoke custom registered inputs from service', async function () {
     const tpkFormService = this.owner.lookup(
