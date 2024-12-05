@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.6](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.5...v3.0.0-alpha.6) (2024-12-05)
+
+
+### Bug Fixes
+
+* bic, iban & vat return uppercase automaticly ([8c8cd3b](https://github.com/TRIPTYK/ember-common-ui/commit/8c8cd3b080dd5126c7fb55a0f5c5d62976867a0d))
+
+
+
+
+
 # [3.0.0-alpha.5](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.3...v3.0.0-alpha.5) (2024-12-03)
 
 **Note:** Version bump only for package @triptyk/ember-input-validation
