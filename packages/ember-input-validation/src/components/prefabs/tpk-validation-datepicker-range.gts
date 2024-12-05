@@ -66,13 +66,13 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
       @requiredFields={{@requiredFields}}
       @mode='range'
       anchorScrollUp={{@validationField}}
-      ...attributes
       as |V|
     >
       <div
         class='tpk-datepicker-range-container'
         data-test-tpk-prefab-datepicker-range-container
         data-has-error='{{V.hasError}}'
+        ...attributes
       >
         <V.Label class='tpk-datepicker-range-label-container'>
           <MandatoryLabelComponent

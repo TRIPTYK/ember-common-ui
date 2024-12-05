@@ -1,15 +1,27 @@
-import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { type BaseValidationSignature } from "../base.ts";
-import { action } from "@ember/object";
-import { tracked } from "@glimmer/tracking";
-import { on } from "@ember/modifier";
+import TpkValidationInputComponent, {
+  type TpkValidationInputComponentSignature,
+} from '../tpk-validation-input.gts';
+import { type BaseValidationSignature } from '../base.ts';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { on } from '@ember/modifier';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import MandatoryLabelComponent from "./mandatory-label.gts";
-import Component from "@glimmer/component";
+import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
 
 export interface TpkValidationPasswordPrefabSignature
   extends BaseValidationSignature {
-  Args: Omit<TpkValidationInputComponentSignature['Args'], 'type' | 'min' | 'max' | 'step' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mask'>;
+  Args: Omit<
+    TpkValidationInputComponentSignature['Args'],
+    | 'type'
+    | 'min'
+    | 'max'
+    | 'step'
+    | 'mask'
+    | 'unmaskValue'
+    | 'maskOptions'
+    | 'mask'
+  >;
   Blocks: {
     default: [];
   };
@@ -40,29 +52,30 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
-    as |V|>
+      as |V|
+    >
       <V.Label
-        class="tpk-password-container"
+        class='tpk-password-container'
         data-test-tpk-prefab-password-container
         data-has-error='{{V.hasError}}'
         anchorScrollUp={{@validationField}}
-        ...attributes>
-          <MandatoryLabelComponent
-          class="tpk-label"
+        ...attributes
+      >
+        <MandatoryLabelComponent
+          class='tpk-label'
           @label={{@label}}
-          @mandatory={{V.mandatory}}/>
-          <div class="tpk-password-input-container">
-            <V.Input
-            class="tpk-password-input"
-            data-test-tpk-password-input
-            />
-            {{#unless @disabled}}
+          @mandatory={{V.mandatory}}
+        />
+        <div class='tpk-password-input-container'>
+          <V.Input class='tpk-password-input' data-test-tpk-password-input />
+          {{#unless @disabled}}
             <button
               type='button'
               class='tpk-password-toggle-button'
               title={{if this.showPassword 'show' 'hide'}}
               {{on 'click' this.togglePassword}}
               data-test-tpk-password-toggle-button
+              tabindex='-1'
             >
               <img
                 src={{if
@@ -75,13 +88,13 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
                 class='tpk-password-toggle-icon'
               />
             </button>
-            {{/unless}}
-          </div>
-          <TpkValidationErrorsComponent
-          class="tpk-validation-errors"
+          {{/unless}}
+        </div>
+        <TpkValidationErrorsComponent
+          class='tpk-validation-errors'
           @errors={{V.errors}}
-          />
-        </V.Label>
+        />
+      </V.Label>
     </TpkValidationInputComponent>
   </template>
 }
