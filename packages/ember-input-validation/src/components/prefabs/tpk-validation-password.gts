@@ -75,6 +75,7 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
               title={{if this.showPassword 'show' 'hide'}}
               {{on 'click' this.togglePassword}}
               data-test-tpk-password-toggle-button
+              tabindex='-1'
             >
               <img
                 src={{if
