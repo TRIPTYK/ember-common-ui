@@ -45,7 +45,7 @@ module(
         disabled: true,
         changeset
       });
-      assert.dom(`[data-test-tpk-prefab-tpk-radio-container] input`).hasAttribute('disabled');
+      assert.dom(`[data-test-tpk-prefab-radio-container] input`).hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
