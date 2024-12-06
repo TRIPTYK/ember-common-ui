@@ -99,11 +99,14 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
 
   @action
   onChangeValueMobile(value: unknown) {
-    if (!value) return;
-    this.args.changeset.set(
-      this.args.validationField,
-      `${this.selectedPrefix.code}${value}`,
-    );
+    if (!value) {
+      this.args.changeset.set(this.args.validationField, value);
+    } else {
+      this.args.changeset.set(
+        this.args.validationField,
+        `${this.selectedPrefix.code}${value}`,
+      );
+    }
   }
 
   @action
