@@ -11,9 +11,7 @@ export interface TpkValidationRadioGroupPrefabComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationRadioGroupComponentSignature['Args'] & {
-      label: string;
       groupLabel: string;
-      options: string[];
       onChange?: (value: string) => void;
     };
   Blocks: {
@@ -31,11 +29,9 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
   <template>
     <TpkValidationRadioGroupComponent
       @validationField={{@validationField}}
-      @label={{@label}}
       @changeset={{@changeset}}
       @onChange={{@onChange}}
       @mandatory={{@mandatory}}
-      @groupLabel={{@groupLabel}}
       @requiredFields={{@requiredFields}}
       as |V|
     >
