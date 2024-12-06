@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.8](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.7...v3.0.0-alpha.8) (2024-12-06)
+
+
+### Bug Fixes
+
+* css file for datepicker icon ([909c051](https://github.com/TRIPTYK/ember-common-ui/commit/909c05139f7966f799b800a7db6c70e8df858e69))
+
+
+
+
+
 # [3.0.0-alpha.7](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.6...v3.0.0-alpha.7) (2024-12-05)
 
 **Note:** Version bump only for package doc-app

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.8](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.7...v3.0.0-alpha.8) (2024-12-06)
+
+
+### Bug Fixes
+
+* add optional onChange on prefab ([661b0e7](https://github.com/TRIPTYK/ember-common-ui/commit/661b0e774809fa83907a2e7acfc0d146cfda6de4))
+* css file for datepicker icon ([909c051](https://github.com/TRIPTYK/ember-common-ui/commit/909c05139f7966f799b800a7db6c70e8df858e69))
+* remove value in changeset when value is empty ([18bff1c](https://github.com/TRIPTYK/ember-common-ui/commit/18bff1cdab182563281462b7f0f14478ce50bc04))
+
+
+
+
+
 # [3.0.0-alpha.7](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.6...v3.0.0-alpha.7) (2024-12-05)
 
 
