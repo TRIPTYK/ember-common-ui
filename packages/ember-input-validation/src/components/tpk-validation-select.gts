@@ -4,13 +4,16 @@ import {
   BaseValidationComponent,
 } from './base.ts';
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
-import TpkSelectComponent, { type Select } from '@triptyk/ember-input/components/tpk-select';
+import TpkSelectComponent, {
+  type Select,
+} from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationSelectComponentSignature {
-  Args: BaseValidationSignature['Args'] & TpkSelectSignature['Args'] & {
-    onChange?: (value: unknown, select: Select, event?: Event) => void;
-  };
+  Args: BaseValidationSignature['Args'] &
+    TpkSelectSignature['Args'] & {
+      onChange?: (value: unknown, select: Select, event?: Event) => void;
+    };
   Blocks: {
     default: [
       {
@@ -39,7 +42,7 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
 
   <template>
     <div
-      class="{{if @disabled "disabled"}} tpk-validation-select"
+      class='{{if @disabled "disabled"}} tpk-validation-select'
       data-has-error='{{this.hasError}}'
       anchorScrollUp={{@validationField}}
       ...attributes
@@ -52,7 +55,6 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
         @placeholder={{@placeholder}}
         @selected={{this.value}}
         @allowClear={{@allowClear}}
-
         @renderInPlace={{@renderInPlace}}
         @labelComponent={{@labelComponent}}
         @selectedItemComponent={{@selectedItemComponent}}

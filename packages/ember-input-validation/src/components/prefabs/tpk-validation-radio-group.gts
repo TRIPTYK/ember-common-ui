@@ -14,6 +14,7 @@ export interface TpkValidationRadioGroupPrefabComponentSignature
       label: string;
       groupLabel: string;
       options: string[];
+      onChange?: (value: string) => void;
     };
   Blocks: {
     default: [

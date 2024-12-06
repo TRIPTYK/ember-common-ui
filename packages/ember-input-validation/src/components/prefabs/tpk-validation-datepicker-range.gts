@@ -10,7 +10,9 @@ import Component from '@glimmer/component';
 export interface TpkValidationDatepickerRangePrefabSignature
   extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationDatepickerComponentSignature['Args'],
+    TpkValidationDatepickerComponentSignature['Args'] & {
+      onChange?: (value: Date[]) => void;
+    },
     | 'value'
     | 'promptTimeOnDateChange'
     | 'useCurrent'

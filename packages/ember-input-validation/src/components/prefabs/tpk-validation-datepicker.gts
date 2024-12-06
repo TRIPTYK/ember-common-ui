@@ -11,7 +11,9 @@ import { assert } from '@ember/debug';
 export interface TpkValidationDatepickerPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationDatepickerComponentSignature['Args'],
+    TpkValidationDatepickerComponentSignature['Args'] & {
+      onChange?: (value: Date[]) => void;
+    },
     'value' | 'useCurrent'
   >;
   Blocks: {

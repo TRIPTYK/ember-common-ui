@@ -8,7 +8,9 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 export interface TpkValidationRadioPrefabComponentSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationRadioComponentSignature['Args'];
+    TpkValidationRadioComponentSignature['Args'] & {
+      onChange?: (value: string) => void;
+    };
   Blocks: {
     default: [];
   };
