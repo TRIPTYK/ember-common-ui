@@ -36,7 +36,7 @@ export interface TpkDatepickerInputArgs {
   disabledHours?: number[];
   enabledHours?: number[];
   viewMode?: 'clock' | 'calendar' | 'months' | 'years' | 'decades';
-  onChange: (value: Date[]) => void;
+  onChange?: (value: Date[]) => void;
   onClose?: () => void;
 }
 
@@ -174,14 +174,16 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
 
     if (this.args.onChange) {
       this.datepicker.subscribe(Namespace.events.change, () => {
-        if (this.args.mode === 'multiple' || this.args.mode === 'range') {
-          // Workaround to trigger change event after at least 2 dates are picked
-          if (this.datepicker!.dates.picked.length > 1) {
-            return this.args.onChange(this.datepicker!.dates.picked);
+        if (this.args.onChange) {
+          if (this.args.mode === 'multiple' || this.args.mode === 'range') {
+            // Workaround to trigger change event after at least 2 dates are picked
+            if (this.datepicker!.dates.picked.length > 1) {
+              return this.args.onChange(this.datepicker!.dates.picked);
+            }
+            return;
           }
-          return;
+          this.args.onChange(this.datepicker!.dates.picked);
         }
-        this.args.onChange(this.datepicker!.dates.picked);
       });
     }
     if (this.args.onClose) {
