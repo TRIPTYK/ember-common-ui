@@ -24,8 +24,6 @@ module(
         <template>
       <TpkValidationRadioGroup
         @mandatory={{true}}
-        @label="label"
-        @groupLabel="groupLabel"
         @changeset={{changeset}}
         @validationField="radio"
       as |R|>
