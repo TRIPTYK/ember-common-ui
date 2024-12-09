@@ -1,0 +1,15 @@
+.tpk-toggle-container {
+  @apply form-control;
+}
+
+.tpk-toggle-label-container {
+  @apply label cursor-pointer;
+}
+
+.tpk-toggle-label {
+  @apply label-text;
+}
+
+.tpk-toggle-input {
+  @apply toggle;
+}

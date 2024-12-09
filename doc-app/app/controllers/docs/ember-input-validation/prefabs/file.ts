@@ -6,7 +6,7 @@ import type { Owner } from '@ember/test-helpers/build-owner';
 
 export default class DocsEmberInputValidationPrefabsFileController extends Controller {
   changeset = new ImmerChangeset({
-    file: undefined,
+    file: new File([], 'file.txt'),
     disabled: '',
     error: '',
   });

@@ -121,6 +121,7 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
+      "./components/prefabs/tpk-toggle.js": "./dist/_app_/components/prefabs/tpk-toggle.js",
       "./components/tpk-button.js": "./dist/_app_/components/tpk-button.js",
       "./components/tpk-checkbox-input.js": "./dist/_app_/components/tpk-checkbox-input.js",
       "./components/tpk-checkbox.js": "./dist/_app_/components/tpk-checkbox.js",
