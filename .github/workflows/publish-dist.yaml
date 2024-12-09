@@ -1,0 +1,30 @@
+name: "publish dist"
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  push-dist:
+    name: Push dist
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        apps: [ember-input, ember-input-validation, ember-ui]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wyvox/action-setup-pnpm@v3
+      - name: build
+        run: pnpm build
+      - uses: kategengler/put-built-npm-package-contents-on-branch@v1.0.0
+        with:
+          working-directory: packages/${{ matrix.apps }}
+          pack-command: pnpm pack
+          branch: ${{ github.head_ref || github.ref_name }}-${{ matrix.apps }}-dist
+          token: ${{ secrets.GITHUB_TOKEN }}

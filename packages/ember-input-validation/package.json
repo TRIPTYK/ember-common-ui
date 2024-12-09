@@ -16,7 +16,7 @@
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
     },
-    "./app.css": "./dist/styles/app.css",
+    "./app.css": "./dist/app.css",
     "./addon-main.js": "./addon-main.cjs"
   },
   "typesVersions": {
