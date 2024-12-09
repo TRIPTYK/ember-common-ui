@@ -22,6 +22,9 @@ Router.map(function (this: RouterDSL) {
     });
     this.route('ember-input', function () {
       this.route('installation');
+      this.route('prefabs', function () {
+        this.route('toggle');
+      });
       this.route('input');
       this.route('button');
       this.route('checkbox');
