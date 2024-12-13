@@ -18,7 +18,6 @@ Router.map(function (this: RouterDSL) {
       this.route('table-generic');
       this.route('file-list');
       this.route('stack-list');
-      this.route('stepper');
     });
     this.route('ember-input', function () {
       this.route('installation');

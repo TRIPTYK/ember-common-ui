@@ -14,12 +14,8 @@ import type TableGenericHeaderComponent from './components/tpk-table-generic/hea
 import type TableGenericFooterComponent from './components/tpk-table-generic/footer.gts';
 import type TableGenericHeaderCellComponent from './components/tpk-table-generic/header/cell.gts';
 import type TableGenericTableComponent from './components/tpk-table-generic/table.gts';
-import type TpkStepperStepComponent from './components/tpk-stepper/step.gts';
-import type TpkStepperStepperComponent from './components/tpk-stepper/stepper.gts';
 import type TpkConfirmModalComponent from './components/tpk-confirm-modal.gts';
-import type TpkStepperStepHeaderComponent from './components/tpk-stepper/step/header.gts';
 import type TableGenericComponent from './components/tpk-table-generic.gts';
-import type TpkStepperComponent from './components/tpk-stepper.gts';
 import type TpkStackListHeadComponent from './components/tpk-stack-list/head.gts';
 import type StackListItemComponent from './components/tpk-stack-list/item.gts';
 import type TpkStackListContentComponent from './components/tpk-stack-list/content.gts';
@@ -37,7 +33,6 @@ export default interface Registry {
   'TpkStackList::Item': typeof StackListItemComponent;
   'tpk-stack-list/head': typeof TpkStackListHeadComponent;
   'TpkStackList::Head': typeof TpkStackListHeadComponent;
-  'tpk-stepper': typeof TpkStepperComponent;
   'tpk-table-generic': typeof TableGenericComponent;
   TpkTableGeneric: typeof TableGenericComponent;
   'tpk-confirm-modal/cancel': typeof TpkConfirmModalCancelComponent;
@@ -61,8 +56,5 @@ export default interface Registry {
   'table-generic/header': typeof TableGenericHeaderComponent;
   'table-generic/table': typeof TableGenericTableComponent;
   'table-generic/header/cell': typeof TableGenericHeaderCellComponent;
-  'tpk-stepper/step/header': typeof TpkStepperStepHeaderComponent;
-  'tpk-stepper/step': typeof TpkStepperStepComponent;
-  'tpk-stepper/stepper': typeof TpkStepperStepperComponent;
   'tpk-confirm-modal': typeof TpkConfirmModalComponent;
 }
