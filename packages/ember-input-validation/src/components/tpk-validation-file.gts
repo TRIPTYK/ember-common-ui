@@ -3,7 +3,9 @@ import {
   BaseValidationComponent,
   type BaseValidationSignature,
 } from './base.ts';
-import TpkFile, { type TpkFileSignature } from '@triptyk/ember-input/components/tpk-file';
+import TpkFile, {
+  type TpkFileSignature,
+} from '@triptyk/ember-input/components/tpk-file';
 
 import { hash } from '@ember/helper';
 
@@ -35,10 +37,18 @@ export default class TpkValidationFileComponent extends BaseValidationComponent<
     if (this.args.onChange) {
       return this.args.onChange(file);
     }
-    return this.args.changeset.set(
-      this.args.validationField,
-      this.args.multiple === true ? file : file[0],
-    );
+
+    if (this.args.multiple === true) {
+      const currentFiles =
+        (this.args.changeset.get(this.args.validationField) as File[]) ?? [];
+
+      return this.args.changeset.set(this.args.validationField, [
+        ...currentFiles,
+        ...file,
+      ]);
+    } else {
+      return this.args.changeset.set(this.args.validationField, file[0]);
+    }
   }
 
   <template>

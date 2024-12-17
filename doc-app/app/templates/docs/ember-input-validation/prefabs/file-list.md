@@ -1,26 +1,27 @@
 # Input File
 
-This is an input with type File
+This is an input with a dropzone that allows to upload multiple files. You can also find a list of uploaded files and dowload/delete theme.
 
 <DocsDemo as |demo|>
   <demo.example @name="prefab-tpk-file.hbs">
-      <Prefabs::TpkValidationFile 
+      <Prefabs::TpkValidationFileList
         @label="File"
         @changeset={{this.changeset}} 
-        @validationField="file"
-        @mandatory=true
+        @validationField="files"
+        @placeholder="Glisser-déposer un fichier ou cliquer pour sélectionner un fichier (max 10Mo)"
       />
-      <Prefabs::TpkValidationFile 
+      <Prefabs::TpkValidationFileList
         @label="Disabled"
         @changeset={{this.changeset}} 
         @validationField="disabled"
-        @mandatory=true
+        @placeholder="Glisser-déposer un fichier ou cliquer pour sélectionner un fichier (max 10Mo)"
         @disabled=true
       />
-      <Prefabs::TpkValidationFile 
+      <Prefabs::TpkValidationFileList
         @label="Error"
         @changeset={{this.changeset}} 
         @validationField="error"
+        @placeholder="Glisser-déposer un fichier ou cliquer pour sélectionner un fichier (max 10Mo)"
         @mandatory=true
       />
   </demo.example>
@@ -36,6 +37,7 @@ This is an input with type File
 
 - `@label`: The label for the input field.
 - `@disabled`: Whether the input field is disabled.
-- `@mandatory`: Whether the textarea field is mandatory.
+- `@mandatory`: Whether the input file multiple field is mandatory.
 - `@onChange`: The action to be called when the selection changes. 
-- `@changeEvent`: The event to trigger the onChange action.
+- `@disableDownload`: Whether the download button is disabled.
+- `@placeholder`: The placeholder for the dropzone area.
