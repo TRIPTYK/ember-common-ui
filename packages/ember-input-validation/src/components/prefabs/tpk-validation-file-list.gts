@@ -166,7 +166,9 @@ export class FileListComponent extends Component<FileListSignature> {
   }
 
   async downloadFile(file: File) {
-    window.open(URL.createObjectURL(file));
+    if (window.open) {
+      window.open(URL.createObjectURL(file));
+    }
   }
 
   <template>
