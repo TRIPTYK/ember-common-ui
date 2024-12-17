@@ -110,13 +110,15 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
           {{on 'drop' this.handleDrop}}
         >
           <img
-            src='/upload.svg'
-            alt='upload'
+            src={{if @disabled '/block.svg' '/upload.svg'}}
+            alt={{if @disabled 'block' 'upload'}}
             class='tpk-file-list-placeholder-icon'
           />
-          <div class='tpk-file-list-placeholder'>
-            {{@placeholder}}
-          </div>
+          {{#unless @disabled}}
+            <div class='tpk-file-list-placeholder'>
+              {{@placeholder}}
+            </div>
+          {{/unless}}
         </div>
         <TpkValidationErrorsComponent
           class='tpk-validation-errors'

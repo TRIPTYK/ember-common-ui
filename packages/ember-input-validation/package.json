@@ -123,7 +123,8 @@
       "./static/upload.svg": "/upload.svg",
       "./static/download.svg": "/download.svg",
       "./static/delete.svg": "/delete.svg",
-      "./static/document.svg": "/document.svg"
+      "./static/document.svg": "/document.svg",
+      "./static/block.svg": "/block.svg"
     },
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",

@@ -19,7 +19,11 @@
 }
 
 .tpk-file-list-placeholder-container.disabled {
-  @apply hidden;
+  @apply cursor-not-allowed;
+}
+
+.tpk-file-list-placeholder-container.disabled .tpk-file-list-placeholder-icon {
+  @apply w-12 h-12;
 }
 
 .tpk-file-list-placeholder {
@@ -47,10 +51,6 @@
 
 .tpk-file-list-list {
   @apply space-y-4 mt-4;
-}
-
-.tpk-file-list-list.disabled {
-  @apply mt-0;
 }
 
 .tpk-file-list-list-item {
@@ -81,6 +81,7 @@
   @apply flex gap-2 flex-shrink-0;
 }
 
-.tpk-file-list-list-item-action button, .tpk-file-list-list-item-action img {
+.tpk-file-list-list-item-action button,
+.tpk-file-list-list-item-action img {
   @apply w-6 h-6;
 }
