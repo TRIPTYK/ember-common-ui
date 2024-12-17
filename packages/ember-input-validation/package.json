@@ -119,7 +119,11 @@
       "./static/DE.svg": "/DE.svg",
       "./static/LU.svg": "/LU.svg",
       "./static/NL.svg": "/NL.svg",
-      "./static/FR.svg": "/FR.svg"
+      "./static/FR.svg": "/FR.svg",
+      "./static/upload.svg": "/upload.svg",
+      "./static/download.svg": "/download.svg",
+      "./static/delete.svg": "/delete.svg",
+      "./static/document.svg": "/document.svg"
     },
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
@@ -131,6 +135,7 @@
       "./components/prefabs/tpk-validation-datepicker.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker.js",
       "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
       "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
+      "./components/prefabs/tpk-validation-file-list.js": "./dist/_app_/components/prefabs/tpk-validation-file-list.js",
       "./components/prefabs/tpk-validation-file.js": "./dist/_app_/components/prefabs/tpk-validation-file.js",
       "./components/prefabs/tpk-validation-iban.js": "./dist/_app_/components/prefabs/tpk-validation-iban.js",
       "./components/prefabs/tpk-validation-input.js": "./dist/_app_/components/prefabs/tpk-validation-input.js",

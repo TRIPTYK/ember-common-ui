@@ -1,0 +1,86 @@
+.tpk-file-list-container {
+  @apply relative flex flex-col w-full pb-4;
+}
+
+.tpk-file-list-container .tpk-label {
+  @apply label;
+}
+
+.tpk-file-list-input {
+  @apply hidden;
+}
+
+.tpk-file-list-placeholder-container {
+  @apply min-h-[180px] w-full border-2 border-dashed border-base-300 rounded-lg flex flex-col items-center justify-center cursor-pointer transition-colors duration-200 hover:border-neutral-content hover:bg-base-200/10;
+}
+
+.tpk-file-list-placeholder-icon {
+  @apply w-8 h-8 mb-2 opacity-60;
+}
+
+.tpk-file-list-placeholder-container.disabled {
+  @apply hidden;
+}
+
+.tpk-file-list-placeholder {
+  @apply text-base-content/60 text-sm text-center;
+}
+
+.tpk-file-list-container[data-has-error~='true']
+  .tpk-file-list-placeholder-container {
+  @apply border-error bg-error/5;
+}
+
+.tpk-file-list-container[data-has-error~='true'] .tpk-label {
+  @apply text-error;
+}
+
+.tpk-file-list-container[data-has-error~='true'] .tpk-file-list-placeholder {
+  @apply text-error/60;
+}
+
+.tpk-file-list-container[data-has-error~='true'] .tpk-validation-errors {
+  @apply text-error text-sm absolute right-0 -bottom-1;
+}
+
+/* File list */
+
+.tpk-file-list-list {
+  @apply space-y-4 mt-4;
+}
+
+.tpk-file-list-list.disabled {
+  @apply mt-0;
+}
+
+.tpk-file-list-list-item {
+  @apply flex items-center space-x-6 px-4 py-2 border border-base-300 rounded;
+}
+
+.tpk-file-list-list-item-preview {
+  @apply w-7 h-7 flex-shrink-0;
+}
+
+.tpk-file-list-list-item-preview img {
+  @apply w-7 h-7 object-cover rounded object-center;
+}
+
+.tpk-file-list-list-item-content {
+  @apply flex flex-col flex-grow truncate text-ellipsis;
+}
+
+.tpk-file-list-list-item-content-name {
+  @apply text-sm font-semibold truncate text-ellipsis;
+}
+
+.tpk-file-list-list-item-content-size {
+  @apply text-xs text-base-content/60;
+}
+
+.tpk-file-list-list-item-action {
+  @apply flex gap-2 flex-shrink-0;
+}
+
+.tpk-file-list-list-item-action button, .tpk-file-list-list-item-action img {
+  @apply w-6 h-6;
+}

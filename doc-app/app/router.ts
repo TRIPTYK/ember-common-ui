@@ -58,6 +58,7 @@ Router.map(function (this: RouterDSL) {
         this.route('datepicker');
         this.route('datepicker-range');
         this.route('file');
+        this.route('file-list');
       });
       this.route('installation');
       this.route('checkbox');

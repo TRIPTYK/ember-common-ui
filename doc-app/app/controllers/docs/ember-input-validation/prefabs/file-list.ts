@@ -1,13 +1,12 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { tracked } from '@glimmer/tracking';
 import type { Owner } from '@ember/test-helpers/build-owner';
 
-export default class DocsEmberInputValidationPrefabsFileController extends Controller {
+export default class DocsEmberInputValidationPrefabsFileListController extends Controller {
   changeset = new ImmerChangeset({
-    file: new File([], 'file.txt'),
-    disabled: '',
+    files: [new File([], 'file.txt')],
+    disabled: [new File([], 'file.txt')],
     error: '',
   });
 
