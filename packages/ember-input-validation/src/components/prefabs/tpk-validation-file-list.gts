@@ -171,7 +171,7 @@ export class FileListComponent extends Component<FileListSignature> {
 
   <template>
     <div class='tpk-file-list-list {{if @disabled "disabled"}}'>
-      {{#each (this.changesetGet this.args.validationField) as |file|}}
+      {{#each (this.changesetGet @validationField) as |file|}}
         <div class='tpk-file-list-list-item'>
           <div class='tpk-file-list-list-item-preview'>
             {{#if (this.startWith file.type 'image/')}}
