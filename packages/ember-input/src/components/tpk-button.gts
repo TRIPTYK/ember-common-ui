@@ -11,6 +11,8 @@ export type TpkButtonSignature = {
     BaseUIComponentArgs['Args'],
     {
       allowSpam?: boolean;
+      disabled?: boolean;
+      class?: string;
       onClick?: (e: Event) => void | Promise<void>;
     }
   >;
@@ -34,9 +36,14 @@ export default class TpkButtonComponent extends Component<TpkButtonSignature> {
     return this.args.onClick?.(e);
   });
 
+  get disabled() {
+    return this.args.disabled ?? false;
+  }
+
   <template>
     <button
       id={{this.guid}}
+      disabled={{this.disabled}}
       type='button'
       class='tpk-button'
       {{on 'click' (perform this.onClick)}}

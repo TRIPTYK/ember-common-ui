@@ -3,7 +3,7 @@ import type { BaseUIComponentArgs } from '../base';
 import TpkCheckboxComponent from '../tpk-checkbox.gts';
 import type { TOC } from '@ember/component/template-only';
 
-export type TpkCheckboxPrefabSignature = {
+export type TpkTogglePrefabSignature = {
   Args: MergeDeep<
     BaseUIComponentArgs['Args'],
     {
@@ -18,7 +18,7 @@ export type TpkCheckboxPrefabSignature = {
   Element: HTMLDivElement;
 };
 
-const TpkCheckboxPrefabComponent: TOC<TpkCheckboxPrefabSignature> = <template>
+const TpkTogglePrefabComponent: TOC<TpkTogglePrefabSignature> = <template>
   <TpkCheckboxComponent @disabled={{@disabled}} @checked={{@checked}} @label={{@label}} @onChange={{@onChange}} as |C|>
     <div class="tpk-toggle-container" data-test-tpk-prefab-toggle-container ...attributes>
       <C.Label class="tpk-toggle-label-container">
@@ -29,4 +29,4 @@ const TpkCheckboxPrefabComponent: TOC<TpkCheckboxPrefabSignature> = <template>
   </TpkCheckboxComponent>
 </template>
 
-export default TpkCheckboxPrefabComponent;
+export default TpkTogglePrefabComponent;
