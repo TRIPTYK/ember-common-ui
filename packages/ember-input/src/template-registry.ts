@@ -15,6 +15,8 @@ import type TpkSelectOptionComponent from './components/tpk-select/option';
 import type TpkTextareaComponent from './components/tpk-textarea';
 import type TpkTextareaInputComponent from './components/tpk-textarea/input';
 import type tpkFocusTrap from './modifiers/focus-trap';
+import type TpkTogglePrefabComponent from './components/prefabs/tpk-toggle';
+import type TpkButtonPrefabComponent from './components/prefabs/tpk-prefab-button';
 
 export default interface Registry {
   'tpk-label': typeof TpkLabel;
@@ -50,4 +52,8 @@ export default interface Registry {
   'tpk-textarea': typeof TpkTextareaComponent;
   TpkTextarea: typeof TpkTextareaComponent;
   'focus-trap': typeof tpkFocusTrap;
+  TpkToggle: typeof TpkTogglePrefabComponent;
+  'tpk-toggle': typeof TpkTogglePrefabComponent;
+  TpkPrefabButton: typeof TpkButtonPrefabComponent;
+  'tpk-prefab-button': typeof TpkButtonPrefabComponent;
 }
