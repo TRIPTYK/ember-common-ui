@@ -13,8 +13,7 @@ export interface TpkConfirmModalSignature {
     cancelLabel?: string;
     confirmLabel?: string;
     isOpen: boolean;
-    outsideClickHandler: ((e: MouseEvent | TouchEvent) => unknown) | undefined;
-    title: string;
+    outsideClickHandler?: ((e: MouseEvent | TouchEvent) => unknown) | undefined;
   };
   Element: HTMLDivElement;
   Blocks: {

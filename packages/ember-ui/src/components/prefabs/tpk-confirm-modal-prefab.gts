@@ -10,10 +10,11 @@ export interface TpkConfirmModalPrefabSignature{
     confirmLabel: string;
     icon: string;
     label: string;
+    isOpen: boolean;
   };
   Blocks: {
     default: [
-      WithBoundArgs<typeof TpkConfirmModalComponent, 'title' | 'onClose' | 'onConfirm' | 'confirmQuestion' | 'isOpen' | 'outsideClickHandler'>,
+      WithBoundArgs<typeof TpkConfirmModalComponent, 'onClose' | 'onConfirm' | 'confirmQuestion' | 'isOpen' | 'outsideClickHandler'>,
 
     ];
   };
@@ -23,7 +24,6 @@ export interface TpkConfirmModalPrefabSignature{
 const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <template>
     <TpkConfirmModalComponent
       class='tpk-confirm-modal-container'
-      @title={{@title}}
       @onClose={{@onClose}}
       @onConfirm={{@onConfirm}}
       @cancelLabel={{@cancelLabel}}
