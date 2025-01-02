@@ -4,9 +4,8 @@ import { on } from '@ember/modifier';
 export interface TpkConfirmModalCancelComponentSignature {
   Args: {
     onClose: (...args: unknown[]) => unknown;
-    action: string;
-    icon: string;
-    label: string;
+    icon?: string;
+    cancelLabel?: string;
   };
   Element: HTMLButtonElement;
   Blocks: {
@@ -19,10 +18,16 @@ const TpkConfirmModalCancelComponent: TOC<TpkConfirmModalCancelComponentSignatur
     <button
       {{on 'click' @onClose}}
       data-test-confirm-modal-cancel
+      class='btn-confirm-modal-cancel'
       type='button'
       ...attributes
     >
+    {{#if (has-block)}}
       {{yield}}
+    {{else}}
+      {{@icon}}
+      {{@cancelLabel}}
+    {{/if}}
     </button>
   </template>;
 

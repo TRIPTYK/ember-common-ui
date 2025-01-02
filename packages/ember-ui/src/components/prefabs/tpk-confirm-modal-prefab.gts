@@ -1,0 +1,43 @@
+import type { WithBoundArgs } from "@glint/template";
+import type { TpkConfirmModalSignature } from "../tpk-confirm-modal.gts";
+import TpkConfirmModalComponent from "../tpk-confirm-modal.gts";
+import type { TOC } from "@ember/component/template-only";
+
+export interface TpkConfirmModalPrefabSignature{
+  Args: TpkConfirmModalSignature["Args"] & {
+    onClose: () => void;
+    cancelLabel: string;
+    confirmLabel: string;
+    icon: string;
+    label: string;
+  };
+  Blocks: {
+    default: [
+      WithBoundArgs<typeof TpkConfirmModalComponent, 'title' | 'onClose' | 'onConfirm' | 'confirmQuestion' | 'isOpen' | 'outsideClickHandler'>,
+
+    ];
+  };
+  Element: HTMLDivElement;
+}
+
+const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <template>
+    <TpkConfirmModalComponent
+      class='tpk-confirm-modal-container'
+      @title={{@title}}
+      @onClose={{@onClose}}
+      @onConfirm={{@onConfirm}}
+      @cancelLabel={{@cancelLabel}}
+      @confirmLabel={{@confirmLabel}}
+      @confirmQuestion={{@confirmQuestion}}
+      @isOpen={{@isOpen}}
+      @outsideClickHandler={{@outsideClickHandler}}
+      data-test-confirm-modal-container
+      ...attributes
+      as |M|
+    >
+      <M.Cancel @icon={{@icon}} @cancelLabel={{@cancelLabel}}/>
+      <M.Confirm @confirmLabel={{@confirmLabel}}/>
+    </TpkConfirmModalComponent>
+  </template>
+  
+export default TpkConfirmModalPrefabComponent;

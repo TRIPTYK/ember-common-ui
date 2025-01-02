@@ -19,6 +19,7 @@
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
     },
+    "./app.css": "./dist/app.css",
     "./addon-main.js": "./addon-main.cjs"
   },
   "typesVersions": {
@@ -124,6 +125,7 @@
       "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
     },
     "app-js": {
+      "./components/prefabs/tpk-confirm-modal-prefab.js": "./dist/_app_/components/prefabs/tpk-confirm-modal-prefab.js",
       "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
       "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
       "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",

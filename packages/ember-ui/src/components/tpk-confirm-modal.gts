@@ -10,9 +10,10 @@ export interface TpkConfirmModalSignature {
     onClose: () => unknown;
     onConfirm: (...args: unknown[]) => unknown;
     confirmQuestion: string;
+    cancelLabel?: string;
+    confirmLabel?: string;
     isOpen: boolean;
     outsideClickHandler: ((e: MouseEvent | TouchEvent) => unknown) | undefined;
-
     title: string;
   };
   Element: HTMLDivElement;
@@ -24,7 +25,6 @@ export interface TpkConfirmModalSignature {
           'onConfirm'
         >;
         Cancel: WithBoundArgs<typeof TpkConfirmModalCancelComponent, 'onClose'>;
-        title: string;
       },
     ];
   };
@@ -34,18 +34,17 @@ const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
   <template>
     <TpkModal
       data-test-confirm-modal
-      @title={{@title}}
       @isOpen={{@isOpen}}
       @outsideClickHandler={{@outsideClickHandler}}
       @onClose={{@onClose}}
-
+      @contentTitle={{@confirmQuestion}}
       ...attributes
       as |Modal|
     >
+
       <Modal.Content>
         {{yield
           (hash
-            title=@title
             Confirm=(component TpkConfirmModalConfirmComponent onConfirm=@onConfirm)
             Cancel=(component TpkConfirmModalCancelComponent onClose=@onClose)
           )

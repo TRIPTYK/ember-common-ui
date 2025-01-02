@@ -27,7 +27,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
     return render(<template>
 			<div id="tpk-modal"></div>
 			<TpkConfirmModal
-				@title={{confirmQuestion}}
+				@confirmQuestion={{confirmQuestion}}
 				@isOpen={{isOpen}}
 				@onConfirm={{onConfirm}}
 				@onClose={{onClose}}
