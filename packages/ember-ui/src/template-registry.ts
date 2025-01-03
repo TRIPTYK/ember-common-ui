@@ -21,7 +21,6 @@ import type StackListItemComponent from './components/tpk-stack-list/item.gts';
 import type TpkStackListContentComponent from './components/tpk-stack-list/content.gts';
 import type TpkActionsMenuElementComponent from './components/tpk-actions-menu/element.gts';
 import type TpkStackListTitleComponent from './components/tpk-stack-list/title.gts';
-import type TpkLazyImageComponent from './components/tpk-lazy-image.gts';
 import type TpkConfirmModalPrefabComponent from './components/prefabs/tpk-confirm-modal-prefab.gts';
 import type TableGenericPrefabComponent from './components/prefabs/tpk-table-generic-prefab';
 
@@ -30,8 +29,6 @@ export default interface Registry {
   'tpk-stack-list/title': typeof TpkStackListTitleComponent;
   'tpk-stack-list/content': typeof TpkStackListContentComponent;
   'tpk-stack-list/item': typeof StackListItemComponent;
-  'tpk-lazy-image': typeof TpkLazyImageComponent;
-  TpkLazyImage: typeof TpkLazyImageComponent;
   'TpkStackList::Item': typeof StackListItemComponent;
   'tpk-stack-list/head': typeof TpkStackListHeadComponent;
   'TpkStackList::Head': typeof TpkStackListHeadComponent;

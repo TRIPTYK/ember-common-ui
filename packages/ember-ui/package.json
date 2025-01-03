@@ -132,7 +132,6 @@
       "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",
       "./components/tpk-confirm-modal/cancel.js": "./dist/_app_/components/tpk-confirm-modal/cancel.js",
       "./components/tpk-confirm-modal/confirm.js": "./dist/_app_/components/tpk-confirm-modal/confirm.js",
-      "./components/tpk-lazy-image.js": "./dist/_app_/components/tpk-lazy-image.js",
       "./components/tpk-loading-indicator.js": "./dist/_app_/components/tpk-loading-indicator.js",
       "./components/tpk-modal.js": "./dist/_app_/components/tpk-modal.js",
       "./components/tpk-modal/content.js": "./dist/_app_/components/tpk-modal/content.js",
