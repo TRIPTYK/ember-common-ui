@@ -59,9 +59,9 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
       <TG.Table as | Table |>
         <Table.Header as |Header|>
           {{#each this.columns as |column|}}
-            <Header.Cell @sortable={{column.sortable}} @prop={{column.field}} data-test-table={{column.field}}>
+            {{!-- <Header.Cell @sortable={{column.sortable}} @prop={{column.field}} data-test-table={{column.field}}>
               {{column.headerName}}
-            </Header.Cell>
+            </Header.Cell> --}}
           {{/each}}
         </Table.Header>
         <Table.Body as |Body element|>
