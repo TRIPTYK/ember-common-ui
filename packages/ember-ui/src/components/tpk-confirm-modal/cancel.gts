@@ -5,7 +5,7 @@ export interface TpkConfirmModalCancelComponentSignature {
   Args: {
     onClose: (...args: unknown[]) => unknown;
     icon?: string;
-    cancelLabel?: string;
+    cancelText?: string;
   };
   Element: HTMLButtonElement;
   Blocks: {
@@ -26,7 +26,7 @@ const TpkConfirmModalCancelComponent: TOC<TpkConfirmModalCancelComponentSignatur
       {{yield}}
     {{else}}
       {{@icon}}
-      {{@cancelLabel}}
+      {{@cancelText}}
     {{/if}}
     </button>
   </template>;

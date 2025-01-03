@@ -17,7 +17,7 @@ export interface TpkModalComponentArgs {
   isOpen: boolean;
   onClose: () => unknown;
   outsideClickHandler?: (e: MouseEvent | TouchEvent) => unknown;
-  contentTitle?: string;
+  title?: string;
 
 }
 
@@ -35,7 +35,7 @@ export interface TpkModalComponentSignature {
       {
         Content: WithBoundArgs<
           typeof TpkModalContentComponent,
-          'contentTitle' | 'onClose'  | 'outsideClickHandler'
+          'title' | 'onClose'  | 'outsideClickHandler'
         >;
         isOnTop: boolean;
         isOpen: boolean;
@@ -54,7 +54,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
   constructor(owner: unknown, args: TpkModalComponentArgs) {
     super(owner, args);
     assert('Modal initialized without @onClose', args.onClose !== undefined);
-    assert('Modal @contentTitle is mandatory', args.contentTitle !== undefined);
+    assert('Modal @title is mandatory', args.title !== undefined);
   }
 
   get isOnTop() {
@@ -141,7 +141,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
             (hash
               Content=(component
                 TpkModalContentComponent
-                contentTitle=@contentTitle
+                title=@title
                 onClose=this.close
                 outsideClickHandler=this.outsideClickHandler
               )

@@ -24,7 +24,7 @@ module('Integration | Component | modal', function (hooks) {
       <div id="other"></div>
       <TpkModal
         @isOpen={{isOpen}}
-        @contentTitle={{title}}
+        @title={{title}}
         @onClose={{onClose}}
         @outsideClickHandler={{handler}}
         data-test-modal-toggle

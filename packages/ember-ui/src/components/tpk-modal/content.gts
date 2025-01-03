@@ -7,7 +7,7 @@ import tpkFocusTrap from '@triptyk/ember-input/modifiers/focus-trap';
 interface UiModalContentArgs {
   onClose: () => void;
   outsideClickHandler: (e: MouseEvent | TouchEvent) => boolean;
-  contentTitle?: string;
+  title?: string;
 }
 
 export interface UiModalContentSignature {
@@ -27,13 +27,13 @@ export default class TpkModalContentComponent extends Component<UiModalContentSi
 
   public constructor(owner: unknown, args: UiModalContentArgs) {
     super(owner, args);
-    assert('UiModalContent requires a @title', args.contentTitle);
+    assert('UiModalContent requires a @title', args.title);
   }
 
   <template>
     <div class='tpk-modal-content'>
     <h2 class='tpk-modal-title'>
-        {{@contentTitle}}
+        {{@title}}
     </h2>
     <div
       data-test-tpk-modal

@@ -24,8 +24,8 @@ module('Integration | Component | Prefabs | Tpk-confirm-modal-prefab', function(
           <TpkConfirmModalPrefab
             @onClose={{onClose}}
             @onConfirm={{onConfirm}}
-            @cancelLabel="Annuler"
-            @confirmLabel="Confirmer"
+            @cancelText="Annuler"
+            @confirmText="Confirmer"
             @confirmQuestion={{confirmQuestion}}
             @isOpen={{isOpen}}
           />

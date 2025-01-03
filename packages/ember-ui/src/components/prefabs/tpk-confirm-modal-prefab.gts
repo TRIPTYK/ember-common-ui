@@ -6,10 +6,9 @@ import type { TOC } from "@ember/component/template-only";
 export interface TpkConfirmModalPrefabSignature{
   Args: TpkConfirmModalSignature["Args"] & {
     onClose: () => void;
-    cancelLabel: string;
-    confirmLabel: string;
+    cancelText: string;
+    confirmText: string;
     icon: string;
-    label: string;
     isOpen: boolean;
   };
   Blocks: {
@@ -26,8 +25,8 @@ const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <tem
       class='tpk-confirm-modal-container'
       @onClose={{@onClose}}
       @onConfirm={{@onConfirm}}
-      @cancelLabel={{@cancelLabel}}
-      @confirmLabel={{@confirmLabel}}
+      @cancelText={{@cancelText}}
+      @confirmText={{@confirmText}}
       @confirmQuestion={{@confirmQuestion}}
       @isOpen={{@isOpen}}
       @outsideClickHandler={{@outsideClickHandler}}
@@ -35,8 +34,8 @@ const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <tem
       ...attributes
       as |M|
     >
-      <M.Cancel @icon={{@icon}} @cancelLabel={{@cancelLabel}}/>
-      <M.Confirm @confirmLabel={{@confirmLabel}}/>
+      <M.Cancel @icon={{@icon}} @cancelText={{@cancelText}}/>
+      <M.Confirm @confirmText={{@confirmText}}/>
     </TpkConfirmModalComponent>
   </template>
   

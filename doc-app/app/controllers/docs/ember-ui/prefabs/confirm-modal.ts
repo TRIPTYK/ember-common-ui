@@ -5,8 +5,8 @@ import { tracked } from 'tracked-built-ins';
 export default class DocsTpkConfirmModalPrefabController extends Controller {
   @tracked isOpen = false;
   confirmQuestion = 'Are you sure?';
-  confirmLabel = 'Yes';
-  cancelLabel = 'No';
+  confirmText = 'Yes';
+  cancelText = 'No';
 
   @action
   open() {

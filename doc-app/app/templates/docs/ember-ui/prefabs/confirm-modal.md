@@ -11,8 +11,8 @@ A modal component.
     <Prefabs::TpkConfirmModalPrefab
       @onClose={{this.onClose}}
       @onConfirm={{this.onConfirm}}
-      @cancelLabel="Annuler"
-      @confirmLabel="Confirmer"
+      @cancelText="Annuler"
+      @confirmText="Confirmer"
       @confirmQuestion={{this.confirmQuestion}}
       @isOpen={{this.isOpen}}
     />
