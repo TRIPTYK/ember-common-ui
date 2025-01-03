@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import type { TableGenericComponentSignature } from "../tpk-table-generic.gts";
 import TableGenericComponent from "../tpk-table-generic.gts";
 import TpkTableGeneric from "../tpk-table-generic.gts";
-import type { WithBoundArgs } from '@glint/template';
-import t from 'ember-intl/helpers/t';
+import type { ContentValue, WithBoundArgs } from '@glint/template';
+import { get } from '@ember/object';
 
 export interface TableGenericPrefabComponentSignature {
   Args: TableGenericComponentSignature["Args"] & {
@@ -38,14 +38,18 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
   }
 
   get columns() {
-    console.log(this.args.columns);
     if(!this.args.columns){
       throw new Error("entityKeys is required");
-      
+
     }
     return this.args.columns
   }
-  
+
+  displayValue = (element: unknown, field: string): ContentValue => {
+    const value = get(element, field);
+    return String(value);
+  }
+
   <template>
     <TpkTableGeneric
       @pageSizes={{this.pageSizes}}
@@ -59,20 +63,20 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
       <TG.Table as | Table |>
         <Table.Header as |Header|>
           {{#each this.columns as |column|}}
-            {{!-- <Header.Cell @sortable={{column.sortable}} @prop={{column.field}} data-test-table={{column.field}}>
+            <Header.Cell @sortable={{column.sortable}} @prop={{column.field}}>
               {{column.headerName}}
-            </Header.Cell> --}}
+            </Header.Cell>
           {{/each}}
         </Table.Header>
         <Table.Body as |Body element|>
-          {{!-- {{#each this.columns as |column|}}
+          {{#each this.columns as |column|}}
             <Body.Cell >
-              {{element[column.field}]}}
+              {{this.displayValue element column.field}}
             </Body.Cell>
-          {{/each}} --}}
+          {{/each}}
         </Table.Body>
         <Table.Footer />
       </TG.Table>
   </TpkTableGeneric>
 </template>
-} 
+}

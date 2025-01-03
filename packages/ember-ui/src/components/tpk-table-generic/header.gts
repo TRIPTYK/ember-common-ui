@@ -1,4 +1,4 @@
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import TableGenericHeaderCellComponent from './header/cell.gts';
 import type { TOC } from '@ember/component/template-only';
 import { hash } from '@ember/helper';
@@ -9,11 +9,10 @@ export interface TableGenericHeaderComponentSignature {
     table: any;
     hasActionMenu: boolean;
   };
-  Element: HTMLDivElement;
   Blocks: {
     default: [
       {
-        Cell: ComponentLike<typeof TableGenericHeaderCellComponent>;
+        Cell: WithBoundArgs<typeof TableGenericHeaderCellComponent, 'header'>;
       },
     ];
   };
