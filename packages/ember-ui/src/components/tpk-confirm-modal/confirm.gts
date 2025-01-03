@@ -4,6 +4,8 @@ import { on } from '@ember/modifier';
 export interface TpkConfirmModalConfirmComponentSignature {
   Args: {
     onConfirm: (...args: unknown[]) => unknown;
+    confirmText?: string;
+    icon?: string;
   };
   Element: HTMLButtonElement;
   Blocks: {
@@ -17,9 +19,14 @@ const TpkConfirmModalConfirmComponent: TOC<TpkConfirmModalConfirmComponentSignat
       {{on 'click' @onConfirm}}
       data-test-confirm-modal-confirm
       type='button'
+      class='btn-confirm-modal-confirm'
       ...attributes
     >
+    {{#if (has-block)}}
       {{yield}}
+    {{else}}
+      {{@confirmText}}
+    {{/if}}
     </button>
   </template>;
 

@@ -1,0 +1,18 @@
+.tpk-confirm-modal-container .tpk-modal-content{
+  @apply modal-box
+}
+
+.tpk-confirm-modal-container .tpk-modal-content div{
+  @apply flex justify-around w-full
+}
+
+.tpk-confirm-modal-container .tpk-modal-content h2{
+  @apply  w-full text-center text-xl py-4 font-semibold
+}
+.tpk-confirm-modal-container .btn-confirm-modal-confirm{
+  @apply btn btn-success
+}
+
+.tpk-confirm-modal-container .btn-confirm-modal-cancel{
+  @apply btn btn-link
+}

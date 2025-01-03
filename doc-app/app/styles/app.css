@@ -5,6 +5,7 @@
 @import url("ember-power-select/vendor/ember-power-select.css");
 @import url("@triptyk/ember-input-validation/dist/app.css");
 @import url("@triptyk/ember-input/dist/app.css");
+@import url("@triptyk/ember-ui/dist/app.css");
 @import url("ember-input-validation/form.css");
 
 .next,

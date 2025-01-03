@@ -17,7 +17,7 @@ export interface TpkModalComponentArgs {
   isOpen: boolean;
   onClose: () => unknown;
   outsideClickHandler?: (e: MouseEvent | TouchEvent) => unknown;
-  title: string;
+  title?: string;
 
 }
 
@@ -37,11 +37,9 @@ export interface TpkModalComponentSignature {
           typeof TpkModalContentComponent,
           'title' | 'onClose'  | 'outsideClickHandler'
         >;
-        title: string;
         isOnTop: boolean;
         isOpen: boolean;
         onClose: () => unknown;
-
         guid: string;
       },
     ];
@@ -145,14 +143,11 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
                 TpkModalContentComponent
                 title=@title
                 onClose=this.close
-
                 outsideClickHandler=this.outsideClickHandler
               )
-              title=@title
               isOpen=@isOpen
               isOnTop=this.isOnTop
               onClose=this.close
-
               guid=this.guid
             )
           }}
