@@ -15,7 +15,6 @@ Router.map(function (this: RouterDSL) {
         this.route('confirm-modal')
       })
       this.route('installation');
-      this.route('lazy-image');
       this.route('actions-menu');
       this.route('modal');
       this.route('table-generic');
