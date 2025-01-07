@@ -3,7 +3,7 @@
 }
 
 .tpk-toggle-label-container {
-  @apply label cursor-pointer;
+  @apply cursor-pointer label;
 }
 
 .tpk-toggle-label {
