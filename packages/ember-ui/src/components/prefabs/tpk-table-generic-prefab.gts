@@ -118,6 +118,7 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
             {{#each this.columns as |column|}}
               <Body.Cell >
                 {{#if column.component}}
+                {{'Prout'}}
                   {{#let (this.getComponent column.component) as |ComponentName|}}
                     <ComponentName
                       @row={{element}}

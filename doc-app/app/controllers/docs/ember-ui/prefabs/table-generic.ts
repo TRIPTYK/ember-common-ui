@@ -26,7 +26,6 @@ export default class DocsTpkTableGenericPrefabController extends Controller {
     field: 'email',
     headerName: 'Email',
     sortable: false,
-    component : 'tpkinput',
     }],
     actionMenu: [{
       icon: 'edit',
