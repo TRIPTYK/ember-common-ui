@@ -20,3 +20,12 @@ A modal component.
   </demo.example>
   <demo.snippet @name="tpk-confirm-modal-prefab.hbs"/>
 </DocsDemo>
+
+## Mandatory properties
+
+- `@onClose`: this is a function to close modal.
+- `@onConfirm`: this is a function to close modal.
+- `@cancelText`: this is a string to populate cancel button
+- `@confirmText`: this is a string to populate confirm button
+- `@confirmQuestion`: this is the text of confirmation to user
+- `@isOpen` : boolean to close modal

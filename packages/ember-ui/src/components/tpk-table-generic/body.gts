@@ -23,7 +23,7 @@ export interface TableGenericBodyComponentSignature {
         Cell: WithBoundArgs<typeof TableGenericBodyCellComponent, 'row'>;
         ActionMenu: WithBoundArgs<
           typeof TableGenericBodyActionMenuComponent,
-          'registerActionMenu'
+          'registerActionMenu' | 'item' | 'index' | 'isExpanded'
         >;
       },
       unknown,
@@ -44,7 +44,7 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
 
   <template>
     <@table.tbody class='tpk-table-body' ...attributes as |body data|>
-      {{#each data as |element|}}
+      {{#each data as |element index|}}
         <body.row
           data-test-row={{element.id}}
           {{on 'click' (fn @rowClick element)}}
@@ -56,6 +56,9 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
               ActionMenu=(component
                 TableGenericBodyActionMenuComponent
                 registerActionMenu=@registerActionMenu
+                item=element
+                isExpanded=this.isExpanded
+                index=index
               )
             )
             element

@@ -1,0 +1,35 @@
+.tpk-table-generic-container {
+  @apply w-full
+}
+
+.tpk-table-generic-container label {
+  @apply label;
+}
+
+.tpk-table-generic-container .tpk-table-generic{
+  @apply table table-zebra w-full
+}
+
+.tpk-table-generic-container .tpk-table-generic .tpk-action-menu {
+  @apply relative
+}
+
+.tpk-table-generic-container .tpk-table-generic .tpk-action-menu .actions_list {
+  @apply absolute top-0 -right-4 bg-white rounded p-2
+}
+
+.tpk-table-generic-container .tpk-table-pagination .yeti-table-pagination-buttons {
+  @apply join flex justify-center mx-4 w-full
+}
+
+.tpk-table-generic-container .tpk-table-pagination .yeti-table-pagination-buttons button {
+  @apply flex mx-2 my-4 py-2 w-1/4 justify-center btn-ghost rounded-md
+ }
+
+.tpk-table-generic-container .tpk-table-pagination .yeti-table-pagination-buttons img {
+  @apply h-4 mx-2
+}
+
+.tpk-table-generic-container .tpk-table-pagination {
+  @apply flex flex-col justify-center w-full items-center text-center
+}

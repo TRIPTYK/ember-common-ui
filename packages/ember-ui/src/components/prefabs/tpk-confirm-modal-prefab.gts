@@ -29,7 +29,6 @@ const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <tem
       @confirmText={{@confirmText}}
       @confirmQuestion={{@confirmQuestion}}
       @isOpen={{@isOpen}}
-      @outsideClickHandler={{@outsideClickHandler}}
       data-test-confirm-modal-container
       ...attributes
       as |M|
