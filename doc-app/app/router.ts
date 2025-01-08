@@ -9,12 +9,13 @@ const Router = AddonDocsRouter.extend({
 });
 
 Router.map(function (this: RouterDSL) {
+  this.route('table');
   docsRoute(this, function (this: RouterDSL) {
     this.route('ember-ui', function (this: RouterDSL) {
       this.route('prefabs', function () {
-        this.route('confirm-modal')
-        this.route('table-generic')
-      })
+        this.route('confirm-modal');
+        this.route('table-generic');
+      });
       this.route('installation');
       this.route('lazy-image');
       this.route('actions-menu');
@@ -26,7 +27,7 @@ Router.map(function (this: RouterDSL) {
     this.route('ember-input', function () {
       this.route('installation');
       this.route('prefabs', function () {
-        this.route('button')
+        this.route('button');
         this.route('toggle');
       });
       this.route('input');

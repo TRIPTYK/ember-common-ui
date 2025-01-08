@@ -111,6 +111,7 @@
     "ember-power-select": "^8.4.0",
     "ember-qunit": "catalog:",
     "ember-resolver": "catalog:",
+    "ember-route-template": "^1.0.3",
     "ember-source": "~5.12.0",
     "ember-template-imports": "~4.2.0",
     "ember-template-lint": "^6.0.0",

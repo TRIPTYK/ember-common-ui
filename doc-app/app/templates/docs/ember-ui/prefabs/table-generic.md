@@ -1,4 +1,4 @@
-# Table Generic
+<!-- # Table Generic
 
 the generic table is a component which is created from an object.
 It is also possible to pass components to the desired column.
@@ -34,4 +34,4 @@ Advanced usage:
   </demo.example>
   <demo.snippet @name="tpk-table-generic-prefab.hbs"/>
   <demo.snippet @name="tpk-table-generic-prefab.js"/>
-</DocsDemo>
+</DocsDemo> -->
