@@ -57,12 +57,14 @@ export default class TpkSearchPrefabComponent extends Component<TpkSearchPrefabS
                 <i class="tpk-search-loader"></i>
               </div>
             {{else}}
+            <button type="submit" data-test-search-submit>
               <img
                 src='/assets/icons/search.svg'
                 data-test-tpk-search-icon
                 alt='magnyfying glass'
                 class='tpk-search-button'
               />
+            </button>
             {{/if}}
             <C.Input class="tpk-search-input" />
           </C.Label>

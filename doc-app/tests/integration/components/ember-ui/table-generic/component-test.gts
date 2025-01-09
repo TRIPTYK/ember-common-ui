@@ -149,7 +149,8 @@ module('Integration | Component | table-generic', function (hooks) {
 
     await fillIn('[data-test-tpk-input-input]', 'gig');
     await click('[data-test-search-submit]');
-    rows = document.querySelectorAll('[data-test-row]');
+    
+    rows = document.querySelectorAll('[data-test-row]'); 
     assert.strictEqual(rows.length, 1, 'Correct number of rows rendered');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
