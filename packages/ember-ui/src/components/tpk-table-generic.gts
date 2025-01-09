@@ -7,7 +7,8 @@ import TableGenericTableComponent, {
   type TableApi,
 } from './tpk-table-generic/table.gts';
 import { hash } from '@ember/helper';
-import t from 'ember-intl/helpers/t';
+import IntlService from 'ember-intl/services/intl';
+import { service } from '@ember/service';
 
 export interface TableGenericComponentSignature {
   Args: {
@@ -20,6 +21,8 @@ export interface TableGenericComponentSignature {
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
     rowClick?: (...elements: unknown[]) => void;
+    placeholder?: string;
+    label?: string;
     additionalFilters?: Record<string, unknown>;
   };
   Blocks: {
@@ -47,7 +50,22 @@ export interface TableGenericComponentSignature {
 }
 
 export default class TableGenericComponent extends Component<TableGenericComponentSignature> {
+  @service declare intl: IntlService;
   @tracked filterText?: string;
+
+  get label(){
+    if (this.args.label){
+      return this.args.label;
+    }
+    return this.intl.t('global.search');
+  }
+
+  get placeholder(){
+    if(this.args.placeholder){
+      return this.args.placeholder;
+    }
+    return this.intl.t('global.search');
+  }
 
   @action
   onSearch(value: string) {
@@ -59,14 +77,15 @@ export default class TableGenericComponent extends Component<TableGenericCompone
   }
 
   <template>
+    {{log 'generic table' this.label this.placeholder}}
     {{yield
       (hash
         onSearch= this.onSearch
         SearchBar=(component
           TableGenericSearchBarComponent
           onSearch=this.onSearch
-          label=(t 'global.search')
-          placeholder=(t 'global.search')
+          label=this.label
+          placeholder=this.placeholder
         )
         Table=(component
           TableGenericTableComponent

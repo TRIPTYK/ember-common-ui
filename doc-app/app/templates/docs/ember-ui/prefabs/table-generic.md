@@ -7,7 +7,7 @@ It is also possible to pass components to the desired column.
 
 <DocsDemo as |demo|>
   <demo.example @name="tpk-table-generic-prefab.hbs">  
-    <Prefabs::TpkTableGenericPrefab @tableParams={{this.tableParams}}/>
+    <Prefabs::TpkTableGenericPrefab @tableParams={{this.tableParams}} @label={{"labello"}} placeholder={{"search me"}}/>
   </demo.example>
   <demo.snippet @name="tpk-table-generic-prefab.hbs"/>
   <demo.snippet @name="tpk-table-generic-prefab.js"/>

@@ -24,6 +24,8 @@ export interface TableParams {
 export interface TableGenericPrefabComponentSignature {
   Args: TableGenericComponentSignature["Args"] & {
      tableParams:TableParams,
+     label:string,
+      placeholder:string,
      columnsComponent: Record<string, DirectInvokable>;
   };
   Blocks: {
@@ -47,13 +49,6 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
       return this.args.tableParams.pageSizes;
     }
     return [5, 10, 25];
-  }
-
-  get filterText(): string | undefined {
-    if(this.args.filterText){
-      return this.args.filterText;
-    }
-    return this.filterText;
   }
 
   get entity(){
@@ -96,14 +91,17 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
   }
 
   <template>
-    <div class="tpk-table-generic-container" data-test-table-generic-prefab>
+    <div class="tpk-table-generic-container"
+     data-test-table-generic-prefab>
+     {{log @placeholder}}
       <TpkTableGeneric
         @pageSizes={{this.pageSizes}}
         @additionalFilters={{@additionalFilters}}
         @defaultSortColumn={{@tableParams.defaultSortColumn}}
         @entity={{this.entity}}
         @relationships={{@relationships}}
-        @filterText={{this.filterText}}
+        @placeholder={{@placeholder}}
+          @label={{@label}}
       as | TG |>
         <TG.SearchBar />
         <TG.Table as | Table |>
@@ -118,7 +116,6 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
             {{#each this.columns as |column|}}
               <Body.Cell >
                 {{#if column.component}}
-                {{'Prout'}}
                   {{#let (this.getComponent column.component) as |ComponentName|}}
                     <ComponentName
                       @row={{element}}

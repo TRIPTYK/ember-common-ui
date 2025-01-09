@@ -11,7 +11,7 @@ export type TpkSearchPrefabSignature = {
     {
       placeholder?: string;
       label?: string;
-      onSearch: (value: string, e: Event) => unknown;
+      onSearch: (e: Event, value: string) => unknown;
     }
   >;
   Blocks: {
@@ -23,12 +23,19 @@ export type TpkSearchPrefabSignature = {
 export default class TpkSearchPrefabComponent extends Component<TpkSearchPrefabSignature> {
   performSearch = task(this, { drop: true }, async (value: string, e: Event) => {
     e.preventDefault();
-    return this.args.onSearch(value, e);
+    
+    return this.args.onSearch(e,value);
   });
 
   submitSearch = (e: Event) => {
     e.preventDefault();
-    const value = (e.target as HTMLInputElement).value;
+    const form = e.target as HTMLInputElement;
+    const input = form.querySelector('input');
+    let value= '';
+    if(input?.value){
+      value = input?.value
+    }
+    
     this.performSearch.perform(value, e);
   };
 
