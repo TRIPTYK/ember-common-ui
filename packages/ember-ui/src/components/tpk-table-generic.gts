@@ -69,7 +69,6 @@ export default class TableGenericComponent extends Component<TableGenericCompone
 
   @action
   onSearch(value: string) {
-    console.log('searching', value);
     
     this.filterText = value;
   }

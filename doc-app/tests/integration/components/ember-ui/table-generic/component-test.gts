@@ -144,13 +144,13 @@ module('Integration | Component | table-generic', function (hooks) {
   test('It triggers search', async function (assert) {
     await renderTableGeneric(assert);
 
-    let rows = document.querySelectorAll('[data-test-row]');
+    let rows = findAll('[data-test-row]');
     assert.strictEqual(rows.length, 5, 'Correct number of rows rendered');
 
     await fillIn('[data-test-tpk-input-input]', 'gig');
     await click('[data-test-search-submit]');
     
-    rows = document.querySelectorAll('[data-test-row]'); 
+    rows = findAll('[data-test-row]'); 
     assert.strictEqual(rows.length, 1, 'Correct number of rows rendered');
     assert.dom('tbody tr:first-child td:first-of-type').hasText('Chad');
   });
