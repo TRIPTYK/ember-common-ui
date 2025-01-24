@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.11](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.10...v3.0.0-alpha.11) (2025-01-24)
+
+
+### Features
+
+* add tpk-search input ([0c56a9d](https://github.com/TRIPTYK/ember-common-ui/commit/0c56a9d80273a8cd0b2b8dc5a4802ac39302527d))
+* button prefab ([b5391df](https://github.com/TRIPTYK/ember-common-ui/commit/b5391df3a08f4eea3c9972d991d81a2598b69cfc))
+* toggle switch ([6206fd4](https://github.com/TRIPTYK/ember-common-ui/commit/6206fd4035caa13ea83ffb864f37a983c9b6fe38))
+
+
+
+
+
 # [3.0.0-alpha.10](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.9...v3.0.0-alpha.10) (2024-12-06)
 
 

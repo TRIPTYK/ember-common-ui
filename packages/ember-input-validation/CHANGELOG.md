@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.11](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.10...v3.0.0-alpha.11) (2025-01-24)
+
+
+### Bug Fixes
+
+* adapt disabled view for file-list ([613ca0c](https://github.com/TRIPTYK/ember-common-ui/commit/613ca0ce7cdb4f3cd9bc8733ff9602d95fd789ce))
+* add condition around window.open in case of fastboot ([26102f5](https://github.com/TRIPTYK/ember-common-ui/commit/26102f5db27787af36293e919eb73c192cceccdf))
+* password input eye should be focusable by keyboard ([e6778dc](https://github.com/TRIPTYK/ember-common-ui/commit/e6778dc7f029e8d07258f0756b4789ca1e17e664))
+
+
+### Features
+
+* add prefab file list with dropzone ([25be9d1](https://github.com/TRIPTYK/ember-common-ui/commit/25be9d13385cf4b3a4938a5f652b9365bc79fbf2))
+* add prefab file list with dropzone ([d9b682c](https://github.com/TRIPTYK/ember-common-ui/commit/d9b682cc725b5c536513795f5abf5dcf039a0000))
+
+
+
+
+
 # [3.0.0-alpha.10](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.9...v3.0.0-alpha.10) (2024-12-06)
 
 **Note:** Version bump only for package @triptyk/ember-input-validation
