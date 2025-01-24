@@ -6,7 +6,7 @@ export default {
       attributes: {
         lastName: 'Marc',
         firstName: 'Jean',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -15,7 +15,7 @@ export default {
       attributes: {
         lastName: 'Lepond',
         firstName: 'Louis',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -24,7 +24,7 @@ export default {
       attributes: {
         lastName: 'Dragon',
         firstName: 'Lucas',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -33,7 +33,7 @@ export default {
       attributes: {
         lastName: 'Leroy',
         firstName: 'Simon',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -42,7 +42,7 @@ export default {
       attributes: {
         lastName: 'Giga',
         firstName: 'Chad',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
   ],
@@ -53,7 +53,7 @@ export default {
       attributes: {
         lastName: 'Giga',
         firstName: 'Chad',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -62,7 +62,7 @@ export default {
       attributes: {
         lastName: 'Marc',
         firstName: 'Jean',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -71,7 +71,7 @@ export default {
       attributes: {
         lastName: 'Lepond',
         firstName: 'Louis',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -80,7 +80,7 @@ export default {
       attributes: {
         lastName: 'Dragon',
         firstName: 'Lucas',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -89,7 +89,7 @@ export default {
       attributes: {
         lastName: 'Leroy',
         firstName: 'Simon',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
   ],
@@ -100,7 +100,7 @@ export default {
       attributes: {
         lastName: 'Leroy',
         firstName: 'Simon',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -109,7 +109,7 @@ export default {
       attributes: {
         lastName: 'Dragon',
         firstName: 'Lucas',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -118,7 +118,7 @@ export default {
       attributes: {
         lastName: 'Lepond',
         firstName: 'Louis',
-        email: 'dev@triptyk.eu',
+        email: 'loempia@triptyk.eu',
       },
     },
     {
@@ -127,7 +127,7 @@ export default {
       attributes: {
         lastName: 'Marc',
         firstName: 'Jean',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -136,7 +136,7 @@ export default {
       attributes: {
         lastName: 'Giga',
         firstName: 'Chad',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
   ],
@@ -147,7 +147,7 @@ export default {
       attributes: {
         lastName: 'Dramix',
         firstName: 'Romain',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -156,7 +156,7 @@ export default {
       attributes: {
         lastName: 'Larris',
         firstName: 'Gilles',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -165,7 +165,7 @@ export default {
       attributes: {
         lastName: 'Truc',
         firstName: 'Sam',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -174,7 +174,7 @@ export default {
       attributes: {
         lastName: 'Jelra',
         firstName: 'Jacques',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
     {
@@ -183,7 +183,7 @@ export default {
       attributes: {
         lastName: 'Lefou',
         firstName: 'Seb',
-        email: 'dev@triptyk.eu',
+        email: 'info@triptyk.eu',
       },
     },
   ],

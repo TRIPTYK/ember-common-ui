@@ -72,7 +72,7 @@ export default class TpkActionsMenuComponent extends Component<TpkActionsMenuEle
         <img src='/assets/icons/kebab.svg' alt='seeAllAction' />
       </button>
       {{#if this.isOpen}}
-        <ul>
+        <ul class='actions_list' >
           {{yield
             (component
               TpkActionsMenuElementComponent handleAction=this.handleAction

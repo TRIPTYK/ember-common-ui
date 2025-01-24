@@ -1,13 +1,16 @@
+.tpk-search{
+  @apply input select select-primary mb-4 w-full relative
+}
 .tpk-search-label {
-  @apply flex items-center input;
+  @apply label w-full absolute left-0 top-0 cursor-pointer;
 }
 
 .tpk-search-input {
-  @apply w-full;
+  @apply w-full py-1 ml-2;
 }
 
 .tpk-search-icon {
-  @apply p-1;
+  @apply py-1 ;
 }
 
 .tpk-search-loader {

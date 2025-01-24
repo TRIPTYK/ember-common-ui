@@ -30,6 +30,15 @@ export default class ApplicationRoute extends Route {
                   email: 'john.doe@example.com',
                 },
               },
+              {
+                type: 'user',
+                id: '2',
+                attributes: {
+                  firstName: 'Jack',
+                  lastName: 'Lime',
+                  email: 'jack.lime@example.com',
+                },
+              },
             ],
           }),
         );

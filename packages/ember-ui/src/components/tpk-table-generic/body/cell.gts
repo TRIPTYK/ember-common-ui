@@ -1,10 +1,12 @@
 import type { TOC } from '@ember/component/template-only';
+import type { ComponentLike } from '@glint/template';
+
 export interface TableGenericBodyCellComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    row: any;
+    row: ComponentLike;
   };
-  Element: HTMLDivElement;
+  Element: HTMLElement;
   Blocks: {
     default: [];
   };
@@ -12,8 +14,10 @@ export interface TableGenericBodyCellComponentSignature {
 
 const TableGenericBodyCellComponent: TOC<TableGenericBodyCellComponentSignature> =
   <template>
+    {{!-- @glint-ignore --}}
     <@row.cell ...attributes>
       {{yield}}
+      {{!-- @glint-ignore --}}
     </@row.cell>
 </template>;
 

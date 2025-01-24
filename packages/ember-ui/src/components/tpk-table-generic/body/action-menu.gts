@@ -8,9 +8,7 @@ export interface TableGenericBodyActionMenuComponentSignature {
   Args: {
     item: unknown;
     index: number;
-
     isExpanded: boolean;
-    action: (...args: unknown[]) => void;
     registerActionMenu: (element: HTMLTableCellElement, args: []) => unknown;
   };
   Element: HTMLDivElement;
@@ -26,6 +24,7 @@ const TableGenericBodyActionMenuComponent: TOC<TableGenericBodyActionMenuCompone
       <td
         {{didInsert @registerActionMenu}}
         data-test-action-menu-cell
+        class="tpk-action-menu"
         ...attributes
       >
         <TpkActionsMenu  as |Action|>

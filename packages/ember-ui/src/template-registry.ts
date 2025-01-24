@@ -22,6 +22,7 @@ import type TpkStackListContentComponent from './components/tpk-stack-list/conte
 import type TpkActionsMenuElementComponent from './components/tpk-actions-menu/element.gts';
 import type TpkStackListTitleComponent from './components/tpk-stack-list/title.gts';
 import type TpkConfirmModalPrefabComponent from './components/prefabs/tpk-confirm-modal-prefab.gts';
+import type TableGenericPrefabComponent from './components/prefabs/tpk-table-generic-prefab';
 
 export default interface Registry {
   'tpk-actions-menu/element': typeof TpkActionsMenuElementComponent;
@@ -56,4 +57,5 @@ export default interface Registry {
   'table-generic/header/cell': typeof TableGenericHeaderCellComponent;
   'tpk-confirm-modal': typeof TpkConfirmModalComponent;
   'tpk-confirm-modal-prefab' : typeof TpkConfirmModalPrefabComponent;
+  'tpk-table-generic-prefab' : typeof TableGenericPrefabComponent;
 }

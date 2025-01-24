@@ -15,7 +15,6 @@ module('Integration | Component | modal', function (hooks) {
     const title = 'My modal';
     const onClose = () => {
       assert.step('onClose');
-      console.log('onClose');
     };
 
     await render(

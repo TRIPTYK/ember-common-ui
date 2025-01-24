@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import { action } from '@ember/object';
-import type { ComponentLike, WithBoundArgs } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import TableGenericBodyCellComponent from './body/cell.gts';
 import TableGenericBodyActionMenuComponent from './body/action-menu.gts';
 import { fn, hash } from '@ember/helper';
@@ -20,10 +20,10 @@ export interface TableGenericBodyComponentSignature {
   Blocks: {
     default: [
       {
-        Cell: ComponentLike<typeof TableGenericBodyCellComponent>;
+        Cell: WithBoundArgs<typeof TableGenericBodyCellComponent, 'row'>;
         ActionMenu: WithBoundArgs<
           typeof TableGenericBodyActionMenuComponent,
-          'registerActionMenu'
+          'registerActionMenu' | 'item' | 'index' | 'isExpanded'
         >;
       },
       unknown,
@@ -44,7 +44,7 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
 
   <template>
     <@table.tbody class='tpk-table-body' ...attributes as |body data|>
-      {{#each data as |element|}}
+      {{#each data as |element index|}}
         <body.row
           data-test-row={{element.id}}
           {{on 'click' (fn @rowClick element)}}
@@ -56,6 +56,9 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
               ActionMenu=(component
                 TableGenericBodyActionMenuComponent
                 registerActionMenu=@registerActionMenu
+                item=element
+                isExpanded=this.isExpanded
+                index=index
               )
             )
             element
