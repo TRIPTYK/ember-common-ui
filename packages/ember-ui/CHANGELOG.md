@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.12](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.11...v3.0.0-alpha.12) (2025-01-27)
+
+
+### Bug Fixes
+
+* debug table generic prefab ([7364795](https://github.com/TRIPTYK/ember-common-ui/commit/7364795ca2edd05bafc51c8e80e048f87710bbd9))
+
+
+
+
+
 # [3.0.0-alpha.11](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.10...v3.0.0-alpha.11) (2025-01-24)
 
 
