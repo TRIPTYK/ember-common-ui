@@ -1,16 +1,17 @@
 import Component from '@glimmer/component';
-import type { TableGenericComponentSignature } from "../tpk-table-generic.gts";
 import TableGenericComponent from "../tpk-table-generic.gts";
 import TpkTableGeneric from "../tpk-table-generic.gts";
 import type { ContentValue, WithBoundArgs } from '@glint/template';
 import { get } from '@ember/object';
-import type { DirectInvokable } from '@glint/template/-private/integration';
+import type {  Invokable } from '@glint/template/-private/integration';
 
 
 export interface TableParams {
   entity: string;
   pageSizes?: number[];
   defaultSortColumn?: string;
+  additionalFilters?: Record<string, unknown>;
+  relationships?: string;
   columns: {
     field: string;
     headerName: string;
@@ -22,11 +23,10 @@ export interface TableParams {
 }
 
 export interface TableGenericPrefabComponentSignature {
-  Args: TableGenericComponentSignature["Args"] & {
+  Args: {
      tableParams:TableParams,
-     label:string,
-      placeholder:string,
-     columnsComponent: Record<string, DirectInvokable>;
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     columnsComponent?: Record<string, Invokable<any>>;
   };
   Blocks: {
     default: [
@@ -37,11 +37,11 @@ export interface TableGenericPrefabComponentSignature {
 }
 
 export default class TableGenericPrefabComponent extends Component<TableGenericPrefabComponentSignature>{
-  getComponent = (component: string): DirectInvokable => {
-    if (!this.args.columnsComponent[component]) {
+  getComponent = (component: string) => {
+    if (!this.args.columnsComponent || !this.args.columnsComponent[component]) {
       throw new Error(`Component ${component} not found`);
     }
-    return this.args.columnsComponent[component] as DirectInvokable;
+    return this.args.columnsComponent[component];
   }
   
   get pageSizes(){
@@ -93,15 +93,12 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
   <template>
     <div class="tpk-table-generic-container"
      data-test-table-generic-prefab>
-     {{log @placeholder}}
       <TpkTableGeneric
         @pageSizes={{this.pageSizes}}
-        @additionalFilters={{@additionalFilters}}
+        @additionalFilters={{@tableParams.additionalFilters}}
         @defaultSortColumn={{@tableParams.defaultSortColumn}}
         @entity={{this.entity}}
-        @relationships={{@relationships}}
-        @placeholder={{@placeholder}}
-          @label={{@label}}
+        @relationships={{@tableParams.relationships}}
       as | TG |>
         <TG.SearchBar />
         <TG.Table as | Table |>
