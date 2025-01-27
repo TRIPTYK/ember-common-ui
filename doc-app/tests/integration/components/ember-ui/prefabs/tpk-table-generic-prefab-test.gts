@@ -57,7 +57,6 @@ module('Integration | Component | Prefabs | Tpk-table-generic-prefab', function(
   });
   
   async function renderComponent(tableParams : TableParams){
-    
     await render(
       <template>
         <TpkTableGenericPrefab @tableParams={{tableParams}} />
@@ -183,7 +182,7 @@ module('Integration | Component | Prefabs | Tpk-table-generic-prefab', function(
 
     await render(
       <template>
-        <TpkTableGenericPrefab 
+        <TpkTableGenericPrefab
           @tableParams={{tableParamsWithFunctions}} 
           @columnsComponent={{hash
             selectEmail=(component
