@@ -7,7 +7,7 @@ It is also possible to pass components to the desired column.
 
 <DocsDemo as |demo|>
   <demo.example @name="tpk-table-generic-prefab.hbs">  
-    <Prefabs::TpkTableGenericPrefab @tableParams={{this.tableParams}} @label={{"labello"}} placeholder={{"search me"}}/>
+    <Prefabs::TpkTableGenericPrefab @tableParams={{this.tableParams}} @label={{"labello"}} placeholder={{"search me"}} @rowClick={{this.rowClick}}/>
   </demo.example>
   <demo.snippet @name="tpk-table-generic-prefab.hbs"/>
   <demo.snippet @name="tpk-table-generic-prefab.js"/>
@@ -16,8 +16,6 @@ It is also possible to pass components to the desired column.
 ## Mandatory properties
 
 - `@tableParams`: The field name in the changeset for validation.
-
-
 
 # Advanced Usage:
 !!! Ember doc cannotdisplay example with code snippet
@@ -33,6 +31,10 @@ export class TableRouteComponent extends Component<TableRouteComponentSignature>
     entity: 'user',
     pageSizes: [10,30,50,75],
     defaultSortColumn: 'firstName',
+    rowClick(element: any){
+    //element return the data linked at the row
+    //insert your code here
+    }
     columns:[
       {
         field: 'firstName',
@@ -59,6 +61,7 @@ export class TableRouteComponent extends Component<TableRouteComponentSignature>
     <div class="flex justify-center items-center h-screen px-32">
       <TpkTableGenericPrefab
         @tableParams={{this.tableParamsWithFunctions}}
+        
         @columnsComponent={{hash
           selectEmail=(component
             SelectTableRegister

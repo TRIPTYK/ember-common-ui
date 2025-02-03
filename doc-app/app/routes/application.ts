@@ -23,7 +23,7 @@ export default class ApplicationRoute extends Route {
             data: [
               {
                 type: 'user',
-                id: '1',
+                id: '1-john',
                 attributes: {
                   firstName: 'John',
                   lastName: 'Doe',

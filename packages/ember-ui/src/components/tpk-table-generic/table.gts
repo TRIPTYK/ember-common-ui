@@ -57,7 +57,7 @@ interface TableGenericTableArgs {
   filterText?: string;
   // eslint-disable-next-line no-unused-vars
   registerApi?: (api: TableApi) => unknown;
-  rowClick: () => void;
+  rowClick?: (element?:unknown, e?:Event) => void;
   additionalFilters?: Record<string, unknown>;
   defaultSortColumn?: string;
 }

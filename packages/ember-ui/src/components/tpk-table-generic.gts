@@ -20,7 +20,7 @@ export interface TableGenericComponentSignature {
     defaultSortColumn?: string;
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
-    rowClick?: (...elements: unknown[]) => void;
+    rowClick?: (element?:unknown, e?:Event) => void;
     placeholder?: string;
     label?: string;
     additionalFilters?: Record<string, unknown>;
@@ -35,14 +35,7 @@ export interface TableGenericComponentSignature {
         >;
         Table: WithBoundArgs<
           typeof TableGenericTableComponent,
-          | 'rowClick'
-          | 'filterText'
-          | 'relationships'
-          | 'registerApi'
-          | 'entity'
-          | 'pageSizes'
-          | 'additionalFilters'
-          | 'defaultSortColumn'
+          'rowClick' | 'filterText' | 'relationships' | 'registerApi' | 'entity' | 'pageSizes' | 'pageSize' | 'additionalFilters' | 'defaultSortColumn'
         >;
       },
     ];
@@ -69,12 +62,12 @@ export default class TableGenericComponent extends Component<TableGenericCompone
 
   @action
   onSearch(value: string) {
-    
     this.filterText = value;
   }
 
-  @action rowClick(...args: unknown[]) {
-    return this.args.rowClick?.(...args);
+  @action
+  rowClick(element?: unknown, e?: Event) {
+    this.args.rowClick?.(element, e);
   }
 
   <template>

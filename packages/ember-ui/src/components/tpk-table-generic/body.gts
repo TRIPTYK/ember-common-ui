@@ -13,7 +13,7 @@ export interface TableGenericBodyComponentSignature {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;
-    rowClick: (...args: unknown[]) => void;
+    rowClick: (element?:unknown, e?:Event) => void;
     registerActionMenu: (element: HTMLTableCellElement, args: []) => unknown;
   };
   Element: HTMLDivElement;
