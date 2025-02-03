@@ -4,7 +4,6 @@ import TpkTableGeneric from "../tpk-table-generic.gts";
 import type { ContentValue, WithBoundArgs } from '@glint/template';
 import { get } from '@ember/object';
 import type {  Invokable } from '@glint/template/-private/integration';
-import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
 
 
