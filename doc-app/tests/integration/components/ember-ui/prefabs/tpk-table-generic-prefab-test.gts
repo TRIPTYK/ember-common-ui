@@ -208,21 +208,19 @@ module('Integration | Component | Prefabs | Tpk-table-generic-prefab', function(
       pageSizes: [10,30,50,75],
       defaultSortColumn: 'firstName',
       rowClick: () => {
-        console.log('rowClick function called');
-        
         assert.step('rowClick function called')
       },
-      columns:[
-      {
-      field: 'lastName',
-      headerName: 'Nom',
-      sortable: true,
-      },
-      {
-      field: 'firstName',
-      headerName: 'Prénom',
-      sortable: true,
-      }
+        columns:[
+        {
+        field: 'lastName',
+        headerName: 'Nom',
+        sortable: true,
+        },
+        {
+        field: 'firstName',
+        headerName: 'Prénom',
+        sortable: true,
+        }
       ],
       actionMenu: [],
     };

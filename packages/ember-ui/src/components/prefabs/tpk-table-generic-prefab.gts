@@ -13,7 +13,7 @@ export interface TableParams {
   defaultSortColumn?: string;
   additionalFilters?: Record<string, unknown>;
   relationships?: string;
-  rowClick?: (element: unknown) => void;
+  rowClick?: (element?:unknown, e?:Event) => void;
   columns: {
     field: string;
     headerName: string;
@@ -81,12 +81,6 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
       return column.renderElement(value);
     }
     return String(value);
-  }
-
-  registerActionMenu= (element: HTMLTableCellElement, args: []) => {
-    console.log(element, args);
-    
-    return this.args.tableParams.actionMenu;
   }
 
   displayRawValue = (element: unknown, field: string) => {
