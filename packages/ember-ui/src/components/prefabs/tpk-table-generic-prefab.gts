@@ -4,6 +4,8 @@ import TpkTableGeneric from "../tpk-table-generic.gts";
 import type { ContentValue, WithBoundArgs } from '@glint/template';
 import { get } from '@ember/object';
 import type {  Invokable } from '@glint/template/-private/integration';
+import { on } from '@ember/modifier';
+import { fn } from '@ember/helper';
 
 
 export interface TableParams {
@@ -12,6 +14,7 @@ export interface TableParams {
   defaultSortColumn?: string;
   additionalFilters?: Record<string, unknown>;
   relationships?: string;
+  rowClick?: (element: unknown) => void;
   columns: {
     field: string;
     headerName: string;
@@ -19,7 +22,7 @@ export interface TableParams {
     renderElement?: (element: unknown) => void;
     component?: string;
   }[];
-  actionMenu?: { icon: string; action: () => void; name: string }[];
+  actionMenu?: { icon: string; action: (...args: unknown[]) => void; name: string }[];
 }
 
 export interface TableGenericPrefabComponentSignature {
@@ -78,17 +81,23 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
     if(column?.renderElement){
       return column.renderElement(value);
     }
-
     return String(value);
   }
+
+  registerActionMenu= (element: HTMLTableCellElement, args: []) => {
+    console.log(element, args);
+    
+    return this.args.tableParams.actionMenu;
+  }
+
   displayRawValue = (element: unknown, field: string) => {
     return get(element, field);
   }
 
-
   get actions(){
     return this.args.tableParams.actionMenu;
   }
+
 
   <template>
     <div class="tpk-table-generic-container"
@@ -98,6 +107,7 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
         @additionalFilters={{@tableParams.additionalFilters}}
         @defaultSortColumn={{@tableParams.defaultSortColumn}}
         @entity={{this.entity}}
+        @rowClick={{@tableParams.rowClick}}
         @relationships={{@tableParams.relationships}}
       as | TG |>
         <TG.SearchBar />
@@ -122,15 +132,16 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
                     />
                   {{/let}}
                 {{else}}
-                  {{this.displayValue element column.field}}
+                    {{this.displayValue element column.field}}
                 {{/if}}
               </Body.Cell>
             {{/each}}
             {{#if this.hasActionMenu}}
               <Body.ActionMenu  as |Action|>
-                {{#each this.actions as |element|}}
-                  <Action @icon={{element.icon}} @action={{element.action}} >
-                    {{element.name}}
+                {{#each this.actions as |actionElement|}}
+                {{log actionElement.action}}
+                  <Action @icon={{actionElement.icon}} @action={{fn actionElement.action element}} >
+                    {{actionElement.name}}
                   </Action>
                 {{/each}}
               </Body.ActionMenu>

@@ -201,5 +201,42 @@ module('Integration | Component | Prefabs | Tpk-table-generic-prefab', function(
 
     assert.verifySteps(['loempia@triptyk.eu']);
   });
-  
+
+  test('it possible to click on row when rowClick was on tableParams', async function(assert) {
+    const tableParamsWithFunctions:TableParams = {
+      entity: 'user',
+      pageSizes: [10,30,50,75],
+      defaultSortColumn: 'firstName',
+      rowClick: () => {
+        console.log('rowClick function called');
+        
+        assert.step('rowClick function called')
+      },
+      columns:[
+      {
+      field: 'lastName',
+      headerName: 'Nom',
+      sortable: true,
+      },
+      {
+      field: 'firstName',
+      headerName: 'Prénom',
+      sortable: true,
+      }
+      ],
+      actionMenu: [],
+    };
+
+    await render(
+      <template>
+        <TpkTableGenericPrefab
+          @tableParams={{tableParamsWithFunctions}}       
+      />
+      </template>
+    )
+
+  const data = document.querySelector('[data-test-table-generic-prefab] [data-test-row="1"]') as HTMLTableElement;
+  await click(data);
+    assert.verifySteps(['rowClick function called']);
+    })
 })

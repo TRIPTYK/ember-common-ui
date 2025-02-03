@@ -20,7 +20,7 @@ export interface TableGenericComponentSignature {
     defaultSortColumn?: string;
     // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
-    rowClick?: (...elements: unknown[]) => void;
+    rowClick?: (...args: unknown[]) => void;
     placeholder?: string;
     label?: string;
     additionalFilters?: Record<string, unknown>;

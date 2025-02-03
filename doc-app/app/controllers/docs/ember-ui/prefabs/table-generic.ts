@@ -1,6 +1,5 @@
-import type { TOC } from "@ember/component/template-only";
 import Controller from "@ember/controller";
-import type { TpkSelectSignature } from "@triptyk/ember-input/components/tpk-select";
+import { action } from "@ember/object";
 
 
 
@@ -11,6 +10,9 @@ export default class DocsTpkTableGenericPrefabController extends Controller {
     entity: 'user',
     pageSizes: [10,30,50,75],
     defaultSortColumn: 'firstName',
+    rowClick(element: any){
+      alert(`row clicked ${element.id}`);
+    },
     columns:[  
     {
     field: 'lastName',
@@ -29,14 +31,16 @@ export default class DocsTpkTableGenericPrefabController extends Controller {
     }],
     actionMenu: [{
       icon: 'edit',
-      action: () => {},
+      action: (element:any) => {alert(`edit action ${element.id}`);
+      },
       name: 'Edit',
     },
     {
       icon: 'delete',
-      action: () => {},
+      action: () => {alert('delete action')},
       name: 'Delete',
     }],
   };
+  
 // END-SNIPPET
 }
