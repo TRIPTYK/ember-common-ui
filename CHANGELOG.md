@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.13](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.12...v3.0.0-alpha.13) (2025-02-03)
+
+
+### Bug Fixes
+
+* element pass by function ([953c09c](https://github.com/TRIPTYK/ember-common-ui/commit/953c09c47e4703906acb35f557dd5c8ca173e1d6))
+* element pass by function ([9baa96d](https://github.com/TRIPTYK/ember-common-ui/commit/9baa96d1e64e38c9b74974c613264f272bb0fb83))
+* review ([2b3125b](https://github.com/TRIPTYK/ember-common-ui/commit/2b3125b8972474f87ce1ac959a312e9f154cb86b))
+
+
+
+
+
 # [3.0.0-alpha.12](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.11...v3.0.0-alpha.12) (2025-01-27)
 
 
