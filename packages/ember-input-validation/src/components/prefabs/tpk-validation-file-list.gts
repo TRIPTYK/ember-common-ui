@@ -18,6 +18,7 @@ export interface TpkValidationFileListPrefabSignature
       mandatory?: boolean;
       placeholder?: string;
       disableDownload?: boolean;
+      onDelete?: (file: File, withoutFiles: File[], allFiles: File[]) => void;
     };
   Blocks: {
     default: [];
@@ -31,6 +32,7 @@ export interface FileListSignature {
     validationField: string;
     disableDownload?: boolean;
     disabled?: boolean;
+    onDelete?: (file: File, withoutFiles: File[], allFiles: File[]) => void;
   };
   Blocks: {
     default: [];
@@ -126,6 +128,7 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
         />
       </V.Label>
       <FileListComponent
+        @onDelete={{@onDelete}}
         @changeset={{@changeset}}
         @validationField={{@validationField}}
         @disableDownload={{@disableDownload}}
@@ -164,6 +167,9 @@ export class FileListComponent extends Component<FileListSignature> {
       this.args.validationField,
     ) as File[];
     const updatedFiles = currentFiles.filter((file) => file !== fileToDelete);
+    if (this.args.onDelete) {
+      return this.args.onDelete(fileToDelete, updatedFiles, currentFiles);
+    }
     this.args.changeset.set(this.args.validationField, updatedFiles);
   }
 
