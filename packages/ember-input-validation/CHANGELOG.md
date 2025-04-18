@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.13...v3.0.0) (2025-04-18)
+
+
+### Features
+
+* onDelete for file-list prefab ([4a252e7](https://github.com/TRIPTYK/ember-common-ui/commit/4a252e749adffd96fe47f3362dda67fc7bd499f4))
+
+
+
+
+
 # [3.0.0-alpha.13](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.12...v3.0.0-alpha.13) (2025-02-03)
 
 **Note:** Version bump only for package @triptyk/ember-input-validation
