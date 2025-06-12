@@ -293,6 +293,13 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
     } else {
       this.activeChildIndex = res;
     }
+
+    if (this.activeChild) {
+      this.activeChild.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
   }
 
   <template>
@@ -307,7 +314,7 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
       {{yield
         (hash
           Label=(component
-           TpkSelectSearchLabelComponent
+            TpkSelectSearchLabelComponent
             guid=this.guid
             classless=@classless
             label=@label

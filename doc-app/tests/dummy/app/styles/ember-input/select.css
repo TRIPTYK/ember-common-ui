@@ -65,3 +65,32 @@
 .tpk-select aside {
   @apply mt-2;
 }
+
+.tpk-select-search-container {
+  @apply pt-1;
+}
+
+.tpk-select-search .tpk-select-search-options-option[data-has-focus="true"] {
+  @apply bg-blue-200;
+}
+
+.tpk-select-search .tpk-select-search-input,
+.tpk-select-search-input {
+  @apply w-full -mt-1 py-3;
+}
+
+.tpk-select-search {
+  @apply relative;
+}
+
+.tpk-select-search-options {
+  @apply w-full z-[60] hidden absolute shadow-lg max-h-60 rounded-md py-0.5 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm mt-1;
+}
+
+.tpk-select-search[data-is-open="true"] .tpk-select-search-options {
+  @apply block bg-white rounded-md;
+}
+
+.tpk-select-search-options-option {
+  @apply relative py-2 pl-3 cursor-pointer select-none pr-9 hover:bg-blue-200 focus:outline-none;
+}
