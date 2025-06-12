@@ -1,0 +1,161 @@
+{
+  "name": "@triptyk/ember-ui",
+  "version": "3.0.0",
+  "description": "User interface components for Ember.js applications",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": {
+    "url": "git@github.com:TRIPTYK/ember-common-ui.git"
+  },
+  "license": "MIT",
+  "author": "Triptyk",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./app.css": "./dist/app.css",
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist",
+    "static"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@ember/render-modifiers": "~2.1.0",
+    "@ember/string": "^3.1.1",
+    "@ember/test-waiters": "^3.0.2",
+    "@embroider/addon-shim": "^1.8.9",
+    "@glimmer/component": "^1.1.2",
+    "ember-click-outside": "^6.1.1",
+    "ember-intl": "~6.5.5",
+    "ember-modifier": "~4.1.0",
+    "ember-test-selectors": "6.0.0",
+    "ember-yeti-table": "~2.0.0",
+    "focus-trap": "~7.5.4",
+    "tracked-built-ins": "3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.24.7",
+    "@babel/plugin-transform-class-static-block": "^7.24.7",
+    "@babel/plugin-transform-typescript": "^7.25.2",
+    "@babel/runtime": "^7.25.0",
+    "@embroider/addon-dev": "^7.0.0",
+    "@glimmer/tracking": "^1.1.2",
+    "@glint/core": "^1.4.0",
+    "@glint/environment-ember-loose": "^1.4.0",
+    "@glint/environment-ember-template-imports": "^1.4.0",
+    "@glint/template": "^1.5.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@tsconfig/ember": "^3.0.8",
+    "@types/ember-data": "4.4.16",
+    "@types/ember-data__store": "4.0.7",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "babel-plugin-ember-template-compilation": "^2.2.5",
+    "concurrently": "^8.2.2",
+    "ember-data": "~5.3.8",
+    "ember-source": "~5.12.0",
+    "ember-template-imports": "^4.1.1",
+    "ember-template-lint": "^5.13.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.1.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "prettier-plugin-ember-template-tag": "^2.0.2",
+    "rollup": "^4.20.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-glimmer-template-tag": "^0.4.1",
+    "rollup-plugin-ts": "^3.4.5",
+    "rsvp": "^4.8.5",
+    "typescript": "^5.5.4",
+    "webpack": "^5.95.0",
+    "@triptyk/ember-input": "3.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "public-assets": {
+      "./static/chevron-left.svg": "/ember-ui/icons/chevron-left.svg",
+      "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
+    },
+    "app-js": {
+      "./components/prefabs/tpk-confirm-modal-prefab.js": "./dist/_app_/components/prefabs/tpk-confirm-modal-prefab.js",
+      "./components/prefabs/tpk-table-generic-prefab.js": "./dist/_app_/components/prefabs/tpk-table-generic-prefab.js",
+      "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
+      "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
+      "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",
+      "./components/tpk-confirm-modal/cancel.js": "./dist/_app_/components/tpk-confirm-modal/cancel.js",
+      "./components/tpk-confirm-modal/confirm.js": "./dist/_app_/components/tpk-confirm-modal/confirm.js",
+      "./components/tpk-loading-indicator.js": "./dist/_app_/components/tpk-loading-indicator.js",
+      "./components/tpk-modal.js": "./dist/_app_/components/tpk-modal.js",
+      "./components/tpk-modal/content.js": "./dist/_app_/components/tpk-modal/content.js",
+      "./components/tpk-stack-list.js": "./dist/_app_/components/tpk-stack-list.js",
+      "./components/tpk-stack-list/content.js": "./dist/_app_/components/tpk-stack-list/content.js",
+      "./components/tpk-stack-list/head.js": "./dist/_app_/components/tpk-stack-list/head.js",
+      "./components/tpk-stack-list/item.js": "./dist/_app_/components/tpk-stack-list/item.js",
+      "./components/tpk-stack-list/title.js": "./dist/_app_/components/tpk-stack-list/title.js",
+      "./components/tpk-table-generic.js": "./dist/_app_/components/tpk-table-generic.js",
+      "./components/tpk-table-generic/body.js": "./dist/_app_/components/tpk-table-generic/body.js",
+      "./components/tpk-table-generic/body/action-menu.js": "./dist/_app_/components/tpk-table-generic/body/action-menu.js",
+      "./components/tpk-table-generic/body/action.js": "./dist/_app_/components/tpk-table-generic/body/action.js",
+      "./components/tpk-table-generic/body/cell.js": "./dist/_app_/components/tpk-table-generic/body/cell.js",
+      "./components/tpk-table-generic/footer.js": "./dist/_app_/components/tpk-table-generic/footer.js",
+      "./components/tpk-table-generic/header.js": "./dist/_app_/components/tpk-table-generic/header.js",
+      "./components/tpk-table-generic/header/cell.js": "./dist/_app_/components/tpk-table-generic/header/cell.js",
+      "./components/tpk-table-generic/pagination.js": "./dist/_app_/components/tpk-table-generic/pagination.js",
+      "./components/tpk-table-generic/search-bar.js": "./dist/_app_/components/tpk-table-generic/search-bar.js",
+      "./components/tpk-table-generic/table.js": "./dist/_app_/components/tpk-table-generic/table.js",
+      "./services/dialog-layer.js": "./dist/_app_/services/dialog-layer.js"
+    }
+  },
+  "peerDependencies": {
+    "ember-source": ">=4.8.0",
+    "@triptyk/ember-input": "3.0.0"
+  },
+  "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789",
+  "scripts": {
+    "build": "concurrently 'npm:build:js' 'npm:build:types'",
+    "build:clean": "rm -rf dist",
+    "build:js": "rollup --config",
+    "build:types": "glint --declaration",
+    "start:types": "glint --declaration --watch",
+    "lint:types": "glint",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "start": "concurrently 'npm:start:*'",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  }
+}

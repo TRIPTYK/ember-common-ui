@@ -1,0 +1,1 @@
+{"version":3,"file":"tpk-loading-indicator.d.ts","sourceRoot":"","sources":["../../src/components/tpk-loading-indicator.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,GAAG,EAAE,MAAM,gCAAgC,CAAC;AAC1D,MAAM,WAAW,kCAAkC;IACjD,OAAO,EAAE,cAAc,CAAC;CACzB;AAED,QAAA,MAAM,gBAAgB,EAAE,GAAG,CAAC,kCAAkC,CAsE5D,CAAC;AAEH,eAAe,gBAAgB,CAAC"}
