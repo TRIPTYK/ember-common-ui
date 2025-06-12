@@ -10,9 +10,10 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationInputComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkInputSignature['Args'] & {
-    onChange?: (value: string | number | Date | null, e: Event) => void;
-  };
+  Args: BaseValidationSignature['Args'] &
+    TpkInputSignature['Args'] & {
+      onChange?: (value: string | number | Date | null, e: Event) => void;
+    };
   Blocks: {
     default: [
       {

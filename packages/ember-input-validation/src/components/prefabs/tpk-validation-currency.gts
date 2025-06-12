@@ -30,24 +30,19 @@ export interface TpkValidationCurrencyPrefabSignature
 export default class TpkValidationCurrencyPrefabComponent extends Component<TpkValidationCurrencyPrefabSignature> {
   get mask() {
     return {
-      mask: [
-        { mask: '' },
-        {
-          mask: 'num €',
-          lazy: false,
-          blocks: {
-            num: {
-              expose: true,
-              mask: Number,
-              scale: this.args.scale ?? 2,
-              thousandsSeparator: ' ',
-              padFractionalZeros: true,
-              radix: '.',
-              mapToRadix: ['.', ','],
-            },
-          },
+      mask: 'num €',
+      lazy: false,
+      blocks: {
+        num: {
+          expose: true,
+          mask: Number,
+          scale: this.args.scale ?? 2,
+          thousandsSeparator: ' ',
+          padFractionalZeros: true,
+          radix: '.',
+          mapToRadix: ['.', ','],
         },
-      ],
+      },
     };
   }
 
@@ -57,7 +52,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @type='text'
       @onChange={{@onChange}}
       @placeholder={{@placeholder}}
-      @mask={{this.mask.mask}}
+      @mask={{this.mask}}
       @maskOptions={{this.mask}}
       @disabled={{@disabled}}
       @unmaskValue={{true}}
@@ -66,25 +61,29 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
       @changeset={{@changeset}}
       @validationField={{@validationField}}
       @requiredFields={{@requiredFields}}
-    as |V|>
+      as |V|
+    >
       <V.Label
-        class="tpk-currency-container"
-         data-test-tpk-prefab-currency-container
-         data-has-error='{{V.hasError}}'
-         anchorScrollUp={{@validationField}}
-         ...attributes>
-          <MandatoryLabelComponent
-          class="tpk-label"
+        class='tpk-currency-container'
+        data-test-tpk-prefab-currency-container
+        data-has-error='{{V.hasError}}'
+        anchorScrollUp={{@validationField}}
+        ...attributes
+      >
+        <MandatoryLabelComponent
+          class='tpk-label'
           @label={{@label}}
-          @mandatory={{V.mandatory}} />
-          <V.Input
+          @mandatory={{V.mandatory}}
+        />
+        <V.Input
           placeholder={{@placeholder}}
           data-test-tpk-currency-input
-          class="tpk-currency-input"/>
-          <TpkValidationErrorsComponent
-          class="tpk-validation-errors"
+          class='tpk-currency-input'
+        />
+        <TpkValidationErrorsComponent
+          class='tpk-validation-errors'
           @errors={{V.errors}}
-          />
+        />
       </V.Label>
     </TpkValidationInputComponent>
   </template>

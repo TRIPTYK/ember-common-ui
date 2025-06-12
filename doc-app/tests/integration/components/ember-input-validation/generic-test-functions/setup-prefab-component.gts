@@ -25,7 +25,7 @@ export async function setupCompletePrefabComponent(params?: TpkFormParams) {
         <F.TpkMobilePrefab @label="test" @validationField="mobile" class="custom-class"/>
         <F.TpkDatepickerPrefab @label="test" @validationField="datepicker" class="custom-class"/>
         <F.TpkTimepickerPrefab @label="test" @validationField="timepicker" class="custom-class"/>
-        <F.TpkCurrencyPrefab @label="test" @validationField="currency" class="custom-class"/>
+        <F.TpkCurrencyPrefab @label="currency" @validationField="currency" class="custom-class"/>
         <F.TpkIntegerPrefab @label="test" @validationField="integer" class="custom-class"/>
         <F.TpkNumberPrefab @label="test" @validationField="number" class="custom-class"/>
         <F.TpkPasswordPrefab @label="test" @validationField="password" class="custom-class"/>
@@ -66,6 +66,32 @@ export async function setupComponent(params?: TpkFormParams) {
             <I.Label />
             <I.Input anchorScrollUp="email" />
           </F.TpkInput>
+          <button type="submit">Submit</button>
+        </TpkForm>
+      </template>
+    );
+
+    return changeset;
+  }
+
+export async function setupCurrencyDateComponent(params?: TpkFormParams) {
+    const { changeset, onSubmit, validationSchema, reactive, removeErrorsOnSubmit, autoScrollOnError, executeOnValid } = initializeParams(params);
+
+    await render(
+      <template>
+      <TpkForm
+          @changeset={{changeset}}
+          @validationSchema={{validationSchema}}
+          @onSubmit={{onSubmit}}
+          @reactive={{reactive}}
+          @autoScrollOnError={{autoScrollOnError}}
+          @removeErrorsOnSubmit={{removeErrorsOnSubmit}}
+          @executeOnValid={{executeOnValid}}
+        as |F|>
+          <F.TpkInputPrefab @label="input" @validationField="input" />
+          <F.TpkCurrencyPrefab @label="currency" @validationField="currency" />
+          <F.TpkDatepickerPrefab @label="datepicker" @validationField="datepicker" />
+          <F.TpkTimepickerPrefab @label="timepicker" @validationField="timepicker" />
           <button type="submit">Submit</button>
         </TpkForm>
       </template>

@@ -9,7 +9,6 @@ import { on } from '@ember/modifier';
 
 export interface TpkStackListComponentSignature {
   Args: {
-
     onRemove: (item: unknown) => void;
     data: unknown[];
     key?: string;
@@ -24,7 +23,7 @@ export interface TpkStackListComponentSignature {
       | {
           Title: WithBoundArgs<
             typeof TpkStackListTitleComponent,
-            'isExpanded' | 'item'
+            'isExpanded' | 'item' | 'index'
           >;
         }
       | {
@@ -44,7 +43,10 @@ const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
         {{yield
           (hash
             Title=(component
-              TpkStackListTitleComponent isExpanded=I.isExpanded item=item
+              TpkStackListTitleComponent
+              isExpanded=I.isExpanded
+              item=item
+              index=index
             )
           )
         }}
