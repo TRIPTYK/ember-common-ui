@@ -16,6 +16,7 @@ export interface StackListItemComponentSignature {
       {
         toggleExpanded: StackListItemComponent['toggleExpanded'];
         isExpanded: boolean;
+        index: number;
       },
     ];
   };
@@ -43,7 +44,11 @@ export default class StackListItemComponent extends Component<StackListItemCompo
       ...attributes
     >
       {{yield
-        (hash toggleExpanded=this.toggleExpanded isExpanded=this.isExpanded)
+        (hash
+          toggleExpanded=this.toggleExpanded
+          isExpanded=this.isExpanded
+          index=this.index
+        )
       }}
     </div>
   </template>

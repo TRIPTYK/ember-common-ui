@@ -11,6 +11,7 @@ export interface TpkStackListTitleComponentSignature {
     default: [
       {
         item: unknown;
+        index: number;
       },
     ];
   };
@@ -24,7 +25,7 @@ export default class TpkStackListTitleComponent extends Component<TpkStackListTi
   <template>
     <span class='tpk-stack-title' data-test-title-stackList-item>
       {{#if this.isNotExpanded}}
-        {{yield (hash item=@item)}}
+        {{yield (hash item=@item index=@index)}}
       {{/if}}
     </span>
   </template>
