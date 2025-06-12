@@ -12,7 +12,8 @@
   },
   "pnpm": {
     "overrides": {
-      "ember-concurrency": "4.0.2"
+      "ember-concurrency": "4.0.2",
+      "content-tag": "2.0.3"
     }
   },
   "repository": {
