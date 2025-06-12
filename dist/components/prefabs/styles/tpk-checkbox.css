@@ -1,0 +1,23 @@
+.tpk-checkbox-container {
+  @apply form-control relative pb-4;
+}
+
+.tpk-checkbox-container .tpk-label {
+  @apply label cursor-pointer;
+}
+
+.tpk-checkbox-input {
+  @apply checkbox checkbox-primary;
+}
+
+.tpk-checkbox-container[data-has-error~="true"] .tpk-checkbox-input {
+  @apply checkbox checkbox-error;
+}
+
+.tpk-checkbox-container[data-has-error~="true"] .tpk-label {
+  @apply text-error label;
+}
+
+.tpk-checkbox-container[data-has-error~="true"] .tpk-validation-errors {
+  @apply text-error text-sm justify-self-end absolute -bottom-1;
+}

@@ -1,0 +1,174 @@
+{
+  "name": "@triptyk/ember-input-validation",
+  "version": "3.0.0",
+  "description": "This addon will give you an input in TailwindCSS with Ember",
+  "keywords": [
+    "ember-addon"
+  ],
+  "license": "MIT",
+  "author": "Triptyk",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./app.css": "./dist/app.css",
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist",
+    "static"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@embroider/addon-shim": "^1.8.9",
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
+    "ember-concurrency": "~4.0.2",
+    "ember-intl": "~6.5.5",
+    "ember-lifeline": "^7.0.0",
+    "ember-modifier": "~4.1.0",
+    "ember-test-selectors": "~6.0.0",
+    "yup": "~1.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.24.7",
+    "@babel/plugin-transform-class-static-block": "^7.24.7",
+    "@babel/plugin-transform-typescript": "^7.25.2",
+    "@babel/runtime": "^7.25.0",
+    "@embroider/addon-dev": "^7.0.0",
+    "@glint/core": "^1.4.0",
+    "@glint/environment-ember-loose": "^1.4.0",
+    "@glint/environment-ember-template-imports": "^1.4.0",
+    "@glint/template": "^1.5.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@tsconfig/ember": "^3.0.8",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "babel-plugin-ember-template-compilation": "^2.2.5",
+    "concurrently": "^8.2.2",
+    "ember-immer-changeset": "~1.0.2",
+    "ember-source": "~5.12.0",
+    "ember-template-imports": "^4.1.1",
+    "ember-template-lint": "^5.13.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.1.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "prettier-plugin-ember-template-tag": "^2.0.2",
+    "rollup": "^4.20.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-glimmer-template-tag": "^0.4.1",
+    "rollup-plugin-import-css": "^3.5.7",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-ts": "^3.4.5",
+    "rsvp": "^4.8.5",
+    "type-fest": "^4.24.0",
+    "typescript": "^5.5.4",
+    "webpack": "^5.95.0",
+    "@triptyk/ember-input": "3.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "public-assets": {
+      "./static/BE.svg": "/BE.svg",
+      "./static/DE.svg": "/DE.svg",
+      "./static/LU.svg": "/LU.svg",
+      "./static/NL.svg": "/NL.svg",
+      "./static/FR.svg": "/FR.svg",
+      "./static/upload.svg": "/upload.svg",
+      "./static/download.svg": "/download.svg",
+      "./static/delete.svg": "/delete.svg",
+      "./static/document.svg": "/document.svg",
+      "./static/block.svg": "/block.svg"
+    },
+    "app-js": {
+      "./components/base.js": "./dist/_app_/components/base.js",
+      "./components/prefabs/mandatory-label.js": "./dist/_app_/components/prefabs/mandatory-label.js",
+      "./components/prefabs/tpk-validation-bic.js": "./dist/_app_/components/prefabs/tpk-validation-bic.js",
+      "./components/prefabs/tpk-validation-checkbox.js": "./dist/_app_/components/prefabs/tpk-validation-checkbox.js",
+      "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",
+      "./components/prefabs/tpk-validation-datepicker-range.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker-range.js",
+      "./components/prefabs/tpk-validation-datepicker.js": "./dist/_app_/components/prefabs/tpk-validation-datepicker.js",
+      "./components/prefabs/tpk-validation-email.js": "./dist/_app_/components/prefabs/tpk-validation-email.js",
+      "./components/prefabs/tpk-validation-errors.js": "./dist/_app_/components/prefabs/tpk-validation-errors.js",
+      "./components/prefabs/tpk-validation-file-list.js": "./dist/_app_/components/prefabs/tpk-validation-file-list.js",
+      "./components/prefabs/tpk-validation-file.js": "./dist/_app_/components/prefabs/tpk-validation-file.js",
+      "./components/prefabs/tpk-validation-iban.js": "./dist/_app_/components/prefabs/tpk-validation-iban.js",
+      "./components/prefabs/tpk-validation-input.js": "./dist/_app_/components/prefabs/tpk-validation-input.js",
+      "./components/prefabs/tpk-validation-integer.js": "./dist/_app_/components/prefabs/tpk-validation-integer.js",
+      "./components/prefabs/tpk-validation-mobile.js": "./dist/_app_/components/prefabs/tpk-validation-mobile.js",
+      "./components/prefabs/tpk-validation-national-number.js": "./dist/_app_/components/prefabs/tpk-validation-national-number.js",
+      "./components/prefabs/tpk-validation-number.js": "./dist/_app_/components/prefabs/tpk-validation-number.js",
+      "./components/prefabs/tpk-validation-password.js": "./dist/_app_/components/prefabs/tpk-validation-password.js",
+      "./components/prefabs/tpk-validation-radio-group.js": "./dist/_app_/components/prefabs/tpk-validation-radio-group.js",
+      "./components/prefabs/tpk-validation-radio.js": "./dist/_app_/components/prefabs/tpk-validation-radio.js",
+      "./components/prefabs/tpk-validation-select-create.js": "./dist/_app_/components/prefabs/tpk-validation-select-create.js",
+      "./components/prefabs/tpk-validation-select-search.js": "./dist/_app_/components/prefabs/tpk-validation-select-search.js",
+      "./components/prefabs/tpk-validation-select.js": "./dist/_app_/components/prefabs/tpk-validation-select.js",
+      "./components/prefabs/tpk-validation-textarea.js": "./dist/_app_/components/prefabs/tpk-validation-textarea.js",
+      "./components/prefabs/tpk-validation-timepicker.js": "./dist/_app_/components/prefabs/tpk-validation-timepicker.js",
+      "./components/prefabs/tpk-validation-vat.js": "./dist/_app_/components/prefabs/tpk-validation-vat.js",
+      "./components/tpk-form.js": "./dist/_app_/components/tpk-form.js",
+      "./components/tpk-validation-checkbox.js": "./dist/_app_/components/tpk-validation-checkbox.js",
+      "./components/tpk-validation-datepicker.js": "./dist/_app_/components/tpk-validation-datepicker.js",
+      "./components/tpk-validation-file.js": "./dist/_app_/components/tpk-validation-file.js",
+      "./components/tpk-validation-input.js": "./dist/_app_/components/tpk-validation-input.js",
+      "./components/tpk-validation-radio-group.js": "./dist/_app_/components/tpk-validation-radio-group.js",
+      "./components/tpk-validation-radio.js": "./dist/_app_/components/tpk-validation-radio.js",
+      "./components/tpk-validation-select.js": "./dist/_app_/components/tpk-validation-select.js",
+      "./components/tpk-validation-textarea.js": "./dist/_app_/components/tpk-validation-textarea.js",
+      "./modifiers/scroll-on-error.js": "./dist/_app_/modifiers/scroll-on-error.js",
+      "./services/tpk-form.js": "./dist/_app_/services/tpk-form.js"
+    }
+  },
+  "peerDependencies": {
+    "ember-immer-changeset": "^1.0.2",
+    "ember-source": ">=5.0.0",
+    "@triptyk/ember-input": "3.0.0"
+  },
+  "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789",
+  "scripts": {
+    "build": "concurrently 'npm:build:js' 'npm:build:types'",
+    "build:clean": "rm -rf dist",
+    "build:js": "rollup --config",
+    "build:types": "glint --declaration",
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "glint",
+    "start": "concurrently 'npm:start:*'",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "start:types": "glint --declaration --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  }
+}

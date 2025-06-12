@@ -1,0 +1,24 @@
+.tpk-integer-container {
+  @apply form-control relative pb-4;
+}
+
+.tpk-integer-container .tpk-label {
+  @apply label;
+}
+
+.tpk-integer-input {
+  @apply input input-bordered;
+}
+
+.tpk-integer-container[data-has-error~="true"] > .tpk-integer-input {
+  @apply input-error text-error;
+}
+
+.tpk-integer-container[data-has-error~="true"]
+.tpk-validation-errors {
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
+}
+
+.tpk-integer-container[data-has-error~="true"] .tpk-label {
+  @apply text-error label;
+}

@@ -1,0 +1,28 @@
+.tpk-national-number-container {
+  @apply form-control relative pb-4;
+}
+
+.tpk-national-number-container .tpk-label {
+  @apply label;
+}
+
+.tpk-national-number-input {
+  @apply input input-bordered;
+}
+
+.tpk-national-number-container[data-has-error~="true"] .tpk-national-number-input {
+  @apply input-error;
+}
+
+.tpk-national-number-container[data-has-error~="true"]
+.tpk-validation-errors {
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
+}
+
+.tpk-national-number-container[data-has-error~="true"] .tpk-label{
+  @apply label text-error;
+}
+
+.tpk-national-number-container[data-has-error~="true"] .tpk-national-number-input {
+  @apply text-error;
+}

@@ -1,0 +1,24 @@
+.tpk-vat-container {
+  @apply form-control relative pb-4;
+}
+
+.tpk-vat-container .tpk-label {
+  @apply label;
+}
+
+.tpk-vat-input {
+  @apply input input-bordered;
+}
+
+.tpk-vat-container[data-has-error~="true"] > .tpk-vat-input {
+  @apply input-error text-error;
+}
+
+.tpk-vat-container[data-has-error~="true"]
+.tpk-validation-errors {
+  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
+}
+
+.tpk-vat-container[data-has-error~="true"] .tpk-label {
+  @apply text-error label;
+}
