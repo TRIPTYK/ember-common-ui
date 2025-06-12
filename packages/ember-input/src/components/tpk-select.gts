@@ -236,6 +236,13 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     } else {
       this.activeChildIndex = res;
     }
+
+    if (this.activeChild) {
+      this.activeChild.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
   }
 
   @action
