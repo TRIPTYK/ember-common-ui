@@ -28,6 +28,7 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
     <div class='flex items-center space-x-2'>
       {{#unless @readOnly}}
         <button
+          data-is-expanded-btn={{if @isExpanded 'true' 'false'}}
           type='button'
           class='mr-8'
           data-test-delete-stackList-item
@@ -49,7 +50,6 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
         data-test-toggle-stackList-item
       >
         <img
-
           src='/assets/icons/arrow-down.svg'
           class='w-6 h-6'
           alt=''

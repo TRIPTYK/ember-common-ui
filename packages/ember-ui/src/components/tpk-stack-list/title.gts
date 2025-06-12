@@ -5,6 +5,7 @@ export interface TpkStackListTitleComponentSignature {
   Args: {
     item: unknown;
     isExpanded: boolean;
+    index: number;
   };
   Blocks: {
     default: [
