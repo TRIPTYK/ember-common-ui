@@ -93,7 +93,7 @@ export default class TableGenericTableComponent<
   @tracked totalRows?: number;
 
   public get pageSize(): number {
-    return this.args.pageSize || 30;
+    return this.args.pageSize || this.args.pageSizes?.[0] || 30;
   }
 
   public get entityName() {

@@ -54,6 +54,12 @@ export default class TableGenericComponent extends Component<TableGenericCompone
     this.filterText = value;
   }
 
+  get pageSizes(): number[] {
+    return this.args.pageSizes ?? [
+      20, 50, 100
+    ];
+  }
+
   @action rowClick(...args: unknown[]) {
     return this.args.rowClick?.(...args);
   }
@@ -75,7 +81,7 @@ export default class TableGenericComponent extends Component<TableGenericCompone
           relationships=@relationships
           registerApi=@registerApi
           entity=@entity
-          pageSizes=@pageSizes
+          pageSizes=this.pageSizes
           pageSize=@pageSize
           additionalFilters=@additionalFilters
           defaultSortColumn=@defaultSortColumn

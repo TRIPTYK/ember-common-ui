@@ -4,10 +4,6 @@
           "packages/": true,
           "doc-app/": true,
       },
-      "eslint.validate": [
-        "glimmer-ts",
-        "glimmer-js"
-      ],
     },
     "folders": [
       {
