@@ -6,7 +6,7 @@ export interface LoadingIndicatorComponentSignature {
 const LoadingIndicator: TOC<LoadingIndicatorComponentSignature> = <template>
   <div
     data-test-loading-indicator
-    class='z-10 fixed inset-0 h-screen w-screen flex items-center justify-center bg-black bg-opacity-40'
+    class='z-10 fixed inset-0 h-screen w-screen flex items-center justify-center bg-black bg-opacity-40 tpk-loading-indicator'
     ...attributes
   >
     <div class='sk-cube-grid'>
