@@ -1,0 +1,123 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.8.2",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "9807160686404276401"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "1343650020901055011"
+      },
+      {
+        "file": ".eslintrc.cjs",
+        "hash": "17259025636849716994"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "5159363135862987347"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "1343650020901055011"
+      },
+      {
+        "file": ".prettierrc.cjs",
+        "hash": "1910984744897155776"
+      },
+      {
+        "file": ".template-lintrc.cjs",
+        "hash": "7873085393430846158"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "6588484019577459230"
+      },
+      {
+        "file": "addon-main.cjs",
+        "hash": "5129374606944354095"
+      },
+      {
+        "file": "babel.config.json",
+        "hash": "4559938067697090816"
+      },
+      {
+        "file": "package.json",
+        "hash": "8273578215744385164"
+      },
+      {
+        "file": "rollup.config.mjs",
+        "hash": "674398066261127813"
+      },
+      {
+        "file": "src/components/base.ts",
+        "hash": "14101342313705819056"
+      },
+      {
+        "file": "src/components/tpk-form.gts",
+        "hash": "18154588639266596018"
+      },
+      {
+        "file": "src/components/tpk-validation-checkbox.gts",
+        "hash": "5589922438472975970"
+      },
+      {
+        "file": "src/components/tpk-validation-datepicker.gts",
+        "hash": "15775777072113441017"
+      },
+      {
+        "file": "src/components/tpk-validation-file.gts",
+        "hash": "8315317653579566503"
+      },
+      {
+        "file": "src/components/tpk-validation-input.gts",
+        "hash": "4834524344082198120"
+      },
+      {
+        "file": "src/components/tpk-validation-radio-group.gts",
+        "hash": "15022597937491534418"
+      },
+      {
+        "file": "src/components/tpk-validation-radio.gts",
+        "hash": "8938483234529168032"
+      },
+      {
+        "file": "src/components/tpk-validation-select.gts",
+        "hash": "11403312649533886672"
+      },
+      {
+        "file": "src/components/tpk-validation-textarea.gts",
+        "hash": "2495156198784258985"
+      },
+      {
+        "file": "src/services/tpk-form.ts",
+        "hash": "124153465831413732"
+      },
+      {
+        "file": "src/template-registry.ts",
+        "hash": "5753941472259661246"
+      },
+      {
+        "file": "src/utils/is-field-error.ts",
+        "hash": "4499566347268724485"
+      },
+      {
+        "file": "src/utils/validate-and-map.ts",
+        "hash": "2098361327166562073"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "8714618592881951635"
+      },
+      {
+        "file": "unpublished-development-types/index.d.ts",
+        "hash": "14284424270799906024"
+      }
+    ]
+  }
+}
