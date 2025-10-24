@@ -29,7 +29,7 @@ export default class StackListItemComponent extends Component<StackListItemCompo
     super(owner, args);
   }
   get index() {
-    return 40 - this.args.zIndex;
+    return 2000 - this.args.zIndex;
   }
 
   @action toggleExpanded() {
