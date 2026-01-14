@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0...v3.0.1) (2026-01-14)
+
+
+### Features
+
+* add index as param for yield and give info if stack is open for button delete ([c25dda6](https://github.com/TRIPTYK/ember-common-ui/commit/c25dda67800d515d7b5208e421d90e7a95aa619c))
+
+
+
+
+
 # [3.0.0](https://github.com/TRIPTYK/ember-common-ui/compare/v3.0.0-alpha.13...v3.0.0) (2025-04-18)
 
 **Note:** Version bump only for package doc-app
