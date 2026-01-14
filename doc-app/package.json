@@ -149,5 +149,8 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "volta": {
+    "node": "20.20.0"
   }
 }

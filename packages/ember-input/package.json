@@ -31,7 +31,8 @@
   "files": [
     "addon-main.cjs",
     "declarations",
-    "dist"
+    "dist",
+    "llm.txt"
   ],
   "scripts": {
     "build": "concurrently 'npm:build:js' 'npm:build:types'",

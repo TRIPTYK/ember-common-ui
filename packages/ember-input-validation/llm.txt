@@ -1,0 +1,367 @@
+# @triptyk/ember-input-validation
+
+Form validation components for Ember using ember-immer-changeset and yup. Wraps @triptyk/ember-input components with validation capabilities.
+
+## Installation
+
+```bash
+ember install @triptyk/ember-input-validation
+```
+
+Install peer dependencies:
+
+```bash
+ember install @triptyk/ember-input
+ember install ember-immer-changeset
+```
+
+## Importing Types
+
+Add the Glint template-registry to your global.d.ts file:
+
+```ts
+import '@glint/environment-ember-loose';
+import type EmberInputValidationRegistry from '@triptyk/ember-input-validation/template-registry';
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry
+    extends EmberInputValidationRegistry {}
+}
+```
+
+## HTML Naming Conventions
+
+Every component has an HTML element with a class assigned to it. The naming follows this rule:
+
+**Path of the component to kebab case**
+
+Examples:
+- `<TpkValidationInput>`: .tpk-input
+- `<TpkValidationInput::Label>`: .tpk-input-label
+
+Use the `@classless` argument to prevent the base class from being applied.
+
+## Core Concept
+
+All validation components work with ember-immer-changeset to manage form state and validation. They yield error information and integrate with yup validation schemas.
+
+## Components
+
+### TpkForm
+
+A form component that integrates ember-immer-changeset and yup for validation.
+
+**Usage:**
+```hbs
+<TpkForm
+  @changeset={{this.changeset}}
+  @onSubmit={{this.success}}
+  @validationSchema={{this.validationSchema}}
+as |F|>
+  <F.TpkInput @label="First Name" @validationField="firstName" as |I|>
+    <I.Label/>
+    <I.Input />
+    {{#if I.errors}}
+      {{#each I.errors as |error|}}
+        <div>{{error.message}}</div>
+      {{/each}}
+    {{/if}}
+  </F.TpkInput>
+  <button type="submit">Submit</button>
+</TpkForm>
+```
+
+**Controller Setup:**
+```js
+import { ImmerChangeset } from 'ember-immer-changeset';
+import { object, string } from 'yup';
+
+export default class extends Controller {
+  changeset = new ImmerChangeset({});
+
+  validationSchema = object().shape({
+    firstName: string().required().min(3),
+  });
+
+  @action
+  success() {
+    // Called when form is valid and submitted
+  }
+}
+```
+
+**Arguments:**
+- `@changeset`: ImmerChangeset (required) - The changeset instance
+- `@onSubmit`: Function (required) - Called when form is valid and submitted
+- `@validationSchema`: Yup Object (required) - Yup validation schema
+- `@reactive`: Boolean (default: true) - Validate fields on change
+- `@executeOnValid`: Boolean (default: true) - Execute changeset if valid
+- `@disabled`: Boolean (default: false) - Disable form and inputs
+- `@removeErrorsOnSubmit`: Boolean (default: true) - Clear errors on submit
+- `@autoScrollOnError`: Boolean (default: true) - Scroll to first error on submit
+
+**Yielded Components (Base):**
+- `F.TpkInput` - TpkValidationInput
+- `F.TpkTextarea` - TpkValidationTextarea
+- `F.TpkSelect` - TpkValidationSelect
+- `F.TpkCheckbox` - TpkValidationCheckbox
+- `F.TpkRadio` - TpkValidationRadio
+- `F.TpkRadioGroup` - TpkValidationRadioGroup
+- `F.TpkFile` - TpkValidationFile
+- `F.TpkDatepicker` - TpkValidationDatePicker
+
+**Yielded Components (Prefabs):**
+Pre-styled components with built-in error display:
+- `F.TpkInputPrefab`
+- `F.TpkTextareaPrefab`
+- `F.TpkSelectPrefab`
+- `F.TpkSelectCreatePrefab`
+- `F.TpkSelectSearchPrefab`
+- `F.TpkCheckboxPrefab`
+- `F.TpkRadioPrefab`
+- `F.TpkRadioGroupPrefab`
+- `F.TpkDatepickerPrefab`
+- `F.TpkDatepickerRangePrefab`
+- `F.TpkTimepickerPrefab`
+
+**Yielded Components (Specialized Input Prefabs):**
+- `F.TpkPasswordPrefab` - Password input with toggle visibility
+- `F.TpkEmailPrefab` - Email input with validation
+- `F.TpkIbanPrefab` - IBAN input with formatting
+- `F.TpkBicPrefab` - BIC input with formatting
+- `F.TpkVatPrefab` - VAT number input
+- `F.TpkNationalNumberPrefab` - National number input
+- `F.TpkCurrencyPrefab` - Currency input with formatting
+- `F.TpkIntegerPrefab` - Integer number input
+- `F.TpkNumberPrefab` - Decimal number input
+- `F.TpkMobilePrefab` - Mobile phone input
+
+**Yielded Values:**
+- `changesetGet`: Function - Shortcut to changeset.get()
+- `requiredFields`: Array - List of required fields from schema
+
+**Customizing Default Components:**
+
+You can override the default components via the TpkForm service:
+
+```ts
+let tpkFormService = this.owner.lookup('service:tpk-form');
+tpkFormService.TpkInput = CustomInputComponent;
+tpkFormService.TpkInputPrefab = CustomInputPrefab;
+// etc.
+```
+
+### TpkValidationInput
+
+An input component with validation support.
+
+**Usage:**
+```hbs
+<TpkValidationInput
+  @label="Name"
+  @onChange={{this.onChange}}
+  @changeset={{this.changeset}}
+  @validationField="name"
+as |I|>
+  <I.Label/>
+  <I.Input/>
+  {{#each I.errors as |error|}}
+    <span>{{error.message}}</span>
+  {{/each}}
+</TpkValidationInput>
+```
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when value changes (receives value and event)
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@classless`: Boolean - Override default CSS classes
+- `@showTogglePasswordButton`: Boolean - Show password visibility toggle (for password inputs)
+- `@type`: String - Input type
+
+**Yields:**
+- `I.Label`: Label component
+- `I.Input`: Input component
+- `I.errors`: Array of error objects with message property
+- `I.hasError`: Boolean indicating if field has errors
+
+**CSS Classes:**
+- `.tpk-input`: Main container
+- `.tpk-input input`: Input element
+- `.tpk-input-label`: Label element
+- `[data-has-error="true"]`: Applied when field has errors
+- `[data-has-error="false"]`: Applied when field has no errors
+
+### TpkValidationCheckbox
+
+A checkbox component with validation support.
+
+**Usage:**
+```hbs
+<TpkValidationCheckbox
+  @label="I agree"
+  @changeset={{this.changeset}}
+  @validationField="agreed"
+  @onChange={{this.onChange}}
+as |T|>
+  <T.Input />
+  <T.Label />
+  {{#each T.errors as |error|}}
+    <span>{{error.message}}</span>
+  {{/each}}
+</TpkValidationCheckbox>
+```
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when value changes (receives value and event)
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@classless`: Boolean - Override default CSS classes
+
+**Yields:**
+- `T.Label`: Label component
+- `T.Input`: Checkbox component
+- `T.errors`: Array of error objects
+- `T.hasError`: Boolean
+
+**CSS Classes:**
+- `.tpk-checkbox-input`: Main container
+- `.tpk-checkbox-label`: Label element
+- `[data-has-error="true"]`: Applied when field has errors
+- `[data-has-error="false"]`: Applied when field has no errors
+
+### TpkValidationTextarea
+
+A textarea component with validation support.
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when value changes
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@maxLength`: Number - Maximum character length
+- `@classless`: Boolean - Override default CSS classes
+
+**Yields:**
+Similar to TpkValidationInput with error support
+
+### TpkValidationSelect
+
+A select component with validation support.
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when selection changes
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@options`: Array - Options to display
+- `@multiple`: Boolean - Allow multiple selections
+- `@classless`: Boolean - Override default CSS classes
+
+**Yields:**
+Similar to TpkSelect with error support
+
+### TpkValidationRadio
+
+A radio input component with validation support.
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when selection changes
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@value`: String - Value of this radio option
+- `@name`: String - Group name
+- `@selected`: String - Currently selected value
+- `@classless`: Boolean - Override default CSS classes
+
+**Yields:**
+Similar to TpkRadio with error support
+
+### TpkValidationRadioGroup
+
+A radio group component with validation support for managing multiple radio buttons.
+
+**Arguments:**
+- `@validationField`: String (required) - Field name in changeset
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@groupLabel`: String - Label for the entire group
+- `@mandatory`: Boolean - Whether selection is required
+- `@classless`: Boolean - Override default CSS classes
+
+### TpkValidationFile
+
+A file input component with validation support.
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when files change
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- `@accept`: String - Accepted file types
+- `@multiple`: Boolean - Allow multiple file selection
+- `@classless`: Boolean - Override default CSS classes
+
+**Yields:**
+Similar to TpkFile with error support
+
+### TpkValidationDatePicker
+
+A date picker component with validation support.
+
+**Arguments:**
+- `@label`: String - Label text
+- `@validationField`: String (required) - Field name in changeset
+- `@onChange`: Function - Callback when date changes
+- `@changeset`: ImmerChangeset (required) - Changeset instance
+- Plus all TpkDatepicker arguments
+- `@classless`: Boolean - Override default CSS classes
+
+**Yields:**
+Similar to TpkDatepicker with error support
+
+## Validation Behavior
+
+- **On submit**: Entire form is validated when submitted
+- **On field change**: If `@reactive={{true}}` (default), fields validate individually on change
+- **Error display**: Errors are yielded and must be displayed in template
+- **Auto scroll**: If `@autoScrollOnError={{true}}` (default), scrolls to first error on submit
+- **Error clearing**: If `@removeErrorsOnSubmit={{true}}` (default), clears errors before validation on submit
+
+## Complete Example
+
+```hbs
+<TpkForm
+  @changeset={{this.changeset}}
+  @onSubmit={{this.success}}
+  @validationSchema={{this.validationSchema}}
+as |F|>
+  <F.TpkInputPrefab @label="First Name" @validationField="firstName" />
+  <F.TpkInputPrefab @label="Last Name" @validationField="lastName" />
+  <F.TpkEmailPrefab @label="Email" @validationField="email" />
+  <F.TpkMobilePrefab @label="Phone" @validationField="phone" />
+  <F.TpkDatepickerPrefab @label="Birthdate" @validationField="birthday" />
+  <F.TpkSelectPrefab
+    @label="Languages"
+    @validationField="languages"
+    @multiple={{true}}
+    @options={{this.options}}
+  />
+  <F.TpkPasswordPrefab @label="Password" @validationField="password" />
+  <F.TpkCheckboxPrefab @label="I agree" @validationField="agreed" />
+  <button type="submit">Submit</button>
+</TpkForm>
+```
+
+## Compatibility
+
+- Ember.js v4.8 or above
+- Embroider or ember-auto-import v2
+- Requires @triptyk/ember-input
+- Requires ember-immer-changeset
+
+## License
+
+MIT License

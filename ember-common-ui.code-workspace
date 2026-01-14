@@ -1,35 +1,30 @@
 {
-    "settings": {
-      "files.exclude": {
-          "packages/": true,
-          "doc-app/": true,
-      },
-      "eslint.validate": [
-        "glimmer-ts",
-        "glimmer-js"
-      ],
+  "settings": {
+    "files.exclude": {
+      "packages/": true,
+      "doc-app/": true,
     },
-    "folders": [
-      {
-        "name": "ROOT",
-        "path": "."
-      },
-      {
-        "name": "doc-app",
-        "path": "doc-app"
-      },
-      {
-        "name": "ember-input",
-        "path": "packages/ember-input"
-      },
-      {
-        "name": "ember-input-validation",
-        "path": "packages/ember-input-validation"
-      },
-      {
-        "name": "ember-ui",
-        "path": "packages/ember-ui"
-      }
-    ]
-  }
-  
+  },
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": ".",
+    },
+    {
+      "name": "doc-app",
+      "path": "doc-app",
+    },
+    {
+      "name": "ember-input",
+      "path": "packages/ember-input",
+    },
+    {
+      "name": "ember-input-validation",
+      "path": "packages/ember-input-validation",
+    },
+    {
+      "name": "ember-ui",
+      "path": "packages/ember-ui",
+    },
+  ],
+}
