@@ -4,7 +4,6 @@ import { tracked } from 'tracked-built-ins';
 import type Store from '@ember-data/store';
 import type ArrayProxy from '@ember/array/proxy';
 import { action } from '@ember/object';
-// eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import type ModelRegistry from 'ember-data/types/registries/model';
 import { waitFor } from '@ember/test-waiters';
 import type { WithBoundArgs } from '@glint/template';
@@ -55,9 +54,8 @@ interface TableGenericTableArgs {
   pageSizes?: number[];
   pageSize?: number;
   filterText?: string;
-  // eslint-disable-next-line no-unused-vars
   registerApi?: (api: TableApi) => unknown;
-  rowClick?: (element?:unknown, e?:Event) => void;
+  rowClick?: (element?: unknown, e?: Event) => void;
   additionalFilters?: Record<string, unknown>;
   defaultSortColumn?: string;
 }
@@ -121,7 +119,10 @@ export default class TableGenericTableComponent<
       sortString,
     );
 
-    const array = await this.store.query(this.args.entity as never, queryOptions);
+    const array = await this.store.query(
+      this.args.entity as never,
+      queryOptions,
+    );
 
     this.totalRows = (
       array as unknown as ArrayProxy<K> & {
@@ -184,7 +185,9 @@ export default class TableGenericTableComponent<
       {{yield
         (hash
           Header=(component
-            TableGenericHeaderComponent table=table hasActionMenu=this.hasActionMenu
+            TableGenericHeaderComponent
+            table=table
+            hasActionMenu=this.hasActionMenu
           )
           Body=(component
             TableGenericBodyComponent

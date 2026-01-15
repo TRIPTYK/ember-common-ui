@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { TempusDominus, Namespace, DateTime } from '@eonasdan/tempus-dominus';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import IMask from 'imask';
 

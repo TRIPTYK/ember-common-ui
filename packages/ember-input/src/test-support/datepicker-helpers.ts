@@ -88,6 +88,12 @@ function _throwSelectorError(
   functionName: string,
 ) {
   throw new Error(
-    `${functionName}() - No input was found using selector '${selector}'`,
+    `${functionName}() - No input was found using selector '${stringifySelector(selector)}'`,
   );
+}
+
+function stringifySelector(selector: string | HTMLElement) {
+  return selector instanceof HTMLElement
+    ? `<${selector.tagName.toLowerCase()} id="${selector.id}" class="${selector.className}">`
+    : selector;
 }

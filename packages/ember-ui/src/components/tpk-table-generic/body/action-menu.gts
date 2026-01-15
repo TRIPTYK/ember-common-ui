@@ -1,6 +1,7 @@
 import type { WithBoundArgs } from '@glint/template';
 import TableGenericBodyActionComponent from './action.gts';
 import type { TOC } from '@ember/component/template-only';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import TpkActionsMenu from '../../tpk-actions-menu.gts';
 
@@ -24,10 +25,10 @@ const TableGenericBodyActionMenuComponent: TOC<TableGenericBodyActionMenuCompone
       <td
         {{didInsert @registerActionMenu}}
         data-test-action-menu-cell
-        class="tpk-action-menu"
+        class='tpk-action-menu'
         ...attributes
       >
-        <TpkActionsMenu  as |Action|>
+        <TpkActionsMenu as |Action|>
           {{yield (component TableGenericBodyActionComponent Action=Action)}}
         </TpkActionsMenu>
       </td>

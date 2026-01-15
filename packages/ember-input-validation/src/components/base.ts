@@ -52,7 +52,7 @@ export abstract class BaseValidationComponent<
   get errors(): Record<string, unknown>[] {
     return (
       this.args.changeset.errors.filter((err) =>
-        isFieldError(this.args.validationField, err.key as string),
+        isFieldError(this.args.validationField, err.key),
       ) ?? []
     );
   }

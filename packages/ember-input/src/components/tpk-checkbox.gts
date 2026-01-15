@@ -20,10 +20,7 @@ export type TpkCheckboxSignature = {
   Blocks: {
     default: [
       {
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'guid' | 'label'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'guid' | 'label'>;
         Input: WithBoundArgs<
           typeof TpkCheckboxInputComponent,
           'changeEvent' | 'onChange' | 'guid' | 'checked'
@@ -53,12 +50,7 @@ export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSig
   <template>
     {{yield
       (hash
-        Label=(component
-          TpkLabel
-          guid=this.guid
-          checked=@checked
-          label=@label
-        )
+        Label=(component TpkLabel guid=this.guid checked=@checked label=@label)
         Input=(component
           TpkCheckboxInputComponent
           guid=this.guid

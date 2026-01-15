@@ -8,15 +8,16 @@ export interface MandatoryLabelComponentSignature {
   Element: HTMLSpanElement;
 }
 
-const MandatoryLabelComponent: TOC<MandatoryLabelComponentSignature> = <template>
+const MandatoryLabelComponent: TOC<MandatoryLabelComponentSignature> =
+  <template>
     <div ...attributes>
       <span>
-          {{@label}}
-          {{#if @mandatory}}
-            <span class="mandatory">*</span>
-          {{/if}}
+        {{@label}}
+        {{#if @mandatory}}
+          <span class='mandatory'>*</span>
+        {{/if}}
       </span>
     </div>
-</template>;
+  </template>;
 
 export default MandatoryLabelComponent;

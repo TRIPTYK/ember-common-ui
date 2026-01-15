@@ -10,19 +10,18 @@
   @apply input input-bordered;
 }
 
-.tpk-iban-container[data-has-error~="true"] .tpk-iban-input {
+.tpk-iban-container[data-has-error~='true'] .tpk-iban-input {
   @apply input-error;
 }
 
-.tpk-iban-container[data-has-error~="true"]
-.tpk-validation-errors {
+.tpk-iban-container[data-has-error~='true'] .tpk-validation-errors {
   @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
-.tpk-iban-container[data-has-error~="true"] .tpk-label{
+.tpk-iban-container[data-has-error~='true'] .tpk-label {
   @apply label text-error;
 }
 
-.tpk-iban-container[data-has-error~="true"] .tpk-iban-input {
+.tpk-iban-container[data-has-error~='true'] .tpk-iban-input {
   @apply text-error;
 }

@@ -3,7 +3,6 @@ import type { ComponentLike } from '@glint/template';
 
 export interface TableGenericBodyCellComponentSignature {
   Args: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     row: ComponentLike;
   };
   Element: HTMLElement;
@@ -14,11 +13,11 @@ export interface TableGenericBodyCellComponentSignature {
 
 const TableGenericBodyCellComponent: TOC<TableGenericBodyCellComponentSignature> =
   <template>
-    {{!-- @glint-ignore --}}
+    {{! @glint-ignore }}
     <@row.cell ...attributes>
       {{yield}}
-      {{!-- @glint-ignore --}}
+      {{! @glint-ignore }}
     </@row.cell>
-</template>;
+  </template>;
 
 export default TableGenericBodyCellComponent;

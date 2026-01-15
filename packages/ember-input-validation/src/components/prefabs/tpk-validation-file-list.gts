@@ -64,7 +64,7 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
 
     if (this.args.disabled) return;
 
-    let filesFromDrop = event.dataTransfer?.files;
+    const filesFromDrop = event.dataTransfer?.files;
 
     if (filesFromDrop && filesFromDrop.length > 0) {
       const files: File[] = Array.from(filesFromDrop);
@@ -98,6 +98,7 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
       <V.Label
         class='tpk-file-list-container'
         data-has-error='{{V.hasError}}'
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         data-test-tpk-prefab-file-list-container
         ...attributes
@@ -173,7 +174,7 @@ export class FileListComponent extends Component<FileListSignature> {
     this.args.changeset.set(this.args.validationField, updatedFiles);
   }
 
-  async downloadFile(file: File) {
+  downloadFile(file: File) {
     if (window.open) {
       window.open(URL.createObjectURL(file));
     }

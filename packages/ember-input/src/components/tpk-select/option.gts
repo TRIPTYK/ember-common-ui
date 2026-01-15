@@ -11,9 +11,8 @@ export interface TpkSelectOptionArgs {
   };
 }
 
-const TpkSelectOption:TOC<TpkSelectOptionArgs> =
-  <template>
-    {{yield (hash option=@option)}}
-  </template>
+const TpkSelectOption: TOC<TpkSelectOptionArgs> = <template>
+  {{yield (hash option=@option)}}
+</template>;
 
 export default TpkSelectOption;

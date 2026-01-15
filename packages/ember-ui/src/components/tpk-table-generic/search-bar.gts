@@ -7,7 +7,7 @@ import type Owner from '@ember/owner';
 
 export interface TableGenericSearchBarComponentArgs {
   onChange?: (value: string, e: Event) => unknown;
-  onSearch: (value: string,) => unknown;
+  onSearch: (value: string) => unknown;
   label: string;
   placeholder: string;
   inputClass?: string;
@@ -39,10 +39,10 @@ export default class TableGenericSearchBarComponent extends Component<TableGener
   }
 
   <template>
-     <TpkSearch
-            @label={{@label}}
-            @placeholder={{@placeholder}}
-            @onSearch={{this.onSearch}}
-          />
+    <TpkSearch
+      @label={{@label}}
+      @placeholder={{@placeholder}}
+      @onSearch={{this.onSearch}}
+    />
   </template>
 }

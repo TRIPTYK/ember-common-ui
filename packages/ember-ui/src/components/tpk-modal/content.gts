@@ -33,19 +33,18 @@ export default class TpkModalContentComponent extends Component<UiModalContentSi
 
   <template>
     <div class='tpk-modal-content'>
-    <h2 class='tpk-modal-title'>
+      <h2 class='tpk-modal-title'>
         {{@title}}
-    </h2>
-    <div
-      data-test-tpk-modal
+      </h2>
+      <div
+        data-test-tpk-modal
+        role='dialog'
+        {{tpkFocusTrap options=(hash allowOutsideClick=@outsideClickHandler)}}
+        ...attributes
+      >
 
-      role='dialog'
-      {{tpkFocusTrap options=(hash allowOutsideClick=@outsideClickHandler)}}
-      ...attributes
-    >
-
-      {{yield (hash guid=this.guid)}}
-    </div>
+        {{yield (hash guid=this.guid)}}
+      </div>
     </div>
   </template>
 }

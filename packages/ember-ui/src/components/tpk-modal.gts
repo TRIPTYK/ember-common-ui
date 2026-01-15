@@ -8,7 +8,9 @@ import DialogLayerService from '../services/dialog-layer.ts';
 import { guidFor } from '@ember/object/internals';
 import type { WithBoundArgs } from '@glint/template';
 import TpkModalContentComponent from './tpk-modal/content.gts';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import { hash } from '@ember/helper';
 import type Owner from '@ember/owner';
@@ -19,7 +21,6 @@ export interface TpkModalComponentArgs {
   onClose: () => unknown;
   outsideClickHandler?: (e: MouseEvent | TouchEvent) => unknown;
   title?: string;
-
 }
 
 interface TpkModalEnv {
@@ -36,7 +37,7 @@ export interface TpkModalComponentSignature {
       {
         Content: WithBoundArgs<
           typeof TpkModalContentComponent,
-          'title' | 'onClose'  | 'outsideClickHandler'
+          'title' | 'onClose' | 'outsideClickHandler'
         >;
         isOnTop: boolean;
         isOpen: boolean;

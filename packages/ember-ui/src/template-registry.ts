@@ -56,6 +56,6 @@ export default interface Registry {
   'table-generic/table': typeof TableGenericTableComponent;
   'table-generic/header/cell': typeof TableGenericHeaderCellComponent;
   'tpk-confirm-modal': typeof TpkConfirmModalComponent;
-  'tpk-confirm-modal-prefab' : typeof TpkConfirmModalPrefabComponent;
-  'tpk-table-generic-prefab' : typeof TableGenericPrefabComponent;
+  'tpk-confirm-modal-prefab': typeof TpkConfirmModalPrefabComponent;
+  'tpk-table-generic-prefab': typeof TableGenericPrefabComponent;
 }

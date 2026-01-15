@@ -10,10 +10,9 @@ import t from 'ember-intl/helpers/t';
 
 export interface TableGenericBodyComponentSignature {
   Args: {
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;
-    rowClick: (element?:unknown, e?:Event) => void;
+    rowClick: (element?: unknown, e?: Event) => void;
     registerActionMenu: (element: HTMLTableCellElement, args: []) => unknown;
   };
   Element: HTMLDivElement;
@@ -52,7 +51,9 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
         >
           {{yield
             (hash
-              Cell=(component TableGenericBodyCellComponent element=element row=row)
+              Cell=(component
+                TableGenericBodyCellComponent element=element row=row
+              )
               ActionMenu=(component
                 TableGenericBodyActionMenuComponent
                 registerActionMenu=@registerActionMenu

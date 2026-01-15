@@ -10,9 +10,10 @@ import { hash } from '@ember/helper';
 
 export interface TpkValidationCheckboxComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkCheckboxSignature['Args'] & {
-    onChange?: (isChecked: boolean, value: string, e: Event) => void;
-  };
+  Args: BaseValidationSignature['Args'] &
+    TpkCheckboxSignature['Args'] & {
+      onChange?: (isChecked: boolean, value: string, e: Event) => void;
+    };
   Blocks: {
     default: [
       {

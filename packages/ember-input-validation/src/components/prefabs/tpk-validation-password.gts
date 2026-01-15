@@ -13,14 +13,7 @@ export interface TpkValidationPasswordPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
-    | 'type'
-    | 'min'
-    | 'max'
-    | 'step'
-    | 'mask'
-    | 'unmaskValue'
-    | 'maskOptions'
-    | 'mask'
+    'type' | 'min' | 'max' | 'step' | 'mask' | 'unmaskValue' | 'maskOptions'
   >;
   Blocks: {
     default: [];
@@ -58,6 +51,7 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
         class='tpk-password-container'
         data-test-tpk-prefab-password-container
         data-has-error='{{V.hasError}}'
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

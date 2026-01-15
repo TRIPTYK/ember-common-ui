@@ -34,7 +34,7 @@ export interface TpkValidationDatepickerComponentSignature
     ];
   };
   Element: HTMLDivElement & {
-    anchorScrollUp: string
+    anchorScrollUp: string;
   };
 }
 

@@ -22,7 +22,6 @@ export interface TpkValidationMobilePrefabSignature
     | 'mask'
     | 'unmaskValue'
     | 'maskOptions'
-    | 'mask'
     | 'changeEvent'
     | 'onChange'
   >;
@@ -56,10 +55,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
     { flag: '/LU.svg', code: '+352' },
   ];
 
-  constructor(
-    owner: Owner,
-    args: TpkValidationMobilePrefabSignature['Args'],
-  ) {
+  constructor(owner: Owner, args: TpkValidationMobilePrefabSignature['Args']) {
     super(owner, args);
     this.selectedPrefix = this.getPrefix();
   }
@@ -99,12 +95,13 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
   }
 
   @action
-  onChangeValueMobile(value: unknown) {
+  onChangeValueMobile(value: string | number | Date | null) {
     if (!value) {
       this.args.changeset.set(this.args.validationField, value);
     } else {
       this.args.changeset.set(
         this.args.validationField,
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `${this.selectedPrefix.code}${value}`,
       );
     }
@@ -120,7 +117,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
   }
 
   getValueFromOption = (option: unknown, key: keyof Prefix) =>
-    (option as Prefix)[key] as string;
+    (option as Prefix)[key];
 
   <template>
     <TpkInputComponent
@@ -136,7 +133,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
         class='tpk-mobile-container'
         data-has-error='{{this.hasError}}'
         data-test-tpk-prefab-mobile-container
-        {{!-- @glint-expect-error --}}
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

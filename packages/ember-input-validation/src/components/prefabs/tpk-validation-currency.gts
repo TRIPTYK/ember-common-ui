@@ -10,14 +10,7 @@ export interface TpkValidationCurrencyPrefabSignature
   extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
-    | 'type'
-    | 'mask'
-    | 'unmaskValue'
-    | 'maskOptions'
-    | 'mask'
-    | 'mix'
-    | 'max'
-    | 'step'
+    'type' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mix' | 'max' | 'step'
   > & {
     scale?: number;
   };
@@ -67,6 +60,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
         class='tpk-currency-container'
         data-test-tpk-prefab-currency-container
         data-has-error='{{V.hasError}}'
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

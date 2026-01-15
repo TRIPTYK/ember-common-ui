@@ -10,19 +10,20 @@
   @apply input input-bordered;
 }
 
-.tpk-national-number-container[data-has-error~="true"] .tpk-national-number-input {
+.tpk-national-number-container[data-has-error~='true']
+  .tpk-national-number-input {
   @apply input-error;
 }
 
-.tpk-national-number-container[data-has-error~="true"]
-.tpk-validation-errors {
+.tpk-national-number-container[data-has-error~='true'] .tpk-validation-errors {
   @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
-.tpk-national-number-container[data-has-error~="true"] .tpk-label{
+.tpk-national-number-container[data-has-error~='true'] .tpk-label {
   @apply label text-error;
 }
 
-.tpk-national-number-container[data-has-error~="true"] .tpk-national-number-input {
+.tpk-national-number-container[data-has-error~='true']
+  .tpk-national-number-input {
   @apply text-error;
 }

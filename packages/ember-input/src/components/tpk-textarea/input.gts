@@ -1,6 +1,8 @@
 import { type TOC } from '@ember/component/template-only';
 import { on } from '@ember/modifier';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 
 export interface TpkTextareaInputComponentSignature {
@@ -19,13 +21,14 @@ export interface TpkTextareaInputComponentSignature {
   Element: HTMLTextAreaElement;
 }
 
-const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <template>
+const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> =
+  <template>
     <textarea
       placeholder={{@placeholder}}
       id={{@guid}}
       value={{@value}}
       maxlength={{@maxLength}}
-      {{on "input" @updateCharacterCount}}
+      {{on 'input' @updateCharacterCount}}
       {{didInsert @setupCharacterCount}}
       {{didUpdate @setupCharacterCount @value}}
       {{on @changeEvent @onChange}}

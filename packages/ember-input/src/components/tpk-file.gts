@@ -24,10 +24,7 @@ export type TpkFileSignature = {
           typeof TpkFileInputComponent,
           'onChange' | 'accept' | 'disabled' | 'changeEvent' | 'guid'
         >;
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'label' | 'guid'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
         guid: string;
         changeEvent: 'input' | 'change';
         onChange: TpkFileComponent['onChange'];
@@ -61,10 +58,7 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
           guid=this.guid
         )
         Label=(component
-          TpkLabel
-          label=@label
-          onChange=this.onChange
-          guid=this.guid
+          TpkLabel label=@label onChange=this.onChange guid=this.guid
         )
         changeEvent=this.changeEvent
         onChange=this.onChange

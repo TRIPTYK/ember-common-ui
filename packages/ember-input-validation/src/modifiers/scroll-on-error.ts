@@ -22,14 +22,18 @@ export function scrollToFirstError(
     const targetTop =
       errorElement.getBoundingClientRect().top + window.scrollY - 85;
 
-    runTask(target, () => {
-      window.scrollTo({ top: targetTop, behavior: 'smooth' });
-    }, 20);
+    runTask(
+      target,
+      () => {
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      },
+      20,
+    );
   }
 }
 
 const scrollOnErrorModifier: FunctionBasedModifier<{
-  Args: { Positional: [ValidationError[]]; Named: {} };
+  Args: { Positional: [ValidationError[]]; Named: object };
   Element: Element;
 }> = modifier(function scrollOnError(
   this: object,

@@ -6,15 +6,19 @@ import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import type { TpkSelectSignature, Select } from '@triptyk/ember-input/components/tpk-select';
+import type {
+  TpkSelectSignature,
+  Select,
+} from '@triptyk/ember-input/components/tpk-select';
 import type Owner from '@ember/owner';
 
 export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkSelectSignature['Args'] & {
-    onChange?: (value: unknown, select: Select, event?: Event) => void;
-    onSearch: (term: string) => unknown[];
-  };
+  Args: BaseValidationSignature['Args'] &
+    TpkSelectSignature['Args'] & {
+      onChange?: (value: unknown, select: Select, event?: Event) => void;
+      onSearch: (term: string) => unknown[];
+    };
   Blocks: {
     default: [];
   };
@@ -50,9 +54,9 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
 
   <template>
     <div
-      class="{{if @disabled "disabled"}} tpk-select-search-container"
+      class='{{if @disabled "disabled"}} tpk-select-search-container'
       data-has-error='{{this.hasError}}'
-      {{!-- @glint-expect-error --}}
+      {{! @glint-expect-error }}
       anchorScrollUp={{@validationField}}
       data-test-tpk-prefab-select-search-container
       ...attributes
@@ -63,7 +67,7 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
         @labelComponent={{@labelComponent}}
-        @labelClass="tpk-label"
+        @labelClass='tpk-label'
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
         @label={{this.label}}
@@ -84,7 +88,7 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
         </S.Option>
       </TpkSelectComponent>
       <TpkValidationErrorsComponent
-        class="tpk-validation-errors"
+        class='tpk-validation-errors'
         @errors={{this.errors}}
       />
     </div>

@@ -23,10 +23,7 @@ export type TpkRadioSignature = {
   Blocks: {
     default: [
       {
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'guid' | 'label'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'guid' | 'label'>;
         Input: WithBoundArgs<
           typeof TpkRadioInputComponent,
           | 'guid'
@@ -36,7 +33,6 @@ export type TpkRadioSignature = {
           | 'value'
           | 'changeEvent'
           | 'onChange'
-
         >;
         onChange: TpkRadioComponent['onChange'];
         changeEvent: 'input' | 'change';
@@ -64,11 +60,7 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
   <template>
     {{yield
       (hash
-        Label=(component
-          TpkLabel
-          guid=this.guid
-          label=@label
-        )
+        Label=(component TpkLabel guid=this.guid label=@label)
         Input=(component
           TpkRadioInputComponent
           guid=this.guid

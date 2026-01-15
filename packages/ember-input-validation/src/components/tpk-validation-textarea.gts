@@ -3,14 +3,17 @@ import {
   BaseValidationComponent,
   type BaseValidationSignature,
 } from './base.ts';
-import TpkTextarea, { type TpkTextareaSignature } from '@triptyk/ember-input/components/tpk-textarea';
+import TpkTextarea, {
+  type TpkTextareaSignature,
+} from '@triptyk/ember-input/components/tpk-textarea';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationTextareaComponentSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkTextareaSignature['Args'] & {
-    onChange?: (value: string, e: Event) => void;
-  };
+  Args: BaseValidationSignature['Args'] &
+    TpkTextareaSignature['Args'] & {
+      onChange?: (value: string, e: Event) => void;
+    };
   Blocks: {
     default: [
       {

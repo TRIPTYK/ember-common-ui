@@ -10,19 +10,18 @@
   @apply input input-bordered;
 }
 
-.tpk-email-container[data-has-error~="true"] .tpk-email-input {
+.tpk-email-container[data-has-error~='true'] .tpk-email-input {
   @apply input-error;
 }
 
-.tpk-email-container[data-has-error~="true"]
-.tpk-validation-errors {
+.tpk-email-container[data-has-error~='true'] .tpk-validation-errors {
   @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
-.tpk-email-container[data-has-error~="true"] .tpk-label{
+.tpk-email-container[data-has-error~='true'] .tpk-label {
   @apply label text-error;
 }
 
-.tpk-email-container[data-has-error~="true"] .tpk-email-input {
+.tpk-email-container[data-has-error~='true'] .tpk-email-input {
   @apply text-error;
 }

@@ -49,7 +49,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
     <div
       class='{{if @disabled "disabled"}} tpk-select-create-container'
       data-has-error='{{this.hasError}}'
-      {{!-- @glint-expect-error --}}
+      {{! @glint-expect-error }}
       anchorScrollUp={{@validationField}}
       data-test-tpk-prefab-select-create-container
       ...attributes

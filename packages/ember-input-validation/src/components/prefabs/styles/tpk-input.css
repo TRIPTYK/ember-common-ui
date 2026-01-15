@@ -10,15 +10,14 @@
   @apply input input-bordered;
 }
 
-.tpk-input-container[data-has-error~="true"] > .tpk-input-input {
+.tpk-input-container[data-has-error~='true'] > .tpk-input-input {
   @apply input-error text-error;
 }
 
-.tpk-input-container[data-has-error~="true"]
-.tpk-validation-errors {
+.tpk-input-container[data-has-error~='true'] .tpk-validation-errors {
   @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
 }
 
-.tpk-input-container[data-has-error~="true"] .tpk-label {
+.tpk-input-container[data-has-error~='true'] .tpk-label {
   @apply text-error label;
 }

@@ -1,4 +1,3 @@
-/* eslint-disable no-fallthrough */
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';

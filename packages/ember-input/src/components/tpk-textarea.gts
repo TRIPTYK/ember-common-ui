@@ -29,7 +29,6 @@ export type TpkTextareaSignature = {
       {
         Input: WithBoundArgs<
           typeof TpkTextareaInputComponent,
-
           | 'guid'
           | 'value'
           | 'changeEvent'
@@ -40,10 +39,7 @@ export type TpkTextareaSignature = {
           | 'setupCharacterCount'
           | 'maxLength'
         >;
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'guid' | 'label'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'guid' | 'label'>;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
         guid: string;
@@ -82,11 +78,7 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
   <template>
     {{yield
       (hash
-        Label=(component
-          TpkLabel
-          guid=this.guid
-          label=@label
-        )
+        Label=(component TpkLabel guid=this.guid label=@label)
         Input=(component
           TpkTextareaInputComponent
           guid=this.guid

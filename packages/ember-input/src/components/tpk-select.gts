@@ -1,9 +1,10 @@
-/* eslint-disable no-fallthrough */
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
-import PowerSelect, { type Select } from 'ember-power-select/components/power-select';
+import PowerSelect, {
+  type Select,
+} from 'ember-power-select/components/power-select';
 import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
 import TpkSelectOption from './tpk-select/option.gts';
 import type Owner from '@ember/owner';
@@ -31,17 +32,21 @@ export interface TpkSelectSignature {
     searchPlaceholder?: string;
     searchMessage?: string;
     noMatchesMessage?: string;
-    search?: ((term: string, select: Select) => readonly unknown[] | Promise<readonly unknown[]>) | undefined
+    search?:
+      | ((
+          term: string,
+          select: Select,
+        ) => readonly unknown[] | Promise<readonly unknown[]>)
+      | undefined;
     onChange: (selection: unknown, select: Select, event?: Event) => void;
-    onKeyDown?: ((select: Select, e: KeyboardEvent) => boolean | undefined) | undefined
+    onKeyDown?:
+      | ((select: Select, e: KeyboardEvent) => boolean | undefined)
+      | undefined;
   };
   Blocks: {
     default: [
       {
-        Option: WithBoundArgs<
-          typeof TpkSelectOption,
-          | 'option'
-        >;
+        Option: WithBoundArgs<typeof TpkSelectOption, 'option'>;
       },
     ];
   };
@@ -90,15 +95,9 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
         @initiallyOpened={{@initiallyOpened}}
         @loadingMessage={{@loadingMessage}}
         @noMatchesMessage={{@noMatchesMessage}}
-      as |option|>
-        {{yield
-          (hash
-            Option=(component
-              TpkSelectOption
-              option=option
-            )
-          )
-        }}
+        as |option|
+      >
+        {{yield (hash Option=(component TpkSelectOption option=option))}}
       </PowerSelectMultiple>
     {{else}}
       <PowerSelect
@@ -125,15 +124,9 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
         @initiallyOpened={{@initiallyOpened}}
         @loadingMessage={{@loadingMessage}}
         @noMatchesMessage={{@noMatchesMessage}}
-      as |option|>
-        {{yield
-          (hash
-            Option=(component
-              TpkSelectOption
-              option=option
-            )
-          )
-        }}
+        as |option|
+      >
+        {{yield (hash Option=(component TpkSelectOption option=option))}}
       </PowerSelect>
     {{/if}}
   </template>

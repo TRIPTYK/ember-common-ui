@@ -76,7 +76,7 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
         class='tpk-timepicker-container'
         data-test-tpk-prefab-timepicker-container
         data-has-error='{{V.hasError}}'
-        {{!-- @glint-expect-error --}}
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

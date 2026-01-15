@@ -18,9 +18,8 @@ export interface TableGenericComponentSignature {
     filterText?: string;
     pageSize?: number;
     defaultSortColumn?: string;
-    // eslint-disable-next-line no-unused-vars
     registerApi?: (api: TableApi) => unknown;
-    rowClick?: (element?:unknown, e?:Event) => void;
+    rowClick?: (element?: unknown, e?: Event) => void;
     placeholder?: string;
     label?: string;
     additionalFilters?: Record<string, unknown>;
@@ -35,7 +34,15 @@ export interface TableGenericComponentSignature {
         >;
         Table: WithBoundArgs<
           typeof TableGenericTableComponent,
-          'rowClick' | 'filterText' | 'relationships' | 'registerApi' | 'entity' | 'pageSizes' | 'pageSize' | 'additionalFilters' | 'defaultSortColumn'
+          | 'rowClick'
+          | 'filterText'
+          | 'relationships'
+          | 'registerApi'
+          | 'entity'
+          | 'pageSizes'
+          | 'pageSize'
+          | 'additionalFilters'
+          | 'defaultSortColumn'
         >;
       },
     ];
@@ -46,15 +53,15 @@ export default class TableGenericComponent extends Component<TableGenericCompone
   @service declare intl: IntlService;
   @tracked filterText?: string;
 
-  get label(){
-    if (this.args.label){
+  get label() {
+    if (this.args.label) {
       return this.args.label;
     }
     return this.intl.t('global.search');
   }
 
-  get placeholder(){
-    if(this.args.placeholder){
+  get placeholder() {
+    if (this.args.placeholder) {
       return this.args.placeholder;
     }
     return this.intl.t('global.search');
@@ -74,7 +81,7 @@ export default class TableGenericComponent extends Component<TableGenericCompone
     {{log 'generic table' this.label this.placeholder}}
     {{yield
       (hash
-        onSearch= this.onSearch
+        onSearch=this.onSearch
         SearchBar=(component
           TableGenericSearchBarComponent
           onSearch=this.onSearch

@@ -29,27 +29,28 @@ export interface TpkConfirmModalSignature {
   };
 }
 
-const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> =
-  <template>
-    <TpkModal
-      data-test-confirm-modal
-      @isOpen={{@isOpen}}
-      @outsideClickHandler={{@outsideClickHandler}}
-      @onClose={{@onClose}}
-      @title={{@confirmQuestion}}
-      ...attributes
-      as |Modal|
-    >
+const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> = <template>
+  <TpkModal
+    data-test-confirm-modal
+    @isOpen={{@isOpen}}
+    @outsideClickHandler={{@outsideClickHandler}}
+    @onClose={{@onClose}}
+    @title={{@confirmQuestion}}
+    ...attributes
+    as |Modal|
+  >
 
-      <Modal.Content>
-        {{yield
-          (hash
-            Confirm=(component TpkConfirmModalConfirmComponent onConfirm=@onConfirm)
-            Cancel=(component TpkConfirmModalCancelComponent onClose=@onClose)
+    <Modal.Content>
+      {{yield
+        (hash
+          Confirm=(component
+            TpkConfirmModalConfirmComponent onConfirm=@onConfirm
           )
-        }}
-      </Modal.Content>
-    </TpkModal>
-  </template>
+          Cancel=(component TpkConfirmModalCancelComponent onClose=@onClose)
+        )
+      }}
+    </Modal.Content>
+  </TpkModal>
+</template>;
 
 export default TpkConfirmModalComponent;

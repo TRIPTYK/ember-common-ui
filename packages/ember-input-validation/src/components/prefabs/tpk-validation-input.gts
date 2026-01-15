@@ -1,14 +1,17 @@
-import TpkValidationInputComponent, { type TpkValidationInputComponentSignature } from "../tpk-validation-input.gts";
-import { type BaseValidationSignature } from "../base.ts";
+import TpkValidationInputComponent, {
+  type TpkValidationInputComponentSignature,
+} from '../tpk-validation-input.gts';
+import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import { assert } from "@ember/debug";
-import MandatoryLabelComponent from "./mandatory-label.gts";
-import Component from "@glimmer/component";
-import type Owner from "@ember/owner";
+import { assert } from '@ember/debug';
+import MandatoryLabelComponent from './mandatory-label.gts';
+import Component from '@glimmer/component';
+import type Owner from '@ember/owner';
 
 export interface TpkValidationInputPrefabSignature
   extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkValidationInputComponentSignature['Args'];
+  Args: BaseValidationSignature['Args'] &
+    TpkValidationInputComponentSignature['Args'];
   Blocks: {
     default: [];
   };
@@ -20,7 +23,9 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
     super(owner, args);
     assert(
       'If you want use integer args, use TpkValidationInputIntegerPrefab',
-      typeof args.min === 'undefined' || typeof args.max === 'undefined' || typeof args.step === 'undefined',
+      typeof args.min === 'undefined' ||
+        typeof args.max === 'undefined' ||
+        typeof args.step === 'undefined',
     );
   }
   <template>
@@ -38,22 +43,24 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       @unmaskValue={{@unmaskValue}}
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
-    as |V|>
+      as |V|
+    >
       <V.Label
-      class="tpk-input-container"
-      data-test-tpk-prefab-input-container
-      data-has-error='{{V.hasError}}'
-      anchorScrollUp={{@validationField}}
-      ...attributes>
+        class='tpk-input-container'
+        data-test-tpk-prefab-input-container
+        data-has-error='{{V.hasError}}'
+        {{! @glint-expect-error }}
+        anchorScrollUp={{@validationField}}
+        ...attributes
+      >
         <MandatoryLabelComponent
-        class="tpk-label"
-        @label={{@label}}
-        @mandatory={{V.mandatory}} />
-        <V.Input
-        class="tpk-input-input"
-        data-test-tpk-input-input/>
+          class='tpk-label'
+          @label={{@label}}
+          @mandatory={{V.mandatory}}
+        />
+        <V.Input class='tpk-input-input' data-test-tpk-input-input />
         <TpkValidationErrorsComponent
-          class="tpk-validation-errors"
+          class='tpk-validation-errors'
           @errors={{V.errors}}
         />
       </V.Label>

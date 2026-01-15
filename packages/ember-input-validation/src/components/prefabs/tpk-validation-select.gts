@@ -1,16 +1,28 @@
-import { action } from "@ember/object";
-import { BaseValidationComponent, type BaseValidationSignature } from "../base.ts";
+import { action } from '@ember/object';
+import {
+  BaseValidationComponent,
+  type BaseValidationSignature,
+} from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import { assert } from "@ember/debug";
-import TpkSelectComponent, { type TpkSelectSignature, type Select } from "@triptyk/ember-input/components/tpk-select";
-import type Owner from "@ember/owner";
+import { assert } from '@ember/debug';
+import TpkSelectComponent, {
+  type TpkSelectSignature,
+  type Select,
+} from '@triptyk/ember-input/components/tpk-select';
+import type Owner from '@ember/owner';
 
-export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
+export interface TpkValidationSelectPrefabSignature
+  extends BaseValidationSignature {
   Args: Omit<
-    BaseValidationSignature['Args'] & TpkSelectSignature['Args'] & {
-      onChange?: (value: unknown, select: Select, event?: Event) => void;
-    },
-    'searchField' | 'searchPlaceholder' | 'searchMessage' | 'noMatchesMessage' | 'search'
+    BaseValidationSignature['Args'] &
+      TpkSelectSignature['Args'] & {
+        onChange?: (value: unknown, select: Select, event?: Event) => void;
+      },
+    | 'searchField'
+    | 'searchPlaceholder'
+    | 'searchMessage'
+    | 'noMatchesMessage'
+    | 'search'
   >;
   Blocks: {
     default: [];
@@ -19,10 +31,7 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
 }
 
 export default class TpkValidationSelectPrefabComponent extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
-  constructor(
-    owner: Owner,
-    args: TpkValidationSelectPrefabSignature['Args'],
-  ) {
+  constructor(owner: Owner, args: TpkValidationSelectPrefabSignature['Args']) {
     super(owner, args);
     assert(
       'If you want use search, please use TpkValidationSelectSearchPrefab',
@@ -48,8 +57,8 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
 
   <template>
     <div
-      class="{{if @disabled "disabled"}} tpk-select-container"
-      {{!-- @glint-expect-error --}}
+      class='{{if @disabled "disabled"}} tpk-select-container'
+      {{! @glint-expect-error }}
       anchorScrollUp={{@validationField}}
       data-has-error='{{this.hasError}}'
       data-test-tpk-prefab-select-container
@@ -66,16 +75,17 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
         @onChange={{this.onChange}}
         @selected={{this.value}}
         @labelComponent={{@labelComponent}}
-        @labelClass="tpk-label"
+        @labelClass='tpk-label'
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-      as |S|>
+        as |S|
+      >
         <S.Option as |O|>
           {{this.toString O.option}}
         </S.Option>
       </TpkSelectComponent>
       <TpkValidationErrorsComponent
-        class="tpk-validation-errors"
+        class='tpk-validation-errors'
         @errors={{this.errors}}
       />
     </div>

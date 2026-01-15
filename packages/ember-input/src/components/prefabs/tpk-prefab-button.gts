@@ -1,7 +1,7 @@
-import type { MergeDeep } from "type-fest";
-import type { BaseUIComponentArgs } from "../base";
-import TpkButtonComponent from "../tpk-button.gts";
-import type { TOC } from "@ember/component/template-only";
+import type { MergeDeep } from 'type-fest';
+import type { BaseUIComponentArgs } from '../base';
+import TpkButtonComponent from '../tpk-button.gts';
+import type { TOC } from '@ember/component/template-only';
 
 export type TpkButtonPrefabSignature = {
   Args: MergeDeep<
@@ -16,19 +16,19 @@ export type TpkButtonPrefabSignature = {
     default: [];
   };
   Element: HTMLElement;
-}
+};
 
 const TpkButtonPrefabComponent: TOC<TpkButtonPrefabSignature> = <template>
-  <TpkButtonComponent 
-    @label={{@label}} 
-    @disabled={{@disabled}} 
-    @onClick={{@onClick}} 
-    class="tpk-button-container"
-    data-test-tpk-prefab-button-container 
+  <TpkButtonComponent
+    @label={{@label}}
+    @disabled={{@disabled}}
+    @onClick={{@onClick}}
+    class='tpk-button-container'
+    data-test-tpk-prefab-button-container
     ...attributes
   >
     {{@label}}
   </TpkButtonComponent>
-</template>
-  
+</template>;
+
 export default TpkButtonPrefabComponent;

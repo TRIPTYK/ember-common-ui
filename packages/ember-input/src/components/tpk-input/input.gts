@@ -1,6 +1,8 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
+// eslint-disable-next-line ember/no-at-ember-render-modifiers
 import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
@@ -43,7 +45,9 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     e.preventDefault();
     let value = this.inputValue(e.target as HTMLInputElement);
     if (this.mask) {
-      value = this.args.unmaskValue ? this.mask.typedValue : this.mask.value;
+      value = this.args.unmaskValue
+        ? (this.mask.typedValue as string | number | Date | null)
+        : this.mask.value;
     }
     this.args.onChange?.(value, e);
   }

@@ -215,6 +215,7 @@ export default class ChangesetFormComponent<
     this.requiredFields =
       getRequiredFields(this.args.validationSchema, this.args.changeset.data) ??
       [];
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.args.changeset.onSet(async () => {
       await this.args.changeset.validate((draft) => {
         this.requiredFields =
@@ -223,6 +224,7 @@ export default class ChangesetFormComponent<
     });
 
     if (args.reactive ?? true) {
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       this.args.changeset.onSet(async (key) => {
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
@@ -276,7 +278,7 @@ export default class ChangesetFormComponent<
     await this.validateAndSubmit.perform();
   });
 
-  changesetGet = (path: string) => {
+  changesetGet = (path: string): unknown => {
     return this.args.changeset.get(path);
   };
 

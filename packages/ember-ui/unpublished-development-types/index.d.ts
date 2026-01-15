@@ -3,7 +3,7 @@
 // These will *not* be published as part of your addon, so be careful that your published code does not rely on them!
 
 import 'ember-source/types';
-import "@glint/ember-tsc/types";
+import '@glint/ember-tsc/types';
 
 // eslint-disable-next-line ember/no-at-ember-render-modifiers
 import type RenderModifiersRegistry from '@ember/render-modifiers/template-registry';

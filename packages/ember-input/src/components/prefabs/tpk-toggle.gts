@@ -19,14 +19,24 @@ export type TpkTogglePrefabSignature = {
 };
 
 const TpkTogglePrefabComponent: TOC<TpkTogglePrefabSignature> = <template>
-  <TpkCheckboxComponent @disabled={{@disabled}} @checked={{@checked}} @label={{@label}} @onChange={{@onChange}} as |C|>
-    <div class="tpk-toggle-container" data-test-tpk-prefab-toggle-container ...attributes>
-      <C.Label class="tpk-toggle-label-container">
-        <span class="tpk-toggle-label">{{@label}}</span>
-        <C.Input class="tpk-toggle-input" />
+  <TpkCheckboxComponent
+    @disabled={{@disabled}}
+    @checked={{@checked}}
+    @label={{@label}}
+    @onChange={{@onChange}}
+    as |C|
+  >
+    <div
+      class='tpk-toggle-container'
+      data-test-tpk-prefab-toggle-container
+      ...attributes
+    >
+      <C.Label class='tpk-toggle-label-container'>
+        <span class='tpk-toggle-label'>{{@label}}</span>
+        <C.Input class='tpk-toggle-input' />
       </C.Label>
     </div>
   </TpkCheckboxComponent>
-</template>
+</template>;
 
 export default TpkTogglePrefabComponent;
