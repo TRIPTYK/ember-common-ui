@@ -44,6 +44,7 @@ export default class TpkValidationSelect extends BaseValidationComponent<TpkVali
     <div
       class='{{if @disabled "disabled"}} tpk-validation-select'
       data-has-error='{{this.hasError}}'
+      {{!-- @glint-expect-error --}}
       anchorScrollUp={{@validationField}}
       ...attributes
     >

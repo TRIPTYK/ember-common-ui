@@ -11,6 +11,7 @@ import { hash } from '@ember/helper';
 import { tracked } from 'tracked-built-ins';
 import TpkLabel from './tpk-label.gts';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
@@ -55,7 +56,7 @@ export type TpkTextareaSignature = {
 export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
   @tracked charCount = 0;
 
-  public constructor(owner: unknown, args: TpkTextareaSignature['Args']) {
+  public constructor(owner: Owner, args: TpkTextareaSignature['Args']) {
     super(owner, args);
     assert('@label must be a string', typeof args.label === 'string');
   }

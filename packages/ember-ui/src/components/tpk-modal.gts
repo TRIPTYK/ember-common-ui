@@ -1,4 +1,3 @@
-import { getOwner } from '@ember/application';
 import type ApplicationInstance from '@ember/application/instance';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
@@ -12,6 +11,8 @@ import TpkModalContentComponent from './tpk-modal/content.gts';
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import { hash } from '@ember/helper';
+import type Owner from '@ember/owner';
+import { getOwner } from '@ember/owner';
 
 export interface TpkModalComponentArgs {
   isOpen: boolean;
@@ -51,7 +52,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
 
   guid = guidFor(this);
 
-  constructor(owner: unknown, args: TpkModalComponentArgs) {
+  constructor(owner: Owner, args: TpkModalComponentArgs) {
     super(owner, args);
     assert('Modal initialized without @onClose', args.onClose !== undefined);
     assert('Modal @title is mandatory', args.title !== undefined);

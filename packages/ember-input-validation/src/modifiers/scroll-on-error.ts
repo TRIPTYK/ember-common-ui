@@ -1,4 +1,4 @@
-import { modifier } from 'ember-modifier';
+import { modifier, type FunctionBasedModifier } from 'ember-modifier';
 import type { ValidationError } from 'ember-immer-changeset';
 import { runTask } from 'ember-lifeline';
 
@@ -28,10 +28,15 @@ export function scrollToFirstError(
   }
 }
 
-export default modifier(function scrollOnError(
+const scrollOnErrorModifier: FunctionBasedModifier<{
+  Args: { Positional: [ValidationError[]]; Named: {} };
+  Element: Element;
+}> = modifier(function scrollOnError(
   this: object,
   element,
   [errors]: [ValidationError[]],
 ) {
   scrollToFirstError(this, element, errors);
 });
+
+export default scrollOnErrorModifier;

@@ -19,7 +19,6 @@ ember install ember-flatpickr
 Add the Glint template-registry to your global.d.ts file:
 
 ```ts
-import '@glint/environment-ember-loose';
 import type EmberInputRegistry from '@triptyk/ember-input/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
@@ -49,11 +48,11 @@ A composable HTML input element.
 
 **Usage:**
 ```hbs
-<TpkInput 
-  @changeEvent='input' 
-  @value={{this.value}} 
-  @onChange={{this.onChange}} 
-  @label="Name" 
+<TpkInput
+  @changeEvent='input'
+  @value={{this.value}}
+  @onChange={{this.onChange}}
+  @label="Name"
 as |I|>
   <I.Label />
   <I.Input />
@@ -165,7 +164,7 @@ A composable radio input element.
 
 **Usage:**
 ```hbs
-<TpkRadio 
+<TpkRadio
   @label='Female'
   @selected="Female"
   @value="Female"
@@ -195,7 +194,7 @@ A file input component for handling file uploads.
 
 **Usage:**
 ```hbs
-<TpkFile 
+<TpkFile
   @label="Add your profile image"
   @accept="image/*"
   @disabled={{false}}

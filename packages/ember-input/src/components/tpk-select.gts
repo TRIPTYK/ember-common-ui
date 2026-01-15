@@ -6,6 +6,7 @@ import { hash } from '@ember/helper';
 import PowerSelect, { type Select } from 'ember-power-select/components/power-select';
 import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
 import TpkSelectOption from './tpk-select/option.gts';
+import type Owner from '@ember/owner';
 
 export { type Select } from 'ember-power-select/components/power-select';
 
@@ -47,7 +48,7 @@ export interface TpkSelectSignature {
 }
 
 export default class TpkSelectComponent extends Component<TpkSelectSignature> {
-  constructor(owner: unknown, args: TpkSelectSignature['Args']) {
+  constructor(owner: Owner, args: TpkSelectSignature['Args']) {
     super(owner, args);
 
     assert(

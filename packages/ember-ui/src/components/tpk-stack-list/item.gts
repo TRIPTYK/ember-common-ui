@@ -1,5 +1,6 @@
 import { hash } from '@ember/helper';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 
@@ -24,7 +25,7 @@ export interface StackListItemComponentSignature {
 export default class StackListItemComponent extends Component<StackListItemComponentSignature> {
   @tracked isExpanded: boolean = true;
 
-  constructor(owner: unknown, args: StackListItemComponentArgs) {
+  constructor(owner: Owner, args: StackListItemComponentArgs) {
     super(owner, args);
   }
   get index() {

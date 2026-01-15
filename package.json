@@ -11,11 +11,17 @@
   },
   "pnpm": {
     "overrides": {
-      "ember-concurrency": "4.0.2"
+      "@glimmer/component": "2.0.0",
+      "ember-cli-htmlbars": "7.0.0",
+      "@ember/test-helpers": "5.4.1",
+      "@ember/test-waiters": "4.1.1"
     },
     "patchedDependencies": {
       "lerna": "patches/lerna.patch"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "ember-modal-dialog"
+    ]
   },
   "repository": {
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"
@@ -27,9 +33,9 @@
     "lerna": "catalog:",
     "turbo": "^2.3.0"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@10.28.0",
   "volta": {
     "node": "20.18.0",
-    "pnpm": "9.12.3"
+    "pnpm": "10.28.0"
   }
 }

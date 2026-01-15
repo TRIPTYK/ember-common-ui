@@ -7,7 +7,7 @@ import TableGenericTableComponent, {
   type TableApi,
 } from './tpk-table-generic/table.gts';
 import { hash } from '@ember/helper';
-import IntlService from 'ember-intl/services/intl';
+import type IntlService from 'ember-intl/services/intl';
 import { service } from '@ember/service';
 
 export interface TableGenericComponentSignature {

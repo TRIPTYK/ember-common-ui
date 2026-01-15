@@ -21,9 +21,3 @@ const tpkFocusTrap = modifier<TpkFocusTrapSignature>(function tpkFocusTrap(
 });
 
 export default tpkFocusTrap;
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'focus-trap': typeof tpkFocusTrap;
-  }
-}

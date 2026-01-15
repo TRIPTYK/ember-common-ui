@@ -213,7 +213,6 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
         id={{@guid}}
         aria-autocomplete='none'
         autocomplete='off'
-        autofill='off'
         {{on 'keydown' this.closeDatepicker}}
         data-test-tpk-datepicker-content
         ...attributes

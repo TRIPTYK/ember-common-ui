@@ -6,6 +6,7 @@ import { type BaseValidationSignature } from '../base.ts';
 import { tracked } from '@glimmer/tracking';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
+import type Owner from '@ember/owner';
 
 export interface TpkValidationDatepickerRangePrefabSignature
   extends BaseValidationSignature {
@@ -34,7 +35,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
   @tracked multipleDatesSeparator = ' - ';
 
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationDatepickerRangePrefabSignature['Args'],
   ) {
     super(owner, args);

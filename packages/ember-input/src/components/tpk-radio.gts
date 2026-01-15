@@ -6,6 +6,7 @@ import TpkRadioInputComponent from './tpk-radio/input.gts';
 import type { MergeDeep } from 'type-fest';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
+import type Owner from '@ember/owner';
 
 export type TpkRadioSignature = {
   Args: MergeDeep<
@@ -46,7 +47,7 @@ export type TpkRadioSignature = {
 };
 
 export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature> {
-  constructor(owner: unknown, args: TpkRadioSignature['Args']) {
+  constructor(owner: Owner, args: TpkRadioSignature['Args']) {
     super(owner, args);
     assert('@name is required', args.name !== undefined);
     assert('@value is required', args.value !== undefined);
@@ -54,7 +55,7 @@ export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature
   }
 
   @action
-  public onChange(e: Event) {   
+  public onChange(e: Event) {
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     this.args.onChange?.(target.value, e);

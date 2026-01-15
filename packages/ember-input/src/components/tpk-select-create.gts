@@ -11,6 +11,7 @@ import PowerSelectWithCreate from 'ember-power-select-with-create/components/pow
 import TpkSelectOption from './tpk-select/option.gts';
 import type { TpkSelectSignature } from './tpk-select';
 import { guidFor } from '@ember/object/internals';
+import type Owner from '@ember/owner';
 
 export interface TpkSelectCreateSignature {
   Args: TpkSelectSignature['Args'] & {
@@ -52,13 +53,15 @@ export interface TpkSelectCreateSignature {
       },
     ];
   };
-  Element: HTMLDivElement;
+  Element: HTMLDivElement & {
+    anchorScrollUp: string;
+  };
 }
 
 export default class TpkSelectCreateComponent extends Component<TpkSelectCreateSignature> {
   guid = guidFor(this);
 
-  constructor(owner: unknown, args: TpkSelectCreateSignature['Args']) {
+  constructor(owner: Owner, args: TpkSelectCreateSignature['Args']) {
     super(owner, args);
 
     assert(

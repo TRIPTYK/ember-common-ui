@@ -16,7 +16,6 @@ ember install ember-immer-changeset
 Add the Glint template-registry to your global.d.ts file:
 
 ```ts
-import '@glint/environment-ember-loose';
 import type EmberInputValidationRegistry from '@triptyk/ember-input-validation/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {

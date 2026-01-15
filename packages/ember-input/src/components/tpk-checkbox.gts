@@ -6,6 +6,7 @@ import TpkCheckboxInputComponent from './tpk-checkbox-input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
+import type Owner from '@ember/owner';
 
 export type TpkCheckboxSignature = {
   Args: MergeDeep<
@@ -36,7 +37,7 @@ export type TpkCheckboxSignature = {
 };
 
 export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSignature> {
-  constructor(owner: unknown, args: TpkCheckboxSignature['Args']) {
+  constructor(owner: Owner, args: TpkCheckboxSignature['Args']) {
     super(owner, args);
     assert('@checked is required', typeof args.checked === 'boolean');
     assert('@label is required', args.label !== undefined);

@@ -1,4 +1,4 @@
-import '@glint/environment-ember-loose';
+import '@glint/ember-tsc/types';
 import { Registry as InputR } from '@triptyk/ember-input/template-registry';
 import { Registry as InputVR } from '@triptyk/ember-input-validation/template-registry';
 import type EmberIntlRegistry from 'ember-intl/template-registry';

@@ -4,6 +4,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from "@ember/debug";
 import MandatoryLabelComponent from "./mandatory-label.gts";
 import Component from "@glimmer/component";
+import type Owner from "@ember/owner";
 
 export interface TpkValidationInputPrefabSignature
   extends BaseValidationSignature {
@@ -15,7 +16,7 @@ export interface TpkValidationInputPrefabSignature
 }
 
 export default class TpkValidationInputPrefabComponent extends Component<TpkValidationInputPrefabSignature> {
-  constructor(owner: unknown, args: TpkValidationInputPrefabSignature['Args']) {
+  constructor(owner: Owner, args: TpkValidationInputPrefabSignature['Args']) {
     super(owner, args);
     assert(
       'If you want use integer args, use TpkValidationInputIntegerPrefab',
@@ -38,18 +39,18 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       @changeset={{@changeset}}
       @requiredFields={{@requiredFields}}
     as |V|>
-      <V.Label 
-      class="tpk-input-container" 
-      data-test-tpk-prefab-input-container 
-      data-has-error='{{V.hasError}}' 
-      anchorScrollUp={{@validationField}} 
+      <V.Label
+      class="tpk-input-container"
+      data-test-tpk-prefab-input-container
+      data-has-error='{{V.hasError}}'
+      anchorScrollUp={{@validationField}}
       ...attributes>
-        <MandatoryLabelComponent 
-        class="tpk-label" 
-        @label={{@label}} 
+        <MandatoryLabelComponent
+        class="tpk-label"
+        @label={{@label}}
         @mandatory={{V.mandatory}} />
-        <V.Input 
-        class="tpk-input-input" 
+        <V.Input
+        class="tpk-input-input"
         data-test-tpk-input-input/>
         <TpkValidationErrorsComponent
           class="tpk-validation-errors"

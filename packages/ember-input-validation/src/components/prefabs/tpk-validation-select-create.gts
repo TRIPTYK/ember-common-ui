@@ -8,6 +8,7 @@ import TpkSelectCreateComponent, {
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import type { Select } from '@triptyk/ember-input/components/tpk-select';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 
 export interface TpkValidationSelectCreatePrefabSignature
   extends BaseValidationSignature {
@@ -23,7 +24,7 @@ export interface TpkValidationSelectCreatePrefabSignature
 
 export default class TpkValidationSelectCreatePrefabComponent extends BaseValidationComponent<TpkValidationSelectCreatePrefabSignature> {
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationSelectCreatePrefabSignature['Args'],
   ) {
     super(owner, args);
@@ -48,6 +49,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
     <div
       class='{{if @disabled "disabled"}} tpk-select-create-container'
       data-has-error='{{this.hasError}}'
+      {{!-- @glint-expect-error --}}
       anchorScrollUp={{@validationField}}
       data-test-tpk-prefab-select-create-container
       ...attributes
@@ -76,7 +78,6 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @searchPlaceholder={{@searchPlaceholder}}
         @searchMessage={{@searchMessage}}
         @search={{@search}}
-        anchorScrollUp={{@validationField}}
         as |S|
       >
         <S.Option as |O|>

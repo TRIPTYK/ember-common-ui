@@ -3,6 +3,7 @@ import { BaseValidationComponent, type BaseValidationSignature } from "../base.t
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from "@ember/debug";
 import TpkSelectComponent, { type TpkSelectSignature, type Select } from "@triptyk/ember-input/components/tpk-select";
+import type Owner from "@ember/owner";
 
 export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<
@@ -19,7 +20,7 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
 
 export default class TpkValidationSelectPrefabComponent extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationSelectPrefabSignature['Args'],
   ) {
     super(owner, args);
@@ -48,6 +49,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
   <template>
     <div
       class="{{if @disabled "disabled"}} tpk-select-container"
+      {{!-- @glint-expect-error --}}
       anchorScrollUp={{@validationField}}
       data-has-error='{{this.hasError}}'
       data-test-tpk-prefab-select-container

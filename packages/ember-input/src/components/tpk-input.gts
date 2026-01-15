@@ -8,6 +8,7 @@ import TpkInputInputComponent from './tpk-input/input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
+import type Owner from '@ember/owner';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -54,7 +55,7 @@ export type TpkInputSignature = {
 };
 
 export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature> {
-  constructor(owner: unknown, args: TpkInputSignature['Args']) {
+  constructor(owner: Owner, args: TpkInputSignature['Args']) {
     super(owner, args);
 
     assert(

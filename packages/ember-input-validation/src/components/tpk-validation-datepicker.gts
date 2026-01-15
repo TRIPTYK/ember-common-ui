@@ -33,7 +33,9 @@ export interface TpkValidationDatepickerComponentSignature
       },
     ];
   };
-  Element: HTMLDivElement;
+  Element: HTMLDivElement & {
+    anchorScrollUp: string
+  };
 }
 
 export default class TpkValidationDatepickerComponent extends BaseValidationComponent<TpkValidationDatepickerComponentSignature> {

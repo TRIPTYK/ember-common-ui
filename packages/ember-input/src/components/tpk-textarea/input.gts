@@ -24,7 +24,7 @@ const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <temp
       placeholder={{@placeholder}}
       id={{@guid}}
       value={{@value}}
-      maxLength={{@maxLength}}
+      maxlength={{@maxLength}}
       {{on "input" @updateCharacterCount}}
       {{didInsert @setupCharacterCount}}
       {{didUpdate @setupCharacterCount @value}}

@@ -3,6 +3,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { hash } from '@ember/helper';
 import tpkFocusTrap from '@triptyk/ember-input/modifiers/focus-trap';
+import type Owner from '@ember/owner';
 
 interface UiModalContentArgs {
   onClose: () => void;
@@ -25,7 +26,7 @@ export interface UiModalContentSignature {
 export default class TpkModalContentComponent extends Component<UiModalContentSignature> {
   guid = guidFor(this);
 
-  public constructor(owner: unknown, args: UiModalContentArgs) {
+  public constructor(owner: Owner, args: UiModalContentArgs) {
     super(owner, args);
     assert('UiModalContent requires a @title', args.title);
   }
@@ -42,7 +43,7 @@ export default class TpkModalContentComponent extends Component<UiModalContentSi
       {{tpkFocusTrap options=(hash allowOutsideClick=@outsideClickHandler)}}
       ...attributes
     >
-      
+
       {{yield (hash guid=this.guid)}}
     </div>
     </div>

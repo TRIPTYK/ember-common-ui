@@ -4,13 +4,12 @@
     "src/**/*",
     "unpublished-development-types/**/*"
   ],
-  "glint": {
-    "environment": ["ember-loose", "ember-template-imports"]
-  },
+
   "compilerOptions": {
     "allowJs": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
+    "declarationMap": true,
     "verbatimModuleSyntax": true,
     "declarationDir": "declarations"
   }

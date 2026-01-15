@@ -9,6 +9,7 @@ import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
+import type Owner from '@ember/owner';
 
 export interface TpkValidationMobilePrefabSignature
   extends BaseValidationSignature {
@@ -56,7 +57,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
   ];
 
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationMobilePrefabSignature['Args'],
   ) {
     super(owner, args);
@@ -135,6 +136,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
         class='tpk-mobile-container'
         data-has-error='{{this.hasError}}'
         data-test-tpk-prefab-mobile-container
+        {{!-- @glint-expect-error --}}
         anchorScrollUp={{@validationField}}
         ...attributes
       >
