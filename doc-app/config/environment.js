@@ -1,4 +1,4 @@
-
+'use strict';
 
 module.exports = function (environment) {
   const ENV = {
@@ -41,8 +41,6 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    // Allow ember-cli-addon-docs to update the rootURL in compiled assets
-    ENV.rootURL = '/ember-common-ui/';
     // here you can enable a production-specific feature
   }
 

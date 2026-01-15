@@ -15,12 +15,12 @@
       "types": "./declarations/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./addon-main.js": "./addon-main.cjs",
+    "./*.css": "./dist/*.css",
     "./*": {
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
-    },
-    "./app.css": "./dist/app.css",
-    "./addon-main.js": "./addon-main.cjs"
+    }
   },
   "typesVersions": {
     "*": {
@@ -37,46 +37,46 @@
     "llm.txt"
   ],
   "scripts": {
-    "build": "concurrently 'npm:build:js' 'npm:build:types'",
-    "build:clean": "rm -rf dist",
-    "build:js": "rollup --config",
-    "build:types": "ember-tsc --declaration",
-    "start:types": "ember-tsc --declaration --watch",
-    "lint:types": "ember-tsc",
-    "start:js": "rollup --config --watch --no-watch.clearScreen",
-    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "build": "rollup --config",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "prepack": "pnpm run build",
-    "start": "concurrently 'npm:start:*'",
-    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+    "lint:types": "ember-tsc --noEmit",
+    "prepack": "rollup --config",
+    "start": "vite dev",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "@babel/core": "catalog:",
     "@ember/render-modifiers": "catalog:",
     "@ember/string": "catalog:",
     "@ember/test-waiters": "catalog:",
     "@embroider/addon-shim": "catalog:",
-    "@glimmer/component": "catalog:",
     "ember-click-outside": "catalog:",
     "ember-intl": "catalog:",
     "ember-modifier": "catalog:",
     "ember-test-selectors": "catalog:",
     "ember-yeti-table": "catalog:",
+    "decorator-transforms": "^2.2.2",
     "focus-trap": "~7.8.0",
     "tracked-built-ins": "catalog:"
   },
   "devDependencies": {
+    "@glimmer/component": "catalog:",
     "@babel/core": "^7.17.0",
+    "@ember/library-tsconfig": "^1.0.0",
     "@babel/plugin-proposal-class-properties": "catalog:",
     "@babel/plugin-proposal-decorators": "catalog:",
     "@babel/plugin-transform-class-static-block": "catalog:",
     "@babel/plugin-transform-typescript": "catalog:",
     "@babel/runtime": "catalog:",
+    "@ember/app-tsconfig": "^1.0.0",
     "@embroider/addon-dev": "catalog:",
+    "@embroider/core": "^4.1.0",
     "@glimmer/tracking": "catalog:",
     "@glint/ember-tsc": "catalog:",
     "@glint/template": "catalog:",
@@ -106,6 +106,7 @@
     "rollup-plugin-ts": "catalog:",
     "rsvp": "catalog:",
     "typescript": "^5.5.4",
+    "vite": "^7.3.1",
     "webpack": "^5.95.0"
   },
   "publishConfig": {

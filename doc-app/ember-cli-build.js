@@ -1,67 +1,22 @@
-
+'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const sideWatch = require('@embroider/broccoli-side-watch');
+const { compatBuild } = require('@embroider/compat');
 
-module.exports = function (defaults) {
-  const app = new EmberApp(defaults, {
-    trees: {
-      app: sideWatch('app', {
-        watching: [
-          '@triptyk/ember-input',
-          '@triptyk/ember-ui',
-          '@triptyk/ember-input-validation',
-        ],
-      }),
-    },
-    'ember-cli-babel': { enableTypeScriptTransform: true },
-    'ember-cli-addon-docs': {
-      documentingAddonAt: '../packages/ember-input',
-    },
-    postcssOptions: {
-      compile: {
-        enabled: true,
-        cacheInclude: [/.*\.(css|hbs|html|ts|gts|gjs)$/, /config\.js/],
-        includePaths: ['app', 'tests'],
-        plugins: [
-          {
-            module: require('postcss-import'),
-            options: {
-              path: ['node_modules'],
-            },
-          },
-          require('tailwindcss')('tailwind.config.js'), // If you have a Tailwind config file.
-        ],
+module.exports = async function (defaults) {
+  const { buildOnce } = await import('@embroider/vite');
+  let app = new EmberApp(defaults, {
+    emberData: {
+      deprecations: {
+        // New projects can safely leave this deprecation disabled.
+        // If upgrading, to opt-into the deprecated behavior, set this to true and then follow:
+        // https://deprecations.emberjs.com/id/ember-data-deprecate-store-extends-ember-object
+        // before upgrading to Ember Data 6.0
+        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
       },
     },
     // Add options here
   });
 
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticAddonTestSupportTrees: true,
-    // https://github.com/ember-cli/ember-fetch/issues/622#issuecomment-860399885,
-    packagerOptions: {
-      webpackConfig: {
-        module: {
-          rules: [
-            {
-              test: /\.(gif|svg|jpg|png)$/,
-              loader: 'file-loader',
-            },
-          ],
-        },
-      },
-    },
-    staticAddonTrees: false,
-    staticHelpers: true,
-    staticModifiers: true,
-    staticComponents: true,
-    staticEmberSource: true,
-    skipBabel: [
-      {
-        package: 'qunit',
-      },
-    ],
-  });
+  return compatBuild(app, buildOnce);
 };

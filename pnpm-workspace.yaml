@@ -18,7 +18,7 @@ catalog:
   '@ember/string': ~4.0.1
   '@ember/test-helpers': ^5.4.1
   '@ember/test-waiters': ^4.1.1
-  '@embroider/addon-dev': ^7.0.0
+  '@embroider/addon-dev': ^8.1.0
   '@embroider/addon-shim': ^1.8.9
   '@embroider/compat': ^3.0.0
   '@embroider/core': ^4.2.8
