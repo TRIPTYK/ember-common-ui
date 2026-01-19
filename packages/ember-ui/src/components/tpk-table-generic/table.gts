@@ -1,11 +1,8 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { tracked } from 'tracked-built-ins';
-import type Store from '@ember-data/store';
-import type ArrayProxy from '@ember/array/proxy';
+import type { Store } from '@warp-drive/core';
 import { action } from '@ember/object';
-import type ModelRegistry from 'ember-data/types/registries/model';
-import { waitFor } from '@ember/test-waiters';
 import type { WithBoundArgs } from '@glint/template';
 import TableGenericBodyComponent from './body.gts';
 import TableGenericHeaderComponent from './header.gts';
@@ -14,6 +11,10 @@ import TableGenericFooterComponent from './footer.gts';
 import YetiTable from 'ember-yeti-table/components/yeti-table';
 import { hash } from '@ember/helper';
 import LoadingIndicator from '../tpk-loading-indicator.gts';
+import { assert } from '@ember/debug';
+import type { StructuredDataDocument } from '@warp-drive/core/types/request';
+import type { ReactiveResource, ReactiveResourceArray } from '@warp-drive/core/reactive';
+import type ObjectProxy from '@ember/object/proxy';
 
 export interface SortData {
   prop: string;
@@ -56,7 +57,7 @@ interface TableGenericTableArgs {
   filterText?: string;
   registerApi?: (api: TableApi) => unknown;
   rowClick?: (element?: unknown, e?: Event) => void;
-  additionalFilters?: Record<string, unknown>;
+  additionalFilters?: Record<string, string>;
   defaultSortColumn?: string;
 }
 
@@ -83,9 +84,14 @@ export interface TableGenericTableSignature {
   };
 }
 
-export default class TableGenericTableComponent<
-  K extends keyof ModelRegistry,
-> extends Component<TableGenericTableSignature> {
+interface TableResponse {
+  data: Record<string, unknown>[];
+  meta: {
+    total: number;
+  };
+}
+
+export default class TableGenericTableComponent extends Component<TableGenericTableSignature> {
   @service declare store: Store;
   @tracked totalRows?: number;
 
@@ -106,9 +112,7 @@ export default class TableGenericTableComponent<
     this.args.registerApi?.(api);
   }
 
-  @action
-  @waitFor
-  async loadData(data: TableLoadDataApi): Promise<never> {
+  loadData = async (data: TableLoadDataApi) => {
     const sortString = this.getSortString(data.sortData);
 
     const queryOptions = this.buildQueryOptions(
@@ -119,19 +123,58 @@ export default class TableGenericTableComponent<
       sortString,
     );
 
-    const array = await this.store.query(
-      this.args.entity as never,
-      queryOptions,
+    const urlParameters = new URLSearchParams();
+    urlParameters.append('page[size]', data.paginationData.pageSize.toString());
+    urlParameters.append('page[number]', data.paginationData.pageNumber.toString());
+    urlParameters.append('sort', queryOptions.sort);
+    if (queryOptions.include) {
+      urlParameters.append('include', queryOptions.include);
+    }
+    if (queryOptions.filter) {
+      for (const [key, value] of Object.entries(
+        queryOptions.filter ?? {}
+      )) {
+        if (value === undefined) continue;
+        urlParameters.append(`filter[${key}]`, value);
+      }
+    }
+    for (const [key, value] of Object.entries(this.additionalFilters ?? {})) {
+      if (value === undefined || value === null) continue;
+      urlParameters.append(`filter[${key}]`, value);
+    }
+
+
+
+    const response: StructuredDataDocument<TableResponse> = await this.store.request({
+      url: `/${this.args.entity}?${urlParameters.toString()}`,
+      method: 'GET',
+      // We need to reload cache, something weird is happening
+      cacheOptions: {
+        reload: true,
+      }
+    });
+    const content = response.content;
+
+    assert(
+      'Response from store.request must be an object',
+      typeof response === 'object' && response !== null,
+    );
+    assert(
+      'Response from store.request is missing data property',
+      content.data !== undefined,
+    );
+    assert(
+      'The response of the table generic component loadData must be an ArrayProxy',
+      Array.isArray(content.data),
+    );
+    assert(
+      'The response of the table generic component loadData must have a content.meta.total property',
+      content.meta !== undefined && typeof content.meta.total === 'number',
     );
 
-    this.totalRows = (
-      array as unknown as ArrayProxy<K> & {
-        meta: { fetched: number; total: number };
-      }
-    ).meta.total;
-
-    return array as never;
-  }
+    this.totalRows = content.meta.total;
+    return content.data;
+  };
 
   private getSortString(sortData: SortData[]): string {
     return sortData

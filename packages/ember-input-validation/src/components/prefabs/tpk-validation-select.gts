@@ -7,7 +7,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
 import TpkSelectComponent, {
   type TpkSelectSignature,
-  type Select,
+  type SelectType,
 } from '@triptyk/ember-input/components/tpk-select';
 import type Owner from '@ember/owner';
 
@@ -16,7 +16,7 @@ export interface TpkValidationSelectPrefabSignature
   Args: Omit<
     BaseValidationSignature['Args'] &
       TpkSelectSignature['Args'] & {
-        onChange?: (value: unknown, select: Select, event?: Event) => void;
+        onChange?: (value: unknown, select: SelectType, event?: Event) => void;
       },
     | 'searchField'
     | 'searchPlaceholder'
@@ -40,7 +40,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
   }
 
   @action
-  onChange(selection: unknown, select: Select, event?: Event) {
+  onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
     }

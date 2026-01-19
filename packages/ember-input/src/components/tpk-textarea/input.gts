@@ -1,9 +1,7 @@
-import { type TOC } from '@ember/component/template-only';
+import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
-// eslint-disable-next-line ember/no-at-ember-render-modifiers
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-// eslint-disable-next-line ember/no-at-ember-render-modifiers
-import didUpdate from '@ember/render-modifiers/modifiers/did-update';
+import { modifier, type FunctionBasedModifier } from 'ember-modifier';
+import type { EmptyObject } from 'type-fest';
 
 export interface TpkTextareaInputComponentSignature {
   Args: {
@@ -21,7 +19,17 @@ export interface TpkTextareaInputComponentSignature {
   Element: HTMLTextAreaElement;
 }
 
-const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> =
+export default class TpkTextareaInputComponent extends Component<TpkTextareaInputComponentSignature> {
+  setupCharCount: FunctionBasedModifier<{
+    Args: {
+        Positional: unknown[];
+        Named: EmptyObject;
+    };
+    Element: HTMLTextAreaElement;
+  }> = modifier((element: HTMLTextAreaElement) => {
+    this.args.setupCharacterCount(element);
+  });
+
   <template>
     <textarea
       placeholder={{@placeholder}}
@@ -29,13 +37,11 @@ const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> =
       value={{@value}}
       maxlength={{@maxLength}}
       {{on 'input' @updateCharacterCount}}
-      {{didInsert @setupCharacterCount}}
-      {{didUpdate @setupCharacterCount @value}}
+      {{this.setupCharCount}}
       {{on @changeEvent @onChange}}
       disabled={{@disabled}}
       ...attributes
       data-test-tpk-textarea-input
     ></textarea>
-  </template>;
-
-export default TpkTextareaInputComponent;
+  </template>
+}

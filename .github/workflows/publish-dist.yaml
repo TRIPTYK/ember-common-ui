@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - develop
+      - upgrade-ember
 
 jobs:
   push-dist:

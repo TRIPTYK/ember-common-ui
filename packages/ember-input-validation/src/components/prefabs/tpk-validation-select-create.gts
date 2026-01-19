@@ -6,9 +6,9 @@ import TpkSelectCreateComponent, {
   type TpkSelectCreateSignature,
 } from '@triptyk/ember-input/components/tpk-select-create';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import type { Select } from '@triptyk/ember-input/components/tpk-select';
 import { action } from '@ember/object';
 import type Owner from '@ember/owner';
+import type { SelectType } from '@triptyk/ember-input/components/tpk-select';
 
 export interface TpkValidationSelectCreatePrefabSignature
   extends BaseValidationSignature {
@@ -34,7 +34,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
     return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
-  @action onChange(selection: unknown, select: Select, event?: Event) {
+  @action onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
     }

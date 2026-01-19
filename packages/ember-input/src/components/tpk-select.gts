@@ -9,7 +9,8 @@ import PowerSelectMultiple from 'ember-power-select/components/power-select-mult
 import TpkSelectOption from './tpk-select/option.gts';
 import type Owner from '@ember/owner';
 
-export { type Select } from 'ember-power-select/components/power-select';
+export type SelectType = Select;
+
 
 export interface TpkSelectSignature {
   Args: {
@@ -35,12 +36,12 @@ export interface TpkSelectSignature {
     search?:
       | ((
           term: string,
-          select: Select,
+          select: SelectType,
         ) => readonly unknown[] | Promise<readonly unknown[]>)
       | undefined;
-    onChange: (selection: unknown, select: Select, event?: Event) => void;
+    onChange: (selection: unknown, select: SelectType, event?: Event) => void;
     onKeyDown?:
-      | ((select: Select, e: KeyboardEvent) => boolean | undefined)
+      | ((select: SelectType, e: KeyboardEvent) => boolean | undefined)
       | undefined;
   };
   Blocks: {

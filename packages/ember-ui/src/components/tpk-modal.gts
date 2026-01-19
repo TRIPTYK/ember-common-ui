@@ -8,13 +8,8 @@ import DialogLayerService from '../services/dialog-layer.ts';
 import { guidFor } from '@ember/object/internals';
 import type { WithBoundArgs } from '@glint/template';
 import TpkModalContentComponent from './tpk-modal/content.gts';
-// eslint-disable-next-line ember/no-at-ember-render-modifiers
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-// eslint-disable-next-line ember/no-at-ember-render-modifiers
-import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import { hash } from '@ember/helper';
 import type Owner from '@ember/owner';
-import { getOwner } from '@ember/owner';
 
 export interface TpkModalComponentArgs {
   isOpen: boolean;
@@ -52,11 +47,13 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
   @service declare dialogLayer: DialogLayerService;
 
   guid = guidFor(this);
+  modalKey: string;
 
   constructor(owner: Owner, args: TpkModalComponentArgs) {
     super(owner, args);
     assert('Modal initialized without @onClose', args.onClose !== undefined);
     assert('Modal @title is mandatory', args.title !== undefined);
+    this.modalKey = this.loadModalKey(owner as ApplicationInstance);
   }
 
   get isOnTop() {
@@ -115,8 +112,8 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     this.args.onClose();
   }
 
-  get modalKey(): string {
-    const config = (getOwner(this) as ApplicationInstance).resolveRegistration(
+  private loadModalKey(owner: ApplicationInstance): string {
+    const config = owner.resolveRegistration(
       'config:environment',
     ) as TpkModalEnv;
     return config['modal']?.id ?? 'tpk-modal';
@@ -129,13 +126,21 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     return element;
   }
 
+  willDestroy(): void {
+    this.willDestroyNode()
+    super.willDestroy();
+  }
+
+  setupStack = modifier(() => {
+    this.updateStack();
+  });
+
   <template>
     {{#if @isOpen}}
       {{#in-element this.modalContainer insertBefore=null}}
         <div
           {{this.handleEscapeKey @isOpen this.close}}
-          {{didInsert this.updateStack}}
-          {{willDestroy this.willDestroyNode}}
+          {{this.setupStack}}
           class='tpk-modal'
           ...attributes
         >

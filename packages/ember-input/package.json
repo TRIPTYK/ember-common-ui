@@ -49,11 +49,9 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "ember-tsc --noEmit",
     "prepack": "rollup --config",
-    "start": "vite dev",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "@ember/render-modifiers": "catalog:",
     "@ember/test-helpers": "catalog:",
     "@embroider/addon-shim": "catalog:",
     "@glimmer/component": "catalog:",

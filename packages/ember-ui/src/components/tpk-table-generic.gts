@@ -22,7 +22,7 @@ export interface TableGenericComponentSignature {
     rowClick?: (element?: unknown, e?: Event) => void;
     placeholder?: string;
     label?: string;
-    additionalFilters?: Record<string, unknown>;
+    additionalFilters?: Record<string, string>;
   };
   Blocks: {
     default: [

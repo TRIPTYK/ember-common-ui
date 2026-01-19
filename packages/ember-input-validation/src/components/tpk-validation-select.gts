@@ -5,14 +5,14 @@ import {
 } from './base.ts';
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 import TpkSelectComponent, {
-  type Select,
+  type SelectType,
 } from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
 
 export interface TpkValidationSelectComponentSignature {
   Args: BaseValidationSignature['Args'] &
     TpkSelectSignature['Args'] & {
-      onChange?: (value: unknown, select: Select, event?: Event) => void;
+      onChange?: (value: unknown, select: SelectType, event?: Event) => void;
     };
   Blocks: {
     default: [
@@ -29,7 +29,7 @@ export interface TpkValidationSelectComponentSignature {
 }
 
 export default class TpkValidationSelect extends BaseValidationComponent<TpkValidationSelectComponentSignature> {
-  @action onChange(selection: unknown, select: Select, event?: Event) {
+  @action onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
     }

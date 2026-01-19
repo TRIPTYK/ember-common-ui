@@ -8,7 +8,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import type {
   TpkSelectSignature,
-  Select,
+  SelectType,
 } from '@triptyk/ember-input/components/tpk-select';
 import type Owner from '@ember/owner';
 
@@ -16,7 +16,7 @@ export interface TpkValidationSelectSearchPrefabSignature
   extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkSelectSignature['Args'] & {
-      onChange?: (value: unknown, select: Select, event?: Event) => void;
+      onChange?: (value: unknown, select: SelectType, event?: Event) => void;
       onSearch: (term: string) => unknown[];
     };
   Blocks: {
@@ -41,7 +41,7 @@ export default class TpkValidationSelectSearchPrefabComponent extends BaseValida
     return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
-  @action onChange(selection: unknown, select: Select, event?: Event) {
+  @action onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
     }

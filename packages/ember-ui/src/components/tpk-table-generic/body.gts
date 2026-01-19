@@ -25,7 +25,7 @@ export interface TableGenericBodyComponentSignature {
           'registerActionMenu' | 'item' | 'index' | 'isExpanded'
         >;
       },
-      unknown,
+      Record<string, unknown>
     ];
   };
 }

@@ -1,13 +1,12 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
-// eslint-disable-next-line ember/no-at-ember-render-modifiers
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-// eslint-disable-next-line ember/no-at-ember-render-modifiers
-import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 import { action } from '@ember/object';
 import { tracked } from 'tracked-built-ins';
 import type { FactoryArg, InputMask } from 'imask';
 import IMask from 'imask';
+import type Owner from '@ember/owner';
+import { modifier, type FunctionBasedModifier } from 'ember-modifier';
+import type { EmptyObject } from 'type-fest';
 
 export interface TpkInputInputComponentSignature {
   Args: {
@@ -33,6 +32,13 @@ export interface TpkInputInputComponentSignature {
 
 export default class TpkInputInputComponent extends Component<TpkInputInputComponentSignature> {
   @tracked mask?: InputMask<FactoryArg>;
+
+  public constructor(
+    owner: Owner,
+    args: TpkInputInputComponentSignature['Args'],
+  ) {
+    super(owner, args);
+  }
 
   get value() {
     if (this.mask) {
@@ -74,6 +80,16 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     } as Record<string, unknown>);
   }
 
+  setupMask: FunctionBasedModifier<{
+    Args: {
+        Positional: unknown[];
+        Named: EmptyObject;
+    };
+    Element: HTMLElement;
+}> = modifier((element: HTMLElement) => {
+    this.setMask(element as HTMLInputElement);
+  });
+
   <template>
     <input
       id={{@guid}}
@@ -84,8 +100,7 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
       value={{this.value}}
       disabled={{@disabled}}
       placeholder={{@placeholder}}
-      {{didInsert this.setMask}}
-      {{didUpdate this.setMask @mask}}
+      {{this.setupMask @mask}}
       {{on @changeEvent this.onChange}}
       ...attributes
       data-test-tpk-input-input

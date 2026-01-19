@@ -7,6 +7,10 @@ const {
 
 module.exports = {
   plugins: [
+        [
+      'ember-concurrency/async-arrow-task-transform',
+      {}
+    ],
     [
       '@babel/plugin-transform-typescript',
       {

@@ -16,8 +16,8 @@ catalog:
   '@ember/app-tsconfig': ^2.0.0
   '@ember/library-tsconfig': ^1.0.0
   '@ember/optional-features': ^2.3.0
-  '@ember/render-modifiers': ~3.0.0
   '@ember/string': ~4.0.1
+  "@warp-drive/core": ~5.8.1
   '@ember/test-helpers': ^5.4.1
   '@ember/test-waiters': ^4.1.1
   '@embroider/addon-dev': ^8.1.0
@@ -36,9 +36,6 @@ catalog:
   '@rollup/plugin-node-resolve': ^15.2.3
   '@tsconfig/ember': ^3.0.8
   '@types/ember': ^4.0.11
-  '@types/ember-data__adapter': ^4.0.6
-  '@types/ember-data__model': ^4.0.5
-  '@types/ember-data__serializer': ^4.0.6
   '@types/ember__application': ^4.0.11
   '@types/ember__array': ^4.0.10
   '@types/ember__component': ^4.0.22
@@ -78,7 +75,6 @@ catalog:
   ember-cli-inject-live-reload: ^2.1.0
   ember-click-outside: ^6.1.1
   ember-concurrency: ~5.1.0
-  ember-data: ~5.6.0
   ember-fetch: ^8.1.2
   ember-immer-changeset: ~1.0.2
   ember-intl: ~8.0.3
@@ -87,7 +83,7 @@ catalog:
   ember-modifier: ~4.2.2
   ember-page-title: ^9.0.3
   ember-power-select: ^8.12.1
-  ember-power-select-with-create: ^3.0.0
+  ember-power-select-with-create: ^3.1.0
   ember-qunit: ~9.0.4
   ember-resolver: ^13.1.1
   ember-source: ~6.8.0
@@ -129,3 +125,6 @@ catalog:
   yup: ~1.4.0
 
 resolvePeersFromWorkspaceRoot: false
+
+ignoredBuiltDependencies: 
+  - ember-yeti-table@2.0.0

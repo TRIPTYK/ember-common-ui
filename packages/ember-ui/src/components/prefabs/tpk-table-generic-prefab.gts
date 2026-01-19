@@ -10,7 +10,7 @@ export interface TableParams {
   entity: string;
   pageSizes?: number[];
   defaultSortColumn?: string;
-  additionalFilters?: Record<string, unknown>;
+  additionalFilters?: Record<string, string>;
   relationships?: string;
   rowClick?: (element?: unknown, e?: Event) => void;
   columns: {
@@ -125,6 +125,7 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
             {{/each}}
           </Table.Header>
           <Table.Body as |Body element|>
+            {{log element}}
             {{#each this.columns as |column|}}
               <Body.Cell>
                 {{#if column.component}}
