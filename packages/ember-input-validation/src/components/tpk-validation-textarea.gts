@@ -8,8 +8,7 @@ import TpkTextarea, {
 } from '@triptyk/ember-input/components/tpk-textarea';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationTextareaComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationTextareaComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkTextareaSignature['Args'] & {
       onChange?: (value: string, e: Event) => void;

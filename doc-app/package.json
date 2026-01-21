@@ -22,6 +22,7 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "_syncPnpm": "pnpm sync-dependencies-meta-injected",
     "lint:types": "ember-tsc",
     "start": "vite",
     "test": "vite build --mode development && ember test --path dist"
@@ -43,11 +44,11 @@
     "@ember/test-waiters": "^4.1.1",
     "@embroider/compat": "~4.1.12",
     "@embroider/config-meta-loader": "^1.0.0",
-    "@embroider/core": "^4.3.0",
+    "@embroider/core": "~4.4.2",
     "@embroider/legacy-inspector-support": "^0.1.3",
-    "@embroider/macros": "^1.19.5",
-    "@embroider/router": "^3.0.6",
-    "@embroider/vite": "^1.4.3",
+    "@embroider/macros": "~1.19.6",
+    "@embroider/router": "~3.0.6",
+    "@embroider/vite": "~1.5.0",
     "@eslint/js": "^9.39.1",
     "@glimmer/component": "^2.0.0",
     "@glint/ember-tsc": "~1.0.9",
@@ -81,6 +82,7 @@
     "ember-modifier": "^4.2.2",
     "ember-page-title": "^9.0.3",
     "ember-power-select": "catalog:",
+    "pnpm-sync-dependencies-meta-injected": "~0.0.15",
     "ember-qunit": "^9.0.4",
     "ember-resolver": "^13.1.1",
     "ember-source": "~6.9.0",
@@ -104,18 +106,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "catalog:",
     "vite": "^7.2.4",
-    "yup": "catalog:"
-  },
-  "dependenciesMeta": {
-    "@triptyk/ember-input": {
-      "injected": true
-    },
-    "@triptyk/ember-input-validation": {
-      "injected": true
-    },
-    "@triptyk/ember-ui": {
-      "injected": true
-    }
+    "zod": "catalog:"
   },
   "engines": {
     "node": ">= 20"

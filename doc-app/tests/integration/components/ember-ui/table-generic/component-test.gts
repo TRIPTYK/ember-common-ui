@@ -5,6 +5,7 @@ import { setupMock, worker } from 'doc-app/tests/worker';
 import { TableGenericUserWorker } from 'doc-app/tests/workers/table-generic';
 import { setupRenderingTest } from 'ember-qunit';
 import TpkTableGeneric from '@triptyk/ember-ui/components/tpk-table-generic';
+import stringify from 'doc-app/helpers/to-string';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
@@ -17,9 +18,7 @@ module('Integration | Component | table-generic', function (hooks) {
   hooks.beforeEach(async function () {
     await TableGenericUserWorker(worker);
   });
-  async function renderTableGeneric(
-    assert: Assert
-  ) {
+  async function renderTableGeneric(assert: Assert) {
     const rowClick = () => {
       assert.step('rowClick function called');
     };
@@ -27,90 +26,122 @@ module('Integration | Component | table-generic', function (hooks) {
       assert.step('delete function called');
     };
 
-    await render(<template>
-    <TpkTableGeneric
-      @rowClick={{rowClick}}
-      @pageSize={{pageSize}}
-      @pageSizes={{pageSizes}}
-      @defaultSortColumn="-firstName"
-      @entity="user"
-    as | TG |>
-      <TG.SearchBar />
-      <TG.Table as | Table |>
-        <Table.Header as |Header|>
-          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
-            Prénom
-          </Header.Cell>
-          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
-            Nom
-          </Header.Cell>
-          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
-            Email
-          </Header.Cell>
-        </Table.Header>
-        <Table.Body as |Body element|>
-          <Body.Cell>
-            {{element.firstName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.lastName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.email}}
-          </Body.Cell>
-          <Body.ActionMenu as |Action|>
-            <Action @icon="/assets/icons/delete.svg" @action={{deleteAction}} data-test-delete >
-              lustre
-            </Action>
-          </Body.ActionMenu>
-        </Table.Body>
-        <Table.Footer />
-      </TG.Table>
-    </TpkTableGeneric>
-  </template>);
+    await render(
+      <template>
+        <TpkTableGeneric
+          @rowClick={{rowClick}}
+          @pageSize={{pageSize}}
+          @pageSizes={{pageSizes}}
+          @defaultSortColumn="-firstName"
+          @entity="user"
+          as |TG|
+        >
+          <TG.SearchBar />
+          <TG.Table as |Table|>
+            <Table.Header as |Header|>
+              <Header.Cell
+                @sortable={{true}}
+                @prop="firstName"
+                data-test-table="firstName"
+              >
+                Prénom
+              </Header.Cell>
+              <Header.Cell
+                @sortable={{true}}
+                @prop="lastName"
+                data-test-table="lastName"
+              >
+                Nom
+              </Header.Cell>
+              <Header.Cell
+                @sortable={{false}}
+                @prop="email"
+                data-test-table="email"
+              >
+                Email
+              </Header.Cell>
+            </Table.Header>
+            <Table.Body as |Body element|>
+              <Body.Cell>
+                {{stringify element.firstName}}
+              </Body.Cell>
+              <Body.Cell>
+                {{stringify element.lastName}}
+              </Body.Cell>
+              <Body.Cell>
+                {{stringify element.email}}
+              </Body.Cell>
+              <Body.ActionMenu as |Action|>
+                <Action
+                  @icon="/assets/icons/delete.svg"
+                  @action={{deleteAction}}
+                  data-test-delete
+                >
+                  lustre
+                </Action>
+              </Body.ActionMenu>
+            </Table.Body>
+            <Table.Footer />
+          </TG.Table>
+        </TpkTableGeneric>
+      </template>
+    );
   }
 
-  async function renderTableGenericWithNoAction(
-    assert: Assert
-  ) {
+  async function renderTableGenericWithNoAction(assert: Assert) {
     const rowClick = () => {
       assert.step('rowClick function called');
     };
 
-    await render(<template>
-    <TpkTableGeneric
-      @rowClick={{rowClick}}
-      @pageSize={{pageSize}}
-      @pageSizes={{pageSizes}}
-      @entity="user"
-    as | TG |>
-      <TG.Table as | Table |>
-        <Table.Header as |Header|>
-          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
-            Prénom
-          </Header.Cell>
-          <Header.Cell @sortable={{true}} @prop='lastName' data-test-table="lastName">
-            Nom
-          </Header.Cell>
-          <Header.Cell @sortable={{false}} @prop='email' data-test-table="email">
-            Email
-          </Header.Cell>
-        </Table.Header>
-        <Table.Body as |Body element|>
-          <Body.Cell>
-            {{element.firstName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.lastName}}
-          </Body.Cell>
-          <Body.Cell>
-            {{element.email}}
-          </Body.Cell>
-        </Table.Body>
-        <Table.Footer />
-      </TG.Table>
-    </TpkTableGeneric>
-  </template>);
+    await render(
+      <template>
+        <TpkTableGeneric
+          @rowClick={{rowClick}}
+          @pageSize={{pageSize}}
+          @pageSizes={{pageSizes}}
+          @entity="user"
+          as |TG|
+        >
+          <TG.Table as |Table|>
+            <Table.Header as |Header|>
+              <Header.Cell
+                @sortable={{true}}
+                @prop="firstName"
+                data-test-table="firstName"
+              >
+                Prénom
+              </Header.Cell>
+              <Header.Cell
+                @sortable={{true}}
+                @prop="lastName"
+                data-test-table="lastName"
+              >
+                Nom
+              </Header.Cell>
+              <Header.Cell
+                @sortable={{false}}
+                @prop="email"
+                data-test-table="email"
+              >
+                Email
+              </Header.Cell>
+            </Table.Header>
+            <Table.Body as |Body element|>
+              <Body.Cell>
+                {{stringify element.firstName}}
+              </Body.Cell>
+              <Body.Cell>
+                {{stringify element.lastName}}
+              </Body.Cell>
+              <Body.Cell>
+                {{stringify element.email}}
+              </Body.Cell>
+            </Table.Body>
+            <Table.Footer />
+          </TG.Table>
+        </TpkTableGeneric>
+      </template>
+    );
   }
 
   test('It renders search input and table', async function (assert) {
@@ -161,7 +192,7 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.strictEqual(
       deleteButton.length,
       5,
-      'Correct number of delete buttons rendered',
+      'Correct number of delete buttons rendered'
     );
     await click('[data-test-actions-open-action]');
     await click('[data-test-delete] button');
@@ -209,7 +240,6 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.dom('tfoot td').hasAttribute('colspan', '4');
   });
   test('Colspan of the footer is reduced when no action menu is yielded', async function (assert) {
-
     await renderTableGenericWithNoAction(assert);
     assert.dom('tfoot td').hasAttribute('colspan', '3');
   });

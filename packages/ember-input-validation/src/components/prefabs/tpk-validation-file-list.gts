@@ -11,8 +11,7 @@ import type { Changeset } from 'ember-immer-changeset';
 import { fn } from '@ember/helper';
 import { modifier } from 'ember-modifier';
 
-export interface TpkValidationFileListPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationFileListPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationFileComponentSignature['Args'] & {
       mandatory?: boolean;

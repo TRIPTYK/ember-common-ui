@@ -5,7 +5,7 @@ import type { Promisable } from 'type-fest';
 import { assert } from '@ember/debug';
 import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
-import { Schema } from 'yup';
+import { ZodObject } from 'zod';
 import { isFieldError } from '../utils/is-field-error.ts';
 import perform from 'ember-concurrency/helpers/perform';
 import {
@@ -53,7 +53,7 @@ import type TpkValidationFilePrefabComponent from './prefabs/tpk-validation-file
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
   onSubmit: (changeset: T) => Promisable<unknown>;
-  validationSchema: Schema;
+  validationSchema: ZodObject;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
   autoScrollOnError?: boolean;
@@ -202,6 +202,7 @@ export default class ChangesetFormComponent<
 
   public constructor(owner: Owner, args: ChangesetFormComponentArgs<T>) {
     super(owner, args);
+
     assert(
       '@changeset is required and must be an ImmerChangeset',
       isChangeset(args.changeset) && args.changeset instanceof ImmerChangeset,
@@ -209,7 +210,7 @@ export default class ChangesetFormComponent<
     assert('@onSubmit is required', typeof args.onSubmit === 'function');
     assert(
       '@validationSchema is required',
-      args.validationSchema instanceof Schema,
+      args.validationSchema instanceof ZodObject,
     );
 
     this.requiredFields =
@@ -283,7 +284,7 @@ export default class ChangesetFormComponent<
   };
 
   get errorsForScroll() {
-    return this.args.autoScrollOnError ?? true
+    return (this.args.autoScrollOnError ?? true)
       ? this.args.changeset.errors
       : [];
   }

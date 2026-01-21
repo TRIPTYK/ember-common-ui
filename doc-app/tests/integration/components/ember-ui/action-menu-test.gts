@@ -7,21 +7,18 @@ import TpkActionsMenu from '@triptyk/ember-ui/components/tpk-actions-menu';
 module('Integration | Component | Action Menu', function (hooks) {
   setupRenderingTest(hooks);
 
-  async function renderActionMenu( assert: Assert, iconSrc?: string) {
+  async function renderActionMenu(assert: Assert, iconSrc?: string) {
     const act = () => {
       assert.step('action');
     };
 
     return render(
       <template>
-          <TpkActionsMenu as |Action|>
-            <Action
-              @icon={{iconSrc}}
-              @action={{act}}
-            >
-              ActionText
-            </Action>
-          </TpkActionsMenu>
+        <TpkActionsMenu as |Action|>
+          <Action @icon={{iconSrc}} @action={{act}}>
+            ActionText
+          </Action>
+        </TpkActionsMenu>
       </template>
     );
   }

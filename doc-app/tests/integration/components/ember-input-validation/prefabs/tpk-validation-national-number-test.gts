@@ -7,7 +7,6 @@ import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationNationalNumber from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-national-number';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-national-number',
   function (hooks) {
@@ -25,14 +24,14 @@ module(
 
       await render(
         <template>
-         <TpkValidationNationalNumber
+          <TpkValidationNationalNumber
             @label="label"
             @disabled={{disabled}}
             @changeset={{immerChangeset}}
             @validationField="nationalNumber"
             class="custom-national-number-class"
-         />
-        </template>,
+          />
+        </template>
       );
       return immerChangeset;
     }
@@ -51,7 +50,9 @@ module(
 
     test('Attributes should be passed to the container', async function (assert) {
       await renderComponentAndReturnChangeset();
-      assert.dom('[data-test-tpk-prefab-national-number-container]').hasClass('custom-national-number-class');
+      assert
+        .dom('[data-test-tpk-prefab-national-number-container]')
+        .hasClass('custom-national-number-class');
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
@@ -67,19 +68,21 @@ module(
       assert.dom('.tpk-validation-errors span').hasText('required');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponentAndReturnChangeset({
-        disabled: true
+        disabled: true,
       });
-      assert.dom(`[data-test-tpk-national-number-input]`).hasAttribute('disabled');
+      assert
+        .dom(`[data-test-tpk-national-number-input]`)
+        .hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
       assert.expect(0);
       await renderComponentAndReturnChangeset({
-        disabled: false
+        disabled: false,
       });
       await a11yAudit();
     });
-  },
+  }
 );

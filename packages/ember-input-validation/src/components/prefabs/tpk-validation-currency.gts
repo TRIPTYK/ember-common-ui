@@ -6,8 +6,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
-export interface TpkValidationCurrencyPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationCurrencyPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     'type' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mix' | 'max' | 'step'

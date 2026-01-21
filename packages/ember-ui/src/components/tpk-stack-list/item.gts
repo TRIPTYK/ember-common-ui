@@ -37,6 +37,8 @@ export default class StackListItemComponent extends Component<StackListItemCompo
   }
 
   <template>
+    {{! template-lint-disable no-inline-styles }}
+    {{! template-lint-disable style-concatenation }}
     <div
       data-test-stackList-item={{@index}}
       class='tpk-stack'

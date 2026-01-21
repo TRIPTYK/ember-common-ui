@@ -14,27 +14,29 @@ export interface TpkStackListComponentSignature {
     key?: string;
     onAdd: () => void;
     titleForAdd: string;
-    readOnly: boolean;
+    readOnly?: boolean;
     customButtonClass?: string;
   };
   Element: HTMLUListElement;
   Blocks: {
     default: [
-      | {
-          Title: WithBoundArgs<
-            typeof TpkStackListTitleComponent,
-            'isExpanded' | 'item' | 'index'
-          >;
-        }
-      | {
-          Content: WithBoundArgs<
-            typeof TpkStackListContentComponent,
-            'isExpanded' | 'item' | 'index'
-          >;
-        },
+      {
+        Title: WithBoundArgs<
+          typeof TpkStackListTitleComponent,
+          'isExpanded' | 'item' | 'index'
+        >;
+        Content: WithBoundArgs<
+          typeof TpkStackListContentComponent,
+          'isExpanded' | 'item' | 'index'
+        >;
+      },
     ];
   };
 }
+
+const defaultsToFalse = (value?: boolean): boolean => {
+  return value ?? false;
+};
 
 const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
   {{#each @data key=@key as |item index|}}
@@ -56,7 +58,7 @@ const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
           @item={{item}}
           @index={{index}}
           @onRemove={{@onRemove}}
-          @readOnly={{@readOnly}}
+          @readOnly={{defaultsToFalse @readOnly}}
         />
       </div>
       {{yield

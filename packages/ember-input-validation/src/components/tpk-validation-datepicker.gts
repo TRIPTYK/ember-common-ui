@@ -10,8 +10,7 @@ import TpkDatepicker, {
   type TpkDatepickerSignature,
 } from '@triptyk/ember-input/components/tpk-datepicker';
 
-export interface TpkValidationDatepickerComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationDatepickerComponentSignature extends BaseValidationSignature {
   Args: Omit<
     BaseValidationSignature['Args'] & {
       label: string;
@@ -61,7 +60,10 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
       `@value must be a string, Date, null or [Date, Date] for @${this.args.validationField}`,
       typeof super.value === 'string' ||
         super.value instanceof Date ||
-        (this.args.mode === 'range' && Array.isArray(super.value) && super.value.length === 2 && super.value.every(item => item instanceof Date)) ||
+        (this.args.mode === 'range' &&
+          Array.isArray(super.value) &&
+          super.value.length === 2 &&
+          super.value.every((item) => item instanceof Date)) ||
         super.value === null,
     );
     return super.value as string | Date | [Date, Date] | null;

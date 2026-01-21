@@ -8,8 +8,7 @@ import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import type Owner from '@ember/owner';
 
-export interface TpkValidationInputPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationInputPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationInputComponentSignature['Args'];
   Blocks: {

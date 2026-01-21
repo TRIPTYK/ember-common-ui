@@ -12,7 +12,7 @@ export type TpkDatepickerSignature = {
   Args: BaseUIComponentArgs['Args'] &
     TpkDatepickerInputArgs & {
       mask?: string;
-      value:  TpkDatepickerInputArgs['value']
+      value: TpkDatepickerInputArgs['value'];
     };
   Blocks: {
     default: [

@@ -6,8 +6,7 @@ import TpkValidationFileComponent, {
   type TpkValidationFileComponentSignature,
 } from '../tpk-validation-file.gts';
 
-export interface TpkValidationFilePrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationFilePrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationFileComponentSignature['Args'] & { mandatory?: boolean };
   Blocks: {

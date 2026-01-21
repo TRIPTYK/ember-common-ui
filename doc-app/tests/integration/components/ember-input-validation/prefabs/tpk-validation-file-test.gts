@@ -8,7 +8,6 @@ import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-c
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-file',
   function (hooks) {
@@ -23,19 +22,27 @@ module(
       });
     }
 
-    async function renderComponent(params: { changeset: ImmerChangeset; disabled?: boolean }) {
+    async function renderComponent(params: {
+      changeset: ImmerChangeset;
+      disabled?: boolean;
+    }) {
       await render(
-        <template><TpkValidationFile @label="label" @changeset={{params.changeset}} @validationField="file" @disabled={{params.disabled}} />
-      </template>,
+        <template>
+          <TpkValidationFile
+            @label="label"
+            @changeset={{params.changeset}}
+            @validationField="file"
+            @disabled={{params.disabled}}
+          />
+        </template>
       );
-      }
-
+    }
 
     test('It changes data-has-error attribue on error', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
 
-      await assertDataHasErrorAttribute(assert,changeset,'file');
+      await assertDataHasErrorAttribute(assert, changeset, 'file');
 
       await triggerEvent('[data-test-tpk-file-input]', 'change', {
         files: [new File(['Ember Rules!'], 'file.txt')],
@@ -45,20 +52,20 @@ module(
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent({changeset});
-      await assertTpkCssClassesExist(assert,'file');
+      await renderComponent({ changeset });
+      assertTpkCssClassesExist(assert, 'file');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent({ changeset , disabled: true});
+      await renderComponent({ changeset, disabled: true });
       assert.dom(`[data-test-tpk-file-input]`).hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
       assert.expect(0);
-      await renderComponent({changeset: setupChangeset(), disabled: false});
+      await renderComponent({ changeset: setupChangeset(), disabled: false });
       await a11yAudit();
     });
-  },
+  }
 );

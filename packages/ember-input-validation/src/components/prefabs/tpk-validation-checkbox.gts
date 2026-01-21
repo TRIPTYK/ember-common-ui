@@ -6,8 +6,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import { type TOC } from '@ember/component/template-only';
 
-export interface TpkValidationCheckboxPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationCheckboxPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationCheckboxComponentSignature['Args'];
   Blocks: {

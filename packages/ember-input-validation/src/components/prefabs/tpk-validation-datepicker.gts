@@ -9,8 +9,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import type Owner from '@ember/owner';
 
-export interface TpkValidationDatepickerPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationDatepickerPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationDatepickerComponentSignature['Args'],
     'value' | 'useCurrent'

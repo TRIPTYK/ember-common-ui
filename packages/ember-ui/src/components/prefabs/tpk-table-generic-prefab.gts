@@ -125,7 +125,6 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
             {{/each}}
           </Table.Header>
           <Table.Body as |Body element|>
-            {{log element}}
             {{#each this.columns as |column|}}
               <Body.Cell>
                 {{#if column.component}}
@@ -151,7 +150,6 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
             {{#if this.hasActionMenu}}
               <Body.ActionMenu as |Action|>
                 {{#each this.actions as |actionElement|}}
-                  {{log actionElement.action}}
                   <Action
                     @icon={{actionElement.icon}}
                     @action={{fn actionElement.action element}}

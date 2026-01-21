@@ -2,14 +2,20 @@ import { http } from 'msw';
 import fakeData from '../integration/components/ember-ui/table-generic/data/fake-data';
 import type { setupWorker } from 'msw/browser';
 
-export async function TableGenericUserWorker(worker: ReturnType<typeof setupWorker>) {
+export async function TableGenericUserWorker(
+  worker: ReturnType<typeof setupWorker>
+) {
   worker.use(
     http.get('http://localhost:4200/user', (req) => {
       let data;
 
       const sort = new URL(req.request.url).searchParams.get('sort');
-      const search = new URL(req.request.url).searchParams.get('filter[search]');
-      const pageNumber = new URL(req.request.url).searchParams.get('page[number]');
+      const search = new URL(req.request.url).searchParams.get(
+        'filter[search]'
+      );
+      const pageNumber = new URL(req.request.url).searchParams.get(
+        'page[number]'
+      );
 
       if (sort !== null && sort === 'firstName') {
         data = fakeData.dataTestSortedReversed;
@@ -34,13 +40,11 @@ export async function TableGenericUserWorker(worker: ReturnType<typeof setupWork
         data = fakeData.secondPage;
       }
 
-      return Response.json(
-        {
-          data,
-          meta: { fetched: data.length, total: 10 },
-        },
-      );
-    }),
+      return Response.json({
+        data,
+        meta: { fetched: data.length, total: 10 },
+      });
+    })
   );
   await worker.start();
 }

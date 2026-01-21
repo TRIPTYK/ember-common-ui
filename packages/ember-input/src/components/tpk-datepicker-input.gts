@@ -109,7 +109,9 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
   setTempusDominus(element: HTMLInputElement) {
     this.datepicker = new TempusDominus(element, {
       container: element.parentElement as HTMLElement,
-      defaultDate: Array.isArray(this.value) ? undefined : this.value as DateTime | undefined,
+      defaultDate: Array.isArray(this.value)
+        ? undefined
+        : (this.value as DateTime | undefined),
       useCurrent: this.args.useCurrent === true ? true : false,
       allowInputToggle: false,
       dateRange: this.args.mode === 'range' ? true : false,
@@ -205,8 +207,8 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
 
   setupElement: FunctionBasedModifier<{
     Args: {
-        Positional: [];
-        Named: object;
+      Positional: [];
+      Named: object;
     };
     Element: HTMLInputElement;
   }> = modifier((element: HTMLInputElement) => {

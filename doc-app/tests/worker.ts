@@ -1,4 +1,3 @@
-
 import { http, passthrough } from 'msw';
 import { setupWorker as MSWSetupWorker } from 'msw/browser';
 
@@ -20,13 +19,13 @@ export function stopWorker() {
  * The worker can be accessed using this.get('worker')
  */
 export function setupMock(hooks: NestedHooks) {
-  hooks.beforeEach(async function () {
+  hooks.beforeEach(function () {
     worker.resetHandlers();
     worker.use(
-      http.post('/write-coverage', (req) => {
+      http.post('/write-coverage', () => {
         // The passthrough is for ember code coverage.
         return passthrough();
-      }),
+      })
     );
   });
 

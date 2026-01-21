@@ -6,15 +6,13 @@ import { timeout } from 'ember-concurrency';
 
 import TpkButton from '@triptyk/ember-input/components/tpk-button';
 
-
-
-module('Integration | Component | tpk-button', function ( hooks) {
+module('Integration | Component | tpk-button', function (hooks) {
   setupRenderingTest(hooks);
 
   async function spamClickElement() {
-    click('[data-test-tpk-button]');
-    click('[data-test-tpk-button]');
-    click('[data-test-tpk-button]');
+    await click('[data-test-tpk-button]');
+    await click('[data-test-tpk-button]');
+    await click('[data-test-tpk-button]');
     await click('[data-test-tpk-button]');
   }
 
@@ -24,26 +22,27 @@ module('Integration | Component | tpk-button', function ( hooks) {
       assert.step('onClick');
     };
 
-    await render(<template>
-      <TpkButton
-        @label="Click me"
-        @onClick={{onClick}}
-        @allowSpam={{allowSpam}}
-      >
-        Click me
-      </TpkButton>
+    await render(
+      <template>
+        <TpkButton
+          @label="Click me"
+          @onClick={{onClick}}
+          @allowSpam={{allowSpam}}
+        >
+          Click me
+        </TpkButton>
       </template>
     );
 
     await spamClickElement();
   }
 
-  test('it prevents spam click by default', async function ( assert) {
+  test('it prevents spam click by default', async function (assert) {
     await renderComponent(assert, false);
     assert.verifySteps(['onClick']);
   });
 
-  test('if @allowSpam is true, it does not prevent spamClick', async function ( assert) {
+  test('if @allowSpam is true, it does not prevent spamClick', async function (assert) {
     await renderComponent(assert, true);
     assert.verifySteps(['onClick', 'onClick', 'onClick', 'onClick']);
   });

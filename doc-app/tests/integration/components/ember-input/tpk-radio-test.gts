@@ -1,16 +1,11 @@
-
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
-import { getOwner } from '@ember/application';
+import { getOwner } from '@ember/owner';
 import ApplicationInstance from '@ember/application/instance';
-import CatchState from 'doc-app/services/catch-state';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import catchState from 'doc-app/helpers/catch-state';
-
-
-
 
 module('Integration | Component | ui/radio', function (hooks) {
   setupRenderingTest(hooks);
@@ -24,19 +19,21 @@ module('Integration | Component | ui/radio', function (hooks) {
       assert.strictEqual(selected, 'jean');
     };
 
-    await render(<template>
+    await render(
+      <template>
         <TpkRadio
-          @label='Label'
+          @label="Label"
           @selected="luc"
           @value="jean"
           @name="cule"
           @onChange={{setRadio}}
           as |C|
         >
-          <C.Input class='text-yellow-300' />
-          <C.Label class='text-blue-300' />
+          <C.Input class="text-yellow-300" />
+          <C.Label class="text-blue-300" />
         </TpkRadio>
-    </template>);
+      </template>
+    );
 
     await click('label');
     assert.dom('input.text-yellow-300').exists();
@@ -49,20 +46,27 @@ module('Integration | Component | ui/radio', function (hooks) {
 
   test('input yield only', async function (assert) {
     await render(
-      <template><TpkRadio @label="label" @selected="luc" @value="jean" @name="cule" as |O|>
-        {{catchState O}}
-      </TpkRadio></template>
+      <template>
+        <TpkRadio
+          @label="label"
+          @selected="luc"
+          @value="jean"
+          @name="cule"
+          as |O|
+        >
+          {{catchState O}}
+        </TpkRadio>
+      </template>
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { state }: { state: any } = (
-      getOwner(this) as ApplicationInstance
-    ).lookup('service:catch-state') as CatchState;
+    const { state } = (getOwner(this) as ApplicationInstance).lookup(
+      'service:catch-state'
+    ) as { state: Record<string, unknown> };
 
-    assert.strictEqual(typeof state.Input, 'object');
-    assert.strictEqual(typeof state.onChange, 'function');
-    assert.strictEqual(typeof state.Label, 'object');
-    assert.strictEqual(typeof state.changeEvent, 'string');
-    assert.strictEqual(typeof state.guid, 'string');
+    assert.strictEqual(typeof state['Input'], 'object');
+    assert.strictEqual(typeof state['onChange'], 'function');
+    assert.strictEqual(typeof state['Label'], 'object');
+    assert.strictEqual(typeof state['changeEvent'], 'string');
+    assert.strictEqual(typeof state['guid'], 'string');
   });
 });

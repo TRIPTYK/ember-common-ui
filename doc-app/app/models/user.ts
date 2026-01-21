@@ -1,4 +1,7 @@
-import { withDefaults, type WithLegacy } from '@warp-drive/legacy/model/migration-support';
+import {
+  withDefaults,
+  type WithLegacy,
+} from '@warp-drive/legacy/model/migration-support';
 import { Type } from '@warp-drive/core/types/symbols';
 
 export const UserSchema = withDefaults({
@@ -9,7 +12,7 @@ export const UserSchema = withDefaults({
     { name: 'lastName', kind: 'attribute' },
     { name: 'phone', kind: 'attribute' },
     { name: 'job', kind: 'attribute' },
-    { name: 'country', kind: 'attribute' }
+    { name: 'country', kind: 'attribute' },
   ],
 });
 
@@ -22,4 +25,4 @@ export type User = WithLegacy<{
   job: string;
   country: string;
   [Type]: 'user';
-}>
+}>;

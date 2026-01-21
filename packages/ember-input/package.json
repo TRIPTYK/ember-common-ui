@@ -76,6 +76,8 @@
     "@babel/plugin-proposal-decorators": "catalog:",
     "@babel/plugin-transform-class-static-block": "catalog:",
     "@babel/plugin-transform-typescript": "catalog:",
+    "@babel/eslint-parser": "catalog:",
+    "@eslint/js": "catalog:",
     "@babel/runtime": "catalog:",
     "@ember/app-tsconfig": "catalog:",
     "@ember/library-tsconfig": "catalog:",

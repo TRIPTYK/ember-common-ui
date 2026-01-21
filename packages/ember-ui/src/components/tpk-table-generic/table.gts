@@ -13,8 +13,6 @@ import { hash } from '@ember/helper';
 import LoadingIndicator from '../tpk-loading-indicator.gts';
 import { assert } from '@ember/debug';
 import type { StructuredDataDocument } from '@warp-drive/core/types/request';
-import type { ReactiveResource, ReactiveResourceArray } from '@warp-drive/core/reactive';
-import type ObjectProxy from '@ember/object/proxy';
 
 export interface SortData {
   prop: string;
@@ -125,15 +123,16 @@ export default class TableGenericTableComponent extends Component<TableGenericTa
 
     const urlParameters = new URLSearchParams();
     urlParameters.append('page[size]', data.paginationData.pageSize.toString());
-    urlParameters.append('page[number]', data.paginationData.pageNumber.toString());
+    urlParameters.append(
+      'page[number]',
+      data.paginationData.pageNumber.toString(),
+    );
     urlParameters.append('sort', queryOptions.sort);
     if (queryOptions.include) {
       urlParameters.append('include', queryOptions.include);
     }
     if (queryOptions.filter) {
-      for (const [key, value] of Object.entries(
-        queryOptions.filter ?? {}
-      )) {
+      for (const [key, value] of Object.entries(queryOptions.filter ?? {})) {
         if (value === undefined) continue;
         urlParameters.append(`filter[${key}]`, value);
       }
@@ -143,16 +142,15 @@ export default class TableGenericTableComponent extends Component<TableGenericTa
       urlParameters.append(`filter[${key}]`, value);
     }
 
-
-
-    const response: StructuredDataDocument<TableResponse> = await this.store.request({
-      url: `/${this.args.entity}?${urlParameters.toString()}`,
-      method: 'GET',
-      // We need to reload cache, something weird is happening
-      cacheOptions: {
-        reload: true,
-      }
-    });
+    const response: StructuredDataDocument<TableResponse> =
+      await this.store.request({
+        url: `/${this.args.entity}?${urlParameters.toString()}`,
+        method: 'GET',
+        // We need to reload cache, something weird is happening
+        cacheOptions: {
+          reload: true,
+        },
+      });
     const content = response.content;
 
     assert(

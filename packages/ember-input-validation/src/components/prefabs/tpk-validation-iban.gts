@@ -11,8 +11,7 @@ import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-export interface TpkValidationIBANPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationIBANPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue'

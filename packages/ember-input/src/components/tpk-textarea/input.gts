@@ -22,8 +22,8 @@ export interface TpkTextareaInputComponentSignature {
 export default class TpkTextareaInputComponent extends Component<TpkTextareaInputComponentSignature> {
   setupCharCount: FunctionBasedModifier<{
     Args: {
-        Positional: unknown[];
-        Named: EmptyObject;
+      Positional: unknown[];
+      Named: EmptyObject;
     };
     Element: HTMLTextAreaElement;
   }> = modifier((element: HTMLTextAreaElement) => {

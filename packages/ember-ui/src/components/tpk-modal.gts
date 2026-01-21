@@ -127,7 +127,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
   }
 
   willDestroy(): void {
-    this.willDestroyNode()
+    this.willDestroyNode();
     super.willDestroy();
   }
 

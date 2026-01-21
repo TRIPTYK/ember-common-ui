@@ -7,7 +7,5 @@ export default useLegacyStore({
   legacyRequests: true,
   modelFragments: true,
   cache: JSONAPICache,
-  schemas: [
-     UserSchema
-  ],
+  schemas: [UserSchema],
 });

@@ -9,13 +9,18 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { action } from '@ember/object';
 import type Owner from '@ember/owner';
 import type { SelectType } from '@triptyk/ember-input/components/tpk-select';
+import type { Merge } from 'type-fest';
 
-export interface TpkValidationSelectCreatePrefabSignature
-  extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] &
-    TpkSelectCreateSignature['Args'] & {
+type Args = BaseValidationSignature['Args'] &
+  Merge<
+    TpkSelectCreateSignature['Args'],
+    {
       onChange?: TpkSelectCreateSignature['Args']['onChange'];
-    };
+    }
+  >;
+
+export interface TpkValidationSelectCreatePrefabSignature extends BaseValidationSignature {
+  Args: Args;
   Blocks: {
     default: [];
   };

@@ -4,53 +4,19 @@ import { click, render } from '@ember/test-helpers';
 
 import TpkStackList from '@triptyk/ember-ui/components/tpk-stack-list';
 import { get } from '@ember/object';
+import stringify from 'doc-app/helpers/to-string';
 
 const titleForAdd = 'Ajouter une donnée';
 const contentData = 'machin';
 
-
-
-module('Integration | Component | stack-list', function ( hooks) {
+module('Integration | Component | stack-list', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('adding item', async function ( assert) {
+  test('adding item', async function (assert) {
     const data: unknown[] = [];
     const onAddData = () => {
       assert.step('onAddData');
     };
-    const onRemoveData = () => {};
-
-    await render(
-      <template>
-      <TpkStackList
-        @data={{data}}
-        @onRemove={{onRemoveData}}
-        @onAdd={{onAddData}}
-        @titleForAdd={{titleForAdd}}
-        as |S|
-      >
-        <S.Title as |T|>
-          {{get T.item 'title'}}
-        </S.Title>
-        <S.Content as |C|>
-          {{get C.item 'title'}}
-        </S.Content>
-      </TpkStackList>
-      </template>
-    );
-
-    await click('[data-test-add-stackList-item]');
-    assert.verifySteps(['onAddData']);
-  });
-
-  test('toggle collapse with title', async function ( assert) {
-    const data = [
-      {
-      title: contentData,
-      },
-    ];
-    const titleForAdd = 'Ajouter une donnée';
-    const onAddData = () => {};
     const onRemoveData = () => {};
 
     await render(
@@ -63,10 +29,44 @@ module('Integration | Component | stack-list', function ( hooks) {
           as |S|
         >
           <S.Title as |T|>
-            {{get T.item 'title'}}
+            {{stringify (get T.item "title")}}
           </S.Title>
           <S.Content as |C|>
-            {{get C.item 'title'}}
+            {{stringify (get C.item "title")}}
+          </S.Content>
+        </TpkStackList>
+      </template>
+    );
+
+    await click('[data-test-add-stackList-item]');
+    assert.verifySteps(['onAddData']);
+  });
+
+  test('toggle collapse with title', async function (assert) {
+    const data = [
+      {
+        title: contentData,
+      },
+    ];
+    const titleForAdd = 'Ajouter une donnée';
+    const onAddData = () => {};
+    const onRemoveData = () => {};
+
+    await render(
+      <template>
+        <TpkStackList
+          @data={{data}}
+          @onRemove={{onRemoveData}}
+          @onAdd={{onAddData}}
+          @readOnly={{false}}
+          @titleForAdd={{titleForAdd}}
+          as |S|
+        >
+          <S.Title as |T|>
+            {{stringify (get T.item "title")}}
+          </S.Title>
+          <S.Content as |C|>
+            {{stringify (get C.item "title")}}
           </S.Content>
         </TpkStackList>
       </template>
@@ -79,10 +79,10 @@ module('Integration | Component | stack-list', function ( hooks) {
     assert.dom('[data-test-title-stackList-item]').containsText(contentData);
   });
 
-  test('deleting item', async function ( assert) {
+  test('deleting item', async function (assert) {
     const data = [
       {
-      title: contentData,
+        title: contentData,
       },
     ];
     const onAddData = () => {};
@@ -100,10 +100,10 @@ module('Integration | Component | stack-list', function ( hooks) {
           as |S|
         >
           <S.Title as |T|>
-            {{get T.item 'title'}}
+            {{stringify (get T.item "title")}}
           </S.Title>
           <S.Content as |C|>
-            {{get C.item 'title'}}
+            {{stringify (get C.item "title")}}
           </S.Content>
         </TpkStackList>
       </template>

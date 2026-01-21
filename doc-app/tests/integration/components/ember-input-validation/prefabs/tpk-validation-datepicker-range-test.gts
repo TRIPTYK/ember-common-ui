@@ -9,7 +9,6 @@ import TpkValidationDatepickerRange from '@triptyk/ember-input-validation/compon
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-datepicker-range',
   function (hooks) {
@@ -24,13 +23,13 @@ module(
       });
       await render(
         <template>
-         <TpkValidationDatepickerRange
+          <TpkValidationDatepickerRange
             @label="Datepicker range"
             @disabled={{params.disabled}}
             @changeset={{immerChangeset}}
             @validationField="datepicker-range"
-         />
-        </template>,
+          />
+        </template>
       );
       return immerChangeset;
     }
@@ -45,27 +44,46 @@ module(
     });
 
     test('It changes data-has-error attribute on error', async function (assert) {
-     const changeset = await renderComponentAndReturnChangeset();
-      await assertDataHasErrorAttribute(assert,changeset,'datepicker-range');
+      const changeset = await renderComponentAndReturnChangeset();
+      await assertDataHasErrorAttribute(assert, changeset, 'datepicker-range');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponentAndReturnChangeset();
 
-      assert.dom(`.tpk-datepicker-range-container`).exists().hasAttribute(`data-test-tpk-prefab-datepicker-range-container`);
-      assert.dom(`.tpk-datepicker-range-container .tpk-datepicker-range-input`).exists()
-      assert.dom(`.tpk-datepicker-range-container .tpk-validation-errors`).exists()
-      assert.dom(`.tpk-datepicker-range-container .tpk-label`).exists()
+      assert
+        .dom(`.tpk-datepicker-range-container`)
+        .exists()
+        .hasAttribute(`data-test-tpk-prefab-datepicker-range-container`);
+      assert
+        .dom(`.tpk-datepicker-range-container .tpk-datepicker-range-input`)
+        .exists();
+      assert
+        .dom(`.tpk-datepicker-range-container .tpk-validation-errors`)
+        .exists();
+      assert.dom(`.tpk-datepicker-range-container .tpk-label`).exists();
       assert.dom('input').hasClass(`tpk-datepicker-range-input`);
-      assert.dom(`label > div:first-of-type`).hasClass(`tpk-label`, `The first div inside label has the class tpk-label.`);
-      assert.dom(`.tpk-datepicker-range-container > div:last-of-type`).hasClass(`tpk-validation-errors`, `The last div inside container has the class tpk-validation-errors.`);
+      assert
+        .dom(`label > div:first-of-type`)
+        .hasClass(
+          `tpk-label`,
+          `The first div inside label has the class tpk-label.`
+        );
+      assert
+        .dom(`.tpk-datepicker-range-container > div:last-of-type`)
+        .hasClass(
+          `tpk-validation-errors`,
+          `The last div inside container has the class tpk-validation-errors.`
+        );
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponentAndReturnChangeset({
         disabled: true,
       });
-      assert.dom(`[data-test-tpk-datepicker-range-input]`).hasAttribute('disabled');
+      assert
+        .dom(`[data-test-tpk-datepicker-range-input]`)
+        .hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
@@ -75,5 +93,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );

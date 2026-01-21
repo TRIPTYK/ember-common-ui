@@ -8,8 +8,7 @@ import Component from '@glimmer/component';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { action } from '@ember/object';
 
-export interface TpkValidationBicPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationBicPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue'

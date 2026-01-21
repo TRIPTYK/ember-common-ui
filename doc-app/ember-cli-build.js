@@ -25,11 +25,9 @@ module.exports = async function (defaults) {
     WarpDrive: {
       activeLogging: {
         LOG_REQUESTS: true,
-      }
+      },
     },
-    deprecations: {
-
-    }
+    deprecations: {},
   });
 
   return compatBuild(app, buildOnce);

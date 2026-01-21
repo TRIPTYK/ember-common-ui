@@ -10,14 +10,20 @@ import TpkSelectComponent, {
   type SelectType,
 } from '@triptyk/ember-input/components/tpk-select';
 import type Owner from '@ember/owner';
+import type { Merge } from 'type-fest';
 
-export interface TpkValidationSelectPrefabSignature
-  extends BaseValidationSignature {
+type Args = BaseValidationSignature['Args'] &
+  // need Merge otherwise onChange stays required
+  Merge<
+    TpkSelectSignature['Args'],
+    {
+      onChange?: (value: unknown, select: SelectType, event?: Event) => void;
+    }
+  >;
+
+export interface TpkValidationSelectPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    BaseValidationSignature['Args'] &
-      TpkSelectSignature['Args'] & {
-        onChange?: (value: unknown, select: SelectType, event?: Event) => void;
-      },
+    Args,
     | 'searchField'
     | 'searchPlaceholder'
     | 'searchMessage'

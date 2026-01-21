@@ -7,8 +7,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationRadioPrefabComponent from './tpk-validation-radio.gts';
 import type { WithBoundArgs } from '@glint/template';
 
-export interface TpkValidationRadioGroupPrefabComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationRadioGroupPrefabComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationRadioGroupComponentSignature['Args'] & {
       groupLabel: string;

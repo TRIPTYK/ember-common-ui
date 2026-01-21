@@ -8,8 +8,7 @@ import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import type Owner from '@ember/owner';
 
-export interface TpkValidationDatepickerRangePrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationDatepickerRangePrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationDatepickerComponentSignature['Args'],
     | 'value'

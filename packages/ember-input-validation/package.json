@@ -57,9 +57,11 @@
     "ember-lifeline": "catalog:",
     "ember-modifier": "catalog:",
     "ember-test-selectors": "catalog:",
-    "yup": "catalog:"
+    "zod": "catalog:"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "catalog:",
+    "@eslint/js": "catalog:",
     "@babel/core": "~7.28.6",
     "@babel/plugin-proposal-class-properties": "catalog:",
     "@babel/plugin-proposal-decorators": "catalog:",

@@ -5,7 +5,7 @@ import { setupTest } from 'ember-qunit';
 module('Unit | Utils | clear-object', function (hooks) {
   setupTest(hooks);
 
-  test('Should clear values of simple object', async function (assert) {
+  test('Should clear values of simple object', function (assert) {
     const objToClear = {
       name: 'Romain',
       age: 25,
@@ -20,7 +20,7 @@ module('Unit | Utils | clear-object', function (hooks) {
     });
   });
 
-  test('Should clear values of complex object', async function (assert) {
+  test('Should clear values of complex object', function (assert) {
     const objToClear = {
       name: 'Amaury',
       age: 28,
@@ -92,7 +92,7 @@ module('Unit | Utils | clear-object', function (hooks) {
       },
     });
   });
-  test('Should clear values of deepest object', async function (assert) {
+  test('Should clear values of deepest object', function (assert) {
     const objToClear = {
       key_1: 'value_1',
       key_2: {

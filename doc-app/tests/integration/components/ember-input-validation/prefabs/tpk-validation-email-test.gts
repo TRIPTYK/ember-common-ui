@@ -8,57 +8,64 @@ import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-c
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-email',
   function (hooks) {
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent({ changeset, disabled }: { changeset: ImmerChangeset, disabled?: boolean }) {
-      await render(<template>
-      <TpkValidationEmail
-      @changeset={{changeset}}
-      @validationField="email"
-      @disabled={{disabled}}
-      @label="Email validation field"
-      />
-    </template>);
+    async function renderComponent({
+      changeset,
+      disabled,
+    }: {
+      changeset: ImmerChangeset;
+      disabled?: boolean;
+    }) {
+      await render(
+        <template>
+          <TpkValidationEmail
+            @changeset={{changeset}}
+            @validationField="email"
+            @disabled={{disabled}}
+            @label="Email validation field"
+          />
+        </template>
+      );
     }
 
-    function setupChangeset( email: string) {
+    function setupChangeset(email: string) {
       return new ImmerChangeset({
         email,
       });
     }
 
-    test('the type of the input is email', async function ( assert) {
+    test('the type of the input is email', async function (assert) {
       const changeset = setupChangeset('email');
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
       assert.dom('input').hasAttribute('type', 'email');
     });
 
     test('It changes data-has-error attribute on error', async function (assert) {
       const changeset = setupChangeset('');
-      await renderComponent({changeset});
-      await assertDataHasErrorAttribute(assert,changeset,'email');
+      await renderComponent({ changeset });
+      await assertDataHasErrorAttribute(assert, changeset, 'email');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       const changeset = setupChangeset('email');
-      await renderComponent({changeset});
-      await assertTpkCssClassesExist(assert,'email');
+      await renderComponent({ changeset });
+      assertTpkCssClassesExist(assert, 'email');
     });
 
-    test('@disabled disables the input', async function(assert) {
-      await renderComponent({changeset: setupChangeset(''), disabled: true});
+    test('@disabled disables the input', async function (assert) {
+      await renderComponent({ changeset: setupChangeset(''), disabled: true });
       assert.dom(`[data-test-tpk-email-input]`).hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
       assert.expect(0);
-      await renderComponent({changeset: setupChangeset(''), disabled: false});
+      await renderComponent({ changeset: setupChangeset(''), disabled: false });
       await a11yAudit();
     });
-  },
+  }
 );

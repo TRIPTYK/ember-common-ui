@@ -78,7 +78,6 @@ export default class TableGenericComponent extends Component<TableGenericCompone
   }
 
   <template>
-    {{log 'generic table' this.label this.placeholder}}
     {{yield
       (hash
         onSearch=this.onSearch

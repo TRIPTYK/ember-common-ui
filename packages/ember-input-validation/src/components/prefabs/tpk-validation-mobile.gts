@@ -11,8 +11,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import type Owner from '@ember/owner';
 
-export interface TpkValidationMobilePrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationMobilePrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     | 'type'

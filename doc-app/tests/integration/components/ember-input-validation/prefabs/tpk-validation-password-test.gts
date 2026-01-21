@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  click, render, settled } from '@ember/test-helpers';
+import { click, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationPassword from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-password';
@@ -14,9 +14,9 @@ module(
     setupIntl(hooks, 'fr-fr');
 
     async function renderComponent({
-      disabled = false
+      disabled = false,
     }: {
-      disabled?: boolean
+      disabled?: boolean;
     }) {
       const changeset = new ImmerChangeset({
         name: 'value',
@@ -25,11 +25,12 @@ module(
       await render(
         <template>
           <TpkValidationPassword
-          class="custom-class"
-          @label="test"
-          @disabled={{disabled}}
-          @changeset={{changeset}}
-          @validationField="name" />
+            class="custom-class"
+            @label="test"
+            @disabled={{disabled}}
+            @changeset={{changeset}}
+            @validationField="name"
+          />
         </template>
       );
 
@@ -38,7 +39,7 @@ module(
 
     test('Should have a toggle button when @disabled=false', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       assert
         .dom('[data-test-tpk-password-toggle-button]')
@@ -47,14 +48,14 @@ module(
 
     test('Should not have a toggle button when @disabled=true', async function (assert) {
       await renderComponent({
-        disabled: true
+        disabled: true,
       });
       assert.dom('[data-test-tpk-password-toggle-button]').doesNotExist();
     });
 
     test('Should have an eye image', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       assert
         .dom('[data-test-tpk-password-toggle-button]')
@@ -66,14 +67,14 @@ module(
 
     test('Input type should be password', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       assert.dom('input').hasAttribute('type', 'password');
     });
 
     test('When button is clicked, input type should be text', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       await click('[data-test-tpk-password-toggle-button]');
 
@@ -82,7 +83,7 @@ module(
 
     test('When button is clicked, eye icon should be eye-shut', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       await click('[data-test-tpk-password-toggle-button]');
 
@@ -93,7 +94,7 @@ module(
 
     test('When button is clicked twice, input type should be password', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       await click('[data-test-tpk-password-toggle-button]');
 
@@ -104,14 +105,16 @@ module(
 
     test('Attributes should be passed to the container', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
-      assert.dom('[data-test-tpk-prefab-password-container]').hasClass('custom-class');
+      assert
+        .dom('[data-test-tpk-prefab-password-container]')
+        .hasClass('custom-class');
     });
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await renderComponent({
-        disabled: false
+        disabled: false,
       });
       changeset.addError({
         message: 'required',
@@ -124,16 +127,16 @@ module(
       assert.dom('.tpk-validation-errors span').hasText('required');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponent({
-        disabled: true
+        disabled: true,
       });
       assert.dom(`[data-test-tpk-password-input]`).hasAttribute('disabled');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       assertTpkCssClassesExist(assert, 'password');
     });
@@ -141,9 +144,9 @@ module(
     test('Accessibility', async function (assert) {
       assert.expect(0);
       await renderComponent({
-        disabled: false
+        disabled: false,
       });
       await a11yAudit();
     });
-  },
+  }
 );

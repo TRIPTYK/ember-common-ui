@@ -8,8 +8,7 @@ import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';
 import { assert } from '@ember/debug';
 
-export interface TpkValidationRadioGroupComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationRadioGroupComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     classless?: boolean;
     unmaskValue?: boolean;

@@ -11,8 +11,6 @@ import {
 import TpkValidationTimepicker from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-timepicker';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
-
 module(
   'Integration | Component | Prefabs | tpk-validation-timepicker',
   function (hooks) {
@@ -28,14 +26,14 @@ module(
 
       await render(
         <template>
-         <TpkValidationTimepicker
+          <TpkValidationTimepicker
             @label="Time"
             @changeset={{immerChangeset}}
             @validationField="time"
             @disabled={{params.disabled}}
             class="tpk-input"
-         />
-        </template>,
+          />
+        </template>
       );
       return immerChangeset;
     }
@@ -71,16 +69,29 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponentAndReturnChangeset();
 
-      assert.dom(`.tpk-timepicker-container`).exists().hasAttribute(`data-test-tpk-prefab-timepicker-container`);
-      assert.dom(`.tpk-timepicker-container .tpk-timepicker-input`).exists()
-      assert.dom(`.tpk-timepicker-container .tpk-validation-errors`).exists()
-      assert.dom(`.tpk-timepicker-container .tpk-label`).exists()
+      assert
+        .dom(`.tpk-timepicker-container`)
+        .exists()
+        .hasAttribute(`data-test-tpk-prefab-timepicker-container`);
+      assert.dom(`.tpk-timepicker-container .tpk-timepicker-input`).exists();
+      assert.dom(`.tpk-timepicker-container .tpk-validation-errors`).exists();
+      assert.dom(`.tpk-timepicker-container .tpk-label`).exists();
       assert.dom('input').hasClass(`tpk-timepicker-input`);
-      assert.dom(`label > div:first-of-type`).hasClass(`tpk-label`, `The first div inside label has the class tpk-label.`);
-      assert.dom(`.tpk-timepicker-container > div:last-of-type`).hasClass(`tpk-validation-errors`, `The last div inside container has the class tpk-validation-errors.`);
+      assert
+        .dom(`label > div:first-of-type`)
+        .hasClass(
+          `tpk-label`,
+          `The first div inside label has the class tpk-label.`
+        );
+      assert
+        .dom(`.tpk-timepicker-container > div:last-of-type`)
+        .hasClass(
+          `tpk-validation-errors`,
+          `The last div inside container has the class tpk-validation-errors.`
+        );
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponentAndReturnChangeset({
         disabled: true,
       });
@@ -94,5 +105,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );

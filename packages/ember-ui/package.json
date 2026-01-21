@@ -64,6 +64,8 @@
     "tracked-built-ins": "catalog:"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "catalog:",
+    "@eslint/js": "catalog:",
     "@glimmer/component": "catalog:",
     "@babel/core": "^7.17.0",
     "@ember/library-tsconfig": "^1.0.0",

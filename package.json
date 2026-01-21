@@ -12,7 +12,15 @@
   "pnpm": {
     "overrides": {
       "@glimmer/component": "2.0.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "core-js",
+      "core-js-pure",
+      "esbuild",
+      "lefthook",
+      "msw",
+      "nx"
+    ]
   },
   "repository": {
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"

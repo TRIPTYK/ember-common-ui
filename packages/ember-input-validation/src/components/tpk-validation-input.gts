@@ -8,8 +8,7 @@ import type { TpkInputSignature } from '@triptyk/ember-input/components/tpk-inpu
 import TpkInput from '@triptyk/ember-input/components/tpk-input';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationInputComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationInputComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkInputSignature['Args'] & {
       onChange?: (value: string | number | Date | null, e: Event) => void;

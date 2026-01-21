@@ -1,29 +1,73 @@
-import type { Schema } from 'yup';
-import { ValidationError } from 'yup';
+import { object, ZodError, ZodObject, type ZodType } from 'zod';
 import { type ValidationError as ChangesetValidationError } from 'ember-immer-changeset';
+import { get } from '@ember/object';
+import { assert } from '@ember/debug';
 
-export async function validateAndMapErrors<T extends Schema>(
+export function deepPickByPath<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  T extends ZodObject<any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>(schema: T, path: string): ZodObject<any> {
+  const keys = path.split('.');
+
+  function pick(
+    current: ZodType<unknown, unknown>,
+    remaining: string[],
+  ): ZodType<unknown, unknown> {
+    if (remaining.length === 0) {
+      return current;
+    }
+
+    if (!(current instanceof ZodObject)) {
+      throw new Error(`"${remaining[0]}" is not an object`);
+    }
+
+    const [key, ...rest] = remaining;
+    const shape = current.shape;
+
+    assert('key is defined', key);
+
+    if (!(key in shape)) {
+      throw new Error(`Key "${key}" not found in schema`);
+    }
+
+    return object({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      [key]: pick(shape[key], rest),
+    });
+  }
+
+  const result = pick(schema, keys);
+
+  if (!(result instanceof ZodObject)) {
+    throw new Error('Result is not an object');
+  }
+
+  return result;
+}
+
+export async function validateAndMapErrors<T extends ZodObject>(
   schema: T,
   dto: unknown,
 ): Promise<ChangesetValidationError[]> {
   try {
-    await schema.validate(dto, { abortEarly: false });
+    await schema.parseAsync(dto);
     return [];
   } catch (e) {
     return applyErrors(e);
   }
 }
 
-export async function validateOneAndMapErrors<T extends Schema>(
+export async function validateOneAndMapErrors<T extends ZodObject>(
   path: string,
   schema: T,
   dto: unknown,
 ): Promise<ChangesetValidationError[]> {
   try {
-    await schema.validateAt(dottedPathToJsonPath(path), dto, {
-      abortEarly: false,
-      recursive: false,
-    });
+    const propSchema = deepPickByPath(schema, path);
+    console.log(propSchema);
+
+    await propSchema.parseAsync(get(dto, path));
     return [];
   } catch (e) {
     return applyErrors(e);
@@ -31,14 +75,14 @@ export async function validateOneAndMapErrors<T extends Schema>(
 }
 
 function applyErrors(e: unknown) {
-  if (e instanceof ValidationError) {
-    const errs = e.inner.reduce((mergedErrors, e) => {
-      const path = jsonPathToDottedPath(e.path ?? '');
+  if (e instanceof ZodError) {
+    const errs = e.issues.reduce((mergedErrors, e) => {
+      const path = jsonPathToDottedPath(e.path.join('.'));
       mergedErrors.push({
         message: e.message,
-        params: e.params,
+        params: e.code ? { code: e.code } : undefined,
         key: path,
-        value: e.value,
+        value: e.input,
         originalValue: '',
       });
       return mergedErrors;

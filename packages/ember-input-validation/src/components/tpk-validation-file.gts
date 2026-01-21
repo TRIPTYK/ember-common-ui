@@ -9,8 +9,7 @@ import TpkFile, {
 
 import { hash } from '@ember/helper';
 
-export interface TpkValidationFileComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationFileComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;

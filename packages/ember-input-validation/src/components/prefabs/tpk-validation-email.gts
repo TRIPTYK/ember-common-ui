@@ -6,8 +6,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import { type TOC } from '@ember/component/template-only';
 
-export interface TpkValidationEmailComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationEmailComponentSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'unmaskValue' | 'maskOptions'

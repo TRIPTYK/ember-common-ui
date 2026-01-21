@@ -74,7 +74,7 @@ as |F|>
 **Controller Setup:**
 ```js
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string } from 'yup';
+import { object, string } from 'zod';
 
 export default class extends Controller {
   changeset = new ImmerChangeset({});

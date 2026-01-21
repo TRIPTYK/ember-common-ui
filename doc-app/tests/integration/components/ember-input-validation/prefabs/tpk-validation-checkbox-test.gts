@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationCheckbox from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-checkbox';
@@ -14,19 +14,22 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(changeset: ImmerChangeset, params?: {
-      disabled?: boolean;
-    }) {
+    async function renderComponent(
+      changeset: ImmerChangeset,
+      params?: {
+        disabled?: boolean;
+      }
+    ) {
       await render(
         <template>
           <TpkValidationCheckbox
-          @changeset={{changeset}}
-          @validationField="checkbox"
-          @label="label"
-          @mandatory={{true}}
-          @disabled={{params.disabled}}
+            @changeset={{changeset}}
+            @validationField="checkbox"
+            @label="label"
+            @mandatory={{true}}
+            @disabled={{params.disabled}}
           />
-        </template>,
+        </template>
       );
     }
 
@@ -48,16 +51,16 @@ module(
     test('It changes data-has-error attribute on error', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset);
-      await assertDataHasErrorAttribute(assert,changeset,'checkbox');
+      await assertDataHasErrorAttribute(assert, changeset, 'checkbox');
     });
 
-     test('CSS classes exist and have been attached to the correct element', async function (assert) {
+    test('CSS classes exist and have been attached to the correct element', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset);
-      await assertTpkCssClassesExist(assert,'checkbox');
+      assertTpkCssClassesExist(assert, 'checkbox');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset, {
         disabled: true,
@@ -73,5 +76,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );

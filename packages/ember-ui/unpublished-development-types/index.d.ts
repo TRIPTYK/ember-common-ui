@@ -12,9 +12,7 @@ import type EmberInputRegistry from '@triptyk/ember-input/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry
-    extends RenderModifiersRegistry,
-      EmberInputRegistry,
-      EmberIntlRegistry {
+    extends RenderModifiersRegistry, EmberInputRegistry, EmberIntlRegistry {
     'on-click-outside': any;
     YetiTable: any;
   }

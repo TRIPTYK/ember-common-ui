@@ -6,8 +6,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import { type TOC } from '@ember/component/template-only';
 
-export interface TpkValidationTextareaPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationTextareaPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationTextareaComponentSignature['Args'] & { mandatory: boolean };
   Blocks: {

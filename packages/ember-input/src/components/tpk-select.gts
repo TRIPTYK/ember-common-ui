@@ -11,7 +11,6 @@ import type Owner from '@ember/owner';
 
 export type SelectType = Select;
 
-
 export interface TpkSelectSignature {
   Args: {
     multiple?: boolean;
@@ -33,12 +32,10 @@ export interface TpkSelectSignature {
     searchPlaceholder?: string;
     searchMessage?: string;
     noMatchesMessage?: string;
-    search?:
-      | ((
-          term: string,
-          select: SelectType,
-        ) => readonly unknown[] | Promise<readonly unknown[]>)
-      | undefined;
+    search?: (
+      term: string,
+      select: SelectType,
+    ) => readonly unknown[] | Promise<readonly unknown[]>;
     onChange: (selection: unknown, select: SelectType, event?: Event) => void;
     onKeyDown?:
       | ((select: SelectType, e: KeyboardEvent) => boolean | undefined)

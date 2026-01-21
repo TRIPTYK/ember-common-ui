@@ -82,11 +82,11 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
 
   setupMask: FunctionBasedModifier<{
     Args: {
-        Positional: unknown[];
-        Named: EmptyObject;
+      Positional: unknown[];
+      Named: EmptyObject;
     };
     Element: HTMLElement;
-}> = modifier((element: HTMLElement) => {
+  }> = modifier((element: HTMLElement) => {
     this.setMask(element as HTMLInputElement);
   });
 
