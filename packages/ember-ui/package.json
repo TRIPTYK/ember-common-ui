@@ -34,6 +34,7 @@
     "declarations",
     "dist",
     "static",
+    "translations",
     "llm.txt"
   ],
   "scripts": {
