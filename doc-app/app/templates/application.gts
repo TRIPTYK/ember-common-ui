@@ -1,5 +1,5 @@
 import { pageTitle } from 'ember-page-title';
-import { WelcomePage } from 'ember-welcome-page';
+import DummyForm from 'doc-app/components/dummy-form';
 
 <template>
   {{pageTitle "DocApp"}}
@@ -7,6 +7,6 @@ import { WelcomePage } from 'ember-welcome-page';
   {{outlet}}
 
   {{! The following component displays Ember's default welcome message. }}
-  <WelcomePage />
+  <DummyForm />
   {{! Feel free to remove this! }}
 </template>

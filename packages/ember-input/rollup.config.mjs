@@ -68,10 +68,6 @@ export default [
         `pnpm ember-tsc --declaration --project ${tsConfig}`,
       ),
 
-      // addons are allowed to contain imports of .css files, which we want rollup
-      // to leave alone and keep in the published output.
-      addon.keepAssets(['**/*.css']),
-
       // Remove leftover build artifacts when starting a new build.
       addon.clean(),
     ],
@@ -85,8 +81,8 @@ export default [
     plugins: [
       postcss({
         extract: 'app.css',
-        minimize: true,
-        plugins: [postcssImport()],
+        minimize: false,
+        plugins: [postcssImport({})],
       }),
       {
         name: 'remove-css-js-entry',

@@ -5,10 +5,14 @@ import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import { type TOC } from '@ember/component/template-only';
+import type { Merge } from 'type-fest';
 
 export interface TpkValidationTextareaPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationTextareaComponentSignature['Args'] & { mandatory: boolean };
+    Merge<
+      TpkValidationTextareaComponentSignature['Args'],
+      { mandatory?: boolean }
+    >;
   Blocks: {
     default: [];
   };

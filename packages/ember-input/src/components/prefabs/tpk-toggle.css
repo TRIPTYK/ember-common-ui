@@ -7,7 +7,7 @@
 }
 
 .tpk-toggle-label {
-  @apply label-text;
+  @apply label;
 }
 
 .tpk-toggle-input {

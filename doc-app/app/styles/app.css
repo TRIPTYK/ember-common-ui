@@ -1,1 +1,9 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+/* stylelint-disable at-rule-no-unknown */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable no-invalid-position-at-import-rule */
+/* stylelint-disable import-notation */
+@import 'tailwindcss';
+@plugin "daisyui";
+@import '@triptyk/ember-input/dist/app.css';
+@import '@triptyk/ember-ui/dist/app.css';
+@import '@triptyk/ember-input-validation/dist/app.css';

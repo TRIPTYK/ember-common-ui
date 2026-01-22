@@ -3,7 +3,7 @@
 }
 
 .tpk-radio-group-label {
-  @apply label label-text text-base;
+  @apply label  text-base;
 }
 
 .tpk-radio-group-container[data-has-error~='true'] .tpk-validation-errors {

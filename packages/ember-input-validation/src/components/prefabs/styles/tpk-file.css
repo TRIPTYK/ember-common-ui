@@ -7,7 +7,7 @@
 }
 
 .tpk-file-input {
-  @apply file-input file- w-full;
+  @apply file-input w-full;
 }
 
 .tpk-file-container[data-has-error~='true'] .tpk-file-input {
