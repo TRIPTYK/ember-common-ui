@@ -1,5 +1,5 @@
 .tpk-textarea-container {
-  @apply form-control relative pb-6;
+  @apply fieldset relative pb-6;
 }
 
 .tpk-textarea-container .tpk-label {
@@ -7,7 +7,7 @@
 }
 
 .tpk-textarea-input {
-  @apply textarea textarea-md input-bordered;
+  @apply textarea textarea-md;
 }
 
 .tpk-textarea-container[data-has-error~='true'] > .tpk-textarea-input {

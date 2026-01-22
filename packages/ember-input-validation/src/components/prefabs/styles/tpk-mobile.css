@@ -7,7 +7,7 @@
 }
 
 .tpk-mobile-input {
-  @apply input input-bordered w-full;
+  @apply input  w-full;
 }
 
 .tpk-mobile-content {
@@ -15,7 +15,7 @@
 }
 
 .tpk-mobile-content .ember-basic-dropdown-trigger {
-  @apply input input-bordered pr-10 !rounded-lg;
+  @apply input  pr-10 !rounded-lg;
 }
 
 .tpk-mobile-content .ember-basic-dropdown-trigger[aria-disabled='true'] {

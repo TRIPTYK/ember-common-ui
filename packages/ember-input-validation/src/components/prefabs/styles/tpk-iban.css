@@ -1,5 +1,5 @@
 .tpk-iban-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-iban-container .tpk-label {
@@ -7,7 +7,7 @@
 }
 
 .tpk-iban-input {
-  @apply input input-bordered;
+  @apply input;
 }
 
 .tpk-iban-container[data-has-error~='true'] .tpk-iban-input {

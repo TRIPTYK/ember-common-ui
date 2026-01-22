@@ -1,5 +1,5 @@
 .tpk-national-number-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-national-number-container .tpk-label {
@@ -7,7 +7,7 @@
 }
 
 .tpk-national-number-input {
-  @apply input input-bordered;
+  @apply input;
 }
 
 .tpk-national-number-container[data-has-error~='true']

@@ -1,9 +1,9 @@
 .tpk-bic-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-bic-container .tpk-bic-input {
-  @apply input input-bordered;
+  @apply input;
 }
 
 .tpk-bic-container .tpk-label {

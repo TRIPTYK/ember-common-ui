@@ -7,7 +7,7 @@
 }
 
 .tpk-select-search-container .ember-basic-dropdown-trigger {
-  @apply input input-bordered pr-10 !rounded-lg flex items-center;
+  @apply input  pr-10 !rounded-lg flex items-center;
 }
 
 .tpk-select-search-container
@@ -33,7 +33,7 @@
 }
 
 .tpk-select-search-container .ember-power-select-search input {
-  @apply input input-bordered;
+  @apply input;
 }
 
 .tpk-select-search-container .ember-power-select-search input:focus-within {

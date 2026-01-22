@@ -1,5 +1,5 @@
 .tpk-toggle-container {
-  @apply form-control;
+  @apply fieldset;
 }
 
 .tpk-toggle-label-container {

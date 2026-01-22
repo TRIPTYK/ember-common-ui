@@ -1,5 +1,5 @@
 .tpk-radio-group-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-radio-group-label {

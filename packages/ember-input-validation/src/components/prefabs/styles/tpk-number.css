@@ -1,5 +1,5 @@
 .tpk-number-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-number-container .tpk-label {
@@ -7,7 +7,7 @@
 }
 
 .tpk-number-input {
-  @apply input input-bordered;
+  @apply input;
 }
 
 .tpk-number-container[data-has-error~='true'] > .tpk-number-input {

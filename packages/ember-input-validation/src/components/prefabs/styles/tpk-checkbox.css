@@ -1,5 +1,5 @@
 .tpk-checkbox-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-checkbox-container .tpk-label {

@@ -7,7 +7,7 @@
 }
 
 .tpk-datepicker-range-container .tpk-datepicker-range-input {
-  @apply input input-bordered w-full;
+  @apply input  w-full;
 }
 
 .tpk-datepicker-range-container[data-has-error~='true']

@@ -7,7 +7,7 @@
 }
 
 .tpk-select-container .ember-basic-dropdown-trigger {
-  @apply input input-bordered pr-10 !rounded-lg;
+  @apply input  pr-10 !rounded-lg;
 }
 
 .tpk-select-container .ember-basic-dropdown-trigger[aria-disabled='true'] {
