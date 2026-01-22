@@ -40,7 +40,7 @@ catalogs:
       specifier: ^4.1.1
       version: 4.1.1
     '@embroider/addon-dev':
-      specifier: ^8.1.0
+      specifier: ~8.2.0
       version: 8.2.0
     '@embroider/addon-shim':
       specifier: ^1.8.9
@@ -73,11 +73,14 @@ catalogs:
       specifier: ^6.1.0
       version: 6.1.0
     '@rollup/plugin-node-resolve':
-      specifier: ^15.2.3
+      specifier: ^15.0.1
       version: 15.3.1
     '@tsconfig/ember':
       specifier: ^3.0.8
       version: 3.0.12
+    '@types/node':
+      specifier: ~24.0.0
+      version: 24.0.15
     '@warp-drive/core':
       specifier: ~5.8.1
       version: 5.8.1
@@ -558,6 +561,9 @@ importers:
       '@tsconfig/ember':
         specifier: 'catalog:'
         version: 3.0.12
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.0.15
       babel-plugin-ember-template-compilation:
         specifier: 'catalog:'
         version: 2.4.1
@@ -591,6 +597,9 @@ importers:
       globals:
         specifier: 'catalog:'
         version: 16.5.0
+      postcss-import:
+        specifier: ^16.1.1
+        version: 16.1.1(postcss@8.5.6)
       prettier:
         specifier: 'catalog:'
         version: 3.8.0
@@ -603,6 +612,9 @@ importers:
       rollup-plugin-copy:
         specifier: 'catalog:'
         version: 3.5.0
+      rollup-plugin-postcss:
+        specifier: ^4.0.2
+        version: 4.0.2(postcss@8.5.6)
       rollup-plugin-ts:
         specifier: 'catalog:'
         version: 3.4.5(@babel/core@7.28.6)(@babel/plugin-transform-runtime@7.28.5(@babel/core@7.28.6))(@babel/preset-env@7.28.6(@babel/core@7.28.6))(@babel/runtime@7.28.6)(rollup@4.55.3)(typescript@5.9.3)
@@ -620,7 +632,7 @@ importers:
         version: 8.48.0(eslint@9.39.2)(typescript@5.9.3)
       vite:
         specifier: 'catalog:'
-        version: 7.3.1(@types/node@25.0.9)(terser@5.46.0)(yaml@2.8.2)
+        version: 7.3.1(@types/node@24.0.15)(terser@5.46.0)(yaml@2.8.2)
 
   packages/ember-input-validation:
     dependencies:
@@ -709,6 +721,9 @@ importers:
       '@tsconfig/ember':
         specifier: 'catalog:'
         version: 3.0.12
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.0.15
       babel-plugin-ember-template-compilation:
         specifier: 'catalog:'
         version: 2.4.1
@@ -748,6 +763,9 @@ importers:
       globals:
         specifier: 'catalog:'
         version: 16.5.0
+      postcss-import:
+        specifier: ^16.1.1
+        version: 16.1.1(postcss@8.5.6)
       prettier:
         specifier: 'catalog:'
         version: 3.8.0
@@ -783,7 +801,7 @@ importers:
         version: 8.48.0(eslint@9.39.2)(typescript@5.9.3)
       vite:
         specifier: 'catalog:'
-        version: 7.3.1(@types/node@25.0.9)(terser@5.46.0)(yaml@2.8.2)
+        version: 7.3.1(@types/node@24.0.15)(terser@5.46.0)(yaml@2.8.2)
 
   packages/ember-ui:
     dependencies:
@@ -881,6 +899,9 @@ importers:
       '@tsconfig/ember':
         specifier: 'catalog:'
         version: 3.0.12
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.0.15
       '@warp-drive/core':
         specifier: 'catalog:'
         version: 5.8.1(@babel/core@7.28.6)(@glint/template@1.7.3)
@@ -917,6 +938,9 @@ importers:
       globals:
         specifier: 'catalog:'
         version: 16.5.0
+      postcss-import:
+        specifier: ^16.1.1
+        version: 16.1.1(postcss@8.5.6)
       prettier:
         specifier: 'catalog:'
         version: 3.8.0
@@ -929,6 +953,9 @@ importers:
       rollup-plugin-copy:
         specifier: 'catalog:'
         version: 3.5.0
+      rollup-plugin-postcss:
+        specifier: ~4.0.2
+        version: 4.0.2(postcss@8.5.6)
       rollup-plugin-ts:
         specifier: 'catalog:'
         version: 3.4.5(@babel/core@7.28.6)(@babel/plugin-transform-runtime@7.28.5(@babel/core@7.28.6))(@babel/preset-env@7.28.6(@babel/core@7.28.6))(@babel/runtime@7.28.6)(rollup@4.55.3)(typescript@5.9.3)
@@ -943,7 +970,7 @@ importers:
         version: 8.48.0(eslint@9.39.2)(typescript@5.9.3)
       vite:
         specifier: 'catalog:'
-        version: 7.3.1(@types/node@25.0.9)(terser@5.46.0)(yaml@2.8.2)
+        version: 7.3.1(@types/node@24.0.15)(terser@5.46.0)(yaml@2.8.2)
 
 packages:
 
@@ -2885,6 +2912,9 @@ packages:
 
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+
+  '@types/node@24.0.15':
+    resolution: {integrity: sha512-oaeTSbCef7U/z7rDeJA138xpG3NuKc64/rZ2qmUFkFJmnMsAPaluIifqyWd8hSSMxyP9oie3dLAqYPblag9KgA==}
 
   '@types/node@25.0.9':
     resolution: {integrity: sha512-/rpCXHlCWeqClNBwUhDcusJxXYDjZTyE8v5oTO7WbL8eij2nKhUeU89/6xgjU7N4/Vh3He0BtyhJdQbDyhiXAw==}
@@ -7644,6 +7674,12 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
 
+  postcss-import@16.1.1:
+    resolution: {integrity: sha512-2xVS1NCZAfjtVdvXiyegxzJ447GyqCeEI5V7ApgQVOWnros1p5lGNovJNapwPpMombyFBfqDwt7AD3n2l0KOfQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+
   postcss-load-config@3.1.4:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -8010,6 +8046,9 @@ packages:
     resolution: {integrity: sha512-bd/Iyk8wm9A8qyxKVu8w4M4POWOtZErRKr6EJwnrBitceSLlY+yk1/m9AuKec/5XvcNnDi1NRdvBQDBEaVpk6A==}
     peerDependencies:
       '@ember/test-waiters': '>= 3.1.0'
+
+  read-cache@1.0.0:
+    resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
 
   read-cmd-shim@4.0.0:
     resolution: {integrity: sha512-yILWifhaSEEytfXI76kB9xEEiG1AiozaCJZ83A87ytjRiN+jVibXjedjCRNjoZviinhG+4UkalO3mWTd8u5O0Q==}
@@ -9238,6 +9277,9 @@ packages:
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
@@ -12257,7 +12299,7 @@ snapshots:
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 25.0.9
+      '@types/node': 24.0.15
 
   '@types/fs-extra@9.0.13':
     dependencies:
@@ -12266,7 +12308,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 25.0.9
+      '@types/node': 24.0.15
 
   '@types/glob@9.0.0':
     dependencies:
@@ -12293,6 +12335,10 @@ snapshots:
   '@types/minimist@1.2.5': {}
 
   '@types/node@17.0.45': {}
+
+  '@types/node@24.0.15':
+    dependencies:
+      undici-types: 7.8.0
 
   '@types/node@25.0.9':
     dependencies:
@@ -18329,6 +18375,13 @@ snapshots:
     dependencies:
       postcss: 8.5.6
 
+  postcss-import@16.1.1(postcss@8.5.6):
+    dependencies:
+      postcss: 8.5.6
+      postcss-value-parser: 4.2.0
+      read-cache: 1.0.0
+      resolve: 1.22.11
+
   postcss-load-config@3.1.4(postcss@8.5.6):
     dependencies:
       lilconfig: 2.1.0
@@ -18664,6 +18717,10 @@ snapshots:
       - '@glimmer/component'
       - '@glint/template'
       - supports-color
+
+  read-cache@1.0.0:
+    dependencies:
+      pify: 2.3.0
 
   read-cmd-shim@4.0.0: {}
 
@@ -20212,6 +20269,8 @@ snapshots:
 
   undici-types@7.16.0: {}
 
+  undici-types@7.8.0: {}
+
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
   unicode-match-property-ecmascript@2.0.0:
@@ -20305,6 +20364,20 @@ snapshots:
       semver: 7.7.3
 
   vary@1.1.2: {}
+
+  vite@7.3.1(@types/node@24.0.15)(terser@5.46.0)(yaml@2.8.2):
+    dependencies:
+      esbuild: 0.27.2
+      fdir: 6.5.0(picomatch@4.0.3)
+      picomatch: 4.0.3
+      postcss: 8.5.6
+      rollup: 4.55.3
+      tinyglobby: 0.2.15
+    optionalDependencies:
+      '@types/node': 24.0.15
+      fsevents: 2.3.3
+      terser: 5.46.0
+      yaml: 2.8.2
 
   vite@7.3.1(@types/node@25.0.9)(terser@5.46.0)(yaml@2.8.2):
     dependencies:
