@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import postcss from 'rollup-plugin-postcss';
 import postcssImport from 'postcss-import';
+import image from '@rollup/plugin-image';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -20,6 +21,7 @@ export default [
     // You can augment this if you need to.
     output: addon.output(),
     plugins: [
+      image(),
       // These are the modules that users should be able to import from your
       // addon. Anything not listed here may get optimized away.
       // By default all your JavaScript modules (**/*.js) will be importable.

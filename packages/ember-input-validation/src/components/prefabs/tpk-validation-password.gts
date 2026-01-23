@@ -8,6 +8,8 @@ import { on } from '@ember/modifier';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
+import eyeShut from '../../assets/eye-shut.svg';
+import eyeOpen from '../../assets/eye.svg';
 
 export interface TpkValidationPasswordPrefabSignature extends BaseValidationSignature {
   Args: Omit<
@@ -70,11 +72,7 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
               data-test-tpk-password-toggle-button
             >
               <img
-                src={{if
-                  this.showPassword
-                  '/assets/icons/eye-shut.svg'
-                  '/assets/icons/eye.svg'
-                }}
+                src={{if this.showPassword eyeOpen eyeShut}}
                 data-test-tpk-password-toggle-icon
                 alt='eye'
                 class='tpk-password-toggle-icon'

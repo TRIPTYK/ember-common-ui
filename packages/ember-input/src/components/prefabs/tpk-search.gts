@@ -4,6 +4,7 @@ import Component from '@glimmer/component';
 import { task } from 'ember-concurrency';
 import { on } from '@ember/modifier';
 import TpkInputComponent from '../tpk-input.gts';
+import searchSvg from '../../assets/search.svg';
 
 export type TpkSearchPrefabSignature = {
   Args: MergeDeep<
@@ -70,7 +71,7 @@ export default class TpkSearchPrefabComponent extends Component<TpkSearchPrefabS
             {{else}}
               <button type='submit' data-test-search-submit>
                 <img
-                  src='/assets/icons/search.svg'
+                  src={{searchSvg}}
                   data-test-tpk-search-icon
                   alt='magnyfying glass'
                   class='tpk-search-button'

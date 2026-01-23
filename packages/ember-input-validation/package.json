@@ -75,6 +75,7 @@
     "@glint/ember-tsc": "catalog:",
     "@glint/template": "catalog:",
     "@rollup/plugin-babel": "catalog:",
+    "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-node-resolve": "catalog:",
     "@triptyk/ember-input": "workspace:*",
     "@tsconfig/ember": "catalog:",

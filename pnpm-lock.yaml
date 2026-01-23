@@ -564,6 +564,9 @@ importers:
       '@rollup/plugin-babel':
         specifier: 'catalog:'
         version: 6.1.0(@babel/core@7.28.6)(rollup@4.55.3)
+      '@rollup/plugin-image':
+        specifier: ^3.0.3
+        version: 3.0.3(rollup@4.55.3)
       '@rollup/plugin-node-resolve':
         specifier: 'catalog:'
         version: 15.3.1(rollup@4.55.3)
@@ -721,6 +724,9 @@ importers:
       '@rollup/plugin-babel':
         specifier: 'catalog:'
         version: 6.1.0(@babel/core@7.28.6)(rollup@4.55.3)
+      '@rollup/plugin-image':
+        specifier: ^3.0.3
+        version: 3.0.3(rollup@4.55.3)
       '@rollup/plugin-node-resolve':
         specifier: 'catalog:'
         version: 15.3.1(rollup@4.55.3)
@@ -840,7 +846,7 @@ importers:
         version: 7.1.0
       ember-yeti-table:
         specifier: git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist
-        version: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/f332b49813225f2bae2f28fbfe810b48c504b06d(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.3))(@glint/template@1.7.3)
+        version: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.3))(@glint/template@1.7.3)
       focus-trap:
         specifier: ~7.8.0
         version: 7.8.0
@@ -2641,6 +2647,15 @@ packages:
     peerDependenciesMeta:
       '@types/babel__core':
         optional: true
+      rollup:
+        optional: true
+
+  '@rollup/plugin-image@3.0.3':
+    resolution: {integrity: sha512-qXWQwsXpvD4trSb8PeFPFajp8JLpRtqqOeNYRUKnEQNHm7e5UP7fuSRcbjQAJ7wDZBbnJvSdY5ujNBQd9B1iFg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
       rollup:
         optional: true
 
@@ -5026,8 +5041,8 @@ packages:
     resolution: {integrity: sha512-TyaKxFIRXhODW5BTbqD/by0Gu8Z9B9AA1ki3Bzzm6fOj2b30Qlprtt+XUG52kS0zVNmxYj/WWoT0TsKiU61VOw==}
     engines: {node: 14.* || 16.* || >= 18}
 
-  ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/f332b49813225f2bae2f28fbfe810b48c504b06d:
-    resolution: {tarball: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/f332b49813225f2bae2f28fbfe810b48c504b06d}
+  ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a:
+    resolution: {tarball: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a}
     version: 2.0.0
 
   emoji-regex@8.0.0:
@@ -7108,6 +7123,10 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
+
+  mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
 
   minimatch@10.1.1:
     resolution: {integrity: sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==}
@@ -12269,6 +12288,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@rollup/plugin-image@3.0.3(rollup@4.55.3)':
+    dependencies:
+      '@rollup/pluginutils': 5.3.0(rollup@4.55.3)
+      mini-svg-data-uri: 1.4.4
+    optionalDependencies:
+      rollup: 4.55.3
+
   '@rollup/plugin-node-resolve@15.3.1(rollup@4.55.3)':
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.55.3)
@@ -15325,7 +15351,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/f332b49813225f2bae2f28fbfe810b48c504b06d(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.3))(@glint/template@1.7.3):
+  ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.3))(@glint/template@1.7.3):
     dependencies:
       '@embroider/addon-shim': 1.10.2
       '@glimmer/component': 2.0.0
@@ -17854,6 +17880,8 @@ snapshots:
     dependencies:
       schema-utils: 4.3.3
       tapable: 2.3.0
+
+  mini-svg-data-uri@1.4.4: {}
 
   minimatch@10.1.1:
     dependencies:
