@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import type { WithBoundArgs } from '@glint/template';
 import TpkActionsMenuElementComponent from './tpk-actions-menu/element.gts';
 import { on } from '@ember/modifier';

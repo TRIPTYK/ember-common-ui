@@ -68,8 +68,7 @@
     "ember-test-selectors": "catalog:",
     "focus-trap": "^7.5.4",
     "font-awesome": "catalog:",
-    "imask": "catalog:",
-    "tracked-built-ins": "catalog:"
+    "imask": "catalog:"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

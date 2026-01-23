@@ -103,7 +103,6 @@
     "stylelint-config-standard": "^38.0.0",
     "tailwindcss": "^4.1.18",
     "testem": "^3.16.0",
-    "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "catalog:",
     "vite": "^7.2.4",

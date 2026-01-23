@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import TpkSearch from '@triptyk/ember-input/components/prefabs/tpk-search';
 import type Owner from '@ember/owner';
 

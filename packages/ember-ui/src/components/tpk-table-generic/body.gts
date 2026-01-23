@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import type { WithBoundArgs } from '@glint/template';
 import TableGenericBodyCellComponent from './body/cell.gts';

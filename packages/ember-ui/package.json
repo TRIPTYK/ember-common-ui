@@ -61,8 +61,7 @@
     "ember-modifier": "catalog:",
     "ember-test-selectors": "catalog:",
     "ember-yeti-table": "git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist",
-    "focus-trap": "~7.8.0",
-    "tracked-built-ins": "catalog:"
+    "focus-trap": "~7.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import type { Store } from '@warp-drive/core';
 import { action } from '@ember/object';
 import type { WithBoundArgs } from '@glint/template';

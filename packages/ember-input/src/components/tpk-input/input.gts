@@ -1,12 +1,12 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from 'tracked-built-ins';
 import type { FactoryArg, InputMask } from 'imask';
 import IMask from 'imask';
 import type Owner from '@ember/owner';
 import { modifier, type FunctionBasedModifier } from 'ember-modifier';
 import type { EmptyObject } from 'type-fest';
+import { tracked } from '@glimmer/tracking';
 
 export interface TpkInputInputComponentSignature {
   Args: {

@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Service from '@ember/service';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 
 export default class DialogLayerService extends Service {
   @tracked dialogs: string[] = [];
@@ -16,13 +16,16 @@ export default class DialogLayerService extends Service {
 
   @action
   add(dialog: string) {
-    this.dialogs.push(dialog);
+    this.dialogs = [...this.dialogs, dialog];
   }
 
   @action
   remove(dialog: string) {
     const ix = this.dialogs.findIndex((guid) => guid === dialog);
 
-    this.dialogs.splice(ix, 1);
+    this.dialogs = [
+      ...this.dialogs.slice(0, ix),
+      ...this.dialogs.slice(ix + 1),
+    ];
   }
 }

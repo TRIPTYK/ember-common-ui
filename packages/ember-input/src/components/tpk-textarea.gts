@@ -8,10 +8,10 @@ import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
-import { tracked } from 'tracked-built-ins';
 import TpkLabel from './tpk-label.gts';
 import { assert } from '@ember/debug';
 import type Owner from '@ember/owner';
+import { tracked } from '@glimmer/tracking';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
