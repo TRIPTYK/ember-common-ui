@@ -54,7 +54,7 @@ export async function validateAndMapErrors<T extends ZodObject>(
     await schema.parseAsync(dto);
     return [];
   } catch (e) {
-    return applyErrors(e);
+    return applyErrors('', e);
   }
 }
 
@@ -65,19 +65,28 @@ export async function validateOneAndMapErrors<T extends ZodObject>(
 ): Promise<ChangesetValidationError[]> {
   try {
     const propSchema = deepPickByPath(schema, path);
-    console.log(propSchema);
+    console.log(path);
 
     await propSchema.parseAsync(get(dto, path));
     return [];
   } catch (e) {
-    return applyErrors(e);
+    const prefix = path.split('.');
+
+    if (prefix.length === 1) {
+      return applyErrors(path, e);
+    }
+
+    return applyErrors(prefix.slice(0, -1).join('.'), e);
   }
 }
 
-function applyErrors(e: unknown) {
+function applyErrors(prefix: string = '', e: unknown) {
   if (e instanceof ZodError) {
     const errs = e.issues.reduce((mergedErrors, e) => {
-      const path = jsonPathToDottedPath(e.path.join('.'));
+      const pathWithPrefix = prefix
+        ? prefix + e.path.join('.')
+        : e.path.join('.');
+      const path = jsonPathToDottedPath(pathWithPrefix);
       mergedErrors.push({
         message: e.message,
         params: e.code ? { code: e.code } : undefined,

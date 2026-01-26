@@ -42,6 +42,21 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.true(changeset.isInvalid);
   });
 
+  test('it sets correct error path when single field is errored in reactive=true', async function (assert) {
+    const changeset = await setupComponent({
+      reactive: true,
+      validationSchema: object({
+        email: email(),
+      }),
+    });
+
+    await fillIn('input[type="email"]', 'test');
+
+    console.log(changeset.errors);
+
+    assert.true(changeset.errors.some((e) => e.key === 'email'));
+  });
+
   test('It executes the changeset when submit is triggered and changeset is valid', async function (assert) {
     const changeset = await setupComponent({
       validationSchema: object({
