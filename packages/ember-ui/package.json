@@ -58,6 +58,7 @@
     "decorator-transforms": "^2.2.2",
     "ember-click-outside": "catalog:",
     "ember-intl": "catalog:",
+    "ember-strict-application-resolver": "^0.1.1",
     "ember-modifier": "catalog:",
     "ember-test-selectors": "catalog:",
     "ember-yeti-table": "git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist",

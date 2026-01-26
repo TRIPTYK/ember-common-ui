@@ -54,6 +54,7 @@
     "decorator-transforms": "^2.2.2",
     "ember-concurrency": "catalog:",
     "ember-intl": "catalog:",
+    "ember-strict-application-resolver": "^0.1.1",
     "ember-lifeline": "catalog:",
     "ember-modifier": "catalog:",
     "ember-test-selectors": "catalog:",

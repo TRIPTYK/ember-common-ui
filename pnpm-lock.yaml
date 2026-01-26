@@ -663,6 +663,9 @@ importers:
       ember-modifier:
         specifier: 'catalog:'
         version: 4.2.2(@babel/core@7.28.6)
+      ember-strict-application-resolver:
+        specifier: ^0.1.1
+        version: 0.1.1(@babel/core@7.28.6)
       ember-test-selectors:
         specifier: 'catalog:'
         version: 7.1.0
@@ -832,6 +835,9 @@ importers:
       ember-modifier:
         specifier: 'catalog:'
         version: 4.2.2(@babel/core@7.28.6)
+      ember-strict-application-resolver:
+        specifier: ^0.1.1
+        version: 0.1.1(@babel/core@7.28.6)
       ember-test-selectors:
         specifier: 'catalog:'
         version: 7.1.0
@@ -4976,6 +4982,9 @@ packages:
     engines: {node: '>= 18.*'}
     peerDependencies:
       '@glimmer/component': 2.0.0
+
+  ember-strict-application-resolver@0.1.1:
+    resolution: {integrity: sha512-/49JZ2Yk2ggicAGIoFNWcz05llhe2i+/2dpH5Pv1KlwZOBKkqMMJpTKEB4IMg+FjKBiE0r2yxuZzo9Oly9vc1A==}
 
   ember-style-modifier@4.5.1:
     resolution: {integrity: sha512-ReVGW9fZmDIsCWsuJGH4joiiHOv9aF9Yv4lUZUjXjQyR9SEAae7RWjZcjPgmEJwpN7yDSyy4PIwdJa0smT2A3g==}
@@ -15194,6 +15203,14 @@ snapshots:
       simple-html-tokenizer: 0.5.11
     transitivePeerDependencies:
       - rsvp
+      - supports-color
+
+  ember-strict-application-resolver@0.1.1(@babel/core@7.28.6):
+    dependencies:
+      '@embroider/addon-shim': 1.10.2
+      decorator-transforms: 2.3.1(@babel/core@7.28.6)
+    transitivePeerDependencies:
+      - '@babel/core'
       - supports-color
 
   ember-style-modifier@4.5.1(@babel/core@7.28.6)(@ember/string@4.0.1):
