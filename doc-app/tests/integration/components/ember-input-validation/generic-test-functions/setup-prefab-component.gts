@@ -165,7 +165,11 @@ export async function setupComponent(params?: TpkFormParams) {
         @executeOnValid={{executeOnValid}}
         as |F|
       >
-        <F.TpkInputPrefab @label="test" @validationField="name" />
+        <F.TpkInputPrefab
+          data-test-name
+          @label="test"
+          @validationField="name"
+        />
         <F.TpkInput @label="test" @type="email" @validationField="email" as |I|>
           <I.Label />
           <I.Input />

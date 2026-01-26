@@ -18,12 +18,10 @@ export function getRequiredFields(
         message: err.message,
         value: err.input,
       }));
-      console.log(errorFields);
 
       const a = errorFields
         .map((error) => jsonPathToDottedPath(error.path))
         .filter((r) => r !== undefined);
-      console.log('Required fields:', a);
       return a;
     }
   }

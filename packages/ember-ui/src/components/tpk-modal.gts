@@ -54,6 +54,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     assert('Modal initialized without @onClose', args.onClose !== undefined);
     assert('Modal @title is mandatory', args.title !== undefined);
     this.modalKey = this.loadModalKey(owner as ApplicationInstance);
+    this.updateStack();
   }
 
   get isOnTop() {
@@ -95,16 +96,14 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     return false;
   }
 
-  @action
-  updateStack() {
+  updateStack = () => {
     this.dialogLayer.add(this.guid);
-  }
+  };
 
-  @action
-  willDestroyNode(): void {
+  willDestroyNode = (): void => {
     this.dialogLayer.remove(this.guid);
     return super.willDestroy();
-  }
+  };
 
   @action
   close() {
@@ -131,16 +130,11 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     super.willDestroy();
   }
 
-  setupStack = modifier(() => {
-    this.updateStack();
-  });
-
   <template>
     {{#if @isOpen}}
       {{#in-element this.modalContainer insertBefore=null}}
         <div
           {{this.handleEscapeKey @isOpen this.close}}
-          {{this.setupStack}}
           class='tpk-modal'
           ...attributes
         >

@@ -46,7 +46,7 @@ const masks = {
 export default class TpkValidationMobilePrefabComponent extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
   defaultPrefix = { flag: '/BE.svg', code: '+32' };
   @tracked selectedPrefix = this.defaultPrefix;
-  @tracked prefixes: Prefix[] = [
+  prefixes: Prefix[] = [
     { flag: '/NL.svg', code: '+31' },
     { flag: '/BE.svg', code: '+32' },
     { flag: '/FR.svg', code: '+33' },

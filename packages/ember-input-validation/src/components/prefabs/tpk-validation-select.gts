@@ -58,6 +58,11 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
   }
 
   toString = (v: unknown) => {
+    assert(
+      'TpkValidationSelectPrefab toString: object has no custom toString method, returning [object Object]',
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
+      !(v && typeof v === 'object' && v.toString() === '[object Object]'),
+    );
     return String(v).toString();
   };
 

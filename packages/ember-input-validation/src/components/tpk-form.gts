@@ -49,6 +49,7 @@ import type TpkValidationRadioGroupComponent from './tpk-validation-radio-group.
 import type TpkValidationRadioPrefabComponent from './prefabs/tpk-validation-radio.gts';
 import type TpkValidationRadioGroupPrefabComponent from './prefabs/tpk-validation-radio-group.gts';
 import type TpkValidationFilePrefabComponent from './prefabs/tpk-validation-file.gts';
+import { trackedArray } from '@ember/reactive/collections';
 
 interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   changeset: T;
@@ -197,7 +198,7 @@ export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
 export default class ChangesetFormComponent<
   T extends ImmerChangeset,
 > extends Component<ChangesetFormComponentSignature<T>> {
-  @tracked declare requiredFields: string[];
+  @tracked requiredFields: string[] = trackedArray([]);
   @service declare tpkForm: TpkFormService;
 
   public constructor(owner: Owner, args: ChangesetFormComponentArgs<T>) {
@@ -212,6 +213,7 @@ export default class ChangesetFormComponent<
       '@validationSchema is required',
       args.validationSchema instanceof ZodObject,
     );
+    assert('service:tpk-form is available', this.tpkForm !== undefined);
 
     this.requiredFields =
       getRequiredFields(this.args.validationSchema, this.args.changeset.data) ??

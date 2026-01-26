@@ -31,10 +31,34 @@ export default class DummyFormComponent extends Component {
   });
 
   languageOptions = [
-    { value: 'fr', label: 'French' },
-    { value: 'en', label: 'English' },
-    { value: 'es', label: 'Spanish' },
-    { value: 'de', label: 'German' },
+    {
+      value: 'fr',
+      label: 'French',
+      toString: function () {
+        return this.label;
+      },
+    },
+    {
+      value: 'en',
+      label: 'English',
+      toString: function () {
+        return this.label;
+      },
+    },
+    {
+      value: 'es',
+      label: 'Spanish',
+      toString: function () {
+        return this.label;
+      },
+    },
+    {
+      value: 'de',
+      label: 'German',
+      toString: function () {
+        return this.label;
+      },
+    },
   ];
 
   @action
@@ -54,6 +78,7 @@ export default class DummyFormComponent extends Component {
       <TpkForm
         @changeset={{this.changeset}}
         @onSubmit={{this.onSubmit}}
+        @reactive={{true}}
         @validationSchema={{this.validationSchema}}
         as |F|
       >

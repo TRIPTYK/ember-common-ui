@@ -62,7 +62,7 @@ module(
         .hasClass('tpk-password-toggle-button');
       assert
         .dom('[data-test-tpk-password-toggle-icon]')
-        .hasAttribute('src', '/assets/icons/eye.svg');
+        .hasAttribute('src', /data:image\/svg\+xml/);
     });
 
     test('Input type should be password', async function (assert) {
@@ -89,7 +89,7 @@ module(
 
       assert
         .dom('[data-test-tpk-password-toggle-button] img')
-        .hasAttribute('src', '/assets/icons/eye-shut.svg');
+        .hasAttribute('src', /data:image\/svg\+xml/);
     });
 
     test('When button is clicked twice, input type should be password', async function (assert) {

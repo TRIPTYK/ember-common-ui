@@ -78,6 +78,26 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.verifySteps(['onSubmit']);
   });
 
+  test('Should pass errors to the prefab inputs when the changeset is invalid upon submission', async function (assert) {
+    const changeset = await setupComponent({
+      validationSchema: object({
+        name: string().length(10),
+      }),
+    });
+
+    assert.false(changeset.isInvalid);
+
+    await fillIn('[data-test-name] input', 't@g.com');
+
+    await click('button[type="submit"]');
+
+    assert.true(changeset.isInvalid);
+    assert.dom('[data-test-tpk-validation-errors]').exists();
+    assert
+      .dom('[data-test-tpk-validation-errors]')
+      .hasTextContaining('Too small: expected string to have >=10 characters');
+  });
+
   // TODO: SHOULD BE FIXED AFTER WE FIND A WAY TO FIND REQUIRED FIELDS FROM ZOD SCHEMA
   test.skip('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
     const changeset = new ImmerChangeset({
