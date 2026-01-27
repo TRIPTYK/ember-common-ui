@@ -1,0 +1,14 @@
+diff --git a/dist/src/content-for.js b/dist/src/content-for.js
+index b7541151131e62c64e83bbd96ac486679d43d0db..ec4f5c3cf741d05278df276f083375f973877a4a 100644
+--- a/dist/src/content-for.js
++++ b/dist/src/content-for.js
+@@ -10,6 +10,9 @@ export function contentFor() {
+         transformIndexHtml(html, { path }) {
+             let config = readJSONSync(join(locateEmbroiderWorkingDir(process.cwd()), 'content-for.json'));
+             let contentsForConfig = config[path];
++            if (!contentsForConfig) {
++                return html;
++            }
+             for (const [contentType, htmlContent] of Object.entries(contentsForConfig)) {
+                 html = html.replace(`{{content-for "${contentType}"}}`, `${htmlContent}`);
+                 html = html.replace(`{{content-for '${contentType}'}}`, `${htmlContent}`);

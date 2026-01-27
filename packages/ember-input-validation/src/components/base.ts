@@ -26,6 +26,7 @@ export abstract class BaseValidationComponent<
       '@validationField is required',
       typeof args.validationField === 'string',
     );
+    // assert(`@validationField ${args.validationField} is not in changeset. Please at least set it to undefined.`, args.validationField in args.changeset.data);
   }
 
   get hasError() {

@@ -13,11 +13,16 @@
     "onlyBuiltDependencies": [
       "core-js",
       "core-js-pure",
+      "edgedriver",
       "esbuild",
+      "geckodriver",
       "lefthook",
       "msw",
       "nx"
-    ]
+    ],
+    "patchedDependencies": {
+      "@embroider/vite": "patches/@embroider__vite.patch"
+    }
   },
   "repository": {
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"

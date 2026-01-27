@@ -28,10 +28,8 @@ catalog:
   '@eonasdan/tempus-dominus': ^6.9.10
   '@eslint/js': ^9.17.0
   '@glimmer/component': ~2.0.0
-  'decorator-transforms': ~2.3.0
   '@glimmer/tracking': ^1.1.2
   '@glint/ember-tsc': ~1.0.9
-  'ember-strict-application-resolver': ~0.1.1
   '@glint/template': ~1.7.3
   '@popperjs/core': ^2.11.8
   '@rollup/plugin-babel': ^6.1.0
@@ -67,6 +65,7 @@ catalog:
   babel-plugin-ember-template-compilation: ~4.0.0
   broccoli-asset-rev: ^3.0.0
   concurrently: ^9.2.1
+  decorator-transforms: ~2.3.0
   ember-basic-dropdown: ~8.11.0
   ember-cli: ~6.8.0
   ember-cli-addon-docs: ^10.1.0
@@ -91,6 +90,7 @@ catalog:
   ember-qunit: ~9.0.4
   ember-resolver: ^13.1.1
   ember-source: ~6.10.0
+  ember-strict-application-resolver: ~0.1.1
   ember-template-imports: 4.4.0
   ember-test-selectors: ~7.1.0
   ember-welcome-page: ^8.0.5
@@ -104,7 +104,7 @@ catalog:
   eslint-plugin-qunit: ^8.1.2
   font-awesome: ^4.7.0
   git-conventional-commits: ^2.6.7
-  globals: ^17.1.0
+  globals: ^17.2.0
   imask: ~7.6.1
   lefthook: ^2.0.16
   lerna: ^9.0.3

@@ -3,7 +3,7 @@ import TpkValidationInputComponent, {
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import { assert, debug } from '@ember/debug';
+import { assert } from '@ember/debug';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import type Owner from '@ember/owner';
@@ -28,10 +28,6 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
     );
   }
 
-  stringified = (v: unknown) => {
-    return JSON.stringify(v, null, 2);
-  }
-
   <template>
     <TpkValidationInputComponent
       @type={{@type}}
@@ -49,8 +45,6 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
       @requiredFields={{@requiredFields}}
       as |V|
     >
-      {{this.stringified @validationField}}
-      {{this.stringified V}}
       <V.Label
         class='tpk-input-container'
         data-test-tpk-prefab-input-container

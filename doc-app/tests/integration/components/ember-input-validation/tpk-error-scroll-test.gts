@@ -116,6 +116,10 @@ module('Integration | Component | tpk-form-error-scroll', function (hooks) {
       validationSchema: object({
         email: email(),
       }),
+      changeset: new ImmerChangeset({
+        email: '',
+        name: '',
+      }),
       autoScrollOnError: false,
     });
 

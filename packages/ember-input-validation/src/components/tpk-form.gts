@@ -233,12 +233,14 @@ export default class ChangesetFormComponent<
         debug(`Changeset key changed: ${key}`);
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             key,
             this.args.validationSchema,
             draft,
           );
 
           for (const error of this.args.changeset.errors) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             if (isFieldError(key, error.key)) {
               this.args.changeset.removeError(error.key);
             }
@@ -253,10 +255,14 @@ export default class ChangesetFormComponent<
   }
 
   validateAndSubmit = task(this, { drop: true }, async () => {
-    debug(`Submitting form with changeset: ${JSON.stringify(this.args.changeset['draftData'], null, 2)}`);
+    debug(
+      `Submitting form with changeset: ${JSON.stringify(this.args.changeset['draftData'], null, 2)}`,
+    );
 
     if (this.args.removeErrorsOnSubmit ?? true) {
-      debug(`Removed ${this.args.changeset.errors.length} errors before submit`);
+      debug(
+        `Removed ${this.args.changeset.errors.length} errors before submit`,
+      );
       this.args.changeset.removeErrors();
     }
 
