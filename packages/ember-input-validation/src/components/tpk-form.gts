@@ -2,7 +2,7 @@ import type Owner from '@ember/owner';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { Promisable } from 'type-fest';
-import { assert } from '@ember/debug';
+import { assert, debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
 import { ZodObject } from 'zod';
@@ -219,7 +219,8 @@ export default class ChangesetFormComponent<
       getRequiredFields(this.args.validationSchema, this.args.changeset.data) ??
       [];
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    this.args.changeset.onSet(async () => {
+    this.args.changeset.onSet(async (k) => {
+      debug('Changeset key changed (for required fields): ' + k);
       await this.args.changeset.validate((draft) => {
         this.requiredFields =
           getRequiredFields(this.args.validationSchema, draft) ?? [];
@@ -229,6 +230,7 @@ export default class ChangesetFormComponent<
     if (args.reactive ?? true) {
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       this.args.changeset.onSet(async (key) => {
+        debug(`Changeset key changed: ${key}`);
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
             key,
@@ -251,7 +253,10 @@ export default class ChangesetFormComponent<
   }
 
   validateAndSubmit = task(this, { drop: true }, async () => {
+    debug(`Submitting form with changeset: ${JSON.stringify(this.args.changeset['draftData'], null, 2)}`);
+
     if (this.args.removeErrorsOnSubmit ?? true) {
+      debug(`Removed ${this.args.changeset.errors.length} errors before submit`);
       this.args.changeset.removeErrors();
     }
 
@@ -260,19 +265,23 @@ export default class ChangesetFormComponent<
         this.args.validationSchema,
         dto,
       );
+      debug(`Errors after validation: ${JSON.stringify(errors, null, 2)}`);
       for (const error of errors) {
         this.args.changeset.addError(error);
       }
     });
 
     if (!this.args.changeset.isValid) {
+      debug('Changeset is not valid, aborting submit');
       return;
     }
 
     if (this.args.executeOnValid ?? true) {
+      debug('Changeset is valid, executing changeset');
       this.args.changeset.execute();
     }
 
+    debug('Calling onSubmit callback');
     await this.args.onSubmit(this.args.changeset);
   });
 

@@ -29,6 +29,7 @@ export interface TpkValidationInputComponentSignature extends BaseValidationSign
 
 export default class TpkValidationInputComponent extends BaseValidationComponent<TpkValidationInputComponentSignature> {
   @tracked showPassword = false;
+
   @action onChange(value: string | number | Date | null, e: Event) {
     if (this.args.onChange) {
       return this.args.onChange(value, e);

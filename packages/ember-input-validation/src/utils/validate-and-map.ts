@@ -65,8 +65,6 @@ export async function validateOneAndMapErrors<T extends ZodObject>(
 ): Promise<ChangesetValidationError[]> {
   try {
     const propSchema = deepPickByPath(schema, path);
-    console.log(path);
-
     await propSchema.parseAsync(get(dto, path));
     return [];
   } catch (e) {
