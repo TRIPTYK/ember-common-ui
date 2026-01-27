@@ -10,9 +10,6 @@
     "start": "pnpm dev"
   },
   "pnpm": {
-    "overrides": {
-      "@glimmer/component": "2.0.0"
-    },
     "onlyBuiltDependencies": [
       "core-js",
       "core-js-pure",
@@ -30,7 +27,7 @@
     "git-conventional-commits": "catalog:",
     "lefthook": "catalog:",
     "lerna": "catalog:",
-    "turbo": "^2.3.0"
+    "turbo": "^2.7.6"
   },
   "packageManager": "pnpm@10.28.0",
   "volta": {
