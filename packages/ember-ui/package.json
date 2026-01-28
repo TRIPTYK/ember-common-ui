@@ -55,6 +55,7 @@
     "@ember/string": "catalog:",
     "@ember/test-waiters": "catalog:",
     "@embroider/addon-shim": "catalog:",
+    "@warp-drive/utilities": "~5.8.1",
     "decorator-transforms": "catalog:",
     "ember-click-outside": "catalog:",
     "ember-intl": "catalog:",

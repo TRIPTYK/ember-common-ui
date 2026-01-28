@@ -141,9 +141,9 @@ module(
       await renderComponent(tableParams);
       assert
         .dom(
-          '[data-test-table-generic-prefab] [data-test-row="1"] td:nth-child(2)'
+          '[data-test-table-generic-prefab] [data-test-row="1"]'
         )
-        ?.hasText('Simon');
+        ?.hasText('Leroy Simon info@triptyk.eu');
     });
 
     test('it passes a renderElement', async function (assert) {

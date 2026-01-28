@@ -167,7 +167,7 @@ catalogs:
       version: 2.8.0
     globals:
       specifier: ^17.2.0
-      version: 17.1.0
+      version: 17.2.0
     imask:
       specifier: ~7.6.1
       version: 7.6.1
@@ -858,6 +858,9 @@ importers:
       '@embroider/addon-shim':
         specifier: 'catalog:'
         version: 1.10.2
+      '@warp-drive/utilities':
+        specifier: ~5.8.1
+        version: 5.8.1(@glint/template@1.7.3)(@warp-drive/core@5.8.1(@babel/core@7.28.6)(@glint/template@1.7.3))
       decorator-transforms:
         specifier: 'catalog:'
         version: 2.3.1(@babel/core@7.28.6)

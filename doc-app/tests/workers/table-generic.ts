@@ -6,7 +6,7 @@ export async function TableGenericUserWorker(
   worker: ReturnType<typeof setupWorker>
 ) {
   worker.use(
-    http.get('http://localhost:4200/user', (req) => {
+    http.get('http://localhost:4200/users', (req) => {
       let data;
 
       const sort = new URL(req.request.url).searchParams.get('sort');

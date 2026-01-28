@@ -12,7 +12,7 @@ import YetiTable from 'ember-yeti-table/components/yeti-table';
 import { hash } from '@ember/helper';
 import LoadingIndicator from '../tpk-loading-indicator.gts';
 import { assert } from '@ember/debug';
-import type { StructuredDataDocument } from '@warp-drive/core/types/request';
+import { query } from '@warp-drive/utilities/json-api';
 
 export interface SortData {
   prop: string;
@@ -82,13 +82,6 @@ export interface TableGenericTableSignature {
   };
 }
 
-interface TableResponse {
-  data: Record<string, unknown>[];
-  meta: {
-    total: number;
-  };
-}
-
 export default class TableGenericTableComponent extends Component<TableGenericTableSignature> {
   @service declare store: Store;
   @tracked totalRows?: number;
@@ -121,36 +114,25 @@ export default class TableGenericTableComponent extends Component<TableGenericTa
       sortString,
     );
 
-    const urlParameters = new URLSearchParams();
-    urlParameters.append('page[size]', data.paginationData.pageSize.toString());
-    urlParameters.append(
-      'page[number]',
-      data.paginationData.pageNumber.toString(),
-    );
-    urlParameters.append('sort', queryOptions.sort);
-    if (queryOptions.include) {
-      urlParameters.append('include', queryOptions.include);
-    }
+    const filter = new Map();
+
     if (queryOptions.filter) {
       for (const [key, value] of Object.entries(queryOptions.filter ?? {})) {
         if (value === undefined) continue;
-        urlParameters.append(`filter[${key}]`, value);
+        filter.set(`filter[${key}]`, value);
       }
     }
-    for (const [key, value] of Object.entries(this.additionalFilters ?? {})) {
-      if (value === undefined || value === null) continue;
-      urlParameters.append(`filter[${key}]`, value);
-    }
 
-    const response: StructuredDataDocument<TableResponse> =
-      await this.store.request({
-        url: `/${this.args.entity}?${urlParameters.toString()}`,
-        method: 'GET',
-        // We need to reload cache, something weird is happening
-        cacheOptions: {
-          reload: true,
-        },
-      });
+    const response =
+      await this.store.request(query(this.args.entity, {
+        include: queryOptions.include ?? [],
+        'page[size]': queryOptions.page.size,
+        'page[number]': queryOptions.page.number,
+        sort: queryOptions.sort,
+        ...Object.fromEntries(filter),
+      }, {
+        reload: true
+      }))
     const content = response.content;
 
     assert(
