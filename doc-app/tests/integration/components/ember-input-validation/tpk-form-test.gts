@@ -93,7 +93,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.verifySteps(['onSubmit']);
   });
 
-  test.skip('Should pass errors to the prefab inputs when the changeset is invalid upon submission', async function (assert) {
+  test('Should pass errors to the prefab inputs when the changeset is invalid upon submission', async function (assert) {
     const changeset = await setupComponent({
       validationSchema: object({
         name: string().length(10),
