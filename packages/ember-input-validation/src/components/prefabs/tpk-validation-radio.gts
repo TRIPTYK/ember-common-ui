@@ -33,7 +33,7 @@ const TpkValidationRadioPrefabComponent: TOC<TpkValidationRadioPrefabComponentSi
     >
       <div
         class='tpk-radio-container'
-        data-test-tpk-prefab-radio-container
+        data-test-tpk-prefab-radio-container={{@validationField}}
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes

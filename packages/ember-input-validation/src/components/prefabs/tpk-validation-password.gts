@@ -50,7 +50,7 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
     >
       <V.Label
         class='tpk-password-container'
-        data-test-tpk-prefab-password-container
+        data-test-tpk-prefab-password-container={{@validationField}}
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}

@@ -100,7 +100,7 @@ export default class TpkValidationIBANPrefabComponent extends Component<TpkValid
     >
       <V.Label
         class='tpk-iban-container'
-        data-test-tpk-prefab-iban-container
+        data-test-tpk-prefab-iban-container={{@validationField}}
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}

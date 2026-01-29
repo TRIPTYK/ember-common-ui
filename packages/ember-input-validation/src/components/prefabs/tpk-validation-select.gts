@@ -72,7 +72,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
       {{! @glint-expect-error }}
       anchorScrollUp={{@validationField}}
       data-has-error='{{this.hasError}}'
-      data-test-tpk-prefab-select-container
+      data-test-tpk-prefab-select-container={{@validationField}}
       ...attributes
     >
       <TpkSelectComponent

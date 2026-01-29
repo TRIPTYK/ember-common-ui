@@ -42,7 +42,7 @@ export default class TpkValidationNumberPrefabComponent extends Component<TpkVal
     >
       <V.Label
         class='tpk-number-container'
-        data-test-tpk-prefab-number-container
+        data-test-tpk-prefab-number-container={{@validationField}}
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}

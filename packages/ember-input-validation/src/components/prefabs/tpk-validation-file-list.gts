@@ -99,7 +99,7 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
-        data-test-tpk-prefab-file-list-container
+        data-test-tpk-prefab-file-list-container={{@validationField}}
         ...attributes
       >
         <MandatoryLabelComponent @label={{@label}} class='tpk-label' />

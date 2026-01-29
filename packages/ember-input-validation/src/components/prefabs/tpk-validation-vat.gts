@@ -95,7 +95,7 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
     >
       <V.Label
         class='tpk-vat-container'
-        data-test-tpk-prefab-vat-container
+        data-test-tpk-prefab-vat-container={{@validationField}}
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}

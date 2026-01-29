@@ -34,7 +34,7 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
-        data-test-tpk-prefab-checkbox-container
+        data-test-tpk-prefab-checkbox-container={{@validationField}}
       >
         <MandatoryLabelComponent
           class='tpk-label'

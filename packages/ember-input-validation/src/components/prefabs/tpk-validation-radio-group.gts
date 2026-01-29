@@ -39,7 +39,7 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
-        data-test-tpk-prefab-radio-group-container
+        data-test-tpk-prefab-radio-group-container={{@validationField}}
         ...attributes
       >
         <legend class='tpk-radio-group-label'>

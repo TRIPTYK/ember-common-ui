@@ -34,7 +34,7 @@ const TpkValidationEmailPrefabComponent: TOC<TpkValidationEmailComponentSignatur
     >
       <V.Label
         class='tpk-email-container'
-        data-test-tpk-prefab-email-container
+        data-test-tpk-prefab-email-container={{@validationField}}
         data-has-error='{{V.hasError}}'
         {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
