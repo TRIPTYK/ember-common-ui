@@ -67,10 +67,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     );
   }
   get renderInPlace() {
-    console.log(this.args.renderInPlace);
-
-    const renderInPlace = this.args.renderInPlace ?? false;
-    return renderInPlace === false ? false : true;
+    return this.args.renderInPlace === false ? false : true;
   }
 
   get multiple() {
