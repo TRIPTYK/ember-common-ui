@@ -123,16 +123,19 @@ export default class TableGenericTableComponent extends Component<TableGenericTa
       }
     }
 
-    const response =
-      await this.store.request(query(this.args.entity, {
-        include: queryOptions.include ?? [],
-        'page[size]': queryOptions.page.size,
-        'page[number]': queryOptions.page.number,
-        sort: queryOptions.sort,
-        ...Object.fromEntries(filter),
-      }, {
-        reload: true
-      }))
+    const filterParams = Object.fromEntries(filter) as Record<string, string>;
+    const queryParams: Parameters<typeof query>[1] = {
+      include: queryOptions.include ?? [],
+      'page[size]': queryOptions.page.size,
+      'page[number]': queryOptions.page.number,
+      sort: queryOptions.sort,
+      ...filterParams,
+    };
+    const response = await this.store.request(
+      query(this.args.entity, queryParams, {
+        reload: true,
+      }),
+    );
     const content = response.content;
 
     assert(
