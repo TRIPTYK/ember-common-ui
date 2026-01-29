@@ -229,10 +229,7 @@ export default class ChangesetFormComponent<
 
     if (args.reactive ?? true) {
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      this.args.changeset.onSet(async (key) => {
-        if (typeof key !== 'string') {
-          return;
-        }
+      this.args.changeset.onSet(async (key: string) => {
         debug(`Changeset key changed: ${key}`);
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
@@ -242,7 +239,7 @@ export default class ChangesetFormComponent<
           );
 
           for (const error of this.args.changeset.errors) {
-            if (typeof error.key === 'string' && isFieldError(key, error.key)) {
+            if (isFieldError(key, error.key)) {
               this.args.changeset.removeError(error.key);
             }
           }
