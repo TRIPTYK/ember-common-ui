@@ -10,7 +10,7 @@
 
 .tempus-dominus-widget.light .icon {
   background-color: black;
-  @apply w-4 h-4 flex ;
+  @apply w-4 h-4 flex;
 }
 
 .icon-calendar {
