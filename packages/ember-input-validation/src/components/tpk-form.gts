@@ -233,14 +233,12 @@ export default class ChangesetFormComponent<
         debug(`Changeset key changed: ${key}`);
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             key,
             this.args.validationSchema,
             draft,
           );
 
           for (const error of this.args.changeset.errors) {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             if (isFieldError(key, error.key)) {
               this.args.changeset.removeError(error.key);
             }

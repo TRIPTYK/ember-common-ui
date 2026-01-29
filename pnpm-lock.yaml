@@ -55,7 +55,7 @@ catalogs:
       specifier: ^4.4.2
       version: 4.4.2
     '@eonasdan/tempus-dominus':
-      specifier: ^6.9.10
+      specifier: ^6.10.4
       version: 6.10.4
     '@eslint/js':
       specifier: ^9.17.0
@@ -121,7 +121,7 @@ catalogs:
       specifier: ~4.2.2
       version: 4.2.2
     ember-power-select:
-      specifier: git+https://github.com/cibernox/ember-power-select/tree/dist
+      specifier: github:cibernox/ember-power-select#dist
       version: 8.12.1
     ember-power-select-with-create:
       specifier: ^3.1.0
@@ -167,7 +167,7 @@ catalogs:
       version: 2.8.0
     globals:
       specifier: ^17.2.0
-      version: 17.1.0
+      version: 17.2.0
     imask:
       specifier: ~7.6.1
       version: 7.6.1
@@ -677,6 +677,9 @@ importers:
       '@embroider/addon-shim':
         specifier: 'catalog:'
         version: 1.10.2
+      '@eonasdan/tempus-dominus':
+        specifier: 'catalog:'
+        version: 6.10.4(@popperjs/core@2.11.8)
       '@glimmer/component':
         specifier: 'catalog:'
         version: 2.0.0
@@ -698,6 +701,12 @@ importers:
       ember-modifier:
         specifier: 'catalog:'
         version: 4.2.2(@babel/core@7.28.6)
+      ember-power-select:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/cibernox/ember-power-select/tar.gz/33f961ac251325cd1173002eb55d4ffd96216e91(@babel/core@7.28.6)(@ember/test-helpers@5.4.1(@babel/core@7.28.6)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(ember-basic-dropdown@8.11.0(@babel/core@7.28.6)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.6)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3)(ember-source@6.10.0(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-concurrency@5.1.0(@babel/core@7.28.6)(@glint/template@1.7.3))
+      ember-power-select-with-create:
+        specifier: 'catalog:'
+        version: 3.1.0(@babel/core@7.28.6)(@glimmer/component@2.0.0)(@glint/template@1.7.3)(ember-basic-dropdown@8.11.0(@babel/core@7.28.6)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.6)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3)(ember-source@6.10.0(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-power-select@https://codeload.github.com/cibernox/ember-power-select/tar.gz/33f961ac251325cd1173002eb55d4ffd96216e91(@babel/core@7.28.6)(@ember/test-helpers@5.4.1(@babel/core@7.28.6)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(ember-basic-dropdown@8.11.0(@babel/core@7.28.6)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.6)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3)(ember-source@6.10.0(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-concurrency@5.1.0(@babel/core@7.28.6)(@glint/template@1.7.3)))(ember-source@6.10.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-strict-application-resolver:
         specifier: 'catalog:'
         version: 0.1.1(@babel/core@7.28.6)

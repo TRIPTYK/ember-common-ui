@@ -67,13 +67,15 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     );
   }
   get renderInPlace() {
-    return this.args.renderInPlace === false ? false : true;
+    console.log(this.args.renderInPlace);
+
+    const renderInPlace = this.args.renderInPlace ?? false;
+    return renderInPlace === false ? false : true;
   }
 
   get multiple() {
     return this.args.multiple === true ? undefined : false;
   }
-
   <template>
     <PowerSelect
       @labelText={{@label}}

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "catalog:",
+    "@eonasdan/tempus-dominus": "catalog:",
     "@glimmer/component": "catalog:",
     "@glimmer/tracking": "catalog:",
     "decorator-transforms": "catalog:",
@@ -56,6 +57,8 @@
     "ember-intl": "catalog:",
     "ember-lifeline": "catalog:",
     "ember-modifier": "catalog:",
+    "ember-power-select": "catalog:",
+    "ember-power-select-with-create": "catalog:",
     "ember-strict-application-resolver": "catalog:",
     "ember-test-selectors": "catalog:",
     "zod": "catalog:"
