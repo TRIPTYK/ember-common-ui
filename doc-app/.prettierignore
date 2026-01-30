@@ -4,6 +4,9 @@
 # compiled output
 /dist/
 
+# generated
+public/mockServiceWorker.js
+
 # misc
 /coverage/
 !.*
