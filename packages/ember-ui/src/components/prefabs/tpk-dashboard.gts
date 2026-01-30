@@ -1,6 +1,6 @@
-import type { TOC } from "@ember/component/template-only";
-import TpkNavbar, { type NavbarItem } from "./tpk-navbar.gts";
-import TpkSidebar, { type SidebarItem } from "./tpk-sidebar.gts";
+import type { TOC } from '@ember/component/template-only';
+import TpkNavbar, { type NavbarItem } from './tpk-navbar.gts';
+import TpkSidebar, { type SidebarItem } from './tpk-sidebar.gts';
 
 export type { NavbarItem, SidebarItem };
 
@@ -20,14 +20,19 @@ interface DashboardSignature {
 }
 
 const TpkDashboard: TOC<DashboardSignature> = <template>
-  <div class="drawer lg:drawer-open">
-    <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content">
-      <TpkNavbar @title={{@title}} @navbarItems={{@navbarItems}} @drawerId="my-drawer-4" @currentUser={{@currentUser}} />
+  <div class='drawer lg:drawer-open'>
+    <input id='my-drawer-4' type='checkbox' class='drawer-toggle' />
+    <div class='drawer-content'>
+      <TpkNavbar
+        @title={{@title}}
+        @navbarItems={{@navbarItems}}
+        @drawerId='my-drawer-4'
+        @currentUser={{@currentUser}}
+      />
       {{yield}}
     </div>
 
-    <TpkSidebar @sidebarItems={{@sidebarItems}} @drawerId="my-drawer-4" />
+    <TpkSidebar @sidebarItems={{@sidebarItems}} @drawerId='my-drawer-4' />
   </div>
 </template>;
 

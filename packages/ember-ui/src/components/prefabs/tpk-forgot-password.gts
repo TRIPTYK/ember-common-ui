@@ -1,2 +1,2 @@
 // TODO
-export default <template></template>
+<template></template>
