@@ -14,7 +14,7 @@ module('Unit | Utils | clear-object', function (hooks) {
     };
     assert.deepEqual(clearObjectValues(objToClear), {
       name: '',
-      age: '',
+      age: 0,
       hobbies: [],
       isDeveloper: false,
     });
@@ -58,7 +58,7 @@ module('Unit | Utils | clear-object', function (hooks) {
     };
     assert.deepEqual(clearObjectValues(objToClear), {
       name: '',
-      age: '',
+      age: 0,
       isDeveloper: false,
       hobbies: [
         {
