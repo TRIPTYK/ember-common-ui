@@ -2,8 +2,6 @@ import { babel } from '@rollup/plugin-babel';
 import { Addon } from '@embroider/addon-dev/rollup';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
-import postcss from 'rollup-plugin-postcss';
-import postcssImport from 'postcss-import';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -70,30 +68,6 @@ export default [
 
       // Remove leftover build artifacts when starting a new build.
       addon.clean(),
-    ],
-  },
-  {
-    input: 'src/app.css',
-    output: {
-      dir: 'dist',
-      assetFileNames: '[name][extname]',
-    },
-    plugins: [
-      postcss({
-        extract: 'app.css',
-        minimize: false,
-        plugins: [postcssImport()],
-      }),
-      {
-        name: 'remove-css-js-entry',
-        generateBundle(_, bundle) {
-          for (const file of Object.keys(bundle)) {
-            if (bundle[file].type === 'chunk') {
-              delete bundle[file];
-            }
-          }
-        },
-      },
     ],
   },
 ];
