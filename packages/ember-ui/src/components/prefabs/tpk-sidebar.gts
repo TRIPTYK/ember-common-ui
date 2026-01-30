@@ -1,13 +1,14 @@
-import { on } from '@ember/modifier';
 import type { TOC } from '@ember/component/template-only';
+import { hash } from '@ember/helper';
+import { on } from '@ember/modifier';
 import { LinkTo } from '@ember/routing';
 
 export interface SidebarItem {
   label: string;
   tooltip?: string;
   icon?: TOC<{ Element: SVGSVGElement }>;
-  onClick?: (event: PointerEvent) => void;
   route?: string;
+  onClick?: (event: PointerEvent) => void;
 }
 
 interface SidebarSignature {
@@ -39,6 +40,7 @@ const TpkSidebar: TOC<SidebarSignature> = <template>
             {{#if item.route}}
               <LinkTo
                 @route={{item.route}}
+                @query={{hash}}
                 class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
                 data-tip={{item.tooltip}}
               >

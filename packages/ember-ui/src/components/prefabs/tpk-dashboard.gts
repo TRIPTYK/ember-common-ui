@@ -13,6 +13,8 @@ interface DashboardSignature {
     currentUser?: {
       fullName: string;
     };
+    onLogout?: () => void;
+    profileRoute?: string;
   };
   Blocks: {
     default: [];
@@ -28,6 +30,8 @@ const TpkDashboard: TOC<DashboardSignature> = <template>
         @navbarItems={{@navbarItems}}
         @drawerId='my-drawer-4'
         @currentUser={{@currentUser}}
+        @onLogout={{@onLogout}}
+        @profileRoute={{@profileRoute}}
       />
       {{yield}}
     </div>

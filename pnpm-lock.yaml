@@ -364,6 +364,9 @@ importers:
       '@triptyk/ember-ui':
         specifier: workspace:*
         version: link:../packages/ember-ui
+      '@triptyk/ember-utils':
+        specifier: workspace:*
+        version: link:../packages/ember-utils
       '@types/qunit':
         specifier: 'catalog:'
         version: 2.19.13
