@@ -59,12 +59,14 @@
     "@warp-drive/utilities": "~5.8.1",
     "decorator-transforms": "catalog:",
     "ember-click-outside": "catalog:",
+    "ember-immer-changeset": "catalog:",
     "ember-intl": "catalog:",
     "ember-modifier": "catalog:",
     "ember-strict-application-resolver": "catalog:",
     "ember-test-selectors": "catalog:",
     "ember-yeti-table": "git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist",
-    "focus-trap": "~7.8.0"
+    "focus-trap": "~7.8.0",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@babel/core": "catalog:",
@@ -86,6 +88,7 @@
     "@rollup/plugin-babel": "catalog:",
     "@rollup/plugin-node-resolve": "catalog:",
     "@triptyk/ember-input": "workspace:*",
+    "@triptyk/ember-input-validation": "workspace:*",
     "@tsconfig/ember": "catalog:",
     "@types/node": "catalog:",
     "@warp-drive/core": "catalog:",
@@ -128,6 +131,12 @@
     },
     "app-js": {
       "./components/prefabs/tpk-confirm-modal-prefab.js": "./dist/_app_/components/prefabs/tpk-confirm-modal-prefab.js",
+      "./components/prefabs/tpk-dashboard.js": "./dist/_app_/components/prefabs/tpk-dashboard.js",
+      "./components/prefabs/tpk-forgot-password.js": "./dist/_app_/components/prefabs/tpk-forgot-password.js",
+      "./components/prefabs/tpk-login.js": "./dist/_app_/components/prefabs/tpk-login.js",
+      "./components/prefabs/tpk-navbar.js": "./dist/_app_/components/prefabs/tpk-navbar.js",
+      "./components/prefabs/tpk-reset-password.js": "./dist/_app_/components/prefabs/tpk-reset-password.js",
+      "./components/prefabs/tpk-sidebar.js": "./dist/_app_/components/prefabs/tpk-sidebar.js",
       "./components/prefabs/tpk-table-generic-prefab.js": "./dist/_app_/components/prefabs/tpk-table-generic-prefab.js",
       "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
       "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
@@ -158,6 +167,7 @@
   },
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
+    "@triptyk/ember-input-validation": "workspace:*",
     "ember-source": ">=5.0.0"
   },
   "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789"

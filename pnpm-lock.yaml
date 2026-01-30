@@ -68,7 +68,7 @@ catalogs:
       version: 1.1.2
     '@glint/ember-tsc':
       specifier: ~1.1.0
-      version: 1.0.9
+      version: 1.1.0
     '@glint/template':
       specifier: ~1.7.3
       version: 1.7.3
@@ -109,7 +109,7 @@ catalogs:
       specifier: ~5.1.0
       version: 5.1.0
     ember-immer-changeset:
-      specifier: git+https://github.com/TRIPTYK/ember-immer-changeset/tree/dist
+      specifier: github:TRIPTYK/ember-immer-changeset#dist
       version: 0.0.1
     ember-intl:
       specifier: ~8.0.3
@@ -867,6 +867,9 @@ importers:
       ember-click-outside:
         specifier: 'catalog:'
         version: 6.1.1(@babel/core@7.28.6)
+      ember-immer-changeset:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d587dd3e49a7b1161abb826ce9a84fd109b2a3c3(@babel/core@7.28.6)
       ember-intl:
         specifier: 'catalog:'
         version: 8.0.3(@babel/core@7.28.6)(@ember/test-helpers@5.4.1(@babel/core@7.28.6)(@glint/template@1.7.3))(typescript@5.9.3)
@@ -885,6 +888,9 @@ importers:
       focus-trap:
         specifier: ~7.8.0
         version: 7.8.0
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@babel/core':
         specifier: 'catalog:'
@@ -943,6 +949,9 @@ importers:
       '@triptyk/ember-input':
         specifier: workspace:*
         version: link:../ember-input
+      '@triptyk/ember-input-validation':
+        specifier: workspace:*
+        version: link:../ember-input-validation
       '@tsconfig/ember':
         specifier: 'catalog:'
         version: 3.0.12
