@@ -22,7 +22,7 @@
     "lint:js:fix": "eslint . --fix",
     "_syncPnpm": "pnpm sync-dependencies-meta-injected",
     "lint:types": "ember-tsc",
-    "start": "vite",
+    "start": "concurrently \"pnpm turbo build:watch --filter '@triptyk/ember*'\" \"vite dev\"",
     "test": "vite build --mode development && ember test --path dist"
   },
   "exports": {
@@ -79,7 +79,7 @@
     "ember-cli-deprecation-workflow": "^4.0.0",
     "ember-cli-page-object": "^2.3.2",
     "ember-concurrency": "catalog:",
-    "ember-immer-changeset": "catalog:",
+    "ember-immer-changeset": "git+https://github.com/TRIPTYK/ember-immer-changeset/tree/dist",
     "ember-intl": "catalog:",
     "ember-load-initializers": "^3.0.1",
     "ember-modifier": "^4.2.2",

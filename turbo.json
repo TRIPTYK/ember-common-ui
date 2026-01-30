@@ -5,6 +5,10 @@
         "inputs": ["src/**"],
         "outputs": ["dist/**"]
       },
+      "build:watch": {
+        "persistent": true,
+        "cache": false
+      },
       "_syncPnpm": {
         "dependsOn": ["^build"],
         "cache": false

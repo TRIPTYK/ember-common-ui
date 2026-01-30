@@ -49,7 +49,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
         class='tpk-input-container'
         data-test-tpk-prefab-input-container={{@validationField}}
         data-has-error='{{V.hasError}}'
-        {{! @glint-expect-error }}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

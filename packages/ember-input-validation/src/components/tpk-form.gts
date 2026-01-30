@@ -1,10 +1,11 @@
 import type Owner from '@ember/owner';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import type { Promisable } from 'type-fest';
+import type { PartialDeep, Promisable } from 'type-fest';
 import { assert, debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
+import type * as z from 'zod';
 import { ZodObject } from 'zod';
 import { isFieldError } from '../utils/is-field-error.ts';
 import perform from 'ember-concurrency/helpers/perform';
@@ -51,10 +52,22 @@ import type TpkValidationRadioGroupPrefabComponent from './prefabs/tpk-validatio
 import type TpkValidationFilePrefabComponent from './prefabs/tpk-validation-file.gts';
 import { trackedArray } from '@ember/reactive/collections';
 
-interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
+type DeepNullable<T> = {
+  [K in keyof T]: DeepNullable<T[K]> | null;
+};
+
+type DeepNothing<T> = DeepNullable<PartialDeep<T>>;
+
+interface ChangesetFormComponentArgs<
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> {
   changeset: T;
-  onSubmit: (changeset: T) => Promisable<unknown>;
-  validationSchema: ZodObject;
+  onSubmit: (
+    data: z.infer<S>,
+    changeset: ImmerChangeset<z.infer<S>>,
+  ) => Promisable<unknown>;
+  validationSchema: S;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
   autoScrollOnError?: boolean;
@@ -62,8 +75,11 @@ interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
-  Args: ChangesetFormComponentArgs<T>;
+export interface ChangesetFormComponentSignature<
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> {
+  Args: ChangesetFormComponentArgs<S, T>;
   Blocks: {
     default: [
       {
@@ -196,12 +212,13 @@ export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
 }
 
 export default class ChangesetFormComponent<
-  T extends ImmerChangeset,
-> extends Component<ChangesetFormComponentSignature<T>> {
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> extends Component<ChangesetFormComponentSignature<S, T>> {
   @tracked requiredFields: string[] = trackedArray([]);
   @service declare tpkForm: TpkFormService;
 
-  public constructor(owner: Owner, args: ChangesetFormComponentArgs<T>) {
+  public constructor(owner: Owner, args: ChangesetFormComponentArgs<S, T>) {
     super(owner, args);
 
     assert(
@@ -286,7 +303,11 @@ export default class ChangesetFormComponent<
     }
 
     debug('Calling onSubmit callback');
-    await this.args.onSubmit(this.args.changeset);
+    await this.args.onSubmit(
+      this.args.changeset.data as z.infer<S>,
+      // It is theorically safe. The only way it could be unsafe is if the user unexecutes the changeset after validation. If this is the case, the type will mismatch the runtime type. We will rarely do that so it's fine at the moment.
+      this.args.changeset as unknown as ImmerChangeset<z.infer<S>>,
+    );
   });
 
   submit = task(this, async (e: Event) => {

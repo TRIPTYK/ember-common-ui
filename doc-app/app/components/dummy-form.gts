@@ -63,7 +63,6 @@ export default class DummyFormComponent extends Component {
 
   @action
   onSubmit() {
-    console.log('Form submitted with data:', this.changeset.data);
     alert('Form submitted successfully!');
   }
 
