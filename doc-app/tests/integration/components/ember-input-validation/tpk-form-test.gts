@@ -1,6 +1,6 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, fillIn, render } from '@ember/test-helpers';
+import { click, fillIn, pauseTest, render } from '@ember/test-helpers';
 import { changesetGet, ImmerChangeset } from 'ember-immer-changeset';
 import { object, string, array, email, number } from 'zod';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';
@@ -40,6 +40,22 @@ module('Integration | Component | tpk-form', function (hooks) {
     await fillIn('input[type="email"]', 'test');
 
     assert.true(changeset.isInvalid);
+  });
+
+  test('the error message is formatted correctly when reactive is true', async function (assert) {
+    const changeset = await setupComponent({
+      reactive: true,
+      validationSchema: object({
+        name: string().min(5, 'First name must be at least 5 characters long'),
+      }),
+    });
+
+    await fillIn('[data-test-name] input', 't');
+    assert.true(changeset.isInvalid);
+
+    assert
+      .dom('[data-test-tpk-validation-errors]')
+      .hasText('First name must be at least 5 characters long');
   });
 
   test('it sets correct error path when single field is errored in reactive=true', async function (assert) {

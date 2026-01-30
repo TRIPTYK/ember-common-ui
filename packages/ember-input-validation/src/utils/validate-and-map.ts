@@ -1,4 +1,4 @@
-import { object, ZodError, ZodObject, type ZodType } from 'zod';
+import {  ZodError, ZodObject, type ZodType } from 'zod';
 import { type ValidationError as ChangesetValidationError } from 'ember-immer-changeset';
 import { get } from '@ember/object';
 import { assert } from '@ember/debug';
@@ -6,8 +6,7 @@ import { assert } from '@ember/debug';
 export function deepPickByPath<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends ZodObject<any>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
->(schema: T, path: string): ZodObject<any> {
+>(schema: T, path: string): ZodType<unknown, unknown> {
   const keys = path.split('.');
 
   function pick(
@@ -31,19 +30,11 @@ export function deepPickByPath<
       throw new Error(`Key "${key}" not found in schema`);
     }
 
-    return object({
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      [key]: pick(shape[key], rest),
-    });
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    return pick(shape[key], rest);
   }
 
-  const result = pick(schema, keys);
-
-  if (!(result instanceof ZodObject)) {
-    throw new Error('Result is not an object');
-  }
-
-  return result;
+  return pick(schema, keys);
 }
 
 export async function validateAndMapErrors<T extends ZodObject>(
@@ -68,22 +59,20 @@ export async function validateOneAndMapErrors<T extends ZodObject>(
     await propSchema.parseAsync(get(dto, path));
     return [];
   } catch (e) {
-    const prefix = path.split('.');
+    if (!(e instanceof ZodError))
+      console.warn('Non-ValidationError caught in validateOneAndMapErrors', e);
 
-    if (prefix.length === 1) {
-      return applyErrors(path, e);
-    }
-
-    return applyErrors(prefix.slice(0, -1).join('.'), e);
+    return applyErrors(path, e);
   }
 }
 
 function applyErrors(prefix: string = '', e: unknown) {
   if (e instanceof ZodError) {
     const errs = e.issues.reduce((mergedErrors, e) => {
-      const pathWithPrefix = prefix
-        ? prefix + e.path.join('.')
-        : e.path.join('.');
+      const errorPath = e.path.join('.');
+      const pathWithPrefix = prefix && errorPath
+        ? `${prefix}.${errorPath}`
+        : prefix || errorPath;
       const path = jsonPathToDottedPath(pathWithPrefix);
       mergedErrors.push({
         message: e.message,

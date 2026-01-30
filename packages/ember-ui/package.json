@@ -39,6 +39,7 @@
   ],
   "scripts": {
     "build": "rollup --config",
+    "build:watch": "rollup --config --watch",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",

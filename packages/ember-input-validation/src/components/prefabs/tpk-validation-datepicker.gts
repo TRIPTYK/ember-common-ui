@@ -79,7 +79,7 @@ export default class TpkValidationDatepickerPrefabComponent extends Component<Tp
       <div
         class='tpk-datepicker-container'
         data-test-tpk-prefab-datepicker-container={{@validationField}}
-        {{! @glint-expect-error }}
+        {{!-- @glint-expect-error --}}
         anchorScrollUp={{@validationField}}
         data-has-error='{{V.hasError}}'
         ...attributes

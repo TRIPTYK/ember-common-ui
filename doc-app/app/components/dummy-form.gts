@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, date, boolean, array, email } from 'zod';
+import z, { object, string, date, boolean, array, email } from 'zod';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 
 export default class DummyFormComponent extends Component {
@@ -62,8 +62,7 @@ export default class DummyFormComponent extends Component {
   ];
 
   @action
-  onSubmit() {
-    console.log('Form submitted with data:', this.changeset.data);
+  onSubmit(data: z.infer<typeof this.validationSchema>) {
     alert('Form submitted successfully!');
   }
 
