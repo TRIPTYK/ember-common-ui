@@ -54,6 +54,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
   }
 
   get label() {
+    console.log('label', this.args.label, this.mandatory);
     return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
@@ -76,7 +77,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
       ...attributes
     >
       <TpkSelectComponent
-        @label={{@label}}
+        @label={{this.label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
         @placeholder={{@placeholder}}
