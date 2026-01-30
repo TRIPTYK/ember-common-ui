@@ -132,7 +132,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
         class='tpk-mobile-container'
         data-has-error='{{this.hasError}}'
         data-test-tpk-prefab-mobile-container={{@validationField}}
-        {{!-- @glint-expect-error --}}
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

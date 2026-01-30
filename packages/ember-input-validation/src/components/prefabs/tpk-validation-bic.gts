@@ -56,7 +56,7 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
         class='tpk-bic-container'
         data-test-tpk-prefab-bic-container={{@validationField}}
         data-has-error='{{V.hasError}}'
-
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

@@ -58,9 +58,15 @@ type DeepNullable<T> = {
 
 type DeepNothing<T> = DeepNullable<PartialDeep<T>>;
 
-interface ChangesetFormComponentArgs<S extends ZodObject, T extends ImmerChangeset<DeepNothing<z.infer<S>>>> {
+interface ChangesetFormComponentArgs<
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> {
   changeset: T;
-  onSubmit: (data: z.infer<S>, changeset: ImmerChangeset<z.infer<S>>) => Promisable<unknown>;
+  onSubmit: (
+    data: z.infer<S>,
+    changeset: ImmerChangeset<z.infer<S>>,
+  ) => Promisable<unknown>;
   validationSchema: S;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
@@ -69,7 +75,10 @@ interface ChangesetFormComponentArgs<S extends ZodObject, T extends ImmerChanges
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature<S extends ZodObject, T extends ImmerChangeset<DeepNothing<z.infer<S>>>> {
+export interface ChangesetFormComponentSignature<
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> {
   Args: ChangesetFormComponentArgs<S, T>;
   Blocks: {
     default: [
@@ -241,14 +250,12 @@ export default class ChangesetFormComponent<
         debug(`Changeset key changed: ${key}`);
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             key,
             this.args.validationSchema,
             draft,
           );
 
           for (const error of this.args.changeset.errors) {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             if (isFieldError(key, error.key)) {
               this.args.changeset.removeError(error.key);
             }
@@ -296,9 +303,10 @@ export default class ChangesetFormComponent<
     }
 
     debug('Calling onSubmit callback');
-    await this.args.onSubmit(this.args.changeset.data as z.infer<S>,
+    await this.args.onSubmit(
+      this.args.changeset.data as z.infer<S>,
       // It is theorically safe. The only way it could be unsafe is if the user unexecutes the changeset after validation. If this is the case, the type will mismatch the runtime type. We will rarely do that so it's fine at the moment.
-      this.args.changeset as unknown as ImmerChangeset<z.infer<S>>
+      this.args.changeset as unknown as ImmerChangeset<z.infer<S>>,
     );
   });
 

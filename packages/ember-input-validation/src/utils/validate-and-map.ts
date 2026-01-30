@@ -1,4 +1,4 @@
-import {  ZodError, ZodObject, type ZodType } from 'zod';
+import { ZodError, ZodObject, type ZodType } from 'zod';
 import { type ValidationError as ChangesetValidationError } from 'ember-immer-changeset';
 import { get } from '@ember/object';
 import { assert } from '@ember/debug';
@@ -70,9 +70,8 @@ function applyErrors(prefix: string = '', e: unknown) {
   if (e instanceof ZodError) {
     const errs = e.issues.reduce((mergedErrors, e) => {
       const errorPath = e.path.join('.');
-      const pathWithPrefix = prefix && errorPath
-        ? `${prefix}.${errorPath}`
-        : prefix || errorPath;
+      const pathWithPrefix =
+        prefix && errorPath ? `${prefix}.${errorPath}` : prefix || errorPath;
       const path = jsonPathToDottedPath(pathWithPrefix);
       mergedErrors.push({
         message: e.message,

@@ -37,7 +37,7 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
       <fieldset
         class='tpk-radio-group-container'
         data-has-error='{{V.hasError}}'
-        {{!-- @glint-ignore --}}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         data-test-tpk-prefab-radio-group-container={{@validationField}}
         ...attributes

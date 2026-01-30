@@ -38,6 +38,7 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
         class='tpk-national-number-container'
         data-test-tpk-prefab-national-number-container={{@validationField}}
         data-has-error='{{V.hasError}}'
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

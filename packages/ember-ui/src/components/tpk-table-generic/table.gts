@@ -123,16 +123,22 @@ export default class TableGenericTableComponent extends Component<TableGenericTa
       }
     }
 
-    const response =
-      await this.store.request(query(this.args.entity, {
-        include: queryOptions.include ?? [],
-        'page[size]': queryOptions.page.size,
-        'page[number]': queryOptions.page.number,
-        sort: queryOptions.sort,
-        ...Object.fromEntries(filter),
-      }, {
-        reload: true
-      }))
+    const response = await this.store.request(
+      query(
+        this.args.entity,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        {
+          include: queryOptions.include ?? [],
+          'page[size]': queryOptions.page.size,
+          'page[number]': queryOptions.page.number,
+          sort: queryOptions.sort,
+          ...Object.fromEntries(filter),
+        },
+        {
+          reload: true,
+        },
+      ),
+    );
     const content = response.content;
 
     assert(

@@ -1,6 +1,6 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, fillIn, pauseTest, render } from '@ember/test-helpers';
+import { click, fillIn, render } from '@ember/test-helpers';
 import { changesetGet, ImmerChangeset } from 'ember-immer-changeset';
 import { object, string, array, email, number } from 'zod';
 import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';

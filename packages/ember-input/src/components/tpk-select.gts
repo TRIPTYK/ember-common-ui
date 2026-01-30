@@ -85,8 +85,11 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
       @labelClass={{@labelClass}}
       @multiple={{this.multiple}}
       @renderInPlace={{this.renderInPlace}}
+      {{! @glint-ignore }}
       @labelComponent={{@labelComponent}}
+      {{! @glint-ignore }}
       @selectedItemComponent={{@selectedItemComponent}}
+      {{! @glint-ignore }}
       @placeholderComponent={{@placeholderComponent}}
       @searchEnabled={{@searchEnabled}}
       @searchField={{@searchField}}
