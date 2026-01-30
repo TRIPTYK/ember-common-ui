@@ -3,7 +3,11 @@
 /* stylelint-disable no-invalid-position-at-import-rule */
 /* stylelint-disable import-notation */
 @import 'tailwindcss';
-/* @plugin "daisyui";
+@plugin "daisyui" {
+  themes:
+    cupcake --default,
+    dark;
+}
 @import '@triptyk/ember-input/dist/app.css';
 @import '@triptyk/ember-ui/dist/app.css';
-@import '@triptyk/ember-input-validation/dist/app.css'; */
+@import '@triptyk/ember-input-validation/dist/app.css';

@@ -124,9 +124,7 @@ module('Integration | Component | tpk-form', function (hooks) {
 
     assert.true(changeset.isInvalid);
     assert.dom('[data-test-tpk-validation-errors]').exists();
-    assert
-      .dom('[data-test-tpk-validation-errors]')
-      .hasAnyText();
+    assert.dom('[data-test-tpk-validation-errors]').hasAnyText();
   });
 
   // TODO: SHOULD BE FIXED AFTER WE FIND A WAY TO FIND REQUIRED FIELDS FROM ZOD SCHEMA
