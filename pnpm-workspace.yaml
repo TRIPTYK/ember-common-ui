@@ -2,6 +2,7 @@ packages:
   - packages/ember-input
   - packages/ember-input-validation
   - packages/ember-ui
+  - packages/ember-utils
   - doc-app
 
 autoInstallPeers: false

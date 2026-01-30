@@ -1,0 +1,161 @@
+{
+  "name": "@triptyk/ember-utils",
+  "version": "3.0.1",
+  "description": "Utility functions and helpers for Ember.js applications",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": {
+    "url": "git@github.com:TRIPTYK/ember-common-ui.git"
+  },
+  "license": "MIT",
+  "author": "Triptyk",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs",
+    "./dist/*.css": "./dist/*.css",
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist",
+    "static",
+    "translations",
+    "llm.txt"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "build:watch": "rollup --config --watch",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "ember-tsc --noEmit",
+    "prepack": "rollup --config",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "catalog:",
+    "@warp-drive/utilities": "~5.8.1",
+    "date-fns": "^4.1.0",
+    "decorator-transforms": "catalog:",
+    "ember-intl": "catalog:",
+    "ember-modifier": "catalog:",
+    "ember-strict-application-resolver": "catalog:",
+    "ember-test-selectors": "catalog:",
+    "js-file-downloader": "^1.1.25"
+  },
+  "devDependencies": {
+    "@babel/core": "catalog:",
+    "@babel/eslint-parser": "catalog:",
+    "@babel/plugin-proposal-class-properties": "catalog:",
+    "@babel/plugin-proposal-decorators": "catalog:",
+    "@babel/plugin-transform-class-static-block": "catalog:",
+    "@babel/plugin-transform-typescript": "catalog:",
+    "@babel/runtime": "catalog:",
+    "@ember/app-tsconfig": "catalog:",
+    "@ember/library-tsconfig": "catalog:",
+    "@embroider/addon-dev": "catalog:",
+    "@embroider/core": "catalog:",
+    "@eslint/js": "catalog:",
+    "@glimmer/component": "2.0.0",
+    "@glimmer/tracking": "catalog:",
+    "@glint/ember-tsc": "catalog:",
+    "@glint/template": "catalog:",
+    "@rollup/plugin-babel": "catalog:",
+    "@rollup/plugin-node-resolve": "catalog:",
+    "@triptyk/ember-input": "workspace:*",
+    "@tsconfig/ember": "catalog:",
+    "@types/node": "catalog:",
+    "@warp-drive/core": "catalog:",
+    "babel-plugin-ember-template-compilation": "catalog:",
+    "concurrently": "catalog:",
+    "ember-source": "catalog:",
+    "ember-template-imports": "catalog:",
+    "ember-template-lint": "^7.9.3",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-ember": "catalog:",
+    "eslint-plugin-import": "catalog:",
+    "eslint-plugin-n": "catalog:",
+    "globals": "catalog:",
+    "postcss-import": "^16.1.1",
+    "prettier": "catalog:",
+    "prettier-plugin-ember-template-tag": "catalog:",
+    "rollup": "catalog:",
+    "rollup-plugin-copy": "catalog:",
+    "rollup-plugin-postcss": "~4.0.2",
+    "rollup-plugin-ts": "catalog:",
+    "rsvp": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
+    "vite": "catalog:"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "public-assets": {
+      "./static/chevron-left.svg": "/ember-ui/icons/chevron-left.svg",
+      "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
+    },
+    "app-js": {
+      "./components/prefabs/tpk-confirm-modal-prefab.js": "./dist/_app_/components/prefabs/tpk-confirm-modal-prefab.js",
+      "./components/prefabs/tpk-table-generic-prefab.js": "./dist/_app_/components/prefabs/tpk-table-generic-prefab.js",
+      "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
+      "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
+      "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",
+      "./components/tpk-confirm-modal/cancel.js": "./dist/_app_/components/tpk-confirm-modal/cancel.js",
+      "./components/tpk-confirm-modal/confirm.js": "./dist/_app_/components/tpk-confirm-modal/confirm.js",
+      "./components/tpk-loading-indicator.js": "./dist/_app_/components/tpk-loading-indicator.js",
+      "./components/tpk-modal.js": "./dist/_app_/components/tpk-modal.js",
+      "./components/tpk-modal/content.js": "./dist/_app_/components/tpk-modal/content.js",
+      "./components/tpk-stack-list.js": "./dist/_app_/components/tpk-stack-list.js",
+      "./components/tpk-stack-list/content.js": "./dist/_app_/components/tpk-stack-list/content.js",
+      "./components/tpk-stack-list/head.js": "./dist/_app_/components/tpk-stack-list/head.js",
+      "./components/tpk-stack-list/item.js": "./dist/_app_/components/tpk-stack-list/item.js",
+      "./components/tpk-stack-list/title.js": "./dist/_app_/components/tpk-stack-list/title.js",
+      "./components/tpk-table-generic.js": "./dist/_app_/components/tpk-table-generic.js",
+      "./components/tpk-table-generic/body.js": "./dist/_app_/components/tpk-table-generic/body.js",
+      "./components/tpk-table-generic/body/action-menu.js": "./dist/_app_/components/tpk-table-generic/body/action-menu.js",
+      "./components/tpk-table-generic/body/action.js": "./dist/_app_/components/tpk-table-generic/body/action.js",
+      "./components/tpk-table-generic/body/cell.js": "./dist/_app_/components/tpk-table-generic/body/cell.js",
+      "./components/tpk-table-generic/footer.js": "./dist/_app_/components/tpk-table-generic/footer.js",
+      "./components/tpk-table-generic/header.js": "./dist/_app_/components/tpk-table-generic/header.js",
+      "./components/tpk-table-generic/header/cell.js": "./dist/_app_/components/tpk-table-generic/header/cell.js",
+      "./components/tpk-table-generic/pagination.js": "./dist/_app_/components/tpk-table-generic/pagination.js",
+      "./components/tpk-table-generic/search-bar.js": "./dist/_app_/components/tpk-table-generic/search-bar.js",
+      "./components/tpk-table-generic/table.js": "./dist/_app_/components/tpk-table-generic/table.js",
+      "./services/dialog-layer.js": "./dist/_app_/services/dialog-layer.js"
+    }
+  },
+  "peerDependencies": {
+    "@triptyk/ember-input": "workspace:*",
+    "ember-source": ">=5.0.0"
+  },
+  "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789"
+}
