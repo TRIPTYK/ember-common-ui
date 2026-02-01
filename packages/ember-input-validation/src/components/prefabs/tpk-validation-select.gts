@@ -54,6 +54,7 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
   }
 
   get label() {
+    console.log('label', this.args.label, this.mandatory);
     return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
@@ -72,11 +73,11 @@ export default class TpkValidationSelectPrefabComponent extends BaseValidationCo
       {{! @glint-expect-error }}
       anchorScrollUp={{@validationField}}
       data-has-error='{{this.hasError}}'
-      data-test-tpk-prefab-select-container
+      data-test-tpk-prefab-select-container={{@validationField}}
       ...attributes
     >
       <TpkSelectComponent
-        @label={{@label}}
+        @label={{this.label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
         @placeholder={{@placeholder}}

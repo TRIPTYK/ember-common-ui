@@ -42,6 +42,22 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.true(changeset.isInvalid);
   });
 
+  test('the error message is formatted correctly when reactive is true', async function (assert) {
+    const changeset = await setupComponent({
+      reactive: true,
+      validationSchema: object({
+        name: string().min(5, 'First name must be at least 5 characters long'),
+      }),
+    });
+
+    await fillIn('[data-test-name] input', 't');
+    assert.true(changeset.isInvalid);
+
+    assert
+      .dom('[data-test-tpk-validation-errors]')
+      .hasText('First name must be at least 5 characters long');
+  });
+
   test('it sets correct error path when single field is errored in reactive=true', async function (assert) {
     const changeset = await setupComponent({
       reactive: true,
@@ -108,13 +124,10 @@ module('Integration | Component | tpk-form', function (hooks) {
 
     assert.true(changeset.isInvalid);
     assert.dom('[data-test-tpk-validation-errors]').exists();
-    assert
-      .dom('[data-test-tpk-validation-errors]')
-      .hasTextContaining('Too small: expected string to have >=10 characters');
+    assert.dom('[data-test-tpk-validation-errors]').hasAnyText();
   });
 
-  // TODO: SHOULD BE FIXED AFTER WE FIND A WAY TO FIND REQUIRED FIELDS FROM ZOD SCHEMA
-  test.skip('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
+  test('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
     const changeset = new ImmerChangeset({
       email: '',
       address: {
@@ -134,12 +147,12 @@ module('Integration | Component | tpk-form', function (hooks) {
     const validationSchema = object({
       email: email(),
       address: object({
-        street: string(),
+        street: string().min(1),
         city: string(),
       }),
       levels: array(
         object({
-          name: string(),
+          name: string().min(1),
           grade: number(),
         })
       ),

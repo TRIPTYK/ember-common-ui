@@ -31,9 +31,9 @@ const TpkValidationFilePrefabComponent: TOC<TpkValidationFilePrefabSignature> =
       <V.Label
         class='tpk-file-container'
         data-has-error='{{V.hasError}}'
-        {{! @glint-expect-error }}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
-        data-test-tpk-prefab-file-container
+        data-test-tpk-prefab-file-container={{@validationField}}
         ...attributes
       >
         <MandatoryLabelComponent @label={{@label}} class='tpk-label' />

@@ -72,7 +72,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
     >
       <div
         class='tpk-datepicker-range-container'
-        data-test-tpk-prefab-datepicker-range-container
+        data-test-tpk-prefab-datepicker-range-container={{@validationField}}
         data-has-error='{{V.hasError}}'
         ...attributes
       >

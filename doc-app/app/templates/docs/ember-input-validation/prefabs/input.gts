@@ -9,7 +9,6 @@ import ErrorInputExample from 'doc-app/components/docs/ember-input-validation/pr
 import { service } from '@ember/service';
 import CodeExampleComponent from 'doc-app/components/doc/code-example.gts';
 import CodeBlock from 'doc-app/components/doc/code-block.gts';
-import { tracked } from '@glimmer/tracking';
 
 interface Property {
   name: string;
@@ -28,7 +27,7 @@ interface InputPrefabDocsSignature {
 
 export default class InputPrefabDocs extends Component<InputPrefabDocsSignature> {
   @service declare intl: IntlService;
-  @tracked input = `
+  input = `
   <TpkInputPrefab
     @label='Input'
     @changeset={{this.changeset}}

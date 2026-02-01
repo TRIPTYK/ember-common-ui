@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-input-validation",
-  "version": "3.0.1",
+  "version": "4.0.0-alpha.1",
   "description": "This addon will give you an input in TailwindCSS with Ember",
   "keywords": [
     "ember-addon"
@@ -35,6 +35,7 @@
   ],
   "scripts": {
     "build": "rollup --config",
+    "build:watch": "rollup --config --watch",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
@@ -173,7 +174,7 @@
   "peerDependencies": {
     "@triptyk/ember-input": "workspace:*",
     "ember-immer-changeset": "^1.0.2",
-    "ember-source": ">=5.0.0"
+    "ember-source": ">=6.0.0"
   },
   "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789"
 }

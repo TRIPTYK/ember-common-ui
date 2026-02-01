@@ -51,9 +51,9 @@ export default class TpkValidationIntegerComponent extends Component<TpkValidati
     >
       <V.Label
         class='tpk-integer-container'
-        data-test-tpk-prefab-integer-container
+        data-test-tpk-prefab-integer-container={{@validationField}}
         data-has-error='{{V.hasError}}'
-        {{! @glint-expect-error }}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

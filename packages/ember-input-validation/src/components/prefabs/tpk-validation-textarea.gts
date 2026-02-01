@@ -36,9 +36,9 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
     >
       <V.Label
         class='tpk-textarea-container'
-        data-test-tpk-prefab-textarea-container
+        data-test-tpk-prefab-textarea-container={{@validationField}}
         data-has-error='{{V.hasError}}'
-        {{! @glint-expect-error }}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

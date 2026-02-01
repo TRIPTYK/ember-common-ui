@@ -35,7 +35,7 @@ export default class TpkSearchPrefabComponent extends Component<TpkSearchPrefabS
 
   submitSearch = (e: Event) => {
     e.preventDefault();
-    const form = e.target as HTMLInputElement;
+    const form = e.target as HTMLFormElement;
     const input = form.querySelector('input');
     let value = '';
     if (input?.value) {

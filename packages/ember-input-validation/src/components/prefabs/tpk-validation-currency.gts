@@ -57,9 +57,9 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
     >
       <V.Label
         class='tpk-currency-container'
-        data-test-tpk-prefab-currency-container
+        data-test-tpk-prefab-currency-container={{@validationField}}
         data-has-error='{{V.hasError}}'
-        {{! @glint-expect-error }}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

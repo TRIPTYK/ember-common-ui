@@ -140,10 +140,8 @@ module(
     test('it can sort by default', async function (assert) {
       await renderComponent(tableParams);
       assert
-        .dom(
-          '[data-test-table-generic-prefab] [data-test-row="1"] td:nth-child(2)'
-        )
-        ?.hasText('Simon');
+        .dom('[data-test-table-generic-prefab] [data-test-row="1"]')
+        ?.hasText('Leroy Simon info@triptyk.eu');
     });
 
     test('it passes a renderElement', async function (assert) {

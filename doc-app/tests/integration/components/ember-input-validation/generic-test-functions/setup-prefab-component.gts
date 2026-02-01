@@ -151,8 +151,6 @@ export async function setupComponent(params?: TpkFormParams) {
     executeOnValid,
   } = initializeParams(params);
 
-  console.log(reactive);
-
   await render(
     <template>
       <TpkForm

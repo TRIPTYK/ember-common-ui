@@ -2,6 +2,7 @@ packages:
   - packages/ember-input
   - packages/ember-input-validation
   - packages/ember-ui
+  - packages/ember-utils
   - doc-app
 
 autoInstallPeers: false
@@ -29,7 +30,7 @@ catalog:
   '@eslint/js': ^9.17.0
   '@glimmer/component': ~2.0.0
   '@glimmer/tracking': ^1.1.2
-  '@glint/ember-tsc': ~1.0.9
+  '@glint/ember-tsc': ~1.1.0
   '@glint/template': ~1.7.3
   '@popperjs/core': ^2.11.8
   '@rollup/plugin-babel': ^6.1.0
@@ -79,7 +80,7 @@ catalog:
   ember-click-outside: ^6.1.1
   ember-concurrency: ~5.1.0
   ember-fetch: ^8.1.2
-  ember-immer-changeset: ~1.0.2
+  ember-immer-changeset: github:TRIPTYK/ember-immer-changeset#dist
   ember-intl: ~8.0.3
   ember-lifeline: ^7.0.0
   ember-load-initializers: ^3.0.1
