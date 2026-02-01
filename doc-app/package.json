@@ -53,6 +53,7 @@
     "@glint/ember-tsc": "~1.0.9",
     "@glint/template": "^1.7.3",
     "@rollup/plugin-babel": "^6.1.0",
+    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "@triptyk/ember-input": "workspace:*",
     "@triptyk/ember-input-validation": "workspace:*",
@@ -124,5 +125,8 @@
     "workerDirectory": [
       "public"
     ]
+  },
+  "dependencies": {
+    "ember-showdown": "2.0.0-pre.1"
   }
 }

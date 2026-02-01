@@ -7,5 +7,20 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  // Add route declarations here
+  this.route('docs', function() {
+    this.route('ember-input-validation', function() {
+      this.route('prefabs', function() {
+        this.route('input');
+        // Add more prefab routes here
+      });
+    });
+
+    this.route('ember-input', function() {
+      // Add ember-input routes
+    });
+
+    this.route('ember-ui', function() {
+      // Add ember-ui routes
+    });
+  });
 });

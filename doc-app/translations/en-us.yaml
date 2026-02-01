@@ -1,0 +1,22 @@
+docs:
+  sections:
+    properties: "Properties"
+    usage: "Usage"
+    examples: "Examples"
+
+  propertyTable:
+    name: "Name"
+    type: "Type"
+    required: "Required"
+    description: "Description"
+    yes: "Yes"
+    no: "No"
+
+emberInputValidation:
+  prefabs:
+    input:
+      title: "Input"
+      description: "This component provides a validated input field with label and error handling."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"

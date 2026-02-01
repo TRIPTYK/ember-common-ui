@@ -1,12 +1,19 @@
+/* app/routes/application.ts */
 import Route from '@ember/routing/route';
-import { service } from '@ember/service';
-import '@warp-drive/ember/install';
-import type { IntlService } from 'ember-intl';
+import { type Registry as Services, service } from '@ember/service';
+import translationsForEnUs from 'virtual:ember-intl/translations/en-us';
 
 export default class ApplicationRoute extends Route {
-  @service intl!: IntlService;
+  @service declare intl: Services['intl'];
 
-  model() {
+  beforeModel(): void {
+    this.setupIntl();
+  }
+
+  private setupIntl(): void {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    this.intl.addTranslations('en-us', translationsForEnUs);
+
     this.intl.setLocale(['en-us']);
   }
 }
