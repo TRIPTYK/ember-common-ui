@@ -80,7 +80,7 @@ catalog:
   ember-click-outside: ^6.1.1
   ember-concurrency: ~5.1.0
   ember-fetch: ^8.1.2
-  ember-immer-changeset: github:TRIPTYK/ember-immer-changeset#dist
+  ember-immer-changeset: ~2.0.0
   ember-intl: ~8.0.3
   ember-lifeline: ^7.0.0
   ember-load-initializers: ^3.0.1
