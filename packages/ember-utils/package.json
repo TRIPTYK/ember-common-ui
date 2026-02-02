@@ -119,10 +119,6 @@
     "version": 2,
     "type": "addon",
     "main": "addon-main.cjs",
-    "public-assets": {
-      "./static/chevron-left.svg": "/ember-ui/icons/chevron-left.svg",
-      "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
-    },
     "app-js": {
       "./helpers/date-format.js": "./dist/_app_/helpers/date-format.js",
       "./helpers/html-safe.js": "./dist/_app_/helpers/html-safe.js",
