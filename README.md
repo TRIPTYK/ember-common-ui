@@ -21,3 +21,29 @@ All the tests are in the `doc-app`.
 ##  Disclaimer
 
 Versions *0.X.X* does not follow SemVer.
+
+
+## Architecture
+
+```
+doc-app/
+  app/
+    routes/
+      docs/
+        ember-input-validation/
+          prefabs/
+            input.ts          # Route qui charge les données
+    templates/
+      docs/
+        ember-input-validation/
+          prefabs/
+            input.hbs         # Template de la page
+    components/
+      doc-page.gts            # Layout principal de page doc
+      code-example.gts        # Composant avec onglets Template/Result/Code
+      usage-example.gts       # Wrapper pour les exemples
+      markdown-content.gts    # Pour le contenu texte (optionnel)
+  translations/
+    en-us.yaml
+    fr-fr.yaml
+```

@@ -125,5 +125,8 @@
     "workerDirectory": [
       "public"
     ]
+  },
+  "dependencies": {
+    "ember-showdown": "2.0.0-pre.1"
   }
 }

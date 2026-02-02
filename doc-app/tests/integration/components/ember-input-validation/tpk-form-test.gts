@@ -67,9 +67,6 @@ module('Integration | Component | tpk-form', function (hooks) {
     });
 
     await fillIn('input[type="email"]', 'test');
-
-    console.log(changeset.errors);
-
     assert.true(changeset.errors.some((e) => e.key === 'email'));
   });
 

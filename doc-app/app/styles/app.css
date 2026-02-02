@@ -4,13 +4,13 @@
 /* stylelint-disable import-notation */
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes:
-    corporate --default,
-    dark;
+  themes: nord --default;
 }
 @import '@triptyk/ember-input/dist/app.css';
 @import '@triptyk/ember-ui/dist/app.css';
 @import '@triptyk/ember-input-validation/dist/app.css';
+@import './code-example.css';
+@import './property-table.css';
 
 /* Additional global styles can be added below */
 @source "../../node_modules/@triptyk/ember-ui";
