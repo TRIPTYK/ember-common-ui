@@ -1,0 +1,81 @@
+.code-example {
+  @apply rounded-box bg-base-100 shadow-lg mb-6 w-3/4;
+}
+
+.code-example .component-preview {
+  @apply bg-base-200 p-4 border-b border-base-300;
+}
+
+.code-example .component-preview h3 {
+  @apply text-lg font-semibold text-base-content;
+}
+
+.code-example .tabs {
+  @apply bg-base-100 flex;
+}
+
+.code-example .tabs .tab {
+  @apply border-b-2 border-transparent text-base-content/60 hover:text-base-content hover:border-base-content/20 transition-colors px-6 py-3 cursor-pointer;
+}
+
+.code-example .tabs .tab.tab-active {
+  @apply border-primary text-primary font-medium;
+}
+
+.code-example .tab-content {
+  @apply bg-base-100 p-6 block;
+}
+
+/* doc-app/app/styles/code-block.css */
+.code-block-wrapper {
+  @apply rounded-lg overflow-hidden bg-[#2e3440] text-[#d8dee9] shadow-lg mb-4;
+}
+
+.code-block-header {
+  @apply flex justify-between items-center px-4 py-2 bg-[#3b4252] border-b border-[#434c5e];
+}
+
+.code-block-language {
+  @apply text-xs font-mono uppercase text-[#88c0d0] font-semibold;
+}
+
+.code-block-copy-btn {
+  @apply p-1.5 rounded hover:bg-[#434c5e] transition-colors text-[#d8dee9] hover:text-[#88c0d0];
+}
+
+.code-block-content {
+  @apply overflow-x-auto p-4;
+}
+
+.code-block-content pre {
+  @apply m-0 text-sm font-mono leading-relaxed;
+}
+
+.code-block-content code {
+  @apply text-[#d8dee9];
+}
+
+/* Syntax highlighting basique - style Nord */
+.code-block-content .token.tag {
+  @apply text-[#81a1c1];
+}
+
+.code-block-content .token.attr-name {
+  @apply text-[#8fbcbb];
+}
+
+.code-block-content .token.attr-value {
+  @apply text-[#a3be8c];
+}
+
+.code-block-content .token.punctuation {
+  @apply text-[#eceff4];
+}
+
+.code-block-content .token.string {
+  @apply text-[#a3be8c];
+}
+
+.code-block-content .token.comment {
+  @apply text-[#616e88] italic;
+}
