@@ -6,6 +6,7 @@ This component provides a radio button.
 <demo.example @name="tpk-validation-prefab-radio.hbs">
 <Prefabs::TpkValidationRadio @changeset={{this.changeset}} @validationField="radio" @label="This" @mandatory={{true}} @value="selected one" @classless=true />
 <Prefabs::TpkValidationRadio @changeset={{this.changeset}} @validationField="radio" @label="That" @mandatory={{true}} @value="selected two"/>
+
 <hr>
 <Prefabs::TpkValidationRadio @changeset={{this.changesetWithErrors}} @validationField="radio" @label="That" @mandatory={{true}} @value="selected one"/>
 

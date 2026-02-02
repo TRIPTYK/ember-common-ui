@@ -19,6 +19,7 @@ as |F|>
 <I.Input />
 {{#if I.errors}}
 {{#each I.errors as |error|}}
+
 <div>{{error.message}}</div>
 {{/each}}
 {{/if}}
@@ -163,6 +164,7 @@ When validation errors occur:
 @validationSchema={{this.validationSchema}}
 class="form-doc"
 as |F|>
+
 <div class="form-content">
 <F.TpkInputPrefab @label="First Name" @validationField="firstName" />
 <F.TpkInputPrefab @label="Last Name" @validationField="lastName" />

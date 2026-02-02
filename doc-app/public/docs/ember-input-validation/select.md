@@ -18,6 +18,7 @@ as |S|>
 {{if S.hasSelection S.selected "Select..."}}
 </S.Button>
 <S.Options as |Option|>
+
 <Option as |opt|>
 {{opt.option}}
 </Option>
@@ -51,6 +52,7 @@ as |S|>
 {{if S.hasSelection S.selected "Select..."}}
 </S.Button>
 <S.Options as |Option|>
+
 <Option as |opt|>
 {{#if opt.isSelected}}✓{{/if}}
 {{opt.option}}

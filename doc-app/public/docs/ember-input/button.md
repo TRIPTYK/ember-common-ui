@@ -17,6 +17,7 @@ Spam me @allowSpam={{true}}
 class="button" >
 Spam me @allowSpam={{false}}
 </TpkButton>
+
 <div>
 Counter : {{this.counter}}
 </div>

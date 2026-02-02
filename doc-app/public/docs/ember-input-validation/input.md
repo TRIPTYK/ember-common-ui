@@ -11,6 +11,7 @@ Ember input validation/input content
 @validationField="delete_text" as |I|>
 <I.Label/>
 <I.Input/>
+
 <div>
 {{#each I.errors as |error|}}
 <span>

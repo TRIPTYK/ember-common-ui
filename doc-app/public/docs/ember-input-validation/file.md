@@ -15,6 +15,7 @@ A file input component with built-in validation support using changesets. This c
 as |F|>
 <F.Label />
 <F.Input />
+
 <div>
 {{#each F.errors as |error|}}
 <span class="error-message">
@@ -40,6 +41,7 @@ as |F|>
 as |F|>
 <F.Label />
 <F.Input />
+
 <div>
 {{#each F.errors as |error|}}
 <span class="error-message">

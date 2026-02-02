@@ -12,6 +12,7 @@ Ember input validation/checkbox content
 as |T|>
 <T.Input />
 <T.Label />
+
 <div>
 {{#each T.errors as |error|}}
 <span>

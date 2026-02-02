@@ -12,6 +12,7 @@ as |C|>
 <C.Label />
 <C.Input />
 </TpkCheckbox>
+
 <div>
 Checked: {{this.checked}}
 </div>

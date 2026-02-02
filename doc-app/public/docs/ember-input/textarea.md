@@ -11,6 +11,7 @@ A composable textarea input element.
 @changeEvent='change'
 @label="History of Tomster and Zoey"
 as |C|>
+
 <div>
 <C.Label />
 <span class="text-area-count">

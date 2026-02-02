@@ -7,6 +7,7 @@ A modal component.
 <button class="open-modal" {{on "click" this.open}} type="button">
 Open the modal
 </button>
+
 <div id="tpk-modal">
 <Prefabs::TpkConfirmModalPrefab
 @onClose={{this.onClose}}

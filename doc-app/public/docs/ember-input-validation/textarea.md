@@ -12,6 +12,7 @@ A textarea component with built-in validation support using changesets. This com
 @validationField="description"
 @maxLength={{500}}
 as |T|>
+
 <div>
 <T.Label />
 <span class="char-count">
