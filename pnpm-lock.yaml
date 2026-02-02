@@ -84,6 +84,9 @@ catalogs:
     '@rollup/plugin-node-resolve':
       specifier: ^16.0.3
       version: 16.0.3
+    '@triptyk/ember-yeti-table':
+      specifier: ~3.0.0
+      version: 3.0.0
     '@tsconfig/ember':
       specifier: ^3.0.8
       version: 3.0.12
@@ -910,6 +913,9 @@ importers:
       '@embroider/addon-shim':
         specifier: 'catalog:'
         version: 1.10.2
+      '@triptyk/ember-yeti-table':
+        specifier: 'catalog:'
+        version: 3.0.0(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)
       '@warp-drive/utilities':
         specifier: ~5.8.1
         version: 5.8.1(@glint/template@1.7.4)(@warp-drive/core@5.8.1(@babel/core@7.28.6)(@glint/template@1.7.4))
@@ -934,9 +940,6 @@ importers:
       ember-test-selectors:
         specifier: 'catalog:'
         version: 7.1.0
-      ember-yeti-table:
-        specifier: git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist
-        version: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)
       focus-trap:
         specifier: ~7.8.0
         version: 7.8.0
@@ -3290,6 +3293,9 @@ packages:
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
+  '@triptyk/ember-yeti-table@3.0.0':
+    resolution: {integrity: sha512-i6iRKxTjcE+3aMr5vrGTpluuwsOKdPABAppDCHAOgNG+FrtMuGKhGFu0XamxcAhCH/yOD848rFbAN7dArjOv8w==}
+
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
@@ -5591,10 +5597,6 @@ packages:
 
   ember-welcome-page@8.0.5:
     resolution: {integrity: sha512-XegmXI94mt/EVUD3Ya15OuAxB3iCdK16lGS7vCimUIi4fGGooxUTOnlKexTsVLbcJh8u2bsw5JZ0iVht1X5sng==}
-
-  ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a:
-    resolution: {tarball: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a}
-    version: 2.0.0
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -13443,6 +13445,22 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
+  '@triptyk/ember-yeti-table@3.0.0(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)':
+    dependencies:
+      '@embroider/addon-shim': 1.10.2
+      '@glimmer/component': 2.0.0
+      decorator-transforms: 2.3.1(@babel/core@7.28.6)
+      deepmerge: 4.3.1
+      ember-modifier: 4.2.2(@babel/core@7.28.6)
+      ember-resources: 7.0.7(@glimmer/component@2.0.0)(@glint/template@1.7.4)
+      reactiveweb: 1.9.1(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glimmer/component@2.0.0)(@glint/template@1.7.4)
+      tracked-toolbox: 2.2.0(@babel/core@7.28.6)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@ember/test-waiters'
+      - '@glint/template'
+      - supports-color
+
   '@trysound/sax@0.2.0': {}
 
   '@tsconfig/ember@3.0.12': {}
@@ -16513,22 +16531,6 @@ snapshots:
       decorator-transforms: 2.3.1(@babel/core@7.28.6)
     transitivePeerDependencies:
       - '@babel/core'
-      - supports-color
-
-  ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/47646e503b18067f76ff35744a31f15e2da3ef7a(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4):
-    dependencies:
-      '@embroider/addon-shim': 1.10.2
-      '@glimmer/component': 2.0.0
-      decorator-transforms: 2.3.1(@babel/core@7.28.6)
-      deepmerge: 4.3.1
-      ember-modifier: 4.2.2(@babel/core@7.28.6)
-      ember-resources: 7.0.7(@glimmer/component@2.0.0)(@glint/template@1.7.4)
-      reactiveweb: 1.9.1(@babel/core@7.28.6)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glimmer/component@2.0.0)(@glint/template@1.7.4)
-      tracked-toolbox: 2.2.0(@babel/core@7.28.6)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@ember/test-waiters'
-      - '@glint/template'
       - supports-color
 
   emoji-regex@8.0.0: {}
