@@ -12,7 +12,6 @@ export default class ApplicationRoute extends Route {
 
   private setupIntl(): void {
     this.intl.addTranslations('en-us', translationsForEnUs);
-
     this.intl.setLocale(['en-us']);
   }
 }
