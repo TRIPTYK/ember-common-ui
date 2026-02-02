@@ -53,9 +53,6 @@ export class TableRouteComponent extends Component<TableRouteComponentSignature>
 
   onUpdate = (selection: unknown, row: UserModel) => {
     row.set('email', selection as string);
-    console.log(selection);
-    console.log(row);
-  }
 
   <template>
     <div class="flex justify-center items-center h-screen px-32">

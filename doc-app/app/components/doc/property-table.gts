@@ -17,32 +17,24 @@ interface PropertyTableSignature {
 
 const PropertyTable: TOC<PropertyTableSignature> = <template>
   <div class="overflow-x-auto">
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
+    <table class="table">
+      <thead class="table-header">
         <tr>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <th class="table-header-content">
             {{t "docs.propertyTable.name"}}
           </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <th class="table-header-content">
             {{t "docs.propertyTable.type"}}
           </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <th class="table-header-content">
             {{t "docs.propertyTable.required"}}
           </th>
-          <th
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <th class="table-header-content">
             {{t "docs.propertyTable.description"}}
           </th>
         </tr>
       </thead>
-      <tbody class="bg-white divide-y divide-gray-200">
+      <tbody class="table-body">
         {{#each @properties as |prop|}}
           <tr>
             <td
