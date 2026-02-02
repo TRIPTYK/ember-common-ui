@@ -5,7 +5,7 @@
 @import 'tailwindcss';
 @plugin "daisyui" {
   themes:
-    cupcake --default,
+    corporate --default,
     dark;
 }
 @import '@triptyk/ember-input/dist/app.css';

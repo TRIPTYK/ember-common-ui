@@ -21,8 +21,14 @@ export function clearObjectValues(
         }
       } else if (typeof obj[key] === 'boolean') {
         newObj[key] = false;
-      } else {
+      } else if (typeof obj[key] === 'number') {
+        newObj[key] = 0;
+      } else if (typeof obj[key] === 'string') {
         newObj[key] = '';
+      } else if (typeof obj[key] === 'undefined') {
+        newObj[key] = undefined;
+      } else {
+        newObj[key] = null;
       }
     }
   }

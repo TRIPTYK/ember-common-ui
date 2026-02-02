@@ -127,8 +127,7 @@ module('Integration | Component | tpk-form', function (hooks) {
     assert.dom('[data-test-tpk-validation-errors]').hasAnyText();
   });
 
-  // TODO: SHOULD BE FIXED AFTER WE FIND A WAY TO FIND REQUIRED FIELDS FROM ZOD SCHEMA
-  test.skip('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
+  test('Should display an asterisk in the label upon initialization of the form and when adding an element', async function (assert) {
     const changeset = new ImmerChangeset({
       email: '',
       address: {
@@ -148,12 +147,12 @@ module('Integration | Component | tpk-form', function (hooks) {
     const validationSchema = object({
       email: email(),
       address: object({
-        street: string(),
+        street: string().min(1),
         city: string(),
       }),
       levels: array(
         object({
-          name: string(),
+          name: string().min(1),
           grade: number(),
         })
       ),

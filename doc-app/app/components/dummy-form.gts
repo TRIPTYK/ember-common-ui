@@ -2,7 +2,16 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, date, boolean, array, email } from 'zod';
+import {
+  object,
+  string,
+  date,
+  boolean,
+  array,
+  email,
+  union,
+  literal,
+} from 'zod';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 
 export default class DummyFormComponent extends Component {
@@ -19,9 +28,9 @@ export default class DummyFormComponent extends Component {
   });
 
   validationSchema = object({
-    firstName: string().min(2, 'At least 2 characters'),
+    firstName: string(),
     lastName: string().min(2, 'At least 2 characters'),
-    email: email('Invalid email'),
+    email: union([literal(''), email()]), // allow empty string or email
     phone: string(),
     birthday: date().max(new Date(), 'Cannot be in the future'),
     languages: array(string()).min(1, 'Select at least one language'),
