@@ -9,8 +9,9 @@ This library is organized into three main packages:
 ### @triptyk/ember-input
 
 Provides composable input components for building forms:
+
 - Text inputs, textareas, and specialized inputs
-- Checkboxes and radio buttons  
+- Checkboxes and radio buttons
 - Select dropdowns and searchable selects
 - File inputs and date pickers
 - Toggle switches and buttons
@@ -20,6 +21,7 @@ Provides composable input components for building forms:
 ### @triptyk/ember-input-validation
 
 Builds on ember-input with form validation capabilities:
+
 - Validation-enabled versions of all input components
 - TpkForm component for managing form state
 - Integration with changesets for data validation
@@ -30,6 +32,7 @@ Builds on ember-input with form validation capabilities:
 ### @triptyk/ember-ui
 
 Provides higher-level UI components:
+
 - Modal dialogs and confirm modals
 - Data tables with sorting and pagination
 - Stack lists for managing collections

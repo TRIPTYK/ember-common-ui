@@ -3,28 +3,28 @@
 This component provides an input.
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-input-prefab.hbs">
-      <Prefabs::TpkValidationInput
-        @label="Input"
-        @changeset={{this.changeset}} 
-        @validationField="something"
-      />
-      <Prefabs::TpkValidationInput
-        @label="Disabled"
-        @mandatory={{true}}
-        @disabled={{true}}
-        @changeset={{this.changeset}} 
-        @validationField="disabled"
-      />
-      <Prefabs::TpkValidationInput
-        @label="Error Input"
-        @mandatory={{true}}
-        @changeset={{this.changesetWithErrors}} 
-        @validationField="something"
-      />
+<demo.example @name="tpk-input-prefab.hbs">
+<Prefabs::TpkValidationInput
+@label="Input"
+@changeset={{this.changeset}}
+@validationField="something"
+/>
+<Prefabs::TpkValidationInput
+@label="Disabled"
+@mandatory={{true}}
+@disabled={{true}}
+@changeset={{this.changeset}}
+@validationField="disabled"
+/>
+<Prefabs::TpkValidationInput
+@label="Error Input"
+@mandatory={{true}}
+@changeset={{this.changesetWithErrors}}
+@validationField="something"
+/>
 
-  </demo.example>
-  <demo.snippet @name="tpk-input-prefab.hbs"/>
+</demo.example>
+<demo.snippet @name="tpk-input-prefab.hbs"/>
 </DocsDemo>
 
 ## Usage
@@ -46,6 +46,5 @@ The `TpkValidationInput` component is used for a simple input. If you want use a
 - `@maskOptions`: The options to apply to the mask.
 - `@unmaskValue`: Whether to unmask the value before setting it in the changeset.
 - `@disabled`: Whether the input field is disabled.
-- `@onChange`: The action to be called when the selection changes. 
+- `@onChange`: The action to be called when the selection changes.
 - `@changeEvent`: The event to trigger the onChange action.
-

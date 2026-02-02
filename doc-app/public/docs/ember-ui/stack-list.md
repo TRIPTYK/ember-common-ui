@@ -3,38 +3,36 @@
 Stack list content
 
 <DocsDemo as |demo|>
-    <demo.example @name="stack-list-src.hbs">
-        <TpkStackList
-        @data={{this.data}}
-        @onRemove={{this.onRemoveData}}
-        @onAdd={{this.onAddData}}
-        @titleForAdd={{this.titleForAdd}}
-        as |S|
-      >
-        <S.Title as |T|>
-          title - {{T.item}}
-        </S.Title>
-        <S.Content as |C|>
-          content - {{C.item}} - {{ C.index }}
-        </S.Content>
-      </TpkStackList>
-    </demo.example>
-    <demo.snippet @name="stack-list-src.hbs" />
+<demo.example @name="stack-list-src.hbs">
+<TpkStackList
+@data={{this.data}}
+@onRemove={{this.onRemoveData}}
+@onAdd={{this.onAddData}}
+@titleForAdd={{this.titleForAdd}}
+as |S| >
+<S.Title as |T|>
+title - {{T.item}}
+</S.Title>
+<S.Content as |C|>
+content - {{C.item}} - {{ C.index }}
+</S.Content>
+</TpkStackList>
+</demo.example>
+<demo.snippet @name="stack-list-src.hbs" />
 </DocsDemo>
 
 ### Args
 
 **@titleForAdd**: A string parameter representing the label displayed beside the plus icon within the button.
 
-**@onAdd**: A function parameter. This is function called when you click the 
+**@onAdd**: A function parameter. This is function called when you click the
 "add element to list" button. This function should add an element to the array
 used as the data args.
 
-**@onRemove**: A function parameter. This is function called when you click the 
+**@onRemove**: A function parameter. This is function called when you click the
 thrash icon in the "element added" header. This function should remove an element from the array.
 
 **@data**: An array parameter. It represents the array that contains each element displayed in the stack-list. If there's no element, nothing is displayed except the "add element to list" button.
-
 
 ### Yields
 
@@ -61,5 +59,3 @@ thrash icon in the "element added" header. This function should remove an elemen
 **.origin-top**: CSS class for styling the body of each element in the stack list.
 
 **.tpk-stack-head-expand-btn**: CSS class for styling the button that expands or collapses the body of each element in the stack list.
-
-

@@ -3,7 +3,8 @@
 Ember input/radio content
 
 <DocsDemo as |demo|>
-  <demo.example @name="radio.hbs">
+<demo.example @name="radio.hbs">
+
   <div>
     <h3>Choose your gender</h3>
         <TpkRadio 
@@ -61,9 +62,10 @@ Ember input/radio content
   > **value**: a string type that must be identical among radios in the same group.
 - **@onChange**:
   > **description**: specifies the method called when the state of the radio is changed.  
-  > **value**: an hbs type string which should be the name of the method defined in the controller. e.g., ```{{this.setRadio}}```
+  > **value**: an hbs type string which should be the name of the method defined in the controller. e.g., `{{this.setRadio}}`
 
 ### This component has 2 mandatory yields:
+
 - **Input**: representing the radio type input
 - **Label**: representing the label of our radio
 

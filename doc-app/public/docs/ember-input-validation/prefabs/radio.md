@@ -3,20 +3,21 @@
 This component provides a radio button.
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-validation-prefab-radio.hbs">
-    <Prefabs::TpkValidationRadio @changeset={{this.changeset}} @validationField="radio" @label="This" @mandatory={{true}} @value="selected one" @classless=true />
-    <Prefabs::TpkValidationRadio @changeset={{this.changeset}} @validationField="radio" @label="That" @mandatory={{true}} @value="selected two"/>
-    <hr>
-    <Prefabs::TpkValidationRadio @changeset={{this.changesetWithErrors}} @validationField="radio" @label="That" @mandatory={{true}} @value="selected one"/>
+<demo.example @name="tpk-validation-prefab-radio.hbs">
+<Prefabs::TpkValidationRadio @changeset={{this.changeset}} @validationField="radio" @label="This" @mandatory={{true}} @value="selected one" @classless=true />
+<Prefabs::TpkValidationRadio @changeset={{this.changeset}} @validationField="radio" @label="That" @mandatory={{true}} @value="selected two"/>
+<hr>
+<Prefabs::TpkValidationRadio @changeset={{this.changesetWithErrors}} @validationField="radio" @label="That" @mandatory={{true}} @value="selected one"/>
 
     selected : {{changeset-get this.changeset 'radio'}}
-  </demo.example>
-  <demo.snippet @name="tpk-validation-prefab-radio.hbs"/>
+
+</demo.example>
+<demo.snippet @name="tpk-validation-prefab-radio.hbs"/>
 </DocsDemo>
 
 ## Usage
 
-The `TpkValidationRadio` component is used for a simple radio button. 
+The `TpkValidationRadio` component is used for a simple radio button.
 
 ## Mandatory properties
 
@@ -30,7 +31,7 @@ The `TpkValidationRadio` component is used for a simple radio button.
 - `@mandatory`: Whether the textarea field is mandatory.
 - `@disabled`: Whether the input field is disabled.
 - `@classless`: Whether to apply default classes to the component.
-- `@onChange`: The action to be called when the selection changes. 
+- `@onChange`: The action to be called when the selection changes.
 
 ## Css classes
 

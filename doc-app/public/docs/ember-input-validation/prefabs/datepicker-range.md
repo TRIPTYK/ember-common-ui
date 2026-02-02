@@ -3,25 +3,25 @@
 This component provides a datepicker with range selection and built-in validation.
 
 <DocsDemo as |demo|>
-  <demo.example @name="prefab-tpk-datepicker-range.hbs">
-    <Prefabs::TpkValidationDatepickerRange
-      @label="Datepicker Range"
-      @changeset={{this.changeset}}
-      @validationField="range"
-    />
-    <Prefabs::TpkValidationDatepickerRange
-      @label="Disabled"
-      @changeset={{this.changeset}}
-      @validationField="disabled"
-      @disabled=true
-    />
-    <Prefabs::TpkValidationDatepickerRange
-      @label="Error"
-      @changeset={{this.changeset}}
-      @validationField="error"
-    />
-  </demo.example>
-  <demo.snippet @name="prefab-tpk-datepicker-range.hbs" />
+<demo.example @name="prefab-tpk-datepicker-range.hbs">
+<Prefabs::TpkValidationDatepickerRange
+@label="Datepicker Range"
+@changeset={{this.changeset}}
+@validationField="range"
+/>
+<Prefabs::TpkValidationDatepickerRange
+@label="Disabled"
+@changeset={{this.changeset}}
+@validationField="disabled"
+@disabled=true
+/>
+<Prefabs::TpkValidationDatepickerRange
+@label="Error"
+@changeset={{this.changeset}}
+@validationField="error"
+/>
+</demo.example>
+<demo.snippet @name="prefab-tpk-datepicker-range.hbs" />
 </DocsDemo>
 
 ## Usage

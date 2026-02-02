@@ -4,39 +4,45 @@ This component provides a powerfull select with multitude features and has built
 
 It uses also toString() in order to display the options and the selected element.
 
-In example: 
+In example:
 
 ```ts
-  options = [
-    { label: 'Option 1', value: 'option-1', toString() { return `${this.label}`; } }
-  ];
+options = [
+  {
+    label: 'Option 1',
+    value: 'option-1',
+    toString() {
+      return `${this.label}`;
+    },
+  },
+];
 ```
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-prefab.hbs">
-      <Prefabs::TpkValidationSelect
-        @label="Select your CEO"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="ceo"
-        @disabled={{false}}
-      />
-      <Prefabs::TpkValidationSelect
-        @label="Disabled"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="disabled"
-        @disabled={{true}}
-      />
-      <Prefabs::TpkValidationSelect
-        @label="Error"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="error"
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-prefab.hbs"/>
+<demo.example @name="tpk-select-prefab.hbs">
+<Prefabs::TpkValidationSelect
+@label="Select your CEO"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="ceo"
+@disabled={{false}}
+/>
+<Prefabs::TpkValidationSelect
+@label="Disabled"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="disabled"
+@disabled={{true}}
+/>
+<Prefabs::TpkValidationSelect
+@label="Error"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="error"
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-prefab.hbs"/>
 </DocsDemo>
 
 ## Mandatory properties
@@ -54,7 +60,7 @@ In example:
 - `@mandatory`: Whether the textarea field is mandatory.
 - `@initiallyOpened`: Whether the select dropdown is initially opened.
 - `@allowClear`: Whether to show a button to clear the selection.
-- `@onChange`: The action to be called when the selection changes. 
+- `@onChange`: The action to be called when the selection changes.
 - `@labelComponent`: The custom component to use for the label.
 - `@selectedItemComponent`: The custom component to use for the selected item.
 - `@placeholderComponent`: The custom component to use for the placeholder
@@ -64,73 +70,74 @@ In example:
 ### Select multiple
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-prefab-multiple.hbs">
-      <Prefabs::TpkValidationSelect
-        @label="Select multiple CEO"
-        @placeholder="Do the best choice"
-        @multiple={{true}}
-        @options={{this.options}}
-        @changeset={{this.changesetTris}} 
-        @validationField="ceo"
-        @allowClear={{true}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-prefab-multiple.hbs"/>
+<demo.example @name="tpk-select-prefab-multiple.hbs">
+<Prefabs::TpkValidationSelect
+@label="Select multiple CEO"
+@placeholder="Do the best choice"
+@multiple={{true}}
+@options={{this.options}}
+@changeset={{this.changesetTris}}
+@validationField="ceo"
+@allowClear={{true}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-prefab-multiple.hbs"/>
 </DocsDemo>
 
 ### Select with specific component for label
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-prefab-label.hbs">
-      <Prefabs::TpkValidationSelect
-        @label="Select multiple CEO"
-        @labelComponent={{component "dummy-label-select"}}
-        @multiple={{true}}
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="ceo"
-        @allowClear={{true}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-prefab-label.hbs"/>
+<demo.example @name="tpk-select-prefab-label.hbs">
+<Prefabs::TpkValidationSelect
+@label="Select multiple CEO"
+@labelComponent={{component "dummy-label-select"}}
+@multiple={{true}}
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="ceo"
+@allowClear={{true}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-prefab-label.hbs"/>
 
   <!-- <demo.example @name="dummy-label-select.hbs">
       <label>BEST LABEL EVER: {{@labelText}}</label>
   </demo.example> -->
-  <demo.snippet @name="dummy-label-select.hbs" @label="dummy-label-select.hbs"/>
+
+<demo.snippet @name="dummy-label-select.hbs" @label="dummy-label-select.hbs"/>
 </DocsDemo>
 
 ### Select with allowClear
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-prefab-allowClear.hbs">
-      <Prefabs::TpkValidationSelect
-        @label="Select your CEO"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="ceo"
-        @allowClear={{true}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-prefab-allowClear.hbs"/>
+<demo.example @name="tpk-select-prefab-allowClear.hbs">
+<Prefabs::TpkValidationSelect
+@label="Select your CEO"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="ceo"
+@allowClear={{true}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-prefab-allowClear.hbs"/>
 </DocsDemo>
 
 ### Select initially opened
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-prefab-initially.hbs">
-      <Prefabs::TpkValidationSelect
-        @label="Select your CEO"
-        @placeholder="Select the best CEO"
-        @options={{this.options}}
-        @changeset={{this.changesetBis}} 
-        @validationField="ceo"
-        @initiallyOpened={{true}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-prefab-initially.hbs"/>
+<demo.example @name="tpk-select-prefab-initially.hbs">
+<Prefabs::TpkValidationSelect
+@label="Select your CEO"
+@placeholder="Select the best CEO"
+@options={{this.options}}
+@changeset={{this.changesetBis}}
+@validationField="ceo"
+@initiallyOpened={{true}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-prefab-initially.hbs"/>
 </DocsDemo>

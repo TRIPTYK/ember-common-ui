@@ -6,11 +6,11 @@ It is also possible to pass components to the desired column.
 # Basic usage:
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-table-generic-prefab.hbs">  
-    <Prefabs::TpkTableGenericPrefab @tableParams={{this.tableParams}} @label={{"labello"}} placeholder={{"search me"}} @rowClick={{this.rowClick}}/>
-  </demo.example>
-  <demo.snippet @name="tpk-table-generic-prefab.hbs"/>
-  <demo.snippet @name="tpk-table-generic-prefab.js"/>
+<demo.example @name="tpk-table-generic-prefab.hbs">  
+ <Prefabs::TpkTableGenericPrefab @tableParams={{this.tableParams}} @label={{"labello"}} placeholder={{"search me"}} @rowClick={{this.rowClick}}/>
+</demo.example>
+<demo.snippet @name="tpk-table-generic-prefab.hbs"/>
+<demo.snippet @name="tpk-table-generic-prefab.js"/>
 </DocsDemo>
 
 ## Mandatory properties
@@ -18,6 +18,7 @@ It is also possible to pass components to the desired column.
 - `@tableParams`: The field name in the changeset for validation.
 
 # Advanced Usage:
+
 !!! Ember doc cannotdisplay example with code snippet
 
 ```ts
@@ -58,7 +59,7 @@ export class TableRouteComponent extends Component<TableRouteComponentSignature>
     <div class="flex justify-center items-center h-screen px-32">
       <TpkTableGenericPrefab
         @tableParams={{this.tableParamsWithFunctions}}
-        
+
         @columnsComponent={{hash
           selectEmail=(component
             SelectTableRegister
@@ -66,7 +67,7 @@ export class TableRouteComponent extends Component<TableRouteComponentSignature>
               options=this.emailOptions
               onUpdate=this.onUpdate
           )
-        }} 
+        }}
       />
     </div>
   </template>
@@ -96,6 +97,7 @@ class SelectTableRegister extends Component<TpkSelectSignature & {
   </template>;
 }
 ```
+
 ## Optional properties
 
 - `@columnsComponent:` The component that will be passed to the column of the table.

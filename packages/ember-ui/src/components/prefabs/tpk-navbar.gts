@@ -99,7 +99,10 @@ const TpkNavbar: TOC<NavbarSignature> = <template>
               <li><LinkTo @route={{@profileRoute}}>My Profile</LinkTo></li>
             {{/if}}
             {{#if @onLogout}}
-              <li><button type='button' {{on 'click' @onLogout}}>Logout</button></li>
+              <li><button
+                  type='button'
+                  {{on 'click' @onLogout}}
+                >Logout</button></li>
             {{/if}}
           </ul>
         </div>

@@ -5,26 +5,26 @@ A date picker component with built-in validation support using changesets. This 
 ## Basic Usage
 
 <DocsDemo as |demo|>
-  <demo.example @name="datepicker-validation.hbs">
-    <TpkValidationDatepicker 
-      @label="Birth Date"
-      @changeset={{this.changeset}}
-      @validationField="birthDate"
-      @onChange={{this.onChange}}
-      @dateFormat="d/m/Y"
-    as |D|>
-      <D.Label />
-      <D.Input />
-      <div>
-        {{#each D.errors as |error|}}
-          <span class="error-message">
-            {{error.message}}
-          </span>
-        {{/each}}
-      </div>
-    </TpkValidationDatepicker>
-  </demo.example>
-  <demo.snippet @name="datepicker-validation.hbs"/>
+<demo.example @name="datepicker-validation.hbs">
+<TpkValidationDatepicker
+@label="Birth Date"
+@changeset={{this.changeset}}
+@validationField="birthDate"
+@onChange={{this.onChange}}
+@dateFormat="d/m/Y"
+as |D|>
+<D.Label />
+<D.Input />
+<div>
+{{#each D.errors as |error|}}
+<span class="error-message">
+{{error.message}}
+</span>
+{{/each}}
+</div>
+</TpkValidationDatepicker>
+</demo.example>
+<demo.snippet @name="datepicker-validation.hbs"/>
 </DocsDemo>
 
 ## Arguments
@@ -84,6 +84,7 @@ See the [TpkDatepicker documentation](../ember-input/datepicker) for all availab
 ## Validation
 
 The component automatically:
+
 - Updates the changeset when dates are selected
 - Displays validation state via the `data-has-error` attribute
 - Handles single dates, date ranges, and multiple dates based on `@mode`

@@ -11,7 +11,6 @@ export default class ApplicationRoute extends Route {
   }
 
   private setupIntl(): void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     this.intl.addTranslations('en-us', translationsForEnUs);
 
     this.intl.setLocale(['en-us']);

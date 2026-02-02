@@ -19,7 +19,6 @@ import '@glint/environment-ember-loose';
 import type EmberUIValidationRegistry from '@triptyk/ember-ui/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry
-    extends EmberUIRegistry {}
+  export default interface Registry extends EmberUIRegistry {}
 }
 ```

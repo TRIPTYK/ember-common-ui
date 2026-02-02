@@ -3,7 +3,8 @@
 Ember validation radio
 
 <DocsDemo as |demo|>
-  <demo.example @name="radio-validation-src.hbs">
+<demo.example @name="radio-validation-src.hbs">
+
   <div>
     <TpkValidationRadio 
       @changeset={{this.changeset}}
@@ -17,17 +18,17 @@ Ember validation radio
       <T.Label /> 
     </TpkValidationRadio>
 
-    <TpkValidationRadio 
+    <TpkValidationRadio
       @changeset={{this.changeset}}
       @validationField="radio"
       @label='No, click on me!'
-      @value={{this.second}} 
+      @value={{this.second}}
       as |T|>
       <T.Input />
-      <T.Label /> 
+      <T.Label />
     </TpkValidationRadio>
 
-    <TpkValidationRadio 
+    <TpkValidationRadio
       @changeset={{this.changeset}}
       @validationField="radio"
       @label='I am jalous if you do not click on me'
@@ -35,14 +36,15 @@ Ember validation radio
       @classless={{true}}
       as |T|>
       <T.Input />
-      <T.Label /> 
+      <T.Label />
     </TpkValidationRadio>
+
   </div>
  
   Result: {{changeset-get this.changeset 'radio'}}
 
-  </demo.example>
-  <demo.snippet @name="radio-validation-src.hbs"/>
+</demo.example>
+<demo.snippet @name="radio-validation-src.hbs"/>
 </DocsDemo>
 
 ### Args
@@ -55,10 +57,8 @@ Ember validation radio
 
 **@classless** : The argument allows overriding the CSS class of the input.
 
-
 ### CSS
 
 **.tpk-radio** : CSS class for styling the input of the radio button (label and input box).
 
 **.tpk-radio-label** : CSS class for styling the label of the input.
-

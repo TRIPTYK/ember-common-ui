@@ -20,7 +20,6 @@ import '@glint/environment-ember-loose';
 import type EmberInputValidationRegistry from '@triptyk/ember-input-validation/template-registry';
 
 declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry
-    extends EmberInputValidationRegistry {}
+  export default interface Registry extends EmberInputValidationRegistry {}
 }
 ```

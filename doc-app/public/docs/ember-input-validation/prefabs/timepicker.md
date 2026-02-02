@@ -3,26 +3,26 @@
 This component provides a timepicker with built-in validation.
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-timepicker.hbs">
-    <Prefabs::TpkValidationTimepicker
-      @label="Timepicker"
-      @changeset={{this.changeset}}
-      @validationField="time"
-      class="tpk-input"
-    />
-    <Prefabs::TpkValidationTimepicker
-      @label="Disabled"
-      @changeset={{this.changeset}}
-      @validationField="disabled"
-      @disabled=true
-    />
-    <Prefabs::TpkValidationTimepicker
-      @label="Error"
-      @changeset={{this.changeset}}
-      @validationField="error"
-    />
-  </demo.example>
-  <demo.snippet @name="tpk-timepicker.hbs" />
+<demo.example @name="tpk-timepicker.hbs">
+<Prefabs::TpkValidationTimepicker
+@label="Timepicker"
+@changeset={{this.changeset}}
+@validationField="time"
+class="tpk-input"
+/>
+<Prefabs::TpkValidationTimepicker
+@label="Disabled"
+@changeset={{this.changeset}}
+@validationField="disabled"
+@disabled=true
+/>
+<Prefabs::TpkValidationTimepicker
+@label="Error"
+@changeset={{this.changeset}}
+@validationField="error"
+/>
+</demo.example>
+<demo.snippet @name="tpk-timepicker.hbs" />
 </DocsDemo>
 
 ## Usage
@@ -46,4 +46,3 @@ The `TpkValidationTimepicker` component is designed for easy integration into yo
 - `@placeholder`: The placeholder text for the input field.
 - `@clearButton`: Whether to show a button to clear the input field.
 - `@locale`: The locale to be used for date formatting.
-

@@ -2,24 +2,23 @@
 
 Ember input validation/radio group content
 
-
 <DocsDemo as |demo|>
-  <demo.example @name="radio-group-validation-src.hbs">
-  <TpkValidationRadioGroup @mandatory={{true}} @groupLabel="This is my favority label" @changeset={{this.changeset}} @validationField="radio" as |R|>
-    <R.Radio @value='maybe' @label="it's me" data-test-radio="good" as |I| >
-      <I.Input />
-      <I.Label />
-    </R.Radio>
-    <R.Radio  @value='or not' @label="no it's me" data-test-radio="bad" as |I| >
-      <I.Input />
-      <I.Label />
-    </R.Radio>
-  </TpkValidationRadioGroup>
+<demo.example @name="radio-group-validation-src.hbs">
+<TpkValidationRadioGroup @mandatory={{true}} @groupLabel="This is my favority label" @changeset={{this.changeset}} @validationField="radio" as |R|>
+<R.Radio @value='maybe' @label="it's me" data-test-radio="good" as |I| >
+<I.Input />
+<I.Label />
+</R.Radio>
+<R.Radio @value='or not' @label="no it's me" data-test-radio="bad" as |I| >
+<I.Input />
+<I.Label />
+</R.Radio>
+</TpkValidationRadioGroup>
 
-  Result: {{changeset-get this.changeset 'radio'}}
+Result: {{changeset-get this.changeset 'radio'}}
 
-  </demo.example>
-  <demo.snippet @name="radio-group-validation-src.hbs"/>
+</demo.example>
+<demo.snippet @name="radio-group-validation-src.hbs"/>
 </DocsDemo>
 
 ### Args
@@ -40,10 +39,9 @@ Ember input validation/radio group content
 
 **I.Input**: The component representing the radio.
 
-
 ### CSS
 
-**.tpk-validation-radio-container** : CSS class which includes the label and the group 
+**.tpk-validation-radio-container** : CSS class which includes the label and the group
 
 **.tpk-validation-radio-group-label** : CSS class for the label of the group
 

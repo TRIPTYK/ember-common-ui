@@ -57,7 +57,8 @@ export default class DocsEmberInputValidationPrefabsInputRoute extends Route {
           name: '@unmaskValue',
           type: 'boolean',
           required: false,
-          description: 'Whether to unmask the value before setting it in the changeset.',
+          description:
+            'Whether to unmask the value before setting it in the changeset.',
         },
         {
           name: '@disabled',

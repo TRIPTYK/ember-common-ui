@@ -5,7 +5,7 @@
 @import 'tailwindcss';
 @plugin "daisyui" {
   themes: nord --default;
-};
+}
 @import '@triptyk/ember-input/dist/app.css';
 @import '@triptyk/ember-ui/dist/app.css';
 @import '@triptyk/ember-input-validation/dist/app.css';

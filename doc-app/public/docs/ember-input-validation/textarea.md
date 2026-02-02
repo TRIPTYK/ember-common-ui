@@ -5,30 +5,30 @@ A textarea component with built-in validation support using changesets. This com
 ## Basic Usage
 
 <DocsDemo as |demo|>
-  <demo.example @name="textarea-validation.hbs">
-    <TpkValidationTextarea 
-      @label="Description"
-      @changeset={{this.changeset}}
-      @validationField="description"
-      @maxLength={{500}}
-    as |T|>
-      <div>
-        <T.Label />
-        <span class="char-count">
-          {{T.charCount}} / {{T.maxLength}}
-        </span>
-      </div>
-      <T.Input />
-      <div>
-        {{#each T.errors as |error|}}
-          <span class="error-message">
-            {{error.message}}
-          </span>
-        {{/each}}
-      </div>
-    </TpkValidationTextarea>
-  </demo.example>
-  <demo.snippet @name="textarea-validation.hbs"/>
+<demo.example @name="textarea-validation.hbs">
+<TpkValidationTextarea
+@label="Description"
+@changeset={{this.changeset}}
+@validationField="description"
+@maxLength={{500}}
+as |T|>
+<div>
+<T.Label />
+<span class="char-count">
+{{T.charCount}} / {{T.maxLength}}
+</span>
+</div>
+<T.Input />
+<div>
+{{#each T.errors as |error|}}
+<span class="error-message">
+{{error.message}}
+</span>
+{{/each}}
+</div>
+</TpkValidationTextarea>
+</demo.example>
+<demo.snippet @name="textarea-validation.hbs"/>
 </DocsDemo>
 
 ## Arguments
@@ -78,6 +78,7 @@ A textarea component with built-in validation support using changesets. This com
 ## Validation
 
 The component automatically:
+
 - Updates the changeset as the user types (or on change, depending on `@changeEvent`)
 - Displays validation state via the `data-has-error` attribute
 - Enforces `@maxLength` if specified

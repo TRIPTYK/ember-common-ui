@@ -5,51 +5,51 @@ A file input component with built-in validation support using changesets. This c
 ## Basic Usage
 
 <DocsDemo as |demo|>
-  <demo.example @name="file-validation.hbs">
-    <TpkValidationFile 
-      @label="Upload your document"
-      @changeset={{this.changeset}}
-      @validationField="document"
-      @onChange={{this.onChange}}
-      @accept=".pdf,.doc,.docx"
-    as |F|>
-      <F.Label />
-      <F.Input />
-      <div>
-        {{#each F.errors as |error|}}
-          <span class="error-message">
-            {{error.message}}
-          </span>
-        {{/each}}
-      </div>
-    </TpkValidationFile>
-  </demo.example>
-  <demo.snippet @name="file-validation.hbs"/>
+<demo.example @name="file-validation.hbs">
+<TpkValidationFile
+@label="Upload your document"
+@changeset={{this.changeset}}
+@validationField="document"
+@onChange={{this.onChange}}
+@accept=".pdf,.doc,.docx"
+as |F|>
+<F.Label />
+<F.Input />
+<div>
+{{#each F.errors as |error|}}
+<span class="error-message">
+{{error.message}}
+</span>
+{{/each}}
+</div>
+</TpkValidationFile>
+</demo.example>
+<demo.snippet @name="file-validation.hbs"/>
 </DocsDemo>
 
 ## Multiple File Upload
 
 <DocsDemo as |demo|>
-  <demo.example @name="file-validation-multiple.hbs">
-    <TpkValidationFile 
-      @label="Upload images"
-      @changeset={{this.changeset}}
-      @validationField="images"
-      @multiple={{true}}
-      @accept="image/*"
-    as |F|>
-      <F.Label />
-      <F.Input />
-      <div>
-        {{#each F.errors as |error|}}
-          <span class="error-message">
-            {{error.message}}
-          </span>
-        {{/each}}
-      </div>
-    </TpkValidationFile>
-  </demo.example>
-  <demo.snippet @name="file-validation-multiple.hbs"/>
+<demo.example @name="file-validation-multiple.hbs">
+<TpkValidationFile
+@label="Upload images"
+@changeset={{this.changeset}}
+@validationField="images"
+@multiple={{true}}
+@accept="image/\*"
+as |F|>
+<F.Label />
+<F.Input />
+<div>
+{{#each F.errors as |error|}}
+<span class="error-message">
+{{error.message}}
+</span>
+{{/each}}
+</div>
+</TpkValidationFile>
+</demo.example>
+<demo.snippet @name="file-validation-multiple.hbs"/>
 </DocsDemo>
 
 ## Arguments
@@ -91,6 +91,7 @@ A file input component with built-in validation support using changesets. This c
 ## Validation
 
 The component automatically:
+
 - Updates the changeset when files are selected
 - Stores a single `File` object when `@multiple` is false
 - Stores an array of `File` objects when `@multiple` is true

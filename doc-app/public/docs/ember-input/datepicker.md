@@ -3,36 +3,36 @@
 An Ember component for date selection with extensive customization options. This component provides a user interface for selecting dates and applying input masks for formatting.
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker.hbs">
-      <TpkDatepicker
-        @label="Date picker"
-        @value={{this.selectedDate}}
-        @onChange={{this.onChange}}
-        class="tpk-input"
-      as |D|>
-        <D.Label />
-        <D.Input />
-      </TpkDatepicker>
-  </demo.example>
-  <demo.snippet @name="tpk-datepicker.hbs"/>
+<demo.example @name="tpk-datepicker.hbs">
+<TpkDatepicker
+@label="Date picker"
+@value={{this.selectedDate}}
+@onChange={{this.onChange}}
+class="tpk-input"
+as |D|>
+<D.Label />
+<D.Input />
+</TpkDatepicker>
+</demo.example>
+<demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>
 
 ## Mandatory Arguments
 
 - **value**: The initial date or dates to display in the date picker. Can be a single `Date`, a `string`, or `undefined`.
 
-    ```typescript
-    @tracked selectedDate: Date | string | undefined = new Date();
-    ```
+  ```typescript
+  @tracked selectedDate: Date | string | undefined = new Date();
+  ```
 
 - **onChange**: A function called when the date is changed. Receives the new values as argument.
 
-    ```typescript
-    @action
-    onChange(dates: Date[]): void {
-      this.selectedDate = dates[0];
-    }
-    ```
+  ```typescript
+  @action
+  onChange(dates: Date[]): void {
+    this.selectedDate = dates[0];
+  }
+  ```
 
 ## Optional Arguments
 
@@ -40,9 +40,9 @@ An Ember component for date selection with extensive customization options. This
 
 - **mask**: An input mask for formatting the date input when writing, using the IMask library.
 
-    ```typescript
-    @tracked dateMask: string = 'd-m/Y';
-    ```
+  ```typescript
+  @tracked dateMask: string = 'd-m/Y';
+  ```
 
 - **placeholder**: Placeholder text displayed when the date field is empty.
 
@@ -52,16 +52,16 @@ An Ember component for date selection with extensive customization options. This
 
 - **stepping**: The number of minutes to step up/down in the time picker. Defaults to 5.
 
-- **mode**: 
-  
-  __Multiple__
+- **mode**:
+
+  **Multiple**
 
   Allow the selection of multiple dates. Returns values after two dates are picked at least
 
-  __Range__
+  **Range**
 
   Enable date range selection. Returns values after two dates are picked
-  
+
 - **multipleDatesSeparator**: The separator to use when multiple dates are selected.
 
 - **range**: Enable date range selection. Defaults to `false`. Returns values after two dates are picked
@@ -106,106 +106,105 @@ An Ember component for date selection with extensive customization options. This
 
 - **viewMode**: The initial view mode of the date picker. Can be 'clock', 'calendar', 'months', 'years', or 'decades'.
 
-
 ## Limitation
 
-Currently, the datepicker cannot have a __default value__ for modes [`range`] and [`multiple`]. For more details, see [this issue](https://github.com/Eonasdan/tempus-dominus/issues/2830)
+Currently, the datepicker cannot have a **default value** for modes [`range`] and [`multiple`]. For more details, see [this issue](https://github.com/Eonasdan/tempus-dominus/issues/2830)
 
 ## Examples
 
 ### Date picker range
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker-range.hbs">
-      <TpkDatepicker
-        @label="Date picker range"
-        @value={{this.selectedDates}}
-        @onChange={{this.onChangeRange}}
-        @range={{true}}
-        @multipleDatesSeparator=" jusqu'au "
-        class="tpk-input"
-      as |D|>
-        <D.Label />
-        <D.Input />
-      </TpkDatepicker>
-  </demo.example>
-  <demo.snippet @name="tpk-datepicker.hbs"/>
+<demo.example @name="tpk-datepicker-range.hbs">
+<TpkDatepicker
+@label="Date picker range"
+@value={{this.selectedDates}}
+@onChange={{this.onChangeRange}}
+@range={{true}}
+@multipleDatesSeparator=" jusqu'au "
+class="tpk-input"
+as |D|>
+<D.Label />
+<D.Input />
+</TpkDatepicker>
+</demo.example>
+<demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>
 
 ### Time picker with mask
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker-time.hbs">
-      <TpkDatepicker
-        @label="Time picker"
-        @value={{this.selectedDate}}
-        @onChange={{this.onChange}}
-        @enableTime={{true}}
-        @noCalendar={{true}}
-        @dateFormat="HH:mm"
-        @mask="H:M"
-        class="tpk-input"
-      as |D|>
-        <D.Label />
-        <D.Input />
-      </TpkDatepicker>
-  </demo.example>
-  <demo.snippet @name="tpk-datepicker.hbs"/>
+<demo.example @name="tpk-datepicker-time.hbs">
+<TpkDatepicker
+@label="Time picker"
+@value={{this.selectedDate}}
+@onChange={{this.onChange}}
+@enableTime={{true}}
+@noCalendar={{true}}
+@dateFormat="HH:mm"
+@mask="H:M"
+class="tpk-input"
+as |D|>
+<D.Label />
+<D.Input />
+</TpkDatepicker>
+</demo.example>
+<demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>
 
 ### Date picker with minDate, maxDate and a default value
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker-min-max.hbs">
-      <TpkDatepicker
-        @label="Datepicker"
-        @value={{this.date}}
-        @onChange={{this.onChange}}
-        @minDate={{this.minDate}}
-        @maxDate={{this.maxDate}}
-        class="tpk-input"
-      as |D|>
-        <D.Label />
-        <D.Input />
-      </TpkDatepicker>
-  </demo.example>
-  <demo.snippet @name="tpk-datepicker.hbs"/>
+<demo.example @name="tpk-datepicker-min-max.hbs">
+<TpkDatepicker
+@label="Datepicker"
+@value={{this.date}}
+@onChange={{this.onChange}}
+@minDate={{this.minDate}}
+@maxDate={{this.maxDate}}
+class="tpk-input"
+as |D|>
+<D.Label />
+<D.Input />
+</TpkDatepicker>
+</demo.example>
+<demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>
 
 ### Date picker shows month selector first
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker-min-max.hbs">
-      <TpkDatepicker
-        @label="Datepicker"
-        @value={{this.selectedDate}}
-        @onChange={{this.onChange}}
-        @viewMode="months"
-        class="tpk-input"
-      as |D|>
-        <D.Label />
-        <D.Input />
-      </TpkDatepicker>
-  </demo.example>
-  <demo.snippet @name="tpk-datepicker.hbs"/>
+<demo.example @name="tpk-datepicker-min-max.hbs">
+<TpkDatepicker
+@label="Datepicker"
+@value={{this.selectedDate}}
+@onChange={{this.onChange}}
+@viewMode="months"
+class="tpk-input"
+as |D|>
+<D.Label />
+<D.Input />
+</TpkDatepicker>
+</demo.example>
+<demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>
 
 ### Show picker after select a date
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-datepicker-min-max.hbs">
-      <TpkDatepicker
-        @label="Datepicker & Timepicker"
-        @value={{this.selectedDate}}
-        @onChange={{this.onChange}}
-        @enableTime={{true}}
-        @promptTimeOnDateChange={{true}}
-        @dateFormat="dd/MM/yyyy | HH:mm"
-        class="tpk-input"
-      as |D|>
-        <D.Label />
-        <D.Input />
-      </TpkDatepicker>
-  </demo.example>
-  <demo.snippet @name="tpk-datepicker.hbs"/>
+<demo.example @name="tpk-datepicker-min-max.hbs">
+<TpkDatepicker
+@label="Datepicker & Timepicker"
+@value={{this.selectedDate}}
+@onChange={{this.onChange}}
+@enableTime={{true}}
+@promptTimeOnDateChange={{true}}
+@dateFormat="dd/MM/yyyy | HH:mm"
+class="tpk-input"
+as |D|>
+<D.Label />
+<D.Input />
+</TpkDatepicker>
+</demo.example>
+<demo.snippet @name="tpk-datepicker.hbs"/>
 </DocsDemo>

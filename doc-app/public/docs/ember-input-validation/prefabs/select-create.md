@@ -4,42 +4,48 @@ This component provides a powerfull select with ability to create a new value an
 
 It uses also toString() in order to display the options and the selected element.
 
-In example: 
+In example:
 
 ```ts
-  options = [
-    { label: 'Option 1', value: 'option-1', toString() { return `${this.label}`; } }
-  ];
+options = [
+  {
+    label: 'Option 1',
+    value: 'option-1',
+    toString() {
+      return `${this.label}`;
+    },
+  },
+];
 ```
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-create-prefab.hbs">
-      <Prefabs::TpkValidationSelectCreate
-        @label="Select or add your CEO"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="ceo"
-        @onCreate={{this.onCreate}}
-        @disabled={{false}}
-      />
-      <Prefabs::TpkValidationSelectCreate
-        @label="Disabled"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="disabled"
-        @onCreate={{this.onCreate}}
-        @disabled={{true}}
-      />
-      <Prefabs::TpkValidationSelectCreate
-        @label="Error"
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="error"
-        @onCreate={{this.onCreate}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-create-prefab.hbs"/>
+<demo.example @name="tpk-select-create-prefab.hbs">
+<Prefabs::TpkValidationSelectCreate
+@label="Select or add your CEO"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="ceo"
+@onCreate={{this.onCreate}}
+@disabled={{false}}
+/>
+<Prefabs::TpkValidationSelectCreate
+@label="Disabled"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="disabled"
+@onCreate={{this.onCreate}}
+@disabled={{true}}
+/>
+<Prefabs::TpkValidationSelectCreate
+@label="Error"
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="error"
+@onCreate={{this.onCreate}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-create-prefab.hbs"/>
 </DocsDemo>
 
 ## Mandatory properties
@@ -58,7 +64,7 @@ In example:
 - `@initiallyOpened`: Whether the select dropdown is initially opened.
 - `@allowClear`: Whether to show a button to clear the selection.
 - `@mandatory`: Whether the textarea field is mandatory.
-- `@onChange`: The action to be called when the selection changes. 
+- `@onChange`: The action to be called when the selection changes.
 - `@labelComponent`: The custom component to use for the label.
 - `@selectedItemComponent`: The custom component to use for the selected item.
 - `@placeholderComponent`: The custom component to use for the placeholder
@@ -75,37 +81,38 @@ In example:
 ### Select create multiple
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-create-prefab-multiple.hbs">
-      <Prefabs::TpkValidationSelectCreate
-        @label="Select multiple CEO"
-        @placeholder="Do the best choice"
-        @multiple={{true}}
-        @onCreate={{this.onCreateBis}}
-        @options={{this.options}}
-        @changeset={{this.changesetBis}} 
-        @validationField="ceo"
-        @allowClear={{true}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-create-prefab-multiple.hbs"/>
+<demo.example @name="tpk-select-create-prefab-multiple.hbs">
+<Prefabs::TpkValidationSelectCreate
+@label="Select multiple CEO"
+@placeholder="Do the best choice"
+@multiple={{true}}
+@onCreate={{this.onCreateBis}}
+@options={{this.options}}
+@changeset={{this.changesetBis}}
+@validationField="ceo"
+@allowClear={{true}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-create-prefab-multiple.hbs"/>
 </DocsDemo>
 
 ### Select create with specific label and hide create option when value already exist
+
 To test it, write Romain in input
 
 <DocsDemo as |demo|>
-  <demo.example @name="tpk-select-create-prefab-build-show.hbs">
-      <Prefabs::TpkValidationSelectCreate
-        @label="Select or create CEO"
-        @onCreate={{this.onCreate}}
-        @options={{this.options}}
-        @changeset={{this.changeset}} 
-        @validationField="ceo"
-        @showCreateWhen={{this.showCreateWhen}}
-        @buildSuggestion={{this.buildSuggestion}}
-        @disabled={{false}}
-      />
-  </demo.example>
-  <demo.snippet @name="tpk-select-create-prefab-build-show.hbs"/>
+<demo.example @name="tpk-select-create-prefab-build-show.hbs">
+<Prefabs::TpkValidationSelectCreate
+@label="Select or create CEO"
+@onCreate={{this.onCreate}}
+@options={{this.options}}
+@changeset={{this.changeset}}
+@validationField="ceo"
+@showCreateWhen={{this.showCreateWhen}}
+@buildSuggestion={{this.buildSuggestion}}
+@disabled={{false}}
+/>
+</demo.example>
+<demo.snippet @name="tpk-select-create-prefab-build-show.hbs"/>
 </DocsDemo>

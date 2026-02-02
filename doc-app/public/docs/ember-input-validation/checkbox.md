@@ -2,27 +2,26 @@
 
 Ember input validation/checkbox content
 
-
 <DocsDemo as |demo|>
-  <demo.example @name="checkbox-validation-src.hbs">
-    <TpkValidationCheckbox 
-      @label={{this.label}} 
-      @changeset={{this.changeset}}
-      @validationField="checked"
-      @onChange={{this.onChange}}
-      as |T|>
-      <T.Input />
-      <T.Label />
-      <div>
-        {{#each T.errors as |error|}}
-          <span>
-              {{error.message}}
-          </span>
-        {{/each}}
-      </div>
-    </TpkValidationCheckbox>
-  </demo.example>
-  <demo.snippet @name="checkbox-validation-src.hbs"/>
+<demo.example @name="checkbox-validation-src.hbs">
+<TpkValidationCheckbox
+@label={{this.label}}
+@changeset={{this.changeset}}
+@validationField="checked"
+@onChange={{this.onChange}}
+as |T|>
+<T.Input />
+<T.Label />
+<div>
+{{#each T.errors as |error|}}
+<span>
+{{error.message}}
+</span>
+{{/each}}
+</div>
+</TpkValidationCheckbox>
+</demo.example>
+<demo.snippet @name="checkbox-validation-src.hbs"/>
 </DocsDemo>
 
 ### Args

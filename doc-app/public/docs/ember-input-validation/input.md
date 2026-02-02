@@ -3,24 +3,24 @@
 Ember input validation/input content
 
 <DocsDemo as |demo|>
-    <demo.example @name="input-validation-src.hbs">
-        <TpkValidationInput 
-        @label={{this.label}} 
-        @onChange={{this.onChange}}
-        @changeset={{this.changeset}}
-        @validationField="delete_text" as |I|>
-        <I.Label/>
-        <I.Input/>
-        <div>
-        {{#each I.errors as |error|}}
-          <span>
-              {{error.message}}
-          </span>
-        {{/each}}
-      </div>
-      </TpkValidationInput>
-    </demo.example>
-    <demo.snippet @name="input-validation-src.hbs"/>
+<demo.example @name="input-validation-src.hbs">
+<TpkValidationInput
+@label={{this.label}}
+@onChange={{this.onChange}}
+@changeset={{this.changeset}}
+@validationField="delete_text" as |I|>
+<I.Label/>
+<I.Input/>
+<div>
+{{#each I.errors as |error|}}
+<span>
+{{error.message}}
+</span>
+{{/each}}
+</div>
+</TpkValidationInput>
+</demo.example>
+<demo.snippet @name="input-validation-src.hbs"/>
 </DocsDemo>
 
 ### Args
@@ -46,7 +46,7 @@ the function receive the value and the event as args.
 
 **.tpk-input** : CSS class for styling the input of the checkbox (label and input box).
 
-**.tpk-input input** :  CSS class for styling the targeted input.
+**.tpk-input input** : CSS class for styling the targeted input.
 
 **.tpk-label** : CSS class for styling the label of the input.
 

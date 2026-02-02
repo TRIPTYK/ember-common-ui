@@ -3,25 +3,25 @@
 This component provides a datepicker and built-in validation.
 
 <DocsDemo as |demo|>
-  <demo.example @name="prefab-tpk-datepicker.hbs">
-    <Prefabs::TpkValidationDatepicker
-      @label="Datepicker"
-      @changeset={{this.changeset}}
-      @validationField="birthday"
-    />
-    <Prefabs::TpkValidationDatepicker
-      @label="Disabled"
-      @changeset={{this.changeset}}
-      @validationField="disabled"
-      @disabled=true
-    />
-    <Prefabs::TpkValidationDatepicker
-      @label="Error"
-      @changeset={{this.changeset}}
-      @validationField="error"
-    />
-  </demo.example>
-  <demo.snippet @name="prefab-tpk-datepicker.hbs" />
+<demo.example @name="prefab-tpk-datepicker.hbs">
+<Prefabs::TpkValidationDatepicker
+@label="Datepicker"
+@changeset={{this.changeset}}
+@validationField="birthday"
+/>
+<Prefabs::TpkValidationDatepicker
+@label="Disabled"
+@changeset={{this.changeset}}
+@validationField="disabled"
+@disabled=true
+/>
+<Prefabs::TpkValidationDatepicker
+@label="Error"
+@changeset={{this.changeset}}
+@validationField="error"
+/>
+</demo.example>
+<demo.snippet @name="prefab-tpk-datepicker.hbs" />
 </DocsDemo>
 
 ## Usage
