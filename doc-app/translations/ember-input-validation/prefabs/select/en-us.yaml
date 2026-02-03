@@ -1,0 +1,32 @@
+ember-input-validation:
+  prefabs:
+    select:
+      properties:
+        validationField:
+          description: 'The field name in the changeset for validation.'
+        changeset:
+          description: 'The changeset object for form validation.'
+        options:
+          description: 'The options to display in the select dropdown. Each option should have a toString() method for display.'
+        label:
+          description: 'The label for the input field.'
+        placeholder:
+          description: 'The placeholder text for the input field.'
+        disabled:
+          description: 'Whether the input field is disabled.'
+        multiple:
+          description: 'Whether multiple selections are allowed.'
+        mandatory:
+          description: 'Whether the select field is mandatory.'
+        initiallyOpened:
+          description: 'Whether the select dropdown is initially opened.'
+        allowClear:
+          description: 'Whether to show a button to clear the selection.'
+        onChange:
+          description: 'The action to be called when the selection changes.'
+        labelComponent:
+          description: 'The custom component to use for the label.'
+        selectedItemComponent:
+          description: 'The custom component to use for the selected item.'
+        placeholderComponent:
+          description: 'The custom component to use for the placeholder.'

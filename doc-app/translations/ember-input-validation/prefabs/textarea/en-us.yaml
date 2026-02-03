@@ -1,0 +1,19 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  label:
+    description: 'The label for the textarea field.'
+  placeholder:
+    description: 'The placeholder text for the textarea field.'
+  mandatory:
+    description: 'Whether the textarea field is mandatory.'
+  disabled:
+    description: 'Whether the input field is disabled.'
+  onChange:
+    description: 'The action to be called when the value changes.'
+  changeEvent:
+    description: 'The event to trigger the onChange action.'
+  maxLength:
+    description: 'The maximum length of the textarea field.'

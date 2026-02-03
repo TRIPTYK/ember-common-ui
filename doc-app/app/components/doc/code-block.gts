@@ -3,6 +3,9 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
+import { codeToHtml } from 'shiki';
+import { htmlSafe } from '@ember/template';
+import type Owner from '@ember/owner';
 
 interface CodeBlockSignature {
   Args: {
@@ -13,6 +16,25 @@ interface CodeBlockSignature {
 
 export default class CodeBlockComponent extends Component<CodeBlockSignature> {
   @tracked copied = false;
+  @tracked highlightedHtml = '';
+
+  constructor(owner: Owner, args: CodeBlockSignature['Args']) {
+    super(owner, args);
+    void this.generateHighlightedCode();
+  }
+
+  async generateHighlightedCode() {
+    try {
+      const html = await codeToHtml(this.args.code, {
+        lang: this.language,
+        theme: 'catppuccin-frappe',
+      });
+      this.highlightedHtml = html;
+    } catch (error) {
+      console.error('Failed to highlight code:', error);
+      this.highlightedHtml = `<pre><code>${this.args.code}</code></pre>`;
+    }
+  }
 
   @action
   async copyCode() {
@@ -28,7 +50,17 @@ export default class CodeBlockComponent extends Component<CodeBlockSignature> {
   }
 
   get language() {
-    return this.args.language || 'markup';
+    const lang = this.args.language || 'typescript';
+    const languageMap: Record<string, string> = {
+      ts: 'typescript',
+      gts: 'glimmer-ts',
+      js: 'javascript',
+    };
+    return languageMap[lang] || lang;
+  }
+
+  get safeHtml() {
+    return htmlSafe(this.highlightedHtml);
   }
 
   <template>
@@ -72,7 +104,7 @@ export default class CodeBlockComponent extends Component<CodeBlockSignature> {
         </button>
       </div>
       <div class="code-block-content">
-        <pre class="language-{{this.language}}"><code>{{@code}}</code></pre>
+        {{this.safeHtml}}
       </div>
     </div>
   </template>

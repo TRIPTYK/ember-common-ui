@@ -1,0 +1,68 @@
+import Component from '@glimmer/component';
+import DocPage from 'doc-app/components/doc/page';
+import DocSection from 'doc-app/components/doc/section';
+import DocPropertyTable from 'doc-app/components/doc/property-table';
+import { t, type IntlService } from 'ember-intl';
+import BasicBicExample from 'doc-app/components/docs/ember-input-validation/prefabs/basic-bic.gts';
+import DisabledBicExample from 'doc-app/components/docs/ember-input-validation/prefabs/disabled-bic.gts';
+import ErrorBicExample from 'doc-app/components/docs/ember-input-validation/prefabs/error-bic.gts';
+import { service } from '@ember/service';
+import CodeExampleComponent from 'doc-app/components/doc/code-example.gts';
+import CodeBlock from 'doc-app/components/doc/code-block.gts';
+
+interface Property {
+  name: string;
+  type: string;
+  required: boolean;
+  description: string;
+}
+
+interface BicPrefabDocsSignature {
+  Args: {
+    model: {
+      properties: Property[];
+    };
+  };
+}
+
+export default class BicPrefabDocs extends Component<BicPrefabDocsSignature> {
+  @service declare intl: IntlService;
+
+  bic = `
+  <TpkBicPrefab
+    @label='BIC'
+    @changeset={{this.changeset}}
+    @validationField='bic'
+    @placeholder='Enter BIC'
+  />
+  `;
+
+  <template>
+    <DocPage
+      @title={{t "emberInputValidation.prefabs.bic.title"}}
+      @description={{t "emberInputValidation.prefabs.bic.description"}}
+    >
+      <DocSection
+        @title={{t "emberInputValidation.prefabs.bic.examples.title"}}
+      >
+        <CodeExampleComponent
+          @title={{t "emberInputValidation.prefabs.bic.examples.basic"}}
+        >
+          <:demo>
+            <div class="flex gap-4">
+              <BasicBicExample />
+              <DisabledBicExample />
+              <ErrorBicExample />
+            </div>
+          </:demo>
+          <:template>
+            <CodeBlock @code={{this.bic}} @language="gts" />
+          </:template>
+        </CodeExampleComponent>
+      </DocSection>
+      <DocSection @title={{t "docs.sections.properties"}}>
+        <DocPropertyTable @properties={{@model.properties}} />
+      </DocSection>
+    </DocPage>
+  </template>
+}

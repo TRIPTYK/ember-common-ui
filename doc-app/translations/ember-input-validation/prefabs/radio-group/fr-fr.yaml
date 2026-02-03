@@ -1,0 +1,15 @@
+properties:
+  validationField:
+    description: 'Le nom du champ dans le changeset pour la validation.'
+  changeset:
+    description: L'objet changeset pour la validation du formulaire.
+  label:
+    description: 'Le label du groupe de boutons radio.'
+  disabled:
+    description: 'Indique si le groupe de boutons radio est désactivé.'
+  onChange:
+    description: L'action à appeler lors du changement de valeur.
+  options:
+    description: 'Les options pour le groupe de boutons radio.'
+  mandatory:
+    description: 'Indique si le champ de saisie est obligatoire.'

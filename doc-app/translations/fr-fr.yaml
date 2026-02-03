@@ -1,0 +1,149 @@
+docs:
+  sections:
+    properties: 'Propriétés'
+    usage: 'Utilisation'
+    examples: 'Exemples'
+
+  propertyTable:
+    name: 'Nom'
+    type: 'Type'
+    required: 'Requis'
+    description: 'Description'
+    yes: 'Oui'
+    no: 'Non'
+
+emberInputValidation:
+  prefabs:
+    input:
+      title: 'Input'
+      description: 'Ce composant fournit un champ de saisie validé avec label et gestion des erreurs.'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    number:
+      title: 'Number'
+      description: "L'input de validation numérique peut être bloqué à un minimum de 0 ou accepter des nombres négatifs."
+      examples:
+        title: 'Exemples'
+        unsigned: 'Nombre non signé'
+        basic: 'Utilisation basique'
+    bic:
+      title: 'BIC'
+      description: "Ceci est un input avec un masque intégré pour le BIC. Le masque est compatible avec tout BIC et le texte ne peut être qu'en lettres majuscules."
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    currency:
+      title: 'Devise'
+      description: 'Un composant de validation réutilisable pour la saisie de montants avec gestion des erreurs intégrée et masque de formatage euro.'
+      examples:
+        title: 'Exemples'
+        basic: 'Devise basique'
+    datepicker:
+      title: 'Sélecteur de date'
+      description: 'Un composant de validation réutilisable pour la sélection de dates avec gestion des erreurs intégrée et options de personnalisation étendues.'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    datepickerRange:
+      title: 'Préfabriqué de validation plage de dates'
+      description: 'Un composant de validation réutilisable pour la sélection de plages de dates avec gestion des erreurs intégrée'
+      examples:
+        title: 'Exemples'
+        basic: 'Plage de dates basique'
+    email:
+      title: 'Email'
+      description: Un composant de validation réutilisable pour la saisie d'email avec gestion des erreurs intégrée
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    file:
+      title: 'Fichier'
+      description: 'Un composant de validation réutilisable pour le téléchargement de fichier unique avec gestion des erreurs intégrée'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    fileList:
+      title: 'Liste de fichiers'
+      description: 'Un composant de validation réutilisable pour le téléchargement de fichiers multiples avec support du glisser-déposer, gestion des erreurs intégrée et fonctionnalités de gestion des fichiers'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    iban:
+      title: 'IBAN'
+      description: Un composant de validation réutilisable pour la saisie d'IBAN avec masque intégré supportant les IBAN belges, français, luxembourgeois, néerlandais et allemands avec formatage automatique
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    integer:
+      title: 'Entier'
+      description: Un composant de validation réutilisable pour la saisie d'entiers qui empêche les nombres décimaux et peut être restreint aux valeurs non signées (minimum 0) ou autoriser les nombres négatifs
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    mobile:
+      title: 'Mobile'
+      description: 'Un composant de validation réutilisable pour les numéros de téléphone mobile avec support des préfixes pays (Luxembourg, Allemagne, Pays-Bas, Belgique, France) et gestion des erreurs intégrée'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    nationalNumber:
+      title: 'Numéro national'
+      description: Un composant de validation réutilisable pour la saisie de numéro national belge avec masque intégré qui formate le numéro dans le format lisible similaire à celui des cartes d'identité belges
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    password:
+      title: 'Mot de passe'
+      description: 'Un composant de validation réutilisable pour les champs de saisie de mot de passe avec masquage sécurisé et gestion des erreurs intégrée'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    radio:
+      title: 'Radio'
+      description: 'Un composant de validation réutilisable pour un bouton radio unique avec gestion des erreurs intégrée'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    radioGroup:
+      title: 'Groupe de radios'
+      description: 'Un composant de validation réutilisable pour les groupes de boutons radio avec gestion des erreurs intégrée et options personnalisables'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    select:
+      title: 'Select'
+      description: 'Un composant select puissant avec validation intégrée utilisant ember-power-select'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    selectCreate:
+      title: 'Select Create'
+      description: 'Un composant select puissant avec la possibilité de créer de nouvelles valeurs et validation intégrée utilisant ember-power-select et ember-power-select-with-create'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    selectSearch:
+      title: 'Select Search'
+      description: 'Un composant select puissant avec recherche et validation intégrée utilisant ember-power-select'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    textarea:
+      title: 'Textarea'
+      description: 'Un composant de validation réutilisable pour les champs textarea avec gestion des erreurs intégrée et limite de caractères optionnelle'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    timepicker:
+      title: Sélecteur d'heure
+      description: Un composant de validation réutilisable pour la sélection d'heure avec gestion des erreurs intégrée et options personnalisables
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
+    vat:
+      title: 'TVA'
+      description: 'Un composant input avec masque intégré pour les numéros de TVA supportant les formats belge, français, luxembourgeois, néerlandais et allemand'
+      examples:
+        title: 'Exemples'
+        basic: 'Utilisation basique'
