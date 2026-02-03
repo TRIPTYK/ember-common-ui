@@ -9,74 +9,85 @@ export default class DocsEmberInputValidationPrefabsInputRoute extends Route {
           name: '@validationField',
           type: 'string',
           required: true,
-          description: 'The field name in the changeset for validation.',
+          description:
+            'ember-input-validation.prefabs.input.properties.validationField.description',
         },
         {
           name: '@changeset',
           type: 'ImmerChangeset',
           required: true,
-          description: 'The changeset object for form validation.',
+          description:
+            'ember-input-validation.prefabs.input.properties.changeset.description',
         },
         {
           name: '@label',
           type: 'string',
           required: false,
-          description: 'The label for the input field.',
+          description:
+            'ember-input-validation.prefabs.input.properties.label.description',
         },
         {
           name: '@placeholder',
           type: 'string',
           required: false,
-          description: 'The placeholder text for the input field.',
+          description:
+            'ember-input-validation.prefabs.input.properties.placeholder.description',
         },
         {
           name: '@type',
           type: 'string',
           required: false,
-          description: "The type of the input field. Defaults to 'text'.",
+          description:
+            'ember-input-validation.prefabs.input.properties.type.description',
         },
         {
           name: '@mandatory',
           type: 'boolean',
           required: false,
-          description: 'Whether the input field is mandatory.',
+          description:
+            'ember-input-validation.prefabs.input.properties.mandatory.description',
         },
         {
           name: '@mask',
           type: 'string',
           required: false,
-          description: 'The mask to apply to the input field.',
+          description:
+            'ember-input-validation.prefabs.input.properties.mask.description',
         },
         {
           name: '@maskOptions',
           type: 'object',
           required: false,
-          description: 'The options to apply to the mask.',
+          description:
+            'ember-input-validation.prefabs.input.properties.maskOptions.description',
         },
         {
           name: '@unmaskValue',
           type: 'boolean',
           required: false,
           description:
-            'Whether to unmask the value before setting it in the changeset.',
+            'ember-input-validation.prefabs.input.properties.unmaskValue.description',
         },
         {
           name: '@disabled',
           type: 'boolean',
           required: false,
-          description: 'Whether the input field is disabled.',
+          description:
+            'ember-input-validation.prefabs.input.properties.disabled.description',
         },
         {
           name: '@onChange',
           type: 'function',
           required: false,
-          description: 'The action to be called when the value changes.',
+          description:
+            'ember-input-validation.prefabs.input.properties.onChange.description',
         },
         {
           name: '@changeEvent',
           type: 'string',
           required: false,
-          description: 'The event to trigger the onChange action.',
+          description:
+            'ember-input-validation.prefabs.input.properties.changeEvent.description',
         },
       ],
     };

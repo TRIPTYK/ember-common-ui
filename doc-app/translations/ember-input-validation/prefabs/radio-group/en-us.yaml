@@ -1,0 +1,17 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  value:
+    description: 'Value to pass to the changeset if the radio option is selected.'
+  groupLabel:
+    description: 'The label for the radio button group.'
+  mandatory:
+    description: 'Whether the radio group selection is mandatory.'
+  disabled:
+    description: 'Whether the radio group is disabled.'
+  classless:
+    description: 'Whether to apply default CSS classes to the component.'
+  onChange:
+    description: 'The action to be called when the selection changes.'

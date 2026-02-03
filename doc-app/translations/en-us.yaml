@@ -20,3 +20,130 @@ emberInputValidation:
       examples:
         title: 'Examples'
         basic: 'Basic usage'
+    number:
+      title: 'Number'
+      description: 'The number validation input can be blocked at a minimum of 0 or be a negative number.'
+      examples:
+        title: 'Examples'
+        unsigned: 'Unsigned Number'
+        basic: 'Basic usage'
+    bic:
+      title: 'BIC'
+      description: 'This is an input with a built-in mask for BIC. The mask should be compatible for any BIC and text can only be in capital letters.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    currency:
+      title: 'Currency'
+      description: 'A reusable validation component for currency input with integrated error handling and euro formatting mask.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic Currency'
+    datepicker:
+      title: 'Datepicker'
+      description: 'A reusable validation component for date selection with integrated error handling and extensive customization options.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    datepickerRange:
+      title: 'Datepicker Range validation prefab'
+      description: 'A reusable validation component for date range selection with integrated error handling'
+      examples:
+        title: 'Examples'
+        basic: 'Basic Datepicker Range'
+    email:
+      title: 'Email'
+      description: 'A reusable validation component for email input with integrated error handling'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    file:
+      title: 'File'
+      description: 'A reusable validation component for single file upload with integrated error handling'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    fileList:
+      title: 'File List'
+      description: 'A reusable validation component for multiple file upload with drag and drop support, integrated error handling, and file management features'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    iban:
+      title: 'IBAN'
+      description: 'A reusable validation component for IBAN input with built-in mask supporting Belgian, French, Luxembourgish, Dutch and German IBANs with automatic formatting'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    integer:
+      title: 'Integer'
+      description: 'A reusable validation component for integer input that prevents decimal numbers and can be restricted to unsigned values (minimum 0) or allow negative numbers'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    mobile:
+      title: 'Mobile'
+      description: 'A reusable validation component for mobile phone numbers with country prefix support (Luxembourg, Germany, Netherlands, Belgium, France) and integrated error handling'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    nationalNumber:
+      title: 'National Number'
+      description: 'A reusable validation component for Belgian national number input with built-in mask that formats the number in the pretty format similar to the one on Belgian ID cards'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    password:
+      title: 'Password'
+      description: 'A reusable validation component for password input fields with secure masking and integrated error handling'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    radio:
+      title: 'Radio'
+      description: 'A reusable validation component for single radio button with integrated error handling'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    radioGroup:
+      title: 'Radio Group'
+      description: 'A reusable validation component for radio button groups with integrated error handling and customizable options'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    select:
+      title: 'Select'
+      description: 'A powerful select component with built-in validation using ember-power-select'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    selectCreate:
+      title: 'Select Create'
+      description: 'A powerful select component with ability to create new values and built-in validation using ember-power-select and ember-power-select-with-create'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    selectSearch:
+      title: 'Select Search'
+      description: 'A powerful select component with search and built-in validation using ember-power-select'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    textarea:
+      title: 'Textarea'
+      description: 'A reusable validation component for textarea fields with integrated error handling and optional character limit'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    timepicker:
+      title: 'Timepicker'
+      description: 'A reusable validation component for time selection with integrated error handling and customizable options'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    vat:
+      title: 'VAT'
+      description: 'An input component with built-in mask for VAT numbers supporting Belgian, French, Luxembourgish, Dutch and German VAT formats'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'

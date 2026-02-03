@@ -107,4 +107,7 @@ dist
 # Sorry Triptyk, i'm a vim guy :c
 
 *.swo
-*.swp 
+*.swp
+
+# macOS system files
+.DS_Store

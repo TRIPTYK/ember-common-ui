@@ -1,0 +1,25 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  label:
+    description: 'The label for the input field.'
+  placeholder:
+    description: 'The placeholder text for the input field.'
+  type:
+    description: "The type of the input field. Defaults to 'text'."
+  mandatory:
+    description: 'Whether the input field is mandatory.'
+  mask:
+    description: 'The mask to apply to the input field.'
+  maskOptions:
+    description: 'The options to apply to the mask.'
+  unmaskValue:
+    description: 'Whether to unmask the value before setting it in the changeset.'
+  disabled:
+    description: 'Whether the input field is disabled.'
+  onChange:
+    description: 'The action to be called when the value changes.'
+  changeEvent:
+    description: 'The event to trigger the onChange action.'

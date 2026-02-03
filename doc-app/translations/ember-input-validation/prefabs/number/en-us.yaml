@@ -1,0 +1,25 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  label:
+    description: 'The label for the input field.'
+  placeholder:
+    description: 'The placeholder text for the input field.'
+  unsigned:
+    description: 'Whether the number input should only accept positive values (minimum 0).'
+  min:
+    description: 'The minimum value for the number input.'
+  step:
+    description: 'The step increment for the number input.'
+  mandatory:
+    description: 'Whether the input field is mandatory.'
+  disabled:
+    description: 'Whether the input field is disabled.'
+  onChange:
+    description: 'The action to be called when the value changes.'
+  changeEvent:
+    description: 'The event to trigger the onChange action.'
+  requiredFields:
+    description: 'Array of required field names for validation.'
