@@ -1,9 +1,16 @@
 .tempus-dominus-widget.dark .icon {
   background-color: white;
+  @apply w-4 h-4 flex;
+}
+
+.tempus-dominus-widget .calendar-header .next,
+.tempus-dominus-widget .calendar-header .previous {
+  @apply w-full h-full flex justify-center items-center;
 }
 
 .tempus-dominus-widget.light .icon {
   background-color: black;
+  @apply w-4 h-4 flex;
 }
 
 .icon-calendar {

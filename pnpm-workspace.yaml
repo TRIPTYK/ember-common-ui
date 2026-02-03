@@ -27,7 +27,7 @@ catalog:
   '@embroider/compat': ^4.1.12
   '@embroider/core': ^4.4.2
   '@embroider/webpack': ^4.1.2
-  '@eonasdan/tempus-dominus': ^6.9.10
+  '@eonasdan/tempus-dominus': ^6.10.4
   '@eslint/js': ^9.17.0
   '@glimmer/component': ~2.0.0
   '@glimmer/tracking': ^1.1.2
@@ -87,7 +87,7 @@ catalog:
   ember-load-initializers: ^3.0.1
   ember-modifier: ~4.2.2
   ember-page-title: ^9.0.3
-  ember-power-select: git+https://github.com/cibernox/ember-power-select/tree/dist
+  ember-power-select: github:cibernox/ember-power-select#dist
   ember-power-select-with-create: ^3.1.0
   ember-qunit: ~9.0.4
   ember-resolver: ^13.1.1
