@@ -64,7 +64,7 @@
     "ember-modifier": "catalog:",
     "ember-strict-application-resolver": "catalog:",
     "ember-test-selectors": "catalog:",
-    "ember-yeti-table": "git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist",
+    "@triptyk/ember-yeti-table": "catalog:",
     "focus-trap": "~7.8.0",
     "zod": "catalog:"
   },

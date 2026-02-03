@@ -84,6 +84,9 @@ catalogs:
     '@rollup/plugin-node-resolve':
       specifier: ^16.0.3
       version: 16.0.3
+    '@triptyk/ember-yeti-table':
+      specifier: ~3.0.0
+      version: 3.0.0
     '@tsconfig/ember':
       specifier: ^3.0.8
       version: 3.0.12
@@ -124,7 +127,7 @@ catalogs:
       specifier: ~5.1.0
       version: 5.1.0
     ember-immer-changeset:
-      specifier: github:TRIPTYK/ember-immer-changeset#dist
+      specifier: ~2.0.0
       version: 2.0.0
     ember-intl:
       specifier: ~8.0.3
@@ -439,7 +442,7 @@ importers:
         version: 5.1.0(@babel/core@7.29.0)(@glint/template@1.7.4)
       ember-immer-changeset:
         specifier: 'catalog:'
-        version: https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d6777b1aa0a5b418d1b77b9ab56730009b9ea96e(@babel/core@7.29.0)
+        version: 2.0.0(@babel/core@7.29.0)
       ember-intl:
         specifier: 'catalog:'
         version: 8.0.4(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(typescript@5.9.3)
@@ -831,7 +834,7 @@ importers:
         version: 9.2.1
       ember-immer-changeset:
         specifier: 'catalog:'
-        version: https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d6777b1aa0a5b418d1b77b9ab56730009b9ea96e(@babel/core@7.29.0)
+        version: 2.0.0(@babel/core@7.29.0)
       ember-source:
         specifier: 'catalog:'
         version: 6.10.1(@glimmer/component@2.0.0)(rsvp@4.8.5)
@@ -913,6 +916,9 @@ importers:
       '@embroider/addon-shim':
         specifier: 'catalog:'
         version: 1.10.2
+      '@triptyk/ember-yeti-table':
+        specifier: 'catalog:'
+        version: 3.0.0(@babel/core@7.29.0)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)
       '@warp-drive/utilities':
         specifier: ~5.8.1
         version: 5.8.1(@glint/template@1.7.4)(@warp-drive/core@5.8.1(@babel/core@7.29.0)(@glint/template@1.7.4))
@@ -924,7 +930,7 @@ importers:
         version: 6.1.1(@babel/core@7.29.0)
       ember-immer-changeset:
         specifier: 'catalog:'
-        version: https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d6777b1aa0a5b418d1b77b9ab56730009b9ea96e(@babel/core@7.29.0)
+        version: 2.0.0(@babel/core@7.29.0)
       ember-intl:
         specifier: 'catalog:'
         version: 8.0.4(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(typescript@5.9.3)
@@ -937,9 +943,6 @@ importers:
       ember-test-selectors:
         specifier: 'catalog:'
         version: 7.1.0
-      ember-yeti-table:
-        specifier: git+https://github.com/TRIPTYK/ember-yeti-table/tree/master-dist
-        version: '@triptyk/ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/bc14d56b0d592915d493b8fae6ea59dea467e097(@babel/core@7.29.0)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)'
       focus-trap:
         specifier: ~7.8.0
         version: 7.8.0
@@ -3314,9 +3317,8 @@ packages:
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
-  '@triptyk/ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/bc14d56b0d592915d493b8fae6ea59dea467e097':
-    resolution: {tarball: https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/bc14d56b0d592915d493b8fae6ea59dea467e097}
-    version: 3.0.0
+  '@triptyk/ember-yeti-table@3.0.0':
+    resolution: {integrity: sha512-i6iRKxTjcE+3aMr5vrGTpluuwsOKdPABAppDCHAOgNG+FrtMuGKhGFu0XamxcAhCH/yOD848rFbAN7dArjOv8w==}
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -5535,9 +5537,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  ember-immer-changeset@https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d6777b1aa0a5b418d1b77b9ab56730009b9ea96e:
-    resolution: {tarball: https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d6777b1aa0a5b418d1b77b9ab56730009b9ea96e}
-    version: 2.0.0
+  ember-immer-changeset@2.0.0:
+    resolution: {integrity: sha512-eJWG3ZwaIk29VsvJIluSAR6SshG9HaKgpftcVFuyK4mocfkj0M2Jpt7SsC3Aeu9xAtSA03qiAbPMU6rSQxzZlQ==}
 
   ember-intl@8.0.4:
     resolution: {integrity: sha512-HOJjRciSsBnpE/7G1YDu7rGXISqbf23ZNIpSq+ygDeMGsodIYoN85MUeP6iCuGs/IP4Q57jlZUChoGQN1Ok3og==}
@@ -13621,7 +13622,7 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
-  '@triptyk/ember-yeti-table@https://codeload.github.com/TRIPTYK/ember-yeti-table/tar.gz/bc14d56b0d592915d493b8fae6ea59dea467e097(@babel/core@7.29.0)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)':
+  '@triptyk/ember-yeti-table@3.0.0(@babel/core@7.29.0)(@ember/test-waiters@4.1.1(@glint/template@1.7.4))(@glint/template@1.7.4)':
     dependencies:
       '@embroider/addon-shim': 1.10.2
       '@glimmer/component': 2.0.0
@@ -16504,7 +16505,7 @@ snapshots:
       - eslint
       - typescript
 
-  ember-immer-changeset@https://codeload.github.com/TRIPTYK/ember-immer-changeset/tar.gz/d6777b1aa0a5b418d1b77b9ab56730009b9ea96e(@babel/core@7.29.0):
+  ember-immer-changeset@2.0.0(@babel/core@7.29.0):
     dependencies:
       '@embroider/addon-shim': 1.10.2
       decorator-transforms: 2.3.1(@babel/core@7.29.0)
