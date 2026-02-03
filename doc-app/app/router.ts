@@ -38,11 +38,12 @@ Router.map(function () {
       });
 
       this.route('ember-input', function () {
-        // Add ember-input routes
+        this.route('prefabs', function () {
+        })
       });
 
       this.route('ember-ui', function () {
-        // Add ember-ui routes
+        this.route('confirm-modal', function(){})
       });
     });
   });
