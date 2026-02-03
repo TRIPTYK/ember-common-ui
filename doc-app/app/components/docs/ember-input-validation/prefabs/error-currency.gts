@@ -12,8 +12,16 @@ export default class ErrorCurrencyExample extends Component {
 
   @action
   onChange(value: string | number | Date | null) {
-    const numValue = typeof value === 'string' ? parseFloat(value) : value;
-    if (numValue !== null && numValue > 0) {
+    if (typeof value !== 'number') {
+      this.changeset.addError({
+        message: 'should be a number value',
+        value: 'err',
+        originalValue: 0,
+        key: 'number',
+      });
+      return;
+    }
+    if (value !== null && value > 0) {
       this.changeset.removeErrors();
     } else {
       this.changeset.addError({
