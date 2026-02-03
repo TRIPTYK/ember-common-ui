@@ -63,7 +63,7 @@ const PropertyTable: TOC<PropertyTableSignature> = <template>
               {{/if}}
             </td>
             <td class="px-6 py-4 text-sm text-gray-700">
-              {{prop.description}}
+              {{t prop.description}}
             </td>
           </tr>
         {{/each}}

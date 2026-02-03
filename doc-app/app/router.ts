@@ -13,7 +13,27 @@ Router.map(function () {
       this.route('ember-input-validation', function () {
         this.route('prefabs', function () {
           this.route('input');
-          // Add more prefab routes here
+          this.route('number');
+          this.route('bic');
+          this.route('currency');
+          this.route('datepicker-range');
+          this.route('datepicker');
+          this.route('email');
+          this.route('file');
+          this.route('file-list');
+          this.route('iban');
+          this.route('integer');
+          this.route('mobile');
+          this.route('national-number');
+          this.route('password');
+          this.route('radio');
+          this.route('radio-group');
+          this.route('select');
+          this.route('select-create');
+          this.route('select-search');
+          this.route('textarea');
+          this.route('timepicker');
+          this.route('vat');
         });
       });
 

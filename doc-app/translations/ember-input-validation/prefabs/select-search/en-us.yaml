@@ -1,0 +1,39 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset to validate'
+  changeset:
+    description: 'The changeset instance containing the form data and validation logic'
+  options:
+    description: 'An array of selectable options that will be displayed in the dropdown. Each option should have a toString() method for display'
+  onSearch:
+    description: 'A function or ember-concurrency task that handles search logic. Receives the search term as a parameter and should return filtered options. Use with (perform this.onSearch) when using tasks'
+  label:
+    description: 'Optional label text displayed above the select field'
+  placeholder:
+    description: 'Placeholder text displayed when no option is selected'
+  disabled:
+    description: 'Boolean flag to disable the select input, preventing user interaction'
+  multiple:
+    description: 'Enables multi-select mode allowing selection of multiple options'
+  initiallyOpened:
+    description: 'Opens the dropdown automatically when the component is rendered'
+  mandatory:
+    description: 'If true, requires a value to be selected, affecting validation behavior'
+  allowClear:
+    description: 'Shows a clear button to remove the selected value when enabled'
+  onChange:
+    description: 'Callback function triggered when the selection changes, receives the new selected value(s)'
+  labelComponent:
+    description: 'Custom component to render the label, allowing full customization of label appearance'
+  selectedItemComponent:
+    description: 'Custom component to render the selected item in the trigger, providing control over how selections are displayed'
+  placeholderComponent:
+    description: 'Custom component to render when no selection is made, replacing default placeholder text'
+  searchPlaceholder:
+    description: 'Placeholder text displayed in the search input field'
+  searchMessage:
+    description: 'Message displayed while user is typing in the search field'
+  loadingMessage:
+    description: 'Message displayed while search results are being loaded (useful for async searches)'
+  noMatchesMessage:
+    description: 'Message displayed when the search returns no matching results'

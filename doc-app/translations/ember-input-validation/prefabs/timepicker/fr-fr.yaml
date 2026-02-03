@@ -1,0 +1,27 @@
+properties:
+  validationField:
+    description: 'Le nom du champ dans le changeset pour la validation.'
+  changeset:
+    description: L'objet changeset pour la validation du formulaire.
+  label:
+    description: Le label du sélecteur d'heure.
+  placeholder:
+    description: Le texte de placeholder du sélecteur d'heure.
+  mandatory:
+    description: Indique si le sélecteur d'heure est obligatoire.
+  disabled:
+    description: Indique si le sélecteur d'heure est désactivé.
+  onChange:
+    description: L'action à appeler lors du changement d'heure.
+  locale:
+    description: La locale à utiliser pour le formatage de l'heure.
+  dateFormat:
+    description: Le format d'affichage de l'heure sélectionnée.
+  enableTime:
+    description: Activer le sélecteur d'heure (toujours true pour timepicker).
+  noCalendar:
+    description: 'Masquer le calendrier (toujours true pour timepicker).'
+  stepping:
+    description: L'incrément du sélecteur d'heure en minutes.
+  enableSecond:
+    description: 'Afficher le sélecteur de secondes.'

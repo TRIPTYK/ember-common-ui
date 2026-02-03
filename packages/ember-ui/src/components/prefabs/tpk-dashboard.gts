@@ -35,7 +35,6 @@ const TpkDashboard: TOC<DashboardSignature> = <template>
       />
       {{yield}}
     </div>
-
     <TpkSidebar @sidebarItems={{@sidebarItems}} @drawerId='my-drawer-4' />
   </div>
 </template>;

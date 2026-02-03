@@ -1,0 +1,19 @@
+properties:
+  validationField:
+    description: 'Le nom du champ dans le changeset pour la validation.'
+  changeset:
+    description: L'objet changeset pour la validation du formulaire.
+  label:
+    description: 'Le label du champ de saisie.'
+  placeholder:
+    description: 'Le texte de placeholder du champ de saisie.'
+  mandatory:
+    description: 'Indique si le champ de saisie est obligatoire.'
+  disabled:
+    description: 'Indique si le champ de saisie est désactivé.'
+  onChange:
+    description: L'action à appeler lors du changement de valeur.
+  accept:
+    description: 'Les types de fichiers acceptés.'
+  multiple:
+    description: 'Autoriser la sélection de plusieurs fichiers.'

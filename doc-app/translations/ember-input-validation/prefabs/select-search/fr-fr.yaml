@@ -1,0 +1,35 @@
+properties:
+  validationField:
+    description: 'Le nom du champ dans le changeset pour la validation.'
+  changeset:
+    description: L'objet changeset pour la validation du formulaire.
+  label:
+    description: 'Le label du champ de sélection.'
+  placeholder:
+    description: 'Le texte de placeholder du champ de sélection.'
+  mandatory:
+    description: 'Indique si le champ de sélection est obligatoire.'
+  disabled:
+    description: 'Indique si le champ de sélection est désactivé.'
+  onChange:
+    description: L'action à appeler lors du changement de valeur.
+  options:
+    description: 'Les options disponibles pour la sélection.'
+  renderInPlace:
+    description: Afficher le dropdown à la place au lieu d'utiliser ember-wormhole.
+  allowClear:
+    description: 'Afficher un bouton pour effacer la sélection.'
+  searchEnabled:
+    description: 'Activer la recherche dans les options.'
+  searchField:
+    description: 'Le champ à utiliser pour la recherche.'
+  selected:
+    description: 'La valeur sélectionnée.'
+  loadingMessage:
+    description: 'Le message à afficher lors du chargement.'
+  noMatchesMessage:
+    description: Le message à afficher lorsqu'aucune option ne correspond.
+  onSearch:
+    description: 'La tâche ember-concurrency pour la recherche asynchrone.'
+  minSearchLength:
+    description: 'La longueur minimale de recherche pour déclencher onSearch.'

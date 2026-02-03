@@ -1,0 +1,41 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset to validate'
+  changeset:
+    description: 'The ImmerChangeset instance containing the form data'
+  multipleDatesSeparator:
+    description: 'The separator to use when multiple dates are selected. Defaults to " - "'
+  label:
+    description: 'The label text displayed above the datepicker'
+  onChange:
+    description: 'Callback function triggered when the date selection changes'
+  onClose:
+    description: 'Callback function triggered when the datepicker closes'
+  disabled:
+    description: 'Whether the datepicker is disabled'
+  mandatory:
+    description: 'Indicates if the date range selection is mandatory'
+  placeholder:
+    description: 'Placeholder text shown when no date is selected'
+  clearButton:
+    description: 'Whether to show a button to clear the selected dates'
+  todayButton:
+    description: "Whether to show a button to select today's date"
+  closeButton:
+    description: 'Whether to show a button to close the datepicker'
+  minDate:
+    description: 'The minimum selectable date'
+  maxDate:
+    description: 'The maximum selectable date'
+  keepOpen:
+    description: 'Whether to keep the datepicker open after date selection'
+  daysOfWeekDisabled:
+    description: 'An array of day numbers to disable (0-6, where 0 is Sunday)'
+  disabledDates:
+    description: 'An array of specific dates to disable'
+  viewMode:
+    description: "The initial view mode of the date picker. Can be 'clock', 'calendar', 'months', 'years', or 'decades'"
+  locale:
+    description: 'The locale to be used for date formatting'
+  dateFormat:
+    description: 'The format for displaying the selected date'

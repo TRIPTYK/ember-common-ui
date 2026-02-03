@@ -1,0 +1,21 @@
+properties:
+  validationField:
+    description: 'Le nom du champ dans le changeset pour la validation.'
+  changeset:
+    description: L'objet changeset pour la validation du formulaire.
+  label:
+    description: 'Le label du champ de texte.'
+  placeholder:
+    description: 'Le texte de placeholder du champ de texte.'
+  mandatory:
+    description: 'Indique si le champ de texte est obligatoire.'
+  disabled:
+    description: 'Indique si le champ de texte est désactivé.'
+  onChange:
+    description: L'action à appeler lors du changement de valeur.
+  changeEvent:
+    description: L'événement qui déclenche l'action onChange.
+  rows:
+    description: 'Le nombre de lignes visibles du textarea.'
+  maxLength:
+    description: 'La longueur maximale du texte.'

@@ -1,0 +1,45 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  options:
+    description: 'The options to display in the select dropdown. Each option should have a toString() method.'
+  onCreate:
+    description: 'The action to be called when user creates a new value. Should return the newly created option object.'
+  label:
+    description: 'The label for the select field.'
+  placeholder:
+    description: 'The placeholder text for the select field.'
+  disabled:
+    description: 'Whether the select field is disabled.'
+  multiple:
+    description: 'Whether multiple selections are allowed.'
+  initiallyOpened:
+    description: 'Whether the select dropdown is initially opened.'
+  allowClear:
+    description: 'Whether to show a button to clear the selection.'
+  mandatory:
+    description: 'Whether the select field is mandatory.'
+  onChange:
+    description: 'The action to be called when the selection changes.'
+  labelComponent:
+    description: 'The custom component to use for the label.'
+  selectedItemComponent:
+    description: 'The custom component to use for the selected item.'
+  placeholderComponent:
+    description: 'The custom component to use for the placeholder.'
+  onSearch:
+    description: 'The action to be called when user types in the search input.'
+  searchPlaceholder:
+    description: 'The placeholder text for the search input.'
+  searchMessage:
+    description: 'Message shown in options list when no search has been entered and there are no options.'
+  loadingMessage:
+    description: 'Message shown in options list when loading options.'
+  noMatchesMessage:
+    description: 'Message shown in options list when no matches are found.'
+  showCreateWhen:
+    description: 'The action to be called to determine if the create option should be shown.'
+  buildSuggestion:
+    description: 'The action to be called to build the suggestion label for the create option.'
