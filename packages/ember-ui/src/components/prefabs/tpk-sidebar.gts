@@ -2,13 +2,98 @@ import type { TOC } from '@ember/component/template-only';
 import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { LinkTo } from '@ember/routing';
+import Component from '@glimmer/component';
 
-export interface SidebarItem {
+// Définir les types AVANT de les utiliser
+export type SidebarLink = {
+  type: 'link';
   label: string;
   tooltip?: string;
   icon?: TOC<{ Element: SVGSVGElement }>;
   route?: string;
   onClick?: (event: PointerEvent) => void;
+};
+
+export type SidebarGroup = {
+  type: 'group';
+  label: string;
+  tooltip?: string;
+  icon?: TOC<{ Element: SVGSVGElement }>;
+  items: SidebarItem[];
+};
+
+export type SidebarItem = SidebarLink | SidebarGroup;
+
+interface SidebarItemRendererSignature {
+  Element: HTMLLIElement;
+  Args: {
+    item: SidebarItem;
+  };
+}
+
+class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
+  get isGroup(): boolean {
+    return this.args.item.type === 'group';
+  }
+
+  get isLink(): boolean {
+    return this.args.item.type === 'link';
+  }
+
+  // Getters pour accéder aux propriétés typées
+  get linkItem(): SidebarLink | null {
+    return this.isLink ? (this.args.item as SidebarLink) : null;
+  }
+
+  get groupItem(): SidebarGroup | null {
+    return this.isGroup ? (this.args.item as SidebarGroup) : null;
+  }
+
+  <template>
+    {{#if this.isLink}}
+      {{#if this.linkItem.route}}
+        <LinkTo
+          @route={{this.linkItem.route}}
+          @query={{hash}}
+          class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
+          data-tip={{this.linkItem.tooltip}}
+        >
+          {{#if this.linkItem.icon}}
+            <this.linkItem.icon class='my-1.5 inline-block size-4' />
+          {{/if}}
+          <span class='is-drawer-close:hidden'>{{this.linkItem.label}}</span>
+        </LinkTo>
+      {{else if this.linkItem.onClick}}
+        <button
+          type='button'
+          {{on 'click' this.linkItem.onClick}}
+          class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
+          data-tip={{this.linkItem.tooltip}}
+        >
+          {{#if this.linkItem.icon}}
+            <this.linkItem.icon class='my-1.5 inline-block size-4' />
+          {{/if}}
+          <span class='is-drawer-close:hidden'>{{this.linkItem.label}}</span>
+        </button>
+      {{/if}}
+    {{else if this.isGroup}}
+      <details class='is-drawer-close:hidden'>
+        <summary>
+          {{#if this.groupItem.icon}}
+            <this.groupItem.icon class='my-1.5 inline-block size-4' />
+          {{/if}}
+          {{this.groupItem.label}}
+        </summary>
+        <ul>
+          {{#each this.groupItem.items as |subItem|}}
+            <li>
+              <SidebarItemRenderer @item={{subItem}} />
+            </li>
+          {{/each}}
+        </ul>
+      </details>
+    {{/if}}
+  </template>
 }
 
 interface SidebarSignature {
@@ -37,31 +122,7 @@ const TpkSidebar: TOC<SidebarSignature> = <template>
       <ul class='menu w-full grow'>
         {{#each @sidebarItems as |item|}}
           <li>
-            {{#if item.route}}
-              <LinkTo
-                @route={{item.route}}
-                @query={{hash}}
-                class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
-                data-tip={{item.tooltip}}
-              >
-                {{#if item.icon}}
-                  <item.icon class='my-1.5 inline-block size-4' />
-                {{/if}}
-                <span class='is-drawer-close:hidden'>{{item.label}}</span>
-              </LinkTo>
-            {{else if item.onClick}}
-              <button
-                type='button'
-                {{on 'click' item.onClick}}
-                class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
-                data-tip={{item.tooltip}}
-              >
-                {{#if item.icon}}
-                  <item.icon class='my-1.5 inline-block size-4' />
-                {{/if}}
-                <span class='is-drawer-close:hidden'>{{item.label}}</span>
-              </button>
-            {{/if}}
+            <SidebarItemRenderer @item={{item}} />
           </li>
         {{/each}}
       </ul>
