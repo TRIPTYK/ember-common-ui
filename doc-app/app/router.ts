@@ -26,4 +26,7 @@ Router.map(function () {
       });
     });
   });
+  this.route('login', function () { })
+  this.route('forgot-password', function () { })
+  this.route('reset-password', function () { })
 });
