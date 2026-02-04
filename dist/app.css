@@ -1,0 +1,147 @@
+/* Styles spécifiques au prefab confirm-modal */
+.tpk-confirm-modal-container .tpk-modal-content {
+  @apply modal-box;
+}
+.tpk-confirm-modal-container .tpk-modal-content div {
+  @apply flex justify-around w-full;
+}
+.tpk-confirm-modal-container .tpk-modal-content h2 {
+  @apply w-full text-center text-xl py-4 font-semibold;
+}
+.tpk-confirm-modal-container .btn-confirm-modal-confirm {
+  @apply btn btn-success;
+}
+.tpk-confirm-modal-container .btn-confirm-modal-cancel {
+  @apply btn btn-link;
+}
+.tpk-confirm-modal-title {
+  @apply hidden;
+}
+/* Styles de base pour toutes les modals tpk */
+/* Reset du comportement par défaut de <dialog> et force l'affichage */
+dialog.tpk-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  pointer-events: auto;
+  border: none;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  animation: modal-pop 0.2s ease-out;
+}
+/* Override du backdrop par défaut de dialog */
+dialog.tpk-modal::backdrop {
+  display: none;
+}
+/* Support du backdrop blur */
+@supports (
+  (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+) {
+  dialog.tpk-modal {
+    backdrop-filter: blur(4px);
+  }
+}
+/* Le modal-box doit aussi être visible */
+.tpk-modal-content {
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  transform: none;
+  opacity: 1;
+}
+/* Animation d'apparition */
+@keyframes modal-pop {
+  0% {
+    opacity: 0;
+  }
+}
+.tpk-table-generic-container {
+  @apply w-full mt-4;
+}
+.tpk-table-generic-container label {
+  @apply label;
+}
+.tpk-table-generic-container .tpk-table-generic {
+  @apply table table-zebra w-full;
+}
+.tpk-table-generic-container .tpk-table-generic .tpk-action-menu {
+  @apply relative;
+}
+.tpk-table-generic-container .tpk-table-generic .tpk-action-menu .actions_list {
+  @apply absolute top-0 -right-4 bg-white rounded p-2;
+}
+.tpk-table-generic-container
+  .tpk-table-pagination
+  .yeti-table-pagination-buttons {
+  @apply join flex justify-center mx-4 w-full;
+}
+.tpk-table-generic-container
+  .tpk-table-pagination
+  .yeti-table-pagination-buttons
+  button {
+  @apply flex mx-2 my-4 py-2 w-1/4 justify-center btn-ghost rounded-md;
+}
+.tpk-table-generic-container
+  .tpk-table-pagination
+  .yeti-table-pagination-buttons
+  img {
+  @apply h-4 mx-2;
+}
+.tpk-table-generic-container .tpk-table-pagination {
+  @apply flex flex-col justify-center w-full items-center text-center;
+}
+.tpk-dashboard {
+  @apply h-screen w-full overflow-hidden;
+}
+.tpk-dashboard-content {
+  @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-x-hidden overflow-y-auto;
+}
+.tpk-sidebar-drawer-side {
+  @apply h-full min-h-0 overflow-x-visible;
+}
+.tpk-navbar-title {
+  @apply inline-block ml-6;
+}
+.tpk-navbar-user-name {
+  @apply inline-block;
+}
+.tpk-sidebar {
+  @apply flex h-full min-h-0 flex-col items-start bg-base-200;
+}
+.tpk-sidebar.collapsed {
+  @apply lg:!w-16;
+}
+.tpk-sidebar:not(.collapsed) {
+  @apply lg:!w-64;
+}
+.tpk-sidebar-header {
+  @apply w-full;
+}
+.tpk-sidebar-menu {
+  @apply flex-nowrap w-full grow mt-4;
+}
+.tpk-sidebar-menu.overflow-y-auto {
+  @apply overflow-y-auto;
+}
+.tpk-sidebar-footer {
+  @apply w-full;
+}
+.tpk-sidebar-item-icon {
+  @apply my-1.5 inline-block size-4;
+}
+.tpk-navbar-locale-selector {
+  @apply dropdown dropdown-end;
+}
+.tpk-navbar-locale-toggle {
+  @apply btn btn-ghost btn-square;
+}
+.tpk-navbar-locale-menu {
+  @apply menu bg-base-200 rounded-box z-[1] mt-3 w-40 p-2 shadow;
+}
