@@ -18,7 +18,7 @@ export interface ResetPasswordTemplateSignature {
 
 export default class ResetPasswordTemplate extends Component<ResetPasswordTemplateSignature> {
   @service declare router: RouterService;
-  declare token:string;
+  declare token: string;
 
   constructor(owner: Owner, args: ResetPasswordTemplateSignature['Args']) {
     super(owner, args);
@@ -29,9 +29,9 @@ export default class ResetPasswordTemplate extends Component<ResetPasswordTempla
   resetPasswordValidationSchema = object({
     password: string().min(8, 'Should be at least 8 characters'),
     confirmPassword: string().min(8, 'Should be at least 8 characters'),
-  })
+  });
 
-  onSubmit = async () => {}
+  onSubmit = async () => {};
 
   <template>
     <AuthLayout>

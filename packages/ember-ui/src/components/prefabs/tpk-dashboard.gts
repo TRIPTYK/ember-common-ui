@@ -31,13 +31,13 @@ interface DashboardSignature {
 }
 
 const TpkDashboard: TOC<DashboardSignature> = <template>
-  <div class='tpk-dashboard drawer lg:drawer-open h-screen w-full overflow-hidden'>
+  <div class='tpk-dashboard drawer lg:drawer-open'>
     <input
       id={{if @drawerId @drawerId 'tpk-dashboard-drawer'}}
       type='checkbox'
       class='tpk-dashboard-drawer drawer-toggle'
     />
-    <div class='tpk-dashboard-content drawer-content flex min-h-0 min-w-0 flex-1 flex-col overflow-x-hidden overflow-y-auto'>
+    <div class='tpk-dashboard-content drawer-content'>
       <TpkNavbar
         @title={{@title}}
         @navbarItems={{@navbarItems}}
@@ -50,13 +50,13 @@ const TpkDashboard: TOC<DashboardSignature> = <template>
         @profileLabel={{@profileLabel}}
       >
         <:menu>
-          {{#if (has-block "menu")}}
-            {{yield to="menu"}}
+          {{#if (has-block 'menu')}}
+            {{yield to='menu'}}
           {{/if}}
         </:menu>
       </TpkNavbar>
-      {{#if (has-block "content")}}
-        {{yield to="content"}}
+      {{#if (has-block 'content')}}
+        {{yield to='content'}}
       {{/if}}
     </div>
     <TpkSidebar
@@ -66,13 +66,13 @@ const TpkDashboard: TOC<DashboardSignature> = <template>
       @onCollapsedChange={{@onCollapsedChange}}
     >
       <:header>
-        {{#if (has-block "header")}}
-          {{yield to="header"}}
+        {{#if (has-block 'header')}}
+          {{yield to='header'}}
         {{/if}}
       </:header>
       <:footer>
-        {{#if (has-block "footer")}}
-          {{yield to="footer"}}
+        {{#if (has-block 'footer')}}
+          {{yield to='footer'}}
         {{/if}}
       </:footer>
     </TpkSidebar>

@@ -7,9 +7,9 @@ import AuthLayout from 'doc-app/components/auth-layout.gts';
 export default class ForgotPasswordTemplate extends Component {
   forgotPasswordValidationSchema = object({
     email: email(),
-  })
+  });
 
-  onSubmit = async () => {}
+  onSubmit = async () => {};
   <template>
     <AuthLayout>
       <h1>Forgot password</h1>

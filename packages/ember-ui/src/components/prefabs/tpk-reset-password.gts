@@ -45,14 +45,22 @@ export default class TpkResetPasswordComponent extends Component<TpkResetPasswor
       @onSubmit={{@onSubmit}}
       @reactive={{true}}
       @validationSchema={{@resetPasswordSchema}}
-      class="tpk-reset-password-form"
+      class='tpk-reset-password-form'
       as |F|
     >
-      <F.TpkPasswordPrefab @label='New Password' @validationField='password' class="tpk-reset-password-form-password" />
+      <F.TpkPasswordPrefab
+        @label='New Password'
+        @validationField='password'
+        class='tpk-reset-password-form-password'
+      />
 
-      <F.TpkPasswordPrefab @label='Confirm Password' @validationField='confirmPassword' class="tpk-reset-password-form-confirm-password" />
+      <F.TpkPasswordPrefab
+        @label='Confirm Password'
+        @validationField='confirmPassword'
+        class='tpk-reset-password-form-confirm-password'
+      />
 
-      <button class="tpk-reset-password-form-button" type='submit'>
+      <button class='tpk-reset-password-form-button' type='submit'>
         {{this.submitButtonText}}
       </button>
     </TpkForm>

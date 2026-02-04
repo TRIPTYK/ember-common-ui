@@ -62,11 +62,15 @@ class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
         <LinkTo
           @route={{this.linkItem.route}}
           @query={{hash}}
-          class={{if @collapsed "tooltip tooltip-right"}}
-          data-tip={{if this.linkItem.tooltip this.linkItem.tooltip this.linkItem.label}}
+          class={{if @collapsed 'tooltip tooltip-right'}}
+          data-tip={{if
+            this.linkItem.tooltip
+            this.linkItem.tooltip
+            this.linkItem.label
+          }}
         >
           {{#if this.linkItem.icon}}
-            <this.linkItem.icon class='my-1.5 inline-block size-4' />
+            <this.linkItem.icon class='tpk-sidebar-item-icon' />
           {{/if}}
           {{#if this.isNotCollapsed}}
             <span>{{this.linkItem.label}}</span>
@@ -76,11 +80,15 @@ class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
         <button
           type='button'
           {{on 'click' this.linkItem.onClick}}
-          class={{if @collapsed "tooltip tooltip-right"}}
-          data-tip={{if this.linkItem.tooltip this.linkItem.tooltip this.linkItem.label}}
+          class={{if @collapsed 'tooltip tooltip-right'}}
+          data-tip={{if
+            this.linkItem.tooltip
+            this.linkItem.tooltip
+            this.linkItem.label
+          }}
         >
           {{#if this.linkItem.icon}}
-            <this.linkItem.icon class='my-1.5 inline-block size-4' />
+            <this.linkItem.icon class='tpk-sidebar-item-icon' />
           {{/if}}
           {{#if this.isNotCollapsed}}
             <span>{{this.linkItem.label}}</span>
@@ -89,9 +97,17 @@ class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
       {{/if}}
     {{else if this.isGroup}}
       <details class='block' open={{this.groupItem.isOpen}}>
-        <summary class={{if @collapsed "tooltip tooltip-right"}} data-tip={{if @collapsed (if this.groupItem.tooltip this.groupItem.tooltip this.groupItem.label)}}>
+        <summary
+          class={{if @collapsed 'tooltip tooltip-right'}}
+          data-tip={{if
+            @collapsed
+            (if
+              this.groupItem.tooltip this.groupItem.tooltip this.groupItem.label
+            )
+          }}
+        >
           {{#if this.groupItem.icon}}
-            <this.groupItem.icon class='my-1.5 inline-block size-4' />
+            <this.groupItem.icon class='tpk-sidebar-item-icon' />
           {{/if}}
           {{#if this.isNotCollapsed}}
             {{this.groupItem.label}}
@@ -100,7 +116,10 @@ class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
         <ul>
           {{#each this.groupItem.items as |subItem|}}
             <li>
-              <SidebarItemRenderer @item={{subItem}} @collapsed={{@collapsed}} />
+              <SidebarItemRenderer
+                @item={{subItem}}
+                @collapsed={{@collapsed}}
+              />
             </li>
           {{/each}}
         </ul>
@@ -133,37 +152,43 @@ class TpkSidebarComponent extends Component<SidebarSignature> {
   }
 
   <template>
-  <div class='drawer-side is-drawer-close:overflow-visible h-full min-h-0 overflow lg:overflow-y-auto'>
-    {{#if @drawerId}}
-      <label
-        for={{@drawerId}}
-        aria-label='close sidebar'
-        class='drawer-overlay lg:hidden'
-      ></label>
-    {{/if}}
     <div
-      class='tpk-sidebar flex h-full min-h-0 flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64 {{if @collapsed "lg:!w-14" "lg:!w-64"}}'
+      class='tpk-sidebar-drawer-side drawer-side is-drawer-close:overflow-visible'
     >
-      {{#if (has-block "header")}}
-        <div class='tpk-sidebar-header w-full'>
-          {{yield to="header"}}
-        </div>
+      {{#if @drawerId}}
+        <label
+          for={{@drawerId}}
+          aria-label='close sidebar'
+          class='tpk-sidebar-drawer-overlay drawer-overlay lg:hidden'
+        ></label>
       {{/if}}
-      <ul class='tpk-sidebar-menu menu flex-nowrap w-full grow {{unless @collapsed "overflow-y-auto"}}'>
-        {{#each @sidebarItems as |item|}}
-          <li>
-            <SidebarItemRenderer @item={{item}} @collapsed={{@collapsed}} />
-          </li>
-        {{/each}}
-      </ul>
-      {{#if (has-block "footer")}}
-        <div class='tpk-sidebar-footer w-full'>
-          {{yield to="footer"}}
-        </div>
-      {{/if}}
+      <div
+        class='tpk-sidebar
+          {{if @collapsed "collapsed"}}
+          is-drawer-close:w-14 is-drawer-open:w-64'
+      >
+        {{#if (has-block 'header')}}
+          <div class='tpk-sidebar-header'>
+            {{yield to='header'}}
+          </div>
+        {{/if}}
+        <ul
+          class='tpk-sidebar-menu menu {{unless @collapsed "overflow-y-auto"}}'
+        >
+          {{#each @sidebarItems as |item|}}
+            <li>
+              <SidebarItemRenderer @item={{item}} @collapsed={{@collapsed}} />
+            </li>
+          {{/each}}
+        </ul>
+        {{#if (has-block 'footer')}}
+          <div class='tpk-sidebar-footer'>
+            {{yield to='footer'}}
+          </div>
+        {{/if}}
+      </div>
     </div>
-  </div>
-</template>
+  </template>
 }
 
 export default TpkSidebarComponent;

@@ -8,9 +8,9 @@ export default class LoginTemplate extends Component {
   loginValidationSchema = object({
     email: email(),
     password: string().min(8, 'Should be at least 8 characters'),
-  })
+  });
 
-  onSubmit = async () => {}
+  onSubmit = async () => {};
   <template>
     <AuthLayout>
       <h1>Sign in</h1>
@@ -19,7 +19,8 @@ export default class LoginTemplate extends Component {
         @loginSchema={{this.loginValidationSchema}}
         class="tpk-login-form"
       />
-      <LinkTo @route="forgot-password" class="forgot-password-link">Forgot password?</LinkTo>
+      <LinkTo @route="forgot-password" class="forgot-password-link">Forgot
+        password?</LinkTo>
     </AuthLayout>
   </template>
 }

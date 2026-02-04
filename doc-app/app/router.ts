@@ -46,7 +46,8 @@ Router.map(function () {
       });
     });
   });
-  this.route('login', function () { })
-  this.route('forgot-password', function () { })
-  this.route('reset-password', function () { })
+  this.route('home', function () {});
+  this.route('login', function () {});
+  this.route('forgot-password', function () {});
+  this.route('reset-password', function () {});
 });
