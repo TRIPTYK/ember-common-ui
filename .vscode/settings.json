@@ -4,7 +4,7 @@
     "editor.formatOnSave": true
   },
   "[glimmer-ts]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "editor.formatOnSave": true,
@@ -24,6 +24,5 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "eslint.validate": ["glimmer-ts", "glimmer-js"]
+  }
 }

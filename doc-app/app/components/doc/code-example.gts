@@ -50,7 +50,7 @@ export default class CodeExampleComponent extends Component<CodeExampleSignature
       <div class="component-preview not-prose text-base-content">
         <h3>{{@title}}</h3>
       </div>
-      <div role="tablist" class="tabs tabs-lift">
+      <div role="tablist" class="tabs tabs-lift mx-2 mt-2">
         {{#if (has-block "demo")}}
           {{! template-lint-disable link-href-attributes }}
           <button
@@ -58,7 +58,7 @@ export default class CodeExampleComponent extends Component<CodeExampleSignature
             class={{this.getTabClass this.isDemo}}
             {{on "click" (fn this.selectYield "demo")}}
           >
-            basic usage
+            Basic usage
           </button>
         {{/if}}
         {{#if (has-block "template")}}
@@ -67,7 +67,7 @@ export default class CodeExampleComponent extends Component<CodeExampleSignature
             class={{this.getTabClass this.isTemplate}}
             {{on "click" (fn this.selectYield "template")}}
           >
-            template
+            Template
           </button>
         {{/if}}
         {{#if (has-block "javascript")}}
@@ -76,7 +76,7 @@ export default class CodeExampleComponent extends Component<CodeExampleSignature
             class={{this.getTabClass this.isJavascript}}
             {{on "click" (fn this.selectYield "javascript")}}
           >
-            javascript
+            Javascript
           </button>
         {{/if}}
         {{#if (has-block "typescript")}}
@@ -85,7 +85,7 @@ export default class CodeExampleComponent extends Component<CodeExampleSignature
             class={{this.getTabClass this.isTypescript}}
             {{on "click" (fn this.selectYield "typescript")}}
           >
-            typescript
+            Typescript
           </button>
         {{/if}}
       </div>

@@ -3,6 +3,7 @@ import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { LinkTo } from '@ember/routing';
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 // Définir les types AVANT de les utiliser
 export type SidebarLink = {
@@ -17,6 +18,7 @@ export type SidebarLink = {
 export type SidebarGroup = {
   type: 'group';
   label: string;
+  isOpen?: boolean;
   tooltip?: string;
   icon?: TOC<{ Element: SVGSVGElement }>;
   items: SidebarItem[];
@@ -28,6 +30,7 @@ interface SidebarItemRendererSignature {
   Element: HTMLLIElement;
   Args: {
     item: SidebarItem;
+    collapsed?: boolean;
   };
 }
 
@@ -38,6 +41,10 @@ class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
 
   get isLink(): boolean {
     return this.args.item.type === 'link';
+  }
+
+  get isNotCollapsed(): boolean {
+    return this.args.collapsed !== true;
   }
 
   // Getters pour accéder aux propriétés typées
@@ -55,39 +62,45 @@ class SidebarItemRenderer extends Component<SidebarItemRendererSignature> {
         <LinkTo
           @route={{this.linkItem.route}}
           @query={{hash}}
-          class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
-          data-tip={{this.linkItem.tooltip}}
+          class={{if @collapsed "tooltip tooltip-right"}}
+          data-tip={{if this.linkItem.tooltip this.linkItem.tooltip this.linkItem.label}}
         >
           {{#if this.linkItem.icon}}
             <this.linkItem.icon class='my-1.5 inline-block size-4' />
           {{/if}}
-          <span class='is-drawer-close:hidden'>{{this.linkItem.label}}</span>
+          {{#if this.isNotCollapsed}}
+            <span>{{this.linkItem.label}}</span>
+          {{/if}}
         </LinkTo>
       {{else if this.linkItem.onClick}}
         <button
           type='button'
           {{on 'click' this.linkItem.onClick}}
-          class='is-drawer-close:tooltip is-drawer-close:tooltip-right'
-          data-tip={{this.linkItem.tooltip}}
+          class={{if @collapsed "tooltip tooltip-right"}}
+          data-tip={{if this.linkItem.tooltip this.linkItem.tooltip this.linkItem.label}}
         >
           {{#if this.linkItem.icon}}
             <this.linkItem.icon class='my-1.5 inline-block size-4' />
           {{/if}}
-          <span class='is-drawer-close:hidden'>{{this.linkItem.label}}</span>
+          {{#if this.isNotCollapsed}}
+            <span>{{this.linkItem.label}}</span>
+          {{/if}}
         </button>
       {{/if}}
     {{else if this.isGroup}}
-      <details class='is-drawer-close:hidden'>
-        <summary>
+      <details class='block' open={{this.groupItem.isOpen}}>
+        <summary class={{if @collapsed "tooltip tooltip-right"}} data-tip={{if @collapsed (if this.groupItem.tooltip this.groupItem.tooltip this.groupItem.label)}}>
           {{#if this.groupItem.icon}}
             <this.groupItem.icon class='my-1.5 inline-block size-4' />
           {{/if}}
-          {{this.groupItem.label}}
+          {{#if this.isNotCollapsed}}
+            {{this.groupItem.label}}
+          {{/if}}
         </summary>
         <ul>
           {{#each this.groupItem.items as |subItem|}}
             <li>
-              <SidebarItemRenderer @item={{subItem}} />
+              <SidebarItemRenderer @item={{subItem}} @collapsed={{@collapsed}} />
             </li>
           {{/each}}
         </ul>
@@ -101,34 +114,56 @@ interface SidebarSignature {
   Args: {
     sidebarItems?: SidebarItem[];
     drawerId?: string;
+    collapsed?: boolean;
+    onCollapsedChange?: (collapsed: boolean) => void;
   };
   Blocks: {
+    header: [];
     default: [];
+    footer: [];
   };
 }
 
-const TpkSidebar: TOC<SidebarSignature> = <template>
-  <div class='drawer-side is-drawer-close:overflow-visible'>
+class TpkSidebarComponent extends Component<SidebarSignature> {
+  @action
+  handleToggle() {
+    if (this.args.onCollapsedChange) {
+      this.args.onCollapsedChange(!this.args.collapsed);
+    }
+  }
+
+  <template>
+  <div class='drawer-side is-drawer-close:overflow-visible h-full min-h-0 overflow lg:overflow-y-auto'>
     {{#if @drawerId}}
       <label
         for={{@drawerId}}
         aria-label='close sidebar'
-        class='drawer-overlay'
+        class='drawer-overlay lg:hidden'
       ></label>
     {{/if}}
     <div
-      class='flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64'
+      class='tpk-sidebar flex h-full min-h-0 flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64 {{if @collapsed "lg:!w-14" "lg:!w-64"}}'
     >
-      <ul class='menu w-full grow'>
+      {{#if (has-block "header")}}
+        <div class='tpk-sidebar-header w-full'>
+          {{yield to="header"}}
+        </div>
+      {{/if}}
+      <ul class='tpk-sidebar-menu menu flex-nowrap w-full grow {{unless @collapsed "overflow-y-auto"}}'>
         {{#each @sidebarItems as |item|}}
           <li>
-            <SidebarItemRenderer @item={{item}} />
+            <SidebarItemRenderer @item={{item}} @collapsed={{@collapsed}} />
           </li>
         {{/each}}
       </ul>
-      {{yield}}
+      {{#if (has-block "footer")}}
+        <div class='tpk-sidebar-footer w-full'>
+          {{yield to="footer"}}
+        </div>
+      {{/if}}
     </div>
   </div>
-</template>;
+</template>
+}
 
-export default TpkSidebar;
+export default TpkSidebarComponent;
