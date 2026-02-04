@@ -49,3 +49,15 @@
 .tpk-sidebar-item-icon {
   @apply my-1.5 inline-block size-4;
 }
+
+.tpk-navbar-locale-selector {
+  @apply dropdown dropdown-end;
+}
+
+.tpk-navbar-locale-toggle {
+  @apply btn btn-ghost btn-square;
+}
+
+.tpk-navbar-locale-menu {
+  @apply menu dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-40 p-2 shadow;
+}

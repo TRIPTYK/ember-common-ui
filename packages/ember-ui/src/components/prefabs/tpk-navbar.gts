@@ -1,11 +1,17 @@
-import { on } from '@ember/modifier';
 import type { TOC } from '@ember/component/template-only';
+import { on } from '@ember/modifier';
+import { fn } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
 
 export interface NavbarItem {
   label: string;
   onClick?: (event: PointerEvent) => void;
   href?: string;
+}
+
+export interface Language {
+  code: string;
+  label: string;
 }
 
 interface NavbarSignature {
@@ -15,6 +21,8 @@ interface NavbarSignature {
     navbarItems?: NavbarItem[];
     drawerId?: string;
     onSidebarToggle?: () => void;
+    languages?: Language[];
+    onLocaleChange?: (locale: string) => void;
     currentUser?: {
       fullName: string;
     };
@@ -143,6 +151,52 @@ const TpkNavbar: TOC<NavbarSignature> = <template>
             {{/if}}
           </ul>
         </div>
+      {{/if}}
+      {{#if @onLocaleChange}}
+        {{#if @languages}}
+          <div class='tpk-navbar-locale-selector dropdown dropdown-end'>
+            <button
+              type='button'
+              tabindex='0'
+              class='tpk-navbar-locale-toggle btn btn-ghost btn-square'
+              aria-label='Language selector'
+            >
+              <svg
+                class='size-4'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke-width='2'
+                stroke='currentColor'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' />
+                <circle cx='12' cy='12' r='9' />
+                <line x1='3.6' y1='9' x2='20.4' y2='9' />
+                <line x1='3.6' y1='15' x2='20.4' y2='15' />
+                <path d='M11.5 3a17 17 0 0 0 0 18' />
+                <path d='M12.5 3a17 17 0 0 1 0 18' />
+              </svg>
+            </button>
+            <ul
+              tabindex='0'
+              class='tpk-navbar-locale-menu menu dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-40 p-2 shadow'
+            >
+              {{#each @languages as |language|}}
+                <li>
+                  <button
+                    type='button'
+                    {{on 'click' (fn @onLocaleChange language.code)}}
+                  >
+                    {{language.label}}
+                  </button>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/if}}
       {{/if}}
     </div>
     {{yield}}

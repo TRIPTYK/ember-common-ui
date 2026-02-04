@@ -65,22 +65,22 @@ module(
       );
     });
 
-  test('uses initial values when provided', async function (assert) {
-    await renderComponent({
-      initialValues: {
-        password: 'initialPassword',
-        confirmPassword: 'initialConfirmPassword',
-      },
+    test('uses initial values when provided', async function (assert) {
+      await renderComponent({
+        initialValues: {
+          password: 'initialPassword',
+          confirmPassword: 'initialConfirmPassword',
+        },
+      });
+      assert.strictEqual(
+        resetPasswordPageObject.password.value,
+        'initialPassword'
+      );
+      assert.strictEqual(
+        resetPasswordPageObject.confirmPassword.value,
+        'initialConfirmPassword'
+      );
     });
-    assert.strictEqual(
-      resetPasswordPageObject.password.value,
-      'initialPassword'
-    );
-    assert.strictEqual(
-      resetPasswordPageObject.confirmPassword.value,
-      'initialConfirmPassword'
-    );
-  });
 
     test('onSubmit is called with data and changeset when form is valid', async function (assert) {
       let receivedData: unknown;
@@ -104,10 +104,7 @@ module(
         confirmPassword: 'password123',
       });
       assert.ok(receivedChangeset instanceof ImmerChangeset);
-      assert.strictEqual(
-        receivedChangeset?.get('password'),
-        'password123'
-      );
+      assert.strictEqual(receivedChangeset?.get('password'), 'password123');
       assert.strictEqual(
         receivedChangeset?.get('confirmPassword'),
         'password123'

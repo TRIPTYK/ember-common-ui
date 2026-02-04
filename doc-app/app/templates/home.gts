@@ -1,15 +1,24 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
+import type { Registry as Services } from '@ember/service';
 import TpkDashBoard, {
   type SidebarItem,
+  type Language,
 } from '@triptyk/ember-ui/components/prefabs/tpk-dashboard';
 import type { TOC } from '@ember/component/template-only';
 import ThemeSelector from 'doc-app/components/theme-selector';
 import { hash } from '@ember/helper';
 
 export default class DashboardTemplate extends Component {
+  @service declare intl: Services['intl'];
   @tracked sidebarCollapsed = false;
+
+  languages: Language[] = [
+    { code: 'fr-fr', label: 'Français' },
+    { code: 'en-us', label: 'Anglais' },
+  ];
 
   @action
   logout() {
@@ -23,6 +32,11 @@ export default class DashboardTemplate extends Component {
   @action
   toggleSidebar() {
     this.sidebarCollapsed = !this.sidebarCollapsed;
+  }
+
+  @action
+  handleLocaleChange(locale: string) {
+    this.intl.setLocale([locale]);
   }
 
   menuItems: SidebarItem[] = [
@@ -125,6 +139,8 @@ export default class DashboardTemplate extends Component {
         @collapsed={{this.sidebarCollapsed}}
         @onCollapsedChange={{this.handleCollapsedChange}}
         @onSidebarToggle={{this.toggleSidebar}}
+        @languages={{this.languages}}
+        @onLocaleChange={{this.handleLocaleChange}}
         @currentUser={{hash fullName="John Doe"}}
         @onLogout={{this.logout}}
         @logoutLabel="Logout"

@@ -1,8 +1,8 @@
 import type { TOC } from '@ember/component/template-only';
-import TpkNavbar, { type NavbarItem } from './tpk-navbar.gts';
+import TpkNavbar, { type NavbarItem, type Language } from './tpk-navbar.gts';
 import TpkSidebar, { type SidebarItem } from './tpk-sidebar.gts';
 
-export type { NavbarItem, SidebarItem };
+export type { NavbarItem, SidebarItem, Language };
 
 interface DashboardSignature {
   Element: HTMLDivElement;
@@ -21,6 +21,8 @@ interface DashboardSignature {
     collapsed?: boolean;
     onCollapsedChange?: (collapsed: boolean) => void;
     onSidebarToggle?: () => void;
+    languages?: Language[];
+    onLocaleChange?: (locale: string) => void;
   };
   Blocks: {
     header: [];
@@ -43,6 +45,8 @@ const TpkDashboard: TOC<DashboardSignature> = <template>
         @navbarItems={{@navbarItems}}
         @drawerId={{if @drawerId @drawerId 'tpk-dashboard-drawer'}}
         @onSidebarToggle={{@onSidebarToggle}}
+        @languages={{@languages}}
+        @onLocaleChange={{@onLocaleChange}}
         @currentUser={{@currentUser}}
         @onLogout={{@onLogout}}
         @logoutLabel={{@logoutLabel}}

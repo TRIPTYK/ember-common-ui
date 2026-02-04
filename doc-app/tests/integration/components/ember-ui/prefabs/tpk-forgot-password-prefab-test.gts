@@ -61,14 +61,17 @@ module(
       );
     });
 
-  test('uses initial values when provided', async function (assert) {
-    await renderComponent({
-      initialValues: {
-        email: 'test@example.com',
-      },
+    test('uses initial values when provided', async function (assert) {
+      await renderComponent({
+        initialValues: {
+          email: 'test@example.com',
+        },
+      });
+      assert.strictEqual(
+        forgotPasswordPageObject.email.value,
+        'test@example.com'
+      );
     });
-    assert.strictEqual(forgotPasswordPageObject.email.value, 'test@example.com');
-  });
 
     test('onSubmit is called with data and changeset when form is valid', async function (assert) {
       let receivedData: unknown;
