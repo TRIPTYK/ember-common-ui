@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import type { Registry as Services } from '@ember/service';
 import TpkDashBoard, {
   type SidebarItem,
   type Language,
@@ -10,9 +9,10 @@ import TpkDashBoard, {
 import type { TOC } from '@ember/component/template-only';
 import ThemeSelector from 'doc-app/components/theme-selector';
 import { hash } from '@ember/helper';
+import type { IntlService } from 'ember-intl';
 
 export default class DashboardTemplate extends Component {
-  @service declare intl: Services['intl'];
+  @service declare intl: IntlService;
   @tracked sidebarCollapsed = false;
 
   languages: Language[] = [
