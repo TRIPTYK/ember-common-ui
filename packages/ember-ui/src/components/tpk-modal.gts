@@ -133,7 +133,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
   <template>
     {{#if @isOpen}}
       {{#in-element this.modalContainer insertBefore=null}}
-        <div
+        <dialog
           {{this.handleEscapeKey @isOpen this.close}}
           class='tpk-modal'
           ...attributes
@@ -152,7 +152,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
               guid=this.guid
             )
           }}
-        </div>
+        </dialog>
       {{/in-element}}
     {{/if}}
   </template>

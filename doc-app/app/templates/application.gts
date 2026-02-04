@@ -1,1 +1,6 @@
-<template>{{outlet}}</template>
+<template>
+  <div id="tpk-modal">
+  </div>
+
+  {{outlet}}
+</template>

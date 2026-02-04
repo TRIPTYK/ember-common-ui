@@ -39,11 +39,17 @@ Router.map(function () {
 
       this.route('ember-input', function () {
         this.route('prefabs', function () {
-        })
+          this.route('button');
+          this.route('toggle');
+        });
       });
 
       this.route('ember-ui', function () {
-        this.route('confirm-modal', function(){})
+        this.route('prefabs', function () {
+          this.route('confirm-modal');
+          this.route('table-generic');
+          this.route('tpk-form');
+        });
       });
     });
   });

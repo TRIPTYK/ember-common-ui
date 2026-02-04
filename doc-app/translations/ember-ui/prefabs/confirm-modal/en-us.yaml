@@ -1,0 +1,13 @@
+properties:
+  onClose:
+    description: 'Function to close the modal.'
+  onConfirm:
+    description: 'Function called when the user confirms the action.'
+  cancelText:
+    description: 'Text to display on the cancel button.'
+  confirmText:
+    description: 'Text to display on the confirm button.'
+  confirmQuestion:
+    description: 'The confirmation question to display to the user.'
+  isOpen:
+    description: 'Boolean to control the modal visibility.'

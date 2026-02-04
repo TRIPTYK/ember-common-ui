@@ -145,6 +145,50 @@ export default class DashboardTemplate extends Component {
         },
       ],
     },
+    {
+      type: 'group',
+      label: 'Ember UI Prefab',
+      tooltip: 'Ember UI Prefab',
+      items: [
+        {
+          type: 'link',
+          label: 'Confirm modal prefab',
+          route: 'dashboard.docs.ember-ui.prefabs.confirm-modal',
+          tooltip: 'Confirm modal prefab',
+        },
+        {
+          type: 'link',
+          label: 'Table generic prefab',
+          route: 'dashboard.docs.ember-ui.prefabs.table-generic',
+          tooltip: 'Table generic prefab',
+        },
+        {
+          type: 'link',
+          label: 'Tpk form prefab',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-form',
+          tooltip: 'Tpk form prefab',
+        },
+      ],
+    },
+    {
+      type: 'group',
+      label: 'Ember Input Prefab',
+      tooltip: 'Ember Input Prefab',
+      items: [
+        {
+          type: 'link',
+          label: 'Button Prefab',
+          route: 'dashboard.docs.ember-input.prefabs.button',
+          tooltip: 'Button Prefab',
+        },
+        {
+          type: 'link',
+          label: 'Toggle Prefab',
+          route: 'dashboard.docs.ember-input.prefabs.toggle',
+          tooltip: 'Toggle Prefab',
+        },
+      ],
+    },
   ];
 
   <template>

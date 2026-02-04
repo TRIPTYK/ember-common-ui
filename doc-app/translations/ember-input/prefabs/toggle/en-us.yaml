@@ -1,0 +1,8 @@
+properties:
+  field:
+    label:
+      description: 'The label for the button field'
+    checked:
+      description: 'Whether the toggle is checked'
+    disabled:
+      description: 'Whether the button field is disabled'

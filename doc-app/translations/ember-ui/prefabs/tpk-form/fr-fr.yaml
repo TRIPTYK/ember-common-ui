@@ -1,0 +1,99 @@
+properties:
+  changeset:
+    description: 'Une instance de ImmerChangeset contenant les données du formulaire.'
+  onSubmit:
+    description: 'Une fonction de rappel exécutée lorsque le formulaire est soumis avec des données valides.'
+  validationSchema:
+    description: 'Un schéma Zod qui définit les règles de validation pour les champs du formulaire.'
+  reactive:
+    description: "Lorsqu'activé, valide les champs individuels immédiatement lorsque leurs valeurs changent. Par défaut: true."
+  removeErrorsOnSubmit:
+    description: "Efface toutes les erreurs de validation existantes avant d'effectuer la validation lors de la soumission. Par défaut: true."
+  autoScrollOnError:
+    description: "Fait défiler automatiquement jusqu'à la première erreur de validation lorsque la soumission échoue. Par défaut: true."
+  disabled:
+    description: 'Désactive toutes les entrées du formulaire lorsque défini sur true. Par défaut: false.'
+  executeOnValid:
+    description: 'Exécute automatiquement le changeset (applique les modifications du brouillon aux données) lorsque la validation réussit. Par défaut: true.'
+  sections:
+    yieldedComponents:
+      title: 'Composants Yielded Disponibles'
+      description: "Le composant TpkForm yield de nombreux composants préconfigurés, tous automatiquement liés avec le changeset, l'état désactivé et les champs requis."
+      baseComponents:
+        title: 'Composants de Base (pour layouts personnalisés)'
+        note: 'Les composants de base vous donnent un contrôle total sur le markup :'
+        items:
+          input: 'Composant input de base'
+          textarea: 'Composant textarea de base'
+          select: 'Composant select de base'
+          checkbox: 'Composant checkbox de base'
+          radio: 'Composant radio de base'
+          radioGroup: 'Composant groupe de radios'
+          file: 'Composant fichier de base'
+          datepicker: 'Composant datepicker de base'
+      prefabComponents:
+        title: Composants Prefab (prêts à l'emploi)
+        items:
+          input: 'Input texte standard'
+          textarea: 'Textarea avec validation'
+          select: 'Menu déroulant select'
+          selectCreate: 'Select avec option de création'
+          selectSearch: 'Select avec recherche'
+          checkbox: 'Checkbox avec label'
+          radio: 'Bouton radio unique'
+          radioGroup: 'Groupe de boutons radio'
+          file: 'Input de téléchargement de fichier'
+      specializedInputs:
+        title: "Prefabs d'Input Spécialisés"
+        items:
+          password: 'Input mot de passe avec toggle de visibilité'
+          email: 'Input email avec validation'
+          mobile: 'Input numéro de téléphone mobile'
+          iban: 'Input IBAN (compte bancaire)'
+          bic: 'Input code BIC/SWIFT'
+          vat: 'Input numéro de TVA'
+          nationalNumber: "Input numéro d'identification national"
+          currency: 'Input devise/argent'
+          integer: 'Input nombre entier'
+          number: 'Input nombre décimal'
+      dateTime:
+        title: 'Prefabs Date/Heure'
+        items:
+          datepicker: 'Sélecteur de date unique'
+          datepickerRange: 'Sélecteur de plage de dates'
+          timepicker: "Sélecteur d'heure"
+      helpers:
+        title: 'Valeurs Helper Yielded'
+        items:
+          changesetGet: 'Fonction pour récupérer des valeurs du changeset (raccourci pour <code>changeset.get()</code>)'
+          requiredFields: 'Tableau des noms de champs requis selon le schéma de validation'
+    usingBaseComponents:
+      title: 'Utilisation des Composants de Base pour Layouts Personnalisés'
+      description: 'Les composants de base vous donnent un contrôle total sur le markup.'
+      basic: 'Utilisation basique'
+    validationBehavior:
+      title: 'Comportement de Validation'
+      reactive:
+        title: 'Validation Réactive (Par défaut)'
+        description: 'Lorsque reactive est true par défaut, les champs sont validés dès que leurs valeurs changent.'
+        basic: 'Utilisation basique'
+      submitOnly:
+        title: 'Validation Uniquement à la Soumission'
+        description: 'Définissez reactive à false pour valider uniquement lors de la soumission du formulaire.'
+        basic: 'Utilisation basique'
+    errorHandling:
+      title: 'Gestion des Erreurs et Défilement Automatique'
+      description: Contrôlez l'effacement des erreurs et le comportement de défilement automatique avec les propriétés @removeErrorsOnSubmit et @autoScrollOnError.
+      basic: 'Utilisation basique'
+    disabledState:
+      title: 'État Désactivé'
+      description: "Désactivez l'ensemble du formulaire et toutes ses entrées en définissant @disabled='{true}'."
+      basic: 'Utilisation basique'
+    requiredFields:
+      title: 'Travailler avec les Champs Requis'
+      description: 'Accédez à la liste des champs requis depuis le schéma de validation en utilisant le tableau yielded F.requiredFields.'
+      basic: 'Utilisation basique'
+    changesetGetHelper:
+      title: 'Helper changesetGet'
+      description: "Utilisez le helper changesetGet pour récupérer des valeurs sans répéter l'argument @changeset."
+      basic: 'Utilisation basique'

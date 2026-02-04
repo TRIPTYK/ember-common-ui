@@ -1,0 +1,8 @@
+properties:
+  field:
+    label:
+      description: 'The label for the toggle field'
+    on-click:
+      description: 'The action to be called when the button is clicked'
+    disabled:
+      description: 'Whether the button field is disabled'
