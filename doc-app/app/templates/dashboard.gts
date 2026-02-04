@@ -58,435 +58,152 @@ export default class DashboardTemplate extends Component {
           type: 'link',
           label: 'Input',
           route: 'dashboard.docs.ember-input-validation.prefabs.input',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Integer',
           route: 'dashboard.docs.ember-input-validation.prefabs.integer',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Number',
           route: 'dashboard.docs.ember-input-validation.prefabs.number',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Datepicker',
           route: 'dashboard.docs.ember-input-validation.prefabs.datepicker',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Datepicker Range',
           route:
             'dashboard.docs.ember-input-validation.prefabs.datepicker-range',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Timepicker',
           route: 'dashboard.docs.ember-input-validation.prefabs.timepicker',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Select',
           route: 'dashboard.docs.ember-input-validation.prefabs.select',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Select Create',
           route: 'dashboard.docs.ember-input-validation.prefabs.select-create',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Select Search',
           route: 'dashboard.docs.ember-input-validation.prefabs.select-search',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Radio',
           route: 'dashboard.docs.ember-input-validation.prefabs.radio',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Radio Group',
           route: 'dashboard.docs.ember-input-validation.prefabs.radio-group',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Textarea',
           route: 'dashboard.docs.ember-input-validation.prefabs.textarea',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Password',
           route: 'dashboard.docs.ember-input-validation.prefabs.password',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Email',
           route: 'dashboard.docs.ember-input-validation.prefabs.email',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Mobile',
           route: 'dashboard.docs.ember-input-validation.prefabs.mobile',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'File',
           route: 'dashboard.docs.ember-input-validation.prefabs.file',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'File List',
           route: 'dashboard.docs.ember-input-validation.prefabs.file-list',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'Currency',
           route: 'dashboard.docs.ember-input-validation.prefabs.currency',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'BIC',
           route: 'dashboard.docs.ember-input-validation.prefabs.bic',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'IBAN',
           route: 'dashboard.docs.ember-input-validation.prefabs.iban',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'VAT',
           route: 'dashboard.docs.ember-input-validation.prefabs.vat',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
         {
           type: 'link',
           label: 'National Number',
           route:
             'dashboard.docs.ember-input-validation.prefabs.national-number',
-          icon: <template>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4"
-            ><path
-                d="M12 20V10M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
-              ></path></svg>
-          </template> as TOC<{ Element: SVGSVGElement }>,
         },
       ],
     },
     {
       type: 'group',
-      isOpen: false,
-      label: 'Ember Input',
-      items: [],
+      label: 'Ember UI Prefab',
+      items: [
+        {
+          type: 'link',
+          label: 'Confirm Modal',
+          route: 'dashboard.docs.ember-ui.prefabs.confirm-modal',
+        },
+        {
+          type: 'link',
+          label: 'Table Generic',
+          route: 'dashboard.docs.ember-ui.prefabs.table-generic',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Form',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-form',
+        },
+      ],
     },
     {
       type: 'group',
-      isOpen: false,
-      label: 'Ember UI',
-      items: [],
+      label: 'Ember Input Prefab',
+      items: [
+        {
+          type: 'link',
+          label: 'Button Prefab',
+          route: 'dashboard.docs.ember-input.prefabs.button',
+        },
+        {
+          type: 'link',
+          label: 'Toggle',
+          route: 'dashboard.docs.ember-input.prefabs.toggle',
+        },
+      ],
     },
   ];
 

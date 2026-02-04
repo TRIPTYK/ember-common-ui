@@ -1,0 +1,8 @@
+properties:
+  field:
+    label:
+      description: 'Le label du bouton'
+    on-click:
+      description: L'action à appeler lors du clic sur le bouton
+    disabled:
+      description: 'Indique si le bouton est désactivé'

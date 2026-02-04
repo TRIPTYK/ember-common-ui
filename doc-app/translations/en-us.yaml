@@ -1,3 +1,8 @@
+global:
+  on: 'on'
+  results: 'results'
+  results_by_page: 'results by page'
+
 docs:
   sections:
     properties: 'Properties'
@@ -147,3 +152,41 @@ emberInputValidation:
       examples:
         title: 'Examples'
         basic: 'Basic usage'
+
+ember-ui:
+  prefabs:
+    confirm-modal:
+      title: 'Confirm Modal'
+      description: 'A modal component for confirmation dialogs.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    tpk-table-generic-prefab:
+      title: 'Tpk Table Generic Prefab'
+      description: 'A generic table component with sorting, pagination, filtering, and customizable columns.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+    tpk-form:
+      title: 'Tpk Form'
+      description: 'A comprehensive form component that integrates validation using ember-immer-changeset and zod.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+
+emberInput:
+  prefabs:
+    button:
+      title: 'Button'
+      description: 'A simple button wrapper component with customizable label and click handler.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+        disabled: 'Disabled button'
+    toggle:
+      title: 'Toggle'
+      description: 'A simple toggle wrapper component with customizable label and checked state.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'
+        disabled: 'Disabled button'

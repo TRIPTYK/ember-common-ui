@@ -1,0 +1,99 @@
+properties:
+  changeset:
+    description: 'An instance of ImmerChangeset containing the form data.'
+  onSubmit:
+    description: 'A callback function executed when the form is submitted with valid data.'
+  validationSchema:
+    description: 'A Zod schema that defines the validation rules for the form fields.'
+  reactive:
+    description: 'When enabled, validates individual fields immediately when their values change. Default: true.'
+  removeErrorsOnSubmit:
+    description: 'Clears all existing validation errors before performing validation on submit. Default: true.'
+  autoScrollOnError:
+    description: 'Automatically scrolls to the first validation error when submission fails. Default: true.'
+  disabled:
+    description: 'Disables all form inputs when set to true. Default: false.'
+  executeOnValid:
+    description: 'Automatically executes the changeset (applies draft changes to data) when validation passes. Default: true.'
+sections:
+  yieldedComponents:
+    title: 'Available Yielded Components'
+    description: 'The TpkForm component yields numerous pre-configured components, all automatically bound with the changeset, disabled state, and required fields.'
+    baseComponents:
+      title: 'Base Components (for custom layouts)'
+      note: 'Base components give you full control over the markup:'
+      items:
+        input: 'Base input component'
+        textarea: 'Base textarea component'
+        select: 'Base select component'
+        checkbox: 'Base checkbox component'
+        radio: 'Base radio component'
+        radioGroup: 'Radio group component'
+        file: 'Base file input component'
+        datepicker: 'Base datepicker component'
+    prefabComponents:
+      title: 'Prefab Components (ready-to-use)'
+      items:
+        input: 'Standard text input'
+        textarea: 'Textarea with validation'
+        select: 'Select dropdown'
+        selectCreate: 'Select with create option'
+        selectSearch: 'Searchable select'
+        checkbox: 'Checkbox with label'
+        radio: 'Single radio button'
+        radioGroup: 'Radio button group'
+        file: 'File upload input'
+    specializedInputs:
+      title: 'Specialized Input Prefabs'
+      items:
+        password: 'Password input with visibility toggle'
+        email: 'Email input with validation'
+        mobile: 'Mobile phone number input'
+        iban: 'IBAN (bank account) input'
+        bic: 'BIC/SWIFT code input'
+        vat: 'VAT number input'
+        nationalNumber: 'National identification number'
+        currency: 'Currency/money input'
+        integer: 'Integer number input'
+        number: 'Decimal number input'
+    dateTime:
+      title: 'Date/Time Prefabs'
+      items:
+        datepicker: 'Single date picker'
+        datepickerRange: 'Date range picker'
+        timepicker: 'Time picker'
+    helpers:
+      title: 'Yielded Helper Values'
+      items:
+        changesetGet: 'Function to retrieve values from the changeset (shortcut for <code>changeset.get()</code>)'
+        requiredFields: 'Array of field names that are required according to the validation schema'
+  usingBaseComponents:
+    title: 'Using Base Components for Custom Layouts'
+    description: 'Base components give you full control over the markup.'
+    basic: 'Basic usage'
+  validationBehavior:
+    title: 'Validation Behavior'
+    reactive:
+      title: 'Reactive Validation (Default)'
+      description: 'When reactive is true by default, fields are validated as soon as their values change.'
+      basic: 'Basic usage'
+    submitOnly:
+      title: 'Submit-Only Validation'
+      description: 'Set reactive at false to validate only when the form is submitted.'
+      basic: 'Basic usage'
+  errorHandling:
+    title: 'Error Handling and Auto-Scrolling'
+    description: 'Control error clearing and auto-scroll behavior with @removeErrorsOnSubmit and @autoScrollOnError properties.'
+    basic: 'Basic usage'
+  disabledState:
+    title: 'Disabled State'
+    description: "Disable the entire form and all its inputs by setting @disabled='{true}'."
+    basic: 'Basic usage'
+  requiredFields:
+    title: 'Working with Required Fields'
+    description: 'Access the list of required fields from the validation schema using the yielded F.requiredFields array.'
+    basic: 'Basic usage'
+  changesetGetHelper:
+    title: 'changesetGet Helper'
+    description: 'Use the changesetGet helper to retrieve values without repeating the @changeset argument.'
+    basic: 'Basic usage'

@@ -38,11 +38,18 @@ Router.map(function () {
       });
 
       this.route('ember-input', function () {
-        // Add ember-input routes
+        this.route('prefabs', function () {
+          this.route('button');
+          this.route('toggle');
+        });
       });
 
       this.route('ember-ui', function () {
-        // Add ember-ui routes
+        this.route('prefabs', function () {
+          this.route('confirm-modal');
+          this.route('table-generic');
+          this.route('tpk-form');
+        });
       });
     });
   });

@@ -1,0 +1,21 @@
+properties:
+  tableParams:
+    description: 'Objet de configuration principal contenant tous les paramètres et données du tableau'
+  columnsComponent:
+    description: 'Objet mappant les noms de composants à leurs implémentations pour le rendu personnalisé des colonnes'
+  entity:
+    description: "Le nom du type d'entité à récupérer et afficher dans le tableau"
+  pageSizes:
+    description: 'Tableau des options de taille de page disponibles pour la pagination (par défaut: [5, 10, 25])'
+  defaultSortColumn:
+    description: 'Le nom du champ à trier initialement lors du chargement du tableau'
+  additionalFilters:
+    description: 'Paramètres de requête supplémentaires pour filtrer les données du tableau'
+  relationships:
+    description: 'Liste séparée par des virgules des relations à inclure dans la récupération des données'
+  rowClick:
+    description: 'Fonction de rappel déclenchée lors du clic sur une ligne du tableau'
+  columns:
+    description: 'Tableau de définitions de colonnes spécifiant les mappages de champs, en-têtes et options de rendu'
+  actionMenu:
+    description: "Tableau d'éléments d'action à afficher dans le menu d'action de ligne"
