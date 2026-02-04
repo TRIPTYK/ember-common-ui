@@ -4,7 +4,7 @@
 /* stylelint-disable import-notation */
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: nord --default;
+  themes: lemonade --default;
 }
 @import '@triptyk/ember-input/dist/app.css';
 @import '@triptyk/ember-ui/dist/app.css';

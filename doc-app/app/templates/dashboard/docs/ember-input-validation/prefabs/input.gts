@@ -9,13 +9,7 @@ import ErrorInputExample from 'doc-app/components/docs/ember-input-validation/pr
 import { service } from '@ember/service';
 import CodeExampleComponent from 'doc-app/components/doc/code-example.gts';
 import CodeBlock from 'doc-app/components/doc/code-block.gts';
-
-interface Property {
-  name: string;
-  type: string;
-  required: boolean;
-  description: string;
-}
+import type { Property } from 'doc-app/utils/table-property.interface';
 
 interface InputPrefabDocsSignature {
   Args: {
