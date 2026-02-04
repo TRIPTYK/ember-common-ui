@@ -1,0 +1,57 @@
+properties:
+  validationField:
+    description: 'Le nom du champ dans le changeset pour la validation.'
+  changeset:
+    description: L'objet changeset pour la validation du formulaire.
+  multipleDatesSeparator:
+    description: "Le séparateur à utiliser lorsque plusieurs dates sont sélectionnées. Par défaut ' - '."
+  label:
+    description: 'Le label du champ de saisie.'
+  onChange:
+    description: L'action à appeler lors du changement de date.
+  onClose:
+    description: L'action à appeler lors de la fermeture du datepicker.
+  disabled:
+    description: 'Indique si le champ de saisie est désactivé.'
+  mandatory:
+    description: 'Pour indiquer si le champ est obligatoire.'
+  placeholder:
+    description: 'Le texte de placeholder du champ de saisie.'
+  clearButton:
+    description: 'Afficher un bouton pour effacer le champ de saisie.'
+  todayButton:
+    description: 'Afficher un bouton pour sélectionner la date du jour.'
+  closeButton:
+    description: 'Afficher un bouton pour fermer le datepicker.'
+  minDate:
+    description: 'La date minimum sélectionnable.'
+  maxDate:
+    description: 'La date maximum sélectionnable.'
+  keepOpen:
+    description: 'Garder le datepicker ouvert après la sélection.'
+  daysOfWeekDisabled:
+    description: 'Un tableau de numéros de jours à désactiver (0-6, où 0 est dimanche).'
+  disabledDates:
+    description: 'Un tableau de dates à désactiver.'
+  viewMode:
+    description: "Le mode d'affichage initial du sélecteur de date. Peut être 'clock', 'calendar', 'months', 'years', ou 'decades'."
+  locale:
+    description: 'La locale à utiliser pour le formatage de date.'
+  dateFormat:
+    description: Le format d'affichage de la date sélectionnée.
+  promptTimeOnDateChange:
+    description: Demander l'heure lors du changement de date.
+  noCalendar:
+    description: 'Masquer le calendrier.'
+  enableTime:
+    description: Afficher le sélecteur d'heure.
+  stepping:
+    description: L'incrément du sélecteur d'heure.
+  enableSecond:
+    description: 'Afficher le sélecteur de secondes.'
+  disabledTimeIntervals:
+    description: Un tableau d'intervalles de temps à désactiver.
+  disabledHours:
+    description: Un tableau d'heures à désactiver.
+  enabledHours:
+    description: Un tableau d'heures à activer.

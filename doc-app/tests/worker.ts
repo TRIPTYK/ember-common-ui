@@ -1,16 +1,16 @@
-/* eslint-disable no-undef */
-import { rest, setupWorker as MSWSetupWorker } from 'msw';
-import type { SetupWorker } from 'msw';
+import { http, passthrough } from 'msw';
+import { setupWorker as MSWSetupWorker } from 'msw/browser';
 
-
-export let worker: SetupWorker;
+export let worker: ReturnType<typeof MSWSetupWorker>;
 
 export function setupWorker() {
   worker = MSWSetupWorker();
 }
 
 export function stopWorker() {
-  worker.printHandlers();
+  for (const handler of worker.listHandlers()) {
+    console.log('Registered handler:', handler);
+  }
   worker.stop();
 }
 
@@ -19,13 +19,13 @@ export function stopWorker() {
  * The worker can be accessed using this.get('worker')
  */
 export function setupMock(hooks: NestedHooks) {
-  hooks.beforeEach(async function () {
+  hooks.beforeEach(function () {
     worker.resetHandlers();
     worker.use(
-      rest.post('/write-coverage', (req) => {
+      http.post('/write-coverage', () => {
         // The passthrough is for ember code coverage.
-        return req.passthrough();
-      }),
+        return passthrough();
+      })
     );
   });
 

@@ -8,7 +8,6 @@ export interface TpkValidationErrorsComponentSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     errors: any;
-
   };
   Blocks: {
     default: [];
@@ -24,19 +23,26 @@ export default class TpkValidationErrorsComponent extends Component<TpkValidatio
   });
 
   get errorMessages() {
-    return this.args.errors.map((error: { message: string; params: string[] }) => {
-      if (error.message) {
-        const translationExists = this.intl.exists(error.message);
-        return HS(translationExists ? this.intl.t(error.message) : error.message);
-      }
-      return error;
-    });
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    return this.args.errors.map(
+      (error: { message: string; params: string[] }) => {
+        if (error.message) {
+          const translationExists = this.intl.exists(error.message);
+          return HS(
+            translationExists ? this.intl.t(error.message) : error.message,
+          );
+        }
+        return error;
+      },
+    );
   }
 
   <template>
-    <div class="tpk-validation-errors"
-    data-test-tpk-validation-errors
-    ...attributes>
+    <div
+      class='tpk-validation-errors'
+      data-test-tpk-validation-errors
+      ...attributes
+    >
       {{#each this.errorMessages as |error|}}
         <span>
           {{#if error.message}}

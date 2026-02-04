@@ -6,18 +6,10 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
-export interface TpkValidationCurrencyPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationCurrencyPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
-    | 'type'
-    | 'mask'
-    | 'unmaskValue'
-    | 'maskOptions'
-    | 'mask'
-    | 'mix'
-    | 'max'
-    | 'step'
+    'type' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mix' | 'max' | 'step'
   > & {
     scale?: number;
   };
@@ -65,8 +57,9 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
     >
       <V.Label
         class='tpk-currency-container'
-        data-test-tpk-prefab-currency-container
+        data-test-tpk-prefab-currency-container={{@validationField}}
         data-has-error='{{V.hasError}}'
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

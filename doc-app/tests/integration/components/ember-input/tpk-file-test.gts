@@ -1,8 +1,7 @@
-
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { getOwner } from '@ember/application';
+import { getOwner } from '@ember/owner';
 import ApplicationInstance from '@ember/application/instance';
 import CatchState from 'doc-app/services/catch-state';
 import catchState from 'doc-app/helpers/catch-state';
@@ -20,16 +19,15 @@ module('Integration | Component | tpk-file', function (hooks) {
       </template>
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { state }: { state: any } = (
-      getOwner(this) as ApplicationInstance
-    ).lookup('service:catch-state') as CatchState;
+    const { state } = (getOwner(this) as ApplicationInstance).lookup(
+      'service:catch-state'
+    ) as CatchState<Record<string, unknown>>;
 
-    assert.strictEqual(typeof state.onChange, 'function');
-    assert.strictEqual(typeof state.Input, 'object');
-    assert.strictEqual(typeof state.Label, 'object');
-    assert.strictEqual(typeof state.changeEvent, 'string');
-    assert.strictEqual(typeof state.guid, 'string');
-    assert.true(Array.isArray(state.files));
+    assert.strictEqual(typeof state?.onChange, 'function');
+    assert.strictEqual(typeof state?.Input, 'object');
+    assert.strictEqual(typeof state?.Label, 'object');
+    assert.strictEqual(typeof state?.changeEvent, 'string');
+    assert.strictEqual(typeof state?.guid, 'string');
+    assert.true(Array.isArray(state?.files));
   });
 });

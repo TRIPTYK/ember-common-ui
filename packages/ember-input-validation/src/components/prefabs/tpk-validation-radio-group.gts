@@ -7,8 +7,7 @@ import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationRadioPrefabComponent from './tpk-validation-radio.gts';
 import type { WithBoundArgs } from '@glint/template';
 
-export interface TpkValidationRadioGroupPrefabComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationRadioGroupPrefabComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationRadioGroupComponentSignature['Args'] & {
       groupLabel: string;
@@ -38,8 +37,9 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
       <fieldset
         class='tpk-radio-group-container'
         data-has-error='{{V.hasError}}'
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
-        data-test-tpk-prefab-radio-group-container
+        data-test-tpk-prefab-radio-group-container={{@validationField}}
         ...attributes
       >
         <legend class='tpk-radio-group-label'>

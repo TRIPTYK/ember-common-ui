@@ -13,16 +13,17 @@ export interface TpkCheckboxInputComponentSignature {
   Element: HTMLInputElement;
 }
 
-const TpkCheckboxInputComponent: TOC<TpkCheckboxInputComponentSignature> = <template>
-  <input
-    id={{@guid}}
-    checked={{@checked}}
-    disabled={{@disabled}}
-    type='checkbox'
-    {{on @changeEvent @onChange}}
-    ...attributes
-    data-test-tpk-checkbox-input
-  />
-</template>;
+const TpkCheckboxInputComponent: TOC<TpkCheckboxInputComponentSignature> =
+  <template>
+    <input
+      id={{@guid}}
+      checked={{@checked}}
+      disabled={{@disabled}}
+      type='checkbox'
+      {{on @changeEvent @onChange}}
+      ...attributes
+      data-test-tpk-checkbox-input
+    />
+  </template>;
 
 export default TpkCheckboxInputComponent;

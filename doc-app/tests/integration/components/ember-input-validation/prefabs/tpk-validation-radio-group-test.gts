@@ -1,12 +1,10 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationRadioGroup from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-radio-group';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-
-
 
 module(
   'Integration | Component | Prefabs | tpk-prefab-validation-radio-group',
@@ -16,24 +14,25 @@ module(
 
     async function renderComponent({
       changeset,
-      disabled
+      disabled,
     }: {
-      changeset: ImmerChangeset,
-      disabled?: boolean,
+      changeset: ImmerChangeset;
+      disabled?: boolean;
     }) {
       await render(
-        <template><TpkValidationRadioGroup
-        @changeset={{changeset}}
-        @validationField="radio"
-        @groupLabel="groupLabel"
-        @disabled={{disabled}}
-        @mandatory={{true}}
-
-        as |Radio|>
-        <Radio @value="applati" @label="applati" @selected="applati" />
-        <Radio @value="creux" @label="creux" />
-      </TpkValidationRadioGroup>
-      </template>,
+        <template>
+          <TpkValidationRadioGroup
+            @changeset={{changeset}}
+            @validationField="radio"
+            @groupLabel="groupLabel"
+            @disabled={{disabled}}
+            @mandatory={{true}}
+            as |Radio|
+          >
+            <Radio @value="applati" @label="applati" @selected="applati" />
+            <Radio @value="creux" @label="creux" />
+          </TpkValidationRadioGroup>
+        </template>
       );
       return changeset;
     }
@@ -41,7 +40,7 @@ module(
       const changeset = new ImmerChangeset({
         radio: '',
       });
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
       assert.dom('.tpk-radio-group-container').exists();
       assert.dom('.tpk-radio-group-label').exists();
     });
@@ -56,21 +55,23 @@ module(
         originalValue: undefined,
         key: 'radio',
       });
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
       assert
         .dom('[data-test-tpk-prefab-radio-group-container]')
         .hasAttribute('data-has-error', 'true');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
       await renderComponent({
         disabled: true,
-        changeset
+        changeset,
       });
-      assert.dom(`[data-test-tpk-prefab-radio-container] input`).hasAttribute('disabled');
+      assert
+        .dom(`[data-test-tpk-prefab-radio-container] input`)
+        .hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
@@ -78,8 +79,8 @@ module(
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
-      await renderComponent( {changeset});
+      await renderComponent({ changeset });
       await a11yAudit();
-    })
-  },
+    });
+  }
 );

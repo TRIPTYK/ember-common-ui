@@ -8,8 +8,7 @@ import TpkRadio, {
 } from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationRadioComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationRadioComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     classless?: boolean;

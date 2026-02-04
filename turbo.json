@@ -1,25 +1,32 @@
 {
-    "$schema": "https://turbo.build/schema.json",
     "tasks": {
       "build": {
         "dependsOn": ["^build"],
         "inputs": ["src/**"],
         "outputs": ["dist/**"]
       },
+      "build:watch": {
+        "persistent": true,
+        "cache": false
+      },
+      "_syncPnpm": {
+        "dependsOn": ["^build"],
+        "cache": false
+      },
       "build:clean": {
         "cache": false
       },
       "lint": {
-        "dependsOn": ["^build"]
+        "dependsOn": ["_syncPnpm"]
       },
       "lint:fix": {
-        "dependsOn": ["^build"]
+        "dependsOn": ["_syncPnpm"]
       },
       "test": {
-        "dependsOn": ["^build"]
+        "dependsOn": ["_syncPnpm"]
       },
       "start": {
-        "dependsOn": ["^build"],
+        "dependsOn": ["_syncPnpm"],
         "persistent": true,
         "cache": false
       }

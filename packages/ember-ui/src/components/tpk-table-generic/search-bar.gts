@@ -1,12 +1,13 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import TpkSearch from '@triptyk/ember-input/components/prefabs/tpk-search';
+import type Owner from '@ember/owner';
 
 export interface TableGenericSearchBarComponentArgs {
   onChange?: (value: string, e: Event) => unknown;
-  onSearch: (value: string,) => unknown;
+  onSearch: (value: string) => unknown;
   label: string;
   placeholder: string;
   inputClass?: string;
@@ -21,7 +22,7 @@ export interface TableGenericSearchBarComponentSignature {
 export default class TableGenericSearchBarComponent extends Component<TableGenericSearchBarComponentSignature> {
   @tracked searchValue = '';
 
-  constructor(owner: unknown, args: TableGenericSearchBarComponentArgs) {
+  constructor(owner: Owner, args: TableGenericSearchBarComponentArgs) {
     super(owner, args);
     assert(
       'Please provide @onSearch to search input',
@@ -38,10 +39,10 @@ export default class TableGenericSearchBarComponent extends Component<TableGener
   }
 
   <template>
-     <TpkSearch
-            @label={{@label}}
-            @placeholder={{@placeholder}}
-            @onSearch={{this.onSearch}}
-          />
+    <TpkSearch
+      @label={{@label}}
+      @placeholder={{@placeholder}}
+      @onSearch={{this.onSearch}}
+    />
   </template>
 }

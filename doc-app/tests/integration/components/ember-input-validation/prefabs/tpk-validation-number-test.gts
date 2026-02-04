@@ -1,11 +1,5 @@
 import { module, test } from 'qunit';
-import {
-  fillIn,
-  find,
-  render,
-
-  settled,
-} from '@ember/test-helpers';
+import { fillIn, find, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
@@ -13,40 +7,44 @@ import TpkValidationNumber from '@triptyk/ember-input-validation/components/pref
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
-
 module(
   'Integration | Component | Prefabs | tpk-validation-number',
   function (hooks) {
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(changeset: ImmerChangeset, params?: {
-      disabled?: boolean;
-    }) {
+    async function renderComponent(
+      changeset: ImmerChangeset,
+      params?: {
+        disabled?: boolean;
+      }
+    ) {
       await render(
         <template>
-      <TpkValidationNumber
-        @changeset={{changeset}}
-        @validationField="number"
-        @disabled={{params.disabled}}
-        @label="Number validation field"
-        class="custom-number-class"
-        @step={{0.1}}
-      />
-    </template>);
+          <TpkValidationNumber
+            @changeset={{changeset}}
+            @validationField="number"
+            @disabled={{params.disabled}}
+            @label="Number validation field"
+            class="custom-number-class"
+            @step={{0.1}}
+          />
+        </template>
+      );
     }
     async function renderComponentUnsigned(changeset: ImmerChangeset) {
-      await render(<template>
-      <TpkValidationNumber
-        @changeset={{changeset}}
-        @validationField="number"
-        @label="Number validation field"
-        class="custom-number-class"
-        @unsigned={{true}}
-        @step={{0.1}}
-      />
-    </template>);
+      await render(
+        <template>
+          <TpkValidationNumber
+            @changeset={{changeset}}
+            @validationField="number"
+            @label="Number validation field"
+            class="custom-number-class"
+            @unsigned={{true}}
+            @step={{0.1}}
+          />
+        </template>
+      );
     }
 
     function setupChangeset() {
@@ -55,7 +53,7 @@ module(
       });
     }
 
-    test('Input type must be a number', async function ( assert) {
+    test('Input type must be a number', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset);
       await fillIn('input', '2.1');
@@ -68,10 +66,12 @@ module(
     test('Attributes should be passed to the container', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent(changeset);
-      assert.dom('[data-test-tpk-prefab-number-container]').hasClass('custom-number-class');
+      assert
+        .dom('[data-test-tpk-prefab-number-container]')
+        .hasClass('custom-number-class');
     });
 
-    test('it passes unsigned number', async function ( assert) {
+    test('it passes unsigned number', async function (assert) {
       const changeset = setupChangeset();
       await renderComponentUnsigned(changeset);
       await fillIn('input', '0.1');
@@ -102,10 +102,10 @@ module(
       assertTpkCssClassesExist(assert, 'number');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent(changeset,{
-        disabled: true
+      await renderComponent(changeset, {
+        disabled: true,
       });
       assert.dom(`[data-test-tpk-number-input]`).hasAttribute('disabled');
     });
@@ -116,5 +116,5 @@ module(
       await renderComponent(changeset);
       await a11yAudit();
     });
-  },
+  }
 );

@@ -11,8 +11,6 @@ import { render } from '@ember/test-helpers';
 
 import TpkDatepicker from '@triptyk/ember-input/components/tpk-datepicker';
 
-
-
 module('Integration | Helpers | Datepicker', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -24,7 +22,12 @@ module('Integration | Helpers | Datepicker', function (hooks) {
 
     return render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @value={{date}} @label="Testouille" as |D|>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @value={{date}}
+          @label="Testouille"
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -32,14 +35,14 @@ module('Integration | Helpers | Datepicker', function (hooks) {
     );
   }
 
-  test('clear tempus dominus helper works', async function ( assert) {
+  test('clear tempus dominus helper works', async function (assert) {
     await renderDatepicker();
     assert.dom(selector).hasValue('12/11/2022');
     clearTempusDominusDate(selector);
     assert.dom(selector).hasValue('');
   });
 
-  test('set tempus dominus date helper works', async function ( assert) {
+  test('set tempus dominus date helper works', async function (assert) {
     await renderDatepicker();
     const newDate: Date = new Date(2022, 10, 15);
     assert.dom(selector).hasValue('12/11/2022');
@@ -47,14 +50,14 @@ module('Integration | Helpers | Datepicker', function (hooks) {
     assert.dom(selector).hasValue('15/11/2022');
   });
 
-  test('open tempus dominus date picker helper works', async function ( assert) {
+  test('open tempus dominus date picker helper works', async function (assert) {
     await renderDatepicker();
     assert.dom('.tempus-dominus-widget').doesNotExist();
     openTempusDominus(selector);
     assert.dom('.tempus-dominus-widget').hasClass('show');
   });
 
-  test('close tempus dominus date picker helper works', async function ( assert) {
+  test('close tempus dominus date picker helper works', async function (assert) {
     await renderDatepicker();
     assert.dom('.tempus-dominus-widget').doesNotExist();
     openTempusDominus(selector);
@@ -64,14 +67,14 @@ module('Integration | Helpers | Datepicker', function (hooks) {
     assert.dom('.tempus-dominus-widget').hasNoClass('show');
   });
 
-  test('isOpen tempus dominus date picker helper works', async function ( assert) {
+  test('isOpen tempus dominus date picker helper works', async function (assert) {
     await renderDatepicker();
     openTempusDominus(selector);
 
     assert.true(isTempusDominusOpen());
   });
 
-  test('throw error when tempus dominus date picker not exist', async function ( assert) {
+  test('throw error when tempus dominus date picker not exist', async function (assert) {
     await renderDatepicker();
     try {
       openTempusDominus('.not-exist');

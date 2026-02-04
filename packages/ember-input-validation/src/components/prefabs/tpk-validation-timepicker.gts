@@ -6,9 +6,9 @@ import { type BaseValidationSignature } from '../base.ts';
 import { tracked } from '@glimmer/tracking';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
+import type Owner from '@ember/owner';
 
-export interface TpkValidationTimepickerPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationTimepickerPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationDatepickerComponentSignature['Args'] & {
       onChange?: (value: Date[]) => void;
@@ -40,7 +40,7 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
   @tracked dateFormat = 'HH:mm';
 
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationTimepickerPrefabSignature['Args'],
   ) {
     super(owner, args);
@@ -73,8 +73,9 @@ export default class TpkValidationTimepickerPrefabComponent extends Component<Tp
     >
       <div
         class='tpk-timepicker-container'
-        data-test-tpk-prefab-timepicker-container
+        data-test-tpk-prefab-timepicker-container={{@validationField}}
         data-has-error='{{V.hasError}}'
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

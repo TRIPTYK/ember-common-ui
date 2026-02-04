@@ -23,13 +23,13 @@ module(
 
       await render(
         <template>
-         <TpkValidationBic
+          <TpkValidationBic
             @label="label"
             @changeset={{immerChangeset}}
             @disabled={{params.disabled}}
             @validationField="bic"
-         />
-        </template>,
+          />
+        </template>
       );
       return immerChangeset;
     }
@@ -51,16 +51,16 @@ module(
     });
 
     test('It changes data-has-error attribute on error', async function (assert) {
-     const changeset = await renderComponentAndReturnChangeset();
-     await assertDataHasErrorAttribute(assert,changeset,'bic');
+      const changeset = await renderComponentAndReturnChangeset();
+      await assertDataHasErrorAttribute(assert, changeset, 'bic');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponentAndReturnChangeset();
-      await assertTpkCssClassesExist(assert,'bic');
+      assertTpkCssClassesExist(assert, 'bic');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponentAndReturnChangeset({
         disabled: true,
       });
@@ -74,5 +74,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );

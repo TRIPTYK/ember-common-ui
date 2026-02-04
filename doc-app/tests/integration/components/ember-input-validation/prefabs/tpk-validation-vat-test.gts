@@ -7,7 +7,6 @@ import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationVat from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-vat';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-vat',
   function (hooks) {
@@ -23,15 +22,15 @@ module(
 
       await render(
         <template>
-         <TpkValidationVat
+          <TpkValidationVat
             @label="label"
             @mandatory={{true}}
             @disabled={{params.disabled}}
             @changeset={{immerChangeset}}
             @validationField="vat"
             class="custom-vat-class"
-         />
-        </template>,
+          />
+        </template>
       );
       return immerChangeset;
     }
@@ -90,7 +89,7 @@ module(
       assert.dom('.tpk-validation-errors span').hasText('required');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponentAndReturnChangeset({
         disabled: true,
       });
@@ -104,5 +103,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );

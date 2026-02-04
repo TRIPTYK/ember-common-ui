@@ -1,11 +1,11 @@
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
 import TpkFileInputComponent from './tpk-file/input.gts';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
+import { trackedArray } from '@ember/reactive/collections';
 
 export type TpkFileSignature = {
   Args: MergeDeep<
@@ -24,10 +24,7 @@ export type TpkFileSignature = {
           typeof TpkFileInputComponent,
           'onChange' | 'accept' | 'disabled' | 'changeEvent' | 'guid'
         >;
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'label' | 'guid'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
         guid: string;
         changeEvent: 'input' | 'change';
         onChange: TpkFileComponent['onChange'];
@@ -38,7 +35,7 @@ export type TpkFileSignature = {
 };
 
 export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> {
-  @tracked files: File[] = [];
+  files: File[] = trackedArray();
 
   @action onChange(e: Event) {
     e.preventDefault();
@@ -61,10 +58,7 @@ export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> 
           guid=this.guid
         )
         Label=(component
-          TpkLabel
-          label=@label
-          onChange=this.onChange
-          guid=this.guid
+          TpkLabel label=@label onChange=this.onChange guid=this.guid
         )
         changeEvent=this.changeEvent
         onChange=this.onChange

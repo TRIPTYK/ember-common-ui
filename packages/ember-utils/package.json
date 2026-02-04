@@ -1,0 +1,136 @@
+{
+  "name": "@triptyk/ember-utils",
+  "version": "4.0.0-alpha.1",
+  "description": "Utility functions and helpers for Ember.js applications",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": {
+    "url": "git@github.com:TRIPTYK/ember-common-ui.git"
+  },
+  "license": "MIT",
+  "author": "Triptyk",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs",
+    "./dist/*.css": "./dist/*.css",
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist",
+    "static",
+    "translations",
+    "llm.txt"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "build:watch": "rollup --config --watch",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "ember-tsc --noEmit",
+    "prepack": "rollup --config",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "catalog:",
+    "@warp-drive/utilities": "~5.8.1",
+    "date-fns": "^4.1.0",
+    "decorator-transforms": "catalog:",
+    "ember-intl": "catalog:",
+    "ember-modifier": "catalog:",
+    "ember-strict-application-resolver": "catalog:",
+    "ember-test-selectors": "catalog:",
+    "js-file-downloader": "^1.1.25"
+  },
+  "devDependencies": {
+    "@babel/core": "catalog:",
+    "@babel/eslint-parser": "catalog:",
+    "@babel/plugin-proposal-class-properties": "catalog:",
+    "@babel/plugin-proposal-decorators": "catalog:",
+    "@babel/plugin-transform-class-static-block": "catalog:",
+    "@babel/plugin-transform-typescript": "catalog:",
+    "@babel/runtime": "catalog:",
+    "@ember/app-tsconfig": "catalog:",
+    "@ember/library-tsconfig": "catalog:",
+    "@embroider/addon-dev": "catalog:",
+    "@embroider/core": "catalog:",
+    "@eslint/js": "catalog:",
+    "@glimmer/component": "2.0.0",
+    "@glimmer/tracking": "catalog:",
+    "@glint/ember-tsc": "catalog:",
+    "@glint/template": "catalog:",
+    "@rollup/plugin-babel": "catalog:",
+    "@rollup/plugin-node-resolve": "catalog:",
+    "@triptyk/ember-input": "workspace:*",
+    "@tsconfig/ember": "catalog:",
+    "@types/node": "catalog:",
+    "@warp-drive/core": "catalog:",
+    "babel-plugin-ember-template-compilation": "catalog:",
+    "concurrently": "catalog:",
+    "ember-source": "catalog:",
+    "ember-template-imports": "catalog:",
+    "ember-template-lint": "^7.9.3",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-ember": "catalog:",
+    "eslint-plugin-import": "catalog:",
+    "eslint-plugin-n": "catalog:",
+    "globals": "catalog:",
+    "postcss-import": "^16.1.1",
+    "prettier": "catalog:",
+    "prettier-plugin-ember-template-tag": "catalog:",
+    "rollup": "catalog:",
+    "rollup-plugin-copy": "catalog:",
+    "rollup-plugin-postcss": "~4.0.2",
+    "rollup-plugin-ts": "catalog:",
+    "rsvp": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
+    "vite": "catalog:"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./helpers/date-format.js": "./dist/_app_/helpers/date-format.js",
+      "./helpers/html-safe.js": "./dist/_app_/helpers/html-safe.js",
+      "./helpers/translate-country.js": "./dist/_app_/helpers/translate-country.js",
+      "./helpers/truncate.js": "./dist/_app_/helpers/truncate.js",
+      "./services/current-changeset.js": "./dist/_app_/services/current-changeset.js",
+      "./services/current-transition.js": "./dist/_app_/services/current-transition.js"
+    }
+  },
+  "peerDependencies": {
+    "@triptyk/ember-input": "workspace:*",
+    "ember-source": ">=6.0.0"
+  },
+  "gitHead": "0e3c997a40d084fa5eb05fe7cfd042bda3de4789"
+}

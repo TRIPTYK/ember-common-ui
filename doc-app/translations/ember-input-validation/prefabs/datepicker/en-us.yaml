@@ -1,0 +1,57 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  multipleDatesSeparator:
+    description: "The separator to use when multiple dates are selected. Defaults to ' - '."
+  label:
+    description: 'The label for the input field.'
+  onChange:
+    description: 'The action to be called when the date changes.'
+  onClose:
+    description: 'The action to be called when the datepicker closes.'
+  disabled:
+    description: 'Whether the input field is disabled.'
+  mandatory:
+    description: 'To indicate if input is mandatory.'
+  placeholder:
+    description: 'The placeholder text for the input field.'
+  clearButton:
+    description: 'Whether to show a button to clear the input field.'
+  todayButton:
+    description: "Whether to show a button to select today's date."
+  closeButton:
+    description: 'Whether to show a button to close the datepicker.'
+  minDate:
+    description: 'The minimum selectable date.'
+  maxDate:
+    description: 'The maximum selectable date.'
+  keepOpen:
+    description: 'Whether to keep the datepicker open after selection.'
+  daysOfWeekDisabled:
+    description: 'An array of day numbers to disable (0-6, where 0 is Sunday).'
+  disabledDates:
+    description: 'An array of dates to disable.'
+  viewMode:
+    description: "The initial view mode of the date picker. Can be 'clock', 'calendar', 'months', 'years', or 'decades'."
+  locale:
+    description: 'The locale to be used for date formatting.'
+  dateFormat:
+    description: 'The format for displaying the selected date.'
+  promptTimeOnDateChange:
+    description: 'Whether to prompt the time when the date changes.'
+  noCalendar:
+    description: 'Whether to hide the calendar.'
+  enableTime:
+    description: 'Whether to show the time picker.'
+  stepping:
+    description: 'The stepping of the time picker.'
+  enableSecond:
+    description: 'Whether to show the second picker.'
+  disabledTimeIntervals:
+    description: 'An array of time intervals to disable.'
+  disabledHours:
+    description: 'An array of hours to disable.'
+  enabledHours:
+    description: 'An array of hours to enable.'

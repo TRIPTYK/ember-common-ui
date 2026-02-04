@@ -1,36 +1,33 @@
-
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, fillIn } from '@ember/test-helpers';
-import { getOwner } from '@ember/application';
+import { getOwner } from '@ember/owner';
 import ApplicationInstance from '@ember/application/instance';
 import CatchState from 'doc-app/services/catch-state';
 
 import catchState from 'doc-app/helpers/catch-state';
 import TpkInput from '@triptyk/ember-input/components/tpk-input';
 
-
-
 module('Integration | Component | tpk-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('input yield only', async function (assert) {
     await render(
-      <template><TpkInput @type="password" @label="label" @value="value" as |O|>
-        {{catchState O}}
-      </TpkInput>
+      <template>
+        <TpkInput @type="password" @label="label" @value="value" as |O|>
+          {{catchState O}}
+        </TpkInput>
       </template>
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { state }: { state: any } = (
-      getOwner(this) as ApplicationInstance
-    ).lookup('service:catch-state') as CatchState;
+    const { state } = (getOwner(this) as ApplicationInstance).lookup(
+      'service:catch-state'
+    ) as CatchState<Record<string, unknown>>;
 
-    assert.strictEqual(typeof state.Input, 'object', 'Input');
-    assert.strictEqual(typeof state.changeEvent, 'string', 'changeEvent');
-    assert.strictEqual(typeof state.Label, 'object', 'Label');
-    assert.strictEqual(typeof state.guid, 'string', 'guid');
+    assert.strictEqual(typeof state?.['Input'], 'object', 'Input');
+    assert.strictEqual(typeof state?.['changeEvent'], 'string', 'changeEvent');
+    assert.strictEqual(typeof state?.['Label'], 'object', 'Label');
+    assert.strictEqual(typeof state?.['guid'], 'string', 'guid');
   });
 
   test('input with mask return masked value', async function (assert) {
@@ -45,11 +42,17 @@ module('Integration | Component | tpk-input', function (hooks) {
     };
     await render(
       <template>
-      <TpkInput @type="text" @onChange={{change}} @label="label" @value="value" @mask={{mask}} as |I|>
-        <I.Input />
-        <I.Label />
-      </TpkInput>
-
+        <TpkInput
+          @type="text"
+          @onChange={{change}}
+          @label="label"
+          @value="value"
+          @mask={{mask}}
+          as |I|
+        >
+          <I.Input />
+          <I.Label />
+        </TpkInput>
       </template>
     );
 
@@ -68,10 +71,20 @@ module('Integration | Component | tpk-input', function (hooks) {
       assert.strictEqual(e, `${valueToApply}`);
     };
     await render(
-      <template><TpkInput @type="text" @onChange={{change}} @label="label" @value="value" @mask={{mask}} @unmaskValue={{true}} as |I|>
-      <I.Input></I.Input>
-      <I.Label></I.Label>
-</TpkInput> </template>
+      <template>
+        <TpkInput
+          @type="text"
+          @onChange={{change}}
+          @label="label"
+          @value="value"
+          @mask={{mask}}
+          @unmaskValue={{true}}
+          as |I|
+        >
+          <I.Input />
+          <I.Label />
+        </TpkInput>
+      </template>
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -88,10 +101,20 @@ module('Integration | Component | tpk-input', function (hooks) {
     const mask = `${maskPrefix}${maskContent}`;
     const change = () => {};
     await render(
-      <template><TpkInput @type="text" @onChange={{change}} @label="label" @value="value" @mask={{mask}} @maskOptions={{maskOptions}} @unmaskValue={{true}} as |I|>
-      <I.Input />
-      <I.Label />
-    </TpkInput>
+      <template>
+        <TpkInput
+          @type="text"
+          @onChange={{change}}
+          @label="label"
+          @value="value"
+          @mask={{mask}}
+          @maskOptions={{maskOptions}}
+          @unmaskValue={{true}}
+          as |I|
+        >
+          <I.Input />
+          <I.Label />
+        </TpkInput>
       </template>
     );
     assert.dom('[data-test-tpk-input-input]').hasValue(`${maskPrefix}####`);
@@ -103,10 +126,18 @@ module('Integration | Component | tpk-input', function (hooks) {
       assert.strictEqual(e, 123);
     };
     await render(
-      <template><TpkInput @type="number" @onChange={{change}} @label="label" @value={{123}} as |I|>
-      <I.Input></I.Input>
-      <I.Label></I.Label>
-</TpkInput> </template>
+      <template>
+        <TpkInput
+          @type="number"
+          @onChange={{change}}
+          @label="label"
+          @value={{123}}
+          as |I|
+        >
+          <I.Input />
+          <I.Label />
+        </TpkInput>
+      </template>
     );
 
     await fillIn('[data-test-tpk-input-input]', '123');

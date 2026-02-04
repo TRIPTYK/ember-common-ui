@@ -11,21 +11,13 @@ import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-export interface TpkValidationVATPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationVATPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
-    | 'type'
-    | 'min'
-    | 'max'
-    | 'step'
-    | 'mask'
-    | 'maskOptions'
-    | 'unmaskValue'
-    | 'mask'
+    'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue'
   > & {
     mandatory?: boolean;
-    onChange?: (value: string, e: Event) => void; 
+    onChange?: (value: string, e: Event) => void;
   };
   Blocks: {
     default: [];
@@ -78,9 +70,9 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
   };
 
   @action
-  onChange(value: string | number | Date | null, e: Event){  
-    const valueAsString = (value as string).toUpperCase()
-    if(this.args.onChange){
+  onChange(value: string | number | Date | null, e: Event) {
+    const valueAsString = (value as string).toUpperCase();
+    if (this.args.onChange) {
       return this.args.onChange(valueAsString, e);
     }
     return this.args.changeset.set(this.args.validationField, valueAsString);
@@ -103,8 +95,9 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
     >
       <V.Label
         class='tpk-vat-container'
-        data-test-tpk-prefab-vat-container
+        data-test-tpk-prefab-vat-container={{@validationField}}
         data-has-error='{{V.hasError}}'
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

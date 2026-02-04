@@ -1,14 +1,11 @@
-
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationTextarea from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-textarea';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-
-
 
 module(
   'Integration | Component | Prefabs | tpk-validation-textarea',
@@ -23,7 +20,13 @@ module(
 
       await render(
         <template>
-          <TpkValidationTextarea @changeset={{changeset}} @validationField="name" @disabled={{params.disabled}} @label="label" @mandatory={{true}} />
+          <TpkValidationTextarea
+            @changeset={{changeset}}
+            @validationField="name"
+            @disabled={{params.disabled}}
+            @label="label"
+            @mandatory={{true}}
+          />
         </template>
       );
 
@@ -43,8 +46,8 @@ module(
       assertTpkCssClassesExist(assert, 'textarea', 'textarea');
     });
 
-    test('@disabled disables the textarea', async function(assert) {
-       await renderComponent({ disabled: true});
+    test('@disabled disables the textarea', async function (assert) {
+      await renderComponent({ disabled: true });
       assert.dom(`[data-test-tpk-textarea-input]`).hasAttribute('disabled');
     });
 
@@ -53,5 +56,5 @@ module(
       await renderComponent();
       await a11yAudit();
     });
-  },
+  }
 );

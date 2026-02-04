@@ -1,4 +1,3 @@
-import { getOwner } from '@ember/application';
 import type ApplicationInstance from '@ember/application/instance';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
@@ -9,16 +8,14 @@ import DialogLayerService from '../services/dialog-layer.ts';
 import { guidFor } from '@ember/object/internals';
 import type { WithBoundArgs } from '@glint/template';
 import TpkModalContentComponent from './tpk-modal/content.gts';
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
 import { hash } from '@ember/helper';
+import type Owner from '@ember/owner';
 
 export interface TpkModalComponentArgs {
   isOpen: boolean;
   onClose: () => unknown;
   outsideClickHandler?: (e: MouseEvent | TouchEvent) => unknown;
   title?: string;
-
 }
 
 interface TpkModalEnv {
@@ -35,7 +32,7 @@ export interface TpkModalComponentSignature {
       {
         Content: WithBoundArgs<
           typeof TpkModalContentComponent,
-          'title' | 'onClose'  | 'outsideClickHandler'
+          'title' | 'onClose' | 'outsideClickHandler'
         >;
         isOnTop: boolean;
         isOpen: boolean;
@@ -50,11 +47,14 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
   @service declare dialogLayer: DialogLayerService;
 
   guid = guidFor(this);
+  modalKey: string;
 
-  constructor(owner: unknown, args: TpkModalComponentArgs) {
+  constructor(owner: Owner, args: TpkModalComponentArgs) {
     super(owner, args);
     assert('Modal initialized without @onClose', args.onClose !== undefined);
     assert('Modal @title is mandatory', args.title !== undefined);
+    this.modalKey = this.loadModalKey(owner as ApplicationInstance);
+    this.updateStack();
   }
 
   get isOnTop() {
@@ -96,16 +96,14 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     return false;
   }
 
-  @action
-  updateStack() {
+  updateStack = () => {
     this.dialogLayer.add(this.guid);
-  }
+  };
 
-  @action
-  willDestroyNode(): void {
+  willDestroyNode = (): void => {
     this.dialogLayer.remove(this.guid);
     return super.willDestroy();
-  }
+  };
 
   @action
   close() {
@@ -113,8 +111,8 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     this.args.onClose();
   }
 
-  get modalKey(): string {
-    const config = (getOwner(this) as ApplicationInstance).resolveRegistration(
+  private loadModalKey(owner: ApplicationInstance): string {
+    const config = owner.resolveRegistration(
       'config:environment',
     ) as TpkModalEnv;
     return config['modal']?.id ?? 'tpk-modal';
@@ -127,13 +125,16 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
     return element;
   }
 
+  willDestroy(): void {
+    this.willDestroyNode();
+    super.willDestroy();
+  }
+
   <template>
     {{#if @isOpen}}
       {{#in-element this.modalContainer insertBefore=null}}
-        <div
+        <dialog
           {{this.handleEscapeKey @isOpen this.close}}
-          {{didInsert this.updateStack}}
-          {{willDestroy this.willDestroyNode}}
           class='tpk-modal'
           ...attributes
         >
@@ -151,7 +152,7 @@ export default class TpkModalComponent extends Component<TpkModalComponentSignat
               guid=this.guid
             )
           }}
-        </div>
+        </dialog>
       {{/in-element}}
     {{/if}}
   </template>

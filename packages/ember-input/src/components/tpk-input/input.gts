@@ -1,11 +1,12 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import didUpdate from '@ember/render-modifiers/modifiers/did-update';
 import { action } from '@ember/object';
-import { tracked } from 'tracked-built-ins';
 import type { FactoryArg, InputMask } from 'imask';
 import IMask from 'imask';
+import type Owner from '@ember/owner';
+import { modifier, type FunctionBasedModifier } from 'ember-modifier';
+import type { EmptyObject } from 'type-fest';
+import { tracked } from '@glimmer/tracking';
 
 export interface TpkInputInputComponentSignature {
   Args: {
@@ -32,6 +33,13 @@ export interface TpkInputInputComponentSignature {
 export default class TpkInputInputComponent extends Component<TpkInputInputComponentSignature> {
   @tracked mask?: InputMask<FactoryArg>;
 
+  public constructor(
+    owner: Owner,
+    args: TpkInputInputComponentSignature['Args'],
+  ) {
+    super(owner, args);
+  }
+
   get value() {
     if (this.mask) {
       return this.mask.displayValue;
@@ -43,7 +51,9 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     e.preventDefault();
     let value = this.inputValue(e.target as HTMLInputElement);
     if (this.mask) {
-      value = this.args.unmaskValue ? this.mask.typedValue : this.mask.value;
+      value = this.args.unmaskValue
+        ? (this.mask.typedValue as string | number | Date | null)
+        : this.mask.value;
     }
     this.args.onChange?.(value, e);
   }
@@ -70,6 +80,16 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     } as Record<string, unknown>);
   }
 
+  setupMask: FunctionBasedModifier<{
+    Args: {
+      Positional: unknown[];
+      Named: EmptyObject;
+    };
+    Element: HTMLElement;
+  }> = modifier((element: HTMLElement) => {
+    this.setMask(element as HTMLInputElement);
+  });
+
   <template>
     <input
       id={{@guid}}
@@ -80,8 +100,7 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
       value={{this.value}}
       disabled={{@disabled}}
       placeholder={{@placeholder}}
-      {{didInsert this.setMask}}
-      {{didUpdate this.setMask @mask}}
+      {{this.setupMask @mask}}
       {{on @changeEvent this.onChange}}
       ...attributes
       data-test-tpk-input-input

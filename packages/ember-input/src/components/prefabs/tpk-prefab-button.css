@@ -1,7 +1,7 @@
 .tpk-button-container {
-  @apply btn btn-primary
+  @apply btn btn-primary;
 }
 
 .tpk-test {
-  @apply btn btn-warning
+  @apply btn btn-warning;
 }

@@ -1,10 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  click, render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import TpkValidationRadio from '@triptyk/ember-input-validation/components/tpk-validation-radio';
-
-
 
 module('Integration | Component | tpk-validation-radio', function (hooks) {
   setupRenderingTest(hooks);
@@ -19,26 +17,38 @@ module('Integration | Component | tpk-validation-radio', function (hooks) {
 
     await render(
       <template>
-      <TpkValidationRadio @changeset={{changeset}} @validationField='radio' @value={{good}} @label='good'  as |T| >
-          <T.Input data-test-radio="good"/>
+        <TpkValidationRadio
+          @changeset={{changeset}}
+          @validationField="radio"
+          @value={{good}}
+          @label="good"
+          as |T|
+        >
+          <T.Input data-test-radio="good" />
           <T.Label />
-      </TpkValidationRadio>
-      <TpkValidationRadio @changeset={{changeset}} @validationField='radio' @value={{bad}} @label='bad'  as |T| >
-          <T.Input data-test-radio="bad"/>
+        </TpkValidationRadio>
+        <TpkValidationRadio
+          @changeset={{changeset}}
+          @validationField="radio"
+          @value={{bad}}
+          @label="bad"
+          as |T|
+        >
+          <T.Input data-test-radio="bad" />
           <T.Label />
-      </TpkValidationRadio>
-     </template>,
+        </TpkValidationRadio>
+      </template>
     );
     return changeset;
   }
 
-  test('render radio with default structure', async function ( assert) {
+  test('render radio with default structure', async function (assert) {
     await setupComponent();
     assert.dom('[data-test-tpk-label]').exists();
     assert.dom('[data-test-tpk-radio-input]').exists();
   });
 
-  test('It changes data on click radio', async function ( assert) {
+  test('It changes data on click radio', async function (assert) {
     const changeset = await setupComponent();
     assert.strictEqual(changeset.get('radio'), undefined);
     assert.dom("[data-test-radio='good']").isNotChecked();

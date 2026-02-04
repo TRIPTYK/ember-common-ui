@@ -1,17 +1,17 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {
-  click,
-  render,
-  triggerKeyEvent,
-} from '@ember/test-helpers';
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import TpkModal from '@triptyk/ember-ui/components/tpk-modal';
 import { find } from '@ember/test-helpers';
 
 module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);
 
-  async function setupComponent(isOpen: boolean, assert: Assert, handler?: (e: MouseEvent | TouchEvent) => boolean) {
+  async function setupComponent(
+    isOpen: boolean,
+    assert: Assert,
+    handler?: (e: MouseEvent | TouchEvent) => boolean
+  ) {
     const title = 'My modal';
     const onClose = () => {
       assert.step('onClose');
@@ -19,19 +19,20 @@ module('Integration | Component | modal', function (hooks) {
 
     await render(
       <template>
-      <div id="tpk-modal"></div>
-      <div id="other"></div>
-      <TpkModal
-        @isOpen={{isOpen}}
-        @title={{title}}
-        @onClose={{onClose}}
-        @outsideClickHandler={{handler}}
-        data-test-modal-toggle
-      as |Modal|>
-        <Modal.Content>
-          <button type="button">Content</button>
-        </Modal.Content>
-      </TpkModal>
+        <div id="tpk-modal"></div>
+        <div id="other"></div>
+        <TpkModal
+          @isOpen={{isOpen}}
+          @title={{title}}
+          @onClose={{onClose}}
+          @outsideClickHandler={{handler}}
+          data-test-modal-toggle
+          as |Modal|
+        >
+          <Modal.Content>
+            <button type="button">Content</button>
+          </Modal.Content>
+        </TpkModal>
       </template>
     );
   }
@@ -61,7 +62,6 @@ module('Integration | Component | modal', function (hooks) {
     // click calls 2 different events
     assert.verifySteps(['onClose', 'onClose']);
   });
-
 
   test('if defined outsideClickHandler is called if click outside', async function (assert) {
     const handler = () => {

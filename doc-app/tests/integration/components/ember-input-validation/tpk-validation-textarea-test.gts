@@ -4,8 +4,6 @@ import { fillIn, render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import TpkValidationTextarea from '@triptyk/ember-input-validation/components/tpk-validation-textarea';
 
-
-
 module('Integration | Component | tpk-validation-textarea', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -16,7 +14,12 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
 
     await render(
       <template>
-        <TpkValidationTextarea @label="label" @changeset={{immerChangeset}} @validationField="name" as |T|>
+        <TpkValidationTextarea
+          @label="label"
+          @changeset={{immerChangeset}}
+          @validationField="name"
+          as |T|
+        >
           <T.Input />
           <T.Label />
         </TpkValidationTextarea>

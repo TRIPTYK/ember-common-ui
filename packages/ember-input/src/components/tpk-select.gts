@@ -1,13 +1,18 @@
-/* eslint-disable no-fallthrough */
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
-import PowerSelect, { type Select } from 'ember-power-select/components/power-select';
-import PowerSelectMultiple from 'ember-power-select/components/power-select-multiple';
+import type {
+  PowerSelectSelectedItemSignature,
+  Select,
+} from 'ember-power-select/types';
+import PowerSelect from 'ember-power-select/components/power-select';
 import TpkSelectOption from './tpk-select/option.gts';
+import type Owner from '@ember/owner';
+import type { PowerSelectLabelSignature } from 'ember-power-select/components/power-select/label';
+import type { PowerSelectPlaceholderSignature } from 'ember-power-select/components/power-select/placeholder';
 
-export { type Select } from 'ember-power-select/components/power-select';
+export type SelectType = Select;
 
 export interface TpkSelectSignature {
   Args: {
@@ -22,32 +27,34 @@ export interface TpkSelectSignature {
     disabled?: boolean;
     initiallyOpened?: boolean;
     loadingMessage?: string;
-    labelComponent?: string | ComponentLike<unknown>;
-    selectedItemComponent?: string | ComponentLike<unknown>;
-    placeholderComponent?: string | ComponentLike<unknown>;
+    labelComponent?: ComponentLike<PowerSelectLabelSignature>;
+    selectedItemComponent?: ComponentLike<PowerSelectSelectedItemSignature>;
+    placeholderComponent?: ComponentLike<PowerSelectPlaceholderSignature>;
     searchEnabled?: boolean;
     searchField?: string;
     searchPlaceholder?: string;
     searchMessage?: string;
     noMatchesMessage?: string;
-    search?: ((term: string, select: Select) => readonly unknown[] | Promise<readonly unknown[]>) | undefined
-    onChange: (selection: unknown, select: Select, event?: Event) => void;
-    onKeyDown?: ((select: Select, e: KeyboardEvent) => boolean | undefined) | undefined
+    search?: (
+      term: string,
+      select: SelectType,
+    ) => readonly unknown[] | Promise<readonly unknown[]>;
+    onChange: (selection: unknown, select: SelectType, event?: Event) => void;
+    onKeyDown?:
+      | ((select: SelectType, e: KeyboardEvent) => boolean | undefined)
+      | undefined;
   };
   Blocks: {
     default: [
       {
-        Option: WithBoundArgs<
-          typeof TpkSelectOption,
-          | 'option'
-        >;
+        Option: WithBoundArgs<typeof TpkSelectOption, 'option'>;
       },
     ];
   };
 }
 
 export default class TpkSelectComponent extends Component<TpkSelectSignature> {
-  constructor(owner: unknown, args: TpkSelectSignature['Args']) {
+  constructor(owner: Owner, args: TpkSelectSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -63,77 +70,41 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     return this.args.renderInPlace === false ? false : true;
   }
 
+  get multiple() {
+    return this.args.multiple === true ? undefined : false;
+  }
   <template>
-    {{#if @multiple}}
-      <PowerSelectMultiple
-        @labelText={{@label}}
-        @options={{@options}}
-        @selected={{@selected}}
-        @allowClear={{@allowClear}}
-        @onChange={{@onChange}}
-        @placeholder={{@placeholder}}
-        @labelClass={{@labelClass}}
-        @renderInPlace={{this.renderInPlace}}
-        @labelComponent={{@labelComponent}}
-        @selectedItemComponent={{@selectedItemComponent}}
-        @placeholderComponent={{@placeholderComponent}}
-        @searchEnabled={{@searchEnabled}}
-        @searchField={{@searchField}}
-        @searchPlaceholder={{@searchPlaceholder}}
-        @searchMessage={{@searchMessage}}
-        @search={{@search}}
-        @onKeydown={{@onKeyDown}}
-        @disabled={{@disabled}}
-        @dropdownClass='tpk-select-dropdown'
-        @triggerClass='tpk-select-trigger'
-        @initiallyOpened={{@initiallyOpened}}
-        @loadingMessage={{@loadingMessage}}
-        @noMatchesMessage={{@noMatchesMessage}}
-      as |option|>
-        {{yield
-          (hash
-            Option=(component
-              TpkSelectOption
-              option=option
-            )
-          )
-        }}
-      </PowerSelectMultiple>
-    {{else}}
-      <PowerSelect
-        @labelText={{@label}}
-        @options={{@options}}
-        @selected={{@selected}}
-        @placeholder={{@placeholder}}
-        @allowClear={{@allowClear}}
-        @onChange={{@onChange}}
-        @labelClass={{@labelClass}}
-        @renderInPlace={{this.renderInPlace}}
-        @labelComponent={{@labelComponent}}
-        @selectedItemComponent={{@selectedItemComponent}}
-        @placeholderComponent={{@placeholderComponent}}
-        @searchEnabled={{@searchEnabled}}
-        @searchField={{@searchField}}
-        @searchPlaceholder={{@searchPlaceholder}}
-        @searchMessage={{@searchMessage}}
-        @search={{@search}}
-        @onKeydown={{@onKeyDown}}
-        @disabled={{@disabled}}
-        @dropdownClass='tpk-select-dropdown'
-        @triggerClass='tpk-select-trigger'
-        @initiallyOpened={{@initiallyOpened}}
-        @loadingMessage={{@loadingMessage}}
-        @noMatchesMessage={{@noMatchesMessage}}
-      as |option|>
-        {{yield
-          (hash
-            Option=(component
-              TpkSelectOption
-              option=option
-            )
-          )
-        }}
-      </PowerSelect>
-    {{/if}}
+    <PowerSelect
+      @labelText={{@label}}
+      @options={{@options}}
+      @selected={{@selected}}
+      @placeholder={{@placeholder}}
+      @allowClear={{@allowClear}}
+      @onChange={{@onChange}}
+      @labelClass={{@labelClass}}
+      @multiple={{this.multiple}}
+      @renderInPlace={{this.renderInPlace}}
+      {{! @glint-ignore }}
+      @labelComponent={{@labelComponent}}
+      {{! @glint-ignore }}
+      @selectedItemComponent={{@selectedItemComponent}}
+      {{! @glint-ignore }}
+      @placeholderComponent={{@placeholderComponent}}
+      @searchEnabled={{@searchEnabled}}
+      @searchField={{@searchField}}
+      @searchPlaceholder={{@searchPlaceholder}}
+      @searchMessage={{@searchMessage}}
+      @search={{@search}}
+      @onKeydown={{@onKeyDown}}
+      @disabled={{@disabled}}
+      @dropdownClass='tpk-select-dropdown'
+      @triggerClass='tpk-select-trigger'
+      @initiallyOpened={{@initiallyOpened}}
+      @loadingMessage={{@loadingMessage}}
+      @noMatchesMessage={{@noMatchesMessage}}
+      as |option|
+    >
+      {{yield (hash Option=(component TpkSelectOption option=option))}}
+    </PowerSelect>
   </template>
 }

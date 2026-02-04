@@ -1,11 +1,5 @@
 import { module, test } from 'qunit';
-import {
-  fillIn,
-  find,
-  render,
-
-  settled,
-} from '@ember/test-helpers';
+import { fillIn, find, render, settled } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
@@ -14,36 +8,43 @@ import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-c
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
-
 module(
   'Integration | Component | Prefabs | tpk-validation-integer',
   function (hooks) {
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(params: { changeset: ImmerChangeset; disabled?: boolean }) {
-      await render(<template>
-      <TpkValidationInteger
-      @changeset={{params.changeset}}
-      @validationField="integer"
-      @label="Integer validation field"
-      class="custom-integer-class"
-      @disabled={{params.disabled}}
-      />
-    </template>);
+    async function renderComponent(params: {
+      changeset: ImmerChangeset;
+      disabled?: boolean;
+    }) {
+      await render(
+        <template>
+          <TpkValidationInteger
+            @changeset={{params.changeset}}
+            @validationField="integer"
+            @label="Integer validation field"
+            class="custom-integer-class"
+            @disabled={{params.disabled}}
+          />
+        </template>
+      );
     }
 
-    async function renderComponentUnsigned(params: { changeset: ImmerChangeset }) {
-      await render(<template>
-      <TpkValidationInteger
-        @changeset={{params.changeset}}
-        @validationField="integer"
-        @label="Integer validation field"
-        class="custom-integer-class"
-        @unsigned={{true}}
-      />
-    </template>);
+    async function renderComponentUnsigned(params: {
+      changeset: ImmerChangeset;
+    }) {
+      await render(
+        <template>
+          <TpkValidationInteger
+            @changeset={{params.changeset}}
+            @validationField="integer"
+            @label="Integer validation field"
+            class="custom-integer-class"
+            @unsigned={{true}}
+          />
+        </template>
+      );
     }
 
     function setupChangeset() {
@@ -54,9 +55,9 @@ module(
       return changeset;
     }
 
-    test('Input type must be a number', async function ( assert) {
+    test('Input type must be a number', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
       await fillIn('input', '2');
       assert.dom('input').hasAttribute('type', 'number');
       assert.strictEqual(changeset.get('integer'), 2);
@@ -64,9 +65,9 @@ module(
       assert.notOk(changeset.get('integer'));
     });
 
-    test('Input does not allow dot and comma', async function ( assert) {
-      const changeset =  setupChangeset();
-      await renderComponent({changeset});
+    test('Input does not allow dot and comma', async function (assert) {
+      const changeset = setupChangeset();
+      await renderComponent({ changeset });
       await fillIn('input', ',');
       assert.notOk(changeset.get('integer'));
       await fillIn('input', '.');
@@ -77,13 +78,15 @@ module(
 
     test('Attributes should be passed to the container', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent({changeset});
-      assert.dom('[data-test-tpk-prefab-integer-container]').hasClass('custom-integer-class');
+      await renderComponent({ changeset });
+      assert
+        .dom('[data-test-tpk-prefab-integer-container]')
+        .hasClass('custom-integer-class');
     });
 
-    test('it passes unsigned integer', async function ( assert) {
-      const changeset =  setupChangeset();
-      await renderComponentUnsigned({changeset});
+    test('it passes unsigned integer', async function (assert) {
+      const changeset = setupChangeset();
+      await renderComponentUnsigned({ changeset });
       await fillIn('input', '1');
       const input = find('input');
       assert.strictEqual(changeset.get('integer'), 1);
@@ -94,7 +97,7 @@ module(
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponentUnsigned({changeset});
+      await renderComponentUnsigned({ changeset });
       changeset.addError({
         message: 'required',
         value: '',
@@ -110,14 +113,14 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent({ changeset });
-      await assertTpkCssClassesExist(assert,'integer');
+      assertTpkCssClassesExist(assert, 'integer');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent({
         disabled: true,
-        changeset
+        changeset,
       });
       assert.dom(`[data-test-tpk-integer-input]`).hasAttribute('disabled');
     });
@@ -127,9 +130,9 @@ module(
       assert.expect(0);
       await renderComponent({
         disabled: false,
-        changeset
+        changeset,
       });
       await a11yAudit();
     });
-  },
+  }
 );

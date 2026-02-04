@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
+import { guidFor } from '@ember/object/internals';
 import t from 'ember-intl/helpers/t';
 
 export interface TableGenericPaginationData {
@@ -47,6 +48,8 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
   isPageSizeSelected = (pageSize: number) => {
     return this.args['paginationData'].pageSize === pageSize;
   };
+
+  guid = guidFor(this);
 
   get pageSizes(): number[] {
     return this.args.pageSizes || [50, 60, 70, 80, 90, 100];
@@ -132,8 +135,11 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
           class='{{@theme.pagination.pageSize}}
             yeti-table-pagination-controls-page-size'
         >
-          {{t 'global.results_by_page'}}:
+          <label for='page-size-select-{{this.guid}}'>{{t
+              'global.results_by_page'
+            }}:</label>
           <select
+            id='page-size-select-{{this.guid}}'
             disabled={{@disabled}}
             {{on 'change' this.changePageSize}}
             data-test-pagination-select

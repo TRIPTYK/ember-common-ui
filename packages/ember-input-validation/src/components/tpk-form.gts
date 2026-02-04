@@ -1,11 +1,12 @@
 import type Owner from '@ember/owner';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import type { Promisable } from 'type-fest';
-import { assert } from '@ember/debug';
+import type { PartialDeep, Promisable } from 'type-fest';
+import { assert, debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
 import { ImmerChangeset, isChangeset } from 'ember-immer-changeset';
-import { Schema } from 'yup';
+import type * as z from 'zod';
+import { ZodObject } from 'zod';
 import { isFieldError } from '../utils/is-field-error.ts';
 import perform from 'ember-concurrency/helpers/perform';
 import {
@@ -49,11 +50,24 @@ import type TpkValidationRadioGroupComponent from './tpk-validation-radio-group.
 import type TpkValidationRadioPrefabComponent from './prefabs/tpk-validation-radio.gts';
 import type TpkValidationRadioGroupPrefabComponent from './prefabs/tpk-validation-radio-group.gts';
 import type TpkValidationFilePrefabComponent from './prefabs/tpk-validation-file.gts';
+import { trackedArray } from '@ember/reactive/collections';
 
-interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
+type DeepNullable<T> = {
+  [K in keyof T]: DeepNullable<T[K]> | null;
+};
+
+type DeepNothing<T> = DeepNullable<PartialDeep<T>>;
+
+interface ChangesetFormComponentArgs<
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> {
   changeset: T;
-  onSubmit: (changeset: T) => Promisable<unknown>;
-  validationSchema: Schema;
+  onSubmit: (
+    data: z.infer<S>,
+    changeset: ImmerChangeset<z.infer<S>>,
+  ) => Promisable<unknown>;
+  validationSchema: S;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
   autoScrollOnError?: boolean;
@@ -61,8 +75,11 @@ interface ChangesetFormComponentArgs<T extends ImmerChangeset> {
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
-  Args: ChangesetFormComponentArgs<T>;
+export interface ChangesetFormComponentSignature<
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> {
+  Args: ChangesetFormComponentArgs<S, T>;
   Blocks: {
     default: [
       {
@@ -195,13 +212,15 @@ export interface ChangesetFormComponentSignature<T extends ImmerChangeset> {
 }
 
 export default class ChangesetFormComponent<
-  T extends ImmerChangeset,
-> extends Component<ChangesetFormComponentSignature<T>> {
-  @tracked declare requiredFields: string[];
+  S extends ZodObject,
+  T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
+> extends Component<ChangesetFormComponentSignature<S, T>> {
+  @tracked requiredFields: string[] = trackedArray([]);
   @service declare tpkForm: TpkFormService;
 
-  public constructor(owner: Owner, args: ChangesetFormComponentArgs<T>) {
+  public constructor(owner: Owner, args: ChangesetFormComponentArgs<S, T>) {
     super(owner, args);
+
     assert(
       '@changeset is required and must be an ImmerChangeset',
       isChangeset(args.changeset) && args.changeset instanceof ImmerChangeset,
@@ -209,13 +228,16 @@ export default class ChangesetFormComponent<
     assert('@onSubmit is required', typeof args.onSubmit === 'function');
     assert(
       '@validationSchema is required',
-      args.validationSchema instanceof Schema,
+      args.validationSchema instanceof ZodObject,
     );
+    assert('service:tpk-form is available', this.tpkForm !== undefined);
 
     this.requiredFields =
       getRequiredFields(this.args.validationSchema, this.args.changeset.data) ??
       [];
-    this.args.changeset.onSet(async () => {
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    this.args.changeset.onSet(async (k) => {
+      debug('Changeset key changed (for required fields): ' + k);
       await this.args.changeset.validate((draft) => {
         this.requiredFields =
           getRequiredFields(this.args.validationSchema, draft) ?? [];
@@ -223,7 +245,9 @@ export default class ChangesetFormComponent<
     });
 
     if (args.reactive ?? true) {
-      this.args.changeset.onSet(async (key) => {
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      this.args.changeset.onSet(async (key: string) => {
+        debug(`Changeset key changed: ${key}`);
         await this.args.changeset.validate(async (draft) => {
           const errors = await validateOneAndMapErrors(
             key,
@@ -246,7 +270,14 @@ export default class ChangesetFormComponent<
   }
 
   validateAndSubmit = task(this, { drop: true }, async () => {
+    debug(
+      `Submitting form with changeset: ${JSON.stringify(this.args.changeset['draftData'], null, 2)}`,
+    );
+
     if (this.args.removeErrorsOnSubmit ?? true) {
+      debug(
+        `Removed ${this.args.changeset.errors.length} errors before submit`,
+      );
       this.args.changeset.removeErrors();
     }
 
@@ -255,20 +286,28 @@ export default class ChangesetFormComponent<
         this.args.validationSchema,
         dto,
       );
+      debug(`Errors after validation: ${JSON.stringify(errors, null, 2)}`);
       for (const error of errors) {
         this.args.changeset.addError(error);
       }
     });
 
     if (!this.args.changeset.isValid) {
+      debug('Changeset is not valid, aborting submit');
       return;
     }
 
     if (this.args.executeOnValid ?? true) {
+      debug('Changeset is valid, executing changeset');
       this.args.changeset.execute();
     }
 
-    await this.args.onSubmit(this.args.changeset);
+    debug('Calling onSubmit callback');
+    await this.args.onSubmit(
+      this.args.changeset.data as z.infer<S>,
+      // It is theorically safe. The only way it could be unsafe is if the user unexecutes the changeset after validation. If this is the case, the type will mismatch the runtime type. We will rarely do that so it's fine at the moment.
+      this.args.changeset as unknown as ImmerChangeset<z.infer<S>>,
+    );
   });
 
   submit = task(this, async (e: Event) => {
@@ -276,12 +315,12 @@ export default class ChangesetFormComponent<
     await this.validateAndSubmit.perform();
   });
 
-  changesetGet = (path: string) => {
+  changesetGet = (path: string): unknown => {
     return this.args.changeset.get(path);
   };
 
   get errorsForScroll() {
-    return this.args.autoScrollOnError ?? true
+    return (this.args.autoScrollOnError ?? true)
       ? this.args.changeset.errors
       : [];
   }

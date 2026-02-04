@@ -1,7 +1,7 @@
-import { type TOC } from '@ember/component/template-only';
+import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import didUpdate from '@ember/render-modifiers/modifiers/did-update';
+import { modifier, type FunctionBasedModifier } from 'ember-modifier';
+import type { EmptyObject } from 'type-fest';
 
 export interface TpkTextareaInputComponentSignature {
   Args: {
@@ -19,20 +19,29 @@ export interface TpkTextareaInputComponentSignature {
   Element: HTMLTextAreaElement;
 }
 
-const TpkTextareaInputComponent: TOC<TpkTextareaInputComponentSignature> = <template>
+export default class TpkTextareaInputComponent extends Component<TpkTextareaInputComponentSignature> {
+  setupCharCount: FunctionBasedModifier<{
+    Args: {
+      Positional: unknown[];
+      Named: EmptyObject;
+    };
+    Element: HTMLTextAreaElement;
+  }> = modifier((element: HTMLTextAreaElement) => {
+    this.args.setupCharacterCount(element);
+  });
+
+  <template>
     <textarea
       placeholder={{@placeholder}}
       id={{@guid}}
       value={{@value}}
-      maxLength={{@maxLength}}
-      {{on "input" @updateCharacterCount}}
-      {{didInsert @setupCharacterCount}}
-      {{didUpdate @setupCharacterCount @value}}
+      maxlength={{@maxLength}}
+      {{on 'input' @updateCharacterCount}}
+      {{this.setupCharCount}}
       {{on @changeEvent @onChange}}
       disabled={{@disabled}}
       ...attributes
       data-test-tpk-textarea-input
     ></textarea>
-  </template>;
-
-export default TpkTextareaInputComponent;
+  </template>
+}

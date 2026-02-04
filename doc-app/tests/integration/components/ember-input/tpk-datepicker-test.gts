@@ -14,9 +14,6 @@ import {
 } from '@triptyk/ember-input/test-support/datepicker-helpers';
 import TpkDatepicker from '@triptyk/ember-input/components/tpk-datepicker';
 
-
-
-
 module('Integration | Component | tpk-datepicker', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -29,7 +26,12 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @label="Default" as |D|>
+        <TpkDatepicker
+          @value={{null}}
+          @onChange={{setDate}}
+          @label="Default"
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -46,7 +48,12 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @label="Default value" @value={{date}} as |D|>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @label="Default value"
+          @value={{date}}
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -55,25 +62,35 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
     assert.dom('.tpk-datepicker-input-input').hasValue('13/11/2022');
   });
 
-  test('datepicker is disabled', async function ( assert) {
+  test('datepicker is disabled', async function (assert) {
     await render(
       <template>
-        <TpkDatepicker @disabled={{true}} @label="Disabled" as |D|>
-            <D.Label />
-            <D.Input />
+        <TpkDatepicker
+          @value={{null}}
+          @disabled={{true}}
+          @label="Disabled"
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
         </TpkDatepicker>
       </template>
     );
     assert.dom('.tpk-datepicker-input-input').hasAttribute('disabled');
   });
 
-  test('datepicker use current date', async function ( assert) {
+  test('datepicker use current date', async function (assert) {
     const date: Date = new Date();
     const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
 
     await render(
       <template>
-        <TpkDatepicker @label="Current" @useCurrent={{true}} as |D|>
+        <TpkDatepicker
+          @value={{null}}
+          @label="Current"
+          @useCurrent={{true}}
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -93,7 +110,14 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @label="Range" @mode="range" @multipleDatesSeparator=" jusqu'au "  as |D|>
+        <TpkDatepicker
+          @value={{null}}
+          @onChange={{setDate}}
+          @label="Range"
+          @mode="range"
+          @multipleDatesSeparator=" jusqu'au "
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -116,7 +140,14 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @label="Range" @mode="range" @multipleDatesSeparator=" jusqu'au " as |D|>
+        <TpkDatepicker
+          @value={{null}}
+          @onChange={{setDate}}
+          @label="Range"
+          @mode="range"
+          @multipleDatesSeparator=" jusqu'au "
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -131,12 +162,19 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
   skip('datepicker range with default value', async function (assert) {
     const date: Date = new Date(2022, 10, 13);
     const date2: Date = new Date(2022, 10, 16);
-    const value = [date, date2];
+    const value = [date, date2] as [Date, Date];
     const setDate = function () {};
 
     await render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @label="Range" @multipleDatesSeparator=" jusqu'au " @mode="range" @value={{value}} as |D|>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @label="Range"
+          @multipleDatesSeparator=" jusqu'au "
+          @mode="range"
+          @value={{value}}
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -156,7 +194,14 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-        <TpkDatepicker @onChange={{setDate}} @value={{date}} @label="Min/Max" @minDate={{minDate}} @maxDate={{maxDate}} as |D|>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @value={{date}}
+          @label="Min/Max"
+          @minDate={{minDate}}
+          @maxDate={{maxDate}}
+          as |D|
+        >
           <D.Label />
           <D.Input />
         </TpkDatepicker>
@@ -174,10 +219,18 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @value={{date}} @enableTime={{true}} @label="Time" @noCalendar={{true}} @dateFormat="HH:mm" as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @value={{date}}
+          @enableTime={{true}}
+          @label="Time"
+          @noCalendar={{true}}
+          @dateFormat="HH:mm"
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
       </template>
     );
     openTempusDominus('.tpk-datepicker-input-input');
@@ -190,10 +243,17 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @value={{date}} @enableTime={{true}} @label="Prompt" @promptTimeOnDateChange={{true}} as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @value={{date}}
+          @enableTime={{true}}
+          @label="Prompt"
+          @promptTimeOnDateChange={{true}}
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
       </template>
     );
     openTempusDominus('.tpk-datepicker-input-input');
@@ -208,10 +268,16 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @value={{date}} @label="View Mode" @viewMode="months" as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @value={{date}}
+          @label="View Mode"
+          @viewMode="months"
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
       </template>
     );
     openTempusDominus('.tpk-datepicker-input-input');
@@ -223,11 +289,18 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @label="Mask/Format" @dateFormat="dd/MM-yyyy" @mask="d/m-Y" as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker>
-        </template>
+        <TpkDatepicker
+          @value={{null}}
+          @onChange={{setDate}}
+          @label="Mask/Format"
+          @dateFormat="dd/MM-yyyy"
+          @mask="d/m-Y"
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
+      </template>
     );
     await fillIn('.tpk-datepicker-input-input', '13/11-2022');
     assert.dom('.tpk-datepicker-input-input').hasValue('13/11-2022');
@@ -239,10 +312,18 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @label="Time format" @dateFormat="dd/MM/yyyy | HH:mm" @enableTime={{true}}  as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker></template>
+        <TpkDatepicker
+          @value={{null}}
+          @onChange={{setDate}}
+          @label="Time format"
+          @dateFormat="dd/MM/yyyy | HH:mm"
+          @enableTime={{true}}
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
+      </template>
     );
     setTempusDominusDate('.tpk-datepicker-input-input', date);
     assert.dom('.tpk-datepicker-input-input').hasValue('15/11/2022 | 08:30');
@@ -254,10 +335,17 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @label="Locale" @value={{date}} @locale="es" as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker></template>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @label="Locale"
+          @value={{date}}
+          @locale="es"
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
+      </template>
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.picker-switch').hasText('octubre de 22');
@@ -268,10 +356,17 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @label="Show today" @todayButton={{true}} as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker></template>
+        <TpkDatepicker
+          @value={{null}}
+          @onChange={{setDate}}
+          @label="Show today"
+          @todayButton={{true}}
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
+      </template>
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.icon.icon-today').exists();
@@ -282,10 +377,18 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
 
     await render(
       <template>
-      <TpkDatepicker @onChange={{setDate}} @label="Show today" @todayButton={{true}} as |D|>
-            <D.Label />
-            <D.Input />
-          </TpkDatepicker> <input type="text" id="input2" /></template>
+        <TpkDatepicker
+          @onChange={{setDate}}
+          @label="Show today"
+          @todayButton={{true}}
+          @value={{null}}
+          as |D|
+        >
+          <D.Label />
+          <D.Input />
+        </TpkDatepicker>
+        <input type="text" id="input2" />
+      </template>
     );
     openTempusDominus('.tpk-datepicker-input-input');
 

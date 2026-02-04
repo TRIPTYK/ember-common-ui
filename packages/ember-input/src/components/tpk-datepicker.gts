@@ -3,7 +3,7 @@ import { guidFor } from '@ember/object/internals';
 import type { BaseUIComponentArgs } from './base.ts';
 import type { WithBoundArgs } from '@glint/template';
 import TpkDatepickerNewInputComponent, {
-  type TpkDatepickerInputArgs
+  type TpkDatepickerInputArgs,
 } from './tpk-datepicker-input.gts';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
@@ -12,19 +12,44 @@ export type TpkDatepickerSignature = {
   Args: BaseUIComponentArgs['Args'] &
     TpkDatepickerInputArgs & {
       mask?: string;
-    }
-  ;
+      value: TpkDatepickerInputArgs['value'];
+    };
   Blocks: {
     default: [
       {
         Input: WithBoundArgs<
           typeof TpkDatepickerNewInputComponent,
-          'guid' | 'disabled' | 'value' | 'placeholder' | 'useCurrent' | 'mode' | 'multipleDatesSeparator' | 'stepping' | 'promptTimeOnDateChange' | 'todayButton' | 'clearButton' | 'closeButton' | 'enableTime' | 'noCalendar' | 'enableSecond' | 'keepOpen' | 'locale' | 'dateFormat' | 'minDate' | 'maxDate' | 'daysOfWeekDisabled' | 'disabledTimeIntervals' | 'disabledDates' | 'enabledDates' | 'disabledHours' | 'enabledHours' | 'viewMode' | 'onChange' | 'onClose'
+          | 'guid'
+          | 'disabled'
+          | 'value'
+          | 'placeholder'
+          | 'useCurrent'
+          | 'mode'
+          | 'multipleDatesSeparator'
+          | 'stepping'
+          | 'promptTimeOnDateChange'
+          | 'todayButton'
+          | 'clearButton'
+          | 'closeButton'
+          | 'enableTime'
+          | 'noCalendar'
+          | 'enableSecond'
+          | 'keepOpen'
+          | 'locale'
+          | 'dateFormat'
+          | 'minDate'
+          | 'maxDate'
+          | 'daysOfWeekDisabled'
+          | 'disabledTimeIntervals'
+          | 'disabledDates'
+          | 'enabledDates'
+          | 'disabledHours'
+          | 'enabledHours'
+          | 'viewMode'
+          | 'onChange'
+          | 'onClose'
         >;
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'guid'  | 'label'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'guid' | 'label'>;
         guid: string;
       },
     ];
@@ -70,11 +95,7 @@ export default class TpkDatepicker extends Component<TpkDatepickerSignature> {
           onChange=@onChange
           onClose=@onClose
         )
-        Label=(component
-          TpkLabel
-          guid=this.guid
-          label=@label
-        )
+        Label=(component TpkLabel guid=this.guid label=@label)
         guid=this.guid
       )
     }}

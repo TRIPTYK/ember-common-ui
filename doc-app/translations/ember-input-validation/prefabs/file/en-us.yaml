@@ -1,0 +1,15 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation'
+  changeset:
+    description: 'The changeset object for form validation'
+  label:
+    description: 'The label for the input field'
+  disabled:
+    description: 'Whether the input field is disabled'
+  mandatory:
+    description: 'Whether the file field is mandatory'
+  onChange:
+    description: 'The action to be called when the file selection changes'
+  changeEvent:
+    description: 'The event to trigger the onChange action'

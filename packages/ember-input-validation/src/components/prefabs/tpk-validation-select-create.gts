@@ -6,15 +6,21 @@ import TpkSelectCreateComponent, {
   type TpkSelectCreateSignature,
 } from '@triptyk/ember-input/components/tpk-select-create';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import type { Select } from '@triptyk/ember-input/components/tpk-select';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
+import type { SelectType } from '@triptyk/ember-input/components/tpk-select';
+import type { Merge } from 'type-fest';
 
-export interface TpkValidationSelectCreatePrefabSignature
-  extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] &
-    TpkSelectCreateSignature['Args'] & {
+type Args = BaseValidationSignature['Args'] &
+  Merge<
+    TpkSelectCreateSignature['Args'],
+    {
       onChange?: TpkSelectCreateSignature['Args']['onChange'];
-    };
+    }
+  >;
+
+export interface TpkValidationSelectCreatePrefabSignature extends BaseValidationSignature {
+  Args: Args;
   Blocks: {
     default: [];
   };
@@ -23,7 +29,7 @@ export interface TpkValidationSelectCreatePrefabSignature
 
 export default class TpkValidationSelectCreatePrefabComponent extends BaseValidationComponent<TpkValidationSelectCreatePrefabSignature> {
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationSelectCreatePrefabSignature['Args'],
   ) {
     super(owner, args);
@@ -33,7 +39,7 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
     return this.mandatory ? `${this.args.label} *` : this.args.label;
   }
 
-  @action onChange(selection: unknown, select: Select, event?: Event) {
+  @action onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
     }
@@ -48,8 +54,9 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
     <div
       class='{{if @disabled "disabled"}} tpk-select-create-container'
       data-has-error='{{this.hasError}}'
+      {{! @glint-expect-error }}
       anchorScrollUp={{@validationField}}
-      data-test-tpk-prefab-select-create-container
+      data-test-tpk-prefab-select-create-container={{@validationField}}
       ...attributes
     >
       <TpkSelectCreateComponent
@@ -76,7 +83,6 @@ export default class TpkValidationSelectCreatePrefabComponent extends BaseValida
         @searchPlaceholder={{@searchPlaceholder}}
         @searchMessage={{@searchMessage}}
         @search={{@search}}
-        anchorScrollUp={{@validationField}}
         as |S|
       >
         <S.Option as |O|>

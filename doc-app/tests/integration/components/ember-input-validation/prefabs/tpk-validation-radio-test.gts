@@ -1,12 +1,10 @@
-
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationRadio from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-radio';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-
 
 module(
   'Integration | Component | Prefabs | tpk-prefab-validation-radio',
@@ -16,14 +14,22 @@ module(
 
     async function renderComponent({
       changeset,
-      disabled
+      disabled,
     }: {
-      changeset: ImmerChangeset,
-      disabled?: boolean,
+      changeset: ImmerChangeset;
+      disabled?: boolean;
     }) {
       await render(
-        <template><TpkValidationRadio @changeset={{changeset}} @validationField="radio" @label="label" @disabled={{disabled}} @mandatory={{true}} @value="radio"/>
-        </template>,
+        <template>
+          <TpkValidationRadio
+            @changeset={{changeset}}
+            @validationField="radio"
+            @label="label"
+            @disabled={{disabled}}
+            @mandatory={{true}}
+            @value="radio"
+          />
+        </template>
       );
       return changeset;
     }
@@ -32,20 +38,22 @@ module(
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
       assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-label]').exists();
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
       await renderComponent({
         disabled: true,
-        changeset
+        changeset,
       });
-      assert.dom(`[data-test-tpk-prefab-radio-container] input`).hasAttribute('disabled');
+      assert
+        .dom(`[data-test-tpk-prefab-radio-container] input`)
+        .hasAttribute('disabled');
     });
 
     test('Accessibility', async function (assert) {
@@ -53,8 +61,8 @@ module(
       const changeset = new ImmerChangeset({
         radio: 'applati',
       });
-      await renderComponent({changeset});
+      await renderComponent({ changeset });
       await a11yAudit();
     });
-  },
+  }
 );

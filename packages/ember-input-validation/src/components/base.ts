@@ -2,6 +2,7 @@ import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 import { type Changeset } from 'ember-immer-changeset';
 import { isFieldError } from '../utils/is-field-error.ts';
+import type Owner from '@ember/owner';
 
 export interface BaseValidationSignature {
   Args: {
@@ -18,13 +19,14 @@ export interface BaseValidationSignature {
 export abstract class BaseValidationComponent<
   T extends BaseValidationSignature,
 > extends Component<T> {
-  constructor(owner: unknown, args: T['Args']) {
+  constructor(owner: Owner, args: T['Args']) {
     super(owner, args);
     assert('@changeset is required', typeof args.changeset === 'object');
     assert(
       '@validationField is required',
       typeof args.validationField === 'string',
     );
+    // assert(`@validationField ${args.validationField} is not in changeset. Please at least set it to undefined.`, args.validationField in args.changeset.data);
   }
 
   get hasError() {
@@ -51,7 +53,7 @@ export abstract class BaseValidationComponent<
   get errors(): Record<string, unknown>[] {
     return (
       this.args.changeset.errors.filter((err) =>
-        isFieldError(this.args.validationField, err.key as string),
+        isFieldError(this.args.validationField, err.key),
       ) ?? []
     );
   }

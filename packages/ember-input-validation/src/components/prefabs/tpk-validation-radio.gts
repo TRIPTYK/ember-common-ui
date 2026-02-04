@@ -5,8 +5,7 @@ import TpkValidationRadioComponent, {
 import type { TOC } from '@ember/component/template-only';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
-export interface TpkValidationRadioPrefabComponentSignature
-  extends BaseValidationSignature {
+export interface TpkValidationRadioPrefabComponentSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationRadioComponentSignature['Args'] & {
       onChange?: (value: string) => void;
@@ -34,7 +33,8 @@ const TpkValidationRadioPrefabComponent: TOC<TpkValidationRadioPrefabComponentSi
     >
       <div
         class='tpk-radio-container'
-        data-test-tpk-prefab-radio-container
+        data-test-tpk-prefab-radio-container={{@validationField}}
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

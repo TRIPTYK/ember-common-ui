@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import type { WithBoundArgs } from '@glint/template';
 import TableGenericBodyCellComponent from './body/cell.gts';
@@ -10,10 +10,9 @@ import t from 'ember-intl/helpers/t';
 
 export interface TableGenericBodyComponentSignature {
   Args: {
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;
-    rowClick: (element?:unknown, e?:Event) => void;
+    rowClick: (element?: unknown, e?: Event) => void;
     registerActionMenu: (element: HTMLTableCellElement, args: []) => unknown;
   };
   Element: HTMLDivElement;
@@ -26,7 +25,7 @@ export interface TableGenericBodyComponentSignature {
           'registerActionMenu' | 'item' | 'index' | 'isExpanded'
         >;
       },
-      unknown,
+      Record<string, unknown>,
     ];
   };
 }
@@ -52,7 +51,9 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
         >
           {{yield
             (hash
-              Cell=(component TableGenericBodyCellComponent element=element row=row)
+              Cell=(component
+                TableGenericBodyCellComponent element=element row=row
+              )
               ActionMenu=(component
                 TableGenericBodyActionMenuComponent
                 registerActionMenu=@registerActionMenu

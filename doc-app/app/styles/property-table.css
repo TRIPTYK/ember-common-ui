@@ -1,0 +1,15 @@
+.table {
+  @apply min-w-[90%] divide-y divide-base-300;
+}
+
+.table-header {
+  @apply bg-base-200;
+}
+
+.table-header-content {
+  @apply px-6 py-3 text-left text-xs font-medium text-base-content/70 uppercase tracking-wider;
+}
+
+.table-body {
+  @apply bg-base-100 divide-y divide-base-300;
+}

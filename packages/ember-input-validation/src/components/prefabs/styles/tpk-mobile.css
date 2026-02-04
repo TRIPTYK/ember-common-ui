@@ -7,7 +7,7 @@
 }
 
 .tpk-mobile-input {
-  @apply input input-bordered w-full;
+  @apply input  w-full;
 }
 
 .tpk-mobile-content {
@@ -15,16 +15,16 @@
 }
 
 .tpk-mobile-content .ember-basic-dropdown-trigger {
-  @apply input input-bordered pr-10 !rounded-lg;
+  @apply input  pr-10 !rounded-lg;
 }
 
-.tpk-mobile-content .ember-basic-dropdown-trigger[aria-disabled="true"] {
+.tpk-mobile-content .ember-basic-dropdown-trigger[aria-disabled='true'] {
   cursor: not-allowed;
   --tw-border-opacity: 1;
   border-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
-  color: var(--fallback-bc, oklch(var(--bc) / .4));
+  color: var(--fallback-bc, oklch(var(--bc) / 0.4));
 }
 
 .tpk-mobile-content .ember-power-select-selected-item {
@@ -32,30 +32,35 @@
 }
 
 .tpk-mobile-content .ember-basic-dropdown-content {
-  @apply rounded-lg mt-2.5 z-[100];
-  --tw-bg-opacity: 1;
-  border-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
-  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
+  @apply absolute mt-2.5 z-[100];
+  max-width: 100%;
 }
 
-.tpk-mobile-container .ember-basic-dropdown-trigger .flag, .tpk-mobile-container .ember-power-select-option .flag {
+.tpk-mobile-container .ember-basic-dropdown-trigger .flag,
+.tpk-mobile-container .ember-power-select-option .flag {
   @apply flex items-center space-x-2;
 }
 
-.tpk-mobile-container[data-has-error~="true"] > .tpk-text-input {
+.tpk-mobile-container[data-has-error~='true'] > .tpk-text-input {
   @apply input-error text-error;
 }
 
-.tpk-mobile-container[data-has-error~="true"]
-.tpk-validation-errors {
-  @apply text-error text-sm justify-self-end right-0 absolute;
+.tpk-mobile-container[data-has-error~='true'] .tpk-validation-errors {
+  @apply text-error text-xs justify-self-end right-0 bottom-0 absolute;
 }
 
-.tpk-mobile-container[data-has-error~="true"] .tpk-mobile-input {
+.tpk-mobile-container[data-has-error~='true'] .tpk-mobile-input {
   @apply input-error text-error;
 }
 
-.tpk-mobile-container[data-has-error~="true"] .tpk-label {
+.tpk-mobile-container[data-has-error~='true'] .tpk-label {
   @apply text-error label;
 }
 
+.tpk-mobile-container .ember-power-select-visually-hidden {
+  height: 1px;
+  left: -9999px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}

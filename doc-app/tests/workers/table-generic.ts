@@ -1,14 +1,21 @@
-import type { SetupWorker } from 'msw';
-import { rest } from 'msw';
+import { http } from 'msw';
 import fakeData from '../integration/components/ember-ui/table-generic/data/fake-data';
+import type { setupWorker } from 'msw/browser';
 
-export async function TableGenericUserWorker(worker: SetupWorker) {
+export async function TableGenericUserWorker(
+  worker: ReturnType<typeof setupWorker>
+) {
   worker.use(
-    rest.get('http://localhost:4200/users', (req, res, ctx) => {
+    http.get('/users', (req) => {
       let data;
-      const sort = req.url.searchParams.get('sort');
-      const search = req.url.searchParams.get('filter[search]');
-      const pageNumber = req.url.searchParams.get('page[number]');
+
+      const sort = new URL(req.request.url).searchParams.get('sort');
+      const search = new URL(req.request.url).searchParams.get(
+        'filter[search]'
+      );
+      const pageNumber = new URL(req.request.url).searchParams.get(
+        'page[number]'
+      );
 
       if (sort !== null && sort === 'firstName') {
         data = fakeData.dataTestSortedReversed;
@@ -33,14 +40,11 @@ export async function TableGenericUserWorker(worker: SetupWorker) {
         data = fakeData.secondPage;
       }
 
-      return res(
-        ctx.status(200),
-        ctx.json({
-          data,
-          meta: { fetched: data.length, total: 10 },
-        }),
-      );
-    }),
+      return Response.json({
+        data,
+        meta: { fetched: data.length, total: 10 },
+      });
+    })
   );
   await worker.start();
 }

@@ -9,7 +9,6 @@ import { hash } from '@ember/helper';
 interface TableGenericFooterComponentArgs {
   hasActionMenu: boolean;
   pageSizes?: number[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   table: {
     visibleColumns: unknown[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

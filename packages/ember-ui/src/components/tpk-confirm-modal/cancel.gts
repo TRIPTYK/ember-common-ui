@@ -22,12 +22,12 @@ const TpkConfirmModalCancelComponent: TOC<TpkConfirmModalCancelComponentSignatur
       type='button'
       ...attributes
     >
-    {{#if (has-block)}}
-      {{yield}}
-    {{else}}
-      {{@icon}}
-      {{@cancelText}}
-    {{/if}}
+      {{#if (has-block)}}
+        {{yield}}
+      {{else}}
+        {{@icon}}
+        {{@cancelText}}
+      {{/if}}
     </button>
   </template>;
 

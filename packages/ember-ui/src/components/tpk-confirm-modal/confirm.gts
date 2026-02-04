@@ -22,11 +22,11 @@ const TpkConfirmModalConfirmComponent: TOC<TpkConfirmModalConfirmComponentSignat
       class='btn-confirm-modal-confirm'
       ...attributes
     >
-    {{#if (has-block)}}
-      {{yield}}
-    {{else}}
-      {{@confirmText}}
-    {{/if}}
+      {{#if (has-block)}}
+        {{yield}}
+      {{else}}
+        {{@confirmText}}
+      {{/if}}
     </button>
   </template>;
 

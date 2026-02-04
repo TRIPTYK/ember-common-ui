@@ -1,7 +1,8 @@
 import { hash } from '@ember/helper';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 
 interface StackListItemComponentArgs {
   index: number;
@@ -24,7 +25,7 @@ export interface StackListItemComponentSignature {
 export default class StackListItemComponent extends Component<StackListItemComponentSignature> {
   @tracked isExpanded: boolean = true;
 
-  constructor(owner: unknown, args: StackListItemComponentArgs) {
+  constructor(owner: Owner, args: StackListItemComponentArgs) {
     super(owner, args);
   }
   get index() {
@@ -36,6 +37,8 @@ export default class StackListItemComponent extends Component<StackListItemCompo
   }
 
   <template>
+    {{! template-lint-disable no-inline-styles }}
+    {{! template-lint-disable style-concatenation }}
     <div
       data-test-stackList-item={{@index}}
       class='tpk-stack'

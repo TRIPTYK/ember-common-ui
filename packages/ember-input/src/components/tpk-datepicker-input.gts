@@ -3,8 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { TempusDominus, Namespace, DateTime } from '@eonasdan/tempus-dominus';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import IMask from 'imask';
+import { modifier, type FunctionBasedModifier } from 'ember-modifier';
 
 export interface TpkDatepickerInputArgs {
   mask?: string;
@@ -12,7 +12,7 @@ export interface TpkDatepickerInputArgs {
   unmaskValue?: boolean;
   disabled?: boolean;
   placeholder?: string;
-  value: Date | string | null;
+  value: Date | string | null | [Date, Date];
   stepping?: number;
   mode?: 'multiple' | 'range';
   multipleDatesSeparator?: string;
@@ -109,7 +109,9 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
   setTempusDominus(element: HTMLInputElement) {
     this.datepicker = new TempusDominus(element, {
       container: element.parentElement as HTMLElement,
-      defaultDate: this.value as DateTime | undefined,
+      defaultDate: Array.isArray(this.value)
+        ? undefined
+        : (this.value as DateTime | undefined),
       useCurrent: this.args.useCurrent === true ? true : false,
       allowInputToggle: false,
       dateRange: this.args.mode === 'range' ? true : false,
@@ -202,18 +204,28 @@ export default class TpkDatepickerNewInputComponent extends Component<TpkDatepic
       this.datepicker?.hide();
     }
   }
+
+  setupElement: FunctionBasedModifier<{
+    Args: {
+      Positional: [];
+      Named: object;
+    };
+    Element: HTMLInputElement;
+  }> = modifier((element: HTMLInputElement) => {
+    this.setTempusDominus(element);
+    this.setMask(element);
+  });
+
   <template>
     <div class='tpk-datepicker-input-input-container'>
       <input
-        {{didInsert this.setTempusDominus}}
-        {{didInsert this.setMask}}
+        {{this.setupElement}}
         disabled={{@disabled}}
         class='tpk-datepicker-input-input'
         placeholder={{@placeholder}}
         id={{@guid}}
         aria-autocomplete='none'
         autocomplete='off'
-        autofill='off'
         {{on 'keydown' this.closeDatepicker}}
         data-test-tpk-datepicker-content
         ...attributes

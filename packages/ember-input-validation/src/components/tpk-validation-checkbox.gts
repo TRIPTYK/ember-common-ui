@@ -8,11 +8,11 @@ import TpkCheckbox from '@triptyk/ember-input/components/tpk-checkbox';
 import type { TpkCheckboxSignature } from '@triptyk/ember-input/components/tpk-checkbox';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationCheckboxComponentSignature
-  extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] & TpkCheckboxSignature['Args'] & {
-    onChange?: (isChecked: boolean, value: string, e: Event) => void;
-  };
+export interface TpkValidationCheckboxComponentSignature extends BaseValidationSignature {
+  Args: BaseValidationSignature['Args'] &
+    TpkCheckboxSignature['Args'] & {
+      onChange?: (isChecked: boolean, value: string, e: Event) => void;
+    };
   Blocks: {
     default: [
       {

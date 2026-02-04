@@ -7,9 +7,9 @@ import { tracked } from '@glimmer/tracking';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
-export interface TpkValidationDatepickerPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationDatepickerPrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationDatepickerComponentSignature['Args'],
     'value' | 'useCurrent'
@@ -26,7 +26,7 @@ export default class TpkValidationDatepickerPrefabComponent extends Component<Tp
   @tracked multipleDatesSeparator = ' - ';
 
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: TpkValidationDatepickerPrefabSignature['Args'],
   ) {
     super(owner, args);
@@ -78,7 +78,8 @@ export default class TpkValidationDatepickerPrefabComponent extends Component<Tp
     >
       <div
         class='tpk-datepicker-container'
-        data-test-tpk-prefab-datepicker-container
+        data-test-tpk-prefab-datepicker-container={{@validationField}}
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         data-has-error='{{V.hasError}}'
         ...attributes

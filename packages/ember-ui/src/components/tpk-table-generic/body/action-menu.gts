@@ -1,8 +1,8 @@
 import type { WithBoundArgs } from '@glint/template';
+import Component from '@glimmer/component';
 import TableGenericBodyActionComponent from './action.gts';
-import type { TOC } from '@ember/component/template-only';
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import TpkActionsMenu from '../../tpk-actions-menu.gts';
+import { modifier } from 'ember-modifier';
 
 export interface TableGenericBodyActionMenuComponentSignature {
   Args: {
@@ -17,21 +17,24 @@ export interface TableGenericBodyActionMenuComponentSignature {
   };
 }
 
-const TableGenericBodyActionMenuComponent: TOC<TableGenericBodyActionMenuComponentSignature> =
+export default class TableGenericBodyActionMenuComponent extends Component<TableGenericBodyActionMenuComponentSignature> {
+  registerActionMenu = modifier((element: HTMLTableCellElement) => {
+    this.args.registerActionMenu(element, []);
+  });
+
   <template>
     {{#if (has-block-params)}}
       {{! A simple td, cannot use ember-yeti-table row beacause it  does not seems to understand the did-insert helper   }}
       <td
-        {{didInsert @registerActionMenu}}
+        {{this.registerActionMenu}}
         data-test-action-menu-cell
-        class="tpk-action-menu"
+        class='tpk-action-menu'
         ...attributes
       >
-        <TpkActionsMenu  as |Action|>
+        <TpkActionsMenu as |Action|>
           {{yield (component TableGenericBodyActionComponent Action=Action)}}
         </TpkActionsMenu>
       </td>
     {{/if}}
-  </template>;
-
-export default TableGenericBodyActionMenuComponent;
+  </template>
+}

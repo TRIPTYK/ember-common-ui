@@ -26,5 +26,9 @@
       "name": "ember-ui",
       "path": "packages/ember-ui",
     },
+    {
+      "name": "ember-utils",
+      "path": "packages/ember-utils",
+    },
   ],
 }

@@ -1,10 +1,10 @@
-import type { WithBoundArgs } from "@glint/template";
-import type { TpkConfirmModalSignature } from "../tpk-confirm-modal.gts";
-import TpkConfirmModalComponent from "../tpk-confirm-modal.gts";
-import type { TOC } from "@ember/component/template-only";
+import type { WithBoundArgs } from '@glint/template';
+import type { TpkConfirmModalSignature } from '../tpk-confirm-modal.gts';
+import TpkConfirmModalComponent from '../tpk-confirm-modal.gts';
+import type { TOC } from '@ember/component/template-only';
 
-export interface TpkConfirmModalPrefabSignature{
-  Args: TpkConfirmModalSignature["Args"] & {
+export interface TpkConfirmModalPrefabSignature {
+  Args: TpkConfirmModalSignature['Args'] & {
     onClose: () => void;
     cancelText: string;
     confirmText: string;
@@ -13,14 +13,21 @@ export interface TpkConfirmModalPrefabSignature{
   };
   Blocks: {
     default: [
-      WithBoundArgs<typeof TpkConfirmModalComponent, 'onClose' | 'onConfirm' | 'confirmQuestion' | 'isOpen' | 'outsideClickHandler'>,
-
+      WithBoundArgs<
+        typeof TpkConfirmModalComponent,
+        | 'onClose'
+        | 'onConfirm'
+        | 'confirmQuestion'
+        | 'isOpen'
+        | 'outsideClickHandler'
+      >,
     ];
   };
   Element: HTMLDivElement;
 }
 
-const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <template>
+const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> =
+  <template>
     <TpkConfirmModalComponent
       class='tpk-confirm-modal-container'
       @onClose={{@onClose}}
@@ -33,9 +40,9 @@ const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> = <tem
       ...attributes
       as |M|
     >
-      <M.Cancel @icon={{@icon}} @cancelText={{@cancelText}}/>
-      <M.Confirm @confirmText={{@confirmText}}/>
+      <M.Cancel @icon={{@icon}} @cancelText={{@cancelText}} />
+      <M.Confirm @confirmText={{@confirmText}} />
     </TpkConfirmModalComponent>
-  </template>
-  
+  </template>;
+
 export default TpkConfirmModalPrefabComponent;

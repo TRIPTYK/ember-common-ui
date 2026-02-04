@@ -1,0 +1,21 @@
+properties:
+  tableParams:
+    description: 'Main configuration object containing all table settings and data'
+  columnsComponent:
+    description: 'Object mapping component names to their implementations for custom column rendering'
+  entity:
+    description: 'The name of the entity type to fetch and display in the table'
+  pageSizes:
+    description: 'Array of available page size options for pagination (default: [5, 10, 25])'
+  defaultSortColumn:
+    description: 'The field name to sort by initially when the table loads'
+  additionalFilters:
+    description: 'Additional query parameters to filter the table data'
+  relationships:
+    description: 'Comma-separated list of relationships to include in the data fetch'
+  rowClick:
+    description: 'Callback function triggered when a table row is clicked'
+  columns:
+    description: 'Array of column definitions specifying field mappings, headers, and rendering options'
+  actionMenu:
+    description: 'Array of action items to display in the row action menu'

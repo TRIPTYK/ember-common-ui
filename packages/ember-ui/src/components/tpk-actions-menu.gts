@@ -1,17 +1,13 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from 'tracked-built-ins';
+import { tracked } from '@glimmer/tracking';
 import type { WithBoundArgs } from '@glint/template';
 import TpkActionsMenuElementComponent from './tpk-actions-menu/element.gts';
 import { on } from '@ember/modifier';
 import onClickOutside from 'ember-click-outside/modifiers/on-click-outside';
 
-interface TpkActionsMenuComponentArgs {
-
-}
-
 export interface TpkActionsMenuElementComponentSignature {
-  Args: TpkActionsMenuComponentArgs;
+  Args: object;
   Element: HTMLDivElement;
   Blocks: {
     default: [
@@ -57,7 +53,7 @@ export default class TpkActionsMenuComponent extends Component<TpkActionsMenuEle
     <div
       class={{this.actionsMenuClass}}
       data-test-actions-menu
-      {{!-- @glint-ignore --}}
+      {{! @glint-ignore }}
       {{onClickOutside this.closeMenu}}
       {{on 'keyup' this.handleKeyUp}}
       ...attributes
@@ -72,7 +68,7 @@ export default class TpkActionsMenuComponent extends Component<TpkActionsMenuEle
         <img src='/assets/icons/kebab.svg' alt='seeAllAction' />
       </button>
       {{#if this.isOpen}}
-        <ul class='actions_list' >
+        <ul class='actions_list'>
           {{yield
             (component
               TpkActionsMenuElementComponent handleAction=this.handleAction

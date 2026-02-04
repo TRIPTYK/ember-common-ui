@@ -1,5 +1,5 @@
-.tpk-search{
-  @apply input select select-primary mb-4 w-full relative
+.tpk-search {
+  @apply input select select-primary mb-4 w-full relative;
 }
 .tpk-search-label {
   @apply label w-full absolute left-0 top-0 cursor-pointer;
@@ -10,7 +10,7 @@
 }
 
 .tpk-search-icon {
-  @apply py-1 ;
+  @apply py-1;
 }
 
 .tpk-search-loader {
@@ -25,15 +25,16 @@
 
 @keyframes around {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 
-.tpk-search-loader::after, .tpk-search-loader::before {
-  content: "";
+.tpk-search-loader::after,
+.tpk-search-loader::before {
+  content: '';
   background: white;
   position: absolute;
   display: inline-block;

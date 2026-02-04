@@ -1,0 +1,25 @@
+properties:
+  validationField:
+    description: 'The field name in the changeset for validation.'
+  changeset:
+    description: 'The changeset object for form validation.'
+  label:
+    description: 'The label for the input field.'
+  onChange:
+    description: 'The action to be called when the time changes.'
+  onClose:
+    description: 'The action to be called when the timepicker closes.'
+  disabled:
+    description: 'Whether the input field is disabled.'
+  mandatory:
+    description: 'To indicate if input is mandatory.'
+  enableSecond:
+    description: 'Whether to enable seconds in the timepicker.'
+  stepping:
+    description: 'The step interval for minutes and seconds.'
+  placeholder:
+    description: 'The placeholder text for the input field.'
+  clearButton:
+    description: 'Whether to show a button to clear the input field.'
+  locale:
+    description: 'The locale to be used for time formatting.'

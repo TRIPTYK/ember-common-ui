@@ -11,8 +11,7 @@ import type { Changeset } from 'ember-immer-changeset';
 import { fn } from '@ember/helper';
 import { modifier } from 'ember-modifier';
 
-export interface TpkValidationFileListPrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationFileListPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkValidationFileComponentSignature['Args'] & {
       mandatory?: boolean;
@@ -64,7 +63,7 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
 
     if (this.args.disabled) return;
 
-    let filesFromDrop = event.dataTransfer?.files;
+    const filesFromDrop = event.dataTransfer?.files;
 
     if (filesFromDrop && filesFromDrop.length > 0) {
       const files: File[] = Array.from(filesFromDrop);
@@ -98,8 +97,9 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
       <V.Label
         class='tpk-file-list-container'
         data-has-error='{{V.hasError}}'
+        {{! @glint-ignore }}
         anchorScrollUp={{@validationField}}
-        data-test-tpk-prefab-file-list-container
+        data-test-tpk-prefab-file-list-container={{@validationField}}
         ...attributes
       >
         <MandatoryLabelComponent @label={{@label}} class='tpk-label' />
@@ -173,7 +173,7 @@ export class FileListComponent extends Component<FileListSignature> {
     this.args.changeset.set(this.args.validationField, updatedFiles);
   }
 
-  async downloadFile(file: File) {
+  downloadFile(file: File) {
     if (window.open) {
       window.open(URL.createObjectURL(file));
     }

@@ -1,20 +1,18 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
-import { tracked } from 'tracked-built-ins';
-import type Store from '@ember-data/store';
-import type ArrayProxy from '@ember/array/proxy';
+import { tracked } from '@glimmer/tracking';
+import type { Store } from '@warp-drive/core';
 import { action } from '@ember/object';
-// eslint-disable-next-line ember/use-ember-data-rfc-395-imports
-import type ModelRegistry from 'ember-data/types/registries/model';
-import { waitFor } from '@ember/test-waiters';
 import type { WithBoundArgs } from '@glint/template';
 import TableGenericBodyComponent from './body.gts';
 import TableGenericHeaderComponent from './header.gts';
 import TableGenericFooterComponent from './footer.gts';
 // @ts-expect-error missing types
-import YetiTable from 'ember-yeti-table/components/yeti-table';
+import YetiTable from '@triptyk/ember-yeti-table/components/yeti-table';
 import { hash } from '@ember/helper';
 import LoadingIndicator from '../tpk-loading-indicator.gts';
+import { assert } from '@ember/debug';
+import { query } from '@warp-drive/utilities/json-api';
 
 export interface SortData {
   prop: string;
@@ -55,10 +53,9 @@ interface TableGenericTableArgs {
   pageSizes?: number[];
   pageSize?: number;
   filterText?: string;
-  // eslint-disable-next-line no-unused-vars
   registerApi?: (api: TableApi) => unknown;
-  rowClick?: (element?:unknown, e?:Event) => void;
-  additionalFilters?: Record<string, unknown>;
+  rowClick?: (element?: unknown, e?: Event) => void;
+  additionalFilters?: Record<string, string>;
   defaultSortColumn?: string;
 }
 
@@ -85,9 +82,7 @@ export interface TableGenericTableSignature {
   };
 }
 
-export default class TableGenericTableComponent<
-  K extends keyof ModelRegistry,
-> extends Component<TableGenericTableSignature> {
+export default class TableGenericTableComponent extends Component<TableGenericTableSignature> {
   @service declare store: Store;
   @tracked totalRows?: number;
 
@@ -108,9 +103,7 @@ export default class TableGenericTableComponent<
     this.args.registerApi?.(api);
   }
 
-  @action
-  @waitFor
-  async loadData(data: TableLoadDataApi): Promise<never> {
+  loadData = async (data: TableLoadDataApi) => {
     const sortString = this.getSortString(data.sortData);
 
     const queryOptions = this.buildQueryOptions(
@@ -121,16 +114,53 @@ export default class TableGenericTableComponent<
       sortString,
     );
 
-    const array = await this.store.query(this.args.entity as never, queryOptions);
+    const filter = new Map();
 
-    this.totalRows = (
-      array as unknown as ArrayProxy<K> & {
-        meta: { fetched: number; total: number };
+    if (queryOptions.filter) {
+      for (const [key, value] of Object.entries(queryOptions.filter ?? {})) {
+        if (value === undefined) continue;
+        filter.set(`filter[${key}]`, value);
       }
-    ).meta.total;
+    }
 
-    return array as never;
-  }
+    const response = await this.store.request(
+      query(
+        this.args.entity,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        {
+          include: queryOptions.include ?? [],
+          'page[size]': queryOptions.page.size,
+          'page[number]': queryOptions.page.number,
+          sort: queryOptions.sort,
+          ...Object.fromEntries(filter),
+        },
+        {
+          reload: true,
+        },
+      ),
+    );
+    const content = response.content;
+
+    assert(
+      'Response from store.request must be an object',
+      typeof response === 'object' && response !== null,
+    );
+    assert(
+      'Response from store.request is missing data property',
+      content.data !== undefined,
+    );
+    assert(
+      'The response of the table generic component loadData must be an ArrayProxy',
+      Array.isArray(content.data),
+    );
+    assert(
+      'The response of the table generic component loadData must have a content.meta.total property',
+      content.meta !== undefined && typeof content.meta.total === 'number',
+    );
+
+    this.totalRows = content.meta.total;
+    return content.data;
+  };
 
   private getSortString(sortData: SortData[]): string {
     return sortData
@@ -184,7 +214,9 @@ export default class TableGenericTableComponent<
       {{yield
         (hash
           Header=(component
-            TableGenericHeaderComponent table=table hasActionMenu=this.hasActionMenu
+            TableGenericHeaderComponent
+            table=table
+            hasActionMenu=this.hasActionMenu
           )
           Body=(component
             TableGenericBodyComponent

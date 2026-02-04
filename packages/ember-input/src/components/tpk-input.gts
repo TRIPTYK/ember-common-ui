@@ -1,13 +1,11 @@
-import {
-  BaseUIComponent,
-  type BaseUIComponentArgs
-} from './base.ts';
+import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
 import { assert } from '@ember/debug';
 import type { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
+import type Owner from '@ember/owner';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
@@ -37,15 +35,11 @@ export type TpkInputSignature = {
           | 'changeEvent'
           | 'disabled'
           | 'guid'
-
           | 'min'
           | 'step'
           | 'max'
         >;
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'label' | 'guid'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
         changeEvent: 'input' | 'change';
         guid: string;
       },
@@ -54,13 +48,10 @@ export type TpkInputSignature = {
 };
 
 export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature> {
-  constructor(owner: unknown, args: TpkInputSignature['Args']) {
+  constructor(owner: Owner, args: TpkInputSignature['Args']) {
     super(owner, args);
 
-    assert(
-      '@label must be a string',
-      typeof args.label === 'string',
-    );
+    assert('@label must be a string', typeof args.label === 'string');
 
     if (args.type === 'number') {
       assert(
@@ -91,11 +82,7 @@ export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature
           disabled=@disabled
           guid=this.guid
         )
-        Label=(component
-          TpkLabel
-          label=@label
-          guid=this.guid
-        )
+        Label=(component TpkLabel label=@label guid=this.guid)
         changeEvent=this.changeEvent
         guid=this.guid
       )

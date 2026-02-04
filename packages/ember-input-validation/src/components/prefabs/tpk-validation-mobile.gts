@@ -9,9 +9,9 @@ import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
+import type Owner from '@ember/owner';
 
-export interface TpkValidationMobilePrefabSignature
-  extends BaseValidationSignature {
+export interface TpkValidationMobilePrefabSignature extends BaseValidationSignature {
   Args: Omit<
     TpkValidationInputComponentSignature['Args'],
     | 'type'
@@ -21,7 +21,6 @@ export interface TpkValidationMobilePrefabSignature
     | 'mask'
     | 'unmaskValue'
     | 'maskOptions'
-    | 'mask'
     | 'changeEvent'
     | 'onChange'
   >;
@@ -47,7 +46,7 @@ const masks = {
 export default class TpkValidationMobilePrefabComponent extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
   defaultPrefix = { flag: '/BE.svg', code: '+32' };
   @tracked selectedPrefix = this.defaultPrefix;
-  @tracked prefixes: Prefix[] = [
+  prefixes: Prefix[] = [
     { flag: '/NL.svg', code: '+31' },
     { flag: '/BE.svg', code: '+32' },
     { flag: '/FR.svg', code: '+33' },
@@ -55,10 +54,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
     { flag: '/LU.svg', code: '+352' },
   ];
 
-  constructor(
-    owner: unknown,
-    args: TpkValidationMobilePrefabSignature['Args'],
-  ) {
+  constructor(owner: Owner, args: TpkValidationMobilePrefabSignature['Args']) {
     super(owner, args);
     this.selectedPrefix = this.getPrefix();
   }
@@ -98,12 +94,13 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
   }
 
   @action
-  onChangeValueMobile(value: unknown) {
+  onChangeValueMobile(value: string | number | Date | null) {
     if (!value) {
       this.args.changeset.set(this.args.validationField, value);
     } else {
       this.args.changeset.set(
         this.args.validationField,
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `${this.selectedPrefix.code}${value}`,
       );
     }
@@ -119,7 +116,7 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
   }
 
   getValueFromOption = (option: unknown, key: keyof Prefix) =>
-    (option as Prefix)[key] as string;
+    (option as Prefix)[key];
 
   <template>
     <TpkInputComponent
@@ -134,7 +131,8 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
       <div
         class='tpk-mobile-container'
         data-has-error='{{this.hasError}}'
-        data-test-tpk-prefab-mobile-container
+        data-test-tpk-prefab-mobile-container={{@validationField}}
+        {{! @glint-expect-error }}
         anchorScrollUp={{@validationField}}
         ...attributes
       >

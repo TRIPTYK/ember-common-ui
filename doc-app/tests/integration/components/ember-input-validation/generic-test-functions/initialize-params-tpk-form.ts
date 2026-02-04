@@ -1,10 +1,10 @@
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, type Schema } from 'yup';
+import { object, ZodObject } from 'zod';
 
 export interface TpkFormParams {
   changeset?: ImmerChangeset;
   onSubmit?: (...args: unknown[]) => void;
-  validationSchema?: Schema;
+  validationSchema?: ZodObject;
   reactive?: boolean;
   removeErrorsOnSubmit?: boolean;
   autoScrollOnError?: boolean;

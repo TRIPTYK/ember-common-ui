@@ -1,28 +1,28 @@
-import { action } from '@ember/object';
 import Service from '@ember/service';
-import { tracked } from 'tracked-built-ins';
+import { trackedArray } from '@ember/reactive/collections';
 
 export default class DialogLayerService extends Service {
-  @tracked dialogs: string[] = [];
+  dialogs: string[] = trackedArray([]);
 
   get dialogIsOpen() {
     return this.dialogs.length !== 0;
   }
 
-  @action
-  hasOpenChild(dialog: string) {
+  hasOpenChild = (dialog: string) => {
     return this.dialogs[this.dialogs.length - 1] !== dialog;
-  }
+  };
 
-  @action
-  add(dialog: string) {
+  add = (dialog: string) => {
     this.dialogs.push(dialog);
-  }
+  };
 
-  @action
-  remove(dialog: string) {
+  remove = (dialog: string) => {
     const ix = this.dialogs.findIndex((guid) => guid === dialog);
 
+    if (ix === -1) {
+      return;
+    }
+
     this.dialogs.splice(ix, 1);
-  }
+  };
 }

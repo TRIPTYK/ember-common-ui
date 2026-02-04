@@ -8,9 +8,10 @@ import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
 import type { WithBoundArgs } from '@glint/template';
 import { hash } from '@ember/helper';
-import { tracked } from 'tracked-built-ins';
 import TpkLabel from './tpk-label.gts';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
+import { tracked } from '@glimmer/tracking';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
@@ -28,7 +29,6 @@ export type TpkTextareaSignature = {
       {
         Input: WithBoundArgs<
           typeof TpkTextareaInputComponent,
-
           | 'guid'
           | 'value'
           | 'changeEvent'
@@ -39,10 +39,7 @@ export type TpkTextareaSignature = {
           | 'setupCharacterCount'
           | 'maxLength'
         >;
-        Label: WithBoundArgs<
-          typeof TpkLabel,
-          'guid' | 'label'
-        >;
+        Label: WithBoundArgs<typeof TpkLabel, 'guid' | 'label'>;
         changeEvent: 'input' | 'change';
         onChange: (value: HtmlInputEvent, event: Event) => void;
         guid: string;
@@ -55,7 +52,7 @@ export type TpkTextareaSignature = {
 export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
   @tracked charCount = 0;
 
-  public constructor(owner: unknown, args: TpkTextareaSignature['Args']) {
+  public constructor(owner: Owner, args: TpkTextareaSignature['Args']) {
     super(owner, args);
     assert('@label must be a string', typeof args.label === 'string');
   }
@@ -81,11 +78,7 @@ export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSig
   <template>
     {{yield
       (hash
-        Label=(component
-          TpkLabel
-          guid=this.guid
-          label=@label
-        )
+        Label=(component TpkLabel guid=this.guid label=@label)
         Input=(component
           TpkTextareaInputComponent
           guid=this.guid

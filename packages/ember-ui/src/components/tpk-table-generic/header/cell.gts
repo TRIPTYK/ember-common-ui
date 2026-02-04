@@ -15,7 +15,12 @@ export interface TableGenericHeaderCellComponentSignature {
 
 const TableGenericHeaderCellComponent: TOC<TableGenericHeaderCellComponentSignature> =
   <template>
-    <@header.column @sortable={{@sortable}} @prop={{@prop}} @sort={{@sort}} ...attributes>
+    <@header.column
+      @sortable={{@sortable}}
+      @prop={{@prop}}
+      @sort={{@sort}}
+      ...attributes
+    >
       {{yield}}
     </@header.column>
   </template>;

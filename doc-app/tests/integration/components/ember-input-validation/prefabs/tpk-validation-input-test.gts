@@ -1,13 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {  render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import TpkValidationInputPrefabComponent from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-input';
 import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-css-classes-exist';
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-
 
 module(
   'Integration | Component | Prefabs | tpk-validation-input',
@@ -21,23 +20,26 @@ module(
       });
     }
 
-    async function renderComponent(params: { changeset: ImmerChangeset, disabled?: boolean }) {
+    async function renderComponent(params: {
+      changeset: ImmerChangeset;
+      disabled?: boolean;
+    }) {
       await render(
-      <template>
-      <TpkValidationInputPrefabComponent
-        @changeset={{params.changeset}}
-        @validationField="input"
-        @label="label"
-        @mandatory={{true}}
-        @disabled={{params.disabled}}
-      />
-      </template>
+        <template>
+          <TpkValidationInputPrefabComponent
+            @changeset={{params.changeset}}
+            @validationField="input"
+            @label="label"
+            @mandatory={{true}}
+            @disabled={{params.disabled}}
+          />
+        </template>
       );
     }
 
-    test('renders input with default structure and with mandatory', async function ( assert) {
-     const changeset = setupChangeset();
-      await renderComponent({changeset});
+    test('renders input with default structure and with mandatory', async function (assert) {
+      const changeset = setupChangeset();
+      await renderComponent({ changeset });
       assert.dom('[data-test-tpk-label]').exists();
       assert.dom('[data-test-tpk-input-input]').exists();
       assert.dom('[data-test-tpk-label]').containsText('label *');
@@ -46,21 +48,21 @@ module(
 
     test('It changes data-has-error attribute on error', async function (assert) {
       const changeset = setupChangeset();
-      await renderComponent({changeset});
-      await assertDataHasErrorAttribute(assert,changeset,'input');
+      await renderComponent({ changeset });
+      await assertDataHasErrorAttribute(assert, changeset, 'input');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
-     const changeset = setupChangeset();
-      await renderComponent({changeset});
-      await assertTpkCssClassesExist(assert,'input');
+      const changeset = setupChangeset();
+      await renderComponent({ changeset });
+      assertTpkCssClassesExist(assert, 'input');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       const changeset = setupChangeset();
       await renderComponent({
         disabled: true,
-        changeset
+        changeset,
       });
       assert.dom(`[data-test-tpk-input-input]`).hasAttribute('disabled');
     });
@@ -70,9 +72,9 @@ module(
       assert.expect(0);
       await renderComponent({
         disabled: false,
-        changeset
+        changeset,
       });
       await a11yAudit();
     });
-  },
+  }
 );

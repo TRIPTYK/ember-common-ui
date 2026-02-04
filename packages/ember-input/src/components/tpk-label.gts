@@ -4,7 +4,6 @@ export interface TpkLabelSignature {
   Args: {
     guid: string;
     label: string;
-
   };
   Element: HTMLLabelElement;
   Blocks: {
@@ -13,11 +12,7 @@ export interface TpkLabelSignature {
 }
 
 const TpkLabel: TOC<TpkLabelSignature> = <template>
-  <label
-    for={{@guid}}
-    ...attributes
-    data-test-tpk-label
-  >
+  <label for={{@guid}} ...attributes data-test-tpk-label>
     {{#if (has-block)}}
       {{yield}}
     {{else}}

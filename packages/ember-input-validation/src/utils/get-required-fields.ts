@@ -1,24 +1,28 @@
-import { ValidationError, type Schema } from "yup";
-import { clearObjectValues } from "./clear-object.ts";
-import { jsonPathToDottedPath } from "./validate-and-map.ts";
+import { ZodError, ZodObject } from 'zod';
+import { clearObjectValues } from './clear-object.ts';
+import { jsonPathToDottedPath } from './validate-and-map.ts';
 
-export function getRequiredFields(validationSchema: Schema, data: Record<string, unknown>): string[] | undefined {
+export function getRequiredFields(
+  validationSchema: ZodObject,
+  data: Record<string, unknown>,
+): string[] | undefined {
   const clearedObject = clearObjectValues(data);
 
   try {
-    validationSchema.validateSync(clearedObject, { abortEarly: false });
-  } catch(e) {
-    if (e instanceof ValidationError) {
-      const errorFields = e.inner.map((err) => ({
-        type: err.type,
-        path: err.path,
+    validationSchema.parse(clearedObject);
+  } catch (e) {
+    if (e instanceof ZodError) {
+      const errorFields = e.issues.map((err) => ({
+        type: err.code,
+        path: err.path.join('.'),
         message: err.message,
-        value: err.value,
+        value: err.input,
       }));
-      return errorFields
-        .filter((e) => e.type === 'required')
-        .map((error) => jsonPathToDottedPath(error.path ?? ''))
-        .filter(r => r !== undefined);
+
+      const a = errorFields
+        .map((error) => jsonPathToDottedPath(error.path))
+        .filter((r) => r !== undefined);
+      return a;
     }
   }
 }

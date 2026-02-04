@@ -1,5 +1,5 @@
 .tpk-iban-container {
-  @apply form-control relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-iban-container .tpk-label {
@@ -7,22 +7,21 @@
 }
 
 .tpk-iban-input {
-  @apply input input-bordered;
+  @apply input;
 }
 
-.tpk-iban-container[data-has-error~="true"] .tpk-iban-input {
+.tpk-iban-container[data-has-error~='true'] .tpk-iban-input {
   @apply input-error;
 }
 
-.tpk-iban-container[data-has-error~="true"]
-.tpk-validation-errors {
-  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
+.tpk-iban-container[data-has-error~='true'] .tpk-validation-errors {
+  @apply text-error text-xs justify-self-end right-0 bottom-0 absolute;
 }
 
-.tpk-iban-container[data-has-error~="true"] .tpk-label{
+.tpk-iban-container[data-has-error~='true'] .tpk-label {
   @apply label text-error;
 }
 
-.tpk-iban-container[data-has-error~="true"] .tpk-iban-input {
+.tpk-iban-container[data-has-error~='true'] .tpk-iban-input {
   @apply text-error;
 }

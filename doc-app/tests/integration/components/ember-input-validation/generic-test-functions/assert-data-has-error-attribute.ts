@@ -1,10 +1,10 @@
-import { settled } from "@ember/test-helpers";
-import type ImmerChangeset from "ember-immer-changeset";
+import { settled } from '@ember/test-helpers';
+import type ImmerChangeset from 'ember-immer-changeset';
 
 export async function assertDataHasErrorAttribute(
   assert: Assert,
   changeset: ImmerChangeset,
-  input: string,
+  input: string
 ) {
   changeset.addError({
     message: 'required',

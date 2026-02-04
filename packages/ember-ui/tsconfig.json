@@ -1,17 +1,23 @@
+/**
+ * This tsconfig is not used for publishing.
+ * It's only for the local editing experience
+ * (and linting)
+ */
 {
-  "extends": "@tsconfig/ember/tsconfig.json",
+  "extends": "@ember/app-tsconfig",
   "include": [
     "src/**/*",
-    "unpublished-development-types/**/*"
+    "tests/**/*",
+    "unpublished-development-types/**/*",
+    "demo-app/**/*"
   ],
-  "glint": {
-    "environment": ["ember-loose", "ember-template-imports"]
-  },
   "compilerOptions": {
-    "allowJs": true,
-    "skipLibCheck": true,
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "declarationDir": "declarations"
+    "rootDir": ".",
+    "types": [
+      "ember-source/types",
+      "vite/client",
+      "@embroider/core/virtual",
+      "@glint/ember-tsc/types"
+    ]
   }
 }

@@ -1,30 +1,24 @@
-@import url("tailwindcss/base");
-@import url("tailwindcss/components");
-@import url("tailwindcss/utilities");
-@import url("@eonasdan/tempus-dominus/dist/css/tempus-dominus.css");
-@import url("ember-power-select/vendor/ember-power-select.css");
-@import url("@triptyk/ember-input-validation/dist/app.css");
-@import url("@triptyk/ember-input/dist/app.css");
-@import url("@triptyk/ember-ui/dist/app.css");
-@import url("ember-input-validation/form.css");
-
-.next,
-.previous {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* stylelint-disable at-rule-no-unknown */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable no-invalid-position-at-import-rule */
+/* stylelint-disable import-notation */
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes:
+    nord --default,
+    dracula,
+    cupcake,
+    corporate,
+    lemonade;
 }
+@import '@triptyk/ember-input/dist/app.css';
+@import '@triptyk/ember-ui/dist/app.css';
+@import '@triptyk/ember-input-validation/dist/app.css';
+@import './code-example.css';
+@import './property-table.css';
+@import './auth.css';
 
-.icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  mask-size: contain;
-}
-
-.ember-power-select-options,
-.ember-power-select-options li,
-.ember-power-select-multiple-options,
-.ember-power-select-multiple-options li {
-  margin-bottom: 0 !important;
-}
+/* Additional global styles can be added below */
+@source "../../node_modules/@triptyk/ember-ui";
+@source "../../node_modules/@triptyk/ember-input";
+@source "../../node_modules/@triptyk/ember-input-validation";

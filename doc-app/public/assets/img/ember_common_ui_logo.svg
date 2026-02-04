@@ -1,0 +1,67 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dégradé pour le fond -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E04E39;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C73928;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE8E0;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Ombre portée -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fond avec gradient -->
+  <rect width="200" height="200" fill="url(#bgGradient)" rx="24"/>
+  
+  <!-- Grille subtile en arrière-plan -->
+  <line x1="25" y1="125" x2="175" y2="125" stroke="#FFF" stroke-width="0.5" opacity="0.15"/>
+  <line x1="25" y1="145" x2="175" y2="145" stroke="#FFF" stroke-width="0.5" opacity="0.15"/>
+  <line x1="25" y1="165" x2="175" y2="165" stroke="#FFF" stroke-width="0.5" opacity="0.15"/>
+  
+  <!-- Groupe flamme avec ombre -->
+  <g filter="url(#shadow)">
+    <!-- Flamme principale -->
+    <path d="M100 25 C130 42, 150 70, 150 100 C150 130, 127 155, 100 155 C73 155, 50 130, 50 100 C50 70, 70 42, 100 25 Z" 
+          fill="url(#flameGradient)"/>
+    
+    <!-- Détails de la flamme -->
+    <path d="M100 40 C120 52, 130 72, 130 95 C130 118, 115 135, 100 135 C85 135, 70 118, 70 95 C70 72, 80 52, 100 40 Z" 
+          fill="#FFF" opacity="0.6"/>
+    
+    <!-- Cœur de la flamme -->
+    <ellipse cx="100" cy="95" rx="12" ry="18" fill="#E04E39"/>
+    <ellipse cx="100" cy="90" rx="6" ry="10" fill="#FF6B54"/>
+  </g>
+  
+  <!-- Composants UI stylisés (comme des widgets) -->
+  <g opacity="0.95">
+    <!-- Input field -->
+    <rect x="30" y="168" width="60" height="10" fill="#FFF" rx="5"/>
+    <circle cx="36" cy="173" r="2.5" fill="#E04E39"/>
+    
+    <!-- Dropdown/Select -->
+    <rect x="95" y="168" width="50" height="10" fill="#FFF" rx="5"/>
+    <path d="M139 170 L143 174 L135 174 Z" fill="#E04E39"/>
+    
+    <!-- Toggle/Switch -->
+    <rect x="150" y="168" width="25" height="10" fill="#FFF" rx="5"/>
+    <circle cx="167" cy="173" r="3.5" fill="#E04E39"/>
+  </g>
+  
+
+</svg>

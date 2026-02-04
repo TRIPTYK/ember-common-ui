@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
+import type Owner from '@ember/owner';
 
 export interface BaseUIComponentArgs {
   Args: {
@@ -17,7 +18,7 @@ export abstract class BaseUIComponent<
 > extends Component<T> {
   guid = guidFor(this);
 
-  constructor(owner: unknown, args: BaseUIComponentArgs['Args']) {
+  constructor(owner: Owner, args: BaseUIComponentArgs['Args']) {
     super(owner, args);
   }
 

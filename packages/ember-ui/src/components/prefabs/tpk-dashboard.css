@@ -1,0 +1,63 @@
+.tpk-dashboard {
+  @apply h-screen w-full overflow-hidden;
+}
+
+.tpk-dashboard-content {
+  @apply flex min-h-0 min-w-0 flex-1 flex-col overflow-x-hidden overflow-y-auto;
+}
+
+.tpk-sidebar-drawer-side {
+  @apply h-full min-h-0 overflow-x-visible;
+}
+
+.tpk-navbar-title {
+  @apply inline-block ml-6;
+}
+
+.tpk-navbar-user-name {
+  @apply inline-block;
+}
+
+.tpk-sidebar {
+  @apply flex h-full min-h-0 flex-col items-start bg-base-200;
+}
+
+.tpk-sidebar.collapsed {
+  @apply lg:!w-16;
+}
+
+.tpk-sidebar:not(.collapsed) {
+  @apply lg:!w-64;
+}
+
+.tpk-sidebar-header {
+  @apply w-full;
+}
+
+.tpk-sidebar-menu {
+  @apply flex-nowrap w-full grow mt-4;
+}
+
+.tpk-sidebar-menu.overflow-y-auto {
+  @apply overflow-y-auto;
+}
+
+.tpk-sidebar-footer {
+  @apply w-full;
+}
+
+.tpk-sidebar-item-icon {
+  @apply my-1.5 inline-block size-4;
+}
+
+.tpk-navbar-locale-selector {
+  @apply dropdown dropdown-end;
+}
+
+.tpk-navbar-locale-toggle {
+  @apply btn btn-ghost btn-square;
+}
+
+.tpk-navbar-locale-menu {
+  @apply menu bg-base-200 rounded-box z-[1] mt-3 w-40 p-2 shadow;
+}

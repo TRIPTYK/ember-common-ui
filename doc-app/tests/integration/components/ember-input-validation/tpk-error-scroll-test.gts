@@ -3,8 +3,11 @@ import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import { timeout } from 'ember-concurrency';
 import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, date, number, boolean } from 'yup';
-import { setupCompletePrefabComponent, setupComponent } from './generic-test-functions/setup-prefab-component';
+import { object, string, date, number, boolean, email } from 'zod';
+import {
+  setupCompletePrefabComponent,
+  setupComponent,
+} from './generic-test-functions/setup-prefab-component';
 
 module('Integration | Component | tpk-form-error-scroll', function (hooks) {
   setupRenderingTest(hooks);
@@ -33,25 +36,25 @@ module('Integration | Component | tpk-form-error-scroll', function (hooks) {
     'file',
   ];
 
-  const validationSchema = object().shape({
-    input: string().required(),
-    bic: string().required(),
-    iban: string().required(),
-    email: string().required(),
-    mobile: string().required(),
-    datepicker: date().required(),
-    timepicker: date().required(),
-    currency: number().required(),
-    integer: number().required(),
-    number: number().required(),
-    password: string().required(),
-    radiogroup: string().required(),
-    radio: string().required(),
-    select: string().required(),
-    selectcreate: string().required(),
-    selectsearch: string().required(),
-    checkbox: boolean().required(),
-    file: string().required(),
+  const validationSchema = object({
+    input: string(),
+    bic: string(),
+    iban: string(),
+    email: string(),
+    mobile: string(),
+    datepicker: date(),
+    timepicker: date(),
+    currency: number(),
+    integer: number(),
+    number: number(),
+    password: string(),
+    radiogroup: string(),
+    radio: string(),
+    select: string(),
+    selectcreate: string(),
+    selectsearch: string(),
+    checkbox: boolean(),
+    file: string(),
   });
 
   const baseChangeset = new ImmerChangeset({
@@ -110,8 +113,12 @@ module('Integration | Component | tpk-form-error-scroll', function (hooks) {
 
   test('when autoScrollOnError is false, it does not scrolls the page to the first error', async function (assert) {
     const changeset = await setupComponent({
-      validationSchema: object().shape({
-        email: string().email().required(),
+      validationSchema: object({
+        email: email(),
+      }),
+      changeset: new ImmerChangeset({
+        email: '',
+        name: '',
       }),
       autoScrollOnError: false,
     });

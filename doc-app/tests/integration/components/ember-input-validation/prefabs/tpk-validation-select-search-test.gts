@@ -1,19 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {
-
-  click,
-  render,
-  settled,
-  find,
-} from '@ember/test-helpers';
+import { click, render, settled, find } from '@ember/test-helpers';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import { setupIntl } from 'ember-intl/test-support';
 import { selectSearch } from 'ember-power-select/test-support';
 import TpkValidationSelectSearch from '@triptyk/ember-input-validation/components/prefabs/tpk-validation-select-search';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
-
-
 
 const options = [
   {
@@ -45,10 +37,13 @@ module(
     setupRenderingTest(hooks);
     setupIntl(hooks, 'fr-fr');
 
-    async function renderComponent(assert: Assert, params: {
-      changeset: ImmerChangeset;
-      disabled?: boolean;
-    }) {
+    async function renderComponent(
+      assert: Assert,
+      params: {
+        changeset: ImmerChangeset;
+        disabled?: boolean;
+      }
+    ) {
       const onChange = (selection: unknown) => {
         params.changeset.set('fastfood', selection);
       };
@@ -75,19 +70,19 @@ module(
       );
     }
 
-    test('Should show default value and no options in starting', async function ( assert) {
-     const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
+    test('Should show default value and no options in starting', async function (assert) {
+      const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
-        changeset
+        changeset,
       });
       assert.strictEqual(
         find('.ember-power-select-selected-item')?.textContent?.trim(),
-        'McDonald - Burger',
+        'McDonald - Burger'
       );
     });
 
-    test('Should use search select features by default', async function ( assert) {
-     const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
+    test('Should use search select features by default', async function (assert) {
+      const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
         changeset: changeset,
       });
@@ -98,14 +93,17 @@ module(
       assert
         .dom('.ember-power-select-selected-item')
         .hasText('McDonald - Burger');
-      await selectSearch('.tpk-select-search-container .ember-power-select-search input', 'new');
+      await selectSearch(
+        '.tpk-select-search-container .ember-power-select-search input',
+        'new'
+      );
       assert.verifySteps(['search']);
     });
 
-    test('Error prefab appears if an error is added to changeset', async function ( assert) {
-     const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
+    test('Error prefab appears if an error is added to changeset', async function (assert) {
+      const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
-        changeset
+        changeset,
       });
       changeset.addError({
         message: 'required',
@@ -121,21 +119,28 @@ module(
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
-        changeset
+        changeset,
       });
 
-      assert.dom(`.tpk-select-search-container`).exists().hasAttribute(`data-test-tpk-prefab-select-search-container`);
-      assert.dom(`.tpk-select-search-container .tpk-validation-errors`).exists()
+      assert
+        .dom(`.tpk-select-search-container`)
+        .exists()
+        .hasAttribute(`data-test-tpk-prefab-select-search-container`);
+      assert
+        .dom(`.tpk-select-search-container .tpk-validation-errors`)
+        .exists();
       assert.dom(`.tpk-select-search-container .tpk-label`).exists();
     });
 
-    test('@disabled disables the select', async function(assert) {
+    test('@disabled disables the select', async function (assert) {
       const changeset = new ImmerChangeset({ fastfood: options[0].toString() });
       await renderComponent(assert, {
         changeset,
-        disabled: true
+        disabled: true,
       });
-      assert.dom(`.ember-basic-dropdown-trigger`).hasAttribute('aria-disabled', 'true');
+      assert
+        .dom(`.ember-basic-dropdown-trigger`)
+        .hasAttribute('aria-disabled', 'true');
     });
 
     test('Accessibility', async function (assert) {
@@ -146,5 +151,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );

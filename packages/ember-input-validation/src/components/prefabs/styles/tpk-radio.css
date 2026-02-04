@@ -1,5 +1,5 @@
 .tpk-radio-container {
-  @apply form-control;
+  @apply fieldset;
 }
 
 .tpk-radio-label {
@@ -7,7 +7,7 @@
 }
 
 .tpk-radio-label > span {
-  @apply label-text;
+  @apply label;
 }
 
 .tpk-radio-input {

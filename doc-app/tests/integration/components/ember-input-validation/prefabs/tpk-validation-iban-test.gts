@@ -8,7 +8,6 @@ import { assertTpkCssClassesExist } from '../generic-test-functions/assert-tpk-c
 import { assertDataHasErrorAttribute } from '../generic-test-functions/assert-data-has-error-attribute';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module(
   'Integration | Component | Prefabs | tpk-validation-iban',
   function (hooks) {
@@ -24,13 +23,13 @@ module(
 
       await render(
         <template>
-         <TpkValidationIban
+          <TpkValidationIban
             @label="label"
             @mandatory={{true}}
             @changeset={{immerChangeset}}
             @disabled={{params.disabled}}
             @validationField="iban"
-         />
+          />
         </template>
       );
       return immerChangeset;
@@ -62,13 +61,10 @@ module(
 
     test('it lets you type FR IBAN and nicely format it', async function (assert) {
       const changeset = await renderComponentAndReturnChangeset();
-      await fillIn(
-        '[data-test-tpk-iban-input]',
-        'FR1420041010050500013M02606',
-      );
+      await fillIn('[data-test-tpk-iban-input]', 'FR1420041010050500013M02606');
       assert.strictEqual(
         changeset.get('iban'),
-        'FR14 2004 1010 0505 0001 3M02 606',
+        'FR14 2004 1010 0505 0001 3M02 606'
       );
     });
 
@@ -80,15 +76,15 @@ module(
 
     test('Error prefab appears if an error is added to changeset', async function (assert) {
       const changeset = await renderComponentAndReturnChangeset();
-      await assertDataHasErrorAttribute(assert,changeset,'iban');
+      await assertDataHasErrorAttribute(assert, changeset, 'iban');
     });
 
     test('CSS classes exist and have been attached to the correct element', async function (assert) {
       await renderComponentAndReturnChangeset();
-      await assertTpkCssClassesExist(assert,'iban');
+      assertTpkCssClassesExist(assert, 'iban');
     });
 
-    test('@disabled disables the input', async function(assert) {
+    test('@disabled disables the input', async function (assert) {
       await renderComponentAndReturnChangeset({
         disabled: true,
       });
@@ -102,5 +98,5 @@ module(
       });
       await a11yAudit();
     });
-  },
+  }
 );
