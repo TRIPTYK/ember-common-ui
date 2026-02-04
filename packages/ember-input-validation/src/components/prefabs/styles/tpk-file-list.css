@@ -44,7 +44,7 @@
 }
 
 .tpk-file-list-container[data-has-error~='true'] .tpk-validation-errors {
-  @apply text-error text-sm absolute right-0 -bottom-1;
+  @apply text-error text-xs absolute right-0 bottom-0;
 }
 
 /* File list */

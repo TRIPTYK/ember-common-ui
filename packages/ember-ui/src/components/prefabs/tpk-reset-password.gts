@@ -16,12 +16,18 @@ export interface TpkResetPasswordArgs {
   ) => void;
   resetPasswordSchema: ResetPasswordSchema;
   initialValues?: z.infer<ResetPasswordSchema>;
-  title?: string;
-  description?: string;
   submitButtonText?: string;
 }
 
-export default class TpkResetPasswordComponent extends Component<TpkResetPasswordArgs> {
+export interface TpkResetPasswordSignature {
+  Args: TpkResetPasswordArgs;
+  Blocks: {
+    default: [];
+  };
+  Element: HTMLDivElement;
+}
+
+export default class TpkResetPasswordComponent extends Component<TpkResetPasswordSignature> {
   changeset = new ImmerChangeset(
     this.args.initialValues ?? {
       password: '',
@@ -29,56 +35,37 @@ export default class TpkResetPasswordComponent extends Component<TpkResetPasswor
     },
   );
 
-  get title() {
-    return this.args.title ?? 'Reset Password';
-  }
-
-  get description() {
-    return this.args.description ?? 'Please enter your new password below.';
-  }
-
   get submitButtonText() {
     return this.args.submitButtonText ?? 'Reset Password';
   }
 
   <template>
-    <div class='flex min-h-screen items-center justify-center bg-base-200'>
-      <div class='card w-96 bg-base-100 shadow-xl'>
-        <div class='card-body'>
-          <h2 class='card-title text-2xl font-bold'>{{this.title}}</h2>
-          <p class='text-sm text-base-content/70'>{{this.description}}</p>
+    <TpkForm
+      @changeset={{this.changeset}}
+      @onSubmit={{@onSubmit}}
+      @reactive={{true}}
+      @validationSchema={{@resetPasswordSchema}}
+      class='tpk-reset-password-form'
+      data-test-tpk-reset-password-form
+      as |F|
+    >
+      <F.TpkPasswordPrefab
+        @label='New Password'
+        @validationField='password'
+        class='tpk-reset-password-form-password'
+        data-test-tpk-reset-password-form-password
+      />
 
-          <TpkForm
-            @changeset={{this.changeset}}
-            @onSubmit={{@onSubmit}}
-            @reactive={{true}}
-            @validationSchema={{@resetPasswordSchema}}
-            as |F|
-          >
-            <div class='form-control'>
-              <F.TpkPasswordPrefab
-                @label='New Password'
-                @validationField='password'
-                @placeholder='Enter your new password'
-              />
-            </div>
+      <F.TpkPasswordPrefab
+        @label='Confirm Password'
+        @validationField='confirmPassword'
+        class='tpk-reset-password-form-confirm-password'
+        data-test-tpk-reset-password-form-confirm-password
+      />
 
-            <div class='form-control'>
-              <F.TpkPasswordPrefab
-                @label='Confirm Password'
-                @validationField='confirmPassword'
-                @placeholder='Confirm your new password'
-              />
-            </div>
-
-            <div class='card-actions mt-4'>
-              <button type='submit' class='btn btn-primary w-full'>
-                {{this.submitButtonText}}
-              </button>
-            </div>
-          </TpkForm>
-        </div>
-      </div>
-    </div>
+      <button class='tpk-reset-password-form-button' type='submit'>
+        {{this.submitButtonText}}
+      </button>
+    </TpkForm>
   </template>
 }

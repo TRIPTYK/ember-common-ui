@@ -1,5 +1,6 @@
-import { on } from '@ember/modifier';
 import type { TOC } from '@ember/component/template-only';
+import { on } from '@ember/modifier';
+import { fn } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
 
 export interface NavbarItem {
@@ -8,51 +9,86 @@ export interface NavbarItem {
   href?: string;
 }
 
+export interface Language {
+  code: string;
+  label: string;
+}
+
 interface NavbarSignature {
   Element: HTMLElement;
   Args: {
     title?: string;
     navbarItems?: NavbarItem[];
     drawerId?: string;
+    onSidebarToggle?: () => void;
+    languages?: Language[];
+    onLocaleChange?: (locale: string) => void;
     currentUser?: {
       fullName: string;
     };
     onLogout?: () => void;
+    logoutLabel?: string;
     profileRoute?: string;
+    profileLabel?: string;
   };
   Blocks: {
+    menu: [];
     default: [];
   };
 }
 
 const TpkNavbar: TOC<NavbarSignature> = <template>
-  <nav class='navbar w-full bg-base-300'>
-    {{#if @drawerId}}
-      <label
-        for={{@drawerId}}
-        aria-label='open sidebar'
-        class='btn btn-square btn-ghost'
+  <nav class='tpk-navbar navbar bg-base-300'>
+    <div class='navbar-start'>
+      {{#if @drawerId}}
+        <label
+          for={{@drawerId}}
+          aria-label='sidebar'
+          class='tpk-navbar-toggle btn btn-ghost btn-square lg:hidden'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke-width='1.5'
+            stroke='currentColor'
+            class='size-5'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              d='M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5'
+            />
+          </svg>
+        </label>
+      {{/if}}
+      {{#if @onSidebarToggle}}
+        <button
+          type='button'
+          aria-label='toggle sidebar'
+          class='tpk-navbar-toggle btn btn-ghost btn-square hidden lg:inline-flex'
+          {{on 'click' @onSidebarToggle}}
+        >
+          <svg
+            class='size-5'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          >
+            <rect x='3' y='3' width='18' height='18' rx='2' ry='2' />
+            <line x1='9' y1='3' x2='9' y2='21' />
+          </svg>
+        </button>
+      {{/if}}
+      <span class='tpk-navbar-title'>{{@title}}</span>
+    </div>
+    <div class='navbar-center'>
+      <ul
+        class='tpk-navbar-menu-horizontal menu menu-horizontal hidden lg:flex'
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 24 24'
-          stroke-linejoin='round'
-          stroke-linecap='round'
-          stroke-width='2'
-          fill='none'
-          stroke='currentColor'
-          class='my-1.5 inline-block size-4'
-        ><path
-            d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z'
-          ></path><path d='M9 4v16'></path><path
-            d='M14 10l2 2l-2 2'
-          ></path></svg>
-      </label>
-    {{/if}}
-    <div class='px-4'>{{@title}}</div>
-    <div class='flex-1'></div>
-    <div class='hidden flex-none lg:block'>
-      <ul class='menu menu-horizontal'>
         {{#each @navbarItems as |item|}}
           <li>
             {{#if item.href}}
@@ -67,47 +103,102 @@ const TpkNavbar: TOC<NavbarSignature> = <template>
         {{/each}}
       </ul>
     </div>
-    {{#if @currentUser}}
-      <div class='flex items-center gap-2'>
-        <span class='hidden lg:inline-block'>{{@currentUser.fullName}}</span>
-        <div class='dropdown dropdown-end'>
+    <div class='navbar-end'>
+      {{#if @currentUser}}
+        <div class='tpk-navbar-user-menu-dropdown dropdown dropdown-end'>
           <button
             type='button'
-            class='btn btn-ghost btn-circle avatar'
+            tabindex='0'
+            class='tpk-navbar-user-menu-toggle btn btn-ghost flex'
             aria-label='User menu'
           >
-            <div class='w-10 rounded-full'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='currentColor'
-                class='size-10'
-              >
-                <path
-                  fill-rule='evenodd'
-                  d='M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z'
-                  clip-rule='evenodd'
-                />
-              </svg>
-            </div>
+            <span class='tpk-navbar-user-name'>{{@currentUser.fullName}}</span>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke-width='1.5'
+              stroke='currentColor'
+              class='size-4'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                d='m19.5 8.25-7.5 7.5-7.5-7.5'
+              />
+            </svg>
           </button>
           <ul
             tabindex='0'
-            class='menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow'
+            class='tpk-navbar-user-menu-content menu dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow'
           >
             {{#if @profileRoute}}
-              <li><LinkTo @route={{@profileRoute}}>My Profile</LinkTo></li>
+              <li><LinkTo @route={{@profileRoute}}>{{if
+                    @profileLabel
+                    @profileLabel
+                    'My Profile'
+                  }}</LinkTo></li>
+            {{/if}}
+            {{#if (has-block 'menu')}}
+              {{yield to='menu'}}
             {{/if}}
             {{#if @onLogout}}
-              <li><button
-                  type='button'
-                  {{on 'click' @onLogout}}
-                >Logout</button></li>
+              <li><button type='button' {{on 'click' @onLogout}}>{{if
+                    @logoutLabel
+                    @logoutLabel
+                    'Logout'
+                  }}</button></li>
             {{/if}}
           </ul>
         </div>
-      </div>
-    {{/if}}
+      {{/if}}
+      {{#if @onLocaleChange}}
+        {{#if @languages}}
+          <div class='tpk-navbar-locale-selector dropdown dropdown-end'>
+            <button
+              type='button'
+              tabindex='0'
+              class='tpk-navbar-locale-toggle btn btn-ghost btn-square'
+              aria-label='Language selector'
+            >
+              <svg
+                class='size-4'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke-width='2'
+                stroke='currentColor'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' />
+                <circle cx='12' cy='12' r='9' />
+                <line x1='3.6' y1='9' x2='20.4' y2='9' />
+                <line x1='3.6' y1='15' x2='20.4' y2='15' />
+                <path d='M11.5 3a17 17 0 0 0 0 18' />
+                <path d='M12.5 3a17 17 0 0 1 0 18' />
+              </svg>
+            </button>
+            <ul
+              tabindex='0'
+              class='tpk-navbar-locale-menu menu dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-40 p-2 shadow'
+            >
+              {{#each @languages as |language|}}
+                <li>
+                  <button
+                    type='button'
+                    {{on 'click' (fn @onLocaleChange language.code)}}
+                  >
+                    {{language.label}}
+                  </button>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
     {{yield}}
   </nav>
 </template>;

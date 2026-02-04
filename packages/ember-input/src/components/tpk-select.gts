@@ -73,7 +73,6 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   get multiple() {
     return this.args.multiple === true ? undefined : false;
   }
-
   <template>
     <PowerSelect
       @labelText={{@label}}

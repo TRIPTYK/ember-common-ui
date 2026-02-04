@@ -19,5 +19,5 @@
 }
 
 .tpk-checkbox-container[data-has-error~='true'] .tpk-validation-errors {
-  @apply text-error text-sm justify-self-end absolute -bottom-1;
+  @apply text-error text-xs justify-self-end absolute bottom-0;
 }

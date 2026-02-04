@@ -58,7 +58,7 @@ catalogs:
       specifier: ^4.4.2
       version: 4.4.2
     '@eonasdan/tempus-dominus':
-      specifier: ^6.9.10
+      specifier: ^6.10.4
       version: 6.10.4
     '@eslint/js':
       specifier: ^9.17.0
@@ -145,7 +145,7 @@ catalogs:
       specifier: ^9.0.3
       version: 9.0.3
     ember-power-select:
-      specifier: git+https://github.com/cibernox/ember-power-select/tree/dist
+      specifier: github:cibernox/ember-power-select#dist
       version: 8.12.1
     ember-power-select-with-create:
       specifier: ^3.1.0
@@ -735,6 +735,9 @@ importers:
       '@embroider/addon-shim':
         specifier: 'catalog:'
         version: 1.10.2
+      '@eonasdan/tempus-dominus':
+        specifier: 'catalog:'
+        version: 6.10.4(@popperjs/core@2.11.8)
       '@glimmer/component':
         specifier: 'catalog:'
         version: 2.0.0
@@ -756,6 +759,12 @@ importers:
       ember-modifier:
         specifier: 'catalog:'
         version: 4.2.2(@babel/core@7.29.0)
+      ember-power-select:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/cibernox/ember-power-select/tar.gz/aa1cd7346498653e4326ba13639951891a28eebb(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(@glimmer/component@2.0.0)(ember-basic-dropdown@8.11.0(@babel/core@7.29.0)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(@glimmer/component@2.0.0)(@glint/template@1.7.4)(ember-source@6.10.1(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-concurrency@5.1.0(@babel/core@7.29.0)(@glint/template@1.7.4))
+      ember-power-select-with-create:
+        specifier: 'catalog:'
+        version: 3.1.0(@babel/core@7.29.0)(@glimmer/component@2.0.0)(@glint/template@1.7.4)(ember-basic-dropdown@8.11.0(@babel/core@7.29.0)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(@glimmer/component@2.0.0)(@glint/template@1.7.4)(ember-source@6.10.1(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-power-select@https://codeload.github.com/cibernox/ember-power-select/tar.gz/aa1cd7346498653e4326ba13639951891a28eebb(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(@glimmer/component@2.0.0)(ember-basic-dropdown@8.11.0(@babel/core@7.29.0)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))(@glimmer/component@2.0.0)(@glint/template@1.7.4)(ember-source@6.10.1(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-concurrency@5.1.0(@babel/core@7.29.0)(@glint/template@1.7.4)))(ember-source@6.10.1(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-strict-application-resolver:
         specifier: 'catalog:'
         version: 0.1.1(@babel/core@7.29.0)
@@ -10059,6 +10068,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   tar@7.5.7:
     resolution: {integrity: sha512-fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==}
@@ -12804,7 +12814,7 @@ snapshots:
       proggy: 3.0.0
       promise-all-reject-late: 1.0.1
       promise-call-limit: 3.0.2
-      semver: 7.7.2
+      semver: 7.7.3
       ssri: 12.0.0
       treeverse: 3.0.0
       walk-up-path: 4.0.0
@@ -12813,11 +12823,11 @@ snapshots:
 
   '@npmcli/fs@4.0.0':
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.3
 
   '@npmcli/fs@5.0.0':
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.3
 
   '@npmcli/git@6.0.3':
     dependencies:
@@ -12827,7 +12837,7 @@ snapshots:
       npm-pick-manifest: 10.0.0
       proc-log: 5.0.0
       promise-retry: 2.0.1
-      semver: 7.7.2
+      semver: 7.7.3
       which: 5.0.0
 
   '@npmcli/git@7.0.1':
@@ -12838,7 +12848,7 @@ snapshots:
       npm-pick-manifest: 11.0.3
       proc-log: 6.1.0
       promise-retry: 2.0.1
-      semver: 7.7.2
+      semver: 7.7.3
       which: 6.0.0
 
   '@npmcli/installed-package-contents@3.0.0':
@@ -12864,7 +12874,7 @@ snapshots:
       json-parse-even-better-errors: 5.0.0
       pacote: 21.1.0
       proc-log: 6.1.0
-      semver: 7.7.2
+      semver: 7.7.3
     transitivePeerDependencies:
       - supports-color
 
@@ -12883,7 +12893,7 @@ snapshots:
       hosted-git-info: 9.0.2
       json-parse-even-better-errors: 5.0.0
       proc-log: 6.1.0
-      semver: 7.7.2
+      semver: 7.7.3
       validate-npm-package-license: 3.0.4
 
   '@npmcli/promise-spawn@8.0.3':
@@ -12918,7 +12928,7 @@ snapshots:
       enquirer: 2.3.6
       minimatch: 10.1.1
       nx: 22.4.4
-      semver: 7.7.2
+      semver: 7.7.3
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
@@ -13662,7 +13672,7 @@ snapshots:
 
   '@types/chai-as-promised@7.1.8':
     dependencies:
-      '@types/chai': 4.3.20
+      '@types/chai': 5.2.3
 
   '@types/chai@4.3.20': {}
 
@@ -13708,7 +13718,7 @@ snapshots:
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 25.0.10
+      '@types/node': 25.2.0
 
   '@types/fs-extra@9.0.13':
     dependencies:
@@ -13717,11 +13727,11 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 25.0.10
+      '@types/node': 25.2.0
 
   '@types/glob@9.0.0':
     dependencies:
-      glob: 8.1.0
+      glob: 13.0.0
 
   '@types/hast@3.0.4':
     dependencies:
@@ -13821,11 +13831,11 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 20.19.31
+      '@types/node': 25.2.0
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 20.19.31
+      '@types/node': 25.2.0
     optional: true
 
   '@typescript-eslint/eslint-plugin@8.54.0(@typescript-eslint/parser@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
@@ -15567,7 +15577,7 @@ snapshots:
       handlebars: 4.7.8
       json-stringify-safe: 5.0.1
       meow: 8.1.2
-      semver: 7.7.2
+      semver: 7.7.3
       split: 1.0.1
 
   conventional-commits-filter@3.0.0:
@@ -17214,9 +17224,9 @@ snapshots:
   execa@5.0.0:
     dependencies:
       cross-spawn: 7.0.6
-      get-stream: 6.0.0
+      get-stream: 6.0.1
       human-signals: 2.1.0
-      is-stream: 2.0.0
+      is-stream: 2.0.1
       merge-stream: 2.0.0
       npm-run-path: 4.0.1
       onetime: 5.1.2
@@ -17840,7 +17850,7 @@ snapshots:
   git-semver-tags@5.0.1:
     dependencies:
       meow: 8.1.2
-      semver: 7.7.2
+      semver: 7.7.3
 
   git-up@7.0.0:
     dependencies:
@@ -18291,7 +18301,7 @@ snapshots:
       npm-package-arg: 13.0.1
       promzard: 2.0.0
       read: 4.1.0
-      semver: 7.7.2
+      semver: 7.7.3
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 6.0.2
 
@@ -18961,7 +18971,7 @@ snapshots:
       npm-package-arg: 13.0.1
       npm-registry-fetch: 19.1.0
       proc-log: 5.0.0
-      semver: 7.7.2
+      semver: 7.7.3
       sigstore: 4.1.0
       ssri: 12.0.0
     transitivePeerDependencies:
@@ -19179,7 +19189,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.3
 
   make-fetch-happen@14.0.3:
     dependencies:
@@ -19589,7 +19599,7 @@ snapshots:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.2
 
   mustache@4.2.0: {}
 
@@ -19654,9 +19664,9 @@ snapshots:
       make-fetch-happen: 14.0.3
       nopt: 8.1.0
       proc-log: 5.0.0
-      semver: 7.7.2
+      semver: 7.7.3
       tar: 7.5.7
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.15
       which: 5.0.0
     transitivePeerDependencies:
       - supports-color
@@ -19720,11 +19730,11 @@ snapshots:
 
   npm-install-checks@7.1.2:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.3
 
   npm-install-checks@8.0.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.3
 
   npm-normalize-package-bin@4.0.0: {}
 
@@ -19741,7 +19751,7 @@ snapshots:
     dependencies:
       hosted-git-info: 9.0.2
       proc-log: 5.0.0
-      semver: 7.7.2
+      semver: 7.7.3
       validate-npm-package-name: 6.0.2
 
   npm-packlist@10.0.3:
@@ -19754,20 +19764,20 @@ snapshots:
       npm-install-checks: 7.1.2
       npm-normalize-package-bin: 4.0.0
       npm-package-arg: 12.0.2
-      semver: 7.7.2
+      semver: 7.7.3
 
   npm-pick-manifest@11.0.3:
     dependencies:
       npm-install-checks: 8.0.0
       npm-normalize-package-bin: 5.0.0
       npm-package-arg: 13.0.1
-      semver: 7.7.2
+      semver: 7.7.3
 
   npm-registry-fetch@19.1.0:
     dependencies:
       '@npmcli/redact': 3.2.2
       jsonparse: 1.3.1
-      make-fetch-happen: 15.0.2
+      make-fetch-happen: 15.0.3
       minipass: 7.1.2
       minipass-fetch: 4.0.1
       minizlib: 3.1.0
@@ -19804,7 +19814,7 @@ snapshots:
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
       axios: 1.13.4
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       cliui: 8.0.1
@@ -19824,7 +19834,7 @@ snapshots:
       open: 8.4.2
       ora: 5.3.0
       resolve.exports: 2.0.3
-      semver: 7.7.2
+      semver: 7.7.3
       string-width: 4.2.3
       tar-stream: 2.2.0
       tmp: 0.2.5
@@ -19960,9 +19970,9 @@ snapshots:
   ora@5.3.0:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
@@ -22252,7 +22262,7 @@ snapshots:
     dependencies:
       '@tufjs/models': 4.1.0
       debug: 4.4.3(supports-color@9.4.0)
-      make-fetch-happen: 15.0.2
+      make-fetch-happen: 15.0.3
     transitivePeerDependencies:
       - supports-color
 

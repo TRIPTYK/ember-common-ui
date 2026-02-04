@@ -1,5 +1,5 @@
 .code-example {
-  @apply rounded-box bg-base-100 shadow-lg mb-6 w-3/4;
+  @apply rounded-box bg-base-100 shadow-lg mb-6;
 }
 
 .code-example .component-preview {
@@ -8,18 +8,6 @@
 
 .code-example .component-preview h3 {
   @apply text-lg font-semibold text-base-content;
-}
-
-.code-example .tabs {
-  @apply bg-base-100 flex;
-}
-
-.code-example .tabs .tab {
-  @apply border-b-2 border-transparent text-base-content/60 hover:text-base-content hover:border-base-content/20 transition-colors px-6 py-3 cursor-pointer;
-}
-
-.code-example .tabs .tab.tab-active {
-  @apply border-primary text-primary font-medium;
 }
 
 .code-example .tab-content {

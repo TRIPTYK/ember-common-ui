@@ -15,7 +15,7 @@
 }
 
 .tpk-datepicker-container[data-has-error~='true'] .tpk-validation-errors {
-  @apply text-error text-sm justify-self-end right-0 -bottom-1 absolute;
+  @apply text-error text-xs justify-self-end right-0 bottom-0 absolute;
 }
 
 .tpk-datepicker-container[data-has-error~='true'] .tpk-label {
