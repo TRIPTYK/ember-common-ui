@@ -46,6 +46,7 @@ export default class LoginForm extends Component<TpkLoginSignature> {
       @reactive={{true}}
       @validationSchema={{@loginSchema}}
       class='tpk-login-form'
+      data-test-tpk-login-form
       ...attributes
       as |F|
     >
@@ -53,11 +54,13 @@ export default class LoginForm extends Component<TpkLoginSignature> {
         @label='Email'
         @validationField='email'
         class='tpk-login-form-email'
+        data-test-tpk-login-form-email
       />
       <F.TpkPasswordPrefab
         @label='Password'
         @validationField='password'
         class='tpk-login-form-password'
+        data-test-tpk-login-form-password
       />
       <button class='tpk-login-form-button' type='submit'>
         {{this.submitButtonText}}

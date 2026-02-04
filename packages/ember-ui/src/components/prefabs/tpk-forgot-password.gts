@@ -44,12 +44,14 @@ export default class TpkForgotPasswordComponent extends Component<TpkForgotPassw
       @reactive={{true}}
       @validationSchema={{@forgotPasswordSchema}}
       class='tpk-forgot-password-form'
+      data-test-tpk-forgot-password-form
       as |F|
     >
       <F.TpkEmailPrefab
         @label='Email Address'
         @validationField='email'
         class='tpk-forgot-password-form-email'
+        data-test-tpk-forgot-password-form-email
       />
       <button class='tpk-forgot-password-form-button' type='submit'>
         {{this.submitButtonText}}
