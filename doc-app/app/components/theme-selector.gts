@@ -5,7 +5,7 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import type Owner from '@ember/owner';
 
-const THEMES = ['nord', 'dracula', 'cupcake', 'corporate'] as const;
+const THEMES = ['nord', 'dracula', 'cupcake', 'corporate', 'lemonade'] as const;
 
 interface ThemeSelectorSignature {
   Args: {

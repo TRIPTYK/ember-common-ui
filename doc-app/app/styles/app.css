@@ -8,7 +8,8 @@
     nord --default,
     dracula,
     cupcake,
-    corporate;
+    corporate,
+    lemonade;
 }
 @import '@triptyk/ember-input/dist/app.css';
 @import '@triptyk/ember-ui/dist/app.css';
