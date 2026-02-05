@@ -95,14 +95,12 @@ module(
     test('It passes correctly the actionMenu', async function (assert) {
       const actionMenu = [
         {
-          icon: 'edit',
           action: () => {
             assert.step('rowClick function called');
           },
           name: 'Edit',
         },
         {
-          icon: 'delete',
           action: () => {
             assert.step('delete function called');
           },
@@ -141,7 +139,7 @@ module(
       await renderComponent(tableParams);
       assert
         .dom('[data-test-table-generic-prefab] [data-test-row="1"]')
-        ?.hasText('Leroy Simon info@triptyk.eu');
+        ?.hasTextContaining('Leroy Simon info@triptyk.eu');
     });
 
     test('it passes a renderElement', async function (assert) {

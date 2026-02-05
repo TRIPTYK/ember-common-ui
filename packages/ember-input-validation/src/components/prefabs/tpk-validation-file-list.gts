@@ -10,6 +10,11 @@ import { on } from '@ember/modifier';
 import type { Changeset } from 'ember-immer-changeset';
 import { fn } from '@ember/helper';
 import { modifier } from 'ember-modifier';
+import UploadIcon from '../../assets/icons/upload.gts';
+import BlockIcon from '../../assets/icons/block.gts';
+import DocumentIcon from '../../assets/icons/document.gts';
+import DownloadIcon from '../../assets/icons/download.gts';
+import DeleteIcon from '../../assets/icons/delete.gts';
 
 export interface TpkValidationFileListPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
@@ -111,11 +116,11 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
           {{handleSpaceToOpenListChoice}}
           {{on 'drop' this.handleDrop}}
         >
-          <img
-            src={{if @disabled '/block.svg' '/upload.svg'}}
-            alt={{if @disabled 'block' 'upload'}}
-            class='tpk-file-list-placeholder-icon'
-          />
+          {{#if @disabled}}
+            <BlockIcon class='tpk-file-list-placeholder-icon' />
+          {{else}}
+            <UploadIcon class='tpk-file-list-placeholder-icon' />
+          {{/if}}
           {{#unless @disabled}}
             <div class='tpk-file-list-placeholder'>
               {{@placeholder}}
@@ -187,7 +192,7 @@ export class FileListComponent extends Component<FileListSignature> {
             {{#if (this.startWith file.type 'image/')}}
               <img src={{this.setImagePreview file}} alt={{file.name}} />
             {{else}}
-              <img src='/document.svg' alt='document' />
+              <DocumentIcon />
             {{/if}}
           </div>
           <div class='tpk-file-list-list-item-content'>
@@ -205,7 +210,7 @@ export class FileListComponent extends Component<FileListSignature> {
                 {{on 'click' (fn this.downloadFile file)}}
                 class='tpk-file-list-list-item-action-download'
               >
-                <img src='/download.svg' alt='download' />
+                <DownloadIcon />
               </button>
             {{/unless}}
             {{#unless @disabled}}
@@ -214,7 +219,7 @@ export class FileListComponent extends Component<FileListSignature> {
                 {{on 'click' (fn this.deleteFile file)}}
                 class='tpk-file-list-list-item-action-delete'
               >
-                <img src='/delete.svg' alt='delete' />
+                <DeleteIcon />
               </button>
             {{/unless}}
           </div>

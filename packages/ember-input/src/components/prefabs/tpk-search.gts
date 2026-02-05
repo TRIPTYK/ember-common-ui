@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { task } from 'ember-concurrency';
 import { on } from '@ember/modifier';
 import TpkInputComponent from '../tpk-input.gts';
-import searchSvg from '../../assets/search.svg';
+import SearchIcon from '../../assets/icons/search.gts';
 
 export type TpkSearchPrefabSignature = {
   Args: MergeDeep<
@@ -58,29 +58,22 @@ export default class TpkSearchPrefabComponent extends Component<TpkSearchPrefabS
         @type='search'
         as |C|
       >
-        <div
-          class='tpk-search'
-          data-test-tpk-prefab-search-container
-          ...attributes
-        >
-          <C.Label class='tpk-search-label'>
-            {{#if this.performSearch.isRunning}}
-              <div class='tpk-search-button'>
-                <i class='tpk-search-loader'></i>
-              </div>
-            {{else}}
-              <button type='submit' data-test-search-submit>
-                <img
-                  src={{searchSvg}}
-                  data-test-tpk-search-icon
-                  alt='magnyfying glass'
-                  class='tpk-search-button'
-                />
-              </button>
-            {{/if}}
-            <C.Input class='tpk-search-input' />
-          </C.Label>
-        </div>
+        <C.Label class='tpk-search'>
+          {{#if this.performSearch.isRunning}}
+            <div class='tpk-search-icon'>
+              <i class='tpk-search-loader'></i>
+            </div>
+          {{else}}
+            <button
+              type='submit'
+              class='tpk-search-icon-button'
+              data-test-search-submit
+            >
+              <SearchIcon class='tpk-search-icon' data-test-tpk-search-icon />
+            </button>
+          {{/if}}
+          <C.Input class='tpk-search-input' />
+        </C.Label>
       </TpkInputComponent>
     </form>
   </template>

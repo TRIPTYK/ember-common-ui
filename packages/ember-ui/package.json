@@ -125,10 +125,6 @@
     "version": 2,
     "type": "addon",
     "main": "addon-main.cjs",
-    "public-assets": {
-      "./static/chevron-left.svg": "/ember-ui/icons/chevron-left.svg",
-      "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
-    },
     "app-js": {
       "./components/prefabs/tpk-confirm-modal-prefab.js": "./dist/_app_/components/prefabs/tpk-confirm-modal-prefab.js",
       "./components/prefabs/tpk-dashboard.js": "./dist/_app_/components/prefabs/tpk-dashboard.js",

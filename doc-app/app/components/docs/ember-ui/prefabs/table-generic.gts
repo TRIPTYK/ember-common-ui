@@ -8,6 +8,8 @@ import type { TOC } from '@ember/component/template-only';
 import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
 import stringify from 'doc-app/helpers/to-string';
+import EditIcon from 'doc-app/assets/icons/edit.gts';
+import DeleteIcon from 'doc-app/assets/icons/delete.gts';
 
 const TpkSelectElement: TOC<
   TpkSelectSignature & {
@@ -36,6 +38,9 @@ export default class TpkTableGenericPrefabExample extends Component {
     entity: 'user',
     pageSizes: [10, 30, 50, 75],
     defaultSortColumn: 'firstName',
+    rowClick: (element: unknown) => {
+      console.log('Row clicked:', element);
+    },
     columns: [
       {
         field: 'lastName',
@@ -56,14 +61,18 @@ export default class TpkTableGenericPrefabExample extends Component {
     ],
     actionMenu: [
       {
-        icon: 'edit',
+        icon: <template><EditIcon class="size-4" /></template> as TOC<{
+          Element: SVGSVGElement;
+        }>,
         action: (element: unknown) => {
           console.log('Edit clicked', element);
         },
         name: 'Edit',
       },
       {
-        icon: 'delete',
+        icon: <template><DeleteIcon class="size-4" /></template> as TOC<{
+          Element: SVGSVGElement;
+        }>,
         action: (element: unknown) => {
           console.log('Delete clicked', element);
         },

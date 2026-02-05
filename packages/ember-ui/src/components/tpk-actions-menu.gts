@@ -1,10 +1,10 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import type { WithBoundArgs } from '@glint/template';
 import TpkActionsMenuElementComponent from './tpk-actions-menu/element.gts';
+import { guidFor } from '@ember/-internals/utils';
+import EllipsisIcon from '../assets/icons/ellipsis.gts';
 import { on } from '@ember/modifier';
-import onClickOutside from 'ember-click-outside/modifiers/on-click-outside';
 
 export interface TpkActionsMenuElementComponentSignature {
   Args: object;
@@ -17,65 +17,55 @@ export interface TpkActionsMenuElementComponentSignature {
 }
 
 export default class TpkActionsMenuComponent extends Component<TpkActionsMenuElementComponentSignature> {
-  @tracked isOpen = false;
+  index = guidFor(this);
 
-  get actionsMenuClass() {
-    return this.isOpen ? 'actions aopened' : 'actions';
-  }
-
-  @action closeMenu() {
-    this.isOpen = false;
-  }
-
-  @action handleKeyUp(e: KeyboardEvent) {
-    if (!this.isOpen) {
-      return;
-    }
-
-    if (e.key === 'Escape') {
-      this.isOpen = false;
-    }
+  stopPropagation(e: Event) {
+    e.stopImmediatePropagation();
   }
 
   @action handleAction(action: (...args: unknown[]) => void, e: Event) {
     e.stopImmediatePropagation();
-    this.isOpen = false;
+    this.hidePopover(e);
     action(e);
   }
 
-  @action toggle(e: Event) {
-    e.stopImmediatePropagation();
-    this.isOpen = !this.isOpen;
+  hidePopover(e: Event) {
+    const ulElement = (e.target as HTMLElement).closest(
+      '[popover]',
+    ) as HTMLElement;
+    if (ulElement) {
+      ulElement.hidePopover();
+    }
   }
 
   <template>
     {{! template-lint-disable no-invalid-interactive }}
-    <div
-      class={{this.actionsMenuClass}}
-      data-test-actions-menu
-      {{! @glint-ignore }}
-      {{onClickOutside this.closeMenu}}
-      {{on 'keyup' this.handleKeyUp}}
-      ...attributes
-    >
+    {{! template-lint-disable no-inline-styles }}
+    {{! template-lint-disable style-concatenation }}
+    <div class='actions' data-test-actions-menu ...attributes>
       <button
         type='button'
         class='open_actions'
-        {{on 'click' this.toggle}}
-        title='actions'
+        popovertarget='popover-{{this.index}}'
+        style='anchor-name:--anchor-{{this.index}}'
+        {{on 'click' this.stopPropagation}}
         data-test-actions-open-action
       >
-        <img src='/assets/icons/kebab.svg' alt='seeAllAction' />
+        <EllipsisIcon />
       </button>
-      {{#if this.isOpen}}
-        <ul class='actions_list'>
-          {{yield
-            (component
-              TpkActionsMenuElementComponent handleAction=this.handleAction
-            )
-          }}
-        </ul>
-      {{/if}}
+      <ul
+        class='actions_list'
+        popover
+        id='popover-{{this.index}}'
+        style='position-anchor:--anchor-{{this.index}}'
+        data-test-actions-list
+      >
+        {{yield
+          (component
+            TpkActionsMenuElementComponent handleAction=this.handleAction
+          )
+        }}
+      </ul>
     </div>
   </template>
 }

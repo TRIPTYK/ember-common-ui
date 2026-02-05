@@ -3,11 +3,13 @@ import type { TOC } from '@ember/component/template-only';
 
 export interface TpkSelectOptionArgs {
   Args: {
-    option: unknown;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    option: any;
   };
   Element: HTMLLIElement;
   Blocks: {
-    default: [{ option: unknown }];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    default: [{ option: any }];
   };
 }
 

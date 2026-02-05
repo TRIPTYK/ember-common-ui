@@ -14,9 +14,9 @@
   @apply relative;
 }
 
-.tpk-table-generic-container .tpk-table-generic .tpk-action-menu .actions_list {
+/* .tpk-table-generic-container .tpk-table-generic .tpk-action-menu .actions_list {
   @apply absolute top-0 -right-4 bg-white rounded p-2;
-}
+} */
 
 .tpk-table-generic-container
   .tpk-table-pagination
@@ -40,4 +40,20 @@
 
 .tpk-table-generic-container .tpk-table-pagination {
   @apply flex flex-col justify-center w-full items-center text-center;
+}
+
+.tpk-table-generic-container .tpk-table-generic .tpk-action-menu .open_actions {
+  @apply btn btn-ghost;
+}
+
+.tpk-table-generic-container
+  .tpk-table-generic
+  .tpk-action-menu
+  .open_actions
+  svg {
+  @apply size-6;
+}
+
+.tpk-table-generic-container .tpk-table-generic .tpk-action-menu .actions_list {
+  @apply dropdown menu min-w-36 rounded-box bg-base-100 shadow-sm;
 }

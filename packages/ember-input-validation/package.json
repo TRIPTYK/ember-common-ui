@@ -122,18 +122,7 @@
     "version": 2,
     "type": "addon",
     "main": "addon-main.cjs",
-    "public-assets": {
-      "./static/BE.svg": "/BE.svg",
-      "./static/DE.svg": "/DE.svg",
-      "./static/LU.svg": "/LU.svg",
-      "./static/NL.svg": "/NL.svg",
-      "./static/FR.svg": "/FR.svg",
-      "./static/upload.svg": "/upload.svg",
-      "./static/download.svg": "/download.svg",
-      "./static/delete.svg": "/delete.svg",
-      "./static/document.svg": "/document.svg",
-      "./static/block.svg": "/block.svg"
-    },
+    "public-assets": {},
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
       "./components/prefabs/mandatory-label.js": "./dist/_app_/components/prefabs/mandatory-label.js",
