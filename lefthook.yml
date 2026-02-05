@@ -19,6 +19,8 @@ pre-push:
 
 commit-msg:
   commands:
+    lintfix:
+      run: pnpm lint:fix
     git-conventional-commits:
       runner: bash
       run: pnpm git-conventional-commits commit-msg-hook {1}
