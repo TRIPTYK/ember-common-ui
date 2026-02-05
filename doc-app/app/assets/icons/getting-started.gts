@@ -1,7 +1,7 @@
 import type { TOC } from '@ember/component/template-only';
 
 const GettingStartedIcon: TOC<{ Element: SVGSVGElement }> = <template>
-    <svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"

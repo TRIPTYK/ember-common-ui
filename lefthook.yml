@@ -21,6 +21,7 @@ pre-commit:
   commands:
     lintfix:
       run: pnpm lint:fix
+      stage_fixed: true
 
 commit-msg:
   commands:
