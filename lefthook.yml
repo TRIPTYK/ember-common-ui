@@ -17,6 +17,12 @@ pre-push:
     lint:
       run: pnpm lint
 
+pre-commit:
+  commands:
+    lintfix:
+      run: pnpm lint:fix
+      stage_fixed: true
+
 commit-msg:
   commands:
     git-conventional-commits:

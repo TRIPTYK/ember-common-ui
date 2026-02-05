@@ -2,12 +2,15 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';
+import type { Invokable } from '@glint/template/-private/integration';
 
 export interface TpkActionsMenuElementComponentSignature {
   Args: {
     handleAction: (action: (...args: unknown[]) => void, e: Event) => void;
     action?: (...args: unknown[]) => void;
-    icon?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    icon?: TOC<{ Element: SVGSVGElement }> | Invokable<any>;
     label?: string;
   };
   Element: HTMLLIElement;
@@ -34,7 +37,7 @@ export default class TpkActionsMenuElementComponent extends Component<TpkActions
     <li ...attributes>
       <button {{on 'click' (fn this.handleAction this.action)}} type='button'>
         {{#if @icon}}
-          <img src={{@icon}} class='w-6' alt='' />
+          <@icon class='size-4' />
         {{/if}}
         {{yield}}
       </button>

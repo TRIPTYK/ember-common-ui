@@ -10,6 +10,12 @@ import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import type Owner from '@ember/owner';
+import type { TOC } from '@ember/component/template-only';
+import BeIcon from '../../assets/icons/be.gts';
+import FrIcon from '../../assets/icons/fr.gts';
+import DeIcon from '../../assets/icons/de.gts';
+import LuIcon from '../../assets/icons/lu.gts';
+import NlIcon from '../../assets/icons/nl.gts';
 
 export interface TpkValidationMobilePrefabSignature extends BaseValidationSignature {
   Args: Omit<
@@ -31,7 +37,7 @@ export interface TpkValidationMobilePrefabSignature extends BaseValidationSignat
 }
 
 interface Prefix {
-  flag: string;
+  flag: TOC<{ Element: SVGSVGElement }>;
   code: string;
 }
 
@@ -44,14 +50,14 @@ const masks = {
 };
 
 export default class TpkValidationMobilePrefabComponent extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
-  defaultPrefix = { flag: '/BE.svg', code: '+32' };
+  defaultPrefix = { flag: BeIcon, code: '+32' };
   @tracked selectedPrefix = this.defaultPrefix;
   prefixes: Prefix[] = [
-    { flag: '/NL.svg', code: '+31' },
-    { flag: '/BE.svg', code: '+32' },
-    { flag: '/FR.svg', code: '+33' },
-    { flag: '/DE.svg', code: '+49' },
-    { flag: '/LU.svg', code: '+352' },
+    { flag: NlIcon, code: '+31' },
+    { flag: BeIcon, code: '+32' },
+    { flag: FrIcon, code: '+33' },
+    { flag: DeIcon, code: '+49' },
+    { flag: LuIcon, code: '+352' },
   ];
 
   constructor(owner: Owner, args: TpkValidationMobilePrefabSignature['Args']) {
@@ -158,13 +164,9 @@ export default class TpkValidationMobilePrefabComponent extends BaseValidationCo
           >
             <T.Option as |O|>
               <div class='flag'>
-                <img
-                  alt={{this.getValueFromOption O.option 'code'}}
-                  src={{this.getValueFromOption O.option 'flag'}}
-                  width='20'
-                />
+                <O.option.flag />
                 <div>
-                  {{this.getValueFromOption O.option 'code'}}
+                  {{O.option.code}}
                 </div>
               </div>
             </T.Option>

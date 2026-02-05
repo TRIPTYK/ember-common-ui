@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 import { guidFor } from '@ember/object/internals';
 import t from 'ember-intl/helpers/t';
+import ChevronRightIcon from '../../assets/icons/chevron-right.gts';
+import ChevronLeftIcon from '../../assets/icons/chevron-left.gts';
 
 export interface TableGenericPaginationData {
   isFirstPage: boolean;
@@ -91,10 +93,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
             {{on 'click' @paginationActions.previousPage}}
             data-test-pagination-previous
           >
-            <img
-              src='/ember-ui/icons/chevron-left.svg'
-              alt={{t 'global.previous'}}
-            />
+            <ChevronLeftIcon class='size-4' />
             <span class='sr-only'>
               {{t 'global.previous'}}
             </span>
@@ -111,10 +110,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
             <span class='sr-only'>
               {{t 'global.next'}}
             </span>
-            <img
-              src='/ember-ui/icons/chevron-right.svg'
-              alt={{t 'global.next'}}
-            />
+            <ChevronRightIcon class='size-4' />
           </button>
         </div>
       {{/if}}

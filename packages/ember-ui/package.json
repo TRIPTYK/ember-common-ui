@@ -125,10 +125,6 @@
     "version": 2,
     "type": "addon",
     "main": "addon-main.cjs",
-    "public-assets": {
-      "./static/chevron-left.svg": "/ember-ui/icons/chevron-left.svg",
-      "./static/chevron-right.svg": "/ember-ui/icons/chevron-right.svg"
-    },
     "app-js": {
       "./components/prefabs/tpk-confirm-modal-prefab.js": "./dist/_app_/components/prefabs/tpk-confirm-modal-prefab.js",
       "./components/prefabs/tpk-dashboard.js": "./dist/_app_/components/prefabs/tpk-dashboard.js",
@@ -138,6 +134,7 @@
       "./components/prefabs/tpk-reset-password.js": "./dist/_app_/components/prefabs/tpk-reset-password.js",
       "./components/prefabs/tpk-sidebar.js": "./dist/_app_/components/prefabs/tpk-sidebar.js",
       "./components/prefabs/tpk-table-generic-prefab.js": "./dist/_app_/components/prefabs/tpk-table-generic-prefab.js",
+      "./components/prefabs/tpk-theme-selector.js": "./dist/_app_/components/prefabs/tpk-theme-selector.js",
       "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
       "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
       "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",

@@ -6,6 +6,7 @@ import { TableGenericUserWorker } from 'doc-app/tests/workers/table-generic';
 import { setupRenderingTest } from 'ember-qunit';
 import TpkTableGeneric from '@triptyk/ember-ui/components/tpk-table-generic';
 import stringify from 'doc-app/helpers/to-string';
+import DeleteIcon from 'doc-app/assets/icons/delete.gts';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
@@ -73,7 +74,7 @@ module('Integration | Component | table-generic', function (hooks) {
               </Body.Cell>
               <Body.ActionMenu as |Action|>
                 <Action
-                  @icon="/assets/icons/delete.svg"
+                  @icon={{component DeleteIcon}}
                   @action={{deleteAction}}
                   data-test-delete
                 >

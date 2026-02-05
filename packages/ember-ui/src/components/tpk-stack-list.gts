@@ -6,6 +6,7 @@ import { hash } from '@ember/helper';
 import TpkStackListItem from './tpk-stack-list/item.gts';
 import TpkStackListHead from './tpk-stack-list/head.gts';
 import { on } from '@ember/modifier';
+import PlusIcon from '../assets/icons/plus.gts';
 
 export interface TpkStackListComponentSignature {
   Args: {
@@ -80,7 +81,7 @@ const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
       data-test-add-stackList-item
       {{on 'click' @onAdd}}
     >
-      <img src='/assets/icons/plus.svg' alt='add' class='w-5 h-5' />
+      <PlusIcon class='size-6' />
       <span>
         {{@titleForAdd}}
       </span>

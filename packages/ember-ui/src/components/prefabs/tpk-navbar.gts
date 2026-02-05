@@ -2,6 +2,10 @@ import type { TOC } from '@ember/component/template-only';
 import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
+import EarthIcon from '../../assets/icons/earth.gts';
+import BurgerIcon from '../../assets/icons/burger.gts';
+import SidepageIcon from '../../assets/icons/sidepage.gts';
+import ChevronDownIcon from '../../assets/icons/chevron-down.gts';
 
 export interface NavbarItem {
   label: string;
@@ -38,57 +42,31 @@ interface NavbarSignature {
 }
 
 const TpkNavbar: TOC<NavbarSignature> = <template>
-  <nav class='tpk-navbar navbar bg-base-300'>
+  <nav class='tpk-navbar'>
     <div class='navbar-start'>
       {{#if @drawerId}}
         <label
           for={{@drawerId}}
           aria-label='sidebar'
-          class='tpk-navbar-toggle btn btn-ghost btn-square lg:hidden'
+          class='tpk-navbar-toggle-drawer'
         >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke-width='1.5'
-            stroke='currentColor'
-            class='size-5'
-          >
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              d='M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5'
-            />
-          </svg>
+          <BurgerIcon class='size-5' />
         </label>
       {{/if}}
       {{#if @onSidebarToggle}}
         <button
           type='button'
           aria-label='toggle sidebar'
-          class='tpk-navbar-toggle btn btn-ghost btn-square hidden lg:inline-flex'
+          class='tpk-navbar-toggle'
           {{on 'click' @onSidebarToggle}}
         >
-          <svg
-            class='size-5'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-          >
-            <rect x='3' y='3' width='18' height='18' rx='2' ry='2' />
-            <line x1='9' y1='3' x2='9' y2='21' />
-          </svg>
+          <SidepageIcon class='size-5' />
         </button>
       {{/if}}
       <span class='tpk-navbar-title'>{{@title}}</span>
     </div>
     <div class='navbar-center'>
-      <ul
-        class='tpk-navbar-menu-horizontal menu menu-horizontal hidden lg:flex'
-      >
+      <ul class='tpk-navbar-menu-horizontal'>
         {{#each @navbarItems as |item|}}
           <li>
             {{#if item.href}}
@@ -106,31 +84,21 @@ const TpkNavbar: TOC<NavbarSignature> = <template>
     <div class='navbar-end'>
       {{#if @currentUser}}
         <div class='tpk-navbar-user-menu-dropdown dropdown dropdown-end'>
+          {{! template-lint-disable no-inline-styles }}
           <button
             type='button'
-            tabindex='0'
-            class='tpk-navbar-user-menu-toggle btn btn-ghost flex'
-            aria-label='User menu'
+            class='tpk-navbar-user-menu-toggle'
+            popovertarget='popover-user'
+            style='anchor-name:--anchor-user'
           >
             <span class='tpk-navbar-user-name'>{{@currentUser.fullName}}</span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke-width='1.5'
-              stroke='currentColor'
-              class='size-4'
-            >
-              <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                d='m19.5 8.25-7.5 7.5-7.5-7.5'
-              />
-            </svg>
+            <ChevronDownIcon class='size-4' />
           </button>
           <ul
-            tabindex='0'
-            class='tpk-navbar-user-menu-content menu dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow'
+            popover
+            id='popover-user'
+            style='position-anchor:--anchor-user'
+            class='tpk-navbar-user-menu-content'
           >
             {{#if @profileRoute}}
               <li><LinkTo @route={{@profileRoute}}>{{if
@@ -154,35 +122,22 @@ const TpkNavbar: TOC<NavbarSignature> = <template>
       {{/if}}
       {{#if @onLocaleChange}}
         {{#if @languages}}
-          <div class='tpk-navbar-locale-selector dropdown dropdown-end'>
+          <div class='tpk-navbar-locale-selector'>
+            {{! template-lint-disable no-inline-styles }}
             <button
               type='button'
-              tabindex='0'
-              class='tpk-navbar-locale-toggle btn btn-ghost btn-square'
+              class='tpk-navbar-locale-toggle'
+              popovertarget='popover-language'
+              style='anchor-name:--anchor-language'
               aria-label='Language selector'
             >
-              <svg
-                class='size-4'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                stroke-width='2'
-                stroke='currentColor'
-                fill='none'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              >
-                <path stroke='none' d='M0 0h24v24H0z' />
-                <circle cx='12' cy='12' r='9' />
-                <line x1='3.6' y1='9' x2='20.4' y2='9' />
-                <line x1='3.6' y1='15' x2='20.4' y2='15' />
-                <path d='M11.5 3a17 17 0 0 0 0 18' />
-                <path d='M12.5 3a17 17 0 0 1 0 18' />
-              </svg>
+              <EarthIcon class='size-4' />
             </button>
             <ul
-              tabindex='0'
-              class='tpk-navbar-locale-menu menu dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-40 p-2 shadow'
+              class='tpk-navbar-locale-menu'
+              popover
+              id='popover-language'
+              style='position-anchor:--anchor-language'
             >
               {{#each @languages as |language|}}
                 <li>

@@ -5,6 +5,7 @@ import type { ContentValue, WithBoundArgs } from '@glint/template';
 import { get } from '@ember/object';
 import type { Invokable } from '@glint/template/-private/integration';
 import { fn } from '@ember/helper';
+import type { TOC } from '@ember/component/template-only';
 
 export interface TableParams {
   entity: string;
@@ -21,7 +22,8 @@ export interface TableParams {
     component?: string;
   }[];
   actionMenu?: {
-    icon: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    icon?: TOC<{ Element: SVGSVGElement }> | Invokable<any>;
     action: (...args: unknown[]) => void;
     name: string;
   }[];

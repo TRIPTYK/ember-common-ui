@@ -2,6 +2,8 @@ global:
   on: 'sur'
   results: 'résultats'
   results_by_page: 'résultats par page'
+  search: 'Rechercher'
+  theme: 'Thème'
 
 docs:
   sections:

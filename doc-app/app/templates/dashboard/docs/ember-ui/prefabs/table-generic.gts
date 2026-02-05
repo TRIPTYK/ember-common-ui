@@ -46,12 +46,12 @@ export default class TpkTableGenericPrefabDocs extends Component<TpkTableGeneric
       )
       actionMenu=(array
         (hash
-          icon="edit"
+          icon=(component EditIcon)
           action=this.onEdit
           name="Edit"
         )
         (hash
-          icon="delete"
+          icon=(component DeleteIcon)
           action=this.onDelete
           name="Delete"
         )

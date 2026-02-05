@@ -57,12 +57,7 @@ module(
       await renderComponent({
         disabled: false,
       });
-      assert
-        .dom('[data-test-tpk-password-toggle-button]')
-        .hasClass('tpk-password-toggle-button');
-      assert
-        .dom('[data-test-tpk-password-toggle-icon]')
-        .hasAttribute('src', /data:image\/svg\+xml/);
+      assert.dom('[data-test-tpk-password-toggle-icon-eye-shut]').exists();
     });
 
     test('Input type should be password', async function (assert) {
@@ -86,10 +81,10 @@ module(
         disabled: false,
       });
       await click('[data-test-tpk-password-toggle-button]');
-
+      assert.dom('[data-test-tpk-password-toggle-icon-eye]').exists();
       assert
-        .dom('[data-test-tpk-password-toggle-button] img')
-        .hasAttribute('src', /data:image\/svg\+xml/);
+        .dom('[data-test-tpk-password-toggle-icon-eye-shut]')
+        .doesNotExist();
     });
 
     test('When button is clicked twice, input type should be password', async function (assert) {

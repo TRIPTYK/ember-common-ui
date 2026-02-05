@@ -1,6 +1,8 @@
 import type { TOC } from '@ember/component/template-only';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
+import DeleteIcon from '../../assets/icons/delete.gts';
+import ChevronDownIcon from '../../assets/icons/chevron-down.gts';
 
 export interface TpkStackListHeadComponentSignature {
   Args: {
@@ -33,12 +35,7 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
           data-test-delete-stackList-item
           {{on 'click' (fn @onRemove @index)}}
         >
-          <img
-            src='/assets/icons/trash.svg'
-            class='w-6 h-6'
-            alt=''
-            role='none'
-          />
+          <DeleteIcon class='size-6' />
         </button>
       {{/unless}}
       <button
@@ -48,12 +45,7 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
         class='tpk-stack-head-expand-btn'
         data-test-toggle-stackList-item
       >
-        <img
-          src='/assets/icons/arrow-down.svg'
-          class='w-6 h-6'
-          alt=''
-          role='none'
-        />
+        <ChevronDownIcon class='size-6' />
       </button>
     </div>
   </template>;
