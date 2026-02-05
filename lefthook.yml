@@ -17,10 +17,13 @@ pre-push:
     lint:
       run: pnpm lint
 
-commit-msg:
+pre-commit:
   commands:
     lintfix:
       run: pnpm lint:fix
+
+commit-msg:
+  commands:
     git-conventional-commits:
       runner: bash
       run: pnpm git-conventional-commits commit-msg-hook {1}
