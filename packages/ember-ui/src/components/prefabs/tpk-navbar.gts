@@ -5,6 +5,7 @@ import { LinkTo } from '@ember/routing';
 import EarthIcon from '../../assets/icons/earth.gts';
 import BurgerIcon from '../../assets/icons/burger.gts';
 import SidepageIcon from '../../assets/icons/sidepage.gts';
+import ChevronDownIcon from '../../assets/icons/chevron-down.gts';
 
 export interface NavbarItem {
   label: string;
@@ -91,20 +92,7 @@ const TpkNavbar: TOC<NavbarSignature> = <template>
             style='anchor-name:--anchor-user'
           >
             <span class='tpk-navbar-user-name'>{{@currentUser.fullName}}</span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke-width='1.5'
-              stroke='currentColor'
-              class='size-4'
-            >
-              <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                d='m19.5 8.25-7.5 7.5-7.5-7.5'
-              />
-            </svg>
+            <ChevronDownIcon class='size-4' />
           </button>
           <ul
             popover
