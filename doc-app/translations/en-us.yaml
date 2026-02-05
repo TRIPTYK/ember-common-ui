@@ -3,6 +3,7 @@ global:
   results: 'results'
   results_by_page: 'results by page'
   search: 'Search'
+  theme: 'Theme'
 
 docs:
   sections:

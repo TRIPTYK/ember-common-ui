@@ -1,0 +1,11 @@
+.tpk-theme-selector-toggle {
+  @apply btn btn-ghost btn-sm gap-1;
+}
+
+.tpk-theme-selector-menu {
+  @apply dropdown menu min-w-36 rounded-box bg-base-100 shadow-sm dropdown-top;
+}
+
+.tpk-theme-selector-menu-item:first-child {
+  @apply menu-title px-2 py-1 text-base-content/70;
+}

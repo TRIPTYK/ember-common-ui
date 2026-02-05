@@ -7,7 +7,7 @@ import TpkDashBoard, {
   type Language,
 } from '@triptyk/ember-ui/components/prefabs/tpk-dashboard';
 import type { TOC } from '@ember/component/template-only';
-import ThemeSelector from 'doc-app/components/theme-selector';
+import TpkThemeSelector from '@triptyk/ember-ui/components/prefabs/tpk-theme-selector';
 import { hash } from '@ember/helper';
 import type { IntlService } from 'ember-intl';
 
@@ -165,7 +165,10 @@ export default class DashboardTemplate extends Component {
         </:content>
         <:footer>
           <div class="flex items-center justify-center w-full p-2 px-4">
-            <ThemeSelector @sidebarCollapsed={{this.sidebarCollapsed}} />
+            <TpkThemeSelector
+              @sidebarCollapsed={{this.sidebarCollapsed}}
+              @localStorageKey="doc-app-theme"
+            />
           </div>
         </:footer>
         <:menu>

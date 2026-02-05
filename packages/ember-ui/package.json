@@ -134,6 +134,7 @@
       "./components/prefabs/tpk-reset-password.js": "./dist/_app_/components/prefabs/tpk-reset-password.js",
       "./components/prefabs/tpk-sidebar.js": "./dist/_app_/components/prefabs/tpk-sidebar.js",
       "./components/prefabs/tpk-table-generic-prefab.js": "./dist/_app_/components/prefabs/tpk-table-generic-prefab.js",
+      "./components/prefabs/tpk-theme-selector.js": "./dist/_app_/components/prefabs/tpk-theme-selector.js",
       "./components/tpk-actions-menu.js": "./dist/_app_/components/tpk-actions-menu.js",
       "./components/tpk-actions-menu/element.js": "./dist/_app_/components/tpk-actions-menu/element.js",
       "./components/tpk-confirm-modal.js": "./dist/_app_/components/tpk-confirm-modal.js",

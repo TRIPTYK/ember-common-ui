@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-const ChevronDownIcon: TOC<{ Element: SVGSVGElement }> = <template>
+const BurgerIcon: TOC<{ Element: SVGSVGElement }> = <template>
   <svg
     xmlns='http://www.w3.org/2000/svg'
     fill='none'
@@ -12,9 +12,8 @@ const ChevronDownIcon: TOC<{ Element: SVGSVGElement }> = <template>
     <path
       stroke-linecap='round'
       stroke-linejoin='round'
-      d='m19.5 8.25-7.5 7.5-7.5-7.5'
+      d='M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5'
     />
   </svg>
 </template>;
-
-export default ChevronDownIcon;
+export default BurgerIcon;

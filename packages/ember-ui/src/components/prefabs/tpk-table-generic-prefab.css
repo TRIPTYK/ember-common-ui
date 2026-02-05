@@ -14,10 +14,6 @@
   @apply relative;
 }
 
-/* .tpk-table-generic-container .tpk-table-generic .tpk-action-menu .actions_list {
-  @apply absolute top-0 -right-4 bg-white rounded p-2;
-} */
-
 .tpk-table-generic-container
   .tpk-table-pagination
   .yeti-table-pagination-buttons {
