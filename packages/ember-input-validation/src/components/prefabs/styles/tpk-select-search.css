@@ -1,5 +1,5 @@
 .tpk-select-search-container {
-  @apply relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-select-search-container .tpk-label {
@@ -18,6 +18,10 @@
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
   color: var(--fallback-bc, oklch(var(--bc) / 0.4));
+}
+
+.tpk-select-search-container .ember-power-select-options {
+  @apply mt-2;
 }
 
 .tpk-select-search-container .ember-power-select-selected-item {
@@ -54,7 +58,8 @@
 }
 
 .tpk-select-search-container[data-has-error~='true'] .tpk-validation-errors {
-  @apply text-error text-xs justify-self-end right-0 bottom-0 absolute;
+  @apply text-error text-xs left-0 right-0 absolute w-full break-words;
+  top: max(calc(100% - 1rem), 3rem);
 }
 
 .tpk-select-search-container[data-has-error~='true']

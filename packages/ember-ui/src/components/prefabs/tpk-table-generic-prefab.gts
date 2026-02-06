@@ -6,6 +6,7 @@ import { get } from '@ember/object';
 import type { Invokable } from '@glint/template/-private/integration';
 import { fn } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
+import type { TableApi } from '../tpk-table-generic/table.gts';
 
 export interface TableParams {
   entity: string;
@@ -13,6 +14,7 @@ export interface TableParams {
   defaultSortColumn?: string;
   additionalFilters?: Record<string, string>;
   relationships?: string;
+  registerApi?: (api: TableApi) => void;
   rowClick?: (element?: unknown, e?: Event) => void;
   columns: {
     field: string;
@@ -115,6 +117,7 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
         @entity={{this.entity}}
         @rowClick={{@tableParams.rowClick}}
         @relationships={{@tableParams.relationships}}
+        @registerApi={{@tableParams.registerApi}}
         as |TG|
       >
         <TG.SearchBar />

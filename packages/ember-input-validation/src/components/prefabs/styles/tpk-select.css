@@ -1,5 +1,5 @@
 .tpk-select-container {
-  @apply relative pb-4;
+  @apply fieldset relative pb-4;
 }
 
 .tpk-select-container .tpk-label {
@@ -69,7 +69,8 @@
 }
 
 .tpk-select-container[data-has-error~='true'] .tpk-validation-errors {
-  @apply text-error text-xs justify-self-end right-0 bottom-0 absolute;
+  @apply text-error text-xs left-0 right-0 absolute w-full break-words;
+  top: max(calc(100% - 1rem), 3rem);
 }
 
 .tpk-select-container[data-has-error~='true'] .ember-basic-dropdown-trigger {

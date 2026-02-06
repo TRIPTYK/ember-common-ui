@@ -1,5 +1,5 @@
 .tpk-file-list-container {
-  @apply relative flex flex-col w-full pb-4;
+  @apply fieldset relative flex flex-col w-full pb-4;
 }
 
 .tpk-file-list-container .tpk-label {
@@ -44,7 +44,8 @@
 }
 
 .tpk-file-list-container[data-has-error~='true'] .tpk-validation-errors {
-  @apply text-error text-xs absolute right-0 bottom-0;
+  @apply text-error text-xs left-0 right-0 absolute w-full break-words;
+  top: max(calc(100% - 1rem), 3rem);
 }
 
 /* File list */
