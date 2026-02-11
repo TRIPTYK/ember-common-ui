@@ -204,4 +204,63 @@ module('Integration | Component | table-generic', function (hooks) {
     await renderTableGenericWithNoAction.call(this);
     assert.dom('tfoot td').hasAttribute('colspan', '3');
   });
+
+  test<ServiceWorkerTestContext>('Clicking checkbox in row does not trigger rowClick', async function (assert) {
+    this.set('checkboxChange', () => {
+      assert.step('checkbox changed');
+    });
+    this.set('checked', false);
+
+    await render(hbs`
+    <TpkTableGeneric
+      @rowClick={{this.rowClick}}
+      @pageSize={{this.pageSize}}
+      @pageSizes={{this.pageSizes}}
+      @entity="user"
+    as | TG |>
+      <TG.Table as | Table |>
+        <Table.Header as |Header|>
+          <Header.Cell @sortable={{false}} @prop='select'>
+            Select
+          </Header.Cell>
+          <Header.Cell @sortable={{true}} @prop='firstName' data-test-table="firstName">
+            Prénom
+          </Header.Cell>
+        </Table.Header>
+        <Table.Body as |Body element|>
+          <Body.Cell>
+            <TpkCheckbox
+              @label="Select"
+              @checked={{this.checked}}
+              @onChange={{this.checkboxChange}}
+              data-test-row-checkbox
+            as |C|>
+              <C.Input />
+            </TpkCheckbox>
+          </Body.Cell>
+          <Body.Cell>
+            {{element.firstName}}
+          </Body.Cell>
+        </Table.Body>
+        <Table.Footer />
+      </TG.Table>
+    </TpkTableGeneric>
+    `);
+
+    // Click the checkbox - should only trigger checkbox change, not row click
+    await click('[data-test-row-checkbox] input');
+    assert.verifySteps(['checkbox changed'], 'Only checkbox change should be called, not rowClick');
+  });
+
+  test<ServiceWorkerTestContext>('Clicking action button does not trigger rowClick', async function (assert) {
+    await renderTableGeneric.call(this);
+    
+    // Click the action menu button
+    await click('[data-test-actions-open-action]');
+    // Click the delete action
+    await click('[data-test-delete] button');
+    
+    // Verify only delete was called, not rowClick
+    assert.verifySteps(['delete function called'], 'Only delete action should be called, not rowClick');
+  });
 });

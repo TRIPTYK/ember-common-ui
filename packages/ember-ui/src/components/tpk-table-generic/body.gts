@@ -45,12 +45,26 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
     this.isExpanded = !this.isExpanded;
   }
 
+  @action handleRowClick(element: unknown, event: Event) {
+    const target = event.target as HTMLElement;
+    
+    // Check if the click originated from an interactive element
+    // that should not trigger row click
+    const isInteractiveElement = target.closest(
+      'button, input, select, textarea, a, [role="button"]'
+    );
+    
+    if (!isInteractiveElement) {
+      this.args.rowClick(element);
+    }
+  }
+
   <template>
     <@table.tbody class='tpk-table-body' ...attributes as |body data|>
       {{#each data as |element|}}
         <body.row
           data-test-row={{element.id}}
-          {{on 'click' (fn @rowClick element)}}
+          {{on 'click' (fn this.handleRowClick element)}}
           as |row|
         >
           {{yield
