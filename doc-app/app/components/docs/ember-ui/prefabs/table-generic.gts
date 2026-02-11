@@ -18,7 +18,7 @@ const TpkSelectElement: TOC<
     };
   }
 > = <template>
-  <div data-test-table-generic-select>
+  <div data-test-table-generic-select class="tpk-no-row-click">
     <TpkSelect
       @options={{@options}}
       @onChange={{@onChange}}

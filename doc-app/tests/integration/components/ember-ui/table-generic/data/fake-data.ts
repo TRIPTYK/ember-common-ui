@@ -7,6 +7,8 @@ export default {
         lastName: 'Marc',
         firstName: 'Jean',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
     {
@@ -16,6 +18,8 @@ export default {
         lastName: 'Lepond',
         firstName: 'Louis',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
     {
@@ -25,6 +29,8 @@ export default {
         lastName: 'Dragon',
         firstName: 'Lucas',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
     {
@@ -34,6 +40,8 @@ export default {
         lastName: 'Leroy',
         firstName: 'Simon',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
     {
@@ -43,6 +51,8 @@ export default {
         lastName: 'Giga',
         firstName: 'Chad',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
   ],
@@ -54,6 +64,8 @@ export default {
         lastName: 'Giga',
         firstName: 'Chad',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
     {
@@ -63,6 +75,8 @@ export default {
         lastName: 'Marc',
         firstName: 'Jean',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
     {
@@ -72,6 +86,8 @@ export default {
         lastName: 'Lepond',
         firstName: 'Louis',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -81,6 +97,8 @@ export default {
         lastName: 'Dragon',
         firstName: 'Lucas',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -90,6 +108,8 @@ export default {
         lastName: 'Leroy',
         firstName: 'Simon',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
   ],
@@ -101,6 +121,8 @@ export default {
         lastName: 'Leroy',
         firstName: 'Simon',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -110,6 +132,8 @@ export default {
         lastName: 'Dragon',
         firstName: 'Lucas',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -119,6 +143,8 @@ export default {
         lastName: 'Lepond',
         firstName: 'Louis',
         email: 'loempia@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -128,6 +154,8 @@ export default {
         lastName: 'Marc',
         firstName: 'Jean',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -137,6 +165,8 @@ export default {
         lastName: 'Giga',
         firstName: 'Chad',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
   ],
@@ -148,6 +178,8 @@ export default {
         lastName: 'Dramix',
         firstName: 'Romain',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -157,6 +189,8 @@ export default {
         lastName: 'Larris',
         firstName: 'Gilles',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -166,6 +200,8 @@ export default {
         lastName: 'Truc',
         firstName: 'Sam',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -175,6 +211,8 @@ export default {
         lastName: 'Jelra',
         firstName: 'Jacques',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: false,
       },
     },
     {
@@ -184,6 +222,8 @@ export default {
         lastName: 'Lefou',
         firstName: 'Seb',
         email: 'info@triptyk.eu',
+        phone: '0606060606',
+        active: true,
       },
     },
   ],

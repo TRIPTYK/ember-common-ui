@@ -13,6 +13,7 @@ export const UserSchema = withDefaults({
     { name: 'phone', kind: 'attribute' },
     { name: 'job', kind: 'attribute' },
     { name: 'country', kind: 'attribute' },
+    { name: 'active', kind: 'attribute' },
   ],
 });
 
@@ -24,5 +25,6 @@ export type User = WithLegacy<{
   phone: string;
   job: string;
   country: string;
+  active: boolean;
   [Type]: 'user';
 }>;

@@ -7,7 +7,6 @@ import type { Invokable } from '@glint/template/-private/integration';
 import { fn } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
 import type { TableApi } from '../tpk-table-generic/table.gts';
-import { on } from '@ember/modifier';
 
 export interface TableParams {
   entity: string;
@@ -109,10 +108,6 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
     return this.args.tableParams.actionMenu;
   }
 
-  stopPropagation(e: Event) {
-    e.stopImmediatePropagation();
-  }
-
   <template>
     <div class='tpk-table-generic-container' data-test-table-generic-prefab>
       <TpkTableGeneric
@@ -136,9 +131,12 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
           </Table.Header>
           <Table.Body as |Body element|>
             {{#each this.columns as |column|}}
-              {{#if column.component}}
-                {{#let (this.getComponent column.component) as |ComponentName|}}
-                  <Body.Cell {{on 'click' this.stopPropagation}}>
+              <Body.Cell>
+                {{#if column.component}}
+                  {{#let
+                    (this.getComponent column.component)
+                    as |ComponentName|
+                  }}
                     <ComponentName
                       @row={{element}}
                       @field={{column.field}}
@@ -148,13 +146,11 @@ export default class TableGenericPrefabComponent extends Component<TableGenericP
                         column.field
                       }}
                     />
-                  </Body.Cell>
-                {{/let}}
-              {{else}}
-                <Body.Cell>
+                  {{/let}}
+                {{else}}
                   {{this.displayValue element column.field}}
-                </Body.Cell>
-              {{/if}}
+                {{/if}}
+              </Body.Cell>
             {{/each}}
             {{#if this.hasActionMenu}}
               <Body.ActionMenu as |Action|>
