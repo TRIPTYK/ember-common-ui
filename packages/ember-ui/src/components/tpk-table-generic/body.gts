@@ -47,13 +47,13 @@ export default class TableGenericBodyComponent extends Component<TableGenericBod
 
   @action handleRowClick(element: unknown, event: Event) {
     const target = event.target as HTMLElement;
-    
+
     // Check if the click originated from an interactive element
     // that should not trigger row click
     const isInteractiveElement = target.closest(
       'button, input, select, textarea, a, [role="button"]'
     );
-    
+
     if (!isInteractiveElement) {
       this.args.rowClick(element);
     }

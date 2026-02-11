@@ -254,12 +254,12 @@ module('Integration | Component | table-generic', function (hooks) {
 
   test<ServiceWorkerTestContext>('Clicking action button does not trigger rowClick', async function (assert) {
     await renderTableGeneric.call(this);
-    
+
     // Click the action menu button
     await click('[data-test-actions-open-action]');
     // Click the delete action
     await click('[data-test-delete] button');
-    
+
     // Verify only delete was called, not rowClick
     assert.verifySteps(['delete function called'], 'Only delete action should be called, not rowClick');
   });
