@@ -2,7 +2,7 @@ import type { SetupWorker } from 'msw';
 import type { TestContext } from '@ember/test-helpers';
 export declare let worker: SetupWorker;
 export interface ServiceWorkerTestContext extends TestContext {
-    worker: SetupWorker;
+  worker: SetupWorker;
 }
 export declare function setupWorker(): void;
 export declare function stopWorker(): void;
