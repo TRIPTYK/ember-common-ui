@@ -7,6 +7,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import TpkTableGeneric from '@triptyk/ember-ui/components/tpk-table-generic';
 import stringify from 'doc-app/helpers/to-string';
 import DeleteIcon from 'doc-app/assets/icons/delete.gts';
+import TpkCheckboxComponent from '@triptyk/ember-input/components/tpk-checkbox';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
@@ -22,6 +23,9 @@ module('Integration | Component | table-generic', function (hooks) {
   async function renderTableGeneric(assert: Assert) {
     const rowClick = () => {
       assert.step('rowClick function called');
+    };
+    const activeAction = () => {
+      assert.step('active action called');
     };
     const deleteAction = () => {
       assert.step('delete function called');
@@ -61,6 +65,20 @@ module('Integration | Component | table-generic', function (hooks) {
               >
                 Email
               </Header.Cell>
+              <Header.Cell
+                @sortable={{false}}
+                @prop="phone"
+                data-test-table="phone"
+              >
+                Téléphone
+              </Header.Cell>
+              <Header.Cell
+                @sortable={{false}}
+                @prop="status"
+                data-test-table="status"
+              >
+                Statut
+              </Header.Cell>
             </Table.Header>
             <Table.Body as |Body element|>
               <Body.Cell>
@@ -71,6 +89,22 @@ module('Integration | Component | table-generic', function (hooks) {
               </Body.Cell>
               <Body.Cell>
                 {{stringify element.email}}
+              </Body.Cell>
+              <Body.Cell>
+                <div data-test-phone class="tpk-no-row-click">
+                  {{stringify element.phone}}
+                </div>
+              </Body.Cell>
+              <Body.Cell>
+                <TpkCheckboxComponent
+                  @label=""
+                  {{! @glint-ignore considering element.active has undefined or boolean as value}}
+                  @checked={{element.active}}
+                  @onChange={{activeAction}}
+                  as |C|
+                >
+                  <C.Input data-test-checkbox />
+                </TpkCheckboxComponent>
               </Body.Cell>
               <Body.ActionMenu as |Action|>
                 <Action
@@ -161,6 +195,18 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.verifySteps(['rowClick function called']);
   });
 
+  test('It can click on phone number without triggering rowClick', async function (assert) {
+    await renderTableGeneric(assert);
+    await click('[data-test-phone]');
+    assert.verifySteps([]);
+  });
+
+  test('It can click on checkbox without triggering rowClick', async function (assert) {
+    await renderTableGeneric(assert);
+    await click('[data-test-checkbox]');
+    assert.verifySteps(['active action called']);
+  });
+
   test('It can sort firstName & lastName and cannot sort email', async function (assert) {
     await renderTableGeneric(assert);
     assert.dom('thead th[data-test-table="firstName"]').hasAttribute('role');
@@ -238,7 +284,7 @@ module('Integration | Component | table-generic', function (hooks) {
   });
   test('Colspan of the footer is adjusted when an action menu is yielded', async function (assert) {
     await renderTableGeneric(assert);
-    assert.dom('tfoot td').hasAttribute('colspan', '4');
+    assert.dom('tfoot td').hasAttribute('colspan', '6');
   });
   test('Colspan of the footer is reduced when no action menu is yielded', async function (assert) {
     await renderTableGenericWithNoAction(assert);

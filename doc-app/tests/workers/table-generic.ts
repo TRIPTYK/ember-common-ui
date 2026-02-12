@@ -32,6 +32,8 @@ export async function TableGenericUserWorker(
               lastName: 'Giga',
               firstName: 'Chad',
               email: 'dev@triptyk.eu',
+              phone: '0606060606',
+              active: true,
             },
           },
         ];
