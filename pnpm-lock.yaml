@@ -261,7 +261,7 @@ catalogs:
 
 patchedDependencies:
   '@embroider/vite':
-    hash: d43d51043142775bc0bc8c11b2e333f381beb32c21c752e6aa89defe64ca528b
+    hash: f2ab393c6c9d0b670729307302e10a5720fcde80c358376a8c91b96aeb135a65
     path: patches/@embroider__vite.patch
 
 importers:
@@ -343,7 +343,7 @@ importers:
         version: 3.0.6(@embroider/core@4.4.2(@glint/template@1.7.4))(@glint/template@1.7.4)
       '@embroider/vite':
         specifier: ~1.5.0
-        version: 1.5.0(patch_hash=d43d51043142775bc0bc8c11b2e333f381beb32c21c752e6aa89defe64ca528b)(@embroider/core@4.4.2(@glint/template@1.7.4))(@glint/template@1.7.4)(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))
+        version: 1.5.0(patch_hash=f2ab393c6c9d0b670729307302e10a5720fcde80c358376a8c91b96aeb135a65)(@embroider/core@4.4.2(@glint/template@1.7.4))(@glint/template@1.7.4)(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))
       '@eslint/js':
         specifier: 'catalog:'
         version: 9.39.2
@@ -12089,7 +12089,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.5.0(patch_hash=d43d51043142775bc0bc8c11b2e333f381beb32c21c752e6aa89defe64ca528b)(@embroider/core@4.4.2(@glint/template@1.7.4))(@glint/template@1.7.4)(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))':
+  '@embroider/vite@1.5.0(patch_hash=f2ab393c6c9d0b670729307302e10a5720fcde80c358376a8c91b96aeb135a65)(@embroider/core@4.4.2(@glint/template@1.7.4))(@glint/template@1.7.4)(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
       '@babel/core': 7.29.0
       '@embroider/core': 4.4.2(@glint/template@1.7.4)

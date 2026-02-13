@@ -41,8 +41,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
+    ENV.rootURL = '/ember-common-ui/';
     // here you can enable a production-specific feature
   }
+
+  console.log(ENV);
 
   return ENV;
 };

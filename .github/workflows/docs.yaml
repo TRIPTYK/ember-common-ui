@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", "develop"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,31 +31,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: true
-      - name: Build packages before
-        run: pnpm build
-      - run: pnpm ember build --env=production
+        uses: actions/checkout@v4
+      - name: Pnpm install
+        uses: wyvox/action-setup-pnpm@v3
+      - run: pnpm turbo build
         working-directory: doc-app
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: 'doc-app/dist'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
 
 
