@@ -21,7 +21,7 @@ export default class ThemeSelector extends Component<ThemeSelectorSignature> {
     super(owner, args);
     let theme = 'nord';
     if (typeof localStorage !== 'undefined') {
-      theme = localStorage.getItem('doc-app-theme') ?? 'nord';
+      theme = localStorage.getItem('tpk-theme') ?? 'nord';
     }
     this.currentTheme = theme;
     if (typeof document !== 'undefined') {
@@ -39,7 +39,7 @@ export default class ThemeSelector extends Component<ThemeSelectorSignature> {
       document.documentElement.setAttribute('data-theme', themeName);
     }
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('doc-app-theme', themeName);
+      localStorage.setItem('tpk-theme', themeName);
     }
   }
 
