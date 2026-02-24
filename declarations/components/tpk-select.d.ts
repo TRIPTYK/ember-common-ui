@@ -1,0 +1,47 @@
+import Component from '@glimmer/component';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
+import type { PowerSelectSelectedItemSignature, Select } from 'ember-power-select/types';
+import TpkSelectOption from './tpk-select/option';
+import type Owner from '@ember/owner';
+import type { PowerSelectLabelSignature } from 'ember-power-select/components/power-select/label';
+import type { PowerSelectPlaceholderSignature } from 'ember-power-select/components/power-select/placeholder';
+export type SelectType = Select;
+export interface TpkSelectSignature {
+    Args: {
+        multiple?: boolean;
+        options: unknown[];
+        selected?: unknown;
+        label: string;
+        placeholder?: string;
+        renderInPlace?: boolean;
+        labelClass?: string;
+        allowClear?: boolean;
+        disabled?: boolean;
+        initiallyOpened?: boolean;
+        loadingMessage?: string;
+        labelComponent?: ComponentLike<PowerSelectLabelSignature>;
+        selectedItemComponent?: ComponentLike<PowerSelectSelectedItemSignature>;
+        placeholderComponent?: ComponentLike<PowerSelectPlaceholderSignature>;
+        searchEnabled?: boolean;
+        searchField?: string;
+        searchPlaceholder?: string;
+        searchMessage?: string;
+        noMatchesMessage?: string;
+        search?: (term: string, select: SelectType) => readonly unknown[] | Promise<readonly unknown[]>;
+        onChange: (selection: unknown, select: SelectType, event?: Event) => void;
+        onKeyDown?: ((select: SelectType, e: KeyboardEvent) => boolean | undefined) | undefined;
+    };
+    Blocks: {
+        default: [
+            {
+                Option: WithBoundArgs<typeof TpkSelectOption, 'option'>;
+            }
+        ];
+    };
+}
+export default class TpkSelectComponent extends Component<TpkSelectSignature> {
+    constructor(owner: Owner, args: TpkSelectSignature['Args']);
+    get renderInPlace(): boolean;
+    get multiple(): false | undefined;
+}
+//# sourceMappingURL=tpk-select.d.ts.map
