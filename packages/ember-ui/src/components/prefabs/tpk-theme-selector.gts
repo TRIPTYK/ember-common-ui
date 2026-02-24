@@ -6,30 +6,36 @@ import type Owner from '@ember/owner';
 import t from 'ember-intl/helpers/t';
 import ThemeIcon from '../../assets/icons/theme.gts';
 import ChevronDownIcon from '../../assets/icons/chevron-down.gts';
+import { tracked } from '@glimmer/tracking';
 
-const THEMES = ['nord', 'dracula', 'cupcake', 'corporate', 'lemonade'] as const;
+const DEFAULT_THEMES = ['nord', 'dracula', 'cupcake', 'corporate', 'lemonade'];
 
 interface ThemeSelectorSignature {
   Args: {
     sidebarCollapsed?: boolean;
     localStorageKey?: string;
+    themes?: string[];
   };
 }
 
 export default class TpkThemeSelector extends Component<ThemeSelectorSignature> {
+  @tracked declare themes: string[];
   constructor(owner: Owner, args: ThemeSelectorSignature['Args']) {
     super(owner, args);
     const localStorageKey = this.args.localStorageKey || 'tpk-theme';
-    let theme = 'nord';
+    if (args.themes) {
+      this.themes = args.themes;
+    } else {
+      this.themes = DEFAULT_THEMES;
+    }
+    let theme = this.themes[0];
     if (typeof localStorage !== 'undefined') {
       theme = localStorage.getItem(localStorageKey) ?? 'nord';
     }
     if (typeof document !== 'undefined') {
-      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-theme', theme as string);
     }
   }
-
-  THEMES = THEMES;
 
   @action
   setTheme(themeName: string) {
@@ -64,7 +70,7 @@ export default class TpkThemeSelector extends Component<ThemeSelectorSignature> 
         style='position-anchor:--anchor-theme-selector'
       >
         <li class='tpk-theme-selector-menu-item'>{{t 'global.theme'}}</li>
-        {{#each this.THEMES as |themeName|}}
+        {{#each this.themes as |themeName|}}
           <li class='tpk-theme-selector-menu-item'>
             <button
               type='button'
