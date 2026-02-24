@@ -28,12 +28,12 @@ export default class TpkThemeSelector extends Component<ThemeSelectorSignature> 
     } else {
       this.themes = DEFAULT_THEMES;
     }
-    let theme = this.themes[0];
+    let theme = this.themes[0] as string;
     if (typeof localStorage !== 'undefined') {
       theme = localStorage.getItem(localStorageKey) ?? 'nord';
     }
     if (typeof document !== 'undefined') {
-      document.documentElement.setAttribute('data-theme', theme as string);
+      document.documentElement.setAttribute('data-theme', theme);
     }
   }
 
