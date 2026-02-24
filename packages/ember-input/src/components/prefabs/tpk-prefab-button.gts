@@ -15,7 +15,6 @@ export type TpkButtonPrefabSignature = {
 
 const TpkButtonPrefab: TOC<TpkButtonPrefabSignature> = <template>
   <TpkButtonComponent
-    @label={{@label}}
     @disabled={{@disabled}}
     @onClick={{@onClick}}
     class='tpk-button-container'

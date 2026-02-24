@@ -6,7 +6,6 @@ import { task } from 'ember-concurrency';
 
 export type TpkButtonSignature = {
   Args: {
-    label: string;
     allowSpam?: boolean;
     disabled?: boolean;
     class?: string;
