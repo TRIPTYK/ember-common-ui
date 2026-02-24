@@ -1,21 +1,17 @@
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
-import type { BaseUIComponentArgs } from './base.ts';
-import type { MergeDeep } from 'type-fest';
 import { on } from '@ember/modifier';
 import perform from 'ember-concurrency/helpers/perform';
 import { task } from 'ember-concurrency';
 
 export type TpkButtonSignature = {
-  Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
-    {
-      allowSpam?: boolean;
-      disabled?: boolean;
-      class?: string;
-      onClick?: (e: Event) => void | Promise<void>;
-    }
-  >;
+  Args: {
+    label: string;
+    allowSpam?: boolean;
+    disabled?: boolean;
+    class?: string;
+    onClick?: (e: Event) => void | Promise<void>;
+  };
   Blocks: {
     default: [];
   };

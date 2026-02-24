@@ -20,6 +20,38 @@
   color: var(--fallback-bc, oklch(var(--bc) / 0.4));
 }
 
+.tpk-select-search-dropdown {
+  @apply flex flex-col rounded-box bg-base-100 py-2 pl-1.5 pr-2 shadow-sm min-w-52 max-h-60 overflow-y-auto;
+  box-shadow:
+    0 1px 3px 0 oklch(0% 0 0 / 0.1),
+    0 1px 2px -1px oklch(0% 0 0 / 0.1);
+}
+
+.tpk-select-search-dropdown .ember-power-select-options {
+  @apply flex flex-col flex-wrap gap-0 p-0 list-none;
+  font-size: 0.875rem;
+}
+
+.tpk-select-search-dropdown .ember-power-select-option {
+  @apply rounded-md grid grid-flow-col content-start items-center gap-2 pl-2 pr-2 py-1.5 text-start cursor-pointer outline-hidden;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  grid-auto-columns: minmax(auto, max-content) auto max-content;
+}
+
+.tpk-select-search-dropdown .ember-power-select-option:hover {
+  @apply bg-base-content/10;
+  box-shadow:
+    0 1px oklch(0% 0 0 / 0.01) inset,
+    0 -1px oklch(100% 0 0 / 0.01) inset;
+}
+
+.tpk-select-search-dropdown .ember-power-select-option[aria-current='true'] {
+  color: var(--menu-active-fg, var(--color-neutral-content));
+  background-color: var(--menu-active-bg, var(--color-neutral));
+}
+
 .tpk-select-search-container .ember-power-select-options {
   @apply mt-2;
 }

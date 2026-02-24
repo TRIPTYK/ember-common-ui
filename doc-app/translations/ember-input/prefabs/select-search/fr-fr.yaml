@@ -1,0 +1,38 @@
+properties:
+  field:
+    options:
+      description: "Tableau d'options à afficher dans le menu déroulant"
+    onChange:
+      description: 'Fonction appelée lorsque la sélection change'
+    onCreate:
+      description: "Fonction appelée lorsque l'utilisateur crée une nouvelle option"
+    search:
+      description: 'Fonction qui filtre les options en fonction du terme de recherche. Reçoit le terme de recherche et retourne les options filtrées'
+    label:
+      description: 'Texte du libellé affiché au-dessus du select'
+    selected:
+      description: 'Valeur(s) actuellement sélectionnée(s)'
+    searchEnabled:
+      description: 'Booléen pour activer la fonctionnalité de recherche. Définir à true pour activer la recherche'
+    searchPlaceholder:
+      description: 'Texte du placeholder pour le champ de recherche'
+    searchMessage:
+      description: "Message affiché dans la liste des options lorsque aucune recherche n'a été saisie et qu'il n'y a pas d'options"
+    loadingMessage:
+      description: 'Message affiché dans la liste des options lors du chargement des options (utile pour la recherche asynchrone)'
+    noMatchesMessage:
+      description: "Message affiché dans la liste des options lorsque aucun résultat n'est trouvé"
+    searchField:
+      description: 'Nom du champ à rechercher lorsque les options sont des objets (ex: "name")'
+    multiple:
+      description: 'Booléen pour permettre plusieurs sélections'
+    placeholder:
+      description: 'Texte du placeholder pour le bouton select'
+    allowClear:
+      description: 'Booléen pour afficher un bouton de suppression'
+    disabled:
+      description: 'Booléen pour désactiver le select'
+    renderInPlace:
+      description: "Booléen pour afficher le menu déroulant en place au lieu d'utiliser un portail"
+    initiallyOpened:
+      description: 'Booléen pour ouvrir le menu déroulant initialement'

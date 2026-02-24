@@ -192,3 +192,9 @@ emberInput:
         title: 'Examples'
         basic: 'Basic usage'
         disabled: 'Disabled button'
+    selectSearch:
+      title: 'Select Search'
+      description: 'A select component with search functionality using tpk-select with searchEnabled.'
+      examples:
+        title: 'Examples'
+        basic: 'Basic usage'

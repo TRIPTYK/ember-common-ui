@@ -41,6 +41,7 @@ Router.map(function () {
         this.route('prefabs', function () {
           this.route('button');
           this.route('toggle');
+          this.route('select-search');
         });
       });
 

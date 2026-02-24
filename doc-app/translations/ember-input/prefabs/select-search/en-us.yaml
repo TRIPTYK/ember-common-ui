@@ -1,0 +1,38 @@
+properties:
+  field:
+    options:
+      description: 'Array of options to display in the select dropdown'
+    onChange:
+      description: 'Function called when the selection changes'
+    onCreate:
+      description: 'Function called when the user creates a new option'
+    search:
+      description: 'Function that filters options based on the search term. Receives the search term and returns filtered options'
+    label:
+      description: 'Label text displayed above the select'
+    selected:
+      description: 'Currently selected value(s)'
+    searchEnabled:
+      description: 'Boolean to enable search functionality. Set to true to enable search'
+    searchPlaceholder:
+      description: 'Placeholder text for the search input field'
+    searchMessage:
+      description: 'Message shown in options list when no search has been entered and there are no options'
+    loadingMessage:
+      description: 'Message shown in options list when loading options (useful for async search)'
+    noMatchesMessage:
+      description: 'Message shown in options list when no matches are found'
+    searchField:
+      description: 'Field name to search in when options are objects (e.g., "name")'
+    multiple:
+      description: 'Boolean to allow multiple selections'
+    placeholder:
+      description: 'Placeholder text for the select button'
+    allowClear:
+      description: 'Boolean to show a clear button'
+    disabled:
+      description: 'Boolean to disable the select'
+    renderInPlace:
+      description: 'Boolean to render the dropdown in place instead of using a portal'
+    initiallyOpened:
+      description: 'Boolean to open the dropdown initially'

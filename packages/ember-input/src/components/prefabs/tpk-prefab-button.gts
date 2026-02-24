@@ -1,17 +1,12 @@
-import type { MergeDeep } from 'type-fest';
-import type { BaseUIComponentArgs } from '../base';
 import TpkButtonComponent from '../tpk-button.gts';
 import type { TOC } from '@ember/component/template-only';
 
 export type TpkButtonPrefabSignature = {
-  Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
-    {
-      disabled?: boolean;
-      label: string;
-      onClick: (e: Event) => void | Promise<void>;
-    }
-  >;
+  Args: {
+    disabled?: boolean;
+    label: string;
+    onClick: (e: Event) => void | Promise<void>;
+  };
   Blocks: {
     default: [];
   };

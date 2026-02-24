@@ -195,6 +195,11 @@ export default class DashboardTemplate extends Component {
           label: 'Toggle',
           route: 'dashboard.docs.ember-input.prefabs.toggle',
         },
+        {
+          type: 'link',
+          label: 'Select Search',
+          route: 'dashboard.docs.ember-input.prefabs.select-search',
+        },
       ],
     },
   ];
