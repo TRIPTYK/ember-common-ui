@@ -5,6 +5,7 @@ import TpkValidationInputComponent from './components/tpk-validation-input.gts';
 import TpkValidationRadioComponent from './components/tpk-validation-radio.gts';
 import TpkValidationSelectComponent from './components/tpk-validation-select.gts';
 import TpkValidationTextareaComponent from './components/tpk-validation-textarea.gts';
+import StrongPasswordHelper from './helpers/strong-password.ts';
 
 export default interface Registry {
   'tpk-validation-checkbox': typeof TpkValidationCheckboxComponent;
@@ -21,4 +22,6 @@ export default interface Registry {
   TpkValidationSelect: typeof TpkValidationSelectComponent;
   'tpk-validation-textarea': typeof TpkValidationTextareaComponent;
   TpkValidationTextarea: typeof TpkValidationTextareaComponent;
+  'strong-password': typeof StrongPasswordHelper;
+  StrongPassword: typeof StrongPasswordHelper;
 }

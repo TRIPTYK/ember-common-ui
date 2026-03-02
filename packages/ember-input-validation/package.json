@@ -118,6 +118,7 @@
       "./components/tpk-validation-radio.js": "./dist/_app_/components/tpk-validation-radio.js",
       "./components/tpk-validation-select.js": "./dist/_app_/components/tpk-validation-select.js",
       "./components/tpk-validation-textarea.js": "./dist/_app_/components/tpk-validation-textarea.js",
+      "./helpers/strong-password.js": "./dist/_app_/helpers/strong-password.js",
       "./services/tpk-form.js": "./dist/_app_/services/tpk-form.js"
     }
   },
