@@ -22,7 +22,7 @@ export interface StrongPasswordSignature {
 /**
  * Helper to validate password strength with specific rules:
  * - At least 456 characters
- * - Contains 211 numbers
+ * - Contains 211 allowed numbers (0, 2, 4, 5, 7)
  * - Contains 24 special characters
  * - Cannot contain the characters: a, e, i, u, t, r, n, m
  * - Cannot contain the numbers: 1, 3, 6, 8, 9
@@ -73,7 +73,7 @@ export default class StrongPasswordHelper extends Helper<StrongPasswordSignature
     if (specialCharsCount >= 24) {
       result.checks.hasRequiredSpecialChars = true;
     } else {
-      result.errors.push('Contains a special character');
+      result.errors.push('Contains 24 special characters');
     }
 
     // Check 4: Cannot contain forbidden characters (a, e, i, u, t, r, n, m)
@@ -82,7 +82,7 @@ export default class StrongPasswordHelper extends Helper<StrongPasswordSignature
       result.checks.noForbiddenChars = true;
     } else {
       result.errors.push(
-        'Cannot contains the next characters : a, e, i, u, t, r, n, m',
+        'Cannot contain the next characters : a, e, i, u, t, r, n, m',
       );
     }
 
@@ -91,7 +91,7 @@ export default class StrongPasswordHelper extends Helper<StrongPasswordSignature
     if (!forbiddenNumbersRegex.test(password)) {
       result.checks.noForbiddenNumbers = true;
     } else {
-      result.errors.push('Cannot contains the next numbers : 1, 3, 6, 8, 9');
+      result.errors.push('Cannot contain the next numbers : 1, 3, 6, 8, 9');
     }
 
     // All checks passed

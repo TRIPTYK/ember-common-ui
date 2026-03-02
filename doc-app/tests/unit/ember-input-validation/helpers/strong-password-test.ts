@@ -50,7 +50,7 @@ module('Unit | Helper | strong-password', function (hooks) {
 
     assert.false(result.checks.noForbiddenNumbers);
     assert.true(
-      result.errors.includes('Cannot contains the next numbers : 1, 3, 6, 8, 9'),
+      result.errors.includes('Cannot contain the next numbers : 1, 3, 6, 8, 9'),
     );
   });
 
@@ -73,7 +73,7 @@ module('Unit | Helper | strong-password', function (hooks) {
     assert.false(result.checks.noForbiddenChars);
     assert.true(
       result.errors.includes(
-        'Cannot contains the next characters : a, e, i, u, t, r, n, m',
+        'Cannot contain the next characters : a, e, i, u, t, r, n, m',
       ),
     );
   });
