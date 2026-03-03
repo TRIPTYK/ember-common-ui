@@ -60,6 +60,7 @@ interface TableGenericTableArgs {
   rowClick: () => void;
   additionalFilters: Record<string, unknown>;
   defaultSortColumn?: string;
+  registerData?: (data: ArrayProxy<K>, meta?: { fetched: number; total: number }) => void;
 }
 
 export interface TableGenericTableSignature {
@@ -114,6 +115,11 @@ export default class TableGenericTableComponent<
   }
 
   @action
+  registerData(data: ArrayProxy<K>, meta: { fetched: number; total: number }) {
+    this.args.registerData?.(data, meta);
+  }
+
+  @action
   @waitFor
   async loadData(data: TableLoadDataApi): Promise<never> {
     const sortString = this.getSortString(data.sortData);
@@ -133,6 +139,8 @@ export default class TableGenericTableComponent<
         meta: { fetched: number; total: number };
       }
     ).meta.total;
+
+    this.registerData(array, array.meta);
 
     return array as never;
   }

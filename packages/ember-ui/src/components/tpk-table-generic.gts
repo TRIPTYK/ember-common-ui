@@ -21,6 +21,7 @@ export interface TableGenericComponentSignature {
     registerApi?: (api: TableApi) => unknown;
     rowClick?: (...elements: unknown[]) => void;
     additionalFilters: Record<string, unknown>;
+    registerData?: (data: ArrayProxy<K>, meta?: { fetched: number; total: number }) => void;
   };
   Blocks: {
     default: [
@@ -85,6 +86,7 @@ export default class TableGenericComponent extends Component<TableGenericCompone
           pageSize=@pageSize
           additionalFilters=@additionalFilters
           defaultSortColumn=@defaultSortColumn
+          registerData=@registerData
         )
       )
     }}
