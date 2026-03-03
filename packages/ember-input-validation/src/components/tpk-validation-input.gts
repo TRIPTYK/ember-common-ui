@@ -109,9 +109,6 @@ export default class TpkValidationInputComponent extends BaseValidationComponent
           disabled={{@disabled}}
           placeholder={{@placeholder}}
           class={{unless @classless 'tpk-input-validation-input'}}
-          aria-autocomplete='none'
-          autocomplete='off'
-          autofill='off'
           maxlength={{@maxlength}}
           data-test-input-not-yielded
         />
