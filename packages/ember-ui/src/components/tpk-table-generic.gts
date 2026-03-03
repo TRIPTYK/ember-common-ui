@@ -2,6 +2,9 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from 'tracked-built-ins';
 import type { WithBoundArgs } from '@glint/template';
+import type ArrayProxy from '@ember/array/proxy';
+// eslint-disable-next-line ember/use-ember-data-rfc-395-imports
+import type ModelRegistry from 'ember-data/types/registries/model';
 import TableGenericSearchBarComponent from './tpk-table-generic/search-bar.gts';
 import TableGenericTableComponent, {
   type TableApi,
@@ -9,9 +12,9 @@ import TableGenericTableComponent, {
 import { hash } from '@ember/helper';
 import t from 'ember-intl/helpers/t';
 
-export interface TableGenericComponentSignature {
+export interface TableGenericComponentSignature<K extends keyof ModelRegistry> {
   Args: {
-    entity: never;
+    entity: K;
     relationships: string;
     pageSizes?: number[];
     filterText?: string;
@@ -21,7 +24,7 @@ export interface TableGenericComponentSignature {
     registerApi?: (api: TableApi) => unknown;
     rowClick?: (...elements: unknown[]) => void;
     additionalFilters: Record<string, unknown>;
-    registerData?: (data: ArrayProxy<K>, meta?: { fetched: number; total: number }) => void;
+    registerData?: (data: ArrayProxy<ModelRegistry[K]>, meta?: { fetched: number; total: number }) => void;
   };
   Blocks: {
     default: [
@@ -47,7 +50,7 @@ export interface TableGenericComponentSignature {
   };
 }
 
-export default class TableGenericComponent extends Component<TableGenericComponentSignature> {
+export default class TableGenericComponent<K extends keyof ModelRegistry> extends Component<TableGenericComponentSignature<K>> {
   @tracked filterText?: string;
 
   @action

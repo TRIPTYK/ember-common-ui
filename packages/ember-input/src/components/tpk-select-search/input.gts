@@ -35,7 +35,6 @@ export default class TpkSelectSearchInputComponent extends Component<TpkSelectSe
       class={{unless @classless 'tpk-select-search-input'}}
       {{on 'input' @onInput}}
       type='text'
-      role='combobox'
       aria-autocomplete='none'
       aria-expanded='{{@isOpen}}'
       aria-activedescendant='{{@activeChild.id}}'

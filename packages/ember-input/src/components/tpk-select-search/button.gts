@@ -24,6 +24,7 @@ export default class TpkSelectSearchButtonComponent extends Component<TpkSelectS
 
   <template>
     <div
+      role='button'
       aria-controls={{@optionListId}}
       aria-expanded='{{@isOpen}}'
       aria-labelledby={{@labelId}}

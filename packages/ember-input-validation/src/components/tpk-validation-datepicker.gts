@@ -88,7 +88,6 @@ export default class TpkValidationDatepickerComponent extends BaseValidationComp
       @enable={{@enable}}
       @enableTime={{@enableTime}}
       @classless={{@classless}}
-      @enableSeconds={{@enableSeconds}}
       @formatDate={{@formatDate}}
       @hourIncrement={{@hourIncrement}}
       @inline={{@inline}}

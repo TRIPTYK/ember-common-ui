@@ -49,8 +49,8 @@ export interface TableApi {
   reloadData: () => void;
 }
 
-interface TableGenericTableArgs {
-  entity: keyof ModelRegistry;
+interface TableGenericTableArgs<K extends keyof ModelRegistry> {
+  entity: K;
   relationships: string;
   pageSizes?: number[];
   pageSize?: number;
@@ -60,11 +60,11 @@ interface TableGenericTableArgs {
   rowClick: () => void;
   additionalFilters: Record<string, unknown>;
   defaultSortColumn?: string;
-  registerData?: (data: ArrayProxy<K>, meta?: { fetched: number; total: number }) => void;
+  registerData?: (data: ArrayProxy<ModelRegistry[K]>, meta?: { fetched: number; total: number }) => void;
 }
 
-export interface TableGenericTableSignature {
-  Args: TableGenericTableArgs;
+export interface TableGenericTableSignature<K extends keyof ModelRegistry> {
+  Args: TableGenericTableArgs<K>;
   Element: HTMLDivElement;
   Blocks: {
     default: [
@@ -88,7 +88,7 @@ export interface TableGenericTableSignature {
 
 export default class TableGenericTableComponent<
   K extends keyof ModelRegistry,
-> extends Component<TableGenericTableSignature> {
+> extends Component<TableGenericTableSignature<K>> {
   @service declare store: Store;
 
   @tracked totalRows?: number;
@@ -115,7 +115,7 @@ export default class TableGenericTableComponent<
   }
 
   @action
-  registerData(data: ArrayProxy<K>, meta: { fetched: number; total: number }) {
+  registerData(data: ArrayProxy<ModelRegistry[K]>, meta: { fetched: number; total: number }) {
     this.args.registerData?.(data, meta);
   }
 
@@ -134,13 +134,13 @@ export default class TableGenericTableComponent<
 
     const array = await this.store.query(this.entityName, queryOptions);
 
-    this.totalRows = (
-      array as unknown as ArrayProxy<K> & {
-        meta: { fetched: number; total: number };
-      }
-    ).meta.total;
+    const arrayWithMeta = array as unknown as ArrayProxy<ModelRegistry[K]> & {
+      meta: { fetched: number; total: number };
+    };
 
-    this.registerData(array, array.meta);
+    this.totalRows = arrayWithMeta.meta.total;
+
+    this.registerData(arrayWithMeta, arrayWithMeta.meta);
 
     return array as never;
   }
