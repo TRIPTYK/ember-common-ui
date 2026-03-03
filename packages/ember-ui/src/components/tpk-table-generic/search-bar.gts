@@ -64,9 +64,6 @@ export default class TableGenericSearchBarComponent extends Component<TableGener
           disabled={{@disabled}}
           placeholder={{@placeholder}}
           class={{@inputClass}}
-          aria-autocomplete='none'
-          autocomplete='off'
-          autofill='off'
         />
         <button type='submit' data-test-search-submit>
           <span>{{t 'global.search'}}</span>
