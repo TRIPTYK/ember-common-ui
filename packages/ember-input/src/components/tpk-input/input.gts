@@ -75,9 +75,9 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     if (!this.args.mask) return;
 
     this.mask = IMask(element, {
-      mask: this.args.mask,
+      mask: this.args.mask as never,
       ...this.args.maskOptions,
-    } as Record<string, unknown>);
+    });
   }
 
   setupMask: FunctionBasedModifier<{

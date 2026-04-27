@@ -67,7 +67,7 @@
     "ember-power-select": "catalog:",
     "ember-power-select-with-create": "catalog:",
     "ember-test-selectors": "catalog:",
-    "focus-trap": "^7.5.4",
+    "focus-trap": "^8.0.1",
     "font-awesome": "catalog:",
     "imask": "catalog:"
   },

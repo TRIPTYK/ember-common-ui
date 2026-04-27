@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "catalog:",
-    "@warp-drive/utilities": "~5.8.1",
+    "@warp-drive/utilities": "catalog:",
     "date-fns": "^4.1.0",
     "decorator-transforms": "catalog:",
     "ember-intl": "catalog:",
@@ -76,7 +76,7 @@
     "@embroider/addon-dev": "catalog:",
     "@embroider/core": "catalog:",
     "@eslint/js": "catalog:",
-    "@glimmer/component": "2.0.0",
+    "@glimmer/component": "2.1.1",
     "@glimmer/tracking": "catalog:",
     "@glint/ember-tsc": "catalog:",
     "@glint/template": "catalog:",

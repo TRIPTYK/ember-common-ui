@@ -56,7 +56,8 @@
     "@ember/string": "catalog:",
     "@ember/test-waiters": "catalog:",
     "@embroider/addon-shim": "catalog:",
-    "@warp-drive/utilities": "~5.8.1",
+    "@triptyk/ember-yeti-table": "catalog:",
+    "@warp-drive/utilities": "catalog:",
     "decorator-transforms": "catalog:",
     "ember-click-outside": "catalog:",
     "ember-immer-changeset": "catalog:",
@@ -64,8 +65,7 @@
     "ember-modifier": "catalog:",
     "ember-strict-application-resolver": "catalog:",
     "ember-test-selectors": "catalog:",
-    "@triptyk/ember-yeti-table": "catalog:",
-    "focus-trap": "~7.8.0",
+    "focus-trap": "~8.0.1",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -81,7 +81,7 @@
     "@embroider/addon-dev": "catalog:",
     "@embroider/core": "catalog:",
     "@eslint/js": "catalog:",
-    "@glimmer/component": "2.0.0",
+    "@glimmer/component": "2.1.1",
     "@glimmer/tracking": "catalog:",
     "@glint/ember-tsc": "catalog:",
     "@glint/template": "catalog:",

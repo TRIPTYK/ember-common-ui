@@ -55,13 +55,13 @@ export default create({
       eventProperties: {
         key: 'ArrowDown',
         altKey: true,
-      } as Partial<KeyboardEvent>,
+      },
     }),
     altArrowUp: triggerable('keydown', undefined, {
       eventProperties: {
         key: 'ArrowUp',
         altKey: true,
-      } as Partial<KeyboardEvent>,
+      },
     }),
   }),
   listbox: create({
