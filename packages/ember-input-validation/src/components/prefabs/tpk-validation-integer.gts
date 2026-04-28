@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -8,9 +8,9 @@ import { action } from '@ember/object';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
-export interface TpkValidationIntegerComponentSignature extends BaseValidationSignature {
+export interface TpkValidationIntegerSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'step' | 'unmaskValue' | 'maskOptions'
   > & {
     unsigned?: boolean;
@@ -21,7 +21,7 @@ export interface TpkValidationIntegerComponentSignature extends BaseValidationSi
   Element: HTMLElement;
 }
 
-export default class TpkValidationIntegerComponent extends Component<TpkValidationIntegerComponentSignature> {
+export default class TpkValidationInteger extends Component<TpkValidationIntegerSignature> {
   get min() {
     return this.args.unsigned ? 0 : this.args.min;
   }
@@ -34,7 +34,7 @@ export default class TpkValidationIntegerComponent extends Component<TpkValidati
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @type='number'
       @label={{@label}}
       @min={{this.min}}
@@ -72,6 +72,6 @@ export default class TpkValidationIntegerComponent extends Component<TpkValidati
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

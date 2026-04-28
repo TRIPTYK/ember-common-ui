@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import {
@@ -13,7 +13,7 @@ import { action } from '@ember/object';
 
 export interface TpkValidationVATPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue'
   > & {
     mandatory?: boolean;
@@ -25,7 +25,7 @@ export interface TpkValidationVATPrefabSignature extends BaseValidationSignature
   Element: HTMLElement;
 }
 
-export default class TpkValidationVATPrefabComponent extends Component<TpkValidationVATPrefabSignature> {
+export default class TpkValidationVATPrefab extends Component<TpkValidationVATPrefabSignature> {
   ibanMaskByCountry = [
     {
       mask: '$$&&&&&&&&&&',
@@ -79,7 +79,7 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @label={{@label}}
       @type='text'
       @onChange={{this.onChange}}
@@ -112,6 +112,6 @@ export default class TpkValidationVATPrefabComponent extends Component<TpkValida
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

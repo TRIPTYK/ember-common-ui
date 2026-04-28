@@ -41,12 +41,12 @@ interface PaginationArgs {
   paginationActions: TableGenericPaginationActions;
 }
 
-export interface PaginationComponentSignature {
+export interface PaginationSignature {
   Args: PaginationArgs;
   Element: HTMLDivElement;
 }
 
-export default class TableGenericPaginationComponent extends Component<PaginationComponentSignature> {
+export default class TableGenericPagination extends Component<PaginationSignature> {
   isPageSizeSelected = (pageSize: number) => {
     return this.args['paginationData'].pageSize === pageSize;
   };

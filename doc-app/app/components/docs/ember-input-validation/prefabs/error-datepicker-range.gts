@@ -25,7 +25,7 @@ export default class ErrorDatepickerRangeExample extends Component {
       }
 
       const daysDiff = Math.floor(
-        (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+        (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
       );
       if (daysDiff > 30) {
         this.changeset.addError({

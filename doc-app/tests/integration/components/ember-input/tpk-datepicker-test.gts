@@ -35,7 +35,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     setTempusDominusDate('.tpk-datepicker-input-input', date);
     assert.dom('.tpk-datepicker-input-input').hasValue('12/11/2022');
@@ -57,7 +57,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     assert.dom('.tpk-datepicker-input-input').hasValue('13/11/2022');
   });
@@ -74,7 +74,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     assert.dom('.tpk-datepicker-input-input').hasAttribute('disabled');
   });
@@ -94,7 +94,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     // Open the datepicker in order to set current date default
     openTempusDominus('.tpk-datepicker-input-input');
@@ -121,7 +121,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     setTempusDominusDate('.tpk-datepicker-input-input', date, 0);
     setTempusDominusDate('.tpk-datepicker-input-input', date2, 1);
@@ -151,7 +151,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     setTempusDominusDate('.tpk-datepicker-input-input', date, 0);
     setTempusDominusDate('.tpk-datepicker-input-input', date2, 1);
@@ -178,7 +178,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
 
     assert
@@ -205,7 +205,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.day[data-day="12"]').hasClass('disabled');
@@ -231,7 +231,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.date-container').doesNotExist();
@@ -254,7 +254,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
     await click('.day[data-day="17"]');
@@ -278,7 +278,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.date-container-months').isVisible();
@@ -300,7 +300,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     await fillIn('.tpk-datepicker-input-input', '13/11-2022');
     assert.dom('.tpk-datepicker-input-input').hasValue('13/11-2022');
@@ -323,7 +323,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     setTempusDominusDate('.tpk-datepicker-input-input', date);
     assert.dom('.tpk-datepicker-input-input').hasValue('15/11/2022 | 08:30');
@@ -345,7 +345,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.picker-switch').hasText('octubre de 22');
@@ -366,7 +366,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
     assert.dom('.icon.icon-today').exists();
@@ -388,7 +388,7 @@ module('Integration | Component | tpk-datepicker', function (hooks) {
           <D.Input />
         </TpkDatepicker>
         <input type="text" id="input2" />
-      </template>
+      </template>,
     );
     openTempusDominus('.tpk-datepicker-input-input');
 

@@ -1,13 +1,13 @@
 import { type BaseValidationSignature } from '../base.ts';
-import TpkValidationRadioComponent, {
-  type TpkValidationRadioComponentSignature,
+import TpkValidationRadio, {
+  type TpkValidationRadioSignature,
 } from '../tpk-validation-radio.gts';
 import type { TOC } from '@ember/component/template-only';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 
-export interface TpkValidationRadioPrefabComponentSignature extends BaseValidationSignature {
+export interface TpkValidationRadioPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationRadioComponentSignature['Args'] & {
+    TpkValidationRadioSignature['Args'] & {
       onChange?: (value: string) => void;
     };
   Blocks: {
@@ -16,9 +16,9 @@ export interface TpkValidationRadioPrefabComponentSignature extends BaseValidati
   Element: HTMLElement;
 }
 
-const TpkValidationRadioPrefabComponent: TOC<TpkValidationRadioPrefabComponentSignature> =
+const TpkValidationRadioPrefab: TOC<TpkValidationRadioPrefabSignature> =
   <template>
-    <TpkValidationRadioComponent
+    <TpkValidationRadio
       @value={{@value}}
       @selected={{@selected}}
       @label={{@label}}
@@ -47,7 +47,7 @@ const TpkValidationRadioPrefabComponent: TOC<TpkValidationRadioPrefabComponentSi
           @errors={{V.errors}}
         />
       </div>
-    </TpkValidationRadioComponent>
+    </TpkValidationRadio>
   </template>;
 
-export default TpkValidationRadioPrefabComponent;
+export default TpkValidationRadioPrefab;

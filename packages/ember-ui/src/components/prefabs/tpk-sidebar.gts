@@ -143,7 +143,7 @@ interface SidebarSignature {
   };
 }
 
-class TpkSidebarComponent extends Component<SidebarSignature> {
+class TpkSidebar extends Component<SidebarSignature> {
   @action
   handleToggle() {
     if (this.args.onCollapsedChange) {
@@ -191,4 +191,4 @@ class TpkSidebarComponent extends Component<SidebarSignature> {
   </template>
 }
 
-export default TpkSidebarComponent;
+export default TpkSidebar;

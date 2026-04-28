@@ -20,7 +20,7 @@ module('Integration | Component | Prefabs | tpk-toggle', function (hooks) {
     await render(
       <template>
         <TpkToggle @label="label" @disabled={{disabled}} @checked={{true}} />
-      </template>
+      </template>,
     );
     return changeset;
   }

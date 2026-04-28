@@ -32,7 +32,7 @@ module('Integration | Component | ui/checkbox', function (hooks) {
           <C.Input class="text-yellow-300" />
           <C.Label class="text-blue-300" />
         </TpkCheckbox>
-      </template>
+      </template>,
     );
 
     await click('label');
@@ -50,11 +50,11 @@ module('Integration | Component | ui/checkbox', function (hooks) {
         <TpkCheckbox @label="label" @checked={{true}} as |O|>
           {{catchState O}}
         </TpkCheckbox>
-      </template>
+      </template>,
     );
 
     const { state } = (getOwner(this) as ApplicationInstance).lookup(
-      'service:catch-state'
+      'service:catch-state',
     ) as CatchState<Record<string, unknown>>;
 
     assert.strictEqual(typeof state?.Input, 'object');

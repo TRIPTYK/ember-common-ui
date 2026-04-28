@@ -16,11 +16,11 @@ module('Integration | Component | tpk-file', function (hooks) {
         <TpkFile @label="label" as |O|>
           {{catchState O}}
         </TpkFile>
-      </template>
+      </template>,
     );
 
     const { state } = (getOwner(this) as ApplicationInstance).lookup(
-      'service:catch-state'
+      'service:catch-state',
     ) as CatchState<Record<string, unknown>>;
 
     assert.strictEqual(typeof state?.onChange, 'function');

@@ -1,8 +1,8 @@
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
-import TpkValidationFileComponent, {
-  type TpkValidationFileComponentSignature,
+import TpkValidationFile, {
+  type TpkValidationFileSignature,
 } from '../tpk-validation-file.gts';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
@@ -18,7 +18,7 @@ import DeleteIcon from '../../assets/icons/delete.gts';
 
 export interface TpkValidationFileListPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationFileComponentSignature['Args'] & {
+    TpkValidationFileSignature['Args'] & {
       mandatory?: boolean;
       placeholder?: string;
       disableDownload?: boolean;
@@ -60,7 +60,7 @@ const handleSpaceToOpenListChoice = modifier(function (
   });
 });
 
-export default class TpkValidationFileListComponent extends Component<TpkValidationFileListPrefabSignature> {
+export default class TpkValidationFileList extends Component<TpkValidationFileListPrefabSignature> {
   @action
   handleDrop(event: DragEvent) {
     event.preventDefault();
@@ -87,7 +87,7 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
   }
 
   <template>
-    <TpkValidationFileComponent
+    <TpkValidationFile
       @label={{@label}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
@@ -132,18 +132,18 @@ export default class TpkValidationFileListComponent extends Component<TpkValidat
           @errors={{V.errors}}
         />
       </V.Label>
-      <FileListComponent
+      <FileList
         @onDelete={{@onDelete}}
         @changeset={{@changeset}}
         @validationField={{@validationField}}
         @disableDownload={{@disableDownload}}
         @disabled={{@disabled}}
       />
-    </TpkValidationFileComponent>
+    </TpkValidationFile>
   </template>
 }
 
-export class FileListComponent extends Component<FileListSignature> {
+export class FileList extends Component<FileListSignature> {
   changesetGet = (path: string): File[] => {
     return this.args.changeset.get(path) as File[];
   };

@@ -27,7 +27,7 @@ module('Integration | Component | Prefabs | tpk-search', function (hooks) {
           @placeholder="Narrow the stack"
           @onSearch={{mockSearch}}
         />
-      </template>
+      </template>,
     );
   }
 

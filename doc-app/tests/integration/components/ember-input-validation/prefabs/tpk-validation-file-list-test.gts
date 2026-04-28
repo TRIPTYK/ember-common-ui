@@ -38,7 +38,7 @@ module(
             @disabled={{params.disabled}}
             @placeholder="Glisser-déposer des fichiers images (max 2mb)"
           />
-        </template>
+        </template>,
       );
     }
 
@@ -101,7 +101,7 @@ module(
       });
       await renderComponent({ changeset });
       await click(
-        '.tpk-file-list-list-item:first-child .tpk-file-list-list-item-action-delete'
+        '.tpk-file-list-list-item:first-child .tpk-file-list-list-item-action-delete',
       );
       assert.dom('.tpk-file-list-list-item').doesNotExist();
       assert.strictEqual(changeset.get('files').length, 0);
@@ -144,5 +144,5 @@ module(
       await renderComponent({ changeset });
       await a11yAudit();
     });
-  }
+  },
 );

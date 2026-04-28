@@ -30,7 +30,7 @@ module(
             @disabled={{params.disabled}}
             @validationField="iban"
           />
-        </template>
+        </template>,
       );
       return immerChangeset;
     }
@@ -64,7 +64,7 @@ module(
       await fillIn('[data-test-tpk-iban-input]', 'FR1420041010050500013M02606');
       assert.strictEqual(
         changeset.get('iban'),
-        'FR14 2004 1010 0505 0001 3M02 606'
+        'FR14 2004 1010 0505 0001 3M02 606',
       );
     });
 
@@ -98,5 +98,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

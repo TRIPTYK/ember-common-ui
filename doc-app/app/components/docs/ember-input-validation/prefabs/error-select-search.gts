@@ -25,7 +25,7 @@ export default class ErrorSelectSearchExample extends Component {
 
     this.options = mockRepos
       .filter((repo) =>
-        repo.label.toLowerCase().includes(searchTerm.toLowerCase())
+        repo.label.toLowerCase().includes(searchTerm.toLowerCase()),
       )
       .map((repo) => ({
         ...repo,

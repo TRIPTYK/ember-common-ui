@@ -1,5 +1,5 @@
-import TpkValidationCheckboxComponent, {
-  type TpkValidationCheckboxComponentSignature,
+import TpkValidationCheckbox, {
+  type TpkValidationCheckboxSignature,
 } from '../tpk-validation-checkbox.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -8,16 +8,16 @@ import { type TOC } from '@ember/component/template-only';
 
 export interface TpkValidationCheckboxPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationCheckboxComponentSignature['Args'];
+    TpkValidationCheckboxSignature['Args'];
   Blocks: {
     default: [];
   };
   Element: HTMLElement;
 }
 
-const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSignature> =
+const TpkValidationCheckboxPrefab: TOC<TpkValidationCheckboxPrefabSignature> =
   <template>
-    <TpkValidationCheckboxComponent
+    <TpkValidationCheckbox
       @label={{@label}}
       @changeset={{@changeset}}
       @validationField={{@validationField}}
@@ -48,7 +48,7 @@ const TpkValidationCheckboxPrefabComponent: TOC<TpkValidationCheckboxPrefabSigna
         />
       </V.Label>
 
-    </TpkValidationCheckboxComponent>
+    </TpkValidationCheckbox>
   </template>;
 
-export default TpkValidationCheckboxPrefabComponent;
+export default TpkValidationCheckboxPrefab;

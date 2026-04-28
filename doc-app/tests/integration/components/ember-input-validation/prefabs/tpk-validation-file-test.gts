@@ -34,7 +34,7 @@ module(
             @validationField="file"
             @disabled={{params.disabled}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -67,5 +67,5 @@ module(
       await renderComponent({ changeset: setupChangeset(), disabled: false });
       await a11yAudit();
     });
-  }
+  },
 );

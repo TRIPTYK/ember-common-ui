@@ -9,20 +9,20 @@ interface StackListItemComponentArgs {
   zIndex: number;
 }
 
-export interface StackListItemComponentSignature {
+export interface StackListItemSignature {
   Args: StackListItemComponentArgs;
   Element: HTMLDivElement;
   Blocks: {
     default: [
       {
-        toggleExpanded: StackListItemComponent['toggleExpanded'];
+        toggleExpanded: StackListItem['toggleExpanded'];
         isExpanded: boolean;
       },
     ];
   };
 }
 
-export default class StackListItemComponent extends Component<StackListItemComponentSignature> {
+export default class StackListItem extends Component<StackListItemSignature> {
   @tracked isExpanded: boolean = true;
 
   constructor(owner: Owner, args: StackListItemComponentArgs) {

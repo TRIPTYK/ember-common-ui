@@ -18,7 +18,7 @@ export type TpkButtonSignature = {
   Element: HTMLButtonElement;
 };
 
-export default class TpkButtonComponent extends Component<TpkButtonSignature> {
+export default class TpkButton extends Component<TpkButtonSignature> {
   guid = guidFor(this);
 
   performClick = task(this, { drop: true }, async (e: Event) => {

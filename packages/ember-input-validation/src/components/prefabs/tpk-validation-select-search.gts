@@ -1,7 +1,4 @@
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from '../base.ts';
+import { type BaseValidationSignature, BaseValidation } from '../base.ts';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
@@ -31,7 +28,7 @@ export interface TpkValidationSelectSearchPrefabSignature extends BaseValidation
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectSearchPrefabComponent extends BaseValidationComponent<TpkValidationSelectSearchPrefabSignature> {
+export default class TpkValidationSelectSearchPrefab extends BaseValidation<TpkValidationSelectSearchPrefabSignature> {
   constructor(
     owner: Owner,
     args: TpkValidationSelectSearchPrefabSignature['Args'],

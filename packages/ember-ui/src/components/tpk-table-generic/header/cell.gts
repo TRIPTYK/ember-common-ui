@@ -1,5 +1,5 @@
 import type { TOC } from '@ember/component/template-only';
-export interface TableGenericHeaderCellComponentSignature {
+export interface TableGenericHeaderCellSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     header: any;
@@ -13,16 +13,15 @@ export interface TableGenericHeaderCellComponentSignature {
   };
 }
 
-const TableGenericHeaderCellComponent: TOC<TableGenericHeaderCellComponentSignature> =
-  <template>
-    <@header.column
-      @sortable={{@sortable}}
-      @prop={{@prop}}
-      @sort={{@sort}}
-      ...attributes
-    >
-      {{yield}}
-    </@header.column>
-  </template>;
+const TableGenericHeaderCell: TOC<TableGenericHeaderCellSignature> = <template>
+  <@header.column
+    @sortable={{@sortable}}
+    @prop={{@prop}}
+    @sort={{@sort}}
+    ...attributes
+  >
+    {{yield}}
+  </@header.column>
+</template>;
 
-export default TableGenericHeaderCellComponent;
+export default TableGenericHeaderCell;

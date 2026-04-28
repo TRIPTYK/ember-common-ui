@@ -29,7 +29,7 @@ module(
             @disabled={{disabled}}
             @label="Email validation field"
           />
-        </template>
+        </template>,
       );
     }
 
@@ -67,5 +67,5 @@ module(
       await renderComponent({ changeset: setupChangeset(''), disabled: false });
       await a11yAudit();
     });
-  }
+  },
 );

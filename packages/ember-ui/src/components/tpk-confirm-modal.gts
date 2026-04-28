@@ -29,7 +29,7 @@ export interface TpkConfirmModalSignature {
   };
 }
 
-const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> = <template>
+const TpkConfirmModal: TOC<TpkConfirmModalSignature> = <template>
   <TpkModal
     data-test-confirm-modal
     @isOpen={{@isOpen}}
@@ -53,4 +53,4 @@ const TpkConfirmModalComponent: TOC<TpkConfirmModalSignature> = <template>
   </TpkModal>
 </template>;
 
-export default TpkConfirmModalComponent;
+export default TpkConfirmModal;

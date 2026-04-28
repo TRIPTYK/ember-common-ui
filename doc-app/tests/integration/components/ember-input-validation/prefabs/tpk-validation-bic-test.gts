@@ -29,7 +29,7 @@ module(
             @disabled={{params.disabled}}
             @validationField="bic"
           />
-        </template>
+        </template>,
       );
       return immerChangeset;
     }
@@ -74,5 +74,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

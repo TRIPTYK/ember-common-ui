@@ -23,7 +23,7 @@ export interface UiModalContentSignature {
   };
 }
 
-export default class TpkModalContentComponent extends Component<UiModalContentSignature> {
+export default class TpkModalContent extends Component<UiModalContentSignature> {
   guid = guidFor(this);
 
   public constructor(owner: Owner, args: UiModalContentArgs) {

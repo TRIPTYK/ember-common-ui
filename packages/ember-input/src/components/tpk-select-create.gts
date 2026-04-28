@@ -55,7 +55,7 @@ export interface TpkSelectCreateSignature {
   };
 }
 
-export default class TpkSelectCreateComponent extends Component<TpkSelectCreateSignature> {
+export default class TpkSelectCreate extends Component<TpkSelectCreateSignature> {
   guid = guidFor(this);
 
   constructor(owner: Owner, args: TpkSelectCreateSignature['Args']) {

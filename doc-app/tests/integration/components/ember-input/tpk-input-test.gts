@@ -17,11 +17,11 @@ module('Integration | Component | tpk-input', function (hooks) {
         <TpkInput @type="password" @label="label" @value="value" as |O|>
           {{catchState O}}
         </TpkInput>
-      </template>
+      </template>,
     );
 
     const { state } = (getOwner(this) as ApplicationInstance).lookup(
-      'service:catch-state'
+      'service:catch-state',
     ) as CatchState<Record<string, unknown>>;
 
     assert.strictEqual(typeof state?.['Input'], 'object', 'Input');
@@ -53,7 +53,7 @@ module('Integration | Component | tpk-input', function (hooks) {
           <I.Input />
           <I.Label />
         </TpkInput>
-      </template>
+      </template>,
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -84,7 +84,7 @@ module('Integration | Component | tpk-input', function (hooks) {
           <I.Input />
           <I.Label />
         </TpkInput>
-      </template>
+      </template>,
     );
 
     await fillIn('[data-test-tpk-input-input]', valueToApply);
@@ -115,7 +115,7 @@ module('Integration | Component | tpk-input', function (hooks) {
           <I.Input />
           <I.Label />
         </TpkInput>
-      </template>
+      </template>,
     );
     assert.dom('[data-test-tpk-input-input]').hasValue(`${maskPrefix}####`);
   });
@@ -137,7 +137,7 @@ module('Integration | Component | tpk-input', function (hooks) {
           <I.Input />
           <I.Label />
         </TpkInput>
-      </template>
+      </template>,
     );
 
     await fillIn('[data-test-tpk-input-input]', '123');

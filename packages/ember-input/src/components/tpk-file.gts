@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
+import { BaseUI, type BaseUIArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import type { WithBoundArgs } from '@glint/template';
 import TpkFileInputComponent from './tpk-file/input.gts';
@@ -9,7 +9,7 @@ import { trackedArray } from '@ember/reactive/collections';
 
 export type TpkFileSignature = {
   Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
+    BaseUIArgs['Args'],
     {
       accept?: string;
       multiple?: boolean;
@@ -27,14 +27,14 @@ export type TpkFileSignature = {
         Label: WithBoundArgs<typeof TpkLabel, 'label' | 'guid'>;
         guid: string;
         changeEvent: 'input' | 'change';
-        onChange: TpkFileComponent['onChange'];
-        files: TpkFileComponent['files'];
+        onChange: TpkFile['onChange'];
+        files: TpkFile['files'];
       },
     ];
   };
 };
 
-export default class TpkFileComponent extends BaseUIComponent<TpkFileSignature> {
+export default class TpkFile extends BaseUI<TpkFileSignature> {
   files: File[] = trackedArray();
 
   @action onChange(e: Event) {

@@ -8,7 +8,7 @@ import { fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import t from 'ember-intl/helpers/t';
 
-export interface TableGenericBodyComponentSignature {
+export interface TableGenericBodySignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;
@@ -30,7 +30,7 @@ export interface TableGenericBodyComponentSignature {
   };
 }
 
-export default class TableGenericBodyComponent extends Component<TableGenericBodyComponentSignature> {
+export default class TableGenericBody extends Component<TableGenericBodySignature> {
   @tracked isExpanded = false;
 
   get bodyClass() {

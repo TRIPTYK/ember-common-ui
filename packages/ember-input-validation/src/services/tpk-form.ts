@@ -1,12 +1,12 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import TpkValidationTextareaComponent from '../components/tpk-validation-textarea.gts';
-import TpkValidationInputComponent from '../components/tpk-validation-input.gts';
+import TpkValidationTextarea from '../components/tpk-validation-textarea.gts';
+import TpkValidationInput from '../components/tpk-validation-input.gts';
 import TpkValidationSelect from '../components/tpk-validation-select.gts';
-import TpkValidationCheckboxComponent from '../components/tpk-validation-checkbox.gts';
-import TpkValidationRadioComponent from '../components/tpk-validation-radio.gts';
-import TpkValidationFileComponent from '../components/tpk-validation-file.gts';
-import TpkValidationDatepickerComponent from '../components/tpk-validation-datepicker.gts';
+import TpkValidationCheckbox from '../components/tpk-validation-checkbox.gts';
+import TpkValidationRadio from '../components/tpk-validation-radio.gts';
+import TpkValidationFile from '../components/tpk-validation-file.gts';
+import TpkValidationDatepicker from '../components/tpk-validation-datepicker.gts';
 import TpkValidationInputPrefabComponent from '../components/prefabs/tpk-validation-input.gts';
 import TpkValidationTextareaPrefabComponent from '../components/prefabs/tpk-validation-textarea.gts';
 import TpkValidationSelectPrefabComponent from '../components/prefabs/tpk-validation-select.gts';
@@ -26,25 +26,25 @@ import TpkValidationNumberPrefabComponent from '../components/prefabs/tpk-valida
 import TpkValidationBicPrefabComponent from '../components/prefabs/tpk-validation-bic.gts';
 import TpkValidationNationalNumberPrefabComponent from '../components/prefabs/tpk-validation-national-number.gts';
 import TpkValidationVATPrefabComponent from '../components/prefabs/tpk-validation-vat.gts';
-import TpkValidationRadioGroupComponent from '../components/tpk-validation-radio-group.gts';
+import TpkValidationRadioGroup from '../components/tpk-validation-radio-group.gts';
 import TpkValidationRadioPrefabComponent from '../components/prefabs/tpk-validation-radio.gts';
 import TpkValidationRadioGroupPrefabComponent from '../components/prefabs/tpk-validation-radio-group.gts';
 import TpkValidationFilePrefabComponent from '../components/prefabs/tpk-validation-file.gts';
 
 export default class TpkFormService extends Service {
-  @tracked TpkInput = TpkValidationInputComponent;
+  @tracked TpkInput = TpkValidationInput;
   @tracked TpkInputPrefab = TpkValidationInputPrefabComponent;
-  @tracked TpkTextarea = TpkValidationTextareaComponent;
+  @tracked TpkTextarea = TpkValidationTextarea;
   @tracked TpkTextareaPrefab = TpkValidationTextareaPrefabComponent;
   @tracked TpkSelect = TpkValidationSelect;
   @tracked TpkSelectPrefab = TpkValidationSelectPrefabComponent;
   @tracked TpkSelectCreatePrefab = TpkValidationSelectCreatePrefabComponent;
   @tracked TpkSelectSearchPrefab = TpkValidationSelectSearchPrefabComponent;
-  @tracked TpkCheckbox = TpkValidationCheckboxComponent;
+  @tracked TpkCheckbox = TpkValidationCheckbox;
   @tracked TpkCheckboxPrefab = TpkValidationCheckboxPrefabComponent;
-  @tracked TpkRadio = TpkValidationRadioComponent;
-  @tracked TpkFile = TpkValidationFileComponent;
-  @tracked TpkDatepicker = TpkValidationDatepickerComponent;
+  @tracked TpkRadio = TpkValidationRadio;
+  @tracked TpkFile = TpkValidationFile;
+  @tracked TpkDatepicker = TpkValidationDatepicker;
   @tracked TpkDatepickerPrefab = TpkValidationDatepickerPrefabComponent;
   @tracked TpkDatepickerRangePrefab =
     TpkValidationDatepickerRangePrefabComponent;
@@ -59,7 +59,7 @@ export default class TpkFormService extends Service {
   @tracked TpkIntegerPrefab = TpkValidationIntegerComponent;
   @tracked TpkNumberPrefab = TpkValidationNumberPrefabComponent;
   @tracked TpkMobilePrefab = TpkValidationMobilePrefabComponent;
-  @tracked TpkRadioGroup = TpkValidationRadioGroupComponent;
+  @tracked TpkRadioGroup = TpkValidationRadioGroup;
   @tracked TpkRadioPrefab = TpkValidationRadioPrefabComponent;
   @tracked TpkRadioGroupPrefab = TpkValidationRadioGroupPrefabComponent;
   @tracked TpkFilePrefab = TpkValidationFilePrefabComponent;

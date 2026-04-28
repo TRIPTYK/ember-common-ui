@@ -1,14 +1,11 @@
 import { action } from '@ember/object';
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from './base.ts';
+import { type BaseValidationSignature, BaseValidation } from './base.ts';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 import type { WithBoundArgs } from '@glint/template';
 import { assert } from '@ember/debug';
 
-export interface TpkValidationRadioGroupComponentSignature extends BaseValidationSignature {
+export interface TpkValidationRadioGroupSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     classless?: boolean;
     unmaskValue?: boolean;
@@ -23,11 +20,11 @@ export interface TpkValidationRadioGroupComponentSignature extends BaseValidatio
           typeof TpkRadio,
           'selected' | 'disabled' | 'name' | 'value' | 'onChange'
         >;
-        onChange: TpkValidationRadioGroupComponent['onChange'];
-        errors: TpkValidationRadioGroupComponent['errors'];
-        hasError: TpkValidationRadioGroupComponent['hasError'];
-        firstError: TpkValidationRadioGroupComponent['firstError'];
-        mandatory: TpkValidationRadioGroupComponent['mandatory'];
+        onChange: TpkValidationRadioGroup['onChange'];
+        errors: TpkValidationRadioGroup['errors'];
+        hasError: TpkValidationRadioGroup['hasError'];
+        firstError: TpkValidationRadioGroup['firstError'];
+        mandatory: TpkValidationRadioGroup['mandatory'];
         selected?: string;
       },
     ];
@@ -35,7 +32,7 @@ export interface TpkValidationRadioGroupComponentSignature extends BaseValidatio
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationRadioGroupComponent extends BaseValidationComponent<TpkValidationRadioGroupComponentSignature> {
+export default class TpkValidationRadioGroup extends BaseValidation<TpkValidationRadioGroupSignature> {
   @action onChange(value: string) {
     if (this.args.onChange) {
       return this.args.onChange(value);

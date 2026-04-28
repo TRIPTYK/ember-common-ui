@@ -1,6 +1,6 @@
 properties:
   validationField:
-    description: 'Le nom du champ dans le changeset pour la validation.'
+    description: "Le nom du champ dans le changeset pour la validation."
   changeset:
     description: L'objet changeset pour la validation du formulaire.
   label:
@@ -20,8 +20,8 @@ properties:
   enableTime:
     description: Activer le sélecteur d'heure (toujours true pour timepicker).
   noCalendar:
-    description: 'Masquer le calendrier (toujours true pour timepicker).'
+    description: "Masquer le calendrier (toujours true pour timepicker)."
   stepping:
     description: L'incrément du sélecteur d'heure en minutes.
   enableSecond:
-    description: 'Afficher le sélecteur de secondes.'
+    description: "Afficher le sélecteur de secondes."

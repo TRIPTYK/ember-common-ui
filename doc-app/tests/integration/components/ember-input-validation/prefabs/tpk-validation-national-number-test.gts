@@ -31,7 +31,7 @@ module(
             @validationField="nationalNumber"
             class="custom-national-number-class"
           />
-        </template>
+        </template>,
       );
       return immerChangeset;
     }
@@ -84,5 +84,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

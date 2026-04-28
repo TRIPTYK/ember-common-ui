@@ -16,7 +16,7 @@ export interface BaseValidationSignature {
   };
 }
 
-export abstract class BaseValidationComponent<
+export abstract class BaseValidation<
   T extends BaseValidationSignature,
 > extends Component<T> {
   constructor(owner: Owner, args: T['Args']) {

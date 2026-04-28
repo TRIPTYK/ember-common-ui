@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import { action } from '@ember/object';
@@ -13,7 +13,7 @@ import EyeIcon from '../../assets/icons/eye.gts';
 
 export interface TpkValidationPasswordPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'unmaskValue' | 'maskOptions'
   >;
   Blocks: {
@@ -22,7 +22,7 @@ export interface TpkValidationPasswordPrefabSignature extends BaseValidationSign
   Element: HTMLElement;
 }
 
-export default class TpkValidationPasswordPrefabComponent extends Component<TpkValidationPasswordPrefabSignature> {
+export default class TpkValidationPasswordPrefab extends Component<TpkValidationPasswordPrefabSignature> {
   @tracked showPassword = false;
 
   @action
@@ -35,7 +35,7 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @label={{@label}}
       @type={{this.type}}
       @onChange={{@onChange}}
@@ -90,6 +90,6 @@ export default class TpkValidationPasswordPrefabComponent extends Component<TpkV
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

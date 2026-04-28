@@ -10,7 +10,7 @@ module('Integration | Component | modal', function (hooks) {
   async function setupComponent(
     isOpen: boolean,
     assert: Assert,
-    handler?: (e: MouseEvent | TouchEvent) => boolean
+    handler?: (e: MouseEvent | TouchEvent) => boolean,
   ) {
     const title = 'My modal';
     const onClose = () => {
@@ -33,7 +33,7 @@ module('Integration | Component | modal', function (hooks) {
             <button type="button">Content</button>
           </Modal.Content>
         </TpkModal>
-      </template>
+      </template>,
     );
   }
 

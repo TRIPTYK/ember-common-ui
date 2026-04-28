@@ -32,7 +32,7 @@ module(
             <Radio @value="applati" @label="applati" @selected="applati" />
             <Radio @value="creux" @label="creux" />
           </TpkValidationRadioGroup>
-        </template>
+        </template>,
       );
       return changeset;
     }
@@ -82,5 +82,5 @@ module(
       await renderComponent({ changeset });
       await a11yAudit();
     });
-  }
+  },
 );

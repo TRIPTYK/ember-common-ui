@@ -14,7 +14,7 @@ interface CodeBlockSignature {
   };
 }
 
-export default class CodeBlockComponent extends Component<CodeBlockSignature> {
+export default class CodeBlock extends Component<CodeBlockSignature> {
   @tracked copied = false;
   @tracked highlightedHtml = '';
 

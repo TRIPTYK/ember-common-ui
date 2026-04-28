@@ -1,7 +1,7 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
 
-export interface TpkRadioInputComponentSignature {
+export interface TpkRadioInputSignature {
   Args: {
     name: string;
     guid: string;
@@ -18,7 +18,7 @@ export interface TpkRadioInputComponentSignature {
   };
 }
 
-export default class TpkRadioInputComponent extends Component<TpkRadioInputComponentSignature> {
+export default class TpkRadioInput extends Component<TpkRadioInputSignature> {
   get isChecked(): boolean {
     return this.args.value === this.args.selected;
   }

@@ -26,23 +26,22 @@ export interface TpkConfirmModalPrefabSignature {
   Element: HTMLDivElement;
 }
 
-const TpkConfirmModalPrefabComponent: TOC<TpkConfirmModalPrefabSignature> =
-  <template>
-    <TpkConfirmModalComponent
-      class='tpk-confirm-modal-container'
-      @onClose={{@onClose}}
-      @onConfirm={{@onConfirm}}
-      @cancelText={{@cancelText}}
-      @confirmText={{@confirmText}}
-      @confirmQuestion={{@confirmQuestion}}
-      @isOpen={{@isOpen}}
-      data-test-confirm-modal-container
-      ...attributes
-      as |M|
-    >
-      <M.Cancel @icon={{@icon}} @cancelText={{@cancelText}} />
-      <M.Confirm @confirmText={{@confirmText}} />
-    </TpkConfirmModalComponent>
-  </template>;
+const TpkConfirmModalPrefab: TOC<TpkConfirmModalPrefabSignature> = <template>
+  <TpkConfirmModalComponent
+    class='tpk-confirm-modal-container'
+    @onClose={{@onClose}}
+    @onConfirm={{@onConfirm}}
+    @cancelText={{@cancelText}}
+    @confirmText={{@confirmText}}
+    @confirmQuestion={{@confirmQuestion}}
+    @isOpen={{@isOpen}}
+    data-test-confirm-modal-container
+    ...attributes
+    as |M|
+  >
+    <M.Cancel @icon={{@icon}} @cancelText={{@cancelText}} />
+    <M.Confirm @confirmText={{@confirmText}} />
+  </TpkConfirmModalComponent>
+</template>;
 
-export default TpkConfirmModalPrefabComponent;
+export default TpkConfirmModalPrefab;

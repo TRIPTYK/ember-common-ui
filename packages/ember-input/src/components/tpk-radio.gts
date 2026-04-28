@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
+import { BaseUI, type BaseUIArgs } from './base.ts';
 import type { WithBoundArgs } from '@glint/template';
 import TpkRadioInputComponent from './tpk-radio/input.gts';
 import type { MergeDeep } from 'type-fest';
@@ -10,7 +10,7 @@ import type Owner from '@ember/owner';
 
 export type TpkRadioSignature = {
   Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
+    BaseUIArgs['Args'],
     {
       value?: string;
       checked?: boolean;
@@ -34,7 +34,7 @@ export type TpkRadioSignature = {
           | 'changeEvent'
           | 'onChange'
         >;
-        onChange: TpkRadioComponent['onChange'];
+        onChange: TpkRadio['onChange'];
         changeEvent: 'input' | 'change';
         guid: string;
       },
@@ -42,7 +42,7 @@ export type TpkRadioSignature = {
   };
 };
 
-export default class TpkRadioComponent extends BaseUIComponent<TpkRadioSignature> {
+export default class TpkRadio extends BaseUI<TpkRadioSignature> {
   constructor(owner: Owner, args: TpkRadioSignature['Args']) {
     super(owner, args);
     assert('@name is required', args.name !== undefined);

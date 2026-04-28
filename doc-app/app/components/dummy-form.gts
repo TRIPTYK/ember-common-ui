@@ -14,7 +14,7 @@ import {
 } from 'zod';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 
-export default class DummyFormComponent extends Component {
+export default class DummyForm extends Component {
   @tracked changeset = new ImmerChangeset({
     firstName: '',
     lastName: '',

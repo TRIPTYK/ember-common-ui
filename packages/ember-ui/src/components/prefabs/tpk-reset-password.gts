@@ -27,7 +27,7 @@ export interface TpkResetPasswordSignature {
   Element: HTMLDivElement;
 }
 
-export default class TpkResetPasswordComponent extends Component<TpkResetPasswordSignature> {
+export default class TpkResetPassword extends Component<TpkResetPasswordSignature> {
   changeset = new ImmerChangeset(
     this.args.initialValues ?? {
       password: '',

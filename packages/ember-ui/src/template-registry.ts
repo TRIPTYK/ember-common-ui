@@ -17,7 +17,7 @@ import type TableGenericTableComponent from './components/tpk-table-generic/tabl
 import type TpkConfirmModalComponent from './components/tpk-confirm-modal.gts';
 import type TableGenericComponent from './components/tpk-table-generic.gts';
 import type TpkStackListHeadComponent from './components/tpk-stack-list/head.gts';
-import type StackListItemComponent from './components/tpk-stack-list/item.gts';
+import type StackListItem from './components/tpk-stack-list/item.gts';
 import type TpkStackListContentComponent from './components/tpk-stack-list/content.gts';
 import type TpkActionsMenuElementComponent from './components/tpk-actions-menu/element.gts';
 import type TpkStackListTitleComponent from './components/tpk-stack-list/title.gts';
@@ -30,8 +30,8 @@ export default interface Registry {
   'tpk-actions-menu/element': typeof TpkActionsMenuElementComponent;
   'tpk-stack-list/title': typeof TpkStackListTitleComponent;
   'tpk-stack-list/content': typeof TpkStackListContentComponent;
-  'tpk-stack-list/item': typeof StackListItemComponent;
-  'TpkStackList::Item': typeof StackListItemComponent;
+  'tpk-stack-list/item': typeof StackListItem;
+  'TpkStackList::Item': typeof StackListItem;
   'tpk-stack-list/head': typeof TpkStackListHeadComponent;
   'TpkStackList::Head': typeof TpkStackListHeadComponent;
   'tpk-table-generic': typeof TableGenericComponent;

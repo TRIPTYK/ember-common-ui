@@ -23,9 +23,9 @@ It is also possible to pass components to the desired column.
 
 ```ts
 //exemple on gts file
-export interface TableRouteComponentSignature {}
+export interface TableRouteSignature {}
 
-export class TableRouteComponent extends Component<TableRouteComponentSignature> {
+export class TableRoute extends Component<TableRouteSignature> {
   emailOptions = ['info@triptyk.eu','loempia@triptyk.eu'];
 
   tableParamsWithFunctions: TableParams = {

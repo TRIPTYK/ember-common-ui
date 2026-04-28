@@ -29,7 +29,7 @@ module(
             @changeset={{immerChangeset}}
             @validationField="datepicker-range"
           />
-        </template>
+        </template>,
       );
       return immerChangeset;
     }
@@ -67,13 +67,13 @@ module(
         .dom(`label > div:first-of-type`)
         .hasClass(
           `tpk-label`,
-          `The first div inside label has the class tpk-label.`
+          `The first div inside label has the class tpk-label.`,
         );
       assert
         .dom(`.tpk-datepicker-range-container > div:last-of-type`)
         .hasClass(
           `tpk-validation-errors`,
-          `The last div inside container has the class tpk-validation-errors.`
+          `The last div inside container has the class tpk-validation-errors.`,
         );
     });
 
@@ -93,5 +93,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

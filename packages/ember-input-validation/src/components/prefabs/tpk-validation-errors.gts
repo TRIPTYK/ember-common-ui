@@ -4,7 +4,7 @@ import { htmlSafe as HS } from '@ember/template';
 import { t, type IntlService } from 'ember-intl';
 import { service } from '@ember/service';
 
-export interface TpkValidationErrorsComponentSignature {
+export interface TpkValidationErrorsSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     errors: any;
@@ -15,7 +15,7 @@ export interface TpkValidationErrorsComponentSignature {
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationErrorsComponent extends Component<TpkValidationErrorsComponentSignature> {
+export default class TpkValidationErrors extends Component<TpkValidationErrorsSignature> {
   @service declare intl: IntlService;
 
   htmlSafe = helper(function htmlSafe(params: [string]) {

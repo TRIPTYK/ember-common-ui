@@ -4,7 +4,7 @@ import TableGenericBodyActionComponent from './action.gts';
 import TpkActionsMenu from '../../tpk-actions-menu.gts';
 import { modifier } from 'ember-modifier';
 
-export interface TableGenericBodyActionMenuComponentSignature {
+export interface TableGenericBodyActionMenuSignature {
   Args: {
     item: unknown;
     index: number;
@@ -17,7 +17,7 @@ export interface TableGenericBodyActionMenuComponentSignature {
   };
 }
 
-export default class TableGenericBodyActionMenuComponent extends Component<TableGenericBodyActionMenuComponentSignature> {
+export default class TableGenericBodyActionMenu extends Component<TableGenericBodyActionMenuSignature> {
   registerActionMenu = modifier((element: HTMLTableCellElement) => {
     this.args.registerActionMenu(element, []);
   });

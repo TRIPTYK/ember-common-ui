@@ -42,7 +42,12 @@ const parserOptions = {
 };
 
 export default defineConfig([
-  globalIgnores(['dist/', 'coverage/', '!**/.*']),
+  globalIgnores([
+    'dist/',
+    'coverage/',
+    '!**/.*',
+    'public/mockServiceWorker.js',
+  ]),
   js.configs.recommended,
   ember.configs.base,
   ember.configs.gjs,
@@ -76,6 +81,9 @@ export default defineConfig([
       },
     },
     extends: [...ts.configs.recommendedTypeChecked, ember.configs.gts],
+    rules: {
+      'no-undef': 'off',
+    },
   },
   {
     ...qunit.configs.recommended,

@@ -29,7 +29,7 @@ module(
             @mandatory={{true}}
             @value="radio"
           />
-        </template>
+        </template>,
       );
       return changeset;
     }
@@ -64,5 +64,5 @@ module(
       await renderComponent({ changeset });
       await a11yAudit();
     });
-  }
+  },
 );

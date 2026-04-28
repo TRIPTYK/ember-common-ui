@@ -17,7 +17,7 @@ module(
       changeset: ImmerChangeset,
       params?: {
         disabled?: boolean;
-      }
+      },
     ) {
       await render(
         <template>
@@ -29,7 +29,7 @@ module(
             class="custom-number-class"
             @step={{0.1}}
           />
-        </template>
+        </template>,
       );
     }
     async function renderComponentUnsigned(changeset: ImmerChangeset) {
@@ -43,7 +43,7 @@ module(
             @unsigned={{true}}
             @step={{0.1}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -116,5 +116,5 @@ module(
       await renderComponent(changeset);
       await a11yAudit();
     });
-  }
+  },
 );

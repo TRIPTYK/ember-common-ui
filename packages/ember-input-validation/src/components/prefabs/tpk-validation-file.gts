@@ -2,22 +2,22 @@ import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import { type TOC } from '@ember/component/template-only';
-import TpkValidationFileComponent, {
-  type TpkValidationFileComponentSignature,
+import TpkValidationFile, {
+  type TpkValidationFileSignature,
 } from '../tpk-validation-file.gts';
 
 export interface TpkValidationFilePrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationFileComponentSignature['Args'] & { mandatory?: boolean };
+    TpkValidationFileSignature['Args'] & { mandatory?: boolean };
   Blocks: {
     default: [];
   };
   Element: HTMLElement;
 }
 
-const TpkValidationFilePrefabComponent: TOC<TpkValidationFilePrefabSignature> =
+const TpkValidationFilePrefab: TOC<TpkValidationFilePrefabSignature> =
   <template>
-    <TpkValidationFileComponent
+    <TpkValidationFile
       @label={{@label}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
@@ -43,7 +43,7 @@ const TpkValidationFilePrefabComponent: TOC<TpkValidationFilePrefabSignature> =
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationFileComponent>
+    </TpkValidationFile>
   </template>;
 
-export default TpkValidationFilePrefabComponent;
+export default TpkValidationFilePrefab;

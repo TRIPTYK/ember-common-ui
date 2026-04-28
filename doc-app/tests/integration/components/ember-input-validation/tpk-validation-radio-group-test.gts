@@ -32,7 +32,7 @@ module(
               <T.Label />
             </R.Radio>
           </TpkValidationRadioGroup>
-        </template>
+        </template>,
       );
       return changeset;
     }
@@ -59,10 +59,10 @@ module(
       setupOnerror(function (err) {
         assert.strictEqual(
           err.message,
-          'Assertion Failed: The changeset value must be a string'
+          'Assertion Failed: The changeset value must be a string',
         );
       });
       await setupComponent(true);
     });
-  }
+  },
 );

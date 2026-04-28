@@ -20,7 +20,7 @@ module('Integration | Component | Action Menu', function (hooks) {
             ActionText
           </Action>
         </TpkActionsMenu>
-      </template>
+      </template>,
     );
   }
 

@@ -15,7 +15,7 @@ describe('tpk-form', () => {
       const schema = object({
         name: string().min(
           10,
-          'Too small: expected string to have >=10 characters'
+          'Too small: expected string to have >=10 characters',
         ),
         email: string().email('Invalid email address'),
       });
@@ -56,7 +56,7 @@ describe('tpk-form', () => {
             </F.TpkInput>
             <button type="submit">Submit</button>
           </TpkForm>
-        </template>
+        </template>,
       );
 
       expect(changeset.isInvalid).toBe(false);
@@ -68,8 +68,8 @@ describe('tpk-form', () => {
       expect(changeset.isInvalid).toBe(true);
       expect(find('[data-test-tpk-validation-errors]')).toBeTruthy();
       expect(find('[data-test-tpk-validation-errors]')?.textContent).toContain(
-        'Too small: expected string to have >=10 characters'
+        'Too small: expected string to have >=10 characters',
       );
-    }
+    },
   );
 });

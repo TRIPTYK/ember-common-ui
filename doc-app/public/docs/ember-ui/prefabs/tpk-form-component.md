@@ -54,31 +54,31 @@ as |F|
 Créez un changeset, un schéma de validation et un gestionnaire de soumission :
 
 ```typescript
-import Controller from '@ember/controller';
-import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, email } from 'zod';
-import { action } from '@ember/object';
+import Controller from "@ember/controller";
+import { ImmerChangeset } from "ember-immer-changeset";
+import { object, string, email } from "zod";
+import { action } from "@ember/object";
 
 export default class MyFormController extends Controller {
   // Initialiser un changeset vide
   changeset = new ImmerChangeset({
-    firstName: '',
-    lastName: '',
-    email: '',
+    firstName: "",
+    lastName: "",
+    email: "",
   });
 
   // Définir les règles de validation avec Zod
   validationSchema = object({
-    firstName: string().min(2, 'Le prénom doit contenir au moins 2 caractères'),
-    lastName: string().min(2, 'Le nom doit contenir au moins 2 caractères'),
-    email: string().email('Doit être une adresse email valide'),
+    firstName: string().min(2, "Le prénom doit contenir au moins 2 caractères"),
+    lastName: string().min(2, "Le nom doit contenir au moins 2 caractères"),
+    email: string().email("Doit être une adresse email valide"),
   });
 
   @action
   handleSubmit(validatedData, changeset) {
     // validatedData contient les données validées du formulaire
     // changeset est l'instance ImmerChangeset
-    console.log('Formulaire soumis avec:', validatedData);
+    console.log("Formulaire soumis avec:", validatedData);
     // Effectuez votre appel API ou traitement de données ici
   }
 }
@@ -313,20 +313,20 @@ Utilisez le helper `changesetGet` pour récupérer des valeurs sans répéter l'
 
 ```typescript
 // Controller
-import Controller from '@ember/controller';
-import { ImmerChangeset } from 'ember-immer-changeset';
-import { object, string, number, boolean, date } from 'zod';
-import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
+import Controller from "@ember/controller";
+import { ImmerChangeset } from "ember-immer-changeset";
+import { object, string, number, boolean, date } from "zod";
+import { action } from "@ember/object";
+import { tracked } from "@glimmer/tracking";
 
 export default class ComplexFormController extends Controller {
   @tracked isSubmitting = false;
 
   changeset = new ImmerChangeset({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
     birthday: null,
     country: null,
     subscribe: false,
@@ -343,9 +343,9 @@ export default class ComplexFormController extends Controller {
   });
 
   countryOptions = [
-    { label: 'Belgique', value: 'BE' },
-    { label: 'France', value: 'FR' },
-    { label: 'Pays-Bas', value: 'NL' },
+    { label: "Belgique", value: "BE" },
+    { label: "France", value: "FR" },
+    { label: "Pays-Bas", value: "NL" },
   ];
 
   @action
@@ -353,9 +353,9 @@ export default class ComplexFormController extends Controller {
     this.isSubmitting = true;
     try {
       await this.saveUser(validatedData);
-      alert('Utilisateur sauvegardé avec succès!');
+      alert("Utilisateur sauvegardé avec succès!");
     } catch (error) {
-      console.error('Échec de la sauvegarde:', error);
+      console.error("Échec de la sauvegarde:", error);
     } finally {
       this.isSubmitting = false;
     }
@@ -425,7 +425,7 @@ export default class ComplexFormController extends Controller {
 Les composants yieldés par défaut sont les composants de validation standard (`TpkValidation*`), mais vous pouvez changer ces composants par défaut en modifiant les valeurs dans le service TpkForm.
 
 ```typescript
-let tpkFormService = this.owner.lookup('service:tpk-form') as TpkFormService;
+let tpkFormService = this.owner.lookup("service:tpk-form") as TpkFormService;
 
 // Composants de base
 tpkFormService.TpkInput = CustomInput;

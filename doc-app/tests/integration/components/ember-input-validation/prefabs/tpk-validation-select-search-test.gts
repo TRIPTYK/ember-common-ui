@@ -42,7 +42,7 @@ module(
       params: {
         changeset: ImmerChangeset;
         disabled?: boolean;
-      }
+      },
     ) {
       const onChange = (selection: unknown) => {
         params.changeset.set('fastfood', selection);
@@ -66,7 +66,7 @@ module(
             @validationField="fastfood"
             @label="Select your favorite fastfood"
           />
-        </template>
+        </template>,
       );
     }
 
@@ -77,7 +77,7 @@ module(
       });
       assert.strictEqual(
         find('.ember-power-select-selected-item')?.textContent?.trim(),
-        'McDonald - Burger'
+        'McDonald - Burger',
       );
     });
 
@@ -95,7 +95,7 @@ module(
         .hasText('McDonald - Burger');
       await selectSearch(
         '.tpk-select-search-container .ember-power-select-search input',
-        'new'
+        'new',
       );
       assert.verifySteps(['search']);
     });
@@ -151,5 +151,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

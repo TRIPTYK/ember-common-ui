@@ -27,7 +27,7 @@ module(
             class="custom-integer-class"
             @disabled={{params.disabled}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -43,7 +43,7 @@ module(
             class="custom-integer-class"
             @unsigned={{true}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -134,5 +134,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

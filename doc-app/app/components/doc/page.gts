@@ -13,7 +13,7 @@ interface DocPageSignature {
   };
 }
 
-export default class DocPageComponent extends Component<DocPageSignature> {
+export default class DocPage extends Component<DocPageSignature> {
   @service declare intl: IntlService;
 
   <template>

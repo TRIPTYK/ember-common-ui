@@ -27,7 +27,7 @@ module(
             @label="label"
             @mandatory={{true}}
           />
-        </template>
+        </template>,
       );
 
       return changeset;
@@ -56,5 +56,5 @@ module(
       await renderComponent();
       await a11yAudit();
     });
-  }
+  },
 );

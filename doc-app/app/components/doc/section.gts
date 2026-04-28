@@ -12,7 +12,7 @@ interface DocSectionSignature {
   };
 }
 
-export default class DocSectionComponent extends Component<DocSectionSignature> {
+export default class DocSection extends Component<DocSectionSignature> {
   @service declare intl: IntlService;
 
   <template>

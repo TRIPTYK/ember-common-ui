@@ -1,14 +1,14 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import MandatoryLabelComponent from './mandatory-label.gts';
 import Component from '@glimmer/component';
 
-export interface TpkValidationNumberComponentSignature extends BaseValidationSignature {
+export interface TpkValidationNumberSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'unmaskValue' | 'maskOptions'
   > & {
     unsigned?: boolean;
@@ -19,13 +19,13 @@ export interface TpkValidationNumberComponentSignature extends BaseValidationSig
   Element: HTMLElement;
 }
 
-export default class TpkValidationNumberPrefabComponent extends Component<TpkValidationNumberComponentSignature> {
+export default class TpkValidationNumberPrefab extends Component<TpkValidationNumberSignature> {
   get min() {
     return this.args.unsigned ? 0 : this.args.min;
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @type='number'
       @label={{@label}}
       @min={{this.min}}
@@ -59,6 +59,6 @@ export default class TpkValidationNumberPrefabComponent extends Component<TpkVal
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

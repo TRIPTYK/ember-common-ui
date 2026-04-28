@@ -24,7 +24,7 @@ interface TpkModalEnv {
   };
 }
 
-export interface TpkModalComponentSignature {
+export interface TpkModalSignature {
   Args: TpkModalComponentArgs;
   Element: HTMLDivElement;
   Blocks: {
@@ -43,7 +43,7 @@ export interface TpkModalComponentSignature {
   };
 }
 
-export default class TpkModalComponent extends Component<TpkModalComponentSignature> {
+export default class TpkModal extends Component<TpkModalSignature> {
   @service declare dialogLayer: DialogLayerService;
 
   guid = guidFor(this);

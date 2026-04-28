@@ -20,12 +20,12 @@ interface TableGenericFooterComponentArgs {
   };
 }
 
-export interface TableGenericFooterComponentSignature {
+export interface TableGenericFooterSignature {
   Args: TableGenericFooterComponentArgs;
   Element: never;
 }
 
-export default class TableGenericFooterComponent extends Component<TableGenericFooterComponentArgs> {
+export default class TableGenericFooter extends Component<TableGenericFooterComponentArgs> {
   get colspan() {
     return this.args.hasActionMenu
       ? this.args.table.visibleColumns.length + 1

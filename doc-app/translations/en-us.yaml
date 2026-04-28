@@ -1,200 +1,277 @@
 global:
-  on: 'on'
-  results: 'results'
-  results_by_page: 'results by page'
-  search: 'Search'
-  theme: 'Theme'
+  on: "on"
+  results: "results"
+  results_by_page: "results by page"
+  search: "Search"
+  theme: "Theme"
 
 docs:
   sections:
-    properties: 'Properties'
-    usage: 'Usage'
-    examples: 'Examples'
+    properties: "Properties"
+    usage: "Usage"
+    examples: "Examples"
 
   propertyTable:
-    name: 'Name'
-    type: 'Type'
-    required: 'Required'
-    description: 'Description'
-    yes: 'Yes'
-    no: 'No'
+    name: "Name"
+    type: "Type"
+    required: "Required"
+    description: "Description"
+    yes: "Yes"
+    no: "No"
 
 emberInputValidation:
   prefabs:
     input:
-      title: 'Input'
-      description: 'This component provides a validated input field with label and error handling.'
+      title: "Input"
+      description: "This component provides a validated input field with label and error handling."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
+        masked: "With mask"
+      properties:
+        validationField:
+          description: "The key in the changeset to read and write the field value."
+        changeset:
+          description: "An ImmerChangeset instance managing form state and validation errors."
+        label:
+          description: "Label text displayed above the input."
+        placeholder:
+          description: "Placeholder text shown when the input is empty."
+        type:
+          description: "HTML input type (text, email, password, number, etc.). Defaults to text."
+        mandatory:
+          description: "When true, displays a mandatory indicator (*) next to the label."
+        mask:
+          description: 'IMask pattern string for input masking (e.g. "+32 000 00 00 00").'
+        maskOptions:
+          description: "Additional options object passed to the IMask instance."
+        unmaskValue:
+          description: "When true, the raw (unmasked) value is passed to onChange instead of the formatted value."
+        disabled:
+          description: "When true, disables the input field."
+        onChange:
+          description: "Optional callback (value, event) => void. If omitted, the changeset field is updated automatically."
+        changeEvent:
+          description: 'DOM event that triggers onChange: "input" fires on every keystroke, "change" fires on blur. Defaults to "change".'
     number:
-      title: 'Number'
-      description: 'The number validation input can be blocked at a minimum of 0 or be a negative number.'
+      title: "Number"
+      description: "The number validation input can be blocked at a minimum of 0 or be a negative number."
       examples:
-        title: 'Examples'
-        unsigned: 'Unsigned Number'
-        basic: 'Basic usage'
+        title: "Examples"
+        unsigned: "Unsigned Number"
+        basic: "Basic usage"
     bic:
-      title: 'BIC'
-      description: 'This is an input with a built-in mask for BIC. The mask should be compatible for any BIC and text can only be in capital letters.'
+      title: "BIC"
+      description: "This is an input with a built-in mask for BIC. The mask should be compatible for any BIC and text can only be in capital letters."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     currency:
-      title: 'Currency'
-      description: 'A reusable validation component for currency input with integrated error handling and euro formatting mask.'
+      title: "Currency"
+      description: "A reusable validation component for currency input with integrated error handling and euro formatting mask."
       examples:
-        title: 'Examples'
-        basic: 'Basic Currency'
+        title: "Examples"
+        basic: "Basic Currency"
     datepicker:
-      title: 'Datepicker'
-      description: 'A reusable validation component for date selection with integrated error handling and extensive customization options.'
+      title: "Datepicker"
+      description: "A reusable validation component for date selection with integrated error handling and extensive customization options."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     datepickerRange:
-      title: 'Datepicker Range validation prefab'
-      description: 'A reusable validation component for date range selection with integrated error handling'
+      title: "Datepicker Range validation prefab"
+      description: "A reusable validation component for date range selection with integrated error handling"
       examples:
-        title: 'Examples'
-        basic: 'Basic Datepicker Range'
+        title: "Examples"
+        basic: "Basic Datepicker Range"
     email:
-      title: 'Email'
-      description: 'A reusable validation component for email input with integrated error handling'
+      title: "Email"
+      description: "A reusable validation component for email input with integrated error handling"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     file:
-      title: 'File'
-      description: 'A reusable validation component for single file upload with integrated error handling'
+      title: "File"
+      description: "A reusable validation component for single file upload with integrated error handling"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     fileList:
-      title: 'File List'
-      description: 'A reusable validation component for multiple file upload with drag and drop support, integrated error handling, and file management features'
+      title: "File List"
+      description: "A reusable validation component for multiple file upload with drag and drop support, integrated error handling, and file management features"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     iban:
-      title: 'IBAN'
-      description: 'A reusable validation component for IBAN input with built-in mask supporting Belgian, French, Luxembourgish, Dutch and German IBANs with automatic formatting'
+      title: "IBAN"
+      description: "A reusable validation component for IBAN input with built-in mask supporting Belgian, French, Luxembourgish, Dutch and German IBANs with automatic formatting"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     integer:
-      title: 'Integer'
-      description: 'A reusable validation component for integer input that prevents decimal numbers and can be restricted to unsigned values (minimum 0) or allow negative numbers'
+      title: "Integer"
+      description: "A reusable validation component for integer input that prevents decimal numbers and can be restricted to unsigned values (minimum 0) or allow negative numbers"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     mobile:
-      title: 'Mobile'
-      description: 'A reusable validation component for mobile phone numbers with country prefix support (Luxembourg, Germany, Netherlands, Belgium, France) and integrated error handling'
+      title: "Mobile"
+      description: "A reusable validation component for mobile phone numbers with country prefix support (Luxembourg, Germany, Netherlands, Belgium, France) and integrated error handling"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     nationalNumber:
-      title: 'National Number'
-      description: 'A reusable validation component for Belgian national number input with built-in mask that formats the number in the pretty format similar to the one on Belgian ID cards'
+      title: "National Number"
+      description: "A reusable validation component for Belgian national number input with built-in mask that formats the number in the pretty format similar to the one on Belgian ID cards"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     password:
-      title: 'Password'
-      description: 'A reusable validation component for password input fields with secure masking and integrated error handling'
+      title: "Password"
+      description: "A reusable validation component for password input fields with secure masking and integrated error handling"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     radio:
-      title: 'Radio'
-      description: 'A reusable validation component for single radio button with integrated error handling'
+      title: "Radio"
+      description: "A reusable validation component for single radio button with integrated error handling"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     radioGroup:
-      title: 'Radio Group'
-      description: 'A reusable validation component for radio button groups with integrated error handling and customizable options'
+      title: "Radio Group"
+      description: "A reusable validation component for radio button groups with integrated error handling and customizable options"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     select:
-      title: 'Select'
-      description: 'A powerful select component with built-in validation using ember-power-select'
+      title: "Select"
+      description: "A powerful select component with built-in validation using ember-power-select"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     selectCreate:
-      title: 'Select Create'
-      description: 'A powerful select component with ability to create new values and built-in validation using ember-power-select and ember-power-select-with-create'
+      title: "Select Create"
+      description: "A powerful select component with ability to create new values and built-in validation using ember-power-select and ember-power-select-with-create"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     selectSearch:
-      title: 'Select Search'
-      description: 'A powerful select component with search and built-in validation using ember-power-select'
+      title: "Select Search"
+      description: "A powerful select component with search and built-in validation using ember-power-select"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     textarea:
-      title: 'Textarea'
-      description: 'A reusable validation component for textarea fields with integrated error handling and optional character limit'
+      title: "Textarea"
+      description: "A reusable validation component for textarea fields with integrated error handling and optional character limit"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     timepicker:
-      title: 'Timepicker'
-      description: 'A reusable validation component for time selection with integrated error handling and customizable options'
+      title: "Timepicker"
+      description: "A reusable validation component for time selection with integrated error handling and customizable options"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
     vat:
-      title: 'VAT'
-      description: 'An input component with built-in mask for VAT numbers supporting Belgian, French, Luxembourgish, Dutch and German VAT formats'
+      title: "VAT"
+      description: "An input component with built-in mask for VAT numbers supporting Belgian, French, Luxembourgish, Dutch and German VAT formats"
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
 
 ember-ui:
   prefabs:
     confirm-modal:
-      title: 'Confirm Modal'
-      description: 'A modal component for confirmation dialogs.'
+      title: "Confirm Modal"
+      description: "A modal component for confirmation dialogs."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        onClose:
+          description: "Callback called when the modal is dismissed without confirming."
+        onConfirm:
+          description: "Callback called when the user clicks the confirm button."
+        cancelText:
+          description: "Text label for the cancel button."
+        confirmText:
+          description: "Text label for the confirm button."
+        confirmQuestion:
+          description: "Question or message displayed in the modal body."
+        isOpen:
+          description: "Controls modal visibility. Set to true to open, false to close."
     tpk-table-generic-prefab:
-      title: 'Tpk Table Generic Prefab'
-      description: 'A generic table component with sorting, pagination, filtering, and customizable columns.'
+      title: "Tpk Table Generic Prefab"
+      description: "A generic table component with sorting, pagination, filtering, and customizable columns."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        tableParams:
+          description: "Configuration object defining the table entity, columns, pagination, sorting, and actions."
+        columnsComponent:
+          description: "Map of component names to Glimmer components used for custom column cell rendering."
+        entity:
+          description: 'API endpoint path used to fetch table data (e.g. "/users").'
+        pageSizes:
+          description: "Available page size options shown in the pagination footer. Defaults to [5, 10, 25]."
+        defaultSortColumn:
+          description: "Column field to sort by on initial load."
+        additionalFilters:
+          description: "Static key-value pairs appended to every API request as query parameters."
+        relationships:
+          description: "Comma-separated relationship names to include in API requests."
+        rowClick:
+          description: "Callback fired when a table row is clicked. Receives the row data and DOM event."
+        columns:
+          description: "Array of column definitions with field path, header label, sortable flag, and optional component name."
+        actionMenu:
+          description: "Array of action menu items, each with a name, optional icon component, and action callback."
     tpk-form:
-      title: 'Tpk Form'
-      description: 'A comprehensive form component that integrates validation using ember-immer-changeset and zod.'
+      title: "Tpk Form"
+      description: "A comprehensive form component that integrates validation using ember-immer-changeset and zod."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        changeset:
+          description: "An ImmerChangeset instance holding form state and validation errors."
+        onSubmit:
+          description: "Callback called with validated data and the changeset after successful validation."
+        validationSchema:
+          description: "A Zod object schema used to validate the changeset on submit."
+        reactive:
+          description: "When true, validates individual fields on change instead of waiting for submit."
+        removeErrorsOnSubmit:
+          description: "When true, clears all errors before running validation on submit."
+        autoScrollOnError:
+          description: "When true, scrolls to the first field with an error after failed validation."
+        disabled:
+          description: "When true, disables all yielded input components."
+        executeOnValid:
+          description: "When true, calls onSubmit only if all fields pass validation."
 
 emberInput:
   prefabs:
     button:
-      title: 'Button'
-      description: 'A simple button wrapper component with customizable label and click handler.'
+      title: "Button"
+      description: "A simple button wrapper component with customizable label and click handler."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
-        disabled: 'Disabled button'
+        title: "Examples"
+        basic: "Basic usage"
+        disabled: "Disabled button"
     toggle:
-      title: 'Toggle'
-      description: 'A simple toggle wrapper component with customizable label and checked state.'
+      title: "Toggle"
+      description: "A simple toggle wrapper component with customizable label and checked state."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
-        disabled: 'Disabled button'
+        title: "Examples"
+        basic: "Basic usage"
+        disabled: "Disabled button"
     selectSearch:
-      title: 'Select Search'
-      description: 'A select component with search functionality using tpk-select with searchEnabled.'
+      title: "Select Search"
+      description: "A select component with search functionality using tpk-select with searchEnabled."
       examples:
-        title: 'Examples'
-        basic: 'Basic usage'
+        title: "Examples"
+        basic: "Basic usage"

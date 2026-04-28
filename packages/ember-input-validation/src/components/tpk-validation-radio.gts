@@ -1,14 +1,11 @@
 import { action } from '@ember/object';
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from './base.ts';
+import { type BaseValidationSignature, BaseValidation } from './base.ts';
 import TpkRadio, {
   type TpkRadioSignature,
 } from '@triptyk/ember-input/components/tpk-radio';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationRadioComponentSignature extends BaseValidationSignature {
+export interface TpkValidationRadioSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     classless?: boolean;
@@ -24,15 +21,15 @@ export interface TpkValidationRadioComponentSignature extends BaseValidationSign
       {
         Input: TpkRadioSignature['Blocks']['default'][0]['Input'];
         Label: TpkRadioSignature['Blocks']['default'][0]['Label'];
-        errors: TpkValidationRadioComponent['errors'];
-        hasError: TpkValidationRadioComponent['hasError'];
-        firstError: TpkValidationRadioComponent['firstError'];
+        errors: TpkValidationRadio['errors'];
+        hasError: TpkValidationRadio['hasError'];
+        firstError: TpkValidationRadio['firstError'];
       },
     ];
   };
 }
 
-export default class TpkValidationRadioComponent extends BaseValidationComponent<TpkValidationRadioComponentSignature> {
+export default class TpkValidationRadio extends BaseValidation<TpkValidationRadioSignature> {
   @action onChange(value: string) {
     if (this.args.onChange) {
       return this.args.onChange(value);

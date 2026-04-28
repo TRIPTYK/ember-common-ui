@@ -1,9 +1,5 @@
 import { action } from '@ember/object';
-import {
-  BaseUIComponent,
-  type BaseUIComponentArgs,
-  type HtmlInputEvent,
-} from './base.ts';
+import { BaseUI, type BaseUIArgs, type HtmlInputEvent } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import TpkTextareaInputComponent from './tpk-textarea/input.gts';
 import type { WithBoundArgs } from '@glint/template';
@@ -15,7 +11,7 @@ import { tracked } from '@glimmer/tracking';
 
 export type TpkTextareaSignature = {
   Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
+    BaseUIArgs['Args'],
     {
       value?: string;
       placeholder?: string;
@@ -49,7 +45,7 @@ export type TpkTextareaSignature = {
     ];
   };
 };
-export default class TpkTextareaComponent extends BaseUIComponent<TpkTextareaSignature> {
+export default class TpkTextarea extends BaseUI<TpkTextareaSignature> {
   @tracked charCount = 0;
 
   public constructor(owner: Owner, args: TpkTextareaSignature['Args']) {

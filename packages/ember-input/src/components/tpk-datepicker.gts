@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
-import type { BaseUIComponentArgs } from './base.ts';
+import type { BaseUIArgs } from './base.ts';
 import type { WithBoundArgs } from '@glint/template';
 import TpkDatepickerNewInputComponent, {
   type TpkDatepickerInputArgs,
@@ -9,7 +9,7 @@ import { hash } from '@ember/helper';
 import TpkLabel from './tpk-label.gts';
 
 export type TpkDatepickerSignature = {
-  Args: BaseUIComponentArgs['Args'] &
+  Args: BaseUIArgs['Args'] &
     TpkDatepickerInputArgs & {
       mask?: string;
       value: TpkDatepickerInputArgs['value'];

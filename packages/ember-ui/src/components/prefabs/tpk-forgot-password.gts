@@ -26,7 +26,7 @@ export interface TpkForgotPasswordSignature {
   Element: HTMLDivElement;
 }
 
-export default class TpkForgotPasswordComponent extends Component<TpkForgotPasswordSignature> {
+export default class TpkForgotPassword extends Component<TpkForgotPasswordSignature> {
   changeset = new ImmerChangeset(
     this.args.initialValues ?? {
       email: '',

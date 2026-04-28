@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -8,7 +8,7 @@ import Component from '@glimmer/component';
 
 export interface TpkValidationNationalNumberPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue'
   >;
   Blocks: {
@@ -17,11 +17,11 @@ export interface TpkValidationNationalNumberPrefabSignature extends BaseValidati
   Element: HTMLElement;
 }
 
-export default class TpkValidationNationalNumberPrefabComponent extends Component<TpkValidationNationalNumberPrefabSignature> {
+export default class TpkValidationNationalNumberPrefab extends Component<TpkValidationNationalNumberPrefabSignature> {
   mask = '00.00.00-000.00';
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @label={{@label}}
       @type='text'
       @onChange={{@onChange}}
@@ -56,6 +56,6 @@ export default class TpkValidationNationalNumberPrefabComponent extends Componen
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

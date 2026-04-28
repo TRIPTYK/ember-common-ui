@@ -34,7 +34,7 @@ module(
             @initialValues={{initialValues}}
             @submitButtonText={{submitButtonText}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -49,7 +49,7 @@ module(
       await renderComponent();
       assert.strictEqual(
         forgotPasswordPageObject.submitButton.text,
-        'Send Reset Link'
+        'Send Reset Link',
       );
     });
 
@@ -57,7 +57,7 @@ module(
       await renderComponent({ submitButtonText: 'Envoyer le lien' });
       assert.strictEqual(
         forgotPasswordPageObject.submitButton.text,
-        'Envoyer le lien'
+        'Envoyer le lien',
       );
     });
 
@@ -69,7 +69,7 @@ module(
       });
       assert.strictEqual(
         forgotPasswordPageObject.email.value,
-        'test@example.com'
+        'test@example.com',
       );
     });
 
@@ -108,5 +108,5 @@ module(
 
       assert.verifySteps([]);
     });
-  }
+  },
 );

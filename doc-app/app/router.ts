@@ -50,6 +50,9 @@ Router.map(function () {
           this.route('confirm-modal');
           this.route('table-generic');
           this.route('tpk-form');
+          this.route('tpk-dashboard');
+          this.route('tpk-login');
+          this.route('tpk-forgot-password');
         });
       });
     });

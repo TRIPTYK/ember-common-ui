@@ -103,7 +103,7 @@ The `TpkForm` component yields the following values:
 The default yielded components are TpkValidation`<Input>` , but you can change the default components by changing the values in the TpkForm service.
 
 ```ts
-let tpkFormService = this.owner.lookup('service:tpk-form') as TpkFormService;
+let tpkFormService = this.owner.lookup("service:tpk-form") as TpkFormService;
 
 // Base Components
 tpkFormService.TpkInput = DummyInput;

@@ -53,7 +53,7 @@ export interface TpkSelectSignature {
   };
 }
 
-export default class TpkSelectComponent extends Component<TpkSelectSignature> {
+export default class TpkSelect extends Component<TpkSelectSignature> {
   constructor(owner: Owner, args: TpkSelectSignature['Args']) {
     super(owner, args);
 

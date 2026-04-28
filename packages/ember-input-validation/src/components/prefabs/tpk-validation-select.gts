@@ -1,8 +1,5 @@
 import { action } from '@ember/object';
-import {
-  BaseValidationComponent,
-  type BaseValidationSignature,
-} from '../base.ts';
+import { BaseValidation, type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import { assert } from '@ember/debug';
 import TpkSelectComponent, {
@@ -36,7 +33,7 @@ export interface TpkValidationSelectPrefabSignature extends BaseValidationSignat
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectPrefabComponent extends BaseValidationComponent<TpkValidationSelectPrefabSignature> {
+export default class TpkValidationSelectPrefab extends BaseValidation<TpkValidationSelectPrefabSignature> {
   constructor(owner: Owner, args: TpkValidationSelectPrefabSignature['Args']) {
     super(owner, args);
     assert(

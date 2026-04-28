@@ -35,7 +35,7 @@ module(
             @initialValues={{initialValues}}
             @submitButtonText={{submitButtonText}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -53,7 +53,7 @@ module(
       await renderComponent();
       assert.strictEqual(
         resetPasswordPageObject.submitButton.text,
-        'Reset Password'
+        'Reset Password',
       );
     });
 
@@ -61,7 +61,7 @@ module(
       await renderComponent({ submitButtonText: 'Réinitialiser' });
       assert.strictEqual(
         resetPasswordPageObject.submitButton.text,
-        'Réinitialiser'
+        'Réinitialiser',
       );
     });
 
@@ -74,11 +74,11 @@ module(
       });
       assert.strictEqual(
         resetPasswordPageObject.password.value,
-        'initialPassword'
+        'initialPassword',
       );
       assert.strictEqual(
         resetPasswordPageObject.confirmPassword.value,
-        'initialConfirmPassword'
+        'initialConfirmPassword',
       );
     });
 
@@ -107,7 +107,7 @@ module(
       assert.strictEqual(receivedChangeset?.get('password'), 'password123');
       assert.strictEqual(
         receivedChangeset?.get('confirmPassword'),
-        'password123'
+        'password123',
       );
     });
 
@@ -138,5 +138,5 @@ module(
 
       assert.verifySteps([]);
     });
-  }
+  },
 );

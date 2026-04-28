@@ -109,7 +109,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
 
       assert.throws(
         () => deepPickByPath(schema, 'nonexistent'),
-        /Key "nonexistent" not found in schema/
+        /Key "nonexistent" not found in schema/,
       );
     });
 
@@ -120,7 +120,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
 
       assert.throws(
         () => deepPickByPath(schema, 'name.something'),
-        /"something" is not an object/
+        /"something" is not an object/,
       );
     });
 
@@ -133,7 +133,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
 
       assert.throws(
         () => deepPickByPath(schema, 'user.age'),
-        /Key "age" not found in schema/
+        /Key "age" not found in schema/,
       );
     });
 
@@ -311,7 +311,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
               },
             },
           },
-        }
+        },
       );
 
       assert.strictEqual(errors.length, 1);
@@ -327,7 +327,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
     test('it converts nested array notation', function (assert) {
       assert.strictEqual(
         jsonPathToDottedPath('users[0].addresses[1]'),
-        'users.0.addresses.1'
+        'users.0.addresses.1',
       );
     });
 
@@ -342,7 +342,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
     test('it handles complex nested paths', function (assert) {
       assert.strictEqual(
         jsonPathToDottedPath('company.departments[5].employees[10].name'),
-        'company.departments.5.employees.10.name'
+        'company.departments.5.employees.10.name',
       );
     });
   });
@@ -355,7 +355,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
     test('it converts nested dot notation', function (assert) {
       assert.strictEqual(
         dottedPathToJsonPath('users.0.addresses.1'),
-        'users[0].addresses[1]'
+        'users[0].addresses[1]',
       );
     });
 
@@ -370,7 +370,7 @@ module('Unit | Utils | validate-and-map', function (hooks) {
     test('it handles complex nested paths', function (assert) {
       assert.strictEqual(
         dottedPathToJsonPath('company.departments.5.employees.10.name'),
-        'company.departments[5].employees[10].name'
+        'company.departments[5].employees[10].name',
       );
     });
   });

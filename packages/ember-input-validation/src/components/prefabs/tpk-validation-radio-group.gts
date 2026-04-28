@@ -1,15 +1,15 @@
 import type { TOC } from '@ember/component/template-only';
 import type { BaseValidationSignature } from '../base';
-import TpkValidationRadioGroupComponent, {
-  type TpkValidationRadioGroupComponentSignature,
+import TpkValidationRadioGroup, {
+  type TpkValidationRadioGroupSignature,
 } from '../tpk-validation-radio-group.gts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
 import TpkValidationRadioPrefabComponent from './tpk-validation-radio.gts';
 import type { WithBoundArgs } from '@glint/template';
 
-export interface TpkValidationRadioGroupPrefabComponentSignature extends BaseValidationSignature {
+export interface TpkValidationRadioGroupPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    TpkValidationRadioGroupComponentSignature['Args'] & {
+    TpkValidationRadioGroupSignature['Args'] & {
       groupLabel: string;
       onChange?: (value: string) => void;
     };
@@ -24,9 +24,9 @@ export interface TpkValidationRadioGroupPrefabComponentSignature extends BaseVal
   Element: HTMLElement;
 }
 
-const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabComponentSignature> =
+const TpkValidationRadioGroupPrefab: TOC<TpkValidationRadioGroupPrefabSignature> =
   <template>
-    <TpkValidationRadioGroupComponent
+    <TpkValidationRadioGroup
       @validationField={{@validationField}}
       @changeset={{@changeset}}
       @onChange={{@onChange}}
@@ -63,7 +63,7 @@ const TpkValidationRadioGroupPrefabComponent: TOC<TpkValidationRadioGroupPrefabC
           @errors={{V.errors}}
         />
       </fieldset>
-    </TpkValidationRadioGroupComponent>
+    </TpkValidationRadioGroup>
   </template>;
 
-export default TpkValidationRadioGroupPrefabComponent;
+export default TpkValidationRadioGroupPrefab;

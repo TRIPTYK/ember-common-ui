@@ -30,7 +30,7 @@ export default class TpkFormExample extends Component {
       firstName: string;
       lastName: string;
       email: string;
-    }>
+    }>,
   ) {
     // validatedData contains the validated form data
     // changeset is the ImmerChangeset instance

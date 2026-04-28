@@ -1,7 +1,7 @@
 import { type TOC } from '@ember/component/template-only';
 import { on } from '@ember/modifier';
 
-export interface TpkFileInputComponentSignature {
+export interface TpkFileInputSignature {
   Args: {
     guid: string;
 
@@ -14,7 +14,7 @@ export interface TpkFileInputComponentSignature {
   Element: HTMLInputElement;
 }
 
-const TpkFileInputComponent: TOC<TpkFileInputComponentSignature> = <template>
+const TpkFileInput: TOC<TpkFileInputSignature> = <template>
   <input
     id={{@guid}}
     multiple={{@multiple}}
@@ -27,4 +27,4 @@ const TpkFileInputComponent: TOC<TpkFileInputComponentSignature> = <template>
   />
 </template>;
 
-export default TpkFileInputComponent;
+export default TpkFileInput;

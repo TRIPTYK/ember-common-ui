@@ -12,7 +12,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
   async function renderComponent(
     type: string,
     onChange: (value: unknown) => void,
-    changeset: ImmerChangeset
+    changeset: ImmerChangeset,
   ) {
     await render(
       <template>
@@ -25,7 +25,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
           as |I|
         >
           <I.Label /><I.Input /></TpkValidationInput>
-      </template>
+      </template>,
     );
   }
 
@@ -44,7 +44,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       assert.strictEqual(
         changeset.get('name'),
         'value',
-        'Value not changed in the changeset'
+        'Value not changed in the changeset',
       );
     };
 
@@ -62,7 +62,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
       assert.strictEqual(
         changeset.get('name'),
         'value',
-        'Value not changed in the changeset'
+        'Value not changed in the changeset',
       );
     };
 
@@ -76,7 +76,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
           @validationField="name"
           as |I|
         ><I.Label /><I.Input /></TpkValidationInput>
-      </template>
+      </template>,
     );
 
     await fillIn('input', 'valueChanged');
@@ -100,7 +100,7 @@ module('Integration | Component | tpk-validation-input', function (hooks) {
           </TI.Label>
           <TI.Input />
         </TpkValidationInput>
-      </template>
+      </template>,
     );
 
     await fillIn('input', 'valueChanged');

@@ -1,4 +1,4 @@
-import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
+import { BaseUI, type BaseUIArgs } from './base.ts';
 import { assert } from '@ember/debug';
 import type { MergeDeep } from 'type-fest';
 import TpkInputInputComponent from './tpk-input/input.gts';
@@ -9,7 +9,7 @@ import type Owner from '@ember/owner';
 
 export type TpkInputSignature = {
   Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
+    BaseUIArgs['Args'],
     {
       value?: string | number | boolean | null | undefined;
       type?: HTMLInputElement['type'];
@@ -47,7 +47,7 @@ export type TpkInputSignature = {
   };
 };
 
-export default class TpkInputComponent extends BaseUIComponent<TpkInputSignature> {
+export default class TpkInput extends BaseUI<TpkInputSignature> {
   constructor(owner: Owner, args: TpkInputSignature['Args']) {
     super(owner, args);
 

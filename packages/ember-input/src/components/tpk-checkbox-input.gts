@@ -1,7 +1,7 @@
 import { on } from '@ember/modifier';
 import type { TOC } from '@ember/component/template-only';
 
-export interface TpkCheckboxInputComponentSignature {
+export interface TpkCheckboxInputSignature {
   Args: {
     guid: string;
     value?: string;
@@ -13,17 +13,16 @@ export interface TpkCheckboxInputComponentSignature {
   Element: HTMLInputElement;
 }
 
-const TpkCheckboxInputComponent: TOC<TpkCheckboxInputComponentSignature> =
-  <template>
-    <input
-      id={{@guid}}
-      checked={{@checked}}
-      disabled={{@disabled}}
-      type='checkbox'
-      {{on @changeEvent @onChange}}
-      ...attributes
-      data-test-tpk-checkbox-input
-    />
-  </template>;
+const TpkCheckboxInput: TOC<TpkCheckboxInputSignature> = <template>
+  <input
+    id={{@guid}}
+    checked={{@checked}}
+    disabled={{@disabled}}
+    type='checkbox'
+    {{on @changeEvent @onChange}}
+    ...attributes
+    data-test-tpk-checkbox-input
+  />
+</template>;
 
-export default TpkCheckboxInputComponent;
+export default TpkCheckboxInput;

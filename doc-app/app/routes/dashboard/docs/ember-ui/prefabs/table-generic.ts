@@ -56,7 +56,7 @@ const worker = setupWorker(
       data: fakeData,
       meta: { fetched: fakeData.length, total: fakeData.length },
     });
-  })
+  }),
 );
 
 export default class DocsEmberUiPrefabsTpkTableGenericPrefabRoute extends Route {
