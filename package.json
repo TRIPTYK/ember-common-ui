@@ -10,16 +10,6 @@
     "start": "pnpm dev"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "core-js",
-      "core-js-pure",
-      "edgedriver",
-      "esbuild",
-      "geckodriver",
-      "lefthook",
-      "msw",
-      "nx"
-    ],
     "patchedDependencies": {
       "@embroider/vite": "patches/@embroider__vite.patch"
     }
@@ -34,9 +24,9 @@
     "lerna": "catalog:",
     "turbo": "^2.7.6"
   },
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.33.2",
   "volta": {
     "node": "22.22.0",
-    "pnpm": "10.28.0"
+    "pnpm": "10.33.2"
   }
 }
