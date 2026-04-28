@@ -7,7 +7,10 @@
     "lint": "pnpm turbo lint",
     "test": "pnpm turbo test",
     "dev": "pnpm turbo start",
-    "start": "pnpm dev"
+    "start": "pnpm dev",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
   },
   "pnpm": {
     "patchedDependencies": {
@@ -18,6 +21,7 @@
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
     "concurrently": "catalog:",
     "git-conventional-commits": "catalog:",
     "lefthook": "catalog:",

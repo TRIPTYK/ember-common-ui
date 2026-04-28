@@ -1,0 +1,12 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "doc-app": "0.0.0",
+    "@triptyk/ember-input": "4.0.0-alpha.1",
+    "@triptyk/ember-input-validation": "4.0.0-alpha.1",
+    "@triptyk/ember-ui": "4.0.0-alpha.1",
+    "@triptyk/ember-utils": "4.0.0-alpha.1"
+  },
+  "changesets": []
+}
