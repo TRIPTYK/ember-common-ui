@@ -25,7 +25,7 @@ export function setupMock(hooks: NestedHooks) {
       http.post('/write-coverage', () => {
         // The passthrough is for ember code coverage.
         return passthrough();
-      })
+      }),
     );
   });
 

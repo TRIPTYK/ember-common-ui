@@ -134,7 +134,7 @@ export async function setupCompletePrefabComponent(params?: TpkFormParams) {
         />
         <button type="submit">Submit</button>
       </TpkForm>
-    </template>
+    </template>,
   );
 
   return changeset;
@@ -174,7 +174,7 @@ export async function setupComponent(params?: TpkFormParams) {
         </F.TpkInput>
         <button type="submit">Submit</button>
       </TpkForm>
-    </template>
+    </template>,
   );
 
   return changeset;
@@ -215,7 +215,7 @@ export async function setupCurrencyDateComponent(params?: TpkFormParams) {
         />
         <button type="submit">Submit</button>
       </TpkForm>
-    </template>
+    </template>,
   );
 
   return changeset;

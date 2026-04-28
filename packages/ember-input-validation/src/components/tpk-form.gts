@@ -14,13 +14,13 @@ import {
   validateOneAndMapErrors,
 } from '../utils/validate-and-map.ts';
 import type { WithBoundArgs } from '@glint/template';
-import TpkValidationInputComponent from '../components/tpk-validation-input.gts';
-import TpkValidationTextareaComponent from '../components/tpk-validation-textarea.gts';
+import TpkValidationInput from '../components/tpk-validation-input.gts';
+import TpkValidationTextarea from '../components/tpk-validation-textarea.gts';
 import TpkValidationSelect from '../components/tpk-validation-select.gts';
-import TpkValidationFileComponent from '../components/tpk-validation-file.gts';
-import TpkValidationRadioComponent from '../components/tpk-validation-radio.gts';
-import TpkValidationCheckboxComponent from '../components/tpk-validation-checkbox.gts';
-import TpkValidationDatepickerComponent from '../components/tpk-validation-datepicker.gts';
+import TpkValidationFile from '../components/tpk-validation-file.gts';
+import TpkValidationRadio from '../components/tpk-validation-radio.gts';
+import TpkValidationCheckbox from '../components/tpk-validation-checkbox.gts';
+import TpkValidationDatepicker from '../components/tpk-validation-datepicker.gts';
 import TpkFormService from '../services/tpk-form.ts';
 import TpkValidationInputPrefabComponent from '../components/prefabs/tpk-validation-input.gts';
 import type TpkValidationTextareaPrefabComponent from './prefabs/tpk-validation-textarea.gts';
@@ -46,7 +46,7 @@ import { tracked } from '@glimmer/tracking';
 import scrollOnError from '../modifiers/scroll-on-error.ts';
 import { on } from '@ember/modifier';
 import { hash } from '@ember/helper';
-import type TpkValidationRadioGroupComponent from './tpk-validation-radio-group.gts';
+import type TpkValidationRadioGroup from './tpk-validation-radio-group.gts';
 import type TpkValidationRadioPrefabComponent from './prefabs/tpk-validation-radio.gts';
 import type TpkValidationRadioGroupPrefabComponent from './prefabs/tpk-validation-radio-group.gts';
 import type TpkValidationFilePrefabComponent from './prefabs/tpk-validation-file.gts';
@@ -75,7 +75,7 @@ interface ChangesetFormComponentArgs<
   executeOnValid?: boolean;
 }
 
-export interface ChangesetFormComponentSignature<
+export interface ChangesetFormSignature<
   S extends ZodObject,
   T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
 > {
@@ -84,7 +84,7 @@ export interface ChangesetFormComponentSignature<
     default: [
       {
         TpkInput: WithBoundArgs<
-          typeof TpkValidationInputComponent,
+          typeof TpkValidationInput,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkInputPrefab: WithBoundArgs<
@@ -92,7 +92,7 @@ export interface ChangesetFormComponentSignature<
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkTextarea: WithBoundArgs<
-          typeof TpkValidationTextareaComponent,
+          typeof TpkValidationTextarea,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkTextareaPrefab: WithBoundArgs<
@@ -116,7 +116,7 @@ export interface ChangesetFormComponentSignature<
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkCheckbox: WithBoundArgs<
-          typeof TpkValidationCheckboxComponent,
+          typeof TpkValidationCheckbox,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkCheckboxPrefab: WithBoundArgs<
@@ -124,11 +124,11 @@ export interface ChangesetFormComponentSignature<
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkRadio: WithBoundArgs<
-          typeof TpkValidationRadioComponent,
+          typeof TpkValidationRadio,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkRadioGroup: WithBoundArgs<
-          typeof TpkValidationRadioGroupComponent,
+          typeof TpkValidationRadioGroup,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkRadioPrefab: WithBoundArgs<
@@ -140,11 +140,11 @@ export interface ChangesetFormComponentSignature<
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkFile: WithBoundArgs<
-          typeof TpkValidationFileComponent,
+          typeof TpkValidationFile,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkDatepicker: WithBoundArgs<
-          typeof TpkValidationDatepickerComponent,
+          typeof TpkValidationDatepicker,
           'changeset' | 'disabled' | 'requiredFields'
         >;
         TpkDatepickerPrefab: WithBoundArgs<
@@ -211,10 +211,10 @@ export interface ChangesetFormComponentSignature<
   Element: HTMLFormElement;
 }
 
-export default class ChangesetFormComponent<
+export default class TpkForm<
   S extends ZodObject,
   T extends ImmerChangeset<DeepNothing<z.infer<S>>>,
-> extends Component<ChangesetFormComponentSignature<S, T>> {
+> extends Component<ChangesetFormSignature<S, T>> {
   @tracked requiredFields: string[] = trackedArray([]);
   @service declare tpkForm: TpkFormService;
 

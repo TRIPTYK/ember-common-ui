@@ -14,12 +14,12 @@ export interface TableGenericSearchBarComponentArgs {
   disabled?: boolean;
 }
 
-export interface TableGenericSearchBarComponentSignature {
+export interface TableGenericSearchBarSignature {
   Args: TableGenericSearchBarComponentArgs;
   Element: HTMLDivElement;
 }
 
-export default class TableGenericSearchBarComponent extends Component<TableGenericSearchBarComponentSignature> {
+export default class TableGenericSearchBar extends Component<TableGenericSearchBarSignature> {
   @tracked searchValue = '';
 
   constructor(owner: Owner, args: TableGenericSearchBarComponentArgs) {

@@ -3,7 +3,7 @@ import fakeData from '../integration/components/ember-ui/table-generic/data/fake
 import type { setupWorker } from 'msw/browser';
 
 export async function TableGenericUserWorker(
-  worker: ReturnType<typeof setupWorker>
+  worker: ReturnType<typeof setupWorker>,
 ) {
   worker.use(
     http.get('/users', (req) => {
@@ -11,10 +11,10 @@ export async function TableGenericUserWorker(
 
       const sort = new URL(req.request.url).searchParams.get('sort');
       const search = new URL(req.request.url).searchParams.get(
-        'filter[search]'
+        'filter[search]',
       );
       const pageNumber = new URL(req.request.url).searchParams.get(
-        'page[number]'
+        'page[number]',
       );
 
       if (sort !== null && sort === 'firstName') {
@@ -46,7 +46,7 @@ export async function TableGenericUserWorker(
         data,
         meta: { fetched: data.length, total: 10 },
       });
-    })
+    }),
   );
   await worker.start();
 }

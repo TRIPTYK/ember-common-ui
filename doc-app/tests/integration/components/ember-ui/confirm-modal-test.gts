@@ -33,7 +33,7 @@ module('Integration | Component | Confirm Modal', function (hooks) {
             Annuler banane
           </confirmModal.Cancel>
         </TpkConfirmModal>
-      </template>
+      </template>,
     );
   }
 

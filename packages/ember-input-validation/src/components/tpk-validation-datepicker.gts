@@ -1,8 +1,5 @@
 import { action } from '@ember/object';
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from './base.ts';
+import { type BaseValidationSignature, BaseValidation } from './base.ts';
 import { assert } from '@ember/debug';
 import { type TpkDatepickerInputArgs } from '@triptyk/ember-input/components/tpk-datepicker-input';
 import { hash } from '@ember/helper';
@@ -10,7 +7,7 @@ import TpkDatepicker, {
   type TpkDatepickerSignature,
 } from '@triptyk/ember-input/components/tpk-datepicker';
 
-export interface TpkValidationDatepickerComponentSignature extends BaseValidationSignature {
+export interface TpkValidationDatepickerSignature extends BaseValidationSignature {
   Args: Omit<
     BaseValidationSignature['Args'] & {
       label: string;
@@ -25,10 +22,10 @@ export interface TpkValidationDatepickerComponentSignature extends BaseValidatio
       {
         Input: TpkDatepickerSignature['Blocks']['default'][0]['Input'];
         Label: TpkDatepickerSignature['Blocks']['default'][0]['Label'];
-        errors: TpkValidationDatepickerComponent['errors'];
-        hasError: TpkValidationDatepickerComponent['hasError'];
-        firstError: TpkValidationDatepickerComponent['firstError'];
-        mandatory: TpkValidationDatepickerComponent['mandatory'];
+        errors: TpkValidationDatepicker['errors'];
+        hasError: TpkValidationDatepicker['hasError'];
+        firstError: TpkValidationDatepicker['firstError'];
+        mandatory: TpkValidationDatepicker['mandatory'];
       },
     ];
   };
@@ -37,7 +34,7 @@ export interface TpkValidationDatepickerComponentSignature extends BaseValidatio
   };
 }
 
-export default class TpkValidationDatepickerComponent extends BaseValidationComponent<TpkValidationDatepickerComponentSignature> {
+export default class TpkValidationDatepicker extends BaseValidation<TpkValidationDatepickerSignature> {
   @action onChange(dates: Date[]) {
     if (dates.length === 0)
       return this.args.changeset.set(

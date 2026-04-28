@@ -35,7 +35,7 @@ module(
             @initialValues={{initialValues}}
             @submitButtonText={{submitButtonText}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -121,5 +121,5 @@ module(
 
       assert.verifySteps([]);
     });
-  }
+  },
 );

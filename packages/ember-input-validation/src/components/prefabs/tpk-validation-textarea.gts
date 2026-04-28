@@ -1,5 +1,5 @@
-import TpkValidationTextareaComponent, {
-  type TpkValidationTextareaComponentSignature,
+import TpkValidationTextarea, {
+  type TpkValidationTextareaSignature,
 } from '../tpk-validation-textarea.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -9,19 +9,16 @@ import type { Merge } from 'type-fest';
 
 export interface TpkValidationTextareaPrefabSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
-    Merge<
-      TpkValidationTextareaComponentSignature['Args'],
-      { mandatory?: boolean }
-    >;
+    Merge<TpkValidationTextareaSignature['Args'], { mandatory?: boolean }>;
   Blocks: {
     default: [];
   };
   Element: HTMLElement;
 }
 
-const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSignature> =
+const TpkValidationTextareaPrefab: TOC<TpkValidationTextareaPrefabSignature> =
   <template>
-    <TpkValidationTextareaComponent
+    <TpkValidationTextarea
       @label={{@label}}
       @disabled={{@disabled}}
       @changeEvent={{@changeEvent}}
@@ -60,7 +57,7 @@ const TpkValidationTextareaPrefabComponent: TOC<TpkValidationTextareaPrefabSigna
           </span>
         {{/if}}
       </V.Label>
-    </TpkValidationTextareaComponent>
+    </TpkValidationTextarea>
   </template>;
 
-export default TpkValidationTextareaPrefabComponent;
+export default TpkValidationTextareaPrefab;

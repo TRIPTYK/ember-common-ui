@@ -35,7 +35,7 @@ module('Integration | Component | stack-list', function (hooks) {
             {{stringify (get C.item "title")}}
           </S.Content>
         </TpkStackList>
-      </template>
+      </template>,
     );
 
     await click('[data-test-add-stackList-item]');
@@ -69,7 +69,7 @@ module('Integration | Component | stack-list', function (hooks) {
             {{stringify (get C.item "title")}}
           </S.Content>
         </TpkStackList>
-      </template>
+      </template>,
     );
 
     assert
@@ -106,7 +106,7 @@ module('Integration | Component | stack-list', function (hooks) {
             {{stringify (get C.item "title")}}
           </S.Content>
         </TpkStackList>
-      </template>
+      </template>,
     );
 
     await click('[data-test-delete-stackList-item]');

@@ -17,7 +17,7 @@ module('Integration | Component | tpk-form', function (hooks) {
 
   test('TpkForm can invoke custom registered inputs from service', async function () {
     const tpkFormService = this.owner.lookup(
-      'service:tpk-form'
+      'service:tpk-form',
     ) as unknown as TpkFormService;
 
     tpkFormService.TpkInput = DummyInput as never;
@@ -151,7 +151,7 @@ module('Integration | Component | tpk-form', function (hooks) {
         object({
           name: string().min(1),
           grade: number(),
-        })
+        }),
       ),
       languages: array(string()).min(1),
     });
@@ -213,7 +213,7 @@ module('Integration | Component | tpk-form', function (hooks) {
             level</button>
           <button type="submit">Submit</button>
         </TpkForm>
-      </template>
+      </template>,
     );
     assert.dom('[data-test-email]').includesText('*');
     assert.dom('[data-test-address-street]').includesText('*');

@@ -1,5 +1,5 @@
 import type { MergeDeep } from 'type-fest';
-import type { BaseUIComponentArgs } from '../base';
+import type { BaseUIArgs } from '../base';
 import Component from '@glimmer/component';
 import { task } from 'ember-concurrency';
 import { on } from '@ember/modifier';
@@ -8,7 +8,7 @@ import SearchIcon from '../../assets/icons/search.gts';
 
 export type TpkSearchPrefabSignature = {
   Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
+    BaseUIArgs['Args'],
     {
       placeholder?: string;
       label?: string;
@@ -21,7 +21,7 @@ export type TpkSearchPrefabSignature = {
   Element: HTMLDivElement;
 };
 
-export default class TpkSearchPrefabComponent extends Component<TpkSearchPrefabSignature> {
+export default class TpkSearchPrefab extends Component<TpkSearchPrefabSignature> {
   performSearch = task(
     this,
     { drop: true },

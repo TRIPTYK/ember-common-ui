@@ -31,7 +31,7 @@ module(
             @changeset={{changeset}}
             @validationField="name"
           />
-        </template>
+        </template>,
       );
 
       return changeset;
@@ -143,5 +143,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

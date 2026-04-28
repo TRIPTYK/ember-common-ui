@@ -12,7 +12,8 @@
       "ember-source/types",
       "@embroider/core/virtual",
       "vite/client",
-      "@ember-intl/vite/virtual"
+      "@ember-intl/vite/virtual",
+      "@glint/ember-tsc/types"
     ]
   }
 }

@@ -4,7 +4,7 @@ import { ImmerChangeset } from 'ember-immer-changeset';
 import { object, string } from 'zod';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
 
-export default class TpkFormBaseComponentsExample extends Component {
+export default class TpkFormBasesExample extends Component {
   changeset = new ImmerChangeset({
     username: '',
   });

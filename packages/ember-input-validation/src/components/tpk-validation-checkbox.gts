@@ -1,14 +1,11 @@
 import { action } from '@ember/object';
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from './base.ts';
+import { type BaseValidationSignature, BaseValidation } from './base.ts';
 import { assert } from '@ember/debug';
 import TpkCheckbox from '@triptyk/ember-input/components/tpk-checkbox';
 import type { TpkCheckboxSignature } from '@triptyk/ember-input/components/tpk-checkbox';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationCheckboxComponentSignature extends BaseValidationSignature {
+export interface TpkValidationCheckboxSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkCheckboxSignature['Args'] & {
       onChange?: (isChecked: boolean, value: string, e: Event) => void;
@@ -18,16 +15,16 @@ export interface TpkValidationCheckboxComponentSignature extends BaseValidationS
       {
         Input: TpkCheckboxSignature['Blocks']['default'][0]['Input'];
         Label: TpkCheckboxSignature['Blocks']['default'][0]['Label'];
-        errors: TpkValidationCheckboxComponent['errors'];
-        hasError: TpkValidationCheckboxComponent['hasError'];
-        firstError: TpkValidationCheckboxComponent['firstError'];
-        mandatory: TpkValidationCheckboxComponent['mandatory'];
+        errors: TpkValidationCheckbox['errors'];
+        hasError: TpkValidationCheckbox['hasError'];
+        firstError: TpkValidationCheckbox['firstError'];
+        mandatory: TpkValidationCheckbox['mandatory'];
       },
     ];
   };
 }
 
-export default class TpkValidationCheckboxComponent extends BaseValidationComponent<TpkValidationCheckboxComponentSignature> {
+export default class TpkValidationCheckbox extends BaseValidation<TpkValidationCheckboxSignature> {
   @action
   onChange(isChecked: boolean, value: string, e: Event) {
     if (this.args.onChange) {

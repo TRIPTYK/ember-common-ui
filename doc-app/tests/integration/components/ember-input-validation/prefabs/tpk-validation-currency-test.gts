@@ -21,7 +21,7 @@ module(
     }
     async function renderComponent(
       changeset: ImmerChangeset,
-      { scale = 2, disabled = false } = {}
+      { scale = 2, disabled = false } = {},
     ) {
       const onChange = (value: string | number | Date | null) => {
         changeset.set('currency', value);
@@ -37,7 +37,7 @@ module(
             @scale={{scale}}
             @disabled={{disabled}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -103,5 +103,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

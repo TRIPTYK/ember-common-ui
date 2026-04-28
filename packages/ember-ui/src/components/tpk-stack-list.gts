@@ -8,7 +8,7 @@ import TpkStackListHead from './tpk-stack-list/head.gts';
 import { on } from '@ember/modifier';
 import PlusIcon from '../assets/icons/plus.gts';
 
-export interface TpkStackListComponentSignature {
+export interface TpkStackListSignature {
   Args: {
     onRemove: (item: unknown) => void;
     data: unknown[];
@@ -39,7 +39,7 @@ const defaultsToFalse = (value?: boolean): boolean => {
   return value ?? false;
 };
 
-const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
+const TpkStackList: TOC<TpkStackListSignature> = <template>
   {{#each @data key=@key as |item index|}}
     <TpkStackListItem @zIndex={{index}} @index={{index}} as |I|>
       <div class='tpk-stack-head'>
@@ -89,4 +89,4 @@ const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
   {{/unless}}
 </template>;
 
-export default TpkStackListComponent;
+export default TpkStackList;

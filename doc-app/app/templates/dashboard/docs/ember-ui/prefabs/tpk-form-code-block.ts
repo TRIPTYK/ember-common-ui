@@ -24,7 +24,7 @@ export const tpkForm = `
     </TpkForm>
   `;
 
-export const baseComponentsExample = `
+export const basesComponentExample = `
     <TpkForm
       @changeset={{this.changeset}}
       @validationSchema={{this.validationSchema}}

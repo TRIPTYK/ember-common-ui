@@ -37,7 +37,7 @@ module('Integration | Component | tpk-validation-radio', function (hooks) {
           <T.Input data-test-radio="bad" />
           <T.Label />
         </TpkValidationRadio>
-      </template>
+      </template>,
     );
     return changeset;
   }

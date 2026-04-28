@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -9,15 +9,14 @@ import Component from '@glimmer/component';
 import type Owner from '@ember/owner';
 
 export interface TpkValidationInputPrefabSignature extends BaseValidationSignature {
-  Args: BaseValidationSignature['Args'] &
-    TpkValidationInputComponentSignature['Args'];
+  Args: BaseValidationSignature['Args'] & TpkValidationInputSignature['Args'];
   Blocks: {
     default: [];
   };
   Element: HTMLElement;
 }
 
-export default class TpkValidationInputPrefabComponent extends Component<TpkValidationInputPrefabSignature> {
+export default class TpkValidationInputPrefab extends Component<TpkValidationInputPrefabSignature> {
   constructor(owner: Owner, args: TpkValidationInputPrefabSignature['Args']) {
     super(owner, args);
     assert(
@@ -29,7 +28,7 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @type={{@type}}
       @label={{@label}}
       @disabled={{@disabled}}
@@ -64,6 +63,6 @@ export default class TpkValidationInputPrefabComponent extends Component<TpkVali
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

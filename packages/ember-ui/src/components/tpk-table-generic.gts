@@ -10,7 +10,7 @@ import { hash } from '@ember/helper';
 import type IntlService from 'ember-intl/services/intl';
 import { service } from '@ember/service';
 
-export interface TableGenericComponentSignature {
+export interface TableGenericSignature {
   Args: {
     entity: string;
     relationships?: string;
@@ -49,7 +49,7 @@ export interface TableGenericComponentSignature {
   };
 }
 
-export default class TableGenericComponent extends Component<TableGenericComponentSignature> {
+export default class TableGeneric extends Component<TableGenericSignature> {
   @service declare intl: IntlService;
   @tracked filterText?: string;
 

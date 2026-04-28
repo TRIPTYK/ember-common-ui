@@ -23,7 +23,7 @@ module('Integration | Component | tpk-validation-textarea', function (hooks) {
           <T.Input />
           <T.Label />
         </TpkValidationTextarea>
-      </template>
+      </template>,
     );
     assert.dom('textarea').exists();
     assert.dom('[data-test-tpk-label]').containsText('label');

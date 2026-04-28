@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import { maskSpecialCharDefinition } from '../../utils/mask-utils.ts';
@@ -10,7 +10,7 @@ import { action } from '@ember/object';
 
 export interface TpkValidationBicPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'type' | 'min' | 'max' | 'step' | 'mask' | 'maskOptions' | 'unmaskValue'
   > & {
     onChange?: (value: string, e: Event) => void;
@@ -21,7 +21,7 @@ export interface TpkValidationBicPrefabSignature extends BaseValidationSignature
   Element: HTMLElement;
 }
 
-export default class TpkValidationBicPrefabComponent extends Component<TpkValidationBicPrefabSignature> {
+export default class TpkValidationBicPrefab extends Component<TpkValidationBicPrefabSignature> {
   mask = '########[$$$]';
   maskOptions = {
     definitions: maskSpecialCharDefinition,
@@ -37,7 +37,7 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @label={{@label}}
       @disabled={{@disabled}}
       @type='text'
@@ -71,6 +71,6 @@ export default class TpkValidationBicPrefabComponent extends Component<TpkValida
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

@@ -1,7 +1,4 @@
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from '../base.ts';
+import { type BaseValidationSignature, BaseValidation } from '../base.ts';
 import TpkSelectCreateComponent, {
   type TpkSelectCreateSignature,
 } from '@triptyk/ember-input/components/tpk-select-create';
@@ -27,7 +24,7 @@ export interface TpkValidationSelectCreatePrefabSignature extends BaseValidation
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationSelectCreatePrefabComponent extends BaseValidationComponent<TpkValidationSelectCreatePrefabSignature> {
+export default class TpkValidationSelectCreatePrefab extends BaseValidation<TpkValidationSelectCreatePrefabSignature> {
   constructor(
     owner: Owner,
     args: TpkValidationSelectCreatePrefabSignature['Args'],

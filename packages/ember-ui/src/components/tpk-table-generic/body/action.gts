@@ -1,7 +1,7 @@
 import type { TOC } from '@ember/component/template-only';
 import type { Invokable } from '@glint/template/-private/integration';
 
-export interface TableGenericBodyActionComponentSignature {
+export interface TableGenericBodyActionSignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Action: any;
@@ -15,11 +15,10 @@ export interface TableGenericBodyActionComponentSignature {
   };
 }
 
-const TableGenericBodyActionComponent: TOC<TableGenericBodyActionComponentSignature> =
-  <template>
-    <@Action @action={{@action}} @icon={{@icon}} ...attributes>
-      {{yield}}
-    </@Action>
-  </template>;
+const TableGenericBodyAction: TOC<TableGenericBodyActionSignature> = <template>
+  <@Action @action={{@action}} @icon={{@icon}} ...attributes>
+    {{yield}}
+  </@Action>
+</template>;
 
-export default TableGenericBodyActionComponent;
+export default TableGenericBodyAction;

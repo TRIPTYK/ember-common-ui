@@ -1,7 +1,7 @@
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-export interface TableGenericBodyCellComponentSignature {
+export interface TableGenericBodyCellSignature {
   Args: {
     row: ComponentLike;
   };
@@ -11,13 +11,12 @@ export interface TableGenericBodyCellComponentSignature {
   };
 }
 
-const TableGenericBodyCellComponent: TOC<TableGenericBodyCellComponentSignature> =
-  <template>
+const TableGenericBodyCell: TOC<TableGenericBodyCellSignature> = <template>
+  {{! @glint-ignore }}
+  <@row.cell ...attributes>
+    {{yield}}
     {{! @glint-ignore }}
-    <@row.cell ...attributes>
-      {{yield}}
-      {{! @glint-ignore }}
-    </@row.cell>
-  </template>;
+  </@row.cell>
+</template>;
 
-export default TableGenericBodyCellComponent;
+export default TableGenericBodyCell;

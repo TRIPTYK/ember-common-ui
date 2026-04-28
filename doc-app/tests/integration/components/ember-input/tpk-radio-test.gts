@@ -32,7 +32,7 @@ module('Integration | Component | ui/radio', function (hooks) {
           <C.Input class="text-yellow-300" />
           <C.Label class="text-blue-300" />
         </TpkRadio>
-      </template>
+      </template>,
     );
 
     await click('label');
@@ -56,11 +56,11 @@ module('Integration | Component | ui/radio', function (hooks) {
         >
           {{catchState O}}
         </TpkRadio>
-      </template>
+      </template>,
     );
 
     const { state } = (getOwner(this) as ApplicationInstance).lookup(
-      'service:catch-state'
+      'service:catch-state',
     ) as { state: Record<string, unknown> };
 
     assert.strictEqual(typeof state['Input'], 'object');

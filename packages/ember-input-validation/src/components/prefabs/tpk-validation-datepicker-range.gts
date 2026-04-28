@@ -1,6 +1,6 @@
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
-import TpkValidationDatepickerComponent, {
-  type TpkValidationDatepickerComponentSignature,
+import TpkValidationDatepicker, {
+  type TpkValidationDatepickerSignature,
 } from '../tpk-validation-datepicker.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import { tracked } from '@glimmer/tracking';
@@ -10,7 +10,7 @@ import type Owner from '@ember/owner';
 
 export interface TpkValidationDatepickerRangePrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationDatepickerComponentSignature['Args'],
+    TpkValidationDatepickerSignature['Args'],
     | 'value'
     | 'promptTimeOnDateChange'
     | 'useCurrent'
@@ -30,7 +30,7 @@ export interface TpkValidationDatepickerRangePrefabSignature extends BaseValidat
   Element: HTMLDivElement;
 }
 
-export default class TpkValidationDatepickerRangePrefabComponent extends Component<TpkValidationDatepickerRangePrefabSignature> {
+export default class TpkValidationDatepickerRangePrefab extends Component<TpkValidationDatepickerRangePrefabSignature> {
   @tracked multipleDatesSeparator = ' - ';
 
   constructor(
@@ -44,7 +44,7 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
   }
 
   <template>
-    <TpkValidationDatepickerComponent
+    <TpkValidationDatepicker
       @label={{@label}}
       @onChange={{@onChange}}
       @onClose={{@onClose}}
@@ -92,6 +92,6 @@ export default class TpkValidationDatepickerRangePrefabComponent extends Compone
           @errors={{V.errors}}
         />
       </div>
-    </TpkValidationDatepickerComponent>
+    </TpkValidationDatepicker>
   </template>
 }

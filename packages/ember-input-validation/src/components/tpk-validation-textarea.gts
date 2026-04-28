@@ -1,14 +1,11 @@
 import { action } from '@ember/object';
-import {
-  BaseValidationComponent,
-  type BaseValidationSignature,
-} from './base.ts';
+import { BaseValidation, type BaseValidationSignature } from './base.ts';
 import TpkTextarea, {
   type TpkTextareaSignature,
 } from '@triptyk/ember-input/components/tpk-textarea';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationTextareaComponentSignature extends BaseValidationSignature {
+export interface TpkValidationTextareaSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkTextareaSignature['Args'] & {
       onChange?: (value: string, e: Event) => void;
@@ -18,17 +15,17 @@ export interface TpkValidationTextareaComponentSignature extends BaseValidationS
       {
         Label: TpkTextareaSignature['Blocks']['default'][0]['Label'];
         Input: TpkTextareaSignature['Blocks']['default'][0]['Input'];
-        errors: TpkValidationTextareaComponent['errors'];
-        hasError: TpkValidationTextareaComponent['hasError'];
-        firstError: TpkValidationTextareaComponent['firstError'];
-        mandatory: TpkValidationTextareaComponent['mandatory'];
+        errors: TpkValidationTextarea['errors'];
+        hasError: TpkValidationTextarea['hasError'];
+        firstError: TpkValidationTextarea['firstError'];
+        mandatory: TpkValidationTextarea['mandatory'];
         charCount: number;
       },
     ];
   };
 }
 
-export default class TpkValidationTextareaComponent extends BaseValidationComponent<TpkValidationTextareaComponentSignature> {
+export default class TpkValidationTextarea extends BaseValidation<TpkValidationTextareaSignature> {
   @action onChange(value: string, e: Event) {
     if (this.args.onChange) {
       return this.args.onChange(value, e);

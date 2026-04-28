@@ -7,7 +7,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import TpkTableGeneric from '@triptyk/ember-ui/components/tpk-table-generic';
 import stringify from 'doc-app/helpers/to-string';
 import DeleteIcon from 'doc-app/assets/icons/delete.gts';
-import TpkCheckboxComponent from '@triptyk/ember-input/components/tpk-checkbox';
+import TpkCheckbox from '@triptyk/ember-input/components/tpk-checkbox';
 
 module('Integration | Component | table-generic', function (hooks) {
   setupRenderingTest(hooks);
@@ -96,7 +96,7 @@ module('Integration | Component | table-generic', function (hooks) {
                 </div>
               </Body.Cell>
               <Body.Cell>
-                <TpkCheckboxComponent
+                <TpkCheckbox
                   @label=""
                   {{! @glint-ignore considering element.active has undefined or boolean as value}}
                   @checked={{element.active}}
@@ -104,7 +104,7 @@ module('Integration | Component | table-generic', function (hooks) {
                   as |C|
                 >
                   <C.Input data-test-checkbox />
-                </TpkCheckboxComponent>
+                </TpkCheckbox>
               </Body.Cell>
               <Body.ActionMenu as |Action|>
                 <Action
@@ -119,7 +119,7 @@ module('Integration | Component | table-generic', function (hooks) {
             <Table.Footer />
           </TG.Table>
         </TpkTableGeneric>
-      </template>
+      </template>,
     );
   }
 
@@ -175,7 +175,7 @@ module('Integration | Component | table-generic', function (hooks) {
             <Table.Footer />
           </TG.Table>
         </TpkTableGeneric>
-      </template>
+      </template>,
     );
   }
 
@@ -239,7 +239,7 @@ module('Integration | Component | table-generic', function (hooks) {
     assert.strictEqual(
       deleteButton.length,
       5,
-      'Correct number of delete buttons rendered'
+      'Correct number of delete buttons rendered',
     );
     await click('[data-test-actions-open-action]');
     await click('[data-test-delete] button');

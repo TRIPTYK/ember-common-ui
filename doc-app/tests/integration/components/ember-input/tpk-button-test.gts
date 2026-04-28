@@ -31,7 +31,7 @@ module('Integration | Component | tpk-button', function (hooks) {
         >
           Click me
         </TpkButton>
-      </template>
+      </template>,
     );
 
     await spamClickElement();

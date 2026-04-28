@@ -8,7 +8,7 @@ import { modifier, type FunctionBasedModifier } from 'ember-modifier';
 import type { EmptyObject } from 'type-fest';
 import { tracked } from '@glimmer/tracking';
 
-export interface TpkInputInputComponentSignature {
+export interface TpkInputInputSignature {
   Args: {
     guid: string;
     type?: string;
@@ -30,13 +30,10 @@ export interface TpkInputInputComponentSignature {
   };
 }
 
-export default class TpkInputInputComponent extends Component<TpkInputInputComponentSignature> {
+export default class TpkInputInput extends Component<TpkInputInputSignature> {
   @tracked mask?: InputMask<FactoryArg>;
 
-  public constructor(
-    owner: Owner,
-    args: TpkInputInputComponentSignature['Args'],
-  ) {
+  public constructor(owner: Owner, args: TpkInputInputSignature['Args']) {
     super(owner, args);
   }
 
@@ -75,9 +72,9 @@ export default class TpkInputInputComponent extends Component<TpkInputInputCompo
     if (!this.args.mask) return;
 
     this.mask = IMask(element, {
-      mask: this.args.mask,
+      mask: this.args.mask as never,
       ...this.args.maskOptions,
-    } as Record<string, unknown>);
+    });
   }
 
   setupMask: FunctionBasedModifier<{

@@ -51,7 +51,7 @@ module(
             @validationField="name"
             class="custom-class"
           />
-        </template>
+        </template>,
       );
 
       return changeset;
@@ -91,5 +91,5 @@ module(
       await renderComponent();
       await a11yAudit();
     });
-  }
+  },
 );

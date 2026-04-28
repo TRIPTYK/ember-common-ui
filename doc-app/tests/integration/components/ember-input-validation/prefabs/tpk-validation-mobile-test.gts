@@ -16,7 +16,7 @@ module(
 
     function setChangeset(
       phoneValue: string = '+33712345678',
-      overrides: Record<string, unknown> = {}
+      overrides: Record<string, unknown> = {},
     ) {
       return new ImmerChangeset({ phone: phoneValue, ...overrides });
     }
@@ -36,7 +36,7 @@ module(
             @label="Numéro de téléphone"
             @disabled={{disabled}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -54,7 +54,7 @@ module(
             @validationField="text"
             @label="Texte"
           />
-        </template>
+        </template>,
       );
     }
 
@@ -146,13 +146,13 @@ module(
         .dom(`label > div:first-of-type`)
         .hasClass(
           `tpk-label`,
-          `The first div inside label has the class tpk-label.`
+          `The first div inside label has the class tpk-label.`,
         );
       assert
         .dom(`.tpk-mobile-container > div:last-of-type`)
         .hasClass(
           `tpk-validation-errors`,
-          `The second div inside tpk-mobile-container has the class tpk-validation-errors.`
+          `The second div inside tpk-mobile-container has the class tpk-validation-errors.`,
         );
     });
 
@@ -174,5 +174,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

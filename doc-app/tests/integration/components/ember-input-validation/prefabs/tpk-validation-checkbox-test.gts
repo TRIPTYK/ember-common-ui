@@ -18,7 +18,7 @@ module(
       changeset: ImmerChangeset,
       params?: {
         disabled?: boolean;
-      }
+      },
     ) {
       await render(
         <template>
@@ -29,7 +29,7 @@ module(
             @mandatory={{true}}
             @disabled={{params.disabled}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -76,5 +76,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

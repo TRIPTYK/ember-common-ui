@@ -1,14 +1,11 @@
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from './base.ts';
+import { type BaseValidationSignature, BaseValidation } from './base.ts';
 import type { TpkInputSignature } from '@triptyk/ember-input/components/tpk-input';
 import TpkInput from '@triptyk/ember-input/components/tpk-input';
 import { hash } from '@ember/helper';
 
-export interface TpkValidationInputComponentSignature extends BaseValidationSignature {
+export interface TpkValidationInputSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] &
     TpkInputSignature['Args'] & {
       onChange?: (value: string | number | Date | null, e: Event) => void;
@@ -18,16 +15,16 @@ export interface TpkValidationInputComponentSignature extends BaseValidationSign
       {
         Input?: TpkInputSignature['Blocks']['default'][0]['Input'];
         Label?: TpkInputSignature['Blocks']['default'][0]['Label'];
-        errors?: TpkValidationInputComponent['errors'];
-        hasError: TpkValidationInputComponent['hasError'];
-        firstError: TpkValidationInputComponent['firstError'];
-        mandatory: TpkValidationInputComponent['mandatory'];
+        errors?: TpkValidationInput['errors'];
+        hasError: TpkValidationInput['hasError'];
+        firstError: TpkValidationInput['firstError'];
+        mandatory: TpkValidationInput['mandatory'];
       },
     ];
   };
 }
 
-export default class TpkValidationInputComponent extends BaseValidationComponent<TpkValidationInputComponentSignature> {
+export default class TpkValidationInput extends BaseValidation<TpkValidationInputSignature> {
   @tracked showPassword = false;
 
   @action onChange(value: string | number | Date | null, e: Event) {

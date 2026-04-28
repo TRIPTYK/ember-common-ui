@@ -42,7 +42,7 @@ module(
             @onChange={{onChange}}
             class="custom-class"
           />
-        </template>
+        </template>,
       );
     }
 
@@ -147,5 +147,5 @@ module(
       await renderComponent({ options: [], changeset, disabled: true });
       await a11yAudit();
     });
-  }
+  },
 );

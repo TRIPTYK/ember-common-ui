@@ -40,7 +40,7 @@ export interface TpkDatepickerInputArgs {
   onClose?: () => void;
 }
 
-export interface TpkDatepickerInputComponentSignature {
+export interface TpkDatepickerInputSignature {
   Args: TpkDatepickerInputArgs & { guid: string };
   Element: HTMLInputElement;
 }
@@ -49,7 +49,7 @@ export interface HTMLInputTDElement extends HTMLInputElement {
   _tempusDominus: TempusDominus;
 }
 
-export default class TpkDatepickerNewInputComponent extends Component<TpkDatepickerInputComponentSignature> {
+export default class TpkDatepickerNewInput extends Component<TpkDatepickerInputSignature> {
   @tracked datepicker?: TempusDominus;
 
   get value() {

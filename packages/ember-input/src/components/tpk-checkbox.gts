@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { BaseUIComponent, type BaseUIComponentArgs } from './base.ts';
+import { BaseUI, type BaseUIArgs } from './base.ts';
 import type { MergeDeep } from 'type-fest';
 import TpkCheckboxInputComponent from './tpk-checkbox-input.gts';
 import type { WithBoundArgs } from '@glint/template';
@@ -10,7 +10,7 @@ import type Owner from '@ember/owner';
 
 export type TpkCheckboxSignature = {
   Args: MergeDeep<
-    BaseUIComponentArgs['Args'],
+    BaseUIArgs['Args'],
     {
       checked?: boolean;
       disabled?: boolean;
@@ -25,7 +25,7 @@ export type TpkCheckboxSignature = {
           typeof TpkCheckboxInputComponent,
           'changeEvent' | 'onChange' | 'guid' | 'checked'
         >;
-        onChange: TpkCheckboxComponent['onChange'];
+        onChange: TpkCheckbox['onChange'];
         changeEvent: 'input' | 'change';
         guid: string;
       },
@@ -33,7 +33,7 @@ export type TpkCheckboxSignature = {
   };
 };
 
-export default class TpkCheckboxComponent extends BaseUIComponent<TpkCheckboxSignature> {
+export default class TpkCheckbox extends BaseUI<TpkCheckboxSignature> {
   constructor(owner: Owner, args: TpkCheckboxSignature['Args']) {
     super(owner, args);
     assert('@checked is required', typeof args.checked === 'boolean');

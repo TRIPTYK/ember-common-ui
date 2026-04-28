@@ -13,7 +13,7 @@ export type TpkButtonPrefabSignature = {
   Element: HTMLElement;
 };
 
-const TpkButtonPrefabComponent: TOC<TpkButtonPrefabSignature> = <template>
+const TpkButtonPrefab: TOC<TpkButtonPrefabSignature> = <template>
   <TpkButtonComponent
     @label={{@label}}
     @disabled={{@disabled}}
@@ -26,4 +26,4 @@ const TpkButtonPrefabComponent: TOC<TpkButtonPrefabSignature> = <template>
   </TpkButtonComponent>
 </template>;
 
-export default TpkButtonPrefabComponent;
+export default TpkButtonPrefab;

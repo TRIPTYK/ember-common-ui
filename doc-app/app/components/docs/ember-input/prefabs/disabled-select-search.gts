@@ -26,7 +26,7 @@ export default class DisabledSelectSearchExample extends Component {
       return this.searchOptions;
     }
     return this.searchOptions.filter((option) =>
-      String(option).toLowerCase().includes(term.toLowerCase())
+      String(option).toLowerCase().includes(term.toLowerCase()),
     );
   }
 

@@ -19,7 +19,7 @@ module('Integration | Component | tpk-area', function (hooks) {
           <O.Input />
           {{catchState O}}
         </TpkTextarea>
-      </template>
+      </template>,
     );
   }
 
@@ -27,7 +27,7 @@ module('Integration | Component | tpk-area', function (hooks) {
     await renderComponent();
 
     const service = (getOwner(this) as ApplicationInstance).lookup(
-      'service:catch-state'
+      'service:catch-state',
     ) as CatchState;
 
     const state = service.state as { [key: string]: unknown };
@@ -43,17 +43,17 @@ module('Integration | Component | tpk-area', function (hooks) {
   test('charcount updates when input value change', async function (assert) {
     await renderComponent();
     const stateService = (getOwner(this) as ApplicationInstance).lookup(
-      'service:catch-state'
+      'service:catch-state',
     ) as CatchState;
 
     assert.strictEqual(
       (stateService.state as Record<'charCount', number>).charCount,
-      5
+      5,
     );
     await fillIn('textarea', 'test');
     assert.strictEqual(
       (stateService.state as Record<'charCount', number>).charCount,
-      4
+      4,
     );
   });
 });

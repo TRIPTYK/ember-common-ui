@@ -1,7 +1,7 @@
 import { hash } from '@ember/helper';
 import Component from '@glimmer/component';
 
-export interface TpkStackListTitleComponentSignature {
+export interface TpkStackListTitleSignature {
   Args: {
     item: unknown;
     isExpanded: boolean;
@@ -16,7 +16,7 @@ export interface TpkStackListTitleComponentSignature {
   };
 }
 
-export default class TpkStackListTitleComponent extends Component<TpkStackListTitleComponentSignature> {
+export default class TpkStackListTitle extends Component<TpkStackListTitleSignature> {
   get isNotExpanded(): boolean {
     return this.args.isExpanded !== true;
   }

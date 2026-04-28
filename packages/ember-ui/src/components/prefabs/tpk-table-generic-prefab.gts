@@ -31,7 +31,7 @@ export interface TableParams {
   }[];
 }
 
-export interface TableGenericPrefabComponentSignature {
+export interface TableGenericPrefabSignature {
   Args: {
     tableParams: TableParams;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,7 +55,7 @@ export interface TableGenericPrefabComponentSignature {
   Element: HTMLElement;
 }
 
-export default class TableGenericPrefabComponent extends Component<TableGenericPrefabComponentSignature> {
+export default class TableGenericPrefab extends Component<TableGenericPrefabSignature> {
   getComponent = (component: string) => {
     if (!this.args.columnsComponent || !this.args.columnsComponent[component]) {
       throw new Error(`Component ${component} not found`);

@@ -3,7 +3,7 @@ import { on } from '@ember/modifier';
 import { modifier, type FunctionBasedModifier } from 'ember-modifier';
 import type { EmptyObject } from 'type-fest';
 
-export interface TpkTextareaInputComponentSignature {
+export interface TpkTextareaInputSignature {
   Args: {
     guid: string;
 
@@ -19,7 +19,7 @@ export interface TpkTextareaInputComponentSignature {
   Element: HTMLTextAreaElement;
 }
 
-export default class TpkTextareaInputComponent extends Component<TpkTextareaInputComponentSignature> {
+export default class TpkTextareaInput extends Component<TpkTextareaInputSignature> {
   setupCharCount: FunctionBasedModifier<{
     Args: {
       Positional: unknown[];

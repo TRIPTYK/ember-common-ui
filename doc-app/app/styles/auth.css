@@ -24,7 +24,7 @@
   @apply w-full;
 }
 
-.auth-layout-content button[type='submit'] {
+.auth-layout-content button[type="submit"] {
   @apply w-1/2 mx-auto btn btn-primary;
 }
 

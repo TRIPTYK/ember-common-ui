@@ -31,7 +31,7 @@ module('Integration | Helpers | Datepicker', function (hooks) {
           <D.Label />
           <D.Input />
         </TpkDatepicker>
-      </template>
+      </template>,
     );
   }
 

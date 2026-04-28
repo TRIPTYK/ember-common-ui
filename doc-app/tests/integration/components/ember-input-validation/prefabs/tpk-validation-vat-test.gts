@@ -30,7 +30,7 @@ module(
             @validationField="vat"
             class="custom-vat-class"
           />
-        </template>
+        </template>,
       );
       return immerChangeset;
     }
@@ -103,5 +103,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

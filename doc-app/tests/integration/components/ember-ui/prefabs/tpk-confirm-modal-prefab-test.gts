@@ -32,7 +32,7 @@ module(
               @isOpen={{isOpen}}
             />
           </div>
-        </template>
+        </template>,
       );
     }
 
@@ -56,5 +56,5 @@ module(
       await renderComponent(assert, false);
       assert.dom(confirmModalObject.scope).doesNotExist();
     });
-  }
+  },
 );

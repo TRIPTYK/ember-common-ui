@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-export interface MandatoryLabelComponentSignature {
+export interface MandatoryLabelSignature {
   Args: {
     label: string;
     mandatory?: boolean;
@@ -8,16 +8,15 @@ export interface MandatoryLabelComponentSignature {
   Element: HTMLSpanElement;
 }
 
-const MandatoryLabelComponent: TOC<MandatoryLabelComponentSignature> =
-  <template>
-    <div ...attributes>
-      <span>
-        {{@label}}
-        {{#if @mandatory}}
-          <span class='mandatory'>*</span>
-        {{/if}}
-      </span>
-    </div>
-  </template>;
+const MandatoryLabel: TOC<MandatoryLabelSignature> = <template>
+  <div ...attributes>
+    <span>
+      {{@label}}
+      {{#if @mandatory}}
+        <span class='mandatory'>*</span>
+      {{/if}}
+    </span>
+  </div>
+</template>;
 
-export default MandatoryLabelComponent;
+export default MandatoryLabel;

@@ -1,7 +1,7 @@
 export function assertTpkCssClassesExist(
   assert: Assert,
   input: string,
-  inputType: 'input' | 'textarea' = 'input'
+  inputType: 'input' | 'textarea' = 'input',
 ) {
   assert
     .dom(`.tpk-${input}-container`)
@@ -16,12 +16,12 @@ export function assertTpkCssClassesExist(
     .dom(`label > div:first-of-type`)
     .hasClass(
       `tpk-label`,
-      `The first div inside label has the class tpk-label.`
+      `The first div inside label has the class tpk-label.`,
     );
   assert
     .dom(`label > div:last-of-type`)
     .hasClass(
       `tpk-validation-errors`,
-      `The second div inside label has the class tpk-validation-errors.`
+      `The second div inside label has the class tpk-validation-errors.`,
     );
 }

@@ -1,9 +1,9 @@
 import type { TOC } from '@ember/component/template-only';
-export interface LoadingIndicatorComponentSignature {
+export interface LoadingIndicatorSignature {
   Element: HTMLDivElement;
 }
 
-const LoadingIndicator: TOC<LoadingIndicatorComponentSignature> = <template>
+const LoadingIndicator: TOC<LoadingIndicatorSignature> = <template>
   <div
     data-test-loading-indicator
     class='z-10 fixed inset-0 h-screen w-screen flex items-center justify-center bg-black bg-opacity-40'

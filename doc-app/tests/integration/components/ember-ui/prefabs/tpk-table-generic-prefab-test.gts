@@ -74,7 +74,7 @@ module(
       await render(
         <template>
           <TpkTableGenericPrefab @tableParams={{tableParams}} />
-        </template>
+        </template>,
       );
     }
 
@@ -87,7 +87,7 @@ module(
       await renderComponent(tableParams);
       const columnsNumber = tableParams.columns.length;
       const columns = document.querySelectorAll(
-        '[data-test-table-generic-prefab] [data-test-row="1"] td'
+        '[data-test-table-generic-prefab] [data-test-row="1"] td',
       ).length;
       assert.deepEqual(columns, columnsNumber);
     });
@@ -117,13 +117,13 @@ module(
       assert.strictEqual(
         deleteButtons.length,
         5,
-        'Correct number of delete buttons rendered'
+        'Correct number of delete buttons rendered',
       );
       const editButtons = findAll('[data-test-actions-open-action]');
       assert.strictEqual(
         editButtons.length,
         5,
-        'Correct number of edit buttons rendered'
+        'Correct number of edit buttons rendered',
       );
       await click('[data-test-actions-open-action]');
 
@@ -172,7 +172,7 @@ module(
       await renderComponent(tableParamsWithFunctions);
       assert
         .dom(
-          '[data-test-table-generic-prefab] [data-test-row="1"] td:nth-child(1)'
+          '[data-test-table-generic-prefab] [data-test-row="1"] td:nth-child(1)',
         )
         ?.hasText('Mr Leroy');
     });
@@ -221,11 +221,11 @@ module(
               )
             }}
           />
-        </template>
+        </template>,
       );
       assert
         .dom(
-          '[data-test-table-generic-prefab] td:nth-child(3) [data-test-table-generic-select]'
+          '[data-test-table-generic-prefab] td:nth-child(3) [data-test-table-generic-select]',
         )
         .exists();
       const selectSelector =
@@ -261,14 +261,14 @@ module(
       await render(
         <template>
           <TpkTableGenericPrefab @tableParams={{tableParamsWithFunctions}} />
-        </template>
+        </template>,
       );
 
       const data = document.querySelector(
-        '[data-test-table-generic-prefab] [data-test-row="1"]'
+        '[data-test-table-generic-prefab] [data-test-row="1"]',
       ) as HTMLTableElement;
       await click(data);
       assert.verifySteps(['rowClick function called']);
     });
-  }
+  },
 );

@@ -1,8 +1,8 @@
 properties:
   field:
     label:
-      description: 'Le label du bouton'
+      description: "Le label du bouton"
     checked:
-      description: 'Indique si le bouton est coché'
+      description: "Indique si le bouton est coché"
     disabled:
-      description: 'Indique si le bouton est désactivé'
+      description: "Indique si le bouton est désactivé"

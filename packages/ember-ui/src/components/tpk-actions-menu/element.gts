@@ -5,7 +5,7 @@ import { fn } from '@ember/helper';
 import type { TOC } from '@ember/component/template-only';
 import type { Invokable } from '@glint/template/-private/integration';
 
-export interface TpkActionsMenuElementComponentSignature {
+export interface TpkActionsMenuElementSignature {
   Args: {
     handleAction: (action: (...args: unknown[]) => void, e: Event) => void;
     action?: (...args: unknown[]) => void;
@@ -19,7 +19,7 @@ export interface TpkActionsMenuElementComponentSignature {
   };
 }
 
-export default class TpkActionsMenuElementComponent extends Component<TpkActionsMenuElementComponentSignature> {
+export default class TpkActionsMenuElement extends Component<TpkActionsMenuElementSignature> {
   get handleAction() {
     assert(
       '@handleAction is mandatory',

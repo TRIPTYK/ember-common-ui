@@ -27,7 +27,7 @@ module('Unit | Utils | is-field-error', function (hooks) {
 
   test('isFieldError returns true when validation field is a prefix of an array index in the error key', function (assert) {
     assert.true(
-      isFieldError('subsidiary.truc.0', 'subsidiary.truc.0.pastname')
+      isFieldError('subsidiary.truc.0', 'subsidiary.truc.0.pastname'),
     );
   });
 });

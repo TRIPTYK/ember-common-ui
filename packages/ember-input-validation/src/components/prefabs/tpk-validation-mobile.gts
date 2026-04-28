@@ -1,10 +1,7 @@
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import {
-  type BaseValidationSignature,
-  BaseValidationComponent,
-} from '../base.ts';
-import type { TpkValidationInputComponentSignature } from '../tpk-validation-input.gts';
+import { type BaseValidationSignature, BaseValidation } from '../base.ts';
+import type { TpkValidationInputSignature } from '../tpk-validation-input.gts';
 import TpkSelectComponent from '@triptyk/ember-input/components/tpk-select';
 import TpkInputComponent from '@triptyk/ember-input/components/tpk-input';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -19,7 +16,7 @@ import NlIcon from '../../assets/icons/nl.gts';
 
 export interface TpkValidationMobilePrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     | 'type'
     | 'min'
     | 'max'
@@ -49,7 +46,7 @@ const masks = {
   '+352': '000 000 000', // Luxembourg
 };
 
-export default class TpkValidationMobilePrefabComponent extends BaseValidationComponent<TpkValidationMobilePrefabSignature> {
+export default class TpkValidationMobilePrefab extends BaseValidation<TpkValidationMobilePrefabSignature> {
   defaultPrefix = { flag: BeIcon, code: '+32' };
   @tracked selectedPrefix = this.defaultPrefix;
   prefixes: Prefix[] = [

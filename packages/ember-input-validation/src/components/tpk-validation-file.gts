@@ -1,15 +1,12 @@
 import { action } from '@ember/object';
-import {
-  BaseValidationComponent,
-  type BaseValidationSignature,
-} from './base.ts';
+import { BaseValidation, type BaseValidationSignature } from './base.ts';
 import TpkFile, {
   type TpkFileSignature,
 } from '@triptyk/ember-input/components/tpk-file';
 
 import { hash } from '@ember/helper';
 
-export interface TpkValidationFileComponentSignature extends BaseValidationSignature {
+export interface TpkValidationFileSignature extends BaseValidationSignature {
   Args: BaseValidationSignature['Args'] & {
     label: string;
     multiple?: boolean;
@@ -22,15 +19,15 @@ export interface TpkValidationFileComponentSignature extends BaseValidationSigna
       {
         Input: TpkFileSignature['Blocks']['default'][0]['Input'];
         Label: TpkFileSignature['Blocks']['default'][0]['Label'];
-        errors: TpkValidationFileComponent['errors'];
-        hasError: TpkValidationFileComponent['hasError'];
-        firstError: TpkValidationFileComponent['firstError'];
+        errors: TpkValidationFile['errors'];
+        hasError: TpkValidationFile['hasError'];
+        firstError: TpkValidationFile['firstError'];
       },
     ];
   };
 }
 
-export default class TpkValidationFileComponent extends BaseValidationComponent<TpkValidationFileComponentSignature> {
+export default class TpkValidationFile extends BaseValidation<TpkValidationFileSignature> {
   @action
   onChange(file: File[]) {
     if (this.args.onChange) {

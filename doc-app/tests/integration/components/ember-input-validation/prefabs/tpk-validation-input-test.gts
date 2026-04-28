@@ -33,7 +33,7 @@ module(
             @mandatory={{true}}
             @disabled={{params.disabled}}
           />
-        </template>
+        </template>,
       );
     }
 
@@ -76,5 +76,5 @@ module(
       });
       await a11yAudit();
     });
-  }
+  },
 );

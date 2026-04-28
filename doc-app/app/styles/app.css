@@ -2,21 +2,14 @@
 /* stylelint-disable at-rule-empty-line-before */
 /* stylelint-disable no-invalid-position-at-import-rule */
 /* stylelint-disable import-notation */
-@import 'tailwindcss';
-@plugin "daisyui" {
-  themes:
-    nord --default,
-    dracula,
-    cupcake,
-    corporate,
-    lemonade;
-}
-@import '@triptyk/ember-input/dist/app.css';
-@import '@triptyk/ember-ui/dist/app.css';
-@import '@triptyk/ember-input-validation/dist/app.css';
-@import './code-example.css';
-@import './property-table.css';
-@import './auth.css';
+@import "tailwindcss";
+@plugin "daisyui";
+@import "@triptyk/ember-input/dist/app.css";
+@import "@triptyk/ember-ui/dist/app.css";
+@import "@triptyk/ember-input-validation/dist/app.css";
+@import "./code-example.css";
+@import "./property-table.css";
+@import "./auth.css";
 
 /* Additional global styles can be added below */
 @source "../../node_modules/@triptyk/ember-ui";

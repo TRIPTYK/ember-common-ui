@@ -6,7 +6,7 @@ import { guidFor } from '@ember/-internals/utils';
 import EllipsisIcon from '../assets/icons/ellipsis.gts';
 import { on } from '@ember/modifier';
 
-export interface TpkActionsMenuElementComponentSignature {
+export interface TpkActionsMenuElementSignature {
   Args: object;
   Element: HTMLDivElement;
   Blocks: {
@@ -16,7 +16,7 @@ export interface TpkActionsMenuElementComponentSignature {
   };
 }
 
-export default class TpkActionsMenuComponent extends Component<TpkActionsMenuElementComponentSignature> {
+export default class TpkActionsMenu extends Component<TpkActionsMenuElementSignature> {
   index = guidFor(this);
 
   stopPropagation(e: Event) {

@@ -1,5 +1,5 @@
-import TpkValidationInputComponent, {
-  type TpkValidationInputComponentSignature,
+import TpkValidationInput, {
+  type TpkValidationInputSignature,
 } from '../tpk-validation-input.gts';
 import { type BaseValidationSignature } from '../base.ts';
 import TpkValidationErrorsComponent from './tpk-validation-errors.gts';
@@ -8,7 +8,7 @@ import Component from '@glimmer/component';
 
 export interface TpkValidationCurrencyPrefabSignature extends BaseValidationSignature {
   Args: Omit<
-    TpkValidationInputComponentSignature['Args'],
+    TpkValidationInputSignature['Args'],
     'type' | 'mask' | 'unmaskValue' | 'maskOptions' | 'mix' | 'max' | 'step'
   > & {
     scale?: number;
@@ -19,7 +19,7 @@ export interface TpkValidationCurrencyPrefabSignature extends BaseValidationSign
   Element: HTMLElement;
 }
 
-export default class TpkValidationCurrencyPrefabComponent extends Component<TpkValidationCurrencyPrefabSignature> {
+export default class TpkValidationCurrencyPrefab extends Component<TpkValidationCurrencyPrefabSignature> {
   get mask() {
     return {
       mask: 'num €',
@@ -39,7 +39,7 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
   }
 
   <template>
-    <TpkValidationInputComponent
+    <TpkValidationInput
       @label={{@label}}
       @type='text'
       @onChange={{@onChange}}
@@ -78,6 +78,6 @@ export default class TpkValidationCurrencyPrefabComponent extends Component<TpkV
           @errors={{V.errors}}
         />
       </V.Label>
-    </TpkValidationInputComponent>
+    </TpkValidationInput>
   </template>
 }

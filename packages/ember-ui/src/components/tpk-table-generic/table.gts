@@ -82,7 +82,7 @@ export interface TableGenericTableSignature {
   };
 }
 
-export default class TableGenericTableComponent extends Component<TableGenericTableSignature> {
+export default class TableGenericTable extends Component<TableGenericTableSignature> {
   @service declare store: Store;
   @tracked totalRows?: number;
 

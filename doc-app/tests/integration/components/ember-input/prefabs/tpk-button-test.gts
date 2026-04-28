@@ -12,7 +12,7 @@ module('Integration | Component | Prefabs | tpk-button', function (hooks) {
 
   async function renderComponent(
     onClick: () => void,
-    disabled: boolean = false
+    disabled: boolean = false,
   ) {
     await render(
       <template>
@@ -21,7 +21,7 @@ module('Integration | Component | Prefabs | tpk-button', function (hooks) {
           @onClick={{onClick}}
           @disabled={{disabled}}
         />
-      </template>
+      </template>,
     );
   }
   const onClick = () => {

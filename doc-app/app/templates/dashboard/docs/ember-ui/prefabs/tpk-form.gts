@@ -16,7 +16,7 @@ import TpkFormRequiredFieldsExample from 'doc-app/components/docs/ember-ui/prefa
 import TpkFormChangesetGetExample from 'doc-app/components/docs/ember-ui/prefabs/tpk-form/changeset-get.gts';
 import type { Property } from 'doc-app/utils/table-property.interface';
 import {
-  baseComponentsExample,
+  basesComponentExample,
   changesetGetExample,
   disabledStateExample,
   errorHandlingExample,
@@ -338,7 +338,7 @@ export default class TpkFormPrefabDocs extends Component<TpkFormPrefabDocsSignat
             </div>
           </:demo>
           <:template>
-            <CodeBlock @code={{baseComponentsExample}} @language="gts" />
+            <CodeBlock @code={{basesComponentExample}} @language="gts" />
           </:template>
         </CodeExampleComponent>
       </DocSection>
