@@ -1,21 +1,19 @@
 # @triptyk/ember-ui
 
-[Short description of the addon.]
+User interface components for Ember.js applications.
+
+For full documentation, visit [triptyk.github.io/ember-common-ui](https://triptyk.github.io/ember-common-ui/).
 
 ## Compatibility
 
-- Ember.js v4.8 or above
-- Embroider or ember-auto-import v2
+- Ember.js v6.0 or above
+- Embroider
 
 ## Installation
 
+```sh
+pnpm add @triptyk/ember-ui
 ```
-ember install @triptyk/ember-ui
-```
-
-## Usage
-
-[Longer description of how to use the addon in apps.]
 
 ## Contributing
 

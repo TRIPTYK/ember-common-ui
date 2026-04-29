@@ -13,10 +13,54 @@ This repository contains our ui for our ember projects .
 
 All the tests are in the `doc-app`.
 
-## Publish
+## Release process
 
-`pnpm lerna version <version>`
-`pnpm recursive publish`
+This monorepo uses [Changesets](https://github.com/changesets/changesets) for versioning and publishing.
+
+### Branches
+
+| Branch | npm tag | Description |
+|--------|---------|-------------|
+| `main` | `latest` | Stable releases |
+| `develop` | `alpha` | Pre-release builds |
+
+### Adding a changeset
+
+When your PR contains a user-facing change, run:
+
+```sh
+pnpm changeset
+```
+
+Follow the prompts to select affected packages and describe the change. Commit the generated `.changeset/*.md` file with your PR.
+
+### How publishing works (CI)
+
+On every push to `main` or `develop`, the release workflow either:
+- **Opens/updates a "Version Packages" PR** — if unpublished changesets exist (bumps versions, updates changelogs)
+- **Publishes to npm** — when that PR is merged
+
+No manual publish step needed.
+
+### Manual release (local)
+
+```sh
+# 1. Bump versions and update changelogs
+pnpm version
+
+# 2. Publish to npm
+pnpm release
+```
+
+### Graduating from alpha to stable
+
+When `develop` is ready for a stable release, run on the `develop` branch:
+
+```sh
+pnpm changeset pre exit
+```
+
+Then merge `develop` into `main`.
 
 ##  Disclaimer
 

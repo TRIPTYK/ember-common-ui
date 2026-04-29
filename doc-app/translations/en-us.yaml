@@ -229,6 +229,71 @@ ember-ui:
           description: "Array of column definitions with field path, header label, sortable flag, and optional component name."
         actionMenu:
           description: "Array of action menu items, each with a name, optional icon component, and action callback."
+    tpk-dashboard:
+      title: "Tpk Dashboard"
+      description: "A full-page dashboard layout combining a navbar and collapsible sidebar."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        title:
+          description: "Application title displayed in the navbar."
+        sidebarItems:
+          description: "Array of sidebar navigation items (links or groups)."
+        navbarItems:
+          description: "Array of navbar navigation items."
+        currentUser:
+          description: "Current user object with a fullName property for the profile menu."
+        onLogout:
+          description: "Callback called when the user clicks the logout button."
+        logoutLabel:
+          description: "Label for the logout button."
+        profileRoute:
+          description: "Route name for the profile link."
+        profileLabel:
+          description: "Label for the profile link."
+        drawerId:
+          description: "ID of the drawer input element. Defaults to 'tpk-dashboard-drawer'."
+        collapsed:
+          description: "Controls the collapsed state of the sidebar."
+        onCollapsedChange:
+          description: "Callback called when the sidebar collapsed state changes."
+        onSidebarToggle:
+          description: "Callback called when the sidebar toggle button is clicked."
+        languages:
+          description: "Array of available languages with code and label."
+        onLocaleChange:
+          description: "Callback called when the user selects a different language."
+    tpk-login:
+      title: "Tpk Login"
+      description: "A ready-to-use login form with email and password fields backed by Zod validation."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        onSubmit:
+          description: "Callback called with validated data and the changeset on successful submission."
+        loginSchema:
+          description: "A Zod object schema with email and password fields used to validate the form."
+        initialValues:
+          description: "Optional initial values for the email and password fields."
+        submitButtonText:
+          description: "Label for the submit button. Defaults to 'Sign in'."
+    tpk-reset-password:
+      title: "Tpk Reset Password"
+      description: "A ready-to-use reset password form with password and confirm password fields backed by Zod validation."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        onSubmit:
+          description: "Callback called with validated data and the changeset on successful submission."
+        resetPasswordSchema:
+          description: "A Zod object schema with password and confirmPassword fields used to validate the form."
+        initialValues:
+          description: "Optional initial values for the password and confirmPassword fields."
+        submitButtonText:
+          description: "Label for the submit button. Defaults to 'Reset Password'."
     tpk-form:
       title: "Tpk Form"
       description: "A comprehensive form component that integrates validation using ember-immer-changeset and zod."

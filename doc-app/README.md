@@ -44,7 +44,7 @@ Make use of the many generators for code, try `pnpm ember help generate` for mor
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+The documentation site is automatically deployed to GitHub Pages on every push to `main` via the `docs.yaml` workflow.
 
 ## Further Reading / Useful Links
 

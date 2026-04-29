@@ -53,6 +53,7 @@ Router.map(function () {
           this.route('tpk-dashboard');
           this.route('tpk-login');
           this.route('tpk-forgot-password');
+          this.route('tpk-reset-password');
         });
       });
     });

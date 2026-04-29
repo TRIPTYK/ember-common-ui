@@ -169,6 +169,24 @@ ember-ui:
       examples:
         title: "Exemples"
         basic: "Utilisation basique"
+    tpk-dashboard:
+      title: "Tpk Dashboard"
+      description: "Une mise en page tableau de bord pleine page combinant une barre de navigation et une barre latérale rétractable."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
+    tpk-login:
+      title: "Tpk Login"
+      description: "Un formulaire de connexion prêt à l'emploi avec des champs email et mot de passe validés par Zod."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
+    tpk-reset-password:
+      title: "Tpk Réinitialisation du mot de passe"
+      description: "Un formulaire de réinitialisation de mot de passe prêt à l'emploi avec les champs mot de passe et confirmation validés par Zod."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
     tpk-form:
       title: "Tpk Form"
       description: "Un composant de formulaire complet qui intègre la validation en utilisant ember-immer-changeset et zod."

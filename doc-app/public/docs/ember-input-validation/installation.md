@@ -1,14 +1,14 @@
 # How to install
 
 ```bash
-ember install @triptyk/ember-input-validation
+pnpm add @triptyk/ember-input-validation
 ```
 
 Install the peer dependencies if needed:
 
 ```bash
-ember install @triptyk/ember-input
-ember install ember-immer-changeset
+pnpm add @triptyk/ember-input
+pnpm add ember-immer-changeset
 ```
 
 ## Importing types

@@ -1,13 +1,13 @@
 # How to install
 
 ```bash
-ember install @triptyk/ember-ui
+pnpm add @triptyk/ember-ui
 ```
 
 Install the peer dependencies if needed:
 
 ```bash
-ember install @triptyk/ember-input
+pnpm add @triptyk/ember-input
 ```
 
 ## Importing types

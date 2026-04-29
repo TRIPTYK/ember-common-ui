@@ -128,7 +128,6 @@ catalog:
   globals: ^17.5.0
   imask: ~7.6.1
   lefthook: ^2.0.16
-  lerna: ^9.0.3
   loader.js: ^4.7.0
   pnpm-sync-dependencies-meta-injected: ^0.0.15
   prettier: ^3.8.3

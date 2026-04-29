@@ -1,13 +1,13 @@
 # How to install
 
 ```bash
-ember install @triptyk/ember-input
+pnpm add @triptyk/ember-input
 ```
 
 Install the peer dependencies if needed:
 
 ```bash
-ember install ember-flatpickr
+pnpm add ember-flatpickr
 ```
 
 ## Importing types

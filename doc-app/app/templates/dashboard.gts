@@ -179,6 +179,21 @@ export default class DashboardTemplate extends Component {
           label: 'Tpk Form',
           route: 'dashboard.docs.ember-ui.prefabs.tpk-form',
         },
+        {
+          type: 'link',
+          label: 'Tpk Dashboard',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-dashboard',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Login',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-login',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Reset password',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-reset-password',
+        },
       ],
     },
     {

@@ -1,21 +1,19 @@
 # @triptyk/ember-input-validation
 
-[Short description of the addon.]
+Form validation layer for `@triptyk/ember-input` components.
+
+For full documentation, visit [triptyk.github.io/ember-common-ui](https://triptyk.github.io/ember-common-ui/).
 
 ## Compatibility
 
-- Ember.js v4.8 or above
-- Embroider or ember-auto-import v2
+- Ember.js v6.0 or above
+- Embroider
 
 ## Installation
 
+```sh
+pnpm add @triptyk/ember-input-validation
 ```
-ember install @triptyk/ember-input-validation
-```
-
-## Usage
-
-[Longer description of how to use the addon in apps.]
 
 ## Contributing
 
