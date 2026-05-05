@@ -1,8 +1,8 @@
-import { settled } from '@ember/test-helpers';
+import { find, settled } from '@ember/test-helpers';
 import type ImmerChangeset from 'ember-immer-changeset';
+import { expect } from 'vitest';
 
 export async function assertDataHasErrorAttribute(
-  assert: Assert,
   changeset: ImmerChangeset,
   input: string,
 ) {
@@ -14,9 +14,13 @@ export async function assertDataHasErrorAttribute(
   });
 
   await settled();
-  assert.dom(`[data-test-tpk-${input}-input]`).hasNoText();
+  expect(
+    find(`[data-test-tpk-${input}-input]`)?.textContent?.trim() || '',
+  ).toBe('');
 
-  assert
-    .dom(`[data-test-tpk-prefab-${input}-container]`)
-    .hasAttribute('data-has-error', 'true');
+  expect(
+    find(`[data-test-tpk-prefab-${input}-container]`)?.getAttribute(
+      'data-has-error',
+    ),
+  ).toBe('true');
 }

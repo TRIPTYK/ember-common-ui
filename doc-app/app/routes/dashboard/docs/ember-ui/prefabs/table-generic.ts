@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import { setupWorker } from 'msw/browser';
 import { http } from 'msw';
 
 const fakeData = [
@@ -50,18 +49,50 @@ const fakeData = [
   },
 ];
 
-const worker = setupWorker(
+const handlers = [
   http.get('/users', () => {
     return Response.json({
       data: fakeData,
       meta: { fetched: fakeData.length, total: fakeData.length },
     });
   }),
-);
+];
+
+let mockStarted = false;
+
+async function startMock() {
+  if (mockStarted) return;
+
+  if (import.meta.env.SSR) {
+    const { setupServer } = await import('msw/node');
+    const server = setupServer(...handlers);
+    server.listen({ onUnhandledRequest: 'bypass' });
+
+    const inner = globalThis.fetch;
+    globalThis.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
+      if (typeof input === 'string' && input.startsWith('/')) {
+        input = `http://localhost${input}`;
+      } else if (input instanceof URL && input.protocol === '') {
+        input = new URL(input.pathname + input.search, 'http://localhost');
+      }
+      return inner(input, init);
+    };
+    mockStarted = true;
+    return;
+  }
+
+  if (typeof navigator === 'undefined' || !('serviceWorker' in navigator)) {
+    return;
+  }
+  const { setupWorker } = await import('msw/browser');
+  const worker = setupWorker(...handlers);
+  await worker.start({ onUnhandledRequest: 'bypass' });
+  mockStarted = true;
+}
 
 export default class DocsEmberUiPrefabsTpkTableGenericPrefabRoute extends Route {
   async model() {
-    await worker.start();
+    await startMock();
 
     return {
       properties: [

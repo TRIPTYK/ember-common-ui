@@ -134,6 +134,7 @@ export default class TpkModal extends Component<TpkModalSignature> {
     {{#if @isOpen}}
       {{#in-element this.modalContainer insertBefore=null}}
         <dialog
+          open
           {{this.handleEscapeKey @isOpen this.close}}
           class='tpk-modal'
           ...attributes

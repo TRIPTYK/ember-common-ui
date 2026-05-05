@@ -1,21 +1,40 @@
+import { setupWorker, stopWorker, teardownMock } from './worker';
+import type Owner from '@ember/owner';
+import IntlService from 'ember-intl/services/intl';
+import Store from 'doc-app/services/store';
+import TpkFormService from '@triptyk/ember-input-validation/services/tpk-form';
+import dialogLayer from '@triptyk/ember-ui/services/dialog-layer';
+import catchState from 'doc-app/services/catch-state';
 import '@warp-drive/ember/install';
-import Application from 'doc-app/app';
-import config from 'doc-app/config/environment';
-import * as QUnit from 'qunit';
-import { setApplication } from '@ember/test-helpers';
-import { setup } from 'qunit-dom';
-import { start as qunitStart, setupEmberOnerrorValidation } from 'ember-qunit';
-import { setupGlobalA11yHooks } from 'ember-a11y-testing/test-support';
-import { setupWorker } from './worker';
+import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 
-export function start() {
-  setApplication(Application.create(config.APP));
+export type VitestTestEnv = {
+  owner: Owner;
+  element: HTMLElement;
+  pauseTest: () => Promise<void>;
+};
 
-  setup(QUnit.assert);
-  setupEmberOnerrorValidation();
-  setupGlobalA11yHooks(() => true);
-
-  setupWorker();
-
-  qunitStart();
+export function setupTest(owner: Owner, locale = 'fr-fr') {
+  owner.register('service:catch-state', catchState);
+  owner.register('service:intl', IntlService);
+  owner.register('config:environment', {});
+  owner.register('service:store', Store);
+  owner.register('service:dialog-layer', dialogLayer);
+  owner.register('service:tpk-form', TpkFormService);
+  owner.lookup('service:intl').setLocale(locale);
 }
+
+beforeAll(async () => {
+  await setupWorker();
+});
+
+afterEach(() => {
+  teardownMock();
+  vi.unstubAllGlobals();
+  vi.resetAllMocks();
+  vi.useRealTimers();
+});
+
+afterAll(() => {
+  stopWorker();
+});

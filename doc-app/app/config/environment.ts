@@ -1,33 +1,58 @@
-import loadConfigFromMeta from '@embroider/config-meta-loader';
-import { assert } from '@ember/debug';
+const environment = import.meta.env.MODE || 'development';
 
-const config = loadConfigFromMeta('doc-app') as unknown;
-
-assert(
-  'config is not an object',
-  typeof config === 'object' && config !== null,
-);
-assert(
-  'modulePrefix was not detected on your config',
-  'modulePrefix' in config && typeof config.modulePrefix === 'string',
-);
-assert(
-  'locationType was not detected on your config',
-  'locationType' in config && typeof config.locationType === 'string',
-);
-assert(
-  'rootURL was not detected on your config',
-  'rootURL' in config && typeof config.rootURL === 'string',
-);
-assert(
-  'APP was not detected on your config',
-  'APP' in config && typeof config.APP === 'object',
-);
-
-export default config as {
+export interface EnvironmentConfig {
   modulePrefix: string;
-  podModulePrefix?: string;
-  locationType: string;
+  environment: string;
   rootURL: string;
+  locationType: string;
+  EmberENV: {
+    EXTEND_PROTOTYPES: boolean;
+    FEATURES: Record<string, boolean>;
+  };
   APP: Record<string, unknown>;
-} & Record<string, unknown>;
+}
+
+const ENV = {
+  modulePrefix: 'doc-app',
+  environment,
+  rootURL: import.meta.env.BASE_URL,
+  locationType: 'history',
+  EmberENV: {
+    EXTEND_PROTOTYPES: false,
+    FEATURES: {
+      // Here you can enable experimental features on an ember canary build
+      // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
+    },
+  },
+
+  APP: {
+    // Here you can pass flags/options to your application instance
+    // when it is created
+  },
+} as EnvironmentConfig;
+
+if (environment === 'development') {
+  // ENV.APP.LOG_RESOLVER = true;
+  // ENV.APP.LOG_ACTIVE_GENERATION = true;
+  // ENV.APP.LOG_TRANSITIONS = true;
+  // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+  // ENV.APP.LOG_VIEW_LOOKUPS = true;
+}
+
+if (environment === 'test') {
+  // Testem prefers this...
+  ENV.locationType = 'none';
+
+  // keep test console output quieter
+  ENV.APP.LOG_ACTIVE_GENERATION = false;
+  ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+  ENV.APP.rootElement = '#ember-testing';
+  ENV.APP.autoboot = false;
+}
+
+if (environment === 'production') {
+  // here you can enable a production-specific feature
+}
+
+export default ENV;

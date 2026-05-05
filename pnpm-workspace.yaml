@@ -76,13 +76,13 @@ catalog:
   '@types/rsvp': ^4.0.9
   '@typescript-eslint/eslint-plugin': ^7.18.0
   '@typescript-eslint/parser': ^7.18.0
-  '@warp-drive/core': ~5.8.2
-  '@warp-drive/core-types': ~5.8.2
-  '@warp-drive/ember': ~5.8.2
-  '@warp-drive/json-api': ~5.8.2
-  '@warp-drive/legacy': ~5.8.2
-  '@warp-drive/schema-record': ~5.8.2
-  '@warp-drive/utilities': ~5.8.2
+  '@warp-drive/core': ~5.9.0-beta.0
+  '@warp-drive/core-types': ~5.9.0-beta.0
+  '@warp-drive/ember': ~5.9.0-beta.0
+  '@warp-drive/json-api': ~5.9.0-beta.0
+  '@warp-drive/legacy': ~5.9.0-beta.0
+  '@warp-drive/schema-record': ~5.9.0-beta.0
+  '@warp-drive/utilities': ~5.9.0-beta.0
   babel-plugin-ember-template-compilation: ~4.0.0
   broccoli-asset-rev: ^3.0.0
   concurrently: ^9.2.1
