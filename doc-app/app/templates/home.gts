@@ -10,6 +10,7 @@ import type { TOC } from '@ember/component/template-only';
 import TpkThemeSelector from '@triptyk/ember-ui/components/prefabs/tpk-theme-selector';
 import { hash } from '@ember/helper';
 import type { IntlService } from 'ember-intl';
+import Logo from 'doc-app/assets/ember_common_ui_logo.svg';
 
 export default class DashboardTemplate extends Component {
   @service declare intl: IntlService;
@@ -149,7 +150,7 @@ export default class DashboardTemplate extends Component {
         <:header>
           <div class="flex flex-col items-center justify-center p-2">
             <img
-              src="/assets/img/ember_common_ui_logo.svg"
+              src={{Logo}}
               alt="EMBER COMMON UI"
               class="w-24 object-contain"
             />

@@ -27,7 +27,8 @@
     "_syncPnpm": "pnpm sync-dependencies-meta-injected",
     "lint:types": "ember-tsc --noEmit",
     "start": "concurrently \"pnpm turbo build:watch --filter '@triptyk/ember*'\" \"vite dev\"",
-    "test": "vite build --mode development && ember test --path dist"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@babel/core": "catalog:",
@@ -100,7 +101,7 @@
     "eslint-plugin-qunit": "catalog:",
     "eslint-plugin-warp-drive": "^5.8.1",
     "globals": "catalog:",
-    "msw": "~2.13.5",
+    "msw": "~2.14.3",
     "pnpm-sync-dependencies-meta-injected": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-ember-template-tag": "catalog:",
@@ -113,13 +114,14 @@
     "testem": "^3.20.0",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",
-    "vite": "catalog:",
+    "vite": "^7.0.0",
+    "vite-ember-ssr": "^0.1.0",
     "vitest": "4.0.18",
     "webdriverio": "^9.27.0",
     "zod": "catalog:"
   },
   "engines": {
-    "node": ">= 20.19.0"
+    "node": ">= 22"
   },
   "ember": {
     "edition": "octane"

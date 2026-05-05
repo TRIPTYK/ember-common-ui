@@ -1,27 +1,29 @@
+import { find } from '@ember/test-helpers';
+import { expect } from 'vitest';
+
 export function assertTpkCssClassesExist(
-  assert: Assert,
   input: string,
   inputType: 'input' | 'textarea' = 'input',
 ) {
-  assert
-    .dom(`.tpk-${input}-container`)
-    .exists()
-    .hasAttribute(`data-test-tpk-prefab-${input}-container`);
-  assert.dom(`.tpk-${input}-container .tpk-${input}-input`).exists();
-  assert.dom(`.tpk-${input}-container .tpk-validation-errors`).exists();
-  assert.dom(`.tpk-${input}-container .tpk-label`).exists();
-  assert.dom(`label`).hasClass(`tpk-${input}-container`);
-  assert.dom(inputType).hasClass(`tpk-${input}-input`);
-  assert
-    .dom(`label > div:first-of-type`)
-    .hasClass(
-      `tpk-label`,
-      `The first div inside label has the class tpk-label.`,
-    );
-  assert
-    .dom(`label > div:last-of-type`)
-    .hasClass(
+  expect(find(`.tpk-${input}-container`)).toBeTruthy();
+  expect(
+    find(`.tpk-${input}-container`)?.hasAttribute(
+      `data-test-tpk-prefab-${input}-container`,
+    ),
+  ).toBe(true);
+  expect(find(`.tpk-${input}-container .tpk-${input}-input`)).toBeTruthy();
+  expect(find(`.tpk-${input}-container .tpk-validation-errors`)).toBeTruthy();
+  expect(find(`.tpk-${input}-container .tpk-label`)).toBeTruthy();
+  expect(find(`label`)?.classList.contains(`tpk-${input}-container`)).toBe(
+    true,
+  );
+  expect(find(inputType)?.classList.contains(`tpk-${input}-input`)).toBe(true);
+  expect(
+    find(`label > div:first-of-type`)?.classList.contains(`tpk-label`),
+  ).toBe(true);
+  expect(
+    find(`label > div:last-of-type`)?.classList.contains(
       `tpk-validation-errors`,
-      `The second div inside label has the class tpk-validation-errors.`,
-    );
+    ),
+  ).toBe(true);
 }

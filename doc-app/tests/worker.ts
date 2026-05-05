@@ -3,33 +3,33 @@ import { setupWorker as MSWSetupWorker } from 'msw/browser';
 
 export let worker: ReturnType<typeof MSWSetupWorker>;
 
-export function setupWorker() {
-  worker = MSWSetupWorker();
+export async function setupWorker() {
+  if (
+    typeof navigator === 'undefined' ||
+    !('serviceWorker' in navigator) ||
+    worker
+  ) {
+    return;
+  }
+  const { setupWorker: MSWSetup } = await import('msw/browser');
+  worker = MSWSetup();
+  await worker.start({ onUnhandledRequest: 'bypass' });
 }
 
 export function stopWorker() {
-  for (const handler of worker.listHandlers()) {
-    console.log('Registered handler:', handler);
-  }
-  worker.stop();
+  worker?.stop();
+  worker = undefined as unknown as ReturnType<typeof MSWSetupWorker>;
 }
 
-/**
- * Setups mocking using msw worker.
- * The worker can be accessed using this.get('worker')
- */
-export function setupMock(hooks: NestedHooks) {
-  hooks.beforeEach(function () {
-    worker.resetHandlers();
-    worker.use(
-      http.post('/write-coverage', () => {
-        // The passthrough is for ember code coverage.
-        return passthrough();
-      }),
-    );
-  });
+export function setupMock() {
+  worker?.resetHandlers();
+  worker?.use(
+    http.post('/write-coverage', () => {
+      return passthrough();
+    }),
+  );
+}
 
-  hooks.afterEach(function () {
-    worker?.resetHandlers();
-  });
+export function teardownMock() {
+  worker?.resetHandlers();
 }

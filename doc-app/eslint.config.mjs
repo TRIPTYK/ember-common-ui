@@ -88,6 +88,7 @@ export default defineConfig([
   {
     ...qunit.configs.recommended,
     files: ['tests/**/*-test.{js,gjs,ts,gts}'],
+    ignores: ['tests/**/*-vitest-test.{js,gjs,ts,gts}'],
     plugins: {
       qunit,
     },

@@ -10,6 +10,7 @@ import type { IntlService } from 'ember-intl';
 import { action } from '@ember/object';
 import GettingStartedIcon from 'doc-app/assets/icons/getting-started.gts';
 import InstallationIcon from 'doc-app/assets/icons/installation.gts';
+import logo from 'doc-app/assets/ember_common_ui_logo.svg';
 
 export default class DashboardTemplate extends Component {
   @service declare intl: IntlService;
@@ -256,7 +257,7 @@ export default class DashboardTemplate extends Component {
         <:header>
           <div class="flex flex-col items-center justify-center p-2">
             <img
-              src="/assets/img/ember_common_ui_logo.svg"
+              src={{logo}}
               alt="EMBER COMMON UI"
               class="w-24 object-contain"
             />

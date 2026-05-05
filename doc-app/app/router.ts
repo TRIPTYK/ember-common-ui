@@ -3,7 +3,7 @@ import config from 'doc-app/config/environment';
 import '@warp-drive/ember/install';
 
 export default class Router extends EmberRouter {
-  location = config.locationType;
+  location = 'history';
   rootURL = config.rootURL;
 }
 

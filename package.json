@@ -14,8 +14,24 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@embroider/vite": "patches/@embroider__vite.patch"
-    }
+      "@embroider/vite": "patches/@embroider__vite.patch",
+      "ember-power-select-with-create": "patches/ember-power-select-with-create.patch",
+      "ember-basic-dropdown": "patches/ember-basic-dropdown.patch"
+    },
+    "overrides": {
+      "ember-basic-dropdown": "git+https://github.com/ember-power-addons/ember-basic-dropdown/tree/dist"
+    },
+    "onlyBuiltDependencies": [
+      "core-js",
+      "core-js-pure",
+      "edgedriver",
+      "ember-power-select",
+      "esbuild",
+      "geckodriver",
+      "lefthook",
+      "msw",
+      "nx"
+    ]
   },
   "repository": {
     "url": "git@github.com:TRIPTYK/ember-common-ui.git"
