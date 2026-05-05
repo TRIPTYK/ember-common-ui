@@ -32,7 +32,7 @@
 }
 
 .code-block-content {
-  @apply overflow-x-auto;
+  @apply overflow-x-auto p-1;
 }
 
 .code-block-content pre {

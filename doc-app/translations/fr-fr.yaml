@@ -11,6 +11,34 @@ docs:
     usage: "Utilisation"
     examples: "Exemples"
 
+  gettingStarted:
+    title: "Démarrage rapide"
+    description: "ember-common-ui est une suite de bibliothèques de composants Ember.js pour créer des formulaires validés et des interfaces riches."
+    packages:
+      title: "Packages"
+      emberInput: "Primitives d'entrée de bas niveau (input, select, datepicker, fichier, etc.)."
+      emberInputValidation: "Préfabriqués de formulaires validés basés sur ember-input et ember-immer-changeset avec des schémas Zod."
+      emberUi: "Préfabriqués UI de haut niveau : layout dashboard, flux login/mot-de-passe oublié/réinitialisation, formulaires, tableaux et modales."
+    quickStart:
+      title: "Démarrage rapide"
+      description: "L'exemple ci-dessous montre un formulaire validé minimal utilisant ember-input-validation et ember-ui."
+
+  installation:
+    title: "Installation"
+    description: "Installez les packages dont vous avez besoin. Chaque package n'inclut que ses dépendances — installez-les individuellement ou tous en même temps."
+    all:
+      title: "Tout installer"
+      description: "Installez les trois packages et leurs dépendances homologues en une seule commande :"
+    emberInput:
+      description: "Fournit des primitives d'entrée de bas niveau. Nécessite la bibliothèque de datepicker Tempus Dominus."
+      peers: "Dépendances homologues : @eonasdan/tempus-dominus ^6.9.10, ember-source >=6.0.0"
+    emberInputValidation:
+      description: "Fournit des préfabriqués de formulaires validés. Nécessite ember-input et ember-immer-changeset."
+      peers: "Dépendances homologues : @triptyk/ember-input, ember-immer-changeset ^1.0.2, ember-source >=6.0.0"
+    emberUi:
+      description: "Fournit des préfabriqués UI de haut niveau. Nécessite ember-input et ember-input-validation."
+      peers: "Dépendances homologues : @triptyk/ember-input, @triptyk/ember-input-validation, ember-source >=6.0.0"
+
   propertyTable:
     name: "Nom"
     type: "Type"
@@ -154,6 +182,12 @@ emberInputValidation:
       examples:
         title: "Exemples"
         basic: "Utilisation basique"
+    checkbox:
+      title: "Case à cocher"
+      description: "Un composant case à cocher validé avec label et gestion intégrée des erreurs."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
 
 ember-ui:
   prefabs:
@@ -187,9 +221,33 @@ ember-ui:
       examples:
         title: "Exemples"
         basic: "Utilisation basique"
+    tpk-forgot-password:
+      title: "Tpk Mot de passe oublié"
+      description: "Un formulaire de mot de passe oublié prêt à l'emploi avec un champ email validé par Zod."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
     tpk-form:
       title: "Tpk Form"
       description: "Un composant de formulaire complet qui intègre la validation en utilisant ember-immer-changeset et zod."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
+    tpk-navbar:
+      title: "Tpk Navbar"
+      description: "Une barre de navigation supérieure prête à l'emploi avec support de la marque, des liens de navigation, du changement de langue et du menu utilisateur."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
+    tpk-sidebar:
+      title: "Tpk Sidebar"
+      description: "Un composant de navigation latérale rétractable supportant les liens, groupes, icônes et infobulles."
+      examples:
+        title: "Exemples"
+        basic: "Utilisation basique"
+    tpk-theme-selector:
+      title: "Sélecteur de thème"
+      description: "Un composant de changement de thème qui persiste le thème sélectionné dans le localStorage."
       examples:
         title: "Exemples"
         basic: "Utilisation basique"

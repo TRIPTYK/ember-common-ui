@@ -28,7 +28,7 @@ export default class DashboardTemplate extends Component {
     {
       type: 'link',
       label: 'Getting Started',
-      route: 'dashboard.docs.ember-input-validation.prefabs.input',
+      route: 'dashboard.docs.getting-started',
       icon: <template><GettingStartedIcon class="size-4" /></template> as TOC<{
         Element: SVGSVGElement;
       }>,
@@ -36,7 +36,7 @@ export default class DashboardTemplate extends Component {
     {
       type: 'link',
       label: 'Installation',
-      route: 'dashboard.docs.ember-input-validation.prefabs.input',
+      route: 'dashboard.docs.installation',
       icon: <template><InstallationIcon class="size-4" /></template> as TOC<{
         Element: SVGSVGElement;
       }>,
@@ -158,6 +158,11 @@ export default class DashboardTemplate extends Component {
           route:
             'dashboard.docs.ember-input-validation.prefabs.national-number',
         },
+        {
+          type: 'link',
+          label: 'Checkbox',
+          route: 'dashboard.docs.ember-input-validation.prefabs.checkbox',
+        },
       ],
     },
     {
@@ -191,8 +196,28 @@ export default class DashboardTemplate extends Component {
         },
         {
           type: 'link',
-          label: 'Tpk Reset password',
+          label: 'Tpk Forgot Password',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-forgot-password',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Reset Password',
           route: 'dashboard.docs.ember-ui.prefabs.tpk-reset-password',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Navbar',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-navbar',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Sidebar',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-sidebar',
+        },
+        {
+          type: 'link',
+          label: 'Tpk Theme Selector',
+          route: 'dashboard.docs.ember-ui.prefabs.tpk-theme-selector',
         },
       ],
     },

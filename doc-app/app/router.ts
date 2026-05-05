@@ -10,6 +10,8 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('dashboard', { path: '/' }, function () {
     this.route('docs', function () {
+      this.route('getting-started');
+      this.route('installation');
       this.route('ember-input-validation', function () {
         this.route('prefabs', function () {
           this.route('input');
@@ -34,6 +36,7 @@ Router.map(function () {
           this.route('textarea');
           this.route('timepicker');
           this.route('vat');
+          this.route('checkbox');
         });
       });
 
@@ -54,6 +57,9 @@ Router.map(function () {
           this.route('tpk-login');
           this.route('tpk-forgot-password');
           this.route('tpk-reset-password');
+          this.route('tpk-navbar');
+          this.route('tpk-sidebar');
+          this.route('tpk-theme-selector');
         });
       });
     });

@@ -11,6 +11,34 @@ docs:
     usage: "Usage"
     examples: "Examples"
 
+  gettingStarted:
+    title: "Getting Started"
+    description: "ember-common-ui is a suite of Ember.js component libraries for building validated forms and rich UI layouts."
+    packages:
+      title: "Packages"
+      emberInput: "Low-level input primitives (input, select, datepicker, file, etc.)."
+      emberInputValidation: "Validated form prefabs built on ember-input and ember-immer-changeset with Zod schemas."
+      emberUi: "High-level UI prefabs: dashboard layout, login/forgot-password/reset-password flows, forms, tables, and modals."
+    quickStart:
+      title: "Quick Start"
+      description: "The example below shows a minimal validated form using ember-input-validation and ember-ui."
+
+  installation:
+    title: "Installation"
+    description: "Install the packages you need. Each package only includes what it depends on — install them individually or all at once."
+    all:
+      title: "Install everything"
+      description: "Install all three packages and their peer dependencies in one command:"
+    emberInput:
+      description: "Provides low-level input primitives. Requires the Tempus Dominus datepicker library."
+      peers: "Peer dependencies: @eonasdan/tempus-dominus ^6.9.10, ember-source >=6.0.0"
+    emberInputValidation:
+      description: "Provides validated form prefabs. Requires ember-input and ember-immer-changeset."
+      peers: "Peer dependencies: @triptyk/ember-input, ember-immer-changeset ^1.0.2, ember-source >=6.0.0"
+    emberUi:
+      description: "Provides high-level UI prefabs. Requires both ember-input and ember-input-validation."
+      peers: "Peer dependencies: @triptyk/ember-input, @triptyk/ember-input-validation, ember-source >=6.0.0"
+
   propertyTable:
     name: "Name"
     type: "Type"
@@ -180,6 +208,25 @@ emberInputValidation:
       examples:
         title: "Examples"
         basic: "Basic usage"
+    checkbox:
+      title: "Checkbox"
+      description: "A validated checkbox component with label and integrated error handling."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        validationField:
+          description: "The key in the changeset to read and write the checkbox value."
+        changeset:
+          description: "An ImmerChangeset instance managing form state and validation errors."
+        label:
+          description: "Label text displayed next to the checkbox."
+        mandatory:
+          description: "When true, displays a mandatory indicator (*) next to the label."
+        disabled:
+          description: "When true, the checkbox is non-interactive."
+        onChange:
+          description: "Callback called with the checked state, value, and native event when the checkbox changes."
 
 ember-ui:
   prefabs:
@@ -294,6 +341,21 @@ ember-ui:
           description: "Optional initial values for the password and confirmPassword fields."
         submitButtonText:
           description: "Label for the submit button. Defaults to 'Reset Password'."
+    tpk-forgot-password:
+      title: "Tpk Forgot Password"
+      description: "A ready-to-use forgot password form with an email field backed by Zod validation."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        onSubmit:
+          description: "Callback called with validated data and the changeset on successful submission."
+        forgotPasswordSchema:
+          description: "A Zod object schema with an email field used to validate the form."
+        initialValues:
+          description: "Optional initial values for the email field."
+        submitButtonText:
+          description: "Label for the submit button. Defaults to 'Send reset link'."
     tpk-form:
       title: "Tpk Form"
       description: "A comprehensive form component that integrates validation using ember-immer-changeset and zod."
@@ -317,6 +379,63 @@ ember-ui:
           description: "When true, disables all yielded input components."
         executeOnValid:
           description: "When true, calls onSubmit only if all fields pass validation."
+    tpk-navbar:
+      title: "Tpk Navbar"
+      description: "A ready-to-use top navigation bar with support for branding, navigation links, language switching, and user menu."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        title:
+          description: "Application title displayed in the navbar."
+        navbarItems:
+          description: "Array of navigation items. Each item has a label and an optional href or onClick handler."
+        drawerId:
+          description: "ID linking the navbar toggle button to a sidebar drawer."
+        onSidebarToggle:
+          description: "Callback called when the sidebar toggle button is clicked."
+        languages:
+          description: "Array of available languages with code and label for the language switcher."
+        onLocaleChange:
+          description: "Callback called with the selected locale code when the user changes language."
+        currentUser:
+          description: "Currently authenticated user object with a fullName property for the user menu."
+        onLogout:
+          description: "Callback called when the user clicks the logout button."
+        logoutLabel:
+          description: "Label for the logout menu item. Defaults to 'Logout'."
+        profileRoute:
+          description: "Ember route name to navigate to when the user clicks the profile menu item."
+        profileLabel:
+          description: "Label for the profile menu item. Defaults to 'Profile'."
+    tpk-sidebar:
+      title: "Tpk Sidebar"
+      description: "A collapsible sidebar navigation component supporting links, groups, icons, and tooltips."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        sidebarItems:
+          description: "Array of sidebar items. Each item is either a SidebarLink or a SidebarGroup with nested items."
+        drawerId:
+          description: "ID used to associate the sidebar with a navbar toggle button via drawer."
+        collapsed:
+          description: "Controls the collapsed state of the sidebar."
+        onCollapsedChange:
+          description: "Callback called with the new collapsed boolean when the user toggles the sidebar."
+    tpk-theme-selector:
+      title: "Tpk Theme Selector"
+      description: "A theme switcher component that persists the selected theme to localStorage."
+      examples:
+        title: "Examples"
+        basic: "Basic usage"
+      properties:
+        themes:
+          description: "Array of theme name strings to display as options."
+        localStorageKey:
+          description: "Key used to persist the selected theme in localStorage. Defaults to 'theme'."
+        sidebarCollapsed:
+          description: "When true, renders the selector in compact mode suitable for a collapsed sidebar."
 
 emberInput:
   prefabs:
