@@ -11,7 +11,6 @@ import type { TpkSelectSignature } from '@triptyk/ember-input/components/tpk-sel
 import { hash } from '@ember/helper';
 import { selectChoose } from 'ember-power-select/test-support';
 import stringify from 'doc-app/helpers/to-string';
-import '@warp-drive/ember/install';
 import { setupTest } from '../../../../test-helper';
 
 const TpkSelectElement: TOC<

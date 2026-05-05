@@ -1,9 +1,20 @@
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import {
-  babelCompatSupport,
-  templateCompatSupport,
-} from '@embroider/compat/babel';
+import { templateCompatSupport } from '@embroider/compat/babel';
+import { buildMacros } from '@embroider/macros/babel';
+import { setConfig } from '@warp-drive/core/build-config';
+
+const __filename = fileURLToPath(import.meta.url);
+
+const macros = buildMacros({
+  configure: (config) => {
+    config.setGlobalConfig(__filename, '@embroider/core', { active: true });
+    setConfig(config, {
+      // for universal apps this MUST be at least 5.6
+      compatWith: '5.6',
+    });
+  },
+});
 
 export default {
   plugins: [
@@ -45,7 +56,7 @@ export default {
         regenerator: false,
       },
     ],
-    ...babelCompatSupport(),
+    ...macros.babelMacros,
   ],
 
   generatorOpts: {

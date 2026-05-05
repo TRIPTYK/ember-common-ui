@@ -1,0 +1,55 @@
+diff --git a/dist/components/power-select-multiple-with-create.js b/dist/components/power-select-multiple-with-create.js
+index 96b803d433d4c574f8f7debe405f1191445cd29a..adc8d4ed6f3a4c7daba70860f4a4d51048728a8d 100644
+--- a/dist/components/power-select-multiple-with-create.js
++++ b/dist/components/power-select-multiple-with-create.js
+@@ -1,12 +1,11 @@
+ import PowerSelectWithCreateComponent from './power-select-with-create.js';
+ import { action } from '@ember/object';
+-import { ensureSafeComponent } from '@embroider/util';
+ import PowerSelectMultipleComponent from 'ember-power-select/components/power-select-multiple';
+ import { n } from 'decorator-transforms/runtime';
+ 
+ class PowerSelectMultipleWithCreate extends PowerSelectWithCreateComponent {
+   get powerSelectComponent() {
+-    return ensureSafeComponent(this.args.powerSelectComponent || PowerSelectMultipleComponent, this);
++    return this.args.powerSelectComponent || PowerSelectMultipleComponent;
+   }
+   selectOrCreate(selection, select) {
+     let suggestion = selection.filter(option => {
+diff --git a/dist/components/power-select-with-create.js b/dist/components/power-select-with-create.js
+index b2203ef879ed9f86556b898f8e537140ea6f20d8..3d2ab52114a80d220952b57fb922b12449280842 100644
+--- a/dist/components/power-select-with-create.js
++++ b/dist/components/power-select-with-create.js
+@@ -5,7 +5,6 @@ import { action, get } from '@ember/object';
+ import RSVP, { resolve } from 'rsvp';
+ import PowerSelectComponent from 'ember-power-select/components/power-select';
+ import { defaultMatcher, filterOptions } from 'ember-power-select/utils/group-utils';
+-import { ensureSafeComponent } from '@embroider/util';
+ import SuggestedOptionComponent from './power-select-with-create/suggested-option.js';
+ import { precompileTemplate } from '@ember/template-compilation';
+ import { g, i, n } from 'decorator-transforms/runtime';
+@@ -27,10 +26,10 @@ class PowerSelectWithCreateComponent extends Component {
+     assert('<PowerSelectWithCreate> requires an `onCreate` function', this.args.onCreate && typeof this.args.onCreate === 'function');
+   }
+   get powerSelectComponent() {
+-    return ensureSafeComponent(this.args.powerSelectComponent || PowerSelectComponent, this);
++    return this.args.powerSelectComponent || PowerSelectComponent;
+   }
+   get suggestedOptionComponent() {
+-    return ensureSafeComponent(this.args.suggestedOptionComponent || SuggestedOptionComponent, this);
++    return this.args.suggestedOptionComponent || SuggestedOptionComponent;
+   }
+   shouldShowCreateOption(term, options) {
+     return this.args.showCreateWhen ? this.args.showCreateWhen(term, options) : true;
+diff --git a/package.json b/package.json
+index 978c65d08d73e61e169ea39a0ae18f0fc4a1e707..540b5a3cc4ba6e2b5e89b392818fc6f56e02e812 100644
+--- a/package.json
++++ b/package.json
+@@ -38,7 +38,6 @@
+   },
+   "dependencies": {
+     "@embroider/addon-shim": "^1.10.0",
+-    "@embroider/util": "^1.13.2",
+     "decorator-transforms": "^2.3.0"
+   },
+   "devDependencies": {
