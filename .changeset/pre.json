@@ -8,5 +8,7 @@
     "@triptyk/ember-ui": "4.0.0-alpha.1",
     "@triptyk/ember-utils": "4.0.0-alpha.1"
   },
-  "changesets": []
+  "changesets": [
+    "bump-alpha2"
+  ]
 }

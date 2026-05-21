@@ -10,7 +10,9 @@
     "start": "pnpm dev",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "pre:enter": "changeset pre enter alpha",
+    "pre:exit": "changeset pre exit"
   },
   "pnpm": {
     "patchedDependencies": {

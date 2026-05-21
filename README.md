@@ -52,12 +52,34 @@ pnpm version
 pnpm release
 ```
 
+### Pre-release management
+
+Enter alpha pre-release mode (run once on `develop`):
+
+```sh
+pnpm pre:enter
+# equivalent: pnpm changeset pre enter alpha
+```
+
+Create a changeset for your changes:
+
+```sh
+pnpm changeset
+```
+
+Bump pre-release versions and update changelogs:
+
+```sh
+pnpm version
+```
+
 ### Graduating from alpha to stable
 
 When `develop` is ready for a stable release, run on the `develop` branch:
 
 ```sh
-pnpm changeset pre exit
+pnpm pre:exit
+# equivalent: pnpm changeset pre exit
 ```
 
 Then merge `develop` into `main`.
