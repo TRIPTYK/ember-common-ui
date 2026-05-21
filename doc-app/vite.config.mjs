@@ -80,7 +80,7 @@ export default defineConfig(({ mode, command }) => {
       browser: {
         provider: webdriverio(),
         enabled: true,
-        headless: false,
+        headless: process.env.CI === 'true',
         // at least one instance is required
         instances: [
           { browser: 'chrome' },
