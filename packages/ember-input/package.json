@@ -57,7 +57,6 @@
     "@ember/test-helpers": "catalog:",
     "@embroider/addon-shim": "catalog:",
     "@glimmer/component": "catalog:",
-    "@glimmer/tracking": "catalog:",
     "@popperjs/core": "catalog:",
     "decorator-transforms": "catalog:",
     "ember-basic-dropdown": "catalog:",

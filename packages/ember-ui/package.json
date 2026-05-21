@@ -82,7 +82,6 @@
     "@embroider/core": "catalog:",
     "@eslint/js": "catalog:",
     "@glimmer/component": "2.1.1",
-    "@glimmer/tracking": "catalog:",
     "@glint/ember-tsc": "catalog:",
     "@glint/template": "catalog:",
     "@rollup/plugin-babel": "catalog:",

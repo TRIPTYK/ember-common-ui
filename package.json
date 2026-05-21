@@ -14,12 +14,10 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@embroider/vite": "patches/@embroider__vite.patch",
-      "ember-power-select-with-create": "patches/ember-power-select-with-create.patch",
-      "ember-basic-dropdown": "patches/ember-basic-dropdown.patch"
+      "ember-power-select-with-create": "patches/ember-power-select-with-create.patch"
     },
     "overrides": {
-      "ember-basic-dropdown": "git+https://github.com/ember-power-addons/ember-basic-dropdown/tree/dist"
+      "ember-basic-dropdown": "catalog:"
     },
     "onlyBuiltDependencies": [
       "core-js",

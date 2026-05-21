@@ -52,7 +52,6 @@
     "@embroider/addon-shim": "catalog:",
     "@eonasdan/tempus-dominus": "catalog:",
     "@glimmer/component": "catalog:",
-    "@glimmer/tracking": "catalog:",
     "decorator-transforms": "catalog:",
     "ember-concurrency": "catalog:",
     "ember-intl": "catalog:",
