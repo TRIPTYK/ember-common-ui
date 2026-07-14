@@ -289,6 +289,13 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     return;
   }
 
+  private matchesSearchString(text: string) {
+    return text
+      .trim()
+      .toLowerCase()
+      .startsWith(this.searchString.toLowerCase());
+  }
+
   /**
    * Handles typing on combobox
    */
@@ -303,11 +310,11 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
     if (letter === this.searchString[this.searchString.length - 1]) {
       this.searchString = letter;
       const nextChild = this.children[this.activeChildIndex! + 1];
-      if (nextChild?.innerText.trim().startsWith(this.searchString)) {
+      if (nextChild && this.matchesSearchString(nextChild.innerText)) {
         this.activeChildIndex!++;
       } else {
         this.activeChildIndex = this.children.findIndex((c) => {
-          return c.innerText.trim().startsWith(this.searchString);
+          return this.matchesSearchString(c.innerText);
         });
       }
       return;
@@ -315,7 +322,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
 
     this.searchString += letter;
     const match = this.children.findIndex((c) => {
-      return c.innerText.trim().startsWith(this.searchString);
+      return this.matchesSearchString(c.innerText);
     });
 
     if (match !== -1) {
