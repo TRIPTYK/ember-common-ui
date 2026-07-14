@@ -32,6 +32,7 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
           type='button'
           class='mr-8'
           data-test-delete-stackList-item
+          tabindex='-1'
           {{on 'click' (fn @onRemove @index)}}
         >
           <img
@@ -48,6 +49,7 @@ const TpkStackListHeadComponent: TOC<TpkStackListHeadComponentSignature> =
         {{on 'click' @toggleExpanded}}
         class='tpk-stack-head-expand-btn'
         data-test-toggle-stackList-item
+        tabindex='-1'
       >
         <img
           src='/assets/icons/arrow-down.svg'
