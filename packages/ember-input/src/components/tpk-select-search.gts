@@ -24,6 +24,7 @@ export interface TpkSelectSearchSignature {
     label: string;
     classless?: boolean;
     onInput: (value: string) => void;
+    openOnFocus?: boolean;
     generatedClassPrefix: string;
     defaultText?: string;
     onChange: (
@@ -66,10 +67,11 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
   @tracked children: HTMLLIElement[] = [];
   @tracked optionListId?: string;
   @tracked labelId?: string;
-  @tracked controller?: HTMLDivElement;
+  @tracked controller?: HTMLInputElement;
 
   private searchString = '';
   private typeTimer?: number;
+  private openedViaFocus = false;
 
   guid = guidFor(this);
 
@@ -125,10 +127,11 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
   refreshChildren(e: HTMLUListElement) {
     this.optionListId = e.id;
     this.children = Array.from(e.querySelectorAll('li')) as HTMLLIElement[];
+    queueMicrotask(() => this.focusFirstFilteredOption());
   }
 
   @action
-  registerControllerDiv(d: HTMLDivElement) {
+  registerControllerDiv(d: HTMLInputElement) {
     this.controller = d;
   }
 
@@ -233,7 +236,19 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
   }
 
   @action
+  onInputFocus() {
+    if (this.args.openOnFocus) {
+      this.isOpen = true;
+      this.openedViaFocus = true;
+    }
+  }
+
+  @action
   onSelectButtonClick() {
+    if (this.openedViaFocus) {
+      this.openedViaFocus = false;
+      return;
+    }
     this.isOpen = !this.isOpen;
   }
 
@@ -253,10 +268,22 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
     return this.children[this.activeChildIndex ?? -1];
   }
 
+  focusFirstFilteredOption() {
+    if (!this.isOpen || this.children.length === 0) {
+      return;
+    }
+    const searchValue = this.controller?.value?.trim();
+    if (!searchValue) {
+      return;
+    }
+    this.activeChildIndex = 0;
+  }
+
   @action
   onInput(e: Event) {
     this.isOpen = true;
     this.args.onInput((e.target as HTMLInputElement).value);
+    queueMicrotask(() => this.focusFirstFilteredOption());
   }
 
   protected navigate(
@@ -353,6 +380,7 @@ export default class TpkSelectSearchComponent extends Component<TpkSelectSearchS
             registerControllerDiv=this.registerControllerDiv
             onInput=this.onInput
             onClick=this.onSelectButtonClick
+            onFocus=this.onInputFocus
             selected=@selected
             classless=@classless
             isOpen=this.isOpen

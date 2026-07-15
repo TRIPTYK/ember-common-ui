@@ -11,6 +11,7 @@ export interface TpkSelectButtonSignature {
     labelId: string;
     activeChild?: HTMLElement;
     onSelectButtonClick: (event: Event) => void;
+    onFocus: () => void;
     classless?: boolean;
     registerControllerDiv: (element: HTMLDivElement) => void;
   };
@@ -34,6 +35,7 @@ export default class TpkSelectButtonComponent extends Component<TpkSelectButtonS
       aria-activedescendant='{{@activeChild.id}}'
       tabindex='0'
       {{on 'click' @onSelectButtonClick}}
+      {{on 'focus' @onFocus}}
       class={{unless @classless 'tpk-select-button'}}
       {{didInsert @registerControllerDiv}}
       ...attributes

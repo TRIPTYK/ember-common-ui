@@ -19,6 +19,7 @@ export interface TpkSelectSignature {
     multiple?: boolean;
     label: string;
     classless?: boolean;
+    openOnFocus?: boolean;
     onChange: (
       newSelected: unknown | string,
       alreadySelected: boolean,
@@ -49,6 +50,7 @@ export interface TpkSelectSignature {
           | 'optionListId'
           | 'activeChild'
           | 'onSelectButtonClick'
+          | 'onFocus'
           | 'registerControllerDiv'
           | 'selected'
           | 'classless'
@@ -102,6 +104,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
 
   private searchString = '';
   private typeTimer?: number;
+  private openedViaFocus = false;
 
   protected keyToOpenSelectAction: { [key: string]: SelectActions } = {
     ArrowUp: SelectActions.Previous,
@@ -342,8 +345,20 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
   }
 
   @action
+  onButtonFocus() {
+    if (this.args.openOnFocus) {
+      this.isOpen = true;
+      this.openedViaFocus = true;
+    }
+  }
+
+  @action
   onSelectButtonClick(event: Event) {
     event.stopPropagation();
+    if (this.openedViaFocus) {
+      this.openedViaFocus = false;
+      return;
+    }
     this.isOpen = !this.isOpen;
   }
 
@@ -398,6 +413,7 @@ export default class TpkSelectComponent extends Component<TpkSelectSignature> {
             optionListId=this.optionListId
             activeChild=this.activeChild
             onSelectButtonClick=this.onSelectButtonClick
+            onFocus=this.onButtonFocus
             registerControllerDiv=this.registerControllerDiv
             selected=@selected
             classless=@classless

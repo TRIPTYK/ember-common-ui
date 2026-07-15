@@ -7,8 +7,9 @@ import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 export interface TpkSelectSearchInputComponentSignature {
   Args: {
     classless?: boolean;
-    registerControllerDiv: (element: HTMLDivElement) => void;
+    registerControllerDiv: (element: HTMLInputElement) => void;
     onClick: () => void;
+    onFocus: () => void;
     onInput: (event: Event) => void;
     isOpen: boolean;
     activeChild?: HTMLElement;
@@ -32,6 +33,7 @@ export default class TpkSelectSearchInputComponent extends Component<TpkSelectSe
       {{didInsert @registerControllerDiv}}
       id={{this.guid}}
       {{on 'click' @onClick}}
+      {{on 'focus' @onFocus}}
       class={{unless @classless 'tpk-select-search-input'}}
       {{on 'input' @onInput}}
       type='text'

@@ -87,6 +87,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
             title={{t 'global.previous'}}
             {{on 'click' @paginationActions.previousPage}}
             data-test-pagination-previous
+            tabindex='-1'
           >
             <img
               src='/ember-ui/icons/chevron-left.svg'
@@ -104,6 +105,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
             title={{t 'global.next'}}
             {{on 'click' @paginationActions.nextPage}}
             data-test-pagination-next
+            tabindex='-1'
           >
             <span class='sr-only'>
               {{t 'global.next'}}
@@ -137,6 +139,7 @@ export default class TableGenericPaginationComponent extends Component<Paginatio
             disabled={{@disabled}}
             {{on 'change' this.changePageSize}}
             data-test-pagination-select
+            tabindex='-1'
           >
             {{#each this.pageSizes as |pageSize|}}
               <option
