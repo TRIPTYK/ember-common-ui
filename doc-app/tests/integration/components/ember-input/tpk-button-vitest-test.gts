@@ -23,7 +23,7 @@ describe('Integration | Component | tpk-button', () => {
 
     await render(
       <template>
-        <TpkButton @label="Click me" @onClick={{onClick}} @allowSpam={{false}}>
+        <TpkButton @onClick={{onClick}} @allowSpam={{false}}>
           Click me
         </TpkButton>
       </template>,
@@ -44,7 +44,7 @@ describe('Integration | Component | tpk-button', () => {
 
       await render(
         <template>
-          <TpkButton @label="Click me" @onClick={{onClick}} @allowSpam={{true}}>
+          <TpkButton @onClick={{onClick}} @allowSpam={{true}}>
             Click me
           </TpkButton>
         </template>,
