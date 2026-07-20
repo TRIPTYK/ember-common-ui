@@ -4,6 +4,7 @@ import { render, find } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import ApplicationInstance from '@ember/application/instance';
 import TpkRadio from '@triptyk/ember-input/components/tpk-radio';
+import CatchState from 'doc-app/services/catch-state';
 import { setupTest } from '../../../test-helper';
 import catchState from 'doc-app/helpers/catch-state';
 
@@ -59,12 +60,12 @@ describe('Integration | Component | ui/radio', () => {
 
     const { state } = (env.owner as ApplicationInstance).lookup(
       'service:catch-state',
-    ) as { state: Record<string, unknown> };
+    ) as CatchState<Record<string, unknown>>;
 
-    expect(typeof state['Input']).toBe('object');
-    expect(typeof state['onChange']).toBe('function');
-    expect(typeof state['Label']).toBe('object');
-    expect(typeof state['changeEvent']).toBe('string');
-    expect(typeof state['guid']).toBe('string');
+    expect(typeof state?.Input).toBe('object');
+    expect(typeof state?.onChange).toBe('function');
+    expect(typeof state?.Label).toBe('object');
+    expect(typeof state?.changeEvent).toBe('string');
+    expect(typeof state?.guid).toBe('string');
   });
 });
