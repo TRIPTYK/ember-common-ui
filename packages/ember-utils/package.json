@@ -1,6 +1,6 @@
 {
   "name": "@triptyk/ember-utils",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Utility functions and helpers for Ember.js applications",
   "keywords": [
     "ember-addon"
