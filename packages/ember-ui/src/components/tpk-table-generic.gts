@@ -72,11 +72,6 @@ export default class TableGeneric extends Component<TableGenericSignature> {
     this.filterText = value;
   }
 
-  @action
-  rowClick(element?: unknown, e?: Event) {
-    this.args.rowClick?.(element, e);
-  }
-
   <template>
     {{yield
       (hash
@@ -89,7 +84,7 @@ export default class TableGeneric extends Component<TableGenericSignature> {
         )
         Table=(component
           TableGenericTableComponent
-          rowClick=this.rowClick
+          rowClick=@rowClick
           filterText=this.filterText
           relationships=@relationships
           registerApi=@registerApi

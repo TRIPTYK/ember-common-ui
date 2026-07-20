@@ -23,7 +23,7 @@ export function setupTest(owner: Owner, locale = 'fr-fr') {
   owner.register('service:store', Store);
   owner.register('service:dialog-layer', dialogLayer);
   owner.register('service:tpk-form', TpkFormService);
-  const intl = owner.lookup('service:intl');
+  const intl = owner.lookup('service:intl') as IntlService;
   intl.addTranslations('en-us', translationsForEnUs);
   intl.addTranslations('fr-fr', translationsForFrFr);
   intl.setLocale(locale);

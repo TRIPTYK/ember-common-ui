@@ -12,7 +12,7 @@ export interface TableGenericBodySignature {
   Args: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     table: any;
-    rowClick: (element?: unknown, e?: Event) => void;
+    rowClick?: (element?: unknown, e?: Event) => void;
     registerActionMenu: (element: HTMLTableCellElement, args: []) => unknown;
   };
   Element: HTMLDivElement;
@@ -43,6 +43,10 @@ export default class TableGenericBody extends Component<TableGenericBodySignatur
 
   @action
   handleRowClick(element: unknown, event: Event) {
+    if (!this.args.rowClick) {
+      return;
+    }
+
     const target = event.target as HTMLElement;
 
     const isInteractiveElement = target.closest(
@@ -50,7 +54,7 @@ export default class TableGenericBody extends Component<TableGenericBodySignatur
     );
 
     if (!isInteractiveElement) {
-      this.args.rowClick(element);
+      this.args.rowClick(element, event);
     }
   }
 
@@ -59,6 +63,7 @@ export default class TableGenericBody extends Component<TableGenericBodySignatur
       {{#each data as |element index|}}
         <body.row
           data-test-row={{element.id}}
+          class={{if @rowClick 'cursor-pointer'}}
           {{on 'click' (fn this.handleRowClick element)}}
           as |row|
         >
