@@ -47,7 +47,7 @@ describe('Integration | Component | Prefabs | Tpk-forgot-password-prefab', () =>
   );
 
   renderingTest('displays default submit button text', async ({ env }) => {
-    setupTest(env.owner);
+    setupTest(env.owner, 'en-us');
     await renderComponent();
     expect(forgotPasswordPageObject.submitButton.text).toBe('Send Reset Link');
   });

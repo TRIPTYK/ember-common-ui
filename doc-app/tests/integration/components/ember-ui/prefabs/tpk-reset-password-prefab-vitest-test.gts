@@ -57,7 +57,7 @@ describe('Integration | Component | Prefabs | Tpk-reset-password-prefab', () => 
   );
 
   renderingTest('displays default submit button text', async ({ env }) => {
-    setupTest(env.owner);
+    setupTest(env.owner, 'en-us');
     await renderComponent();
     expect(resetPasswordPageObject.submitButton.text).toBe('Reset Password');
   });

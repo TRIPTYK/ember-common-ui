@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
+import { service } from '@ember/service';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
+import t from 'ember-intl/helpers/t';
+import type IntlService from 'ember-intl/services/intl';
 import type { ZodObject, ZodString } from 'zod';
 import type z from 'zod';
 
@@ -28,6 +31,8 @@ export interface TpkResetPasswordSignature {
 }
 
 export default class TpkResetPassword extends Component<TpkResetPasswordSignature> {
+  @service declare intl: IntlService;
+
   changeset = new ImmerChangeset(
     this.args.initialValues ?? {
       password: '',
@@ -36,7 +41,7 @@ export default class TpkResetPassword extends Component<TpkResetPasswordSignatur
   );
 
   get submitButtonText() {
-    return this.args.submitButtonText ?? 'Reset Password';
+    return this.args.submitButtonText ?? this.intl.t('global.reset_password');
   }
 
   <template>
@@ -50,14 +55,14 @@ export default class TpkResetPassword extends Component<TpkResetPasswordSignatur
       as |F|
     >
       <F.TpkPasswordPrefab
-        @label='New Password'
+        @label={{t 'global.new_password'}}
         @validationField='password'
         class='tpk-reset-password-form-password'
         data-test-tpk-reset-password-form-password
       />
 
       <F.TpkPasswordPrefab
-        @label='Confirm Password'
+        @label={{t 'global.confirm_password'}}
         @validationField='confirmPassword'
         class='tpk-reset-password-form-confirm-password'
         data-test-tpk-reset-password-form-confirm-password
