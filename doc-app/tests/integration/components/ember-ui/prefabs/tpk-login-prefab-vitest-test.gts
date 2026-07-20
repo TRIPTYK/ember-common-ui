@@ -53,7 +53,7 @@ describe('Integration | Component | Prefabs | Tpk-login-prefab', () => {
   );
 
   renderingTest('displays default submit button text', async ({ env }) => {
-    setupTest(env.owner);
+    setupTest(env.owner, 'en-us');
     await renderComponent();
     expect(loginPageObject.submitButton.text).toBe('Sign in');
   });

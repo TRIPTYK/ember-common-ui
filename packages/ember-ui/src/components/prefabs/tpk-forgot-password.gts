@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
+import { service } from '@ember/service';
 import { ImmerChangeset } from 'ember-immer-changeset';
 import TpkForm from '@triptyk/ember-input-validation/components/tpk-form';
+import t from 'ember-intl/helpers/t';
+import type IntlService from 'ember-intl/services/intl';
 import type { ZodEmail, ZodObject } from 'zod';
 import type z from 'zod';
 
@@ -27,6 +30,8 @@ export interface TpkForgotPasswordSignature {
 }
 
 export default class TpkForgotPassword extends Component<TpkForgotPasswordSignature> {
+  @service declare intl: IntlService;
+
   changeset = new ImmerChangeset(
     this.args.initialValues ?? {
       email: '',
@@ -34,7 +39,7 @@ export default class TpkForgotPassword extends Component<TpkForgotPasswordSignat
   );
 
   get submitButtonText() {
-    return this.args.submitButtonText ?? 'Send Reset Link';
+    return this.args.submitButtonText ?? this.intl.t('global.send_reset_link');
   }
 
   <template>
@@ -48,7 +53,7 @@ export default class TpkForgotPassword extends Component<TpkForgotPasswordSignat
       as |F|
     >
       <F.TpkEmailPrefab
-        @label='Email Address'
+        @label={{t 'global.email_address'}}
         @validationField='email'
         class='tpk-forgot-password-form-email'
         data-test-tpk-forgot-password-form-email
