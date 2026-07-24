@@ -64,7 +64,7 @@ async function startMock() {
   if (mockStarted) return;
 
   if (import.meta.env.SSR) {
-    const { setupServer } = await import('msw/node');
+    const { setupServer } = await import(/* @vite-ignore */ 'msw/node');
     const server = setupServer(...handlers);
     server.listen({ onUnhandledRequest: 'bypass' });
 

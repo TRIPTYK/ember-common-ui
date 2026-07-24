@@ -125,6 +125,8 @@
     "app-js": {
       "./components/base.js": "./dist/_app_/components/base.js",
       "./components/prefabs/mandatory-label.js": "./dist/_app_/components/prefabs/mandatory-label.js",
+      "./components/prefabs/mandatory-select-label-text.js": "./dist/_app_/components/prefabs/mandatory-select-label-text.js",
+      "./components/prefabs/mandatory-select-label.js": "./dist/_app_/components/prefabs/mandatory-select-label.js",
       "./components/prefabs/tpk-validation-bic.js": "./dist/_app_/components/prefabs/tpk-validation-bic.js",
       "./components/prefabs/tpk-validation-checkbox.js": "./dist/_app_/components/prefabs/tpk-validation-checkbox.js",
       "./components/prefabs/tpk-validation-currency.js": "./dist/_app_/components/prefabs/tpk-validation-currency.js",

@@ -10,8 +10,14 @@ import { guidFor } from '@ember/object/internals';
 import type Owner from '@ember/owner';
 import type { Select } from 'ember-power-select/types';
 
+export interface TpkSelectCreateLabelSignature {
+  Args: {
+    labelText: string;
+  };
+}
+
 export interface TpkSelectCreateSignature {
-  Args: TpkSelectSignature['Args'] & {
+  Args: Omit<TpkSelectSignature['Args'], 'labelComponent'> & {
     multiple?: boolean;
     options: unknown[];
     selected?: unknown;
@@ -22,6 +28,7 @@ export interface TpkSelectCreateSignature {
     disabled?: boolean;
     initiallyOpened?: boolean;
     loadingMessage?: string;
+    labelComponent?: ComponentLike<TpkSelectCreateLabelSignature>;
     selectedItemComponent?: string | ComponentLike<unknown>;
     placeholderComponent?: string | ComponentLike<unknown>;
     searchEnabled?: boolean;
@@ -80,8 +87,12 @@ export default class TpkSelectCreate extends Component<TpkSelectCreateSignature>
 
   <template>
     <div class='tpk-select-create' ...attributes>
-      <label class='tpk-select-create-label' for={{this.guid}}>
-        {{@label}}
+      <label class='tpk-select-create-label {{@labelClass}}' for={{this.guid}}>
+        {{#if @labelComponent}}
+          <@labelComponent @labelText={{@label}} />
+        {{else}}
+          {{@label}}
+        {{/if}}
       </label>
       <PowerSelectWithCreate
         @placeholder={{@placeholder}}

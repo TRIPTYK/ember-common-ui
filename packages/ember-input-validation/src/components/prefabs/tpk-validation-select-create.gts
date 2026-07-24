@@ -7,6 +7,7 @@ import { action } from '@ember/object';
 import type Owner from '@ember/owner';
 import type { SelectType } from '@triptyk/ember-input/components/tpk-select';
 import type { Merge } from 'type-fest';
+import MandatorySelectLabelText from './mandatory-select-label-text.gts';
 
 type Args = BaseValidationSignature['Args'] &
   Merge<
@@ -32,10 +33,6 @@ export default class TpkValidationSelectCreatePrefab extends BaseValidation<TpkV
     super(owner, args);
   }
 
-  get label() {
-    return this.mandatory ? `${this.args.label} *` : this.args.label;
-  }
-
   @action onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
@@ -57,7 +54,7 @@ export default class TpkValidationSelectCreatePrefab extends BaseValidation<TpkV
       ...attributes
     >
       <TpkSelectCreateComponent
-        @label={{this.label}}
+        @label={{@label}}
         @multiple={{@multiple}}
         @disabled={{@disabled}}
         @placeholder={{@placeholder}}
@@ -67,7 +64,11 @@ export default class TpkValidationSelectCreatePrefab extends BaseValidation<TpkV
         @options={{@options}}
         @onChange={{this.onChange}}
         @onCreate={{@onCreate}}
-        @labelComponent={{@labelComponent}}
+        @labelComponent={{if
+          @labelComponent
+          @labelComponent
+          (component MandatorySelectLabelText mandatory=this.mandatory)
+        }}
         @labelClass='tpk-label'
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}

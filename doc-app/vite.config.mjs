@@ -69,6 +69,9 @@ export default defineConfig(({ mode, command }) => {
           ],
         }),
     ],
+    optimizeDeps: {
+      exclude: ['msw', '@mswjs/interceptors'],
+    },
     ssr: {
       external: ['@warp-drive/utilities', 'msw', '@mswjs/interceptors'],
     },

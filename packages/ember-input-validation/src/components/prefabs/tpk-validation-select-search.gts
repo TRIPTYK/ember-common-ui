@@ -9,6 +9,7 @@ import type {
 } from '@triptyk/ember-input/components/tpk-select';
 import type Owner from '@ember/owner';
 import type { Merge } from 'type-fest';
+import MandatorySelectLabel from './mandatory-select-label.gts';
 
 type Args = BaseValidationSignature['Args'] &
   // need Merge otherwise onChange stays required
@@ -40,10 +41,6 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidation<TpkV
     );
   }
 
-  get label() {
-    return this.mandatory ? `${this.args.label} *` : this.args.label;
-  }
-
   @action onChange(selection: unknown, select: SelectType, event?: Event) {
     if (this.args.onChange) {
       return this.args.onChange(selection, select, event);
@@ -69,11 +66,15 @@ export default class TpkValidationSelectSearchPrefab extends BaseValidation<TpkV
         @placeholder={{@placeholder}}
         @initiallyOpened={{@initiallyOpened}}
         @allowClear={{@allowClear}}
-        @labelComponent={{@labelComponent}}
+        @labelComponent={{if
+          @labelComponent
+          @labelComponent
+          (component MandatorySelectLabel mandatory=this.mandatory)
+        }}
         @labelClass='tpk-label'
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
-        @label={{this.label}}
+        @label={{@label}}
         @options={{@options}}
         @onChange={{this.onChange}}
         @selected={{this.value}}

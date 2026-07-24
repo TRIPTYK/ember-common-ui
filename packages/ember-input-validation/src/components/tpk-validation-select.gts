@@ -5,6 +5,7 @@ import TpkSelectComponent, {
   type SelectType,
 } from '@triptyk/ember-input/components/tpk-select';
 import { hash } from '@ember/helper';
+import MandatorySelectLabel from './prefabs/mandatory-select-label.gts';
 
 export interface TpkValidationSelectSignature {
   Args: BaseValidationSignature['Args'] &
@@ -33,10 +34,6 @@ export default class TpkValidationSelect extends BaseValidation<TpkValidationSel
     return this.args.changeset.set(this.args.validationField, selection);
   }
 
-  get label() {
-    return this.mandatory ? `${this.args.label} *` : this.args.label;
-  }
-
   <template>
     <div
       class='{{if @disabled "disabled"}} tpk-validation-select'
@@ -48,13 +45,17 @@ export default class TpkValidationSelect extends BaseValidation<TpkValidationSel
       <TpkSelectComponent
         @multiple={{@multiple}}
         @onChange={{this.onChange}}
-        @label={{this.label}}
+        @label={{@label}}
         @options={{@options}}
         @placeholder={{@placeholder}}
         @selected={{this.value}}
         @allowClear={{@allowClear}}
         @renderInPlace={{@renderInPlace}}
-        @labelComponent={{@labelComponent}}
+        @labelComponent={{if
+          @labelComponent
+          @labelComponent
+          (component MandatorySelectLabel mandatory=this.mandatory)
+        }}
         @selectedItemComponent={{@selectedItemComponent}}
         @placeholderComponent={{@placeholderComponent}}
         @searchEnabled={{@searchEnabled}}
