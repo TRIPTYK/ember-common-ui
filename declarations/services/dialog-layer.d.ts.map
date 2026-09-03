@@ -1,0 +1,1 @@
+{"version":3,"file":"dialog-layer.d.ts","sourceRoot":"","sources":["../../src/services/dialog-layer.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,gBAAgB,CAAC;AAGrC,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,OAAO;IACrD,OAAO,EAAE,MAAM,EAAE,CAAoB;IAErC,IAAI,YAAY,YAEf;IAED,YAAY,GAAI,QAAQ,MAAM,aAE5B;IAEF,GAAG,GAAI,QAAQ,MAAM,UAEnB;IAEF,MAAM,GAAI,QAAQ,MAAM,UAQtB;CACH"}
