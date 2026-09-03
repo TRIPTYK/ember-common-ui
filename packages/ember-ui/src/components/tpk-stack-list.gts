@@ -17,6 +17,8 @@ export interface TpkStackListComponentSignature {
     titleForAdd: string;
     readOnly: boolean;
     customButtonClass?: string;
+    isExpandedFor?: (item: unknown, index: number) => boolean;
+    defaultExpanded?: boolean;
   };
   Element: HTMLUListElement;
   Blocks: {
@@ -39,7 +41,14 @@ export interface TpkStackListComponentSignature {
 
 const TpkStackListComponent: TOC<TpkStackListComponentSignature> = <template>
   {{#each @data key=@key as |item index|}}
-    <TpkStackListItem @zIndex={{index}} @index={{index}} as |I|>
+    <TpkStackListItem
+      @zIndex={{index}}
+      @index={{index}}
+      @item={{item}}
+      @isExpandedFor={{@isExpandedFor}}
+      @defaultExpanded={{@defaultExpanded}}
+      as |I|
+    >
       <div class='tpk-stack-head'>
         {{yield
           (hash

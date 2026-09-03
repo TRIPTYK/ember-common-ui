@@ -35,6 +35,9 @@ thrash icon in the "element added" header. This function should remove an elemen
 
 **@data**: An array parameter. It represents the array that contains each element displayed in the stack-list. If there's no element, nothing is displayed except the "add element to list" button.
 
+**@isExpandedFor**: An optional function parameter. Called for each item with `(item, index)` to determine whether the item should be expanded. It is evaluated on initial render and whenever the item or its index changes. When provided, it takes precedence over `@defaultExpanded`.
+
+**@defaultExpanded**: An optional boolean parameter. Sets the initial expanded state for all items when `@isExpandedFor` is not provided. Defaults to `true`.
 
 ### Yields
 

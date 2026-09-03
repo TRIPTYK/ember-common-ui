@@ -85,6 +85,108 @@ module('Integration | Component | stack-list', function (hooks) {
     assert.dom('[data-test-title-stackList-item]').containsText(contentData);
   });
 
+  test('initial expanded state via isExpandedFor', async function (assert) {
+    this.set('data', [
+      { title: 'first' },
+      { title: 'second' },
+    ]);
+    this.set('titleForAdd', titleForAdd);
+    this.set('onAddData', () => {});
+    this.set('onRemoveData', () => {});
+    this.set('isExpandedFor', (item: { title: string }) => {
+      return item.title === 'second';
+    });
+
+    await render(hbs`
+      <TpkStackList
+        @data={{this.data}}
+        @onRemove={{this.onRemoveData}}
+        @onAdd={{this.onAddData}}
+        @titleForAdd={{this.titleForAdd}}
+        @isExpandedFor={{this.isExpandedFor}}
+        as |S|
+      >
+        <S.Title as |T|>
+          {{get T.item 'title'}}
+        </S.Title>
+        <S.Content as |C|>
+          {{get C.item 'title'}}
+        </S.Content>
+      </TpkStackList>
+    `);
+    assert
+      .dom('[data-test-stackList-item="0"] [data-test-title-stackList-item]')
+      .containsText('first');
+    assert
+      .dom('[data-test-stackList-item="1"] [data-test-title-stackList-item]')
+      .doesNotContainText('second');
+  });
+
+  test('expanded state syncs on data change via isExpandedFor', async function (assert) {
+    this.set('data', [{ title: 'first', expanded: false }]);
+    this.set('titleForAdd', titleForAdd);
+    this.set('onAddData', () => {});
+    this.set('onRemoveData', () => {});
+    this.set('isExpandedFor', (item: { expanded: boolean }) => {
+      return item.expanded;
+    });
+
+    await render(hbs`
+      <TpkStackList
+        @data={{this.data}}
+        @onRemove={{this.onRemoveData}}
+        @onAdd={{this.onAddData}}
+        @titleForAdd={{this.titleForAdd}}
+        @isExpandedFor={{this.isExpandedFor}}
+        as |S|
+      >
+        <S.Title as |T|>
+          {{get T.item 'title'}}
+        </S.Title>
+        <S.Content as |C|>
+          {{get C.item 'title'}}
+        </S.Content>
+      </TpkStackList>
+    `);
+
+    assert
+      .dom('[data-test-stackList-item="0"] [data-test-title-stackList-item]')
+      .containsText('first');
+
+    this.set('data', [{ title: 'first', expanded: true }]);
+
+    assert
+      .dom('[data-test-stackList-item="0"] [data-test-title-stackList-item]')
+      .doesNotContainText('first');
+  });
+
+  test('defaultExpanded collapses all items on load', async function (assert) {
+    this.set('data', [{ title: contentData }]);
+    this.set('titleForAdd', titleForAdd);
+    this.set('onAddData', () => {});
+    this.set('onRemoveData', () => {});
+
+    await render(hbs`
+      <TpkStackList
+        @data={{this.data}}
+        @onRemove={{this.onRemoveData}}
+        @onAdd={{this.onAddData}}
+        @titleForAdd={{this.titleForAdd}}
+        @defaultExpanded={{false}}
+        as |S|
+      >
+        <S.Title as |T|>
+          {{get T.item 'title'}}
+        </S.Title>
+        <S.Content as |C|>
+          {{get C.item 'title'}}
+        </S.Content>
+      </TpkStackList>
+    `);
+
+    assert.dom('[data-test-title-stackList-item]').containsText(contentData);
+  });
+
   test('deleting item', async function (assert) {
     this.set('data', [
       {
