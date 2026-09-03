@@ -1,0 +1,9 @@
+import './components/tpk-validation-radio-group.js';
+import './components/tpk-validation-checkbox.js';
+import './components/tpk-validation-datepicker.js';
+import './components/tpk-validation-file.js';
+import './components/tpk-validation-input.js';
+import './components/tpk-validation-radio.js';
+import './components/tpk-validation-select.js';
+import './components/tpk-validation-textarea.js';
+//# sourceMappingURL=template-registry.js.map
