@@ -24,11 +24,14 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:readme": "node scripts/generate-prefabs-readme.mjs --check",
+    "lint:readme:fix": "node scripts/generate-prefabs-readme.mjs",
     "_syncPnpm": "pnpm sync-dependencies-meta-injected",
     "lint:types": "ember-tsc --noEmit",
     "start": "concurrently \"pnpm turbo build:watch --filter '@triptyk/ember*'\" \"vite dev\"",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "docs:readme": "node scripts/generate-prefabs-readme.mjs"
   },
   "devDependencies": {
     "@babel/core": "catalog:",
@@ -118,6 +121,7 @@
     "vite-ember-ssr": "^0.1.0",
     "vitest": "4.0.18",
     "webdriverio": "^9.27.0",
+    "yaml": "^2.8.3",
     "zod": "catalog:"
   },
   "engines": {
